@@ -57,16 +57,13 @@ export default function HeroBannerStrip() {
             backgroundColor: "rgba(184,133,14,0.25)",
             color: "#FCD34D",
             border: "1px solid rgba(184,133,14,0.4)",
-            pointerEvents: "none",
-            opacity: 0.7,
-          }}
-          aria-disabled="true"
-          tabIndex={-1}
+                      }}
+          target="_blank" rel="noopener noreferrer"
         >
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
           </svg>
-          {isKo ? "대시보드 열기 (심사 후 공개)" : "Open Dashboard (Post-Review)"}
+          {isKo ? "대시보드 열기" : "Open Dashboard"}
         </a>
       </div>
 
