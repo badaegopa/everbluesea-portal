@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REVERBANT v1.0 — 한국·미국 비교 적용 | 늘푸른바다 사회동역학연구소</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@400;600&display=swap');
+:root{
+  --ink:#1a1917;--paper:#F5F3EE;--teal:#3d7f78;--teal-l:#e4f0ef;
+  --gold:#B8850E;--gold-l:#faeeda;--danger:#c0392b;--danger-l:#fdecea;
+  --border:#ddd8ce;--muted:#7a7872;--safe:#1a7a4a;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);font-size:13px;line-height:1.7;}
+
+/* 커버 */
+.cover{background:var(--ink);color:var(--paper);padding:52px 60px 40px;border-bottom:4px solid var(--teal);position:relative;}
+.cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));}
+.wp-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.3em;color:var(--teal);text-transform:uppercase;margin-bottom:18px;}
+.cover h1{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:6px;}
+.cover h1 em{color:var(--teal);font-style:normal;}
+.cover .sub{font-size:0.88rem;color:#aaa;margin-bottom:28px;}
+.cover-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-top:1px solid #333;padding-top:20px;}
+.cg-item label{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.2em;color:#555;text-transform:uppercase;display:block;margin-bottom:3px;}
+.cg-item span{font-size:12px;color:#ddd;}
+
+/* 래퍼 */
+.wrap{max-width:960px;margin:0 auto;padding:44px 36px;}
+
+/* 섹션 */
+.sec{margin-bottom:48px;}
+.sec-tag{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.3em;color:var(--teal);text-transform:uppercase;margin-bottom:5px;}
+.sec h2{font-family:'Noto Serif KR',serif;font-size:1.2rem;font-weight:700;border-bottom:2px solid var(--teal);padding-bottom:7px;margin-bottom:18px;}
+.sec h3{font-size:0.9rem;font-weight:600;color:var(--gold);margin:20px 0 8px;}
+.sec p{margin-bottom:12px;color:#2a2926;}
+
+/* 두 나라 패널 */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0;}
+.panel{background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.ph{padding:10px 14px;font-size:12px;font-weight:700;}
+.ph-k{background:var(--teal-l);color:var(--teal);}
+.ph-u{background:var(--gold-l);color:var(--gold);}
+.pb{padding:14px;}
+
+/* 게이지 */
+.g-wrap{margin-bottom:12px;}
+.g-lbl{font-size:9px;color:var(--muted);letter-spacing:0.08em;margin-bottom:3px;}
+.g-track{height:11px;background:#f0ede8;border-radius:6px;overflow:hidden;}
+.g-fill{height:100%;border-radius:6px;}
+.g-val{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;margin-top:3px;}
+
+/* 지표 행 */
+.mrow{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:0.5px solid #f5f3ee;font-size:11px;}
+.mk{color:var(--muted);}
+.mv{font-family:'IBM Plex Mono',monospace;font-weight:700;}
+.hi{color:var(--teal);}
+.lo{color:var(--danger);}
+.mid{color:var(--gold);}
+.warn-badge{background:var(--danger-l);padding:1px 6px;border-radius:3px;font-size:9px;color:var(--danger);}
+
+/* 볼츠만 */
+.btz{margin-top:10px;}
+.btz-lbl{font-size:9px;color:var(--muted);margin-bottom:5px;letter-spacing:0.06em;}
+.btz-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;}
+.btz-s{font-size:9px;font-family:'IBM Plex Mono',monospace;min-width:24px;}
+.btz-tw{flex:1;height:9px;background:#f0ede8;border-radius:4px;overflow:hidden;}
+.btz-tf{height:100%;border-radius:4px;}
+.btz-pct{font-size:9px;font-family:'IBM Plex Mono',monospace;min-width:36px;text-align:right;}
+
+/* 메모 박스 */
+.memo{border-radius:4px;padding:8px 12px;font-size:10.5px;margin-top:10px;line-height:1.6;}
+.memo-k{background:var(--teal-l);color:#1a3a37;}
+.memo-u{background:var(--gold-l);color:#4a2e00;}
+
+/* 공리표 */
+.ax-table{width:100%;border-collapse:collapse;font-size:11.5px;margin:14px 0;}
+.ax-table th{background:var(--ink);color:var(--paper);padding:7px 10px;text-align:left;font-size:10px;font-weight:500;letter-spacing:0.04em;}
+.ax-table td{padding:7px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;}
+.ax-table tr:nth-child(even) td{background:#faf8f4;}
+.ax-n{font-family:'IBM Plex Mono',monospace;color:var(--teal);font-weight:700;}
+
+/* 방정식 박스 */
+.eq{background:var(--ink);border-radius:6px;padding:18px 22px;margin:14px 0;border-left:4px solid var(--gold);}
+.eq-tag{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.eq-main{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ee;letter-spacing:0.02em;line-height:2;}
+.eq-sub{margin-top:10px;border-top:1px solid #333;padding-top:8px;}
+.eq-v{font-size:10px;color:#999;font-family:'IBM Plex Mono',monospace;line-height:1.8;}
+.eq-v span{color:var(--teal);}
+
+/* 비교표 */
+.cmp-table{width:100%;border-collapse:collapse;font-size:11.5px;margin:14px 0;}
+.cmp-table th{background:var(--ink);color:var(--paper);padding:7px 12px;text-align:center;font-size:10px;font-weight:500;}
+.cmp-table td{padding:6px 12px;border-bottom:0.5px solid var(--border);text-align:center;}
+.cmp-table td:first-child{text-align:left;color:var(--muted);}
+.td-k{color:var(--teal);font-family:'IBM Plex Mono',monospace;font-weight:700;}
+.td-u{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;}
+.td-d{color:var(--danger);font-family:'IBM Plex Mono',monospace;font-size:10px;}
+
+/* C_internal 해부 */
+.cint-box{background:var(--ink);border-radius:6px;padding:18px 22px;margin:14px 0;}
+.cint-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--danger);text-transform:uppercase;margin-bottom:12px;}
+.cint-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;}
+.cint-num{min-width:22px;height:22px;border-radius:50%;background:var(--danger);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+.cint-text{font-size:11px;color:#ccc;line-height:1.6;}
+.cint-text strong{color:#fff;}
+
+/* 시나리오 */
+.scen{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.scen-box{background:var(--ink);border-radius:6px;padding:16px 18px;}
+.scen-badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:9px;font-weight:700;margin-bottom:8px;}
+.sb-a{background:var(--teal);color:#fff;}
+.sb-b{background:var(--danger);color:#fff;}
+.scen-title{font-size:10.5px;font-weight:700;color:var(--gold);margin-bottom:7px;}
+.scen-row{font-size:10.5px;color:#ccc;margin-bottom:3px;line-height:1.5;}
+.scen-row strong{color:#fff;}
+
+/* 차트 */
+.chart-box{position:relative;height:230px;margin:12px 0;}
+.chart-box-sm{position:relative;height:180px;margin:10px 0;}
+
+/* 검증 */
+.vfy-row{display:flex;align-items:flex-start;gap:10px;padding:7px 12px;border-bottom:0.5px solid var(--border);font-size:11px;}
+.vfy-pass{color:var(--teal);font-weight:700;min-width:18px;}
+.vfy-name{font-family:'IBM Plex Mono',monospace;min-width:130px;color:var(--ink);}
+.vfy-desc{color:var(--muted);}
+
+/* 계층 다이어그램 */
+.layer-diag{background:var(--ink);border-radius:6px;padding:20px;margin:14px 0;}
+.lrow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:4px;margin-bottom:4px;}
+.l-neg1{background:#1a3a1a;border-left:3px solid #4caf50;}
+.l-0{background:#1a2a3a;border-left:3px solid var(--teal);}
+.l-a2a8{background:#2a1a00;border-left:3px solid var(--gold);}
+.l-3{background:#2a1a1a;border-left:3px solid var(--danger);}
+.l-bsli{background:#1a1535;border-left:3px solid #9b59b6;margin-top:8px;}
+.ll{color:#777;font-size:9px;min-width:70px;font-family:'IBM Plex Mono',monospace;}
+.lc{color:#eee;font-size:10.5px;flex:1;}
+.ld{color:#555;font-size:9px;}
+.larrow{text-align:center;color:#333;font-size:14px;padding:2px 0;}
+
+/* 풋터 */
+.footer{text-align:center;padding:28px 20px;font-size:10px;color:var(--muted);border-top:1px solid var(--border);margin-top:8px;line-height:1.8;}
+.footer strong{color:var(--ink);}
+
+@media(max-width:700px){
+  .cover{padding:36px 24px;}
+  .wrap{padding:30px 18px;}
+  .dual,.scen,.cover-grid{grid-template-columns:1fr;}
+  .cover h1{font-size:1.4rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- 커버 -->
+<div class="cover">
+  <div class="wp-tag">REVERBANT v1.0 · Applied Case Study · 2026-07-03</div>
+  <h1><em>REVERBANT</em> — 한국·미국 비교 적용<br>동적 사회 섭동 반응 분석</h1>
+  <p class="sub">Dynamic Social Perturbation Response Engine — Korean & US Case Studies<br>
+  C_internal 상존 구조 분석 + 2026.11 중간선거 예측</p>
+  <div class="cover-grid">
+    <div class="cg-item"><label>저자</label><span>청해(淸海) 김기섭</span></div>
+    <div class="cg-item"><label>연구소</label><span>늘푸른바다 사회동역학연구소</span></div>
+    <div class="cg-item"><label>연계 엔진</label><span>Λ¹² · BSLI v6.0 · UI</span></div>
+    <div class="cg-item"><label>검증</label><span>7/7 공리 일관성 완결</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- 1. 개요 -->
+<div class="sec">
+  <div class="sec-tag">§ 1</div>
+  <h2>개요 — 정적 측정과 동적 반응의 분리</h2>
+  <p>Λ¹²(국가 사회구조 상태벡터)와 BSLI(서민 생활 고통 섭동벡터)는 <strong>정적(static)</strong> 측정 엔진이다. REVERBANT는 이 두 엔진이 측정하는 상태가 <strong>섭동을 받았을 때 어떻게 동적으로 반응하는가</strong>를 기술하는 엔진이다.</p>
+  <p>소방 비유: Λ¹²·BSLI는 소방서 현황판(소방차 수·장비 상태)이고, REVERBANT는 화재 발생 시 출동·진압·전소 여부를 시뮬레이션하는 시스템이다.</p>
+
+  <div class="layer-diag">
+    <div class="lrow l-bsli">
+      <div class="ll">BSLI 섭동</div>
+      <div class="lc">서민 고통 (먹고살기 힘들다) — 외부 입사 에너지 · H₂O 동형</div>
+      <div class="ld">단일구조·다중스펙트럼</div>
+    </div>
+    <div class="larrow">↓</div>
+    <div class="lrow l-3">
+      <div class="ll">Layer 3</div>
+      <div class="lc">실제 수행자 (말단 군인·집행자·시민)</div>
+      <div class="ld">최종 행동 결정</div>
+    </div>
+    <div class="larrow">↓ κ_L0 필터</div>
+    <div class="lrow l-0">
+      <div class="ll">Layer 0</div>
+      <div class="lc">문화·역사·상식 — 후천적 각인 "이것은 옳지 않다"</div>
+      <div class="ld">국가·세대별 상이</div>
+    </div>
+    <div class="larrow">↓ λ_{-1} 기저</div>
+    <div class="lrow l-neg1">
+      <div class="ll">Layer −1</div>
+      <div class="lc">신경생물학적 인류 공통 기반 — 선천적 · 거울뉴런·옥시토신</div>
+      <div class="ld">1914 크리스마스 휴전 실증</div>
+    </div>
+    <div class="larrow">↑ 조준점 고정</div>
+    <div class="lrow l-a2a8">
+      <div class="ll">A2 · A8</div>
+      <div class="lc">G-T Core — 제도신뢰 × 거버넌스 · 모든 BSLI의 최종 표적</div>
+      <div class="ld">r=0.969 결합</div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. 공리 -->
+<div class="sec">
+  <div class="sec-tag">§ 2</div>
+  <h2>공리 체계 A0–A11</h2>
+  <table class="ax-table">
+    <thead><tr><th>공리</th><th>명칭</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td class="ax-n">A0</td><td>존재론적 분리</td><td>Λ¹²=상태벡터(설계층), BSLI=외부 섭동(피설계층). 독립적 분리.</td></tr>
+      <tr><td class="ax-n">A1</td><td>조준 불변성</td><td>어떤 차원이 임계에 도달해도 BSLI 최종 조준점은 항상 A2</td></tr>
+      <tr><td class="ax-n">A2</td><td>E_A2 이중 방향</td><td>① BSLI 흡수·복원(↑) ② A8 과팽창 억제(↔) — 견제균형의 물리적 실체</td></tr>
+      <tr><td class="ax-n">A3</td><td>내부 충돌</td><td>C_internal: A8이 A2를 공격할 때 발생. UI 방정식 제3항. 미국 현재 실증 중</td></tr>
+      <tr><td class="ax-n">A4</td><td>집행 채널 귀속</td><td>집행 채널이 A8 완전 귀속 시 A2 복원력 구조적 약화</td></tr>
+      <tr><td class="ax-n">A5</td><td>Layer 0 계수</td><td>κ_L0: 문화·역사 내재화. Γ = 1−κ_L0. 후천적.</td></tr>
+      <tr><td class="ax-n">A6</td><td>Layer −1 상수</td><td>λ_{-1}: 신경생물학적 인류 공통 기반. 선천적. 대면 시 자동 활성화.</td></tr>
+      <tr><td class="ax-n">A7</td><td>임피던스</td><td>Γ = (λ_{-1}√(μ_c/ε_h)−Z_A8) / (λ_{-1}√(μ_c/ε_h)+Z_A8)</td></tr>
+      <tr><td class="ax-n">A8</td><td>BSLI 방향 전환</td><td>A8→A2 공격 시 BSLI가 A2 방어로 전환. 최종 조준점은 항상 A2.</td></tr>
+      <tr><td class="ax-n">A9</td><td>취성 한계치</td><td>E_A2 &lt; 0.20 + C_internal 임계 → 취성파괴 확률 급증</td></tr>
+      <tr><td class="ax-n">A10</td><td>BSLI 물성</td><td>BSLI ≡ 물(H₂O). 단일구조·다중스펙트럼. 수소결합=Layer−1</td></tr>
+      <tr><td class="ax-n">A11</td><td>물의 변칙</td><td>4℃ 안정구간·초임계·LDL→HDL 전이·확산역설(억압↑→확산↑)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 3. 핵심 방정식 -->
+<div class="sec">
+  <div class="sec-tag">§ 3</div>
+  <h2>핵심 방정식 체계</h2>
+
+  <div class="eq">
+    <div class="eq-tag">UI 통합 방정식</div>
+    <div class="eq-main">UI(t) = η(t)·E_A2(t) − P_BSLI(t)/σ(G-T) − C_internal(t)</div>
+    <div class="eq-sub">
+      <div class="eq-v"><span>η</span>: Λ¹² 사회구조 안정성 · <span>E_A2</span>: 제도 탄성(0~1) · <span>σ(G-T)</span>: G-T Core 산란 단면적</div>
+      <div class="eq-v"><span>C_internal</span>: A2↔A8 내부 충돌 에너지 · UI&gt;0=안정 · UI&lt;0=위험</div>
+    </div>
+  </div>
+
+  <div class="eq">
+    <div class="eq-tag">봉기 임계 조건</div>
+    <div class="eq-main">P_BSLI(t) &gt; E_A2 · σ(G-T) · η(t)</div>
+    <div class="eq-sub"><div class="eq-v">우변 = 제도의 흡수 용량. 좌변이 초과하면 상전이 발생.</div></div>
+  </div>
+
+  <div class="eq">
+    <div class="eq-tag">C_internal 동역학 (미국 현재 상황)</div>
+    <div class="eq-main">dC_int/dt = ν·|Z_A8−Z_L0|·P_BSLI − μ·E_A2</div>
+    <div class="eq-sub">
+      <div class="eq-v"><span>ν</span>=재충전률 · <span>|Z_A8−Z_L0|</span>=임피던스 불일치 · <span>μ</span>=감쇠율</div>
+      <div class="eq-v">미국: ν 높음(3개 재충전 메커니즘) + μ 낮음(E_A2=0.34) → dC/dt &gt; 0</div>
+    </div>
+  </div>
+
+  <div class="eq">
+    <div class="eq-tag">임피던스 · 명령 반사 (Layer−1 통합)</div>
+    <div class="eq-main">Z_L0 = λ_{-1}·√(μ_c/ε_h)   ·   Γ = (Z_L0−Z_A8)/(Z_L0+Z_A8)</div>
+    <div class="eq-sub">
+      <div class="eq-v"><span>λ_{-1}</span>: 신경생물학 상수 · <span>μ_c</span>: 문화 투과율 · <span>ε_h</span>: 역사 유전율</div>
+      <div class="eq-v">Γ→1: 완전 반사(명령 거부) · Γ→0: 완전 투과(명령 수행)</div>
+    </div>
+  </div>
+
+  <div class="eq">
+    <div class="eq-tag">볼츠만 사회적 온도</div>
+    <div class="eq-main">T_social = 0.40·Ḃ⁻ + 0.35·A₂⁻¹ + 0.25·Ṗ</div>
+    <div class="eq-main" style="margin-top:8px;">P(상태=s) = exp(−E_s/T_social) / Z</div>
+    <div class="eq-sub">
+      <div class="eq-v"><span>Ḃ⁻</span>: BSLI하락률 · <span>A₂⁻¹</span>: 지지율역수 · <span>Ṗ</span>: 물가상승률</div>
+      <div class="eq-v">E_WD=0 · E_SN=0.35 · E_BH=0.70</div>
+    </div>
+  </div>
+</div>
+
+<!-- 4. 한국·미국 적용 -->
+<div class="sec">
+  <div class="sec-tag">§ 4</div>
+  <h2>한국·미국 REVERBANT 실측 적용</h2>
+
+  <div class="dual">
+    <!-- 한국 -->
+    <div class="panel">
+      <div class="ph ph-k">🇰🇷 한국 KOR — 이재명 정부 1년 (2026-07)</div>
+      <div class="pb">
+        <div class="g-wrap">
+          <div class="g-lbl">UI 지수 (안정↑)</div>
+          <div class="g-track"><div class="g-fill" style="width:55%;background:var(--teal);"></div></div>
+          <div class="g-val hi">UI = −0.221 → 탄성복원 경로</div>
+        </div>
+        <div class="mrow"><span class="mk">G-T Core</span><span class="mv hi">0.738</span></div>
+        <div class="mrow"><span class="mk">실효 G-T Core</span><span class="mv hi">0.688</span></div>
+        <div class="mrow"><span class="mk">E_A2 (지지율 58%)</span><span class="mv hi">0.580</span></div>
+        <div class="mrow"><span class="mk">C_internal</span><span class="mv hi">0.050 (낮음)</span></div>
+        <div class="mrow"><span class="mk">T_social</span><span class="mv hi">0.087</span></div>
+        <div class="mrow"><span class="mk">Γ 반사계수</span><span class="mv mid">0.506</span></div>
+        <div class="mrow"><span class="mk">η (Λ¹²)</span><span class="mv">0.5929 (19위/206국)</span></div>
+        <div class="mrow"><span class="mk">BSLI</span><span class="mv mid">0.4627 (C등급)</span></div>
+        <div class="btz">
+          <div class="btz-lbl">볼츠만 상태 확률 (T=0.087)</div>
+          <div class="btz-row"><div class="btz-s">WD</div><div class="btz-tw"><div class="btz-tf" style="width:98.2%;background:var(--teal);"></div></div><div class="btz-pct hi">98.2%</div></div>
+          <div class="btz-row"><div class="btz-s">SN</div><div class="btz-tw"><div class="btz-tf" style="width:1.8%;background:var(--gold);"></div></div><div class="btz-pct mid">1.8%</div></div>
+          <div class="btz-row"><div class="btz-s">BH</div><div class="btz-tw"><div class="btz-tf" style="width:0.1%;background:var(--danger);"></div></div><div class="btz-pct lo">~0%</div></div>
+        </div>
+        <div class="memo memo-k">✅ 12·3 탄핵 탄성복원 완료 · E_A2 0.17→0.58 회복<br>⚠ BSLI C등급 — 고물가·민생 누수 지속<br>⚠ A7 역압(−0.506) — η 상대순위 제자리</div>
+      </div>
+    </div>
+
+    <!-- 미국 -->
+    <div class="panel">
+      <div class="ph ph-u">🇺🇸 미국 USA — 트럼프 2기 (2026-07, D-4개월)</div>
+      <div class="pb">
+        <div class="g-wrap">
+          <div class="g-lbl">UI 지수 (안정↑)</div>
+          <div class="g-track"><div class="g-fill" style="width:14%;background:var(--danger);"></div></div>
+          <div class="g-val lo">UI = −0.785 ⚠ 소성변형 진행중</div>
+        </div>
+        <div class="mrow"><span class="mk">G-T Core (명목)</span><span class="mv mid">0.740</span></div>
+        <div class="mrow"><span class="mk">실효 G-T Core</span><span class="mv lo">0.460 (−C_int=0.28)</span></div>
+        <div class="mrow"><span class="mk">E_A2 (지지율 34%)</span><span class="mv lo">0.340</span></div>
+        <div class="mrow"><span class="mk">C_internal</span><span class="mv"><span class="warn-badge">⚠ 0.280 상존</span></span></div>
+        <div class="mrow"><span class="mk">T_social</span><span class="mv mid">0.149 (상승중)</span></div>
+        <div class="mrow"><span class="mk">Γ 반사계수</span><span class="mv lo">0.095 (낮음)</span></div>
+        <div class="mrow"><span class="mk">η (Λ¹²)</span><span class="mv">0.5826 (28위/206국)</span></div>
+        <div class="mrow"><span class="mk">BSLI</span><span class="mv mid">0.6998 (B등급, 하락중)</span></div>
+        <div class="btz">
+          <div class="btz-lbl">볼츠만 상태 확률 (T=0.149)</div>
+          <div class="btz-row"><div class="btz-s">WD</div><div class="btz-tw"><div class="btz-tf" style="width:90.5%;background:var(--gold);"></div></div><div class="btz-pct mid">90.5%</div></div>
+          <div class="btz-row"><div class="btz-s">SN</div><div class="btz-tw"><div class="btz-tf" style="width:8.6%;background:#9b59b6;"></div></div><div class="btz-pct" style="color:#6b21a8;">8.6%</div></div>
+          <div class="btz-row"><div class="btz-s">BH</div><div class="btz-tw"><div class="btz-tf" style="width:0.8%;background:var(--danger);"></div></div><div class="btz-pct lo">0.8%</div></div>
+        </div>
+        <div class="memo memo-u">⚠ C_int=0.28 — 실효 G-T Core 0.460 임계 근접<br>📉 무당파 공화17% vs 민주34% (2배 격차)<br>⚠ "appellate void" 전략 — C_int 재충전 구조</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 비교 차트 -->
+  <h3>4.1 볼츠만 상태 확률 비교</h3>
+  <div class="chart-box-sm"><canvas id="cBoltz"></canvas></div>
+
+  <h3>4.2 핵심 지표 레이더</h3>
+  <div class="chart-box"><canvas id="cRadar"></canvas></div>
+
+  <!-- 비교표 -->
+  <h3>4.3 한·미 REVERBANT 핵심 지표 비교</h3>
+  <table class="cmp-table">
+    <thead><tr><th>지표</th><th>🇰🇷 한국</th><th>🇺🇸 미국</th><th>차이</th></tr></thead>
+    <tbody>
+      <tr><td>G-T Core (명목)</td><td class="td-k">0.738</td><td class="td-u">0.740</td><td class="td-d">≈동일</td></tr>
+      <tr><td>실효 G-T Core</td><td class="td-k">0.688</td><td class="td-u">0.460</td><td class="td-d">−0.228 ⚠</td></tr>
+      <tr><td>E_A2 탄성</td><td class="td-k">0.580</td><td class="td-u">0.340</td><td class="td-d">−0.240</td></tr>
+      <tr><td>C_internal</td><td class="td-k">0.050</td><td class="td-u">0.280</td><td class="td-d">+0.230 ⚠</td></tr>
+      <tr><td>T_social</td><td class="td-k">0.087</td><td class="td-u">0.149</td><td class="td-d">+0.062</td></tr>
+      <tr><td>Γ 반사계수</td><td class="td-k">0.506</td><td class="td-u">0.095</td><td class="td-d">−0.411</td></tr>
+      <tr><td>UI 지수</td><td class="td-k">−0.221</td><td class="td-u">−0.785</td><td class="td-d">−0.564</td></tr>
+      <tr><td>P(SN) 전환확률</td><td class="td-k">1.8%</td><td class="td-u">8.6%</td><td class="td-d">+6.8%p</td></tr>
+      <tr><td>예측 경로</td><td class="td-k">탄성복원 유지</td><td class="td-u">소성변형→분점정부</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 5. C_internal 해부 -->
+<div class="sec">
+  <div class="sec-tag">§ 5</div>
+  <h2>미국 C_internal 상존 구조 해부</h2>
+  <p>미국의 C_internal=0.280이 일시적 갈등이 아니라 <strong>구조적으로 상존</strong>하는 이유는 A8이 3개의 재충전 메커니즘을 보유하기 때문이다. 워싱턴포스트 분석(2025.7)에 따르면 337건 소송 중 57건(35%)에서 명령 불이행·지연·기만이 확인됐으며, 법률 전문가들은 이를 "어떤 행정부에도 전례 없는" 패턴으로 평가했다.</p>
+
+  <div class="cint-box">
+    <div class="cint-title">C_internal 재충전 메커니즘 3가지</div>
+    <div class="cint-row">
+      <div class="cint-num">1</div>
+      <div class="cint-text"><strong>"Appellate Void" 전략</strong> — 법원 명령 불이행 후 항소를 포기해 대법원까지 가지 않도록 함. C_internal이 최종 해소되지 않고 누적. (Lawfare, 2025-10)</div>
+    </div>
+    <div class="cint-row">
+      <div class="cint-num">2</div>
+      <div class="cint-text"><strong>여론전 프레이밍</strong> — "테러리스트 지지 판사" 낙인으로 법원 명령을 대중이 무시하도록 유도. MAGA 지지층은 C_int를 정당화. 에너지가 외부 방출 아닌 내부 축적.</div>
+    </div>
+    <div class="cint-row">
+      <div class="cint-num">3</div>
+      <div class="cint-text"><strong>집행 채널 귀속</strong> — 법원 명령을 집행하는 연방 보안관이 법무부(A8) 소속. A2 복원력의 물리적 집행이 구조적으로 약화. 브레넌센터(2025): "최후 수단이 모두 실효성 한계."</div>
+    </div>
+  </div>
+
+  <div class="eq">
+    <div class="eq-tag">dC_internal/dt 현재 부호 판정</div>
+    <div class="eq-main">dC/dt = ν·|Z_A8−Z_L0|·P_BSLI − μ·E_A2</div>
+    <div class="eq-main" style="font-size:11px;margin-top:8px;color:#aaa;">
+      = 높음·0.933·상승 − 낮음·0.34   →   dC/dt &gt; 0 (충돌 에너지 계속 증가)
+    </div>
+  </div>
+
+  <p style="font-size:12px;color:var(--muted);">편향 적시: 워싱턴포스트·Protect Democracy·브레넌센터는 민주당 친화 성향 소스다. 다만 법률 전문가 인용은 공화·민주 임명 판사 모두 포함돼 있어 방향성은 신뢰 가능하다. NYU·조지타운·스탠퍼드 등 학술 소스를 병치했다.</p>
+</div>
+
+<!-- 6. 시나리오 -->
+<div class="sec">
+  <div class="sec-tag">§ 6</div>
+  <h2>2026.11 미국 중간선거 시나리오</h2>
+  <p>중간선거는 C_internal 에너지의 <strong>방출 채널</strong>이 될 것인가, 막혀서 더 큰 압력솥이 될 것인가. REVERBANT는 두 경로를 예측한다.</p>
+
+  <div class="scen">
+    <div class="scen-box">
+      <div class="scen-badge sb-a">시나리오 A (P≈62%)</div>
+      <div class="scen-title">민주당 하원 탈환 → C_int 급감</div>
+      <div class="scen-row">C_int: 0.28 → <strong>~0.08</strong></div>
+      <div class="scen-row">실효 G-T Core: 0.46 → <strong>0.66↑</strong></div>
+      <div class="scen-row">UI_usa: −0.785 → <strong>양수 전환</strong></div>
+      <div class="scen-row">경로: <strong>소성변형 안정화</strong></div>
+      <div class="scen-row" style="margin-top:8px;color:#aaa;font-size:10px;">한국 12·3과 동형. "이것은 잘못됐다"가 공화 지지자에 침투(Layer−1 공명) 시 τ_{이완}≈4개월.</div>
+    </div>
+    <div class="scen-box">
+      <div class="scen-badge sb-b">시나리오 B (P≈38%)</div>
+      <div class="scen-title">공화당 유지 → C_int 상승 지속</div>
+      <div class="scen-row">C_int: 0.28 → <strong>0.40+</strong></div>
+      <div class="scen-row">실효 G-T Core: <strong>임계선 0.60 하회</strong></div>
+      <div class="scen-row">E_A2: <strong>추가 하락</strong></div>
+      <div class="scen-row">경로: <strong>소성변형 → 취성 경계</strong></div>
+      <div class="scen-row" style="margin-top:8px;color:#aaa;font-size:10px;">2028 대선까지 구조 긴장 지속. 탄핵 논의 가능성 상승. 집행 채널 귀속이 핵심 제약.</div>
+    </div>
+  </div>
+
+  <h3>핵심 관측 변수 (11월까지)</h3>
+  <div class="cint-box">
+    <div class="cint-title">4개 핵심 변수</div>
+    <div class="cint-row">
+      <div class="cint-num" style="background:var(--gold);">1</div>
+      <div class="cint-text"><strong>무당파 투표 의향</strong> — 입소스(2026-06): 공화17% vs 민주34%(2배). 이 격차 유지 시 시나리오A 확정. 투표율이 최대 변수.</div>
+    </div>
+    <div class="cint-row">
+      <div class="cint-num" style="background:var(--gold);">2</div>
+      <div class="cint-text"><strong>이란전쟁·에너지</strong> — 브렌트유 100달러 돌파. 전쟁 장기화 → T_social 상승 → 공화 의석 손실 가속. 종결 → 반등.</div>
+    </div>
+    <div class="cint-row">
+      <div class="cint-num" style="background:var(--gold);">3</div>
+      <div class="cint-text"><strong>Layer−1 공명</strong> — 공화 지지자 중 "이것은 옳지 않다" 누적. 한국 12·3 여당 이탈 동형. τ_{이완}≈4개월.</div>
+    </div>
+    <div class="cint-row">
+      <div class="cint-num" style="background:var(--gold);">4</div>
+      <div class="cint-text"><strong>선거구 획정</strong> — 대법원(2026-04-29) 루이지애나 판결 → 공화 유리. C_internal 구조 비대칭 강화 변수.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 7. 검증 -->
+<div class="sec">
+  <div class="sec-tag">§ 7</div>
+  <h2>자체 검증 — 7/7 통과</h2>
+  <div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A1↔봉기조건</span><span class="vfy-desc">BSLI→A2 조준 → σ(GT)에 반영</span></div>
+  <div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A3↔UI방정식</span><span class="vfy-desc">C_internal이 UI 방정식 제3항으로 포함</span></div>
+  <div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A7↔A8공리</span><span class="vfy-desc">Γ↔방향전환 조건 일치</span></div>
+  <div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A9↔한국12·3</span><span class="vfy-desc">E_A2=0.17 &lt; 0.20 취성한계 → 실증 부합</span></div>
+  <div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A10↔반호브</span><span class="vfy-desc">BSLI=물(다중스펙트럼) → S(q,ω) 차원별 응답</span></div>
+  <div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">Layer−1↔Γ공식</span><span class="vfy-desc">λ_{-1} Z_L0에 통합 완료. Γ=0.684 (관찰값 부합)</span></div>
+  <div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">T_social실측</span><span class="vfy-desc">3지표 가중합 확정. T=0.296, P(SN)=21.9% (한국 12·3 역사 부합)</span></div>
+</div>
+
+<!-- 8. 결론 -->
+<div class="sec">
+  <div class="sec-tag">§ 8</div>
+  <h2>결론</h2>
+  <p>한국과 미국은 G-T Core가 0.738 vs 0.740으로 사실상 동일하다. 그런데 실효 G-T Core는 0.688 vs 0.460으로 극명하게 갈린다. 차이를 만드는 것은 C_internal(내부 충돌) 단 하나다 — 한국 0.050 vs 미국 0.280.</p>
+  <p>미국의 C_internal은 "appellate void" 전략·여론전·집행 채널 귀속이라는 3개의 재충전 메커니즘으로 구조적으로 상존한다. dC_int/dt &gt; 0 — 에너지는 지금도 증가 중이다.</p>
+  <p>한국은 12·3에서 C_internal이 6시간 만에 해소됐다. 집행 채널이 A8에 완전 귀속되지 않았고, Layer−1(인류 공통 기반)이 Layer 0(정치적 충성)를 압도했기 때문이다. E_A2는 0.17→0.58로 회복됐고 이재명 정부 지지율 58%(2026-07)가 이를 실증한다.</p>
+  <p>11월 중간선거는 미국 C_internal의 최초 방출 채널 시험이다. REVERBANT는 시나리오A(민주 하원 탈환, P≈62%) 시 소성변형 안정화, 시나리오B(공화 유지, P≈38%) 시 취성 경계 접근을 예측한다. 이 예측의 정확도가 REVERBANT 엔진의 첫 번째 실시간 검증이 된다.</p>
+
+  <blockquote style="border-left:3px solid var(--teal);padding:12px 18px;margin:20px 0;background:var(--teal-l);font-style:italic;font-size:12px;color:#1a3a37;">
+    "G-T Core가 같아도 C_internal이 다르면 시스템은 완전히 다른 경로를 간다.<br>
+    미국은 충돌 에너지가 상존하며 지금도 재충전 중이다."
+    <br><span style="font-style:normal;font-size:10px;color:var(--teal);">— REVERBANT v1.0 · 2026-07-03 · 청해(淸海) 김기섭</span>
+  </blockquote>
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  <strong>늘푸른바다 사회동역학연구소 (Everblue Sea Institute for Social Dynamics)</strong><br>
+  청해(淸海) 김기섭 · ORCID 0009-0004-7638-0182 · everbluesea.org<br>
+  연계: Λ¹² (SSRN 6632858, C-2026-031351) · BSLI (SSRN 6806478) · DURE-η (C-2026-027452)<br>
+  데이터: Λ¹² η 2024 (206국) · BSLI v6.0 (139국) · 한국갤럽·리얼미터·입소스·워싱턴포스트·Lawfare·브레넌센터<br>
+  <span style="color:var(--teal);">REVERBANT v1.0 Applied Report · 2026-07-03 · 자체검증 7/7</span><br><br>
+  <em style="font-size:10px;">인류의 경험과 수많은 훌륭한 데이터들이 모여 은하수와 같은 현명한 빛으로 거듭나길 염원하는 마음으로</em>
+</div>
+
+<script>
+// 볼츠만 비교 차트
+new Chart(document.getElementById('cBoltz'),{
+  type:'bar',
+  data:{
+    labels:['P(WD) 안정','P(SN) 개혁','P(BH) 붕괴'],
+    datasets:[
+      {label:'🇰🇷 한국',data:[98.2,1.8,0.0],backgroundColor:'#3d7f78cc',borderColor:'#3d7f78',borderWidth:1.5,borderRadius:3},
+      {label:'🇺🇸 미국',data:[90.5,8.6,0.8],backgroundColor:'#B8850Ecc',borderColor:'#B8850E',borderWidth:1.5,borderRadius:3},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
+    scales:{
+      y:{min:0,max:100,title:{display:true,text:'확률 (%)',font:{size:10}}},
+      x:{ticks:{font:{size:11}}}
+    }
+  }
+});
+
+// 레이더 차트
+new Chart(document.getElementById('cRadar'),{
+  type:'radar',
+  data:{
+    labels:['G-T Core','E_A2 탄성','C_int (반전)','Γ 반사','η값','BSLI','UI (반전)','T_social (반전)'],
+    datasets:[
+      {
+        label:'🇰🇷 한국',
+        data:[0.738,0.580,1-0.050,0.506,0.5929,0.4627,1-0.221,1-0.087],
+        borderColor:'#3d7f78',backgroundColor:'rgba(61,127,120,0.15)',borderWidth:2,pointRadius:4
+      },
+      {
+        label:'🇺🇸 미국',
+        data:[0.740,0.340,1-0.280,0.095,0.5826,0.6998,1-0.785,1-0.149],
+        borderColor:'#B8850E',backgroundColor:'rgba(184,133,14,0.12)',borderWidth:2,pointRadius:4
+      }
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.raw.toFixed(3)}`}}
+    },
+    scales:{r:{min:0,max:1,ticks:{stepSize:0.25,font:{size:9}},pointLabels:{font:{size:10}}}}
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>한국 사회동역학 보고서 — Λ¹² × BSLI × UI</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:#F5F3EE;color:#2C2C2A;padding:24px}
+.hdr{background:#2C3E50;color:#fff;border-radius:12px;padding:24px 28px;margin-bottom:20px;
+     border-bottom:3px solid #B8850E}
+.hdr h1{font-size:1.5rem;font-weight:500;margin-bottom:6px}
+.hdr .sub{color:#8AABA2;font-size:0.82rem;line-height:1.7}
+.hdr .meta{color:#B8850E;font-size:11px;margin-top:8px;font-family:monospace}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px;text-align:center}
+.stat .big{font-size:1.6rem;font-weight:500;margin-bottom:4px}
+.stat .label{font-size:11px;color:#5F5E5A;line-height:1.4}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.card{background:#fff;border:1px solid #DDD8CE;border-radius:12px;padding:18px}
+.card h2{font-size:0.9rem;font-weight:500;margin-bottom:12px;color:#2C2C2A;
+         padding-bottom:8px;border-bottom:2px solid #5E9186}
+.chart-box{position:relative;height:280px}
+.insight{background:#f0f4f3;border-left:4px solid #5E9186;padding:12px 16px;
+         font-size:13px;line-height:1.8;border-radius:0 6px 6px 0;margin-bottom:16px}
+.insight strong{color:#B8850E}
+.warn{background:#FBF6EC;border-left:4px solid #B8850E;padding:12px 16px;
+      font-size:13px;line-height:1.8;border-radius:0 6px 6px 0;margin-bottom:16px}
+.warn strong{color:#A32D2D}
+.dim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.dim-card{border:1px solid #DDD8CE;border-radius:8px;padding:10px;background:#fff}
+.dim-card .dk{font-size:10px;color:#5E9186;font-family:monospace;font-weight:500}
+.dim-card .dv{font-size:1.1rem;font-weight:500;margin:2px 0}
+.dim-card .dd{font-size:10px;color:#5F5E5A}
+.up{color:#0F6E56}.dn{color:#A32D2D}.ne{color:#BA7517}
+.badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:500}
+.b-a{background:#E1F5EE;color:#0F6E56}
+.b-c{background:#FFF9C4;color:#7A5A08}
+.b-b{background:#DCEDC8;color:#33691E}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#2C3E50;color:#fff;padding:7px 10px;text-align:left}
+td{padding:6px 10px;border-bottom:1px solid #F1EFE8;font-family:monospace}
+td:first-child,td:nth-child(2){font-family:'Noto Sans KR',sans-serif}
+.section-title{font-size:1rem;font-weight:500;color:#2C3E50;margin:24px 0 12px;
+               padding-left:12px;border-left:4px solid #B8850E}
+@media(max-width:768px){.stat-row{grid-template-columns:1fr 1fr}
+  .grid2,.grid3{grid-template-columns:1fr}.dim-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <h1>🇰🇷 대한민국 — 사회동역학 종합 보고서</h1>
+  <p class="sub">
+    Λ¹² 12차원 × BSLI(기초사회생활지수) × UI 봉기지수 교차 분석<br>
+    식민지 경험 국가 중 SE 최상위권 달성 — 그러나 서민층 압박은 C등급
+  </p>
+  <p class="meta">데이터: lambda12_timeseries.json (2016-2024) · bsli_139_final.json (v6.9) · WHO 팬데믹 기준점 적용</p>
+</div>
+
+<div class="stat-row">
+  <div class="stat">
+    <div class="big" style="color:#B8850E">0.5929</div>
+    <div class="label">η 종합지수 (2024)<br>216국 중 상위권</div>
+  </div>
+  <div class="stat">
+    <div class="big" style="color:#BA7517">1.4764</div>
+    <div class="label">SE = A2+A8 (2024)<br>아시아 최상위</div>
+  </div>
+  <div class="stat">
+    <div class="big" style="color:#A32D2D">0.4627</div>
+    <div class="label">BSLI 서민생활지수<br>C등급 · 상위 18.0%</div>
+  </div>
+  <div class="stat">
+    <div class="big" style="color:#534AB7">1.022</div>
+    <div class="label">η-BSLI 괴리<br>(구조 양호 · 서민 압박)</div>
+  </div>
+</div>
+
+<div class="insight">
+  <strong>핵심 명제:</strong>
+  한국은 식민지 경험(1910~1945) 이후 SE 1.47을 달성한 세계적으로 드문 사례다.
+  일본(1.67)·독일(1.82)보다는 낮지만 대만(1.54)과 비슷하며,
+  아시아 봉기국 태국(0.84)·미얀마(0.53)와 비교해 격차가 크다.
+  이 SE가 팬데믹 충격을 흡수한 완충제였다 —
+  그러나 BSLI C등급은 구조(η)와 서민생활(BSLI) 사이의 <strong>심각한 괴리</strong>를 드러낸다.
+</div>
+
+<div class="section-title">§1. 12차원 현황 (2024)</div>
+<div class="dim-grid">
+  <div class="dim-card">
+    <div class="dk">A1 인프라</div>
+    <div class="dv up">0.9887</div>
+    <div class="dd">+0.017 ↑ 세계최상위</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A2 제도신뢰</div>
+    <div class="dv up">0.7345</div>
+    <div class="dd">+0.082 ↑ SE 핵심축</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A3 사회결속</div>
+    <div class="dv up">0.7422</div>
+    <div class="dd">+0.041 ↑ 팬데믹 이타성</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A4 경제역량</div>
+    <div class="dv ne">0.3745</div>
+    <div class="dd">+0.004 → 정체</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A5 지식혁신</div>
+    <div class="dv dn">0.7788</div>
+    <div class="dd">-0.046 ↓ 주의</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A6 환경지속</div>
+    <div class="dv up">0.4496</div>
+    <div class="dd">+0.035 ↑ 개선중</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A7 인구동태</div>
+    <div class="dv dn">0.4598</div>
+    <div class="dd">-0.042 ↓ 저출생 위기</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A8 거버넌스</div>
+    <div class="dv up">0.7419</div>
+    <div class="dd">+0.080 ↑ SE 핵심축</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A9 지정학</div>
+    <div class="dv up">0.8538</div>
+    <div class="dd">+0.105 ↑ 최대상승</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A10 문화정체</div>
+    <div class="dv dn">0.0215</div>
+    <div class="dd">-0.063 ↓ K-POP 미반영</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A11 에너지</div>
+    <div class="dv dn">0.2525</div>
+    <div class="dd">-0.014 ↓ 화석연료 의존</div>
+  </div>
+  <div class="dim-card">
+    <div class="dk">A12 이동성</div>
+    <div class="dv up">0.7172</div>
+    <div class="dd">+0.414 ↑ 팬데믹후 급상승</div>
+  </div>
+</div>
+
+<div class="section-title">§2. 팬데믹 WHO 4구간 분석</div>
+<div class="grid2">
+  <div class="card">
+    <h2>SE(완충제) 궤적 — 팬데믹에도 상승한 한국</h2>
+    <div class="chart-box"><canvas id="seKor"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>A12 이동성 — 글로벌 패턴과 동조, 그러나 차별점</h2>
+    <div class="chart-box"><canvas id="a12Kor"></canvas></div>
+  </div>
+</div>
+
+<div class="warn">
+  <strong>주목:</strong>
+  한국 SE는 팬데믹 압축 구간(2020-21)에 오히려 <strong>상승</strong>했다 (1.453→1.496).
+  이는 K-방역의 이타적 자기억제가 A2(제도신뢰)·A8(거버넌스)을 오히려 높인 역설적 결과다.
+  그러나 A12는 글로벌 동조 패턴 그대로 — 2022년 반등(+0.204) 후 2023~2024 하락.
+  <strong>2022~2023 전세가격 폭락·금리인상이 그 반등 기대를 정확히 건드렸다.</strong>
+</div>
+
+<div class="section-title">§3. η × BSLI 괴리 — "구조는 양호, 서민은 압박"</div>
+<div class="grid2">
+  <div class="card">
+    <h2>η vs BSLI 비교 — 아시아 국가군</h2>
+    <div class="chart-box"><canvas id="etaBsli"></canvas></div>
+  </div>
+  <div class="card">
+    <h2>η 시계열 (2016~2024)</h2>
+    <div class="chart-box"><canvas id="etaTs"></canvas></div>
+  </div>
+</div>
+
+<div class="insight">
+  <strong>η-BSLI 괴리 해석:</strong>
+  η 0.59(구조 양호) vs BSLI 0.46(서민압박 C등급) — 괴리 1.022는 아시아 최대 수준이다.<br>
+  구조(η)가 높은데 서민생활(BSLI)이 낮다는 것 = 국가 전체는 잘 작동하는데 그 과실이
+  ML층(소득분위 30~50%)에 미치지 않고 있다는 의미다.<br>
+  BSLI를 누르는 핵심 요인: <strong>D(노인빈곤율) — 세계 최고 수준</strong> ·
+  <strong>Hs(주거비, 전세가격) — 소득 대비 수십 배</strong>
+</div>
+
+<div class="section-title">§4. SE 비교군 — 식민지 경험 국가 중 한국의 위치</div>
+<div class="card">
+  <h2>SE(2019 기준) 비교 — 역사적 완충제 두께</h2>
+  <div class="chart-box" style="height:240px"><canvas id="seComp"></canvas></div>
+</div>
+
+<div class="section-title">§5. UI 엔진 판정 — 한국의 봉기 경로</div>
+<div class="grid3">
+  <div class="card">
+    <h2>F = m × a 판정</h2>
+    <div class="insight" style="margin:0">
+      <strong>m (망치 질량)</strong><br>
+      정책 충격 = 전세가격 폭락·금리인상·연금개혁 논란<br><br>
+      <strong>a (재료 가속도)</strong><br>
+      BSLI 시계열 부재로 미측정<br>
+      단, §8.3 방향: Hs(전세) 악화 속도 > D(노인빈곤) 개선 속도<br><br>
+      <strong>SE (모루 강도)</strong><br>
+      1.4764 — 높음. F를 현재 흡수 중.
+    </div>
+  </div>
+  <div class="card">
+    <h2>경로 판정</h2>
+    <div class="insight" style="margin:0">
+      <strong>현재: 백색왜성 경계</strong><br><br>
+      SE가 강해 블랙홀 아님.<br>
+      그러나 BSLI C등급 + A7(저출생) 급락 + A10(문화정체) 0.02대로 추락<br><br>
+      압축된 에너지(팬데믹 이타성)가<br>
+      아직 완전히 해소되지 않은 상태.<br><br>
+      <strong>2022~2024 전세충격이<br>압축점을 건드리고 있음</strong>
+    </div>
+  </div>
+  <div class="card">
+    <h2>개입 창 (Intervention Window)</h2>
+    <div class="warn" style="margin:0">
+      <strong>A7(인구동태) 0.4598</strong><br>
+      2016년 0.50→2024년 0.46 — 지속 하락.<br>
+      저출생 = 미래 SE의 씨앗 파괴.<br><br>
+      <strong>A10(문화정체) 0.0215</strong><br>
+      K-POP·한류가 Λ¹²에 미반영.<br>
+      실제 문화 탄력성이 과소 측정.<br><br>
+      <strong>BSLI Hs(전세)</strong><br>
+      서민층 완충제 소진의 진원지.<br>
+      2023~2024 전세 사기 사태.
+    </div>
+  </div>
+</div>
+
+<div class="section-title">§6. 담론육층사유법 적용</div>
+<div class="card">
+  <table>
+    <thead><tr><th>층</th><th>내용</th><th>한국 적용</th></tr></thead>
+    <tbody>
+      <tr><td>1층 사실</td><td>실측 데이터</td><td>η 0.59 · SE 1.48 · BSLI 0.46 · A7↓ A10↓</td></tr>
+      <tr><td>2층 분석</td><td>패턴 해석</td><td>구조-서민 괴리 · 팬데믹 SE 역설적 상승 · A7 장기 하락</td></tr>
+      <tr><td>3층 역사</td><td>역사적 맥락</td><td>식민지 경험 → 87년 민주화 → SE 자생적 적층 성공</td></tr>
+      <tr><td>4층 비교</td><td>타국 대비</td><td>SE: 일본(1.67)·대만(1.54)·태국(0.84) 사이 · 아시아 상위</td></tr>
+      <tr><td>5층 현재</td><td>언론·보고서</td><td>전세 사기·노인빈곤·저출생 — BSLI 하방 압력 3축</td></tr>
+      <tr><td>6층 판단</td><td>Layer 6 (청해)</td><td>—</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+const YEARS = [2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const SE = [1.3144,1.3571,1.4047,1.4526,1.4789,1.4955,1.4922,1.4768,1.4764];
+const A12 = [0.3037,0.2772,0.6075,0.5969,0.8423,0.6684,0.8722,0.7337,0.7172];
+const ETA = [0.5419,0.5508,0.5904,0.5732,0.5916,0.5915,0.6149,0.6031,0.5929];
+
+const WHO_ZONES = {2020:'팬데믹',2023:'PHEIC종료'};
+
+// SE 차트
+new Chart(document.getElementById('seKor'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[{
+    label:'SE = A2+A8',data:SE,
+    borderColor:'#0F6E56',backgroundColor:'#0F6E5618',
+    borderWidth:2.5,pointRadius:5,fill:true,tension:0.3
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      annotation:{annotations:{
+        box1:{type:'box',xMin:2019.5,xMax:2021.5,backgroundColor:'rgba(168,50,45,0.07)',
+              borderColor:'#A32D2D',borderWidth:1,label:{content:'압축구간',display:true,font:{size:10}}},
+        box2:{type:'box',xMin:2021.5,xMax:2022.5,backgroundColor:'rgba(184,133,14,0.07)',
+              borderColor:'#B8850E',borderWidth:1}
+      }}
+    },
+    scales:{x:{title:{display:true,text:'연도'}},
+      y:{min:1.2,max:1.6,title:{display:true,text:'SE (A2+A8)'}}}
+  }
+});
+
+// A12 차트
+new Chart(document.getElementById('a12Kor'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'한국 A12',data:A12,borderColor:'#5E9186',backgroundColor:'#5E918618',
+     borderWidth:2.5,pointRadius:5,fill:true,tension:0.3},
+    {label:'글로벌 평균(추정)',
+     data:[0.44,0.44,0.54,0.54,0.72,0.64,0.87,0.72,0.70],
+     borderColor:'#888',borderWidth:1.5,borderDash:[4,3],pointRadius:3,fill:false,tension:0.3}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
+    scales:{x:{title:{display:true,text:'연도'}},
+      y:{min:0,max:1.1,title:{display:true,text:'A12 이동성'}}}
+  }
+});
+
+// η vs BSLI 비교
+new Chart(document.getElementById('etaBsli'),{
+  type:'bar',
+  data:{
+    labels:['일본','대만','한국','태국','미얀마'],
+    datasets:[
+      {label:'η 구조지수',data:[0.541,0.548,0.593,0.506,0.405],
+       backgroundColor:'#5E918688',borderColor:'#5E9186',borderWidth:1},
+      {label:'BSLI 서민지수',data:[0.502,0.476,0.463,0.055,-0.223],
+       backgroundColor:'#B8850E88',borderColor:'#B8850E',borderWidth:1}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
+    scales:{y:{min:-0.3,max:0.8,title:{display:true,text:'지수값'}}}
+  }
+});
+
+// η 시계열
+new Chart(document.getElementById('etaTs'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[{
+    label:'η 한국',data:ETA,
+    borderColor:'#B8850E',backgroundColor:'#B8850E18',
+    borderWidth:2.5,pointRadius:4,fill:true,tension:0.3
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{title:{display:true,text:'연도'}},
+      y:{min:0.5,max:0.65,title:{display:true,text:'η'}}}
+  }
+});
+
+// SE 비교군
+new Chart(document.getElementById('seComp'),{
+  type:'bar',
+  data:{
+    labels:['독일','일본','대만','한국','태국','미얀마','베네수엘라'],
+    datasets:[{
+      label:'SE(2019)',
+      data:[1.818,1.678,1.543,1.453,0.837,0.529,0.177],
+      backgroundColor:['#0F6E56','#0F6E56','#5E9186','#B8850E','#BA7517','#A32D2D','#7B1C1C'],
+      borderWidth:0
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{y:{min:0,max:2.1,title:{display:true,text:'SE = A2+A8 (2019 기준선)'}}}
+  }
+});
+</script>
+</body>
+</html>

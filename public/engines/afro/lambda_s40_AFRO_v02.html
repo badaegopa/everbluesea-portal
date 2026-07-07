@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>§40 AFRO-Λ v0.2 — 아프리카 권역 통합 엔진 | Λ¹² 확장 섹션</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F5F3EE; font-family: Georgia, 'Times New Roman', serif; color: #2C2C2C; line-height: 1.78; }
+a { color: #5E9186; }
+
+header { background: #2A3D35; color: #F5F3EE; padding: 2.2rem 3rem; border-bottom: 4px solid #B8850E; }
+.header-label { font-family: 'Courier New', monospace; font-size: 0.8rem; color: #B8850E; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.6rem; }
+header h1 { font-size: 1.95rem; font-weight: normal; line-height: 1.35; }
+header h1 .abbr { color: #B8850E; font-size: 2.2rem; }
+.header-sub { color: #8FBDB5; font-size: 0.88rem; margin-top: 0.6rem; font-family: 'Courier New', monospace; }
+
+main { max-width: 940px; margin: 2.5rem auto; padding: 0 2rem 4rem; }
+
+.meta-box { border: 1px solid #DDD8CE; border-left: 5px solid #B8850E; background: #EDEAE3; padding: 1.2rem 1.8rem; margin-bottom: 2rem; border-radius: 2px; font-family: 'Courier New', monospace; font-size: 0.82rem; }
+.meta-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.meta-tag { background: #DDD8CE; color: #4A5A52; padding: 0.22rem 0.7rem; border-radius: 2px; }
+.meta-tag.active { background: #5E9186; color: #fff; }
+.meta-tag.ver { background: #B8850E; color: #fff; }
+.meta-tag.new { background: #C0392B; color: #fff; }
+
+.proposition-box { background: #2A3D35; color: #E0EBE8; padding: 1.8rem 2rem; border-left: 6px solid #B8850E; margin-bottom: 2.8rem; border-radius: 3px; }
+.proposition-box .ptitle { color: #B8850E; font-family: 'Courier New', monospace; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.9rem; border-bottom: 1px solid #3D5A4E; padding-bottom: 0.5rem; }
+.proposition-box p { margin-bottom: 0.6rem; font-size: 1.02rem; line-height: 1.9; }
+.proposition-box .sub { color: #8FBDB5; font-size: 0.87rem; margin-top: 0.8rem; }
+
+section { margin-bottom: 2.8rem; }
+.sec-title { background: #2A3D35; color: #F5F3EE; padding: 0.68rem 1.3rem; border-left: 6px solid #B8850E; font-size: 0.97rem; margin-bottom: 1.4rem; letter-spacing: 0.04em; font-family: Georgia, serif; font-weight: normal; }
+
+p { margin-bottom: 0.85rem; }
+ul, ol { padding-left: 1.6rem; margin-bottom: 0.85rem; }
+li { margin-bottom: 0.45rem; }
+strong { color: #2A3D35; }
+
+.formula-block { background: #2A3D35; color: #E0EBE8; font-family: 'Courier New', monospace; font-size: 0.88rem; padding: 1.5rem 1.8rem; border-left: 6px solid #B8850E; border-radius: 3px; margin: 1.3rem 0; line-height: 2.1; }
+.formula-block .ftitle { color: #B8850E; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; border-bottom: 1px solid #3D5A4E; padding-bottom: 0.45rem; }
+.formula-block .note { color: #8FBDB5; font-size: 0.8rem; margin-top: 0.6rem; line-height: 1.7; }
+.formula-block .new-tag { color: #C0392B; font-size: 0.75rem; }
+
+blockquote { border-left: 3px solid #B8850E; background: #FFFBF2; padding: 1.1rem 1.6rem; font-style: italic; margin: 1.3rem 0; color: #5A4830; border-radius: 0 3px 3px 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+thead th { background: #2A3D35; color: #F5F3EE; padding: 0.68rem 1rem; text-align: left; font-weight: normal; font-size: 0.87rem; }
+tbody td { padding: 0.62rem 1rem; border-bottom: 1px solid #DDD8CE; vertical-align: top; }
+tbody tr:nth-child(even) td { background: #F0EDE6; }
+tbody td:first-child { font-family: 'Courier New', monospace; color: #B8850E; font-size: 0.85rem; }
+
+.layer-stack { margin: 1.3rem 0; }
+.layer-item { display: flex; align-items: stretch; margin-bottom: 0.5rem; }
+.layer-num { background: #B8850E; color: #fff; font-family: 'Courier New', monospace; font-size: 0.85rem; padding: 0.7rem 0.9rem; min-width: 3.4rem; text-align: center; flex-shrink: 0; font-weight: bold; border-radius: 2px 0 0 2px; display: flex; align-items: center; justify-content: center; }
+.layer-body { background: #fff; border: 1px solid #DDD8CE; border-left: none; padding: 0.65rem 1.1rem; flex-grow: 1; border-radius: 0 2px 2px 0; }
+.layer-body .lname { font-weight: bold; font-size: 0.9rem; color: #2A3D35; margin-bottom: 0.2rem; }
+.layer-body .ldesc { font-size: 0.85rem; color: #5A6A62; font-family: 'Courier New', monospace; }
+
+.causal-chain { background: #fff; border: 1px solid #DDD8CE; border-radius: 3px; padding: 1.5rem; margin: 1.3rem 0; }
+.causal-chain .chain-title { font-family: 'Courier New', monospace; font-size: 0.8rem; color: #B8850E; letter-spacing: 0.08em; margin-bottom: 1rem; }
+.chain-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+.chain-node { background: #2A3D35; color: #E0EBE8; font-family: 'Courier New', monospace; font-size: 0.82rem; padding: 0.35rem 0.8rem; border-radius: 2px; }
+.chain-node.trigger { background: #C0392B; }
+.chain-node.result { background: #5E9186; }
+.chain-arrow { color: #B8850E; font-size: 1.1rem; }
+.chain-label { font-size: 0.8rem; color: #6A7A72; font-style: italic; }
+
+.dual-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.3rem 0; }
+.col-box { border: 1px solid #DDD8CE; background: #fff; padding: 1rem; border-radius: 2px; }
+.col-box .col-title { font-family: 'Courier New', monospace; font-size: 0.8rem; color: #B8850E; margin-bottom: 0.6rem; font-weight: bold; }
+.col-box.liberation { border-top: 4px solid #5E9186; }
+.col-box.shadow { border-top: 4px solid #C0392B; }
+
+.empirical-box { border: 1px solid #5E9186; background: #F0F7F5; padding: 1.2rem 1.5rem; border-radius: 3px; margin: 1.3rem 0; }
+.empirical-box .etitle { font-family: 'Courier New', monospace; font-size: 0.78rem; color: #5E9186; letter-spacing: 0.08em; margin-bottom: 0.7rem; }
+
+.verification-box { border: 1px solid #B8850E; background: #FFFBF2; padding: 1.2rem 1.5rem; border-radius: 3px; margin: 1.3rem 0; }
+.verification-box .vtitle { font-family: 'Courier New', monospace; font-size: 0.78rem; color: #B8850E; letter-spacing: 0.08em; margin-bottom: 0.7rem; }
+
+.warning-box { border: 2px solid #C0392B; background: #FDF4F4; padding: 1.1rem 1.5rem; border-radius: 3px; margin: 1.1rem 0; font-size: 0.9rem; }
+.warning-box .wtitle { color: #C0392B; font-family: 'Courier New', monospace; font-size: 0.8rem; margin-bottom: 0.5rem; }
+
+.conn-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.9rem 0; }
+.conn-tag { background: #E8E4DC; border: 1px solid #DDD8CE; padding: 0.3rem 0.85rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #2A3D35; border-radius: 2px; }
+.conn-tag.primary { background: #5E9186; color: #fff; }
+
+.note-box { border: 1px dashed #B8850E; background: #FFFBF2; padding: 1.1rem 1.5rem; margin: 1.1rem 0; font-size: 0.9rem; border-radius: 2px; color: #4A3820; }
+
+.protocol-box { background: #F5F3EE; border: 2px solid #2A3D35; padding: 1.5rem; border-radius: 3px; margin: 1.3rem 0; }
+.protocol-box .ptitle { font-family: 'Courier New', monospace; font-size: 0.82rem; color: #2A3D35; letter-spacing: 0.08em; margin-bottom: 1rem; font-weight: bold; }
+
+.changelog { font-family: 'Courier New', monospace; font-size: 0.82rem; }
+.changelog li { margin-bottom: 0.4rem; color: #4A5A52; }
+.changelog li .new { color: #C0392B; font-weight: bold; margin-right: 0.4rem; }
+
+footer { background: #2A3D35; color: #8FBDB5; text-align: center; padding: 2rem; border-top: 3px solid #B8850E; font-size: 0.84rem; line-height: 1.9; }
+footer .fname { color: #F5F3EE; font-size: 1.05rem; margin-bottom: 0.3rem; }
+footer a { color: #5E9186; text-decoration: none; }
+footer .fver { font-size: 0.77rem; color: #6A8A82; margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">Λ¹² 확장 섹션 · §40 · Africa Regional Integrated Engine</div>
+  <h1><span class="abbr">AFRO-Λ</span> — 아프리카 권역 통합 엔진</h1>
+  <div class="header-sub">늘푸른바다 사회동역학 연구소 · Everbluesea Institute of Social Dynamics</div>
+</header>
+
+<main>
+
+  <!-- 버전 메타 -->
+  <div class="meta-box">
+    버전 이력: v0.1(2026-06-27 초안) → v0.2(2026-06-27 실증검증 반영)
+    <div class="meta-row">
+      <span class="meta-tag active">ACTIVE</span>
+      <span class="meta-tag ver">v0.2</span>
+      <span class="meta-tag new">실증검증 완료</span>
+      <span class="meta-tag">§40 / 권역 통합 엔진</span>
+      <span class="meta-tag">BSLI·§36·§37 연결</span>
+    </div>
+  </div>
+
+  <!-- 핵심 명제 -->
+  <div class="proposition-box">
+    <div class="ptitle">AFRO-Λ 핵심 명제 — 2026-06-27 확정</div>
+    <p>"사회의 어느 한 요소가 흔들리면, 그것은 반드시 국가 엔진의 특정 지표를 건드리고 있다.<br>
+    그 건드림이 트리거가 되어 연쇄하고, 최종적으로 지도자의 패착으로 귀결될 수 있다."</p>
+    <div class="sub">
+      Λ¹² 국가분석 = 문제지 ("이 나라 왜 이래?") · 하위 엔진들 = 해설편 ("이 구조 때문") · 검증 체계 = 채점지 ("실제로 맞나?")
+    </div>
+  </div>
+
+  <!-- 1. 위상 -->
+  <section>
+    <div class="sec-title">1. 위상 — 3종 세트와 인과 사슬</div>
+
+    <div class="layer-stack">
+      <div class="layer-item">
+        <div class="layer-num">①</div>
+        <div class="layer-body">
+          <div class="lname">Λ¹² 기본 엔진 — 구조 진동 (보편)</div>
+          <div class="ldesc">권역 색안경 없이 먼저. 순서 고정 원칙.</div>
+        </div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num">②</div>
+        <div class="layer-body">
+          <div class="lname">BSLI — 서민생활 (독립 산출 후 입력)</div>
+          <div class="ldesc">R×S 낮고 BSLI 낮으면 → 협착 존재 확정</div>
+        </div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num">③</div>
+        <div class="layer-body">
+          <div class="lname">AFRO-Λ — 권역 통합 (①+② 입력 → 심층 보강)</div>
+          <div class="ldesc">L×T×H×R×S×(A⇄M⇄A')×E(t)×(해방−그림자)×Φ(t)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="causal-chain">
+      <div class="chain-title">인과 사슬 진단 흐름 — "해답지가 작동하는 순서"</div>
+      <div class="chain-row">
+        <span class="chain-node">R×S 낮음</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">BSLI 하락</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node trigger">협착 확정</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">§37 (누가)</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">E (왜 지속)</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node">T (어떤 집단)</span>
+      </div>
+      <div class="chain-row">
+        <span class="chain-label">자원주권 낮음</span>
+        <span class="chain-arrow" style="opacity:0.3">→</span>
+        <span class="chain-label">서민 못 가짐</span>
+        <span class="chain-arrow" style="opacity:0.3">→</span>
+        <span class="chain-label">권력 협착</span>
+        <span class="chain-arrow" style="opacity:0.3">→</span>
+        <span class="chain-label">지도자 방향</span>
+        <span class="chain-arrow" style="opacity:0.3">→</span>
+        <span class="chain-label">외세 잔존</span>
+        <span class="chain-arrow" style="opacity:0.3">→</span>
+        <span class="chain-label">집단 배제</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 통합식 -->
+  <section>
+    <div class="sec-title">2. 통합 추론식 (v0.2)</div>
+
+    <div class="formula-block">
+      <div class="ftitle">AFRO-Λ 통합식 — v0.2</div>
+      보강치 = Λ¹²결과 ⊗ [ L × T × H(ζ←§37) × (R×S) × (A⇄M⇄A') × E(t) × (해방−그림자) ] × Φ(t)
+      <div class="note">
+        <span class="new-tag">▲v0.2 변경</span> R → R×S (자원주권계수 추가)<br>
+        <span class="new-tag">▲v0.2 변경</span> H에 ζ 추가 (§37 출력, 분단귀결)<br>
+        <span class="new-tag">▲v0.2 변경</span> E → E(t) 다극 벡터 + 시간위상 결합<br>
+        E(t) ──corr──→ BSLI : 음(−)의 상관 · 자원주권 S와 직결
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 변수 계보 -->
+  <section>
+    <div class="sec-title">3. 변수 계보 — "새것이 아니라 펼친 것"</div>
+    <table>
+      <thead><tr><th>Λ¹² 코어 지표</th><th>→</th><th>AFRO-Λ 권역 확장</th><th>v0.2 변경</th></tr></thead>
+      <tbody>
+        <tr><td>식민/예속</td><td>unfold</td><td>L — 학습하는 피지배 주체 (역사·세로축)</td><td>—</td></tr>
+        <tr><td>식민/예속</td><td>unfold</td><td>T — 집단 구조 단면 (현황·가로축, 축=권역정의)</td><td>—</td></tr>
+        <tr><td>구조적 응력</td><td>unfold</td><td>H — 역사패턴 + ζ(분단귀결←§37)</td><td>▲ζ 추가</td></tr>
+        <tr><td>자원 변수</td><td>unfold</td><td>R×S — 자원량 × 자원주권계수</td><td>▲S 추가</td></tr>
+        <tr><td>제도신뢰(A3)</td><td>unfold</td><td>E(t) — 다극 외세 벡터 × 시간위상</td><td>▲다극화·시간</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 4. 변수 정의 -->
+  <section>
+    <div class="sec-title">4. 핵심 변수 정의</div>
+
+    <div class="formula-block">
+      <div class="ftitle">L — 학습하는 피지배 주체 (역사·세로축)</div>
+      L = f(예속세대수 × 상층관찰밀도 × 자원자각도)
+      <br><br>
+      6층 추론핵: 식민 상층이 교과서 → 자본·자원·협상/무력 문법 학습
+      <br>해방진폭(+): 자원주권 = 존엄회복 / 그림자진폭(−): 학습된 착취 = 내부 약자 청소
+      <div class="note">실증: 트라오레 프랑스 축출 = 학습 문법 역적용. 그림자: 풀라니족 학살.</div>
+    </div>
+
+    <div class="formula-block">
+      <div class="ftitle">T — 집단 구조 단면 (현황·가로축) ★권역 적응</div>
+      집단 정의축 = 권역 파라미터 { AFRO: 부족 / MENA: 종파×민족 / ... }
+      <br><br>
+      4대 단면: ①인구% ②권력% ③부% ④인프라%
+      <br>박탈도: Dᵢ = 인구% − (권력·부·인프라 가중합)
+      <br>긴장도: T_tension = Σ|Dᵢ|
+      <div class="note">
+        Dᵢ>0: 배제 → 토착끌개 A 방향 / Dᵢ&lt;0: 과점 → 협력끌개 A' 방향<br>
+        가중치: 검증단계 캘리브레이션 (하드코딩 금지)<br>
+        데이터: EPR(Ethnic Power Relations) + V-Dem
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="ftitle">H — 역사패턴 함수 + ζ 분단귀결 ▲v0.2</div>
+      H = { κ 식민유형 · σ 노예위상 · ρ 토착잔존율 · β 땅-정체성결박 · ζ 분단귀결 }
+      <br><br>
+      ζ = g(LRI-P*, PPI)  ← §37 출력값
+      <br>  LRI-P*↑ → 통합서사 → ζ→−1 (화합)   예: 니에레레·탄자니아
+      <br>  PPI↑   → 분할통치 → ζ→+1 (분쟁)   예: 르완다·밀콜린 라디오
+      <br><br>
+      교차검증: ζ × BSLI → 진짜 화합 vs 억압적 봉합 구분
+      <div class="note">
+        같은 강제국경(H응력)도 지도자(§37)가 어떻게 다루는가에 따라 ζ 부호가 갈린다<br>
+        T(박탈 D큼) → §37 리더 반응 → H의 ζ 부호 결정 (삼각 인과)
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="ftitle">R×S — 자원량 × 자원주권계수 ▲v0.2</div>
+      R = Σ[ 자원_i × 매장규모_i × 전략가중_i ]  (★상시)
+      <br>S = A(광업 GDP기여율) × B(정부 수취율)
+      <br><br>
+      S 해석:
+      <br>  A高×B高 = 진짜 자원주권
+      <br>  A高×B低 = 생산은 많으나 수익 유출 (개혁 과도기)
+      <br>  A低×B低 = 자원 식민지 (착취 구조)
+      <div class="note">
+        데이터: WB Mineral Rents % GDP (NY.GDP.MINR.RT.ZS) · EITI 보고서<br>
+        S는 Φ(t) 함수 — 채굴법 개정·국유화·분쟁으로 급변 → 하드코딩 불가<br>
+        R×S와 BSLI의 괴리 = 협착 존재의 정량적 증거
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="ftitle">A / A' — 이중 끌개 (★상시)</div>
+      끌개유형: { 고정점 / 주기(쿠데타순환) / 스트레인지(다극군벌) }
+      <br>A' = h(E)  ·  분쟁축 = |A − A'|
+      <div class="note">
+        A(토착): 주권·축출 (트라오레) / A'(협력): 외세결박 내부 대리<br>
+        §37이 A와 ζ를 동시에 운전하는 공통 노드
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="ftitle">M — 민중장 + IC 정보채널 (보조항)</div>
+      M = { 끌림계수 · 이탈계수 · 편향벡터 · 공진여부 }
+      <br>IC = 정보채널 보조항 (구전권위 × 라디오 × 스마트폰보급 × SNS차단여부)
+      <br><br>
+      구전→라디오→스마트폰: 아프리카 정보 채널의 3단계 진화
+      <br>★구전은 결핍이 아니라 수천 년 지식체계 — 라디오·SNS는 그 현대 연장
+      <div class="note">
+        IC는 조건·매개 변수. 결정 변수 아님 — 비중 과잉 금지<br>
+        스마트폰 보급률: 부르키나파소 휴대폰 92% (Afrobarometer)<br>
+        SNS 차단 = 지도자 패착의 신호 (네팔 2025.9 실증)<br>
+        그러나 스마트폰 자체가 트리거가 되지는 않음<br>
+        음성인터페이스 스마트폰 = 구전 문화의 디지털 완성형
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="ftitle">E(t) — 외세 잔존 다극 벡터 × 시간위상 ▲v0.2</div>
+      E(t) = Σ[ 외세_i × 개입강도_i × 방향_i ] × Φ(t)
+      <br>외세_i ∈ { 옛종주국 · 러시아 · 중국 · 걸프 · 미국 · ... }
+      <br>방향_i ∈ { 지배+1 · 협력0 · 후퇴−1 }
+      <div class="note">
+        ★E 단극→다극 교정: 프랑스 빠져도 E=0이 아님. 러시아가 채움<br>
+        말리 실증: 아프리카군단 2,500명→1,000명→키달 후퇴(2026.4)<br>
+        E의 주체 교체가 S를 바꾸지 않으면 BSLI는 오르지 않는다<br>
+        부르키나파소: Nordgold 90% 소유 → 프랑스→러시아 교체지만 S 구조 동일<br>
+        E는 고정값 불가 — Φ(t)와 결합해 매번 실측 필요
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="ftitle">Φ(t) — 역사 진동 위상</div>
+      Φ = { T 주기 · φ 현재위상(잠복/임계/폭발/소강) · 공진타이밍 · 끌개천이 }
+      <div class="note">
+        쿠데타 도미노 주기: 말리'20→부르키나'22→니제르'23<br>
+        R·A·M이 동위상 겹칠 때 공진 → 발화. "검은 장미"의 기후 분석.
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 제도신뢰 보완 -->
+  <section>
+    <div class="sec-title">5. 제도신뢰 A3 보완 — 문해율·구전·미디어</div>
+
+    <p>Λ¹² A3(제도신뢰)의 아프리카 권역 확장. 기존 지표가 "신뢰하는가"를 보면, 이 항은 <strong>신뢰의 성격과 형성 경로</strong>를 봅니다.</p>
+
+    <div class="dual-col">
+      <div class="col-box liberation">
+        <div class="col-title">이해 기반 신뢰 (문해율 高)</div>
+        정책 읽고 판단 → 자율 참여<br>
+        투표 = 개인 선택<br>
+        미디어 다원화 가능
+      </div>
+      <div class="col-box shadow">
+        <div class="col-title">동원 기반 복속 (문해율 低)</div>
+        정책 판단 불가 → 공동체 따라감<br>
+        투표 = 공동체 서사 확인 의례<br>
+        단일 채널 의존 → 통제 가능
+      </div>
+    </div>
+
+    <div class="formula-block">
+      <div class="ftitle">구전 서사 권력 지수 (ONPI — Oral Narrative Power Index)</div>
+      ONPI = 구전채널강도 × 서사통제자의_§37지수
+      <br><br>
+      높음: 지도자가 통합서사 장악 → ζ→−1 화합 가능
+      <br>낮음: 분열서사 난립 → ζ→+1 위험
+      <br>조작: 밀콜린형 → 학살
+      <div class="note">
+        문맹률 高 국가의 높은 투표율 역설 해석:<br>
+        = 자율 참여가 아니라 공동체 서사가 강하다는 신호<br>
+        = 투표의 성격이 "개인 판단"이 아니라 "집단 의례"<br>
+        아프리카 웹 트래픽 74%가 모바일 (세계 평균보다 14%p 高)<br>
+        부르키나파소: 문맹 34.5% + 휴대폰 92% → 음성채널이 정보 경로
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. AES 3국 실증 -->
+  <section>
+    <div class="sec-title">6. AES 3국 실증 — R×S 실측 (2026-06-27)</div>
+
+    <div class="empirical-box">
+      <div class="etitle">검증 방법: 청해 제안 — "GDP 대비 자원 수익 비율"로 S 측정</div>
+      <p>S = A(광업 GDP기여율) × B(정부 수취율). World Bank API (NY.GDP.MINR.RT.ZS) × EITI 교차검증.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>국가</th><th>핵심자원</th><th>A (GDP기여)</th><th>B (수취율)</th><th>S 판정</th><th>상태</th></tr></thead>
+      <tbody>
+        <tr><td>말리</td><td>금(수출 80%)</td><td>9.2%(2021)</td><td>2024 +52.5%↑ (신채굴법)</td><td>상승 중 ★</td><td>S 개혁 진행. Barrick 분쟁이 새 트리거</td></tr>
+        <tr><td>니제르</td><td>우라늄(수출 70%)</td><td>5%</td><td>극미 (87% 유출)</td><td>S ≈ 0 최저</td><td>Orano 면허 취소 → S↑ 시도 중</td></tr>
+        <tr><td>부르키나</td><td>금(GDP 15%)</td><td>15%</td><td>Nordgold 90% → 정부 10%</td><td>S 구조 낮음</td><td>E만 교체(프→러), S 그대로</td></tr>
+      </tbody>
+    </table>
+
+    <div class="verification-box">
+      <div class="vtitle">위키(아르고스) × WB API 교차검증 결과</div>
+      <p>니제르 "우라늄 수출 70%·GDP 5%" — 위키 서술 ↔ WB 렌트 실측 일치 ✅<br>
+      말리 WB 렌트 16.18%(2021) ↔ EITI "정부수취 23%" 일치 ✅<br>
+      부르키나 WB 렌트 15.45%(2021) ↔ Nordgold 90% 구조 → B 낮음 무모순 ✅</p>
+    </div>
+
+    <div class="warning-box">
+      <div class="wtitle">핵심 발견 — E 교체 ≠ S 개선</div>
+      <p>부르키나파소: 프랑스 축출(A 끌개 가동) → 러시아 Nordgold 진입 → S 구조 그대로.<br>
+      트라오레 "해방 서사" ≠ BSLI 상승. 명제 2 예측: BSLI 미상승 가능성 高.<br>
+      "흔들림(프랑스 축출)이 지표를 건드렸으나 협착(Nordgold)은 그대로 → 패착 가능성."</p>
+    </div>
+  </section>
+
+  <!-- 7. 검증 프로토콜 -->
+  <section>
+    <div class="sec-title">7. 엔진 설계 표준 프로토콜 — 2026-06-27 확립</div>
+
+    <div class="protocol-box">
+      <div class="ptitle">설계·분석·검증 3단계 — 신규 엔진 설계 시 기본 적용</div>
+      <div class="layer-stack">
+        <div class="layer-item">
+          <div class="layer-num">①</div>
+          <div class="layer-body">
+            <div class="lname">청해 직관·방향 (아이디어)</div>
+            <div class="ldesc">구조 명제 확정. 하드코딩은 방향성만.</div>
+          </div>
+        </div>
+        <div class="layer-item">
+          <div class="layer-num">②</div>
+          <div class="layer-body">
+            <div class="lname">클로드 구조 설계 (명세)</div>
+            <div class="ldesc">변수 계보·추론핵·인과 사슬 설계. 수치 없이 골격만.</div>
+          </div>
+        </div>
+        <div class="layer-item">
+          <div class="layer-num">③</div>
+          <div class="layer-body">
+            <div class="lname">위키(아르고스 RAG) 구조 검증</div>
+            <div class="ldesc">역사·구조·맥락 사실 확인. 수치는 근사값으로만.</div>
+          </div>
+        </div>
+        <div class="layer-item">
+          <div class="layer-num">④</div>
+          <div class="layer-body">
+            <div class="lname">WB·WTO·EITI·ACLED API 수치 검증</div>
+            <div class="ldesc">실측값. 시계열 추적. 기계 자동 수집 가능.</div>
+          </div>
+        </div>
+        <div class="layer-item">
+          <div class="layer-num">⑤</div>
+          <div class="layer-body">
+            <div class="lname">교차확인 → 일치 시 확신 / 어긋나면 재설계</div>
+            <div class="ldesc">위키(구조) × API(수치) 일치 = 신뢰. 불일치 = 재검토 플래그.</div>
+          </div>
+        </div>
+        <div class="layer-item">
+          <div class="layer-num">⑥</div>
+          <div class="layer-body">
+            <div class="lname">클로드코드 → AI컴 파이프라인 자동화</div>
+            <div class="ldesc">아르고스+WB API+EITI 자동 수집 → S·T_tension·Φ 산출 → 자동 보강 리포트.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 게이트 -->
+  <section>
+    <div class="sec-title">8. 게이트 — 자기학습형 혼합 (확인→자동수렴)</div>
+    <div class="layer-stack">
+      <div class="layer-item"><div class="layer-num">v0.x</div><div class="layer-body"><div class="lname">청해 확인 개입 ← 현재</div><div class="ldesc">Λ¹² 결과 보고 권역 분석 진행 여부 판단</div></div></div>
+      <div class="layer-item"><div class="layer-num">v1.0</div><div class="layer-body"><div class="lname">정량 임계 자동통과 + 경계값 확인</div><div class="ldesc">수정 누적으로 임계값 캘리브레이션</div></div></div>
+      <div class="layer-item"><div class="layer-num">v2.0</div><div class="layer-body"><div class="lname">완전 자동 (BSLI 진화 경로)</div><div class="ldesc">AI컴 파이프라인 실시간 갱신</div></div></div>
+    </div>
+  </section>
+
+  <!-- 9. 연결구조 -->
+  <section>
+    <div class="sec-title">9. Λ¹² 연결 구조</div>
+    <div class="conn-grid">
+      <span class="conn-tag primary">E(t) ↔ BSLI (음의 상관)</span>
+      <span class="conn-tag primary">R×S ↔ §36 SCDI L1</span>
+      <span class="conn-tag primary">A/A' ↔ §37 PPI (권력기생)</span>
+      <span class="conn-tag primary">ζ ↔ §37 LRI-P* (출력)</span>
+      <span class="conn-tag">H ↔ §33 BBD (프랙탈·패권)</span>
+      <span class="conn-tag">M·IC ↔ §38 SDVI (속도벡터)</span>
+      <span class="conn-tag">Φ ↔ §39 프랙탈 사회구조</span>
+      <span class="conn-tag">T ↔ §34 GEI (지리·집단 소멸)</span>
+    </div>
+    <div class="note-box">
+      <strong>통합 노드 원리:</strong> AFRO-Λ는 §36·§37·BSLI를 동시에 결합하는 유일한 권역 엔진이다.
+      자원(R×S)은 §36 SCDI L1과 연동, 지도자(§37)는 ζ·A를 동시 운전, 외세(E)는 BSLI와 음의 상관.
+      이 삼각이 "자원 있는데 서민 가난한" 협착 구조를 정량적으로 잡는다.
+    </div>
+  </section>
+
+  <!-- 10. 변경 이력 -->
+  <section>
+    <div class="sec-title">10. 변경 이력</div>
+    <ul class="changelog">
+      <li><span class="new">v0.1</span> 2026-06-27 초안. L·H·R·A/A'·M·E·T·Φ 전 변수 도출. E↔BSLI 결합. 3종 세트 위상.</li>
+      <li><span class="new">v0.2</span> 2026-06-27 실증검증 반영.
+        ① 핵심 명제 추가 (흔들림→지표→트리거→패착)
+        ② R→R×S (자원주권 S=A×B, WB API 실측)
+        ③ E→E(t) 다극 벡터 + 시간위상 결합 (말리·부르키나 실증)
+        ④ H에 ζ 추가 (§37 출력, 화합↔분쟁, 삼각 인과)
+        ⑤ M에 IC(정보채널) 보조항 추가 (구전→라디오→스마트폰, 비중 주의)
+        ⑥ 인과 사슬 진단 흐름도 확정
+        ⑦ 제도신뢰 A3 보완 (ONPI, 구전 서사 권력 지수)
+        ⑧ AES 3국 R×S 실측 (위키×WB API 교차검증 완료)
+        ⑨ 엔진 설계 표준 프로토콜 확립 (6단계)
+      </li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div class="fname">늘푸른바다 사회동역학 연구소</div>
+  <div>Everbluesea Institute of Social Dynamics</div>
+  <div><a href="http://everbluesea.org">everbluesea.org</a></div>
+  <div class="ssrn" style="font-family:monospace; font-size:0.79rem; margin-top:0.3rem;">
+    SSRN Λ¹² · Paper ID: 6632858 · <a href="https://ssrn.com/abstract=6632858">ssrn.com/abstract=6632858</a>
+  </div>
+  <div class="fver">§40 AFRO-Λ · v0.2 · 2026-06-27 · Λ¹² 확장 섹션 (권역 통합 엔진)</div>
+</footer>
+
+</body>
+</html>
