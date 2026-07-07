@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>버블붕괴탐지기 — 공식과 방법론 | 늘푸른바다 사회동역학연구소</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background-color: #F5F3EE; color: #2A2A2A; line-height: 1.75; }
+  .hdr { background-color: #5E9186; color: #FFFFFF; padding: 44px 36px 32px; border-bottom: 4px solid #B8850E; }
+  .tag { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #C8E0DC; margin-bottom: 10px; }
+  .hdr h1 { font-size: 30px; font-weight: normal; line-height: 1.25; margin-bottom: 6px; }
+  .hdr .sub { font-size: 14px; color: #C8E0DC; }
+  .badge { display: inline-block; background-color: #B8850E; color: #FFF; font-family: 'Courier New', monospace; font-size: 10px; padding: 4px 12px; letter-spacing: 2px; margin: 14px 6px 0 0; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 36px 24px 56px; }
+  h2 { font-size: 15px; font-family: 'Courier New', monospace; letter-spacing: 3px; color: #5E9186; border-bottom: 1px solid #DDD8CE; padding-bottom: 8px; margin: 36px 0 16px; text-transform: uppercase; }
+  p { margin-bottom: 12px; font-size: 15px; }
+  .formula { background-color: #FDFCF9; border: 1px solid #DDD8CE; border-left: 4px solid #B8850E; padding: 18px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 17px; color: #2A3D35; overflow-x: auto; }
+  .fdesc { font-size: 13px; color: #6B6B6B; font-family: Georgia, serif; margin-top: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13.5px; }
+  th { background-color: #2A3D35; color: #FFF; font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 2px; padding: 9px 12px; text-align: left; }
+  td { border-bottom: 1px solid #DDD8CE; padding: 9px 12px; vertical-align: top; }
+  td.sym { font-family: 'Courier New', monospace; color: #B8850E; white-space: nowrap; font-size: 14px; }
+  .cls { background-color: rgba(94,145,134,0.08); border-radius: 8px; padding: 14px 18px; font-family: 'Courier New', monospace; font-size: 13px; color: #2A3D35; margin: 12px 0; }
+  .src a { color: #5E9186; }
+  .diagram { text-align: center; margin: 20px 0; }
+  .foot { border-top: 1px solid #DDD8CE; margin-top: 44px; padding-top: 18px; text-align: center; }
+  .slogan { font-style: italic; color: #C9A24B; font-size: 13.5px; margin-bottom: 8px; }
+  .foot small { font-family: 'Courier New', monospace; font-size: 10px; color: #9A9A9A; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="tag">EVERBLUE SEA · SOCIODYNAMICS · §33 SUB-ENGINE</div>
+  <h1>버블붕괴탐지기 — 공식과 방법론</h1>
+  <div class="sub">Bubble & Burst Detector — Formulas & Methodology</div>
+  <span class="badge">§33 BBD</span><span class="badge">Λ¹² 하위엔진</span><span class="badge">방법론 해설</span>
+</div>
+<div class="wrap">
+
+<h2>01 · 무엇을 측정하는가</h2>
+<p>자산 가격 버블의 형성·팽창·붕괴 주기를 실시간 감지한다. 주식·부동산·가상자산 시장의 비선형 가격 동학을 분석해 임계 붕괴 시점을 사전 탐지한다. 금융 위기는 사회 불안정의 핵심 촉발 요인이며, BBD는 Λ¹² A5(경제) 차원의 선행 신호로 작동한다.</p>
+<h2>02 · 핵심 공식</h2>
+<div class="formula">BBD = (P_t − MA_n) / σ_n &gt; θ_c</div>
+<p class="fdesc">현재 가격이 이동평균 대비 임계 표준편차 배수를 초과할 때 버블 신호가 발생한다.</p>
+<table><tr><th>기호</th><th>의미 · 설명</th></tr><tr><td class="sym">P_t</td><td>t 시점 자산 가격</td></tr><tr><td class="sym">MA_n</td><td>n기간 이동평균 — 추세의 기준선</td></tr><tr><td class="sym">σ_n</td><td>n기간 가격 표준편차 — 정상 변동 폭</td></tr><tr><td class="sym">θ_c</td><td>임계 배수 (통상 2.0~2.5σ)</td></tr><tr><td class="sym">BBD &gt; 1</td><td>버블 구간 진입 신호</td></tr></table>
+<h2>03 · 도식 — 가격·이동평균·임계 밴드</h2>
+<div class="diagram">
+<svg width="640" height="260" viewBox="0 0 640 260" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="260" fill="#FDFCF9" stroke="#DDD8CE"/>
+  <line x1="50" y1="220" x2="610" y2="220" stroke="#2A3D35" stroke-width="1.5"/>
+  <line x1="50" y1="220" x2="50" y2="20" stroke="#2A3D35" stroke-width="1.5"/>
+  <path d="M50,190 C130,185 200,175 270,165 C340,155 420,140 610,110" fill="none" stroke="#5E9186" stroke-width="2" stroke-dasharray="6,4"/>
+  <path d="M50,160 C130,158 200,148 270,135 C340,120 420,100 610,60" fill="none" stroke="#DDD8CE" stroke-width="1.5"/>
+  <path d="M50,195 C120,190 180,180 240,168 C300,150 360,120 430,70 C470,42 520,30 560,55 C585,72 600,110 610,150" fill="none" stroke="#B8850E" stroke-width="2.5"/>
+  <circle cx="500" cy="34" r="5" fill="#C0392B"/>
+  <text x="470" y="22" font-family="Courier New" font-size="11" fill="#C0392B">BBD &gt; θ_c 붕괴 임박</text>
+  <text x="555" y="205" font-family="Courier New" font-size="11" fill="#5E9186">MA_n</text>
+  <text x="560" y="52" font-family="Courier New" font-size="11" fill="#B8850E">P_t</text>
+  <text x="300" y="245" font-family="Courier New" font-size="11" fill="#6B6B6B">시간 t →</text>
+</svg>
+</div>
+<h2>04 · 분류 체계</h2>
+<div class="cls">정상(Normal) → 과열(Overheated) → 버블(Bubble) → 붕괴(Burst)</div>
+<h2>05 · 데이터 소스</h2>
+<p class="src">Yahoo Finance API · KRX 한국거래소 · BIS 국제결제은행 · FRED Federal Reserve</p>
+
+<div class="foot">
+  <div class="slogan">"인류의 경험과 수 많은 훌륭한 데이터들이 모여 은하수와 같은 현명한 빛으로 거듭 나 길 염원하는 마음으로!"</div>
+  <small>늘푸른바다 사회동역학연구소 · 淸海 · everbluesea.org © 2026</small>
+</div>
+</body>
+</html>

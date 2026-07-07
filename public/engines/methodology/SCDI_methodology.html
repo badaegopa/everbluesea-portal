@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>공급망교란지수 — 공식과 방법론 | 늘푸른바다 사회동역학연구소</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background-color: #F5F3EE; color: #2A2A2A; line-height: 1.75; }
+  .hdr { background-color: #5E9186; color: #FFFFFF; padding: 44px 36px 32px; border-bottom: 4px solid #B8850E; }
+  .tag { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #C8E0DC; margin-bottom: 10px; }
+  .hdr h1 { font-size: 30px; font-weight: normal; line-height: 1.25; margin-bottom: 6px; }
+  .hdr .sub { font-size: 14px; color: #C8E0DC; }
+  .badge { display: inline-block; background-color: #B8850E; color: #FFF; font-family: 'Courier New', monospace; font-size: 10px; padding: 4px 12px; letter-spacing: 2px; margin: 14px 6px 0 0; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 36px 24px 56px; }
+  h2 { font-size: 15px; font-family: 'Courier New', monospace; letter-spacing: 3px; color: #5E9186; border-bottom: 1px solid #DDD8CE; padding-bottom: 8px; margin: 36px 0 16px; text-transform: uppercase; }
+  p { margin-bottom: 12px; font-size: 15px; }
+  .formula { background-color: #FDFCF9; border: 1px solid #DDD8CE; border-left: 4px solid #B8850E; padding: 18px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 17px; color: #2A3D35; overflow-x: auto; }
+  .fdesc { font-size: 13px; color: #6B6B6B; font-family: Georgia, serif; margin-top: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13.5px; }
+  th { background-color: #2A3D35; color: #FFF; font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 2px; padding: 9px 12px; text-align: left; }
+  td { border-bottom: 1px solid #DDD8CE; padding: 9px 12px; vertical-align: top; }
+  td.sym { font-family: 'Courier New', monospace; color: #B8850E; white-space: nowrap; font-size: 14px; }
+  .cls { background-color: rgba(94,145,134,0.08); border-radius: 8px; padding: 14px 18px; font-family: 'Courier New', monospace; font-size: 13px; color: #2A3D35; margin: 12px 0; }
+  .src a { color: #5E9186; }
+  .diagram { text-align: center; margin: 20px 0; }
+  .foot { border-top: 1px solid #DDD8CE; margin-top: 44px; padding-top: 18px; text-align: center; }
+  .slogan { font-style: italic; color: #C9A24B; font-size: 13.5px; margin-bottom: 8px; }
+  .foot small { font-family: 'Courier New', monospace; font-size: 10px; color: #9A9A9A; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="tag">EVERBLUE SEA · SOCIODYNAMICS · §36 SUB-ENGINE</div>
+  <h1>공급망교란지수 — 공식과 방법론</h1>
+  <div class="sub">Supply Chain Disruption Index — Formulas & Methodology</div>
+  <span class="badge">§36 SCDI</span><span class="badge">Λ¹² 하위엔진</span><span class="badge">방법론 해설</span>
+</div>
+<div class="wrap">
+
+<h2>01 · 무엇을 측정하는가</h2>
+<p>글로벌 공급망의 교란 강도와 전파 속도를 측정한다. 지정학적 리스크·물류 병목·에너지 가격 급등이 사회 압력으로 전환되는 경로를 추적한다. 공급망 충격은 인플레이션을 통해 BSLI 衣·食·住 전 축에 즉각 파급되며, SCDI는 Λ¹² A5(경제)+A11(인프라) 연계 선행 지표다.</p>
+<h2>02 · 핵심 공식</h2>
+<div class="formula">SCDI = Σⱼ(Dⱼ · Wⱼ · Vⱼ) / N</div>
+<p class="fdesc">추적 품목별 교란 강도·경제 가중치·가격 변동성의 가중평균.</p>
+<table><tr><th>기호</th><th>의미 · 설명</th></tr><tr><td class="sym">Dⱼ</td><td>j 품목 교란 강도 — 정상 대비 납기 지연 비율</td></tr><tr><td class="sym">Wⱼ</td><td>j 품목의 경제 가중치 — GDP 투입산출표 기반</td></tr><tr><td class="sym">Vⱼ</td><td>j 품목 가격 변동성 — 30일 σ</td></tr><tr><td class="sym">N</td><td>추적 품목 수</td></tr><tr><td class="sym">SCDI &gt; 0.6</td><td>공급망 위기 임계값</td></tr></table>
+<h2>03 · 도식 — 교란 전파 경로</h2>
+<div class="diagram">
+<svg width="640" height="220" viewBox="0 0 640 220" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="220" fill="#FDFCF9" stroke="#DDD8CE"/>
+  <circle cx="90" cy="110" r="34" fill="rgba(192,57,43,0.15)" stroke="#C0392B" stroke-width="2"/>
+  <text x="62" y="106" font-family="Courier New" font-size="10" fill="#C0392B">지정학</text>
+  <text x="66" y="120" font-family="Courier New" font-size="10" fill="#C0392B">충격 Dⱼ</text>
+  <circle cx="260" cy="65" r="30" fill="rgba(184,133,14,0.12)" stroke="#B8850E" stroke-width="1.5"/>
+  <text x="236" y="62" font-family="Courier New" font-size="10" fill="#B8850E">물류병목</text>
+  <text x="244" y="76" font-family="Courier New" font-size="10" fill="#B8850E">운임 Vⱼ</text>
+  <circle cx="260" cy="160" r="30" fill="rgba(184,133,14,0.12)" stroke="#B8850E" stroke-width="1.5"/>
+  <text x="232" y="157" font-family="Courier New" font-size="10" fill="#B8850E">에너지가격</text>
+  <text x="248" y="171" font-family="Courier New" font-size="10" fill="#B8850E">Wⱼ</text>
+  <circle cx="440" cy="110" r="34" fill="rgba(94,145,134,0.15)" stroke="#5E9186" stroke-width="2"/>
+  <text x="410" y="106" font-family="Courier New" font-size="10" fill="#2A3D35">인플레이션</text>
+  <text x="424" y="120" font-family="Courier New" font-size="10" fill="#2A3D35">SCDI</text>
+  <circle cx="580" cy="110" r="34" fill="rgba(42,61,53,0.10)" stroke="#2A3D35" stroke-width="2"/>
+  <text x="552" y="106" font-family="Courier New" font-size="10" fill="#2A3D35">BSLI 압력</text>
+  <text x="558" y="120" font-family="Courier New" font-size="10" fill="#2A3D35">衣·食·住</text>
+  <line x1="124" y1="95" x2="230" y2="72" stroke="#6B6B6B" stroke-width="1.5"/>
+  <line x1="124" y1="125" x2="230" y2="153" stroke="#6B6B6B" stroke-width="1.5"/>
+  <line x1="290" y1="75" x2="408" y2="100" stroke="#6B6B6B" stroke-width="1.5"/>
+  <line x1="290" y1="150" x2="408" y2="122" stroke="#6B6B6B" stroke-width="1.5"/>
+  <line x1="474" y1="110" x2="546" y2="110" stroke="#6B6B6B" stroke-width="1.5"/>
+</svg>
+</div>
+<h2>04 · 분류 체계</h2>
+<div class="cls">안정(SCDI&lt;0.3) · 주의(0.3~0.6) · 위기(0.6~0.8) · 붕괴(SCDI&gt;0.8)</div>
+<h2>05 · 데이터 소스</h2>
+<p class="src">뉴욕 연준 GSCPI · Freightos Baltic Index · World Bank Commodity Prices · OECD TiVA</p>
+
+<div class="foot">
+  <div class="slogan">"인류의 경험과 수 많은 훌륭한 데이터들이 모여 은하수와 같은 현명한 빛으로 거듭 나 길 염원하는 마음으로!"</div>
+  <small>늘푸른바다 사회동역학연구소 · 淸海 · everbluesea.org © 2026</small>
+</div>
+</body>
+</html>

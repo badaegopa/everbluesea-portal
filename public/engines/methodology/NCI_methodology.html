@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>국가역량지수 — 공식과 방법론 | 늘푸른바다 사회동역학연구소</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background-color: #F5F3EE; color: #2A2A2A; line-height: 1.75; }
+  .hdr { background-color: #5E9186; color: #FFFFFF; padding: 44px 36px 32px; border-bottom: 4px solid #B8850E; }
+  .tag { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #C8E0DC; margin-bottom: 10px; }
+  .hdr h1 { font-size: 30px; font-weight: normal; line-height: 1.25; margin-bottom: 6px; }
+  .hdr .sub { font-size: 14px; color: #C8E0DC; }
+  .badge { display: inline-block; background-color: #B8850E; color: #FFF; font-family: 'Courier New', monospace; font-size: 10px; padding: 4px 12px; letter-spacing: 2px; margin: 14px 6px 0 0; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 36px 24px 56px; }
+  h2 { font-size: 15px; font-family: 'Courier New', monospace; letter-spacing: 3px; color: #5E9186; border-bottom: 1px solid #DDD8CE; padding-bottom: 8px; margin: 36px 0 16px; text-transform: uppercase; }
+  p { margin-bottom: 12px; font-size: 15px; }
+  .formula { background-color: #FDFCF9; border: 1px solid #DDD8CE; border-left: 4px solid #B8850E; padding: 18px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 17px; color: #2A3D35; overflow-x: auto; }
+  .fdesc { font-size: 13px; color: #6B6B6B; font-family: Georgia, serif; margin-top: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13.5px; }
+  th { background-color: #2A3D35; color: #FFF; font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 2px; padding: 9px 12px; text-align: left; }
+  td { border-bottom: 1px solid #DDD8CE; padding: 9px 12px; vertical-align: top; }
+  td.sym { font-family: 'Courier New', monospace; color: #B8850E; white-space: nowrap; font-size: 14px; }
+  .cls { background-color: rgba(94,145,134,0.08); border-radius: 8px; padding: 14px 18px; font-family: 'Courier New', monospace; font-size: 13px; color: #2A3D35; margin: 12px 0; }
+  .src a { color: #5E9186; }
+  .diagram { text-align: center; margin: 20px 0; }
+  .foot { border-top: 1px solid #DDD8CE; margin-top: 44px; padding-top: 18px; text-align: center; }
+  .slogan { font-style: italic; color: #C9A24B; font-size: 13.5px; margin-bottom: 8px; }
+  .foot small { font-family: 'Courier New', monospace; font-size: 10px; color: #9A9A9A; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="tag">EVERBLUE SEA · SOCIODYNAMICS · §35 SUB-ENGINE</div>
+  <h1>국가역량지수 — 공식과 방법론</h1>
+  <div class="sub">National Capacity Index — Formulas & Methodology</div>
+  <span class="badge">§35 NCI</span><span class="badge">Λ¹² 하위엔진</span><span class="badge">방법론 해설</span>
+</div>
+<div class="wrap">
+
+<h2>01 · 무엇을 측정하는가</h2>
+<p>국가가 공공재를 공급하고 위기에 대응하는 제도적 역량을 측정한다. 행정 효율성·법치·위기대응·공공재정 4개 축으로 구성된다. 취약국가는 외부 충격에 극도로 취약하며, NCI는 Λ¹² A4(제도) 차원의 국가 붕괴 위험을 조기 경보한다.</p>
+<h2>02 · 핵심 공식</h2>
+<div class="formula">NCI = w₁·Admin + w₂·Law + w₃·Crisis + w₄·Finance</div>
+<p class="fdesc">4개 축의 가중합. 가중치 합산은 1.0이며 국가 발전 단계별로 조정된다.</p>
+<table><tr><th>기호</th><th>의미 · 설명</th></tr><tr><td class="sym">Admin</td><td>행정 효율성 — WGI Government Effectiveness</td></tr><tr><td class="sym">Law</td><td>법치 지수 — WGI Rule of Law</td></tr><tr><td class="sym">Crisis</td><td>위기대응 역량 — INFORM Risk Index 역수</td></tr><tr><td class="sym">Finance</td><td>공공재정 건전성 — IMF Fiscal Monitor</td></tr><tr><td class="sym">wᵢ</td><td>각 축 가중치 (Σwᵢ = 1.0)</td></tr></table>
+<h2>03 · 도식 — 4축 역량 프로파일</h2>
+<div class="diagram">
+<svg width="420" height="300" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="420" height="300" fill="#FDFCF9" stroke="#DDD8CE"/>
+  <polygon points="210,40 340,150 210,260 80,150" fill="none" stroke="#DDD8CE" stroke-width="1"/>
+  <polygon points="210,75 305,150 210,225 115,150" fill="none" stroke="#DDD8CE" stroke-width="1"/>
+  <line x1="210" y1="40" x2="210" y2="260" stroke="#DDD8CE" stroke-width="1"/>
+  <line x1="80" y1="150" x2="340" y2="150" stroke="#DDD8CE" stroke-width="1"/>
+  <polygon points="210,60 315,150 210,210 130,150" fill="rgba(94,145,134,0.25)" stroke="#5E9186" stroke-width="2"/>
+  <polygon points="210,110 260,150 210,245 165,150" fill="rgba(192,57,43,0.15)" stroke="#C0392B" stroke-width="2" stroke-dasharray="4,3"/>
+  <text x="185" y="30" font-family="Courier New" font-size="11" fill="#2A3D35">Admin</text>
+  <text x="350" y="154" font-family="Courier New" font-size="11" fill="#2A3D35">Law</text>
+  <text x="188" y="280" font-family="Courier New" font-size="11" fill="#2A3D35">Crisis</text>
+  <text x="30" y="154" font-family="Courier New" font-size="11" fill="#2A3D35">Finance</text>
+  <text x="248" y="80" font-family="Courier New" font-size="10" fill="#5E9186">강건 국가</text>
+  <text x="222" y="238" font-family="Courier New" font-size="10" fill="#C0392B">취약 국가</text>
+</svg>
+</div>
+<h2>04 · 분류 체계</h2>
+<div class="cls">강건(NCI&gt;0.7) · 보통(0.4~0.7) · 취약(0.2~0.4) · 붕괴위험(NCI&lt;0.2)</div>
+<h2>05 · 데이터 소스</h2>
+<p class="src">World Bank WGI · INFORM Risk Index · IMF Fiscal Monitor · Fund for Peace FSI</p>
+
+<div class="foot">
+  <div class="slogan">"인류의 경험과 수 많은 훌륭한 데이터들이 모여 은하수와 같은 현명한 빛으로 거듭 나 길 염원하는 마음으로!"</div>
+  <small>늘푸른바다 사회동역학연구소 · 淸海 · everbluesea.org © 2026</small>
+</div>
+</body>
+</html>

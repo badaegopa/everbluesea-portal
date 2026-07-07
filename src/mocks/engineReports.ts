@@ -106,19 +106,69 @@ export const engineReports: Record<string, NationReport[]> = {
   ],
 
   // §33 버블붕괴탐지기
-  "cat-bbd": [],
+  "cat-bbd": [
+    {
+      id: "bbd-methodology",
+      title: "버블붕괴탐지기 §33 — 공식과 방법론 해설",
+      region: "방법론",
+      scope: "단독",
+      engine: "§33 BBD",
+      date: "2026-07-07",
+      htmlPath: "/engines/methodology/BBD_methodology.html",
+    },
+  ],
 
   // §34 지니경제불평등지수
-  "cat-gei": [],
+  "cat-gei": [
+    {
+      id: "gei-methodology",
+      title: "지니경제불평등지수 §34 — 공식과 방법론 해설 (로렌츠 곡선)",
+      region: "방법론",
+      scope: "단독",
+      engine: "§34 GEI",
+      date: "2026-07-07",
+      htmlPath: "/engines/methodology/GEI_methodology.html",
+    },
+  ],
 
   // §35 국가역량지수
-  "cat-nci": [],
+  "cat-nci": [
+    {
+      id: "nci-methodology",
+      title: "국가역량지수 §35 — 공식과 방법론 해설 (4축 역량)",
+      region: "방법론",
+      scope: "단독",
+      engine: "§35 NCI",
+      date: "2026-07-07",
+      htmlPath: "/engines/methodology/NCI_methodology.html",
+    },
+  ],
 
   // §36 공급망교란지수
-  "cat-scdi": [],
+  "cat-scdi": [
+    {
+      id: "scdi-methodology",
+      title: "공급망교란지수 §36 — 공식과 방법론 해설 (교란 전파 경로)",
+      region: "방법론",
+      scope: "단독",
+      engine: "§36 SCDI",
+      date: "2026-07-07",
+      htmlPath: "/engines/methodology/SCDI_methodology.html",
+    },
+  ],
 
   // §37 권력기생지수
-  "cat-ppi": [],
+  "cat-ppi": [
+    {
+      id: "ppi-methodology",
+      title: "권력기생지수 §37 — 공식과 방법론 해설 (PPI + LRI-P*)",
+      region: "방법론",
+      scope: "단독",
+      engine: "§37 PPI",
+      date: "2026-07-07",
+      htmlPath: "/engines/methodology/PPI_methodology.html",
+    },
+  ],
 
   // 언론 브리핑룸
   "cat-press": [],
@@ -137,7 +187,17 @@ export const engineReports: Record<string, NationReport[]> = {
   ],
 
   // LCI 지도자붕괴지수
-  "cat-lci": [],
+  "cat-lci": [
+    {
+      id: "lci-methodology",
+      title: "지도자붕괴지수 LCI — 공식과 방법론 해설 (κ·ΔΦ·ι 3축)",
+      region: "방법론",
+      scope: "단독",
+      engine: "LCI",
+      date: "2026-07-07",
+      htmlPath: "/engines/methodology/LCI_methodology.html",
+    },
+  ],
 
   // AFRO-Λ
   "cat-afro": [
