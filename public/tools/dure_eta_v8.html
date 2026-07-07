@@ -1437,7 +1437,7 @@ function getEtaGrade(eta){
 
 function calcEta(){
   const d = activeDistrict ? DISTRICTS_ETA[activeDistrict] : null;
-  const baseEta = (d && d.eta) ? d.eta : null;
+  const baseEta = window._baseEtaOverride || (d && d.eta) ? (window._baseEtaOverride || d.eta) : null;
   let eta=0, tot=0;
   if(baseEta){
     let delta=0;
@@ -1653,7 +1653,9 @@ function loadDistrict(key){
   const d = DISTRICTS_ETA[key];
   if(!d) return;
   activeDistrict = key;
-  window._currentDistKey = key; // 새로고침용 현재 구군 저장
+  window._currentDistKey = key;
+  /* 패치v8.4.3: calcEta용 baseEta 동기화 */
+  if(d.eta) window._baseEtaOverride = d.eta; else delete window._baseEtaOverride; // 새로고침용 현재 구군 저장
   /* 패치v8.4.2: 전염계수 패널 구군 연동 */
   if(typeof window._renderContagionPanel === 'function') setTimeout(()=>window._renderContagionPanel(key), 30);
 
@@ -1667,6 +1669,8 @@ function loadDistrict(key){
     if(d[v.id] !== undefined){
       v.val = d[v.id];
       v._init = d[v.id];
+      /* 패치v8.4.3: eta 기준값 동기화 */
+      if(v.id === 'eta_base') return;
       const el = document.getElementById('sl-' + v.id);
       const r  = (v.val - v.min) / (v.max - v.min);
       if(el){ el.value = v.val; el.style.setProperty('--pct', (r*100).toFixed(1)+'%'); }
@@ -5622,5 +5626,6 @@ window.addEventListener('load', autoDetectView);
 
 </body>
 </html>
+
 
 
