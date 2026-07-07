@@ -4,6 +4,7 @@ import EnginePanel from "@/pages/home/components/EnginePanel";
 import { engineDetails } from "@/mocks/engineDetails";
 import type { EngineDetail } from "@/mocks/engineDetails";
 import { mainCategories } from "@/mocks/home";
+import { nationReports } from "@/mocks/nationReports";
 
 export default function Categories() {
   const { t, i18n } = useTranslation();
@@ -232,6 +233,51 @@ export default function Categories() {
                     ))}
                   </div>
                 )}
+
+                {/* 국가 분석 보고서 — 인라인 목록 */}
+                {activeCategory.id === "cat-national" && (() => {
+                  const filtered = nationReports
+                    .filter((r) => {
+                      if (activeFilter === "전체" || activeFilter === "All") return true;
+                      if (activeFilter === "단독" || activeFilter === "Standalone") return r.scope === "단독";
+                      if (activeFilter === "권역별" || activeFilter === "Regional") return r.scope === "권역별";
+                      return true;
+                    })
+                    .sort((a, b) => b.date.localeCompare(a.date));
+                  return (
+                    <div className="pt-4 border-t border-background-200">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "#5E9186" }}>
+                          {isKo ? `보고서 ${filtered.length}편` : `${filtered.length} Reports`}
+                        </span>
+                        <a href="/reports" className="font-mono text-xs underline" style={{ color: "#B8850E" }}>
+                          {isKo ? "전체 페이지로 보기 →" : "Open full page →"}
+                        </a>
+                      </div>
+                      <div className="max-h-[420px] overflow-y-auto rounded-xl border" style={{ borderColor: "rgba(61,107,98,0.12)" }}>
+                        {filtered.map((r) => (
+                          <a
+                            key={r.id}
+                            href={r.htmlPath}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 px-4 py-3 border-b transition hover:bg-background-100/60"
+                            style={{ borderColor: "rgba(61,107,98,0.08)" }}
+                          >
+                            <span className="text-sm leading-snug" style={{ color: "#1E3A2F" }}>
+                              {r.title}
+                            </span>
+                            <span className="flex items-center gap-2 flex-shrink-0 font-mono text-[10px]" style={{ color: "#5E9186" }}>
+                              <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(94,145,134,0.10)" }}>{r.region}</span>
+                              <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(184,133,14,0.10)", color: "#B8850E" }}>{r.scope}</span>
+                              <span>{r.date}</span>
+                            </span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </div>
           );
