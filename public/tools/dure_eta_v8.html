@@ -1654,6 +1654,8 @@ function loadDistrict(key){
   if(!d) return;
   activeDistrict = key;
   window._currentDistKey = key; // 새로고침용 현재 구군 저장
+  /* 패치v8.4.2: 전염계수 패널 구군 연동 */
+  if(typeof window._renderContagionPanel === 'function') setTimeout(()=>window._renderContagionPanel(key), 30);
 
   /* 버튼 활성 표시 */
   document.querySelectorAll('.eta-dist-btn').forEach(b => b.classList.remove('on'));
@@ -5620,4 +5622,5 @@ window.addEventListener('load', autoDetectView);
 
 </body>
 </html>
+
 
