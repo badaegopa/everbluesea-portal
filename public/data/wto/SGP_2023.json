@@ -1,0 +1,97 @@
+{
+  "numeric": "702",
+  "iso_code": "SGP",
+  "name": "Singapore",
+  "region": "동아시아동남아",
+  "year": 2023,
+  "updated": "2026-06-28",
+  "collected": 15,
+  "total": 15,
+  "missing": [],
+  "missing_named": [],
+  "indicators": {
+    "trade": {
+      "ITS_MTV_AX": {
+        "value": 15442.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTV_AM": {
+        "value": 17850.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AXVG": {
+        "value": -5.5,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AMVG": {
+        "value": -9.6,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "tariff": {
+      "TP_A_0010": {
+        "value": 0.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0160": {
+        "value": 0.1,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0430": {
+        "value": 0.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_B_0020": {
+        "value": 72.0,
+        "year": null,
+        "unit": ""
+      },
+      "TP_B_0090": {
+        "value": 8.9,
+        "year": null,
+        "unit": ""
+      }
+    },
+    "services": {
+      "ITS_CS_QAX": {
+        "value": 350948.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_CS_QAM": {
+        "value": 322138.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_X": {
+        "value": 284672.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_M": {
+        "value": 6620.0,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "price": {
+      "ITS_MTP_AUVX": {
+        "value": 97.8,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AUVM": {
+        "value": 98.5,
+        "year": 2023,
+        "unit": ""
+      }
+    }
+  }
+}

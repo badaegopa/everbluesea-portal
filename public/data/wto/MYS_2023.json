@@ -1,0 +1,97 @@
+{
+  "numeric": "458",
+  "iso_code": "MYS",
+  "name": "Malaysia",
+  "region": "동아시아동남아",
+  "year": 2023,
+  "updated": "2026-06-28",
+  "collected": 15,
+  "total": 15,
+  "missing": [],
+  "missing_named": [],
+  "indicators": {
+    "trade": {
+      "ITS_MTV_AX": {
+        "value": 33511.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTV_AM": {
+        "value": 25918.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AXVG": {
+        "value": -6.9,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AMVG": {
+        "value": -5.4,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "tariff": {
+      "TP_A_0010": {
+        "value": 5.6,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0160": {
+        "value": 7.4,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0430": {
+        "value": 5.3,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_B_0020": {
+        "value": 83.8,
+        "year": null,
+        "unit": ""
+      },
+      "TP_B_0090": {
+        "value": 20.8,
+        "year": null,
+        "unit": ""
+      }
+    },
+    "services": {
+      "ITS_CS_QAX": {
+        "value": 42671.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_CS_QAM": {
+        "value": 52196.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_X": {
+        "value": 37744.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_M": {
+        "value": 47316.0,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "price": {
+      "ITS_MTP_AUVX": {
+        "value": 95.5,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AUVM": {
+        "value": 95.6,
+        "year": 2023,
+        "unit": ""
+      }
+    }
+  }
+}

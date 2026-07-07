@@ -1,0 +1,97 @@
+{
+  "numeric": "376",
+  "iso_code": "ISR",
+  "name": "Israel",
+  "region": "중동북아프리카",
+  "year": 2023,
+  "updated": "2026-06-28",
+  "collected": 15,
+  "total": 15,
+  "missing": [],
+  "missing_named": [],
+  "indicators": {
+    "trade": {
+      "ITS_MTV_AX": {
+        "value": 5339.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTV_AM": {
+        "value": 12099.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AXVG": {
+        "value": -10.3,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AMVG": {
+        "value": -11.6,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "tariff": {
+      "TP_A_0010": {
+        "value": 1.3,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0160": {
+        "value": 8.1,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0430": {
+        "value": 0.2,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_B_0020": {
+        "value": 75.6,
+        "year": null,
+        "unit": ""
+      },
+      "TP_B_0090": {
+        "value": 22.6,
+        "year": null,
+        "unit": ""
+      }
+    },
+    "services": {
+      "ITS_CS_QAX": {
+        "value": 81653.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_CS_QAM": {
+        "value": 47634.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_X": {
+        "value": 55499.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_M": {
+        "value": 2979.0,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "price": {
+      "ITS_MTP_AUVX": {
+        "value": 97.3,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AUVM": {
+        "value": 96.4,
+        "year": 2023,
+        "unit": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "numeric": "032",
+  "iso_code": "ARG",
+  "name": "Argentina",
+  "region": "아메리카",
+  "year": 2023,
+  "updated": "2026-06-28",
+  "collected": 15,
+  "total": 15,
+  "missing": [],
+  "missing_named": [],
+  "indicators": {
+    "trade": {
+      "ITS_MTV_AX": {
+        "value": 5887.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTV_AM": {
+        "value": 453.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AXVG": {
+        "value": -16.8,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AMVG": {
+        "value": -4.3,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "tariff": {
+      "TP_A_0010": {
+        "value": 13.4,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0160": {
+        "value": 10.3,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0430": {
+        "value": 13.9,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_B_0020": {
+        "value": 100.0,
+        "year": null,
+        "unit": ""
+      },
+      "TP_B_0090": {
+        "value": 31.8,
+        "year": null,
+        "unit": ""
+      }
+    },
+    "services": {
+      "ITS_CS_QAX": {
+        "value": 16532.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_CS_QAM": {
+        "value": 250.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_X": {
+        "value": 116.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_M": {
+        "value": 5392.0,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "price": {
+      "ITS_MTP_AUVX": {
+        "value": 90.7,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AUVM": {
+        "value": 94.3,
+        "year": 2023,
+        "unit": ""
+      }
+    }
+  }
+}

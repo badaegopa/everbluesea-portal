@@ -1,0 +1,97 @@
+{
+  "numeric": "554",
+  "iso_code": "NZL",
+  "name": "New Zealand",
+  "region": "오세아니아",
+  "year": 2023,
+  "updated": "2026-06-28",
+  "collected": 15,
+  "total": 15,
+  "missing": [],
+  "missing_named": [],
+  "indicators": {
+    "trade": {
+      "ITS_MTV_AX": {
+        "value": 1884.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTV_AM": {
+        "value": 7287.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AXVG": {
+        "value": 2.1,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AMVG": {
+        "value": -3.7,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "tariff": {
+      "TP_A_0010": {
+        "value": 1.9,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0160": {
+        "value": 1.4,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_A_0430": {
+        "value": 2.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "TP_B_0020": {
+        "value": 100.0,
+        "year": null,
+        "unit": ""
+      },
+      "TP_B_0090": {
+        "value": 9.5,
+        "year": null,
+        "unit": ""
+      }
+    },
+    "services": {
+      "ITS_CS_QAX": {
+        "value": 2345.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_CS_QAM": {
+        "value": 18645.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_X": {
+        "value": 3941.0,
+        "year": 2023,
+        "unit": ""
+      },
+      "BAT_BV_M": {
+        "value": 376.0,
+        "year": 2023,
+        "unit": ""
+      }
+    },
+    "price": {
+      "ITS_MTP_AUVX": {
+        "value": 89.9,
+        "year": 2023,
+        "unit": ""
+      },
+      "ITS_MTP_AUVM": {
+        "value": 95.7,
+        "year": 2023,
+        "unit": ""
+      }
+    }
+  }
+}
