@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import EnginePanel from "@/pages/home/components/EnginePanel";
 import { engineDetails } from "@/mocks/engineDetails";
@@ -14,15 +14,7 @@ export default function Categories() {
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
   const [selectedEngine, setSelectedEngine] = useState<EngineDetail | null>(null);
 
-  const nationalListRef = useRef<HTMLDivElement>(null);
-
   const activeCategory = mainCategories.find((c) => c.id === selectedCategory);
-
-  useEffect(() => {
-    if (selectedCategory === "cat-national" && nationalListRef.current) {
-      setTimeout(() => nationalListRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-    }
-  }, [selectedCategory]);
 
   const handleCardClick = (categoryId: string) => {
     if (selectedCategory === categoryId) {
@@ -70,9 +62,10 @@ export default function Categories() {
             const currentLabel = isKo ? cat.label : (cat.labelEn || cat.label);
             const currentFilters = isKo ? cat.subFilters : (cat.subFiltersEn || cat.subFilters);
             const currentTopics = isKo ? cat.topics : (cat.topicsEn || cat.topics);
+            const isNationalOpen = cat.id === "cat-national" && isActive;
             return (
+              <React.Fragment key={cat.id}>
               <div
-                key={cat.id}
                 onClick={() => handleCardClick(cat.id)}
                 className={`relative rounded-2xl border overflow-hidden p-5 md:p-6 cursor-pointer transition-all duration-200 min-h-[260px] flex flex-col justify-between ${
                   cat.isCore
@@ -146,67 +139,69 @@ export default function Categories() {
                   )}
                 </div>
               </div>
+
+              {/* 국가분석 카드 바로 아래 행 — 인라인 목록 */}
+              {isNationalOpen && (() => {
+                const filtered = nationReports
+                  .filter((r) => {
+                    if (activeFilter === "전체" || activeFilter === "All") return true;
+                    if (activeFilter === "단독" || activeFilter === "Standalone") return r.scope === "단독";
+                    if (activeFilter === "권역별" || activeFilter === "Regional") return r.scope === "권역별";
+                    return true;
+                  })
+                  .sort((a, b) => b.date.localeCompare(a.date));
+                return (
+                  <div className="col-span-full rounded-2xl border border-background-200/70 bg-background-50 p-4 md:p-6">
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "#5E9186" }}>
+                          {isKo ? `국가 분석 보고서 · ${filtered.length}편` : `National Analysis · ${filtered.length}`}
+                        </span>
+                        <div className="flex items-center gap-1.5">
+                          {(isKo ? ["전체", "권역별", "단독"] : ["All", "Regional", "Standalone"]).map((f) => (
+                            <button
+                              key={f}
+                              onClick={(e) => { e.stopPropagation(); setActiveFilter(f); }}
+                              className={`px-3 py-1 rounded-full text-xs font-mono transition cursor-pointer whitespace-nowrap ${activeFilter === f ? "bg-primary-500 text-background-50" : "bg-background-100 text-foreground-700 hover:bg-background-200"}`}
+                            >
+                              {f}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <a href="/reports" className="font-mono text-xs underline" style={{ color: "#B8850E" }}>
+                        {isKo ? "전체 페이지로 보기 →" : "Open full page →"}
+                      </a>
+                    </div>
+                    <div className="max-h-[420px] overflow-y-auto rounded-xl border" style={{ borderColor: "rgba(61,107,98,0.12)" }}>
+                      {filtered.map((r) => (
+                        <a
+                          key={r.id}
+                          href={r.htmlPath}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 px-4 py-3 border-b transition hover:bg-background-100/60"
+                          style={{ borderColor: "rgba(61,107,98,0.08)" }}
+                        >
+                          <span className="text-sm leading-snug" style={{ color: "#1E3A2F" }}>
+                            {r.title}
+                          </span>
+                          <span className="flex items-center gap-2 flex-shrink-0 font-mono text-[10px]" style={{ color: "#5E9186" }}>
+                            <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(94,145,134,0.10)" }}>{r.region}</span>
+                            <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(184,133,14,0.10)", color: "#B8850E" }}>{r.scope}</span>
+                            <span>{r.date}</span>
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
+              </React.Fragment>
             );
           })}
         </div>
 
-        {/* 국가 분석 보고서 — 카드 그리드 직후 인라인 목록 */}
-        {activeCategory && activeCategory.id === "cat-national" && (() => {
-          const filtered = nationReports
-            .filter((r) => {
-              if (activeFilter === "전체" || activeFilter === "All") return true;
-              if (activeFilter === "단독" || activeFilter === "Standalone") return r.scope === "단독";
-              if (activeFilter === "권역별" || activeFilter === "Regional") return r.scope === "권역별";
-              return true;
-            })
-            .sort((a, b) => b.date.localeCompare(a.date));
-          return (
-            <div ref={nationalListRef} className="mb-8 rounded-2xl border border-background-200/70 bg-background-50 p-4 md:p-6">
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "#5E9186" }}>
-                    {isKo ? `국가 분석 보고서 · ${filtered.length}편` : `National Analysis · ${filtered.length}`}
-                  </span>
-                  <div className="flex items-center gap-1.5">
-                    {(isKo ? ["전체", "권역별", "단독"] : ["All", "Regional", "Standalone"]).map((f) => (
-                      <button
-                        key={f}
-                        onClick={() => setActiveFilter(f)}
-                        className={`px-3 py-1 rounded-full text-xs font-mono transition cursor-pointer whitespace-nowrap ${activeFilter === f ? "bg-primary-500 text-background-50" : "bg-background-100 text-foreground-700 hover:bg-background-200"}`}
-                      >
-                        {f}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                <a href="/reports" className="font-mono text-xs underline" style={{ color: "#B8850E" }}>
-                  {isKo ? "전체 페이지로 보기 →" : "Open full page →"}
-                </a>
-              </div>
-              <div className="max-h-[420px] overflow-y-auto rounded-xl border" style={{ borderColor: "rgba(61,107,98,0.12)" }}>
-                {filtered.map((r) => (
-                  <a
-                    key={r.id}
-                    href={r.htmlPath}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 px-4 py-3 border-b transition hover:bg-background-100/60"
-                    style={{ borderColor: "rgba(61,107,98,0.08)" }}
-                  >
-                    <span className="text-sm leading-snug" style={{ color: "#1E3A2F" }}>
-                      {r.title}
-                    </span>
-                    <span className="flex items-center gap-2 flex-shrink-0 font-mono text-[10px]" style={{ color: "#5E9186" }}>
-                      <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(94,145,134,0.10)" }}>{r.region}</span>
-                      <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(184,133,14,0.10)", color: "#B8850E" }}>{r.scope}</span>
-                      <span>{r.date}</span>
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          );
-        })()}
 
         {/* Sub-filters bar */}
         {activeCategory && (() => {
