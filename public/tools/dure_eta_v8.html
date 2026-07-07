@@ -1300,7 +1300,7 @@ window.addEventListener('DOMContentLoaded',()=>setTimeout(()=>rcSelInd('pop'),80
 <script>
 const SVARS=[
   /* ── 산업·재정 (η v2 신규) ── */
-  {id:'mfg',     name:'제조업출하액',   unit:'억원', min:500, max:50000,val:9000,step:100, w:0.10, icon:'🏭', fixed:true,
+  {id:'mfg',     name:'제조업출하액',   unit:'억원', min:500, max:500000,val:9000,step:100, w:0.10, icon:'🏭', fixed:true,
    cascade:{employ:0.4, fiscal:0.5}},
   {id:'workers', name:'종사자수',        unit:'천명', min:10,  max:120, val:53,  step:1,   w:0.08, icon:'👷', fixed:true,
    cascade:{employ:0.6}},
@@ -1620,27 +1620,27 @@ function loadScenario10(type){
 
 /* ── 구군별 실측 데이터 (2024 기준, KOSIS 기반) ── */
 const DISTRICTS_ETA = {
-  junggu: {employ:58, medical:62, welfare:145, edu:70, safety:65, env:55, birth:0.62,
+  junggu: {employ:58, medical:62, welfare:145, edu:70, safety:65, env:55, birth:0.62, eta:0.526,
            mfg:10640, workers:53.6, taxbase:2200,
            corp_dep:0.28, /* 대기업 의존도 28% — 중소·서비스 중심 */
            eta_ceiling:0.82, /* η 수렴 상한 */
            label:'중구', color:'#3D7A6E'},
-  namgu:  {employ:60, medical:68, welfare:172, edu:74, safety:70, env:60, birth:0.65,
+  namgu:  {employ:60, medical:68, welfare:172, edu:74, safety:70, env:60, birth:0.65, eta:0.598,
            mfg:182800, workers:94.4, taxbase:4420,
            corp_dep:0.52, /* 석유화학 대기업 의존 52% */
            eta_ceiling:0.78,
            label:'남구', color:'#B8850E'},
-  donggu: {employ:52, medical:54, welfare:118, edu:59, safety:57, env:46, birth:0.48,
+  donggu: {employ:52, medical:54, welfare:118, edu:59, safety:57, env:46, birth:0.48, eta:0.597,
            mfg:121800, workers:45.4, taxbase:1900,
            corp_dep:0.74, /* 현대중공업 의존 74% → 구조조정 직격 */
            eta_ceiling:0.65,
            label:'동구', color:'#4A6E9B'},
-  bukgu:  {employ:63, medical:66, welfare:158, edu:72, safety:68, env:58, birth:0.71,
+  bukgu:  {employ:63, medical:66, welfare:158, edu:72, safety:68, env:58, birth:0.71, eta:0.545,
            mfg:144800, workers:60.2, taxbase:3400,
            corp_dep:0.61, /* 현대차 의존 61% */
            eta_ceiling:0.74,
            label:'북구', color:'#9B6040'},
-  ulju:   {employ:66, medical:70, welfare:195, edu:76, safety:72, env:65, birth:0.82,
+  ulju:   {employ:66, medical:70, welfare:195, edu:76, safety:72, env:65, birth:0.82, eta:0.516,
            mfg:432800, workers:86.4, taxbase:9360,
            corp_dep:0.68, /* 석유화학·자동차 복합 68% */
            eta_ceiling:0.80,
@@ -3460,6 +3460,9 @@ function restoreEtaPanel(){
     </div>`;
   if(simScroll) simScroll.style.display='';
   if(scenarioRow) scenarioRow.style.display='';
+  /* 패치v8.4.1: 패널 복원 후 현재 구군 재로드 */
+  const _k = window._currentDistKey || 'junggu';
+  if(typeof loadDistrict === 'function') setTimeout(()=>loadDistrict(_k), 50);
 }
 function T(id){
   const b=document.getElementById(id),a=document.getElementById('a-'+id);
@@ -5617,3 +5620,4 @@ window.addEventListener('load', autoDetectView);
 
 </body>
 </html>
+
