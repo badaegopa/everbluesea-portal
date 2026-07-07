@@ -1834,6 +1834,8 @@ loadDistrict("junggu");
       });
       /* 활성 구군 재로드 → 슬라이더/η 즉시 반영 */
       const cur = window._currentDistKey || 'junggu';
+      /* 패치v8.4.4: ulsan.json 갱신 후 _baseEtaOverride 동기화 */
+      if(DISTRICTS_ETA[cur] && DISTRICTS_ETA[cur].eta) window._baseEtaOverride = DISTRICTS_ETA[cur].eta;
       if(typeof loadDistrict === 'function') loadDistrict(cur);
 
       /* 레이스 차트도 현재 시점 다시 렌더 */
@@ -5626,6 +5628,7 @@ window.addEventListener('load', autoDetectView);
 
 </body>
 </html>
+
 
 
 
