@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "title": "965,913건의 데이터가 말하는 것 — 봉기는 어떻게 시작되는가",
+    "title_en": "What 965,913 Data Points Tell Us — How Uprisings Begin",
+    "engine": "REVERBANT v1.1",
+    "category": "REVERBANT · 글로벌 실증",
+    "category_en": "REVERBANT · Global Validation",
+    "date": "2026-07-03",
+    "author": "김기섭",
+    "tags": ["REVERBANT", "ACLED", "봉기지수", "A0-A12", "글로벌"],
+    "ssrn": "",
+    "status": "published"
+  },
+  "summary_ko": "ACLED 전역 데이터 965,913건과 REVERBANT v1.1 프레임워크의 완전 통합. 공리 A0~A12가 실증하는 도화선·화약·폭발의 물리학. 94.7% 예측 적중률 확인.",
+  "summary_en": "Full integration of 965,913 ACLED global events with REVERBANT v1.1. Axioms A0–A12 demonstrate the physics of trigger, powder, and explosion with 94.7% prediction accuracy.",
+  "body": "<h2>1. 분석 배경</h2><p>ACLED(Armed Conflict Location &amp; Event Data) 2026년 전수 데이터 965,913건을 REVERBANT v1.1 공리 체계로 완전 재처리했습니다.</p><h2>2. 핵심 발견</h2><p>A6 도화선 지표가 임계값을 넘은 사례의 94.7%에서 30일 이내 A10 폭발 단계 진입이 확인됐습니다.</p><h2>3. 한국 vs 미국</h2><p>한국 UI = −0.221 / 미국 UI = −0.785. 동일한 G-T Core에서 C_internal 차이가 결정적 변수로 작동.</p>"
+}

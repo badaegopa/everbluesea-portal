@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Fonts */
+  --font-heading: 'Fraunces', 'Times New Roman', serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-label: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Background — warm off-white paper */
+  --background-50: 0.985 0.004 90;
+  --background-100: 0.965 0.006 88;
+  --background-200: 0.930 0.008 88;
+  --background-300: 0.885 0.010 86;
+  --background-400: 0.820 0.012 84;
+  --background-500: 0.720 0.014 82;
+  --background-600: 0.600 0.014 80;
+  --background-700: 0.470 0.012 80;
+  --background-800: 0.340 0.010 80;
+  --background-900: 0.220 0.008 80;
+  --background-950: 0.150 0.006 80;
+
+  /* Primary — deep teal / forest teal */
+  --primary-50: 0.960 0.020 180;
+  --primary-100: 0.910 0.038 182;
+  --primary-200: 0.830 0.056 184;
+  --primary-300: 0.720 0.072 186;
+  --primary-400: 0.590 0.080 188;
+  --primary-500: 0.460 0.078 190;
+  --primary-600: 0.380 0.070 192;
+  --primary-700: 0.310 0.058 194;
+  --primary-800: 0.240 0.045 196;
+  --primary-900: 0.180 0.032 198;
+  --primary-950: 0.130 0.022 200;
+
+  /* Accent — lime yellow */
+  --accent-50: 0.985 0.030 110;
+  --accent-100: 0.960 0.060 112;
+  --accent-200: 0.930 0.100 112;
+  --accent-300: 0.910 0.140 114;
+  --accent-400: 0.900 0.170 115;
+  --accent-500: 0.885 0.190 116;
+  --accent-600: 0.780 0.180 116;
+  --accent-700: 0.640 0.150 114;
+  --accent-800: 0.500 0.120 112;
+  --accent-900: 0.360 0.090 110;
+  --accent-950: 0.240 0.060 108;
+
+  /* Secondary — warm terracotta / clay */
+  --secondary-50: 0.975 0.014 50;
+  --secondary-100: 0.945 0.030 48;
+  --secondary-200: 0.895 0.055 45;
+  --secondary-300: 0.820 0.085 42;
+  --secondary-400: 0.740 0.110 40;
+  --secondary-500: 0.660 0.130 38;
+  --secondary-600: 0.560 0.120 36;
+  --secondary-700: 0.450 0.100 34;
+  --secondary-800: 0.340 0.075 32;
+  --secondary-900: 0.240 0.052 30;
+  --secondary-950: 0.170 0.035 28;
+
+  /* Foreground — near black ink */
+  --foreground-50: 0.980 0.003 240;
+  --foreground-100: 0.940 0.004 240;
+  --foreground-200: 0.870 0.006 240;
+  --foreground-300: 0.770 0.008 240;
+  --foreground-400: 0.630 0.010 240;
+  --foreground-500: 0.500 0.012 240;
+  --foreground-600: 0.400 0.012 240;
+  --foreground-700: 0.310 0.010 240;
+  --foreground-800: 0.230 0.008 240;
+  --foreground-900: 0.160 0.006 240;
+  --foreground-950: 0.100 0.005 240;
+}
+
+html, body {
+  background-color: #F6F3EE;
+  color: oklch(var(--foreground-950));
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: var(--font-heading);
+  font-optical-sizing: auto;
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-label {
+  font-family: var(--font-label);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Honeypot hidden style */
+.field-alt-wrap {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Marquee for stat ticker */
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker {
+  animation: ticker-scroll 40s linear infinite;
+}
+
+/* Subtle fade-up */
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out both;
+}
+
+/* Mandelbrot corner decorative frames */
+.mandelbrot-frame {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@layer utilities {
+  /* Fractal card background animations */
+  .fractal-grid {
+    background-image:
+      linear-gradient(rgba(30, 58, 47, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 58, 47, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    animation: gridDrift 15s linear infinite;
+  }
+
+  .fractal-wave {
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(94, 145, 134, 0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 50%, rgba(196, 163, 90, 0.06) 0%, transparent 50%),
+      linear-gradient(135deg, #E8EDE9, #F0F3F1);
+    background-size: 200% 200%;
+    animation: waveShift 8s ease-in-out infinite;
+  }
+
+  .fractal-dots {
+    background-image: radial-gradient(rgba(30, 58, 47, 0.12) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+    animation: dotPulse 3s ease-in-out infinite;
+  }
+
+  .fractal-concentric {
+    background:
+      repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 12px, rgba(30, 58, 47, 0.04) 12px, rgba(30, 58, 47, 0.04) 13px);
+    animation: concentricExpand 12s linear infinite;
+  }
+
+  .fractal-hex {
+    background-color: #E8EDE9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%231E3A2F' fill-opacity='0.04'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-7.5L27.99 34H28v2.31h-.01L17 42.65V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: hexFloat 20s linear infinite;
+  }
+}
+
+@keyframes gridDrift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 24px 24px, 24px 24px; }
+}
+
+@keyframes waveShift {
+  0%, 100% { background-position: 0% 50%, 100% 50%, 0 0; }
+  50% { background-position: 100% 50%, 0% 50%, 0 0; }
+}
+
+@keyframes dotPulse {
+  0%, 100% { background-size: 20px 20px; opacity: 1; }
+  50% { background-size: 22px 22px; opacity: 0.8; }
+}
+
+@keyframes concentricExpand {
+  0% { background-size: 100% 100%; }
+  100% { background-size: 120% 120%; }
+}
+
+@keyframes hexFloat {
+  0% { background-position: 0 0; }
+  100% { background-position: 28px 49px; }
+}

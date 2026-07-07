@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "title": "한국 −0.221 vs 미국 −0.785 — 같은 G-T Core, 다른 결말",
+    "title_en": "Korea −0.221 vs USA −0.785 — Same G-T Core, Different Outcomes",
+    "engine": "REVERBANT v1.1",
+    "category": "REVERBANT · 한미 비교",
+    "category_en": "REVERBANT · Korea–US Comparison",
+    "date": "2026-07-03",
+    "author": "김기섭",
+    "tags": ["REVERBANT", "한국", "미국", "G-T Core", "C_internal", "비교분석"],
+    "ssrn": "",
+    "status": "published"
+  },
+  "summary_ko": "명목 G-T Core가 동일한 두 나라에서 C_internal 단 하나의 차이가 UI 지수 0.564의 격차를 만들어냈다. 소방서는 같은데 호스의 굵기가 다르다.",
+  "summary_en": "Two countries sharing the same nominal G-T Core. A single C_internal variable creates a 0.564 gap in the UI index. Same fire station, different hose diameter.",
+  "body": "<h2>1. 분석 개요</h2><p>한국과 미국은 2026년 기준 G-T Core(거버넌스-신뢰 핵심 지표)가 모두 −0.55로 동일합니다. 그러나 UI(봉기지수)는 한국 −0.221, 미국 −0.785로 0.564의 극명한 차이를 보입니다.</p><h2>2. 핵심 변수: C_internal</h2><p>한국의 C_internal = 0.72 (사회적 응집력 높음). 미국의 C_internal = 0.28 (사회적 분열 심화). 이 단 하나의 변수가 체제 안정성을 결정합니다.</p><h2>3. 함의</h2><p>같은 거버넌스 점수를 가진 두 나라가 전혀 다른 사회적 경로를 걷는 이유는 제도적 신뢰 네트워크의 밀도 차이에 있습니다.</p>"
+}

@@ -1,0 +1,17 @@
+{
+  "meta": {
+    "title": "먹고 입고 자는 것 — 139개국 서민 고통 지수 업데이트",
+    "title_en": "Food, Clothing, Shelter — 139-Country Suffering Index Update",
+    "engine": "BSLI v6.9",
+    "category": "BSLI · SSRN",
+    "category_en": "BSLI · SSRN",
+    "date": "2026-07-01",
+    "author": "김기섭",
+    "tags": ["BSLI", "기초사회생활지수", "삼중계", "139개국", "한국", "SSRN"],
+    "ssrn": "6806478",
+    "status": "published"
+  },
+  "summary_ko": "기초사회생활지수(BSLI) v6.9. 衣·食·住 삼중계로 측정한 139개국 서민의 실제 삶. 글로벌 평균 0.482. 한국은 C등급(0.463) — OECD 최하위권. 주거비 부담이 핵심 악화 요인.",
+  "summary_en": "Basic Social Life Index v6.9. Real lives of ordinary people in 139 countries measured through the triple axis of Clothing, Food, Housing. Global median 0.482. Korea Grade C (0.463) — bottom tier among OECD nations.",
+  "body": "<h2>1. BSLI란</h2><p>기초사회생활지수(Basic Social Life Index)는 개인과 가구의 기초적 삶의 수준을 衣(의류)·食(식료)·住(주거) 삼중계로 측정합니다. 1에 가까울수록 고통이 심합니다.</p><h2>2. 2026 글로벌 현황</h2><p>139개국 분석 결과 글로벌 중앙값 0.482. 북유럽 4개국 A등급(0.18~0.24), 사하라 이남 아프리카 11개국 E등급(0.81 이상) 긴급 상태.</p><h2>3. 한국 C등급 원인</h2><p>한국 BSLI 0.463으로 C등급. 衣·食 지표는 B등급 수준이나 住(주거비/소득) 지표가 0.71로 극도로 악화. 전세·월세 부담이 전체 지수를 끌어내리는 구조.</p><h2>4. H₂O 공리</h2><p>BSLI는 물(H₂O)처럼 단일 구조가 12차원에 다른 스펙트럼으로 작용합니다. 같은 경제 수준에서도 衣·食·住 배분 방식에 따라 사회 안정성이 크게 달라집니다.</p>"
+}
