@@ -7,6 +7,7 @@ import FeaturedReports from "@/pages/home/components/FeaturedReports";
 import Categories from "@/pages/home/components/Categories";
 import Papers from "@/pages/home/components/Papers";
 import About from "@/pages/home/components/About";
+import NoticeBanner from "@/pages/home/components/NoticeBanner";
 import Footer from "@/pages/home/components/Footer";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
         <Papers />
         <About />
       </main>
+      <NoticeBanner />
       <Footer />
     </div>
   );
