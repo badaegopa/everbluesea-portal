@@ -1833,6 +1833,13 @@ loadDistrict("junggu");
         }
       });
       /* 활성 구군 재로드 → 슬라이더/η 즉시 반영 */
+      /* 패치v8.4.5: ETA_BASE→DISTRICTS_ETA eta 동기화 */
+      if(window._ETA_BASE && typeof DISTRICTS_ETA !== 'undefined'){
+        Object.keys(window._ETA_BASE).forEach(k=>{
+          if(DISTRICTS_ETA[k] && window._ETA_BASE[k].eta)
+            DISTRICTS_ETA[k].eta = window._ETA_BASE[k].eta;
+        });
+      }
       const cur = window._currentDistKey || 'junggu';
       /* 패치v8.4.4: ulsan.json 갱신 후 _baseEtaOverride 동기화 */
       if(DISTRICTS_ETA[cur] && DISTRICTS_ETA[cur].eta) window._baseEtaOverride = DISTRICTS_ETA[cur].eta;
@@ -5628,6 +5635,7 @@ window.addEventListener('load', autoDetectView);
 
 </body>
 </html>
+
 
 
 
