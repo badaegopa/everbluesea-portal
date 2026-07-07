@@ -152,5 +152,18 @@ export const engineReports: Record<string, NationReport[]> = {
     },
   ],
 
-  // ※ cat-axioms(공리)·cat-feedback(피드백)은 목록형이 아니므로 이 맵에 넣지 않음
+  // A0–A12 사회구조 설계공리 — 원문·철학 문서
+  "cat-axioms": [
+    {
+      id: "axioms-reverbant-v11",
+      title: "사회구조 설계공리 A0~A12 원문 — REVERBANT v1.1 이론 정본",
+      region: "공리",
+      scope: "단독",
+      engine: "REVERBANT v1.1",
+      date: "2026-07-03",
+      htmlPath: "/engines/reverbant/REVERBANT_v1.1_final_theory.html",
+    },
+  ],
+
+  // ※ cat-feedback(피드백)은 목록형이 아니므로 이 맵에 넣지 않음
 };
