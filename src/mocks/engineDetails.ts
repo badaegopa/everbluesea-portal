@@ -100,7 +100,7 @@ export const engineDetails: Record<string, EngineDetail> = {
       "Measures the real quality of life for ordinary people that GDP cannot capture, with spatial quantification of urban-rural gaps and intergenerational inequality.",
     formulas: [
       {
-        expression: "BSLI = (W_衣·衣 + W_食·食 + W_住·住) / 3",
+        expression: "BSLI = 0.40·F_ML + 0.60·H − D − Hs",
         description: "삼중계 가중평균 — 衣·食·住 각 축의 정규화 지수 합산",
         variables: [
           { symbol: "衣", meaning: "의류 지수 — 의복 지출/소득 비율, 계절 적응성" },
@@ -110,15 +110,7 @@ export const engineDetails: Record<string, EngineDetail> = {
           { symbol: "BSLI", meaning: "0~1 정규화, 높을수록 고통 심화" },
         ],
       },
-      {
-        expression: "H₂O 공리: BSLI ≈ 액체(L) 상태 ↔ 임계점 초과 시 기체(G) 전이",
-        description: "BSLI의 물 동형 공리 — 사회 안정은 액체 상태, 위기는 기체(폭발) 상태에 대응",
-        variables: [
-          { symbol: "L(액체)", meaning: "BSLI 0.3~0.6 — 불만 존재하나 사회 유지" },
-          { symbol: "G(기체)", meaning: "BSLI 0.7+ — 임계 초과, 사회 폭발 가능" },
-          { symbol: "S(고체)", meaning: "BSLI 0.0~0.2 — 완전 안정 (북유럽 수준)" },
-        ],
-      },
+
     ],
     keyVariables: ["衣·食·住 삼중계", "139개국", "Min-Max 정규화", "H₂O 공리"],
     dataSources: [
