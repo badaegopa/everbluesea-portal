@@ -4,7 +4,7 @@ import EnginePanel from "@/pages/home/components/EnginePanel";
 import { engineDetails } from "@/mocks/engineDetails";
 import type { EngineDetail } from "@/mocks/engineDetails";
 import { mainCategories } from "@/mocks/home";
-import { nationReports } from "@/mocks/nationReports";
+import { engineReports } from "@/mocks/engineReports";
 
 export default function Categories() {
   const { t, i18n } = useTranslation();
@@ -62,7 +62,8 @@ export default function Categories() {
             const currentLabel = isKo ? cat.label : (cat.labelEn || cat.label);
             const currentFilters = isKo ? cat.subFilters : (cat.subFiltersEn || cat.subFilters);
             const currentTopics = isKo ? cat.topics : (cat.topicsEn || cat.topics);
-            const isNationalOpen = cat.id === "cat-national" && isActive;
+            const cardReports = engineReports[cat.id];
+            const isAccordionOpen = isActive && cardReports !== undefined;
             return (
               <React.Fragment key={cat.id}>
               <div
@@ -140,9 +141,9 @@ export default function Categories() {
                 </div>
               </div>
 
-              {/* 국가분석 카드 바로 아래 행 — 인라인 목록 */}
-              {isNationalOpen && (() => {
-                const filtered = nationReports
+              {/* 카드 바로 아래 행 — 엔진별 인라인 목록 (아코디언) */}
+              {isAccordionOpen && (() => {
+                const filtered = cardReports
                   .filter((r) => {
                     if (activeFilter === "전체" || activeFilter === "All") return true;
                     if (activeFilter === "단독" || activeFilter === "Standalone") return r.scope === "단독";
@@ -155,7 +156,7 @@ export default function Categories() {
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                       <div className="flex items-center gap-3 flex-wrap">
                         <span className="font-mono text-xs tracking-widest uppercase" style={{ color: "#5E9186" }}>
-                          {isKo ? `국가 분석 보고서 · ${filtered.length}편` : `National Analysis · ${filtered.length}`}
+                          {currentLabel} · {isKo ? `${filtered.length}편` : `${filtered.length}`}
                         </span>
                         <div className="flex items-center gap-1.5">
                           {(isKo ? ["전체", "권역별", "단독"] : ["All", "Regional", "Standalone"]).map((f) => (
@@ -169,10 +170,22 @@ export default function Categories() {
                           ))}
                         </div>
                       </div>
-                      <a href="/reports" className="font-mono text-xs underline" style={{ color: "#B8850E" }}>
-                        {isKo ? "전체 페이지로 보기 →" : "Open full page →"}
-                      </a>
+                      {cat.id === "cat-national" && (
+                        <a href="/reports" className="font-mono text-xs underline" style={{ color: "#B8850E" }}>
+                          {isKo ? "전체 페이지로 보기 →" : "Open full page →"}
+                        </a>
+                      )}
                     </div>
+                    {filtered.length === 0 ? (
+                      <div className="rounded-xl border px-4 py-8 text-center" style={{ borderColor: "rgba(61,107,98,0.12)" }}>
+                        <p className="font-mono text-xs tracking-widest uppercase mb-1" style={{ color: "#B8850E" }}>
+                          {isKo ? "보고서 준비 중" : "Reports in preparation"}
+                        </p>
+                        <p className="text-sm" style={{ color: "#5E9186" }}>
+                          {isKo ? "이 엔진의 분석 보고서가 곧 게재됩니다." : "Analysis reports for this engine will be published soon."}
+                        </p>
+                      </div>
+                    ) : (
                     <div className="max-h-[420px] overflow-y-auto rounded-xl border" style={{ borderColor: "rgba(61,107,98,0.12)" }}>
                       {filtered.map((r) => (
                         <a
@@ -194,6 +207,7 @@ export default function Categories() {
                         </a>
                       ))}
                     </div>
+                    )}
                   </div>
                 );
               })()}
