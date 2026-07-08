@@ -64,6 +64,9 @@ export default function Categories() {
             const currentTopics = isKo ? cat.topics : (cat.topicsEn || cat.topics);
             const cardReports = engineReports[cat.id];
             const isAccordionOpen = isActive && cardReports !== undefined;
+            // 실제 게재된 게시물 수 — engineReports 배열 길이를 우선 사용하고,
+            // cat-feedback처럼 목록형이 아니어서 engineReports에 없는 카테고리만 home.ts의 count로 대체
+            const liveCount = cardReports !== undefined ? cardReports.length : cat.count;
             return (
               <React.Fragment key={cat.id}>
               <div
@@ -101,7 +104,7 @@ export default function Categories() {
                         </button>
                       )}
                       <span className="text-xs font-mono text-white/80 bg-white/15 px-2 py-0.5 rounded-full whitespace-nowrap">
-                        {cat.count}{isKo ? "건" : ""}
+                        {liveCount}{isKo ? "건" : ""}
                       </span>
                     </div>
                   </div>
