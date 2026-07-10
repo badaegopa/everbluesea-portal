@@ -38,4 +38,5 @@ export const nationReports: NationReport[] = [
   { id: "v1-0-southeast-asia-1-20260428", title: "Λ¹² 동남아 신흥3국 비교편 — 말레이시아·인도네시아·베트남", region: "동남아시아", scope: "권역별", engine: "Λ¹²v1.0", date: "2026-04-28", htmlPath: "/nations/southeast-asia/v1.0_southeast-asia-1_20260428.html" },
   { id: "v1-0-southeast-asia-2-20260428", title: "Λ¹² 동남아 비교편 II — 필리핀·캄보디아·태국", region: "동남아시아", scope: "권역별", engine: "Λ¹²v1.0", date: "2026-04-28", htmlPath: "/nations/southeast-asia/v1.0_southeast-asia-2_20260428.html" },
   { id: "v9-12-cambodia-20260502", title: "캄보디아 단독편", region: "동남아시아", scope: "단독", engine: "Λ¹²v9.12", date: "2026-05-02", htmlPath: "/nations/southeast-asia/v9.12_cambodia_20260502.html" },
+  { id: "Lambda12-Validation-Report-v2-20260711", title: "Λ¹² 실증 검증 보고서 v2.0 — UN 193개국 WTO 모천 데이터 기반", region: "글로벌", scope: "권역별", engine: "Λ¹²v9.8", date: "2026-07-11", htmlPath: "/engines/lambda12/Lambda12_Validation_Report_v2_20260711.html" },
 ];
