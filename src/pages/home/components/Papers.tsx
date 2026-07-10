@@ -87,19 +87,22 @@ export default function Papers() {
     {
       id: "01",
       title: "A Triple-Coordinate Framework for Social Dynamics: BRI, SSI, and GPI Derived from Chaos Theory, Attractor Dynamics, and Fractal Self-Similarity",
+      titleKo: "사회 역학을 위한 삼좌표 프레임워크: 혼돈 이론, 끌어당김자 역학, 프랙탈 자기 유사성에서 도출된 BRI, SSI, GPI",
       badge: "SSRN 6509200",
       href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6509200",
     },
     {
       id: "02",
       title: "The \u039b\u00b9\u00b2 National Sociodynamic Index: A 12-Dimensional Attractor Model for Societal Phase-Space Analysis with SEISMOS Empirical Validation",
+      titleKo: "\ub78c\ub2e4-12 (\u039b\u00b9\u00b2) \uc0ac\ud68c \uc5ed\ud559 \ud504\ub808\uc784\uc6cc\ud06c: SEISMOS \uacbd\ud5d8\uc801 \uac80\uc99d\uc744 \ud1b5\ud55c \uc0ac\ud68c\uc801 \uc704\uc0c1-\uacf5\uac04 \ubd84\uc11d\uc744 \uc704\ud55c 12\ucc28\uc6d0 \ub05d\uc5b4\ub2f9\uae30 \ubaa8\ub378",
       badge: "SSRN 6632858",
       href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6632858",
     },
     {
       id: "03",
       title: "Basic Social Life Index (BSLI): Framework Design and 139-Country Empirical Validation for Measuring Grassroots Living Stability",
-      badge: "심사중",
+      titleKo: "\uae30\ubcf8 \uc0ac\ud68c\uc0dd\ud65c\uc9c0\uc218(BSLI): \ud48c\ub8e8\ub4e0 \uacc4\uce35 \uc0dd\ud65c \uc548\uc815\uc131 \uce21\uc815\uc744 \uc704\ud55c \ud504\ub808\uc784\uc6cc\ud06c \uc124\uacc4 \ubc0f 139\uac1c\uad6d \uc2e4\uc99d \uac80\uc99d",
+      badge: "\uc2ec\uc0ac\uc911",
       href: null,
     },
   ];
@@ -134,8 +137,15 @@ export default function Papers() {
                   <span className="font-mono text-sm md:text-base text-foreground-400 pt-0.5 flex-shrink-0 w-8">
                     {paper.id}
                   </span>
-                  <span className="text-base md:text-lg leading-relaxed flex-1 text-foreground-900 group-hover:text-primary-800 transition">
-                    {paper.title}
+                  <span className="flex-1">
+                    <span className="block text-base md:text-lg leading-relaxed text-foreground-900 group-hover:text-primary-800 transition">
+                      {paper.title}
+                    </span>
+                    {paper.titleKo && (
+                      <span className="block text-sm leading-relaxed text-foreground-500 mt-1 font-light">
+                        {paper.titleKo}
+                      </span>
+                    )}
                   </span>
                   <div className="flex items-center gap-2 flex-shrink-0">
                     {paper.href && (
