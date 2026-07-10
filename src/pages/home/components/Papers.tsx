@@ -99,21 +99,8 @@ export default function Papers() {
     {
       id: "03",
       title: "Basic Social Life Index (BSLI): Framework Design and 139-Country Empirical Validation for Measuring Grassroots Living Stability",
-      badge: "SSRN 7033138",
-      href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7033138",
-      note: "Under Review",
-    },
-    {
-      id: "04",
-      title: "REVERBANT v1.1: Dynamic Social Perturbation Response Engine — Axioms A0~A12",
-      badge: "준비중",
+      badge: "심사중",
       href: null,
-    },
-    {
-      id: "05",
-      title: "Uprising Index (UI): A Sociodynamic Instability Measurement Framework",
-      badge: "SSRN 7033138",
-      href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7033138",
     },
   ];
 
