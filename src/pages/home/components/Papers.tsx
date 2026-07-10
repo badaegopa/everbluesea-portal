@@ -94,14 +94,14 @@ export default function Papers() {
     {
       id: "02",
       title: "The \u039b\u00b9\u00b2 National Sociodynamic Index: A 12-Dimensional Attractor Model for Societal Phase-Space Analysis with SEISMOS Empirical Validation",
-      titleKo: "\ub78c\ub2e4-12 (\u039b\u00b9\u00b2) \uc0ac\ud68c \uc5ed\ud559 \ud504\ub808\uc784\uc6cc\ud06c: SEISMOS \uacbd\ud5d8\uc801 \uac80\uc99d\uc744 \ud1b5\ud55c \uc0ac\ud68c\uc801 \uc704\uc0c1-\uacf5\uac04 \ubd84\uc11d\uc744 \uc704\ud55c 12\ucc28\uc6d0 \ub05d\uc5b4\ub2f9\uae30 \ubaa8\ub378",
+      titleKo: "람다-12 (Λ¹²) 사회 역학 프레임워크: SEISMOS 공공데이터를 통한 사회적 위상-공간 분석을 위한 12차원 섭동 모델",
       badge: "SSRN 6632858",
       href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6632858",
     },
     {
       id: "03",
       title: "Basic Social Life Index (BSLI): Framework Design and 139-Country Empirical Validation for Measuring Grassroots Living Stability",
-      titleKo: "\uae30\ubcf8 \uc0ac\ud68c\uc0dd\ud65c\uc9c0\uc218(BSLI): \ud48c\ub8e8\ub4e0 \uacc4\uce35 \uc0dd\ud65c \uc548\uc815\uc131 \uce21\uc815\uc744 \uc704\ud55c \ud504\ub808\uc784\uc6cc\ud06c \uc124\uacc4 \ubc0f 139\uac1c\uad6d \uc2e4\uc99d \uac80\uc99d",
+      titleKo: "기본 사회생활지수(BSLI): 풀뿌리 계층 생활 안정성 측정을 위한 프레임워크 설계 및 139개국 실증 검증",
       badge: "\uc2ec\uc0ac\uc911",
       href: null,
     },
