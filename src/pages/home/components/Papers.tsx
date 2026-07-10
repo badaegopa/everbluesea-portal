@@ -98,9 +98,10 @@ export default function Papers() {
     },
     {
       id: "03",
-      title: "Basic Social Life Index (BSLI) v6.9: A Macro Perturbation Vector of Societal Suffering",
-      badge: "SSRN 6806478",
-      href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6806478",
+      title: "Basic Social Life Index (BSLI): Framework Design and 139-Country Empirical Validation for Measuring Grassroots Living Stability",
+      badge: "SSRN 7033138",
+      href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7033138",
+      note: "Under Review",
     },
     {
       id: "04",
