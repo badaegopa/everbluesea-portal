@@ -87,7 +87,7 @@ export default function Papers() {
     {
       id: "01",
       title: "A Triple-Coordinate Framework for Social Dynamics: BRI, SSI, and GPI Derived from Chaos Theory, Attractor Dynamics, and Fractal Self-Similarity",
-      titleKo: "사회 역학을 위한 삼좌표 프레임워크: 혼돈 이론, 끌어당김자 역학, 프랙탈 자기 유사성에서 도출된 BRI, SSI, GPI",
+      titleKo: "사회 역학을 위한 삼좌표 프레임워크: 혼돈 이론, 끌개 역학, 프랙탈 자기 유사성에서 도출된 BRI, SSI, GPI",
       badge: "SSRN 6509200",
       href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6509200",
     },
