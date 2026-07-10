@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+﻿import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
 function GiscusPanel({ paperId, paperTitle }: { paperId: string; paperTitle: string }) {
@@ -86,24 +86,30 @@ export default function Papers() {
   const papers = [
     {
       id: "01",
-      title: "The Λ¹² National Sociodynamic Index: A 12-Dimensional Framework",
+      title: "A Triple-Coordinate Framework for Social Dynamics: BRI, SSI, and GPI Derived from Chaos Theory, Attractor Dynamics, and Fractal Self-Similarity",
+      badge: "SSRN 6509200",
+      href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6509200",
+    },
+    {
+      id: "02",
+      title: "The \u039b\u00b9\u00b2 National Sociodynamic Index: A 12-Dimensional Attractor Model for Societal Phase-Space Analysis with SEISMOS Empirical Validation",
       badge: "SSRN 6632858",
       href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6632858",
     },
     {
-      id: "02",
+      id: "03",
       title: "Basic Social Life Index (BSLI) v6.9: A Macro Perturbation Vector of Societal Suffering",
       badge: "SSRN 6806478",
       href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6806478",
     },
     {
-      id: "03",
+      id: "04",
       title: "REVERBANT v1.1: Dynamic Social Perturbation Response Engine — Axioms A0~A12",
       badge: "준비중",
       href: null,
     },
     {
-      id: "04",
+      id: "05",
       title: "Uprising Index (UI): A Sociodynamic Instability Measurement Framework",
       badge: "SSRN 7033138",
       href: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7033138",
