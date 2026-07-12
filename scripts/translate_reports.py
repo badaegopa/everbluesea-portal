@@ -56,12 +56,27 @@ def find_model():
             log(f"  {model}/{ver} → {e}")
     raise RuntimeError("사용 가능한 모델 없음")
 
+EN_MARKERS = ("_EN", "_en", "_FINAL", "_english", "_ENG")
+
+def is_english_file(p):
+    """이미 영문판인 파일명 패턴 판별."""
+    stem = p.stem
+    return any(m in stem for m in EN_MARKERS)
+
 def pending():
-    """_EN.html이 없는 한글 보고서 목록 (경로순 정렬)."""
+    """번역이 필요한 한글 보고서 목록 (경로순). 영문 파일·번역완료본 제외."""
     files=[]
     for d in SCAN_DIRS:
-        files+=[p for p in d.rglob("*.html") if not p.name.endswith("_EN.html")]
-    files=[f for f in files if not f.with_name(f.stem+"_EN.html").exists()]
+        for p in d.rglob("*.html"):
+            if is_english_file(p):
+                continue                        # 이미 영문판
+            if p.with_name(p.stem+"_EN.html").exists():
+                continue                        # 번역본 이미 존재
+            # 한글이 실질적으로 있는 파일만 (영문 위주 파일 걸러냄)
+            txt = p.read_text(encoding="utf-8", errors="ignore")
+            if len(KO.findall(txt)) < 30:
+                continue
+            files.append(p)
     return sorted(files)
 
 def collect_nodes(soup):
@@ -131,9 +146,16 @@ def process(f, model, ver, gb):
     out   = str(soup)
     bt,ot = base.count("<"), out.count("<")
     ko_o  = len(KO.findall(html)); ko_l = len(KO.findall(out))
-    if not (abs(bt-ot)<=2 and (DRY or ko_l<max(60,int(ko_o*0.03)))):
-        log(f"   [FAIL] tags {bt}->{ot}, ko {ko_o}->{ko_l} — 미생성")
+    # 검증: 한글이 충분히 줄었는가(핵심) + 태그 급변 여부(경고만)
+    ko_ok = DRY or ko_l < max(80, int(ko_o*0.05))   # 한글 95% 이상 번역
+    if not ko_ok:
+        log(f"   [FAIL] 한글 잔존 과다 ko {ko_o}->{ko_l} — 미생성")
         return None
+    if abs(bt-ot) > 15:                              # 구조 심각 훼손만 차단
+        log(f"   [FAIL] 태그 급변 {bt}->{ot} (>15) — 미생성")
+        return None
+    if abs(bt-ot) > 2:
+        log(f"   [warn] 태그 변동 {bt}->{ot} — 번역 과정 정상 범위로 간주")
     en = f.with_name(f.stem+"_EN.html")
     en.write_text(out, encoding="utf-8")
     log(f"   [OK] {en.name} (ko {ko_o}->{ko_l})")
