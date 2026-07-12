@@ -14,7 +14,7 @@ MANIFEST = ROOT / "public/translations.json"
 GLOSSARY = ROOT / "translation/glossary.json"
 KO = re.compile(r"[가-힣]")
 SKIP_PARENTS = {"script", "style", "code"}
-MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+MODEL = os.environ.get("GEMINI_MODEL", "gemini-1.5-flash")
 DRY = "--dry" in sys.argv
 MODE = "all" if "--all" in sys.argv else "changed"
 
