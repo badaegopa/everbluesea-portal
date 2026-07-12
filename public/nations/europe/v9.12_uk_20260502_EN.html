@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>UK Special Edition — Λ¹²v9.12 | Everblue Sea Institute for Social Dynamics</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F5F3EE; color:#2C2C2C; font-family:Georgia,'Times New Roman',serif; line-height:1.75; }
+.header { background:linear-gradient(135deg,#2C1A4A 0%,#4A2C6B 40%,#1A0F2E 100%); padding:48px 40px 36px; position:relative; overflow:hidden; }
+.header::before { content:'裂'; position:absolute; right:40px; top:10px; font-size:160px; color:rgba(255,255,255,0.06); font-family:Georgia,serif; font-weight:bold; line-height:1; }
+.header-badge { display:inline-block; background:rgba(255,255,255,0.18); color:#fff; font-family:'Courier New',monospace; font-size:11px; padding:4px 12px; border-radius:2px; letter-spacing:1.5px; margin-bottom:16px; }
+.header h1 { color:#fff; font-size:30px; font-weight:normal; margin-bottom:6px; }
+.header h2 { color:rgba(255,255,255,0.85); font-size:15px; font-weight:normal; }
+.header-meta { margin-top:20px; color:rgba(255,255,255,0.65); font-family:'Courier New',monospace; font-size:11px; letter-spacing:1px; }
+.engine-box { background:#fff; border-left:4px solid #B8850E; padding:14px 20px; margin:24px 40px; font-family:'Courier New',monospace; font-size:12px; color:#595959; }
+.engine-box strong { color:#B8850E; }
+.section { padding:32px 40px; border-bottom:1px solid #DDD8CE; }
+.section-title { font-size:13px; font-family:'Courier New',monospace; color:#2C1A4A; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
+.section h3 { font-size:20px; color:#1F1F1F; font-weight:normal; margin-bottom:14px; }
+.section p { font-size:14px; color:#3A3A3A; margin-bottom:10px; text-align:justify; }
+.minjung-box { background:#F0EBF8; border-left:4px solid #4A2C6B; padding:20px 24px; margin:14px 0; border-radius:2px; }
+.minjung-box p { font-size:14px; color:#1A0A2A; line-height:1.85; margin-bottom:8px; }
+.term-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+.term-item { background:#fff; border:1px solid #DDD8CE; padding:12px 14px; border-radius:2px; }
+.term-item .term-key { font-family:'Courier New',monospace; font-size:12px; color:#2C1A4A; font-weight:bold; margin-bottom:4px; }
+.term-item .term-val { font-size:12px; color:#444; }
+.data-table-wrap { margin:16px 0; overflow-x:auto; }
+.data-table { width:100%; border-collapse:collapse; font-size:13px; }
+.data-table th { background:#2C1A4A; color:#fff; padding:10px 14px; text-align:center; font-family:'Courier New',monospace; font-size:11px; font-weight:normal; }
+.data-table th:first-child { text-align:left; }
+.data-table td { padding:9px 14px; border-bottom:1px solid #EEE; text-align:center; font-family:'Courier New',monospace; font-size:12px; }
+.data-table td:first-child { text-align:left; font-family:Georgia,serif; font-size:13px; }
+.data-table tr:nth-child(even) td { background:#F5F3EE; }
+.formula-box { background:#fff; border:1px solid #DDD8CE; border-top:3px solid #2C1A4A; padding:20px 24px; margin:16px 0; }
+.formula-box .formula-title { font-family:'Courier New',monospace; font-size:11px; color:#2C1A4A; letter-spacing:2px; margin-bottom:12px; }
+.formula-box .formula-eq { font-family:'Courier New',monospace; font-size:13px; color:#1F1F1F; background:#F5F3EE; padding:12px 16px; border-radius:2px; margin:8px 0; line-height:1.6; }
+.formula-box .formula-note { font-size:12px; color:#666; margin-top:8px; }
+.svg-wrap { text-align:center; margin:16px 0; }
+.obs-note { background:#F0EBF8; border:1px solid #C5B5D5; border-radius:3px; padding:14px 18px; margin:14px 0; font-size:13px; color:#1A0A2A; line-height:1.7; }
+.obs-note::before { content:'◈ 관찰 신호'; display:block; font-family:'Courier New',monospace; font-size:10px; color:#2C1A4A; letter-spacing:1px; margin-bottom:6px; }
+.ppr-card { background:#fff; border:1px solid #DDD8CE; border-radius:3px; overflow:hidden; margin-bottom:14px; }
+.ppr-head { background:#2C1A4A; color:#fff; font-size:12px; font-family:'Courier New',monospace; padding:8px 14px; letter-spacing:1px; }
+.ppr-body { padding:14px; }
+.ppr-row { display:flex; justify-content:space-between; font-size:12px; padding:4px 0; border-bottom:1px solid #F0EDE8; }
+.ppr-row:last-child { border-bottom:none; }
+.ppr-key { color:#666; }
+.ppr-val { font-family:'Courier New',monospace; font-weight:bold; color:#2C1A4A; }
+.discourse-layer { display:grid; grid-template-columns:130px 1fr; gap:0; margin-bottom:2px; }
+.layer-num { background:#2C1A4A; color:#fff; font-family:'Courier New',monospace; font-size:11px; padding:12px 14px; display:flex; align-items:center; }
+.layer-content { background:#fff; border:1px solid #DDD8CE; border-left:none; padding:12px 18px; font-size:13px; color:#2C2C2C; line-height:1.7; }
+.layer-content strong { color:#2C1A4A; }
+.signal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+.signal-card { background:#fff; border:1px solid #DDD8CE; padding:14px; border-radius:2px; text-align:center; }
+.signal-card .sig-label { font-size:11px; color:#888; font-family:'Courier New',monospace; margin-bottom:4px; }
+.signal-card .sig-val { font-size:16px; font-family:'Courier New',monospace; font-weight:bold; color:#2C1A4A; }
+.signal-card .sig-note { font-size:10px; color:#666; margin-top:4px; }
+.class-bar { margin:14px 0; }
+.class-row { display:grid; grid-template-columns:100px 1fr 60px; gap:8px; align-items:center; margin-bottom:6px; }
+.class-label { font-size:12px; color:#444; text-align:right; }
+.class-track { background:#EEE; border-radius:2px; height:20px; overflow:hidden; }
+.class-fill { height:100%; border-radius:2px; }
+.class-val { font-family:'Courier New',monospace; font-size:11px; color:#333; }
+.conclusion { background:#F0EBF8; border-left:4px solid #4A2C6B; padding:24px 32px; margin:20px 40px; border-radius:2px; }
+.conclusion p { font-size:15px; line-height:1.95; color:#1F1F1F; text-align:justify; margin-bottom:12px; }
+.conclusion p:last-child { margin-bottom:0; }
+.series-box { background:#fff; border:1px solid #DDD8CE; margin:20px 40px; padding:20px; }
+.series-title { font-family:'Courier New',monospace; font-size:11px; color:#2C1A4A; letter-spacing:2px; margin-bottom:12px; }
+.series-item { display:flex; gap:12px; padding:6px 0; border-bottom:1px solid #F0EDE8; font-size:12px; }
+.series-item:last-child { border-bottom:none; }
+.series-num { font-family:'Courier New',monospace; color:#B8850E; min-width:40px; }
+.series-status { margin-left:auto; font-family:'Courier New',monospace; font-size:10px; padding:2px 8px; border-radius:2px; }
+.status-done { background:#E8F4F0; color:#27500A; }
+.status-now { background:#F0EBF8; color:#2C1A4A; }
+.footer { background:#EDE8F5; padding:28px 40px; text-align:center; border-top:1px solid #DDD8CE; }
+.footer p { font-size:12px; color:#2C1A4A; margin-bottom:4px; font-family:'Courier New',monospace; }
+.footer a { color:#4A2C6B; text-decoration:none; }
+.footer .engine-tag { margin-top:10px; font-size:10px; color:#888; letter-spacing:1px; }
+@media(max-width:768px){ .section,.engine-box,.conclusion,.series-box,.footer{padding-left:16px;padding-right:16px;margin-left:0;margin-right:0;} .header{padding:32px 16px 24px;} .term-grid,.signal-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="header">
+<div class="header-badge">UK STANDALONE · #E-04 · Λ¹²v9.12</div>
+<h1>🇬🇧 UK Special Edition</h1>
+<h2>Election Won with 33.7% — Triple Fault Line of Class, Generation, and Region Post-Brexit</h2>
+<div class="header-meta">Everblue Sea Institute for Social Dynamics · Based on Λ¹²v9.12 Engine · Date of Issue 2026.05.02</div>
+</div>
+<div class="engine-box">
+<strong>ENGINE:</strong> Λ¹²v9.12 | Including ADI §31 | Based on SSRN 6632858<br/>
+<strong>Special Notes:</strong> Largest majority with the lowest vote share in history (33.7%) / Continuing aftermath of Brexit / Worst-ever NHS crisis<br/>
+<strong>Calibration Formula:</strong> Λ¹²_corrected = Λ¹²_raw ÷ OLI × (1−TBI×θ) × (1−ADI×γ) × exp(−k×t) | OLI=0.83
+</div>
+<div class="section">
+<div class="section-title">Research Objectives</div>
+<h3>This report records the reality of 67 million British people from an observer's standpoint.</h3>
+<div class="minjung-box">
+<p>July 4, 2024. Labour's Keir Starmer took power with the largest number of seats since 1832. However, the vote share was 33.7% — the lowest in history for a majority government since the introduction of universal suffrage. An overwhelming majority of seats, but the lowest public support in history.</p>
+<p>This paradox is the current coordinate of the UK. The fault lines of class, generation, and region torn apart by Brexit, the worst NHS waiting list in history, GDP costs post-Brexit, and the rise of Reform UK. Λ¹² reads how these fault lines are connected.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§0 · Glossary</div>
+<div class="term-grid">
+<div class="term-item"><div class="term-key">Starmer (Keir Starmer)</div><div class="term-val">Assumed office as Prime Minister in July 2024. Ended 14 years of Conservative rule. Labour's 'minimal social democracy' line. Took power with 33.7% vote share and 59.7% voter turnout.</div></div>
+<div class="term-item"><div class="term-key">Brexit Aftermath</div><div class="term-val">Accumulated economic costs after the 2016 referendum. UK GDP grew at half the rate of the US from 2008 to 2024. Real GDP per capita was -2% (US +70% over the same period).</div></div>
+<div class="term-item"><div class="term-key">NHS Crisis</div><div class="term-val">Failed to meet all targets since 2016. Waiting list reached an all-time high. Emergency, cancer, and elective care all failed to meet standards. Starmer: "No money without reform."</div></div>
+<div class="term-item"><div class="term-key">Reform UK</div><div class="term-val">Far-right populist party led by Nigel Farage. Won 14.3% of the vote and 5 seats in 2024. Expected to make a huge leap in the 2025 local elections. A key signal for DCI.</div></div>
+<div class="term-item"><div class="term-key">Triple Fault Line</div><div class="term-val">Class fault line (separation of working class and middle class), generational fault line (youth housing crisis and elderly assets), regional fault line (London and Northern England). Cause of the combined rise in DCI and CFD.</div></div>
+<div class="term-item"><div class="term-key">£2 Billion Fiscal Hole</div><div class="term-val">Fiscal deficit inherited by the Starmer government. Tension in the bond market. Debt interest exceeds 8% of public spending. IMF warning.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅰ · Observer Standpoint</div>
+<h3>Overwhelming Seats + Minimal Support — A Giant Government on a Fragile Foundation</h3>
+<p>Labour won 411 seats. The Conservatives collapsed to 121 seats. However, this seat map is not a map of actual public sentiment — the UK's first-past-the-post system translated 33.7% support into 65% of the seats. Starmer took power not due to a strong public mandate, but because of the collapse of the Conservatives.</p>
+<div class="signal-grid">
+<div class="signal-card"><div class="sig-label">Starmer's Vote Share</div><div class="sig-val">33.7%</div><div class="sig-note">Lowest Majority Party Since Universal Suffrage</div></div>
+<div class="signal-card"><div class="sig-label">UK GDP per Capita Trend</div><div class="sig-val">-2%</div><div class="sig-note">2008–2024 / US is +70%</div></div>
+<div class="signal-card"><div class="sig-label">Conservative Prime Ministers over 8 Years</div><div class="sig-val">5</div><div class="sig-note">Political Chaos from Brexit to 2024</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅱ · Triple Fault Line of Class, Generation, and Region</div>
+<div class="class-bar">
+<div style="font-family:'Courier New',monospace;font-size:11px;color:#2C1A4A;margin-bottom:10px;letter-spacing:1px;">CFD Decomposition — Fault Line Structure of British Society</div>
+<div class="class-row"><div class="class-label">Class Fault Line</div><div class="class-track"><div class="class-fill" style="width:82%;background:#2C1A4A;"></div></div><div class="class-val">0.82</div></div>
+<div class="class-row"><div class="class-label">Generational Fault Line</div><div class="class-track"><div class="class-fill" style="width:78%;background:#4A2C6B;"></div></div><div class="class-val">0.78</div></div>
+<div class="class-row"><div class="class-label">Regional Fault Line</div><div class="class-track"><div class="class-fill" style="width:75%;background:#6B4A8A;"></div></div><div class="class-val">0.75</div></div>
+<div class="class-row"><div class="class-label">Remaining Brexit Legacy</div><div class="class-track"><div class="class-fill" style="width:68%;background:#8A6AAA;"></div></div><div class="class-val">0.68</div></div>
+</div>
+<div class="obs-note">The singularity of the UK's CFD — the core is not immigration or racial conflict, but the class and generational divisions created by Brexit. The Brexit vote was split precisely along class (working-class Leave, professional-class Remain), generational (elderly Leave, youth Remain), and regional (Northern England Leave, London Remain) fault lines. This fault line is currently leading to the rise of Reform UK.</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅲ · Basic Statistics</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Indicator</th><th>Value</th><th>Remarks</th><th>Source</th></tr>
+<tr><td>Population</td><td>Approx. 67 Million</td><td>Continuous Immigration Inflow</td><td>ONS 2024</td></tr>
+<tr><td>GDP per capita</td><td>USD ~49,000</td><td>Approx. 65% of the US</td><td>IMF 2024</td></tr>
+<tr><td>GDP Growth Rate</td><td>~0.9% (2024)</td><td>Among the Lowest in Major Countries</td><td>ONS</td></tr>
+<tr><td>Freedom House</td><td>93/100 (Free)</td><td>Stable</td><td>FH 2025</td></tr>
+<tr><td>NHS Waiting List</td><td>All-Time High</td><td>Failed to Meet Targets Since 2016</td><td>NHS England</td></tr>
+<tr><td>Reform UK Vote Share</td><td>14.3% (2024)</td><td>Rise of Far-Right Populism</td><td>BBC</td></tr>
+<tr><td>Debt Interest/Spending</td><td>Over 8%</td><td>Fiscal Year 2024–25</td><td>OBR</td></tr>
+<tr><td>Fiscal Hole</td><td>£20 Billion</td><td>Inherited by Starmer Government</td><td>HM Treasury</td></tr>
+</table>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅳ · Basic Coordinates and Formulas</div>
+<div class="formula-box">
+<div class="formula-title">ΛSCORE FORMULA — UK</div>
+<div class="formula-eq">Λ¹²_corrected = Λ¹²_raw ÷ 0.83 × (1 − 0.480 × 0.70) × (1 − 0.368 × 0.35) × exp(−k×t)</div>
+<div class="formula-eq">TBI Calibration Term: (1 − 0.480 × 0.70) = (1 − 0.336) = 0.664 [Brexit + Colonial History Complex]</div>
+<div class="formula-eq">ADI Calibration Term: (1 − 0.368 × 0.35) = (1 − 0.129) = 0.871</div>
+<div class="formula-note">※ The core of the UK's TBI lies in two aspects: ① The 'ongoing trauma' of social division created by Brexit ② A narrative without the liquidation of imperialist history — the BLM and the Cecil Rhodes statue removal debates are manifestations of this. CFD 0.75 is composed of class, generational, and regional fault lines, rather than ethnic or racial ones.</div>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Variable</th><th>Value</th><th>Classification</th><th>Remarks</th></tr>
+<tr><td>LPI</td><td>0.72</td><td>Attention</td><td>Continuing Cost of Living Crisis</td></tr>
+<tr><td>GPI</td><td>~34th</td><td>Stable</td><td>Nuclear-Armed State / NATO</td></tr>
+<tr><td>CPI</td><td>71/100</td><td>Attention</td><td>Relatively Stable</td></tr>
+<tr><td>CFD</td><td>0.75</td><td>Risk</td><td>Class, Generational, and Regional Triple</td></tr>
+<tr><td>DCI</td><td>0.65</td><td>Risk</td><td>Reform UK Generational Disconnect</td></tr>
+<tr><td>MFI</td><td>~24th</td><td>Stable</td><td>Independent Media Intact</td></tr>
+<tr><td>RHC</td><td>0.580</td><td>Attention</td><td>Debt of Imperialist History</td></tr>
+<tr><td>IGI</td><td>0.45</td><td>Attention</td><td>Institutions Relatively Intact</td></tr>
+<tr><td>TBI</td><td>0.480</td><td>Attention</td><td>Brexit + Colonial Complex</td></tr>
+<tr><td>ADI</td><td>0.368</td><td>Transitional</td><td>Intermediate Level</td></tr>
+</table>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅴ · Phase Quadrant</div>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 520 400" width="520" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="400" width="520"></rect>
+<rect fill="#EBF4F0" height="170" opacity="0.5" width="210" x="50" y="30"></rect>
+<rect fill="#FFF3CD" height="170" opacity="0.4" width="210" x="260" y="30"></rect>
+<rect fill="#FAEEDA" height="170" opacity="0.4" width="210" x="50" y="200"></rect>
+<rect fill="#FCEBEB" height="170" opacity="0.4" width="210" x="260" y="200"></rect>
+<line stroke="#555" stroke-width="1.5" x1="50" x2="470" y1="200" y2="200"></line>
+<line stroke="#555" stroke-width="1.5" x1="260" x2="260" y1="30" y2="370"></line>
+<text fill="#3A6A5E" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="18">High Openness</text>
+<text fill="#888" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="388">Low Openness</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,36,204)" x="36" y="204">Unstable</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,484,204)" x="484" y="204">Stable</text>
+ UK Q1 — Open and Stable (High Degree of Freedom) 
+<circle cx="168" cy="98" fill="#F0EBF8" r="24" stroke="#2C1A4A" stroke-width="2.5"></circle>
+<text font-size="18" text-anchor="middle" x="168" y="94">🇬🇧</text>
+<text fill="#2C1A4A" font-family="Courier New" font-size="11" font-weight="bold" text-anchor="middle" x="168" y="132">UK</text>
+ Instability Direction Arrow 
+<defs><marker id="ukarr" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#8B2A2A"></path></marker></defs>
+<line marker-end="url(#ukarr)" stroke="#8B2A2A" stroke-dasharray="4,2" stroke-width="1.2" x1="185" x2="250" y1="105" y2="130"></line>
+<text fill="#8B2A2A" font-family="Courier New" font-size="9" x="255" y="125">Reform UK</text>
+<text fill="#8B2A2A" font-family="Courier New" font-size="9" x="255" y="137">Pressure Direction</text>
+ Comparison Countries 
+<circle cx="148" cy="68" fill="#EEF3FF" r="14" stroke="#1B4F8A" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="148" y="66">🇩🇪</text>
+<circle cx="188" cy="68" fill="#EEF3FF" r="14" stroke="#3A5E8A" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="188" y="66">🇫🇷</text>
+<text fill="#2C1A4A" font-family="Courier New" font-size="9" x="80" y="148">Brexit Aftermath</text>
+<text fill="#2C1A4A" font-family="Courier New" font-size="9" x="80" y="160">CFD 0.75 Rise</text>
+<text fill="#2C1A4A" font-family="Courier New" font-size="9" x="80" y="172">Reform UK Pressure</text>
+</svg>
+</div>
+<div class="obs-note">The UK is in the Q1 (open and stable) range, but the upward trend of CFD 0.75 and DCI 0.65 is exerting pressure toward Q2 (open and unstable). Strong democratic institutions, reflected in Freedom House's score of 93, are absorbing this pressure — but the rapid rise of Reform UK is testing the limits of this absorption capacity.</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅵ · GPI and Brexit Cost Time Series</div>
+<div class="svg-wrap">
+<svg height="210" viewbox="0 0 600 210" width="600" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#fff" height="210" width="600"></rect>
+<line stroke="#EEE" stroke-width="1" x1="70" x2="70" y1="20" y2="180"></line>
+<line stroke="#CCC" stroke-width="1.5" x1="70" x2="570" y1="180" y2="180"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="130" y2="130"></line>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="84">High</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="62" y="134">Low</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="112" y="198">2016</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="198">2019</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="310" y="198">2022</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="440" y="198">2024</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="510" y="198">2025</text>
+ UK GDP per Capita Gap Compared to the US 
+<polyline fill="none" points="112,75 155,74 200,78 250,82 310,90 370,100 440,115 480,118 510,120" stroke="#2C1A4A" stroke-width="2.5"></polyline>
+<circle cx="510" cy="120" fill="#2C1A4A" r="4"></circle>
+<text fill="#2C1A4A" font-family="Courier New" font-size="9" x="518" y="118">GDP Gap</text>
+<!-- Reform UK -->
+<polyline fill="none" points="310,180 370,165 440,145 480,135 510,128" stroke="#CC2200" stroke-dasharray="4,2" stroke-width="2"></polyline>
+<circle cx="510" cy="128" fill="#CC2200" r="4"></circle>
+<text fill="#CC2200" font-family="Courier New" font-size="9" x="518" y="132">Reform UK</text>
+ Brexit Vertical Line 
+<line stroke="#B8850E" stroke-dasharray="3,2" stroke-width="1" x1="112" x2="112" y1="20" y2="180"></line>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="116" y="34">Brexit</text>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="116" y="46">Vote</text>
+ Starmer Vertical Line 
+<line stroke="#5E9186" stroke-dasharray="3,2" stroke-width="1" x1="440" x2="440" y1="20" y2="180"></line>
+<text fill="#5E9186" font-family="Courier New" font-size="9" x="444" y="34">Starmer</text>
+<text fill="#5E9186" font-family="Courier New" font-size="9" x="444" y="46">Took Power</text>
+<text fill="#2C1A4A" font-family="Courier New" font-size="11" text-anchor="middle" x="300" y="15">UK GDP Gap Widening &amp; Reform UK Rise Trend</text>
+</svg>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅶ · PPR — 5 Structural Blocks</div>
+<div class="ppr-card"><div class="ppr-head">PPR-1 · Politics</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Starmer's Accession to Power</span><span class="ppr-val">33.7% / Paradox of the Largest Majority Since 1832</span></div>
+<div class="ppr-row"><span class="ppr-key">Collapse of the Conservatives</span><span class="ppr-val">5 Prime Ministers in 8 Years / Outcome of Brexit Chaos</span></div>
+<div class="ppr-row"><span class="ppr-key">Reform UK</span><span class="ppr-val">14.3% 5 Seats / Huge Leap Expected in the 2025 Local Elections</span></div>
+<div class="ppr-row"><span class="ppr-key">Angela Rayner</span><span class="ppr-val">Resigned in Sep 2025 Due to Tax Scandal / Initial Blow</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-2 · Economy</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">GDP Growth</span><span class="ppr-val">~0.9% / Lowest Range Among Major Countries</span></div>
+<div class="ppr-row"><span class="ppr-key">Brexit Costs</span><span class="ppr-val">Estimated 4% Long-Term GDP Loss</span></div>
+<div class="ppr-row"><span class="ppr-key">£20 Billion Hole</span><span class="ppr-val">Inherited by Starmer / Debt Interest Spending 8%+</span></div>
+<div class="ppr-row"><span class="ppr-key">Cost of Living Crisis</span><span class="ppr-val">Continuous Surges in Housing, Energy, and Food</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-3 · Society</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">NHS</span><span class="ppr-val">Worst-Ever Waiting Times / Failed to Meet Targets Since 2016</span></div>
+<div class="ppr-row"><span class="ppr-key">Housing</span><span class="ppr-val">Plunge in Youth Homeownership / Rent Surges</span></div>
+<div class="ppr-row"><span class="ppr-key">Education Gap</span><span class="ppr-val">Vulnerable Groups 18% Lower in GCSE / Pandemic Losses</span></div>
+<div class="ppr-row"><span class="ppr-key">Immigration</span><span class="ppr-val">Net Inflow of 200k / Starmer's Policy to Reduce</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-4 · History</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.480 / Brexit + Imperial History Complex</span></div>
+<div class="ppr-row"><span class="ppr-key">BLM · Rhodes Statue Controversy</span><span class="ppr-val">Manifestation of Unresolved Colonial History</span></div>
+<div class="ppr-row"><span class="ppr-key">Brexit Division</span><span class="ppr-val">Perpetuation of Class, Generational, and Regional Fault Lines</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-5 · Geopolitics</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">EU Reset</span><span class="ppr-val">Starmer's Push to Restore EU Relations / Limited</span></div>
+<div class="ppr-row"><span class="ppr-key">NATO</span><span class="ppr-val">Defense Pledge of 2.5% of GDP / Support for Ukraine</span></div>
+<div class="ppr-row"><span class="ppr-key">Nuclear State / Permanent Member of the UN Security Council</span><span class="ppr-val">UN Security Council P5 / Strategic Assets</span></div>
+<div class="ppr-row"><span class="ppr-key">Scotland and Wales</span><span class="ppr-val">Continuing Devolution Tensions / SNP Independence Pressure</span></div>
+</div></div>
+</div>
+<div class="section">
+<div class="section-title">Ⅷ · Six-Layer Discourse</div>
+<div style="margin:14px 0;">
+<div class="discourse-layer"><div class="layer-num">Layer 1<br/>Data</div><div class="layer-content"><strong>What is visible:</strong> Freedom House 93 / GDP Growth 0.9% / GDP per capita 35% lower than the US / NHS worst-ever waiting list / Reform UK 14.3% / Starmer's vote share 33.7%. Strong democratic institutions and weak economic performance coexist.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 2<br/>Interests</div><div class="layer-content"><strong>Who benefits:</strong> The elites who led Brexit escaped EU regulations, but the economic costs were borne by the public. London's financial capital lost EU passporting but was compensated with deregulation. Reform UK converts working-class anger into anti-immigrant sentiment, using it as a political asset. Homeowning generations maintain their asset values through restrictions on housing supply.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 3<br/>Historical Patterns</div><div class="layer-content"><strong>Has this happened before:</strong> The UK's class fault line is a structure since the Industrial Revolution. When Thatcherism (1980s) dismantled northern manufacturing and replaced it with financial services, the class-regional fault line became entrenched. Brexit was the political expression of this fault line. Reform UK is the next chapter in this history.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 4<br/>Perspective Reversal</div><div class="layer-content"><strong>Looking at it from the opposite perspective:</strong> The UK's strength lies in its institutions. Freedom House score of 93, independent media, judicial independence — these absorb a great deal of pressure. The NHS crisis is simultaneously evidence of the British public's collective will not to give up on public healthcare. The fragile foundation of Starmer's 33.7% could actually serve as an incentive for reform.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 5<br/>Frame</div><div class="layer-content"><strong>Λ¹² Phase Diagnostic:</strong> The UK is in Q1 (open and stable), but the upward trend of CFD and DCI is exerting pressure toward Q2. Key variable — if Reform UK gains substantial power in the 2026 local elections, this pressure will become structured. Starmer's 33.7% base is unlikely to withstand this test. DCI 0.65 is the number of that vulnerability.</div></div>
+<div class="discourse-layer"><div class="layer-num" style="background:#3A6A5E;">Layer 6<br/>Suspension of Judgment</div><div class="layer-content" style="background:#E8F4F0;"><strong>This layer belongs to the 67 million British people.</strong> How to heal the fault lines created by Brexit — or whether to live with them unhealed. That choice lies with the British people. Λ¹² merely shows the conditions of that choice.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅸ · Conclusion Trajectory</div>
+<div class="conclusion">
+<p>The UK achieved its biggest election victory since 1945 — but stands on the most fragile foundation of public mandate. 33.7%. This is not Starmer's strength, but the collapse of the Conservatives.</p>
+<p>What CFD 0.75 says — Brexit was not a simple policy decision. It was the expression of 40 years of accumulated anger over class, generation, and region in the ballot box. That anger has not yet been resolved. The NHS is still waiting, housing is still expensive, and Northern England is still left behind.</p>
+<p>Reform UK 14.3%. This is the next signal. The 2026 local elections will be the next threshold. Because it is a country with strong democratic institutions — this anger will be expressed within the system. That is both the UK's strength and the reason why Starmer must respond.</p>
+</div>
+</div>
+<div class="section">
+<div class="series-box">
+<div class="series-title">Special Edition Series Completed — Λ¹²v9.12</div>
+<div class="series-item"><span class="series-num">C-01</span><span>Cambodia Special Edition v1.0</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">E-01</span><span>Bosnia Special Edition v1.0</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">E-02</span><span>Hungary Special Edition v1.0</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">E-03</span><span>Greece Special Edition v1.0</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">E-04</span><span>UK Special Edition v1.0 (Current)</span><span class="series-status status-now">Completed</span></div>
+</div>
+</div>
+<div class="footer">
+<p>Everblue Sea Institute for Social Dynamics</p>
+<p>Director Cheonghae (淸海) · Claude (Anthropic) Research Partner</p>
+<p><a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · <a href="https://everbluesea.org">everbluesea.org</a> · contact@everbluesea.org</p>
+<div class="engine-tag">Engine: Λ¹²v9.12 | ADI §31 | SSRN 6632858 | uk_lambda12_v912_20260502.html</div>
+</div>
+</body>
+</html>

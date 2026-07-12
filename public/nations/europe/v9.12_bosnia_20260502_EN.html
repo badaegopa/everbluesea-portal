@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bosnia Special Edition — Λ¹²v9.12 | Everblue Sea Institute for Social Dynamics</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F5F3EE; color:#2C2C2C; font-family:Georgia,'Times New Roman',serif; line-height:1.75; }
+.header { background:linear-gradient(135deg,#1A3A5C 0%,#2A5A8C 50%,#0F2A4A 100%); padding:48px 40px 36px; position:relative; overflow:hidden; }
+.header::before { content:'分'; position:absolute; right:40px; top:10px; font-size:160px; color:rgba(255,255,255,0.06); font-family:Georgia,serif; font-weight:bold; line-height:1; }
+.header-badge { display:inline-block; background:rgba(255,255,255,0.18); color:#fff; font-family:'Courier New',monospace; font-size:11px; padding:4px 12px; border-radius:2px; letter-spacing:1.5px; margin-bottom:16px; }
+.header h1 { color:#fff; font-size:30px; font-weight:normal; margin-bottom:6px; }
+.header h2 { color:rgba(255,255,255,0.85); font-size:15px; font-weight:normal; }
+.header-meta { margin-top:20px; color:rgba(255,255,255,0.65); font-family:'Courier New',monospace; font-size:11px; letter-spacing:1px; }
+.engine-box { background:#fff; border-left:4px solid #B8850E; padding:14px 20px; margin:24px 40px; font-family:'Courier New',monospace; font-size:12px; color:#595959; }
+.engine-box strong { color:#B8850E; }
+.section { padding:32px 40px; border-bottom:1px solid #DDD8CE; }
+.section-title { font-size:13px; font-family:'Courier New',monospace; color:#1A3A5C; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
+.section h3 { font-size:20px; color:#1F1F1F; font-weight:normal; margin-bottom:14px; }
+.section p { font-size:14px; color:#3A3A3A; margin-bottom:10px; text-align:justify; }
+.minjung-box { background:#EEF3F8; border-left:4px solid #2A5A8C; padding:20px 24px; margin:14px 0; border-radius:2px; }
+.minjung-box p { font-size:14px; color:#1A2A3A; line-height:1.85; margin-bottom:8px; }
+.term-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+.term-item { background:#fff; border:1px solid #DDD8CE; padding:12px 14px; border-radius:2px; }
+.term-item .term-key { font-family:'Courier New',monospace; font-size:12px; color:#1A3A5C; font-weight:bold; margin-bottom:4px; }
+.term-item .term-val { font-size:12px; color:#444; }
+.data-table-wrap { margin:16px 0; overflow-x:auto; }
+.data-table { width:100%; border-collapse:collapse; font-size:13px; }
+.data-table th { background:#1A3A5C; color:#fff; padding:10px 14px; text-align:center; font-family:'Courier New',monospace; font-size:11px; font-weight:normal; }
+.data-table th:first-child { text-align:left; }
+.data-table td { padding:9px 14px; border-bottom:1px solid #EEE; text-align:center; font-family:'Courier New',monospace; font-size:12px; }
+.data-table td:first-child { text-align:left; font-family:Georgia,serif; font-size:13px; }
+.data-table tr:nth-child(even) td { background:#F5F3EE; }
+.formula-box { background:#fff; border:1px solid #DDD8CE; border-top:3px solid #1A3A5C; padding:20px 24px; margin:16px 0; }
+.formula-box .formula-title { font-family:'Courier New',monospace; font-size:11px; color:#1A3A5C; letter-spacing:2px; margin-bottom:12px; }
+.formula-box .formula-eq { font-family:'Courier New',monospace; font-size:13px; color:#1F1F1F; background:#F5F3EE; padding:12px 16px; border-radius:2px; margin:8px 0; line-height:1.6; }
+.formula-box .formula-note { font-size:12px; color:#666; margin-top:8px; }
+.svg-wrap { text-align:center; margin:16px 0; }
+.obs-note { background:#EEF3F8; border:1px solid #B5C5D5; border-radius:3px; padding:14px 18px; margin:14px 0; font-size:13px; color:#1A2A3A; line-height:1.7; }
+.obs-note::before { content:'◈ 관찰 신호'; display:block; font-family:'Courier New',monospace; font-size:10px; color:#1A3A5C; letter-spacing:1px; margin-bottom:6px; }
+.error-box { background:#FAEEDA; border-left:3px solid #B8850E; padding:12px 16px; margin:14px 0; font-size:12px; color:#633806; font-family:'Courier New',monospace; }
+.ppr-card { background:#fff; border:1px solid #DDD8CE; border-radius:3px; overflow:hidden; margin-bottom:14px; }
+.ppr-head { background:#1A3A5C; color:#fff; font-size:12px; font-family:'Courier New',monospace; padding:8px 14px; letter-spacing:1px; }
+.ppr-body { padding:14px; }
+.ppr-row { display:flex; justify-content:space-between; font-size:12px; padding:4px 0; border-bottom:1px solid #F0EDE8; }
+.ppr-row:last-child { border-bottom:none; }
+.ppr-key { color:#666; }
+.ppr-val { font-family:'Courier New',monospace; font-weight:bold; color:#1A3A5C; }
+.discourse-layer { display:grid; grid-template-columns:130px 1fr; gap:0; margin-bottom:2px; }
+.layer-num { background:#1A3A5C; color:#fff; font-family:'Courier New',monospace; font-size:11px; padding:12px 14px; display:flex; align-items:center; }
+.layer-content { background:#fff; border:1px solid #DDD8CE; border-left:none; padding:12px 18px; font-size:13px; color:#2C2C2C; line-height:1.7; }
+.layer-content strong { color:#1A3A5C; }
+.signal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+.signal-card { background:#fff; border:1px solid #DDD8CE; padding:14px; border-radius:2px; text-align:center; }
+.signal-card .sig-icon { font-size:24px; margin-bottom:6px; }
+.signal-card .sig-label { font-size:11px; color:#888; font-family:'Courier New',monospace; margin-bottom:4px; }
+.signal-card .sig-val { font-size:18px; font-family:'Courier New',monospace; font-weight:bold; color:#1A3A5C; }
+.signal-card .sig-note { font-size:10px; color:#666; margin-top:4px; }
+.ethnic-bar { margin:14px 0; }
+.ethnic-row { display:grid; grid-template-columns:80px 1fr 60px; gap:8px; align-items:center; margin-bottom:6px; }
+.ethnic-label { font-size:12px; color:#444; text-align:right; }
+.ethnic-track { background:#EEE; border-radius:2px; height:20px; overflow:hidden; }
+.ethnic-fill { height:100%; border-radius:2px; }
+.ethnic-val { font-family:'Courier New',monospace; font-size:11px; color:#333; }
+.conclusion { background:#EEF3F8; border-left:4px solid #2A5A8C; padding:24px 32px; margin:20px 40px; border-radius:2px; }
+.conclusion p { font-size:15px; line-height:1.95; color:#1F1F1F; text-align:justify; margin-bottom:12px; }
+.conclusion p:last-child { margin-bottom:0; }
+.series-box { background:#fff; border:1px solid #DDD8CE; margin:20px 40px; padding:20px; }
+.series-title { font-family:'Courier New',monospace; font-size:11px; color:#1A3A5C; letter-spacing:2px; margin-bottom:12px; }
+.series-item { display:flex; gap:12px; padding:6px 0; border-bottom:1px solid #F0EDE8; font-size:12px; }
+.series-item:last-child { border-bottom:none; }
+.series-num { font-family:'Courier New',monospace; color:#B8850E; min-width:40px; }
+.series-status { margin-left:auto; font-family:'Courier New',monospace; font-size:10px; padding:2px 8px; border-radius:2px; }
+.status-done { background:#E8F4F0; color:#27500A; }
+.status-now { background:#EEF3F8; color:#1A3A5C; }
+.status-plan { background:#F5F3EE; color:#888; }
+.footer { background:#EBF0F8; padding:28px 40px; text-align:center; border-top:1px solid #DDD8CE; }
+.footer p { font-size:12px; color:#1A3A5C; margin-bottom:4px; font-family:'Courier New',monospace; }
+.footer a { color:#2A5A8C; text-decoration:none; }
+.footer .engine-tag { margin-top:10px; font-size:10px; color:#888; letter-spacing:1px; }
+@media(max-width:768px){ .section,.engine-box,.conclusion,.series-box,.footer{padding-left:16px;padding-right:16px;margin-left:0;margin-right:0;} .header{padding:32px 16px 24px;} .term-grid,.signal-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="header">
+<div class="header-badge">BOSNIA STANDALONE · #E-01 · Λ¹²v9.12</div>
+<h1>🇧🇦 Bosnia Special Edition</h1>
+<h2>The Dayton Trap — 30 Years of Frozen Ethnic Conflict and the Temptation of Secession</h2>
+<div class="header-meta">Everblue Sea Institute for Social Dynamics · Based on Λ¹²v9.12 Engine · Date of Publication 2026.05.02</div>
+</div>
+<div class="engine-box">
+<strong>ENGINE:</strong> Λ¹²v9.12 | Includes ADI §31 | Based on SSRN 6632858<br/>
+<strong>Λ-Score:</strong> 0.508 (Danger) — Highest Risk in All of Europe<br/>
+<strong>Calibration Equation:</strong> Λ¹²_corrected = Λ¹²_raw ÷ OLI × (1−TBI×θ) × (1−ADI×γ) × exp(−k×t) | OLI=0.76
+</div>
+<div class="section">
+<div class="section-title">Research Objectives</div>
+<h3>This report records the reality of 3.4 million Bosnian people from an observer standpoint.</h3>
+<div class="minjung-box">
+<p>The Bosnian War of 1992–95. Eight thousand Bosnian Muslims were massacred in Srebrenica. The international courts recognized this as genocide. However, in 2024, the president of the republic that includes Srebrenica in its administrative territory publicly stated, "It was not genocide."</p>
+<p>Λ¹² 0.508 — Highest Risk in All of Europe. This number speaks to the fact that the war of 30 years ago is not yet over.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§0 · Glossary</div>
+<div class="term-grid">
+<div class="term-item"><div class="term-key">Dayton Agreement (1995)</div><div class="term-val">Peace agreement ending the Bosnian War. Divided the state into two entities (Federation and Republika Srpska). Evaluated as having brought peace but created an unworkable state structure.</div></div>
+<div class="term-item"><div class="term-key">Republika Srpska (RS)</div><div class="term-val">Serb entity within Bosnia. Approximately 34% of the population. Ruled by President Dodik for 30 years. Repeated threats of secession.</div></div>
+<div class="term-item"><div class="term-key">Dodik (Milorad Dodik)</div><div class="term-val">President of RS. In February 2025, sentenced to one year in prison and disqualified from public office for six years for failing to comply with a court ruling. Supported by Serbia and Russia. Subject to EU and US sanctions.</div></div>
+<div class="term-item"><div class="term-key">Srebrenica Genocide</div><div class="term-val">July 1995. Massacre of 8,000 Bosnian Muslims. Genocide rulings by ICJ and ICTY. Officially denied by RS. A key unassimilated event of TBI.</div></div>
+<div class="term-item"><div class="term-key">High Representative</div><div class="term-val">An international position overseeing the Dayton Agreement. Holds broad legislative and executive powers. RS denies its legitimacy. De facto state of a semi-protectorate.</div></div>
+<div class="term-item"><div class="term-key">Population Outflow</div><div class="term-val">Estimated annual outflow of 50,000 people. Large-scale exodus of youth due to delays in EU accession. Threatens the viability of the state.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅰ · Observer Standpoint</div>
+<h3>The World's Most Complex Democracy — Yet Dysfunctional</h3>
+<p>Bosnia has a structure in which three ethnic groups (Bosniaks, Serbs, and Croats) jointly run the state. This structure, created by the Dayton Agreement, stopped the war but paralyzed the state. Of the 14 key priorities for EU accession, only one was achieved by 2023.</p>
+<p>When Dodik was convicted in February 2025, RS attempted to withdraw its representatives from state institutions. EUFOR increased its troops, and the NATO Secretary-General personally visited Sarajevo. A realistic threat of state division has emerged in the heart of Europe.</p>
+<div class="signal-grid">
+<div class="signal-card"><div class="sig-icon">⚠️</div><div class="sig-label">Λ-Score (Danger)</div><div class="sig-val">0.508</div><div class="sig-note">Highest Risk in All of Europe</div></div>
+<div class="signal-card"><div class="sig-icon">🏛️</div><div class="sig-label">EU Priorities Achieved</div><div class="sig-val">1/14</div><div class="sig-note">As of 2023</div></div>
+<div class="signal-card"><div class="sig-icon">✈️</div><div class="sig-label">Annual Population Outflow</div><div class="sig-val">50,000 People</div><div class="sig-note">Concentrated among Youth and the Highly Educated</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅱ · Ethnic Composition · Triple-Split Structure</div>
+<h3>Bosnian Ethnic Composition (Comparison 1991/2013)</h3>
+<div class="ethnic-bar">
+<div class="ethnic-row"><div class="ethnic-label">Bosniaks</div><div class="ethnic-track"><div class="ethnic-fill" style="width:50%;background:#1A3A5C;"></div></div><div class="ethnic-val">~50%</div></div>
+<div class="ethnic-row"><div class="ethnic-label">Serbs</div><div class="ethnic-track"><div class="ethnic-fill" style="width:31%;background:#8B2A2A;"></div></div><div class="ethnic-val">~31%</div></div>
+<div class="ethnic-row"><div class="ethnic-label">Croats</div><div class="ethnic-track"><div class="ethnic-fill" style="width:15%;background:#B8850E;"></div></div><div class="ethnic-val">~15%</div></div>
+<div class="ethnic-row"><div class="ethnic-label">Others</div><div class="ethnic-track"><div class="ethnic-fill" style="width:4%;background:#AAA;"></div></div><div class="ethnic-val">~4%</div></div>
+</div>
+<div class="svg-wrap">
+<svg height="300" viewbox="0 0 520 300" width="520" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="300" width="520"></rect>
+ Simplified Map of Bosnia SVG 
+ Federation (FBiH) Territory 
+<ellipse cx="200" cy="160" fill="#C5D8F0" opacity="0.8" rx="130" ry="90" stroke="#1A3A5C" stroke-width="2"></ellipse>
+<text fill="#1A3A5C" font-family="Courier New" font-size="11" font-weight="bold" text-anchor="middle" x="200" y="152">Bosnia and Herzegovina</text>
+<text fill="#1A3A5C" font-family="Courier New" font-size="10" text-anchor="middle" x="200" y="166">Federation (FBiH)</text>
+<text fill="#1A3A5C" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="180">Bosniaks + Croats</text>
+ RS Territory 
+<ellipse cx="370" cy="155" fill="#F0C5C5" opacity="0.8" rx="110" ry="75" stroke="#8B2A2A" stroke-width="2"></ellipse>
+<text fill="#8B2A2A" font-family="Courier New" font-size="11" font-weight="bold" text-anchor="middle" x="370" y="147">Republika</text>
+<text fill="#8B2A2A" font-family="Courier New" font-size="11" text-anchor="middle" x="370" y="161">Srpska (RS)</text>
+<text fill="#8B2A2A" font-family="Courier New" font-size="9" text-anchor="middle" x="370" y="175">Serbs / Dodik</text>
+ High Representative 
+<rect fill="#FAEEDA" height="28" rx="2" width="500" x="10" y="220"></rect>
+<text fill="#B8850E" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="238">Semi-protectorate Status under High Representative (OHR) Supervision — RS Denies Legitimacy</text>
+ Separation Arrow 
+<defs><marker id="redarr4" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#8B2A2A"></path></marker></defs>
+<line marker-end="url(#redarr4)" stroke="#8B2A2A" stroke-dasharray="4,2" stroke-width="1.5" x1="370" x2="370" y1="80" y2="40"></line>
+<text fill="#8B2A2A" font-family="Courier New" font-size="9" x="380" y="35">Threat of Secession</text>
+<text fill="#8B2A2A" font-family="Courier New" font-size="9" x="380" y="47">2025 EUFOR Troop Augmentation</text>
+<text fill="#1A3A5C" font-family="Courier New" font-size="12" text-anchor="middle" x="260" y="18">Bosnian Administrative Structure — Λ¹²v9.12</text>
+</svg>
+</div>
+<div class="obs-note">The paradox of the Dayton Agreement: ethnic territories were recognized to stop the war, but that recognition institutionalized ethnic division. Thirty years later, this structure is a rigid deadlock that makes EU accession, reform, and integration impossible.</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅲ · Basic Statistics</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Indicator</th><th>Value</th><th>Remarks</th><th>Source</th></tr>
+<tr><td>Population</td><td>Approx. 3.4 million</td><td>Declining due to outflow</td><td>World Bank</td></tr>
+<tr><td>GDP per capita</td><td>USD ~7,500</td><td>Lowest tier in the Balkans</td><td>IMF 2024</td></tr>
+<tr><td>GDP Growth 2024</td><td>2.8%</td><td>Below the regional average</td><td>World Bank</td></tr>
+<tr><td>Annual Population Outflow</td><td>~50,000 people</td><td>Concentrated among youth and the highly educated</td><td>US Department of State</td></tr>
+<tr><td>EU Priorities Achieved</td><td>1/14</td><td>As of 2023</td><td>Freedom House</td></tr>
+<tr><td>EU Approval Rate</td><td>68% (2024)</td><td>Declined from 76% in 2022</td><td>IRI 2024</td></tr>
+<tr><td>Dodik's Sentence</td><td>1 year in prison</td><td>2025.02 / Deprivation of eligibility for office for 6 years</td><td>BiH Court</td></tr>
+<tr><td>Ethnic Hate Crimes</td><td>91 cases (Early 2025)</td><td>UN Statistics</td><td>UN 2025</td></tr>
+</table>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅳ · Basic Coordinates · Formulas</div>
+<div class="formula-box">
+<div class="formula-title">ΛSCORE FORMULA — BOSNIA</div>
+<div class="formula-eq">Λ¹²_corrected = Λ¹²_raw ÷ 0.76 × (1 − 0.890 × 0.70) × (1 − 0.420 × 0.35) × exp(−k×t)</div>
+<div class="formula-eq">TBI Correction Term: (1 − 0.890 × 0.70) = (1 − 0.623) = 0.377 [TBI Extremely High — Srebrenica Unassimilated]</div>
+<div class="formula-eq">ADI Correction Term: (1 − 0.420 × 0.35) = (1 − 0.147) = 0.853</div>
+<div class="formula-note">※ TBI 0.890 is the key variable that pushes the Λ-Score to the highest in Europe. A structure in which political forces denying the Srebrenica genocide still exercise official power — this is not an unassimilated trauma, but a state where the perpetrators have seized official state institutions.</div>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Variable</th><th>Value</th><th>Classification</th><th>Remarks</th></tr>
+<tr><td>LPI</td><td>0.45</td><td>Attention</td><td>Low Wages and Unemployment</td></tr>
+<tr><td>GPI</td><td>~65th</td><td>Attention</td><td>RS Secession Threat</td></tr>
+<tr><td>CPI</td><td>35/100</td><td>Risk</td><td>Structural Corruption</td></tr>
+<tr><td>CFD</td><td>0.92</td><td>Risk</td><td>Extremely High Tri-Ethnic Division</td></tr>
+<tr><td>DCI</td><td>0.68</td><td>Risk</td><td>Youth Exodus and Generational Rift</td></tr>
+<tr><td>MFI</td><td>~70th</td><td>Attention</td><td>Media Fragmentation by Ethnic Group</td></tr>
+<tr><td>RHC</td><td>0.938</td><td>Risk</td><td>Unassimilated War Trauma</td></tr>
+<tr><td>IGI</td><td>0.55</td><td>Attention</td><td>Institutional Paralysis</td></tr>
+<tr><td>TBI</td><td>0.890</td><td>Risk</td><td>Srebrenica Denial Structure</td></tr>
+<tr><td>ADI</td><td>0.420</td><td>Transitional</td><td>Transitioning to EU Dependence</td></tr>
+</table>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅴ · Phase Quadrants</div>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 520 400" width="520" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="400" width="520"></rect>
+<rect fill="#EBF4F0" height="170" opacity="0.5" width="210" x="50" y="30"></rect>
+<rect fill="#FFF3CD" height="170" opacity="0.4" width="210" x="260" y="30"></rect>
+<rect fill="#FAEEDA" height="170" opacity="0.4" width="210" x="50" y="200"></rect>
+<rect fill="#FCEBEB" height="170" opacity="0.4" width="210" x="260" y="200"></rect>
+<line stroke="#555" stroke-width="1.5" x1="50" x2="470" y1="200" y2="200"></line>
+<line stroke="#555" stroke-width="1.5" x1="260" x2="260" y1="30" y2="370"></line>
+<text fill="#3A6A5E" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="18">High Openness</text>
+<text fill="#888" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="388">Low Openness</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,36,204)" x="36" y="204">Unstable</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,484,204)" x="484" y="204">Stable</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="52">Open and Stable</text>
+<text fill="#856404" font-family="Courier New" font-size="10" text-anchor="middle" x="365" y="52">Open and Unstable</text>
+<text fill="#A0522D" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="380">Closed and Stable</text>
+<text fill="#791F1F" font-family="Courier New" font-size="10" text-anchor="middle" x="365" y="380">Closed and Unstable</text>
+ Bosnia Q2 — Open and Unstable 
+<circle cx="358" cy="80" fill="#EEF3F8" r="26" stroke="#1A3A5C" stroke-width="2.5"></circle>
+<text font-size="20" text-anchor="middle" x="358" y="76">🇧🇦</text>
+<text fill="#1A3A5C" font-family="Courier New" font-size="11" font-weight="bold" text-anchor="middle" x="358" y="114">Bosnia</text>
+ Division Arrows — Multiple Directions 
+<defs><marker id="bluearr" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#1A3A5C"></path></marker>
+<marker id="redarr5" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#8B2A2A"></path></marker></defs>
+<line marker-end="url(#redarr5)" stroke="#8B2A2A" stroke-dasharray="4,2" stroke-width="1.5" x1="358" x2="358" y1="106" y2="155"></line>
+<text fill="#8B2A2A" font-family="Courier New" font-size="9" x="370" y="130">RS Secession Threat</text>
+ Comparison Countries 
+<circle cx="148" cy="78" fill="#EEF3FF" r="14" stroke="#1B4F8A" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="148" y="76">🇹🇼</text>
+<circle cx="345" cy="148" fill="#FFF3CD" r="14" stroke="#B8850E" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="345" y="146">🇰🇷</text>
+<text fill="#1A3A5C" font-family="Courier New" font-size="10" x="80" y="60">※ Q2 — Open Regime</text>
+<text fill="#1A3A5C" font-family="Courier New" font-size="10" x="80" y="73">Extremely High Internal Division</text>
+<text fill="#1A3A5C" font-family="Courier New" font-size="10" x="80" y="86">TBI 0.890 Highest</text>
+</svg>
+</div>
+<div class="obs-note">Bosnia is located in the Q2 (Open and Unstable) quadrant. It has the formal structures of a democracy, but internal ethnic division is extreme. CFD 0.92 represents the highest level of cultural fault line among analyzed countries, including all of Northeast and Southeast Asia. If RS's pressure to secede continues, there is a risk of moving into Q4 (Closed and Unstable).</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅵ · TBI Decomposition — Structure of Srebrenica</div>
+<div class="svg-wrap">
+<svg height="175" viewbox="0 0 600 175" width="600" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="175" width="600"></rect>
+<text fill="#666" font-family="Courier New" font-size="11" x="20" y="30">H Historical Shock</text>
+<rect fill="#EEE" height="22" rx="2" width="448" x="120" y="15"></rect>
+<rect fill="#1A3A5C" height="22" rx="2" width="439" x="120" y="15"></rect>
+<text fill="#1A3A5C" font-family="Courier New" font-size="10" x="570" y="31">0.98</text>
+<text fill="#EEE" font-family="Courier New" font-size="9" x="124" y="31">Srebrenica Genocide of 8,000 / 4-Year Siege of Sarajevo / 200,000 Deaths</text>
+<text fill="#666" font-family="Courier New" font-size="11" x="20" y="75">C Unassimilated</text>
+<rect fill="#EEE" height="22" rx="2" width="448" x="120" y="60"></rect>
+<rect fill="#2A5A8C" height="22" rx="2" width="412" x="120" y="60"></rect>
+<text fill="#1A3A5C" font-family="Courier New" font-size="10" x="542" y="76">0.92</text>
+<text fill="#EEE" font-family="Courier New" font-size="9" x="124" y="76">Official Denial of Genocide by RS / Perpetrator Political Forces Currently Exercising Power</text>
+<text fill="#666" font-family="Courier New" font-size="11" x="20" y="120">N Narrative Integration</text>
+<rect fill="#EEE" height="22" rx="2" width="448" x="120" y="105"></rect>
+<rect fill="#3A6A9C" height="22" rx="2" width="394" x="120" y="105"></rect>
+<text fill="#1A3A5C" font-family="Courier New" font-size="10" x="524" y="121">0.88</text>
+<text fill="#EEE" font-family="Courier New" font-size="9" x="124" y="121">Segregated Narratives by Ethnic Group / Integrated Historical Education Impossible / Two Schools Under One Roof</text>
+<text fill="#1A3A5C" font-family="Courier New" font-size="11" font-weight="bold" x="20" y="162">TBI = 0.98 × 0.92 × 0.88 ≈ 0.890 | θ exceeding 0.70 by +0.190</text>
+</svg>
+</div>
+<div class="obs-note">"Two Schools Under One Roof" — Bosnian and Serb children receive education in the same building, using different textbooks, in different languages, and in segregated spaces. This is the reality of Bosnia's N (narrative non-integration) score of 0.88.</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅶ · 12-Axis Radar</div>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 400 400" width="400" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="400" width="400"></rect>
+<circle cx="200" cy="200" fill="none" r="150" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="112" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="75" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="37" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="200" y1="200" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="275" y1="200" y2="62"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="330" y1="200" y2="118"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="350" y1="200" y2="200"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="330" y1="200" y2="282"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="275" y1="200" y2="338"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="200" y1="200" y2="350"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="125" y1="200" y2="338"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="70" y1="200" y2="282"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="50" y1="200" y2="200"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="70" y1="200" y2="118"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="125" y1="200" y2="62"></line>
+ Bosnia — Extreme CFD, RHC, and TBI 
+<polygon fill="#1A3A5C" fill-opacity="0.22" points="200,118 254,104 304,134 316,200 308,268 268,338 200,344 128,338 68,272 58,200 80,134 136,98" stroke="#1A3A5C" stroke-width="2"></polygon>
+ Comparison with European Average 
+<polygon fill="none" opacity="0.5" points="200,120 258,108 306,138 318,200 302,260 264,312 200,322 136,312 98,260 82,200 94,138 136,108" stroke="#5E9186" stroke-dasharray="4,3" stroke-width="1.5"></polygon>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="42">LPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="54">HDI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="108">GPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="362" y="202">CPI</text>
+<text fill="#CC2222" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="294">CFD</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="350">DCI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="366">MFI</text>
+<text fill="#CC2222" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="350">RHC</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="294">IGI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="38" y="202">AHI</text>
+<text fill="#CC2222" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="108">TBI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="54">ADI</text>
+<text fill="#CC2222" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="384">※ Red Label = Extremely High-Risk Variable</text>
+<rect fill="#1A3A5C" fill-opacity="0.35" height="8" stroke="#1A3A5C" stroke-width="1" width="10" x="230" y="390"></rect>
+<text fill="#1A3A5C" font-family="Courier New" font-size="9" x="244" y="398">Bosnia</text>
+<line stroke="#5E9186" stroke-dasharray="4,3" stroke-width="1.5" x1="296" x2="314" y1="394" y2="394"></line>
+<text fill="#5E9186" font-family="Courier New" font-size="9" x="318" y="398">European Average</text>
+</svg>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅷ · PPR — 5 Structural Blocks</div>
+<div class="ppr-card"><div class="ppr-head">PPR-1 · Politics</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Regime</span><span class="ppr-val">Dayton Ethnic Division Structure / Functional Paralysis</span></div>
+<div class="ppr-row"><span class="ppr-key">Dodik's Sentence</span><span class="ppr-val">2025.02 Sentenced to 1 Year in Prison and 6 Years of Deprivation of Eligibility for Office</span></div>
+<div class="ppr-row"><span class="ppr-key">RS Response</span><span class="ppr-val">Attempted Withdrawal from State Institutions / EUFOR Augmentation</span></div>
+<div class="ppr-row"><span class="ppr-key">Genocide Denial</span><span class="ppr-val">RS Official Position / Opposition to UN Condemnation Resolution</span></div>
+<div class="ppr-row"><span class="ppr-key">Institutional Paralysis</span><span class="ppr-val">14-Tier Administrative Structure / Abuse of Ethnic Vetoes</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-2 · Economy</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">GDP per capita</span><span class="ppr-val">~USD 7,500 / Lowest tier in the Balkans</span></div>
+<div class="ppr-row"><span class="ppr-key">Population Outflow</span><span class="ppr-val">50,000 People per Year / Concentrated among Youth and the Highly Educated</span></div>
+<div class="ppr-row"><span class="ppr-key">Employer Burden</span><span class="ppr-val">Social Security Contribution: 69% in the Federation / 52% in RS</span></div>
+<div class="ppr-row"><span class="ppr-key">Foreign Investment</span><span class="ppr-val">Shunned due to institutional paralysis / Prospects for improvement remain unclear</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-3 · Society</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Two Schools Under One Roof</span><span class="ppr-val">Segregated Ethnic Education / Integration of Narratives Impossible</span></div>
+<div class="ppr-row"><span class="ppr-key">Hate Crimes</span><span class="ppr-val">91 Cases (Early 2025) UN Statistics</span></div>
+<div class="ppr-row"><span class="ppr-key">Minorities</span><span class="ppr-val">Structural Discrimination against Jews, Roma, and LGBTQ+</span></div>
+<div class="ppr-row"><span class="ppr-key">EU Support</span><span class="ppr-val">68% (2024) / Declined from 76% in 2022</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-4 · History</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.890 — Highest in all of Europe</span></div>
+<div class="ppr-row"><span class="ppr-key">Srebrenica</span><span class="ppr-val">ICJ Genocide Ruling / RS Official Denial</span></div>
+<div class="ppr-row"><span class="ppr-key">War Crimes Prosecution</span><span class="ppr-val">Only 15% resolved since 2005</span></div>
+<div class="ppr-row"><span class="ppr-key">30th Anniversary of Dayton</span><span class="ppr-val">2025 / Crossroads of Integration vs. Division</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-5 · Geopolitics</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">EU</span><span class="ppr-val">Candidate Country / Accession negotiations virtually stalled</span></div>
+<div class="ppr-row"><span class="ppr-key">Russia</span><span class="ppr-val">Supporting Dodik / Opposing Western sanctions</span></div>
+<div class="ppr-row"><span class="ppr-key">Serbia</span><span class="ppr-val">Declaring Dodik's ruling 'illegal' / Escalation of tension</span></div>
+<div class="ppr-row"><span class="ppr-key">NATO·EUFOR</span><span class="ppr-val">March 2025 Troop Augmentation / Deterring Secession</span></div>
+</div></div>
+</div>
+<div class="section">
+<div class="section-title">Ⅸ · Six-Layer Discourse</div>
+<div style="margin:14px 0;">
+<div class="discourse-layer"><div class="layer-num">Layer 1<br/>Data</div><div class="layer-content"><strong>What is visible:</strong> Λ-Score 0.508, the highest in Europe. TBI 0.890. CFD 0.92. 1/14 EU priorities achieved. Annual outflow of 50,000 people. 91 ethnic hate crimes. What these numbers say — Bosnia has been frozen for 30 years.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 2<br/>Interests</div><div class="layer-content"><strong>Who benefits:</strong> The ethnic political elites find that their power base is maintained as long as division persists. Dodik leverages Serbian support and solidarity with Russia to resist domestic judicial rulings. Ethnic businesspeople maintain their respective exclusive contracts within the 14-tier administrative structure. Integration harms the interests of all of them.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 3<br/>Historical Patterns</div><div class="layer-content"><strong>Has it happened before:</strong> The Balkans were a place where the boundaries of empires overlapped: Ottoman, Habsburg, and Yugoslav. Each empire ruled by exploiting ethnic structures, and when each empire collapsed, ethnic conflict exploded. The 1992–95 war was created by the dissolution of Yugoslavia, and while Dayton stopped that war, it sowed the seeds of the next explosion.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 4<br/>Perspective Inversion</div><div class="layer-content"><strong>Looking at it conversely:</strong> The 68% approval rating for EU is not low. The Bosnian people desire integration — it is the ethnic political elites who block it. The population outflow is a signal of crisis — but at the same time, it is a vote by the people that they "will no longer endure this structure." The tragedy is that their method of voting is not through the ballot box, but through emigration.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 5<br/>Frame</div><div class="layer-content"><strong>Λ¹² Phase Diagnosis:</strong> Bosnia's CFD of 0.92 is not a simple cultural conflict — it is a structure where, regarding the memory of genocide, one side calls it "genocide" and the other "denial." This is a state where Layer 3 (Historical Patterns) of the Six-Layer Discourse is frozen without reconciliation. While TBI 0.890 greatly exceeds the threshold (0.70), international oversight (OHR, EUFOR, NATO) suppresses physical conflict. The moment international oversight is withdrawn is the true threshold.</div></div>
+<div class="discourse-layer"><div class="layer-num" style="background:#3A6A5E;">Layer 6<br/>Suspension of Judgment</div><div class="layer-content" style="background:#E8F4F0;"><strong>This layer belongs to the 3.4 million Bosnian people.</strong> In a country where 50,000 people leave every year, who will build integration — Λ¹² cannot answer that question on their behalf.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅹ · Concluding Trajectory</div>
+<div class="conclusion">
+<p>Bosnia is a country inhabited by Europe's oldest ongoing war. The gunfire has ceased — but those who call Srebrenica a genocide and those who deny it run the same state. That state does not function.</p>
+<p>What TBI 0.890 says — as long as someone who says the deaths of 8,000 people "did not happen" exercises official power, this trauma cannot be assimilated. Unassimilated trauma is passed down to the next generation. To the children growing up in two schools under one roof.</p>
+<p>The 30th anniversary of the Dayton Agreement (2025). That the agreement that brought peace was simultaneously the agreement that institutionalized division — this is the fundamental contradiction of Bosnia. The agents to resolve this contradiction are not the international community, but the Bosnian people. However, those very people are leaving at a rate of 50,000 every year.</p>
+</div>
+</div>
+<div class="section">
+<div class="series-box">
+<div class="series-title">Special Edition Series — Λ¹²v9.12</div>
+<div class="series-item"><span class="series-num">C-01</span><span>Cambodia Special Edition v1.0</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">E-01</span><span>Bosnia Special Edition v1.0 (Current)</span><span class="series-status status-now">Completed</span></div>
+<div class="series-item"><span class="series-num">E-02</span><span>Hungary Special Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+<div class="series-item"><span class="series-num">E-03</span><span>Greece Special Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+<div class="series-item"><span class="series-num">E-04</span><span>UK Special Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+</div>
+</div>
+<div class="footer">
+<p>Everblue Sea Institute for Social Dynamics (Everblue Sea Institute for Social Dynamics)</p>
+<p>Director Cheonghae (淸海) · Claude (Anthropic) Research Partner</p>
+<p><a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · <a href="https://everbluesea.org">everbluesea.org</a> · contact@everbluesea.org</p>
+<div class="engine-tag">Engine: Λ¹²v9.12 | ADI §31 | SSRN 6632858 | bosnia_lambda12_v912_20260502.html</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>§40 AFRO-Λ v0.2 — Africa Regional Integrated Engine | Λ¹² Extension Section</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #F5F3EE; font-family: Georgia, 'Times New Roman', serif; color: #2C2C2C; line-height: 1.78; }
+a { color: #5E9186; }
+
+header { background: #2A3D35; color: #F5F3EE; padding: 2.2rem 3rem; border-bottom: 4px solid #B8850E; }
+.header-label { font-family: 'Courier New', monospace; font-size: 0.8rem; color: #B8850E; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.6rem; }
+header h1 { font-size: 1.95rem; font-weight: normal; line-height: 1.35; }
+header h1 .abbr { color: #B8850E; font-size: 2.2rem; }
+.header-sub { color: #8FBDB5; font-size: 0.88rem; margin-top: 0.6rem; font-family: 'Courier New', monospace; }
+
+main { max-width: 940px; margin: 2.5rem auto; padding: 0 2rem 4rem; }
+
+.meta-box { border: 1px solid #DDD8CE; border-left: 5px solid #B8850E; background: #EDEAE3; padding: 1.2rem 1.8rem; margin-bottom: 2rem; border-radius: 2px; font-family: 'Courier New', monospace; font-size: 0.82rem; }
+.meta-row { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.meta-tag { background: #DDD8CE; color: #4A5A52; padding: 0.22rem 0.7rem; border-radius: 2px; }
+.meta-tag.active { background: #5E9186; color: #fff; }
+.meta-tag.ver { background: #B8850E; color: #fff; }
+.meta-tag.new { background: #C0392B; color: #fff; }
+
+.proposition-box { background: #2A3D35; color: #E0EBE8; padding: 1.8rem 2rem; border-left: 6px solid #B8850E; margin-bottom: 2.8rem; border-radius: 3px; }
+.proposition-box .ptitle { color: #B8850E; font-family: 'Courier New', monospace; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.9rem; border-bottom: 1px solid #3D5A4E; padding-bottom: 0.5rem; }
+.proposition-box p { margin-bottom: 0.6rem; font-size: 1.02rem; line-height: 1.9; }
+.proposition-box .sub { color: #8FBDB5; font-size: 0.87rem; margin-top: 0.8rem; }
+
+section { margin-bottom: 2.8rem; }
+.sec-title { background: #2A3D35; color: #F5F3EE; padding: 0.68rem 1.3rem; border-left: 6px solid #B8850E; font-size: 0.97rem; margin-bottom: 1.4rem; letter-spacing: 0.04em; font-family: Georgia, serif; font-weight: normal; }
+
+p { margin-bottom: 0.85rem; }
+ul, ol { padding-left: 1.6rem; margin-bottom: 0.85rem; }
+li { margin-bottom: 0.45rem; }
+strong { color: #2A3D35; }
+
+.formula-block { background: #2A3D35; color: #E0EBE8; font-family: 'Courier New', monospace; font-size: 0.88rem; padding: 1.5rem 1.8rem; border-left: 6px solid #B8850E; border-radius: 3px; margin: 1.3rem 0; line-height: 2.1; }
+.formula-block .ftitle { color: #B8850E; font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; border-bottom: 1px solid #3D5A4E; padding-bottom: 0.45rem; }
+.formula-block .note { color: #8FBDB5; font-size: 0.8rem; margin-top: 0.6rem; line-height: 1.7; }
+.formula-block .new-tag { color: #C0392B; font-size: 0.75rem; }
+
+blockquote { border-left: 3px solid #B8850E; background: #FFFBF2; padding: 1.1rem 1.6rem; font-style: italic; margin: 1.3rem 0; color: #5A4830; border-radius: 0 3px 3px 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.9rem; }
+thead th { background: #2A3D35; color: #F5F3EE; padding: 0.68rem 1rem; text-align: left; font-weight: normal; font-size: 0.87rem; }
+tbody td { padding: 0.62rem 1rem; border-bottom: 1px solid #DDD8CE; vertical-align: top; }
+tbody tr:nth-child(even) td { background: #F0EDE6; }
+tbody td:first-child { font-family: 'Courier New', monospace; color: #B8850E; font-size: 0.85rem; }
+
+.layer-stack { margin: 1.3rem 0; }
+.layer-item { display: flex; align-items: stretch; margin-bottom: 0.5rem; }
+.layer-num { background: #B8850E; color: #fff; font-family: 'Courier New', monospace; font-size: 0.85rem; padding: 0.7rem 0.9rem; min-width: 3.4rem; text-align: center; flex-shrink: 0; font-weight: bold; border-radius: 2px 0 0 2px; display: flex; align-items: center; justify-content: center; }
+.layer-body { background: #fff; border: 1px solid #DDD8CE; border-left: none; padding: 0.65rem 1.1rem; flex-grow: 1; border-radius: 0 2px 2px 0; }
+.layer-body .lname { font-weight: bold; font-size: 0.9rem; color: #2A3D35; margin-bottom: 0.2rem; }
+.layer-body .ldesc { font-size: 0.85rem; color: #5A6A62; font-family: 'Courier New', monospace; }
+
+.causal-chain { background: #fff; border: 1px solid #DDD8CE; border-radius: 3px; padding: 1.5rem; margin: 1.3rem 0; }
+.causal-chain .chain-title { font-family: 'Courier New', monospace; font-size: 0.8rem; color: #B8850E; letter-spacing: 0.08em; margin-bottom: 1rem; }
+.chain-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
+.chain-node { background: #2A3D35; color: #E0EBE8; font-family: 'Courier New', monospace; font-size: 0.82rem; padding: 0.35rem 0.8rem; border-radius: 2px; }
+.chain-node.trigger { background: #C0392B; }
+.chain-node.result { background: #5E9186; }
+.chain-arrow { color: #B8850E; font-size: 1.1rem; }
+.chain-label { font-size: 0.8rem; color: #6A7A72; font-style: italic; }
+
+.dual-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.3rem 0; }
+.col-box { border: 1px solid #DDD8CE; background: #fff; padding: 1rem; border-radius: 2px; }
+.col-box .col-title { font-family: 'Courier New', monospace; font-size: 0.8rem; color: #B8850E; margin-bottom: 0.6rem; font-weight: bold; }
+.col-box.liberation { border-top: 4px solid #5E9186; }
+.col-box.shadow { border-top: 4px solid #C0392B; }
+
+.empirical-box { border: 1px solid #5E9186; background: #F0F7F5; padding: 1.2rem 1.5rem; border-radius: 3px; margin: 1.3rem 0; }
+.empirical-box .etitle { font-family: 'Courier New', monospace; font-size: 0.78rem; color: #5E9186; letter-spacing: 0.08em; margin-bottom: 0.7rem; }
+
+.verification-box { border: 1px solid #B8850E; background: #FFFBF2; padding: 1.2rem 1.5rem; border-radius: 3px; margin: 1.3rem 0; }
+.verification-box .vtitle { font-family: 'Courier New', monospace; font-size: 0.78rem; color: #B8850E; letter-spacing: 0.08em; margin-bottom: 0.7rem; }
+
+.warning-box { border: 2px solid #C0392B; background: #FDF4F4; padding: 1.1rem 1.5rem; border-radius: 3px; margin: 1.1rem 0; font-size: 0.9rem; }
+.warning-box .wtitle { color: #C0392B; font-family: 'Courier New', monospace; font-size: 0.8rem; margin-bottom: 0.5rem; }
+
+.conn-grid { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.9rem 0; }
+.conn-tag { background: #E8E4DC; border: 1px solid #DDD8CE; padding: 0.3rem 0.85rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #2A3D35; border-radius: 2px; }
+.conn-tag.primary { background: #5E9186; color: #fff; }
+
+.note-box { border: 1px dashed #B8850E; background: #FFFBF2; padding: 1.1rem 1.5rem; margin: 1.1rem 0; font-size: 0.9rem; border-radius: 2px; color: #4A3820; }
+
+.protocol-box { background: #F5F3EE; border: 2px solid #2A3D35; padding: 1.5rem; border-radius: 3px; margin: 1.3rem 0; }
+.protocol-box .ptitle { font-family: 'Courier New', monospace; font-size: 0.82rem; color: #2A3D35; letter-spacing: 0.08em; margin-bottom: 1rem; font-weight: bold; }
+
+.changelog { font-family: 'Courier New', monospace; font-size: 0.82rem; }
+.changelog li { margin-bottom: 0.4rem; color: #4A5A52; }
+.changelog li .new { color: #C0392B; font-weight: bold; margin-right: 0.4rem; }
+
+footer { background: #2A3D35; color: #8FBDB5; text-align: center; padding: 2rem; border-top: 3px solid #B8850E; font-size: 0.84rem; line-height: 1.9; }
+footer .fname { color: #F5F3EE; font-size: 1.05rem; margin-bottom: 0.3rem; }
+footer a { color: #5E9186; text-decoration: none; }
+footer .fver { font-size: 0.77rem; color: #6A8A82; margin-top: 0.5rem; }
+</style>
+</head>
+<body>
+<header>
+<div class="header-label">Λ¹² Extension Section · §40 · Africa Regional Integrated Engine</div>
+<h1><span class="abbr">AFRO-Λ</span> — Africa Regional Integrated Engine</h1>
+<div class="header-sub">Everblue Sea Institute for Social Dynamics · Everbluesea Institute of Social Dynamics</div>
+</header>
+<main>
+ Version Meta 
+<div class="meta-box">
+    Version History: v0.1(2026-06-27 Draft) → v0.2(2026-06-27 Empirical Verification Reflected)
+    <div class="meta-row">
+<span class="meta-tag active">ACTIVE</span>
+<span class="meta-tag ver">v0.2</span>
+<span class="meta-tag new">Empirical Verification Completed</span>
+<span class="meta-tag">§40 / Regional Integrated Engine</span>
+<span class="meta-tag">BSLI·§36·§37 Connection</span>
+</div>
+</div>
+ Core Proposition 
+<div class="proposition-box">
+<div class="ptitle">AFRO-Λ Core Proposition — 2026-06-27 Confirmed</div>
+<p>"If any single element of society is shaken, it must be touching a specific indicator of the state engine.<br/>
+    That touch triggers a chain reaction, and can ultimately lead to the leader's blunder."</p>
+<div class="sub">
+      Λ¹² Country Analysis = Question Sheet ("What is wrong with this country?") · Sub-engines = Solution Guide ("Because of this structure") · Verification System = Grading Sheet ("Is it actually correct?")
+    </div>
+</div>
+ 1. Positioning 
+<section>
+<div class="sec-title">1. Positioning — Trio and Causal Chain</div>
+<div class="layer-stack">
+<div class="layer-item">
+<div class="layer-num">①</div>
+<div class="layer-body">
+<div class="lname">Λ¹² Base Engine — Structural Oscillation (Universal)</div>
+<div class="ldesc">First without regional lenses. Principle of fixed order.</div>
+</div>
+</div>
+<div class="layer-item">
+<div class="layer-num">②</div>
+<div class="layer-body">
+<div class="lname">BSLI — Grassroots Life (Input after independent calculation)</div>
+<div class="ldesc">R×S low and BSLI low → Constriction existence confirmed</div>
+</div>
+</div>
+<div class="layer-item">
+<div class="layer-num">③</div>
+<div class="layer-body">
+<div class="lname">AFRO-Λ — Regional Integration (①+② Input → In-depth Reinforcement)</div>
+<div class="ldesc">L×T×H×R×S×(A⇄M⇄A')×E(t)×(Liberation−Shadow)×Φ(t)</div>
+</div>
+</div>
+</div>
+<div class="causal-chain">
+<div class="chain-title">Causal Chain Diagnostic Flow — "The order in which the answer key works"</div>
+<div class="chain-row">
+<span class="chain-node">R×S Low</span>
+<span class="chain-arrow">→</span>
+<span class="chain-node">BSLI Decline</span>
+<span class="chain-arrow">→</span>
+<span class="chain-node trigger">Constriction Confirmed</span>
+<span class="chain-arrow">→</span>
+<span class="chain-node">§37 (Who)</span>
+<span class="chain-arrow">→</span>
+<span class="chain-node">E (Why it persists)</span>
+<span class="chain-arrow">→</span>
+<span class="chain-node">T (Which group)</span>
+</div>
+<div class="chain-row">
+<span class="chain-label">Low Resource Sovereignty</span>
+<span class="chain-arrow" style="opacity:0.3">→</span>
+<span class="chain-label">Grassroots do not possess</span>
+<span class="chain-arrow" style="opacity:0.3">→</span>
+<span class="chain-label">Power Constriction</span>
+<span class="chain-arrow" style="opacity:0.3">→</span>
+<span class="chain-label">Leader's Direction</span>
+<span class="chain-arrow" style="opacity:0.3">→</span>
+<span class="chain-label">Foreign Power Persistence</span>
+<span class="chain-arrow" style="opacity:0.3">→</span>
+<span class="chain-label">Group Exclusion</span>
+</div>
+</div>
+</section>
+ 2. Integrated Equation 
+<section>
+<div class="sec-title">2. Integrated Inference Formula (v0.2)</div>
+<div class="formula-block">
+<div class="ftitle">AFRO-Λ Integrated Equation — v0.2</div>
+      Reinforced Value = Λ¹² Result ⊗ [ L × T × H(ζ←§37) × (R×S) × (A⇄M⇄A') × E(t) × (Liberation−Shadow) ] × Φ(t)
+      <div class="note">
+<span class="new-tag">▲ v0.2 Change</span> R → R×S (Resource Sovereignty Coefficient added)<br/>
+<span class="new-tag">▲ v0.2 Change</span> Added ζ to H (§37 output, division consequence)<br/>
+<span class="new-tag">▲ v0.2 Change</span> E → E(t) Multipolar Vector + Time-Phase Coupling<br/>
+        E(t) ──corr──→ BSLI : Negative (−) correlation · Directly linked with Resource Sovereignty S
+      </div>
+</div>
+</section>
+ 3. Variable Genealogy 
+<section>
+<div class="sec-title">3. Variable Genealogy — "Not something new, but something unfolded"</div>
+<table>
+<thead><tr><th>Λ¹² Core Indicators</th><th>→</th><th>AFRO-Λ Regional Extension</th><th>v0.2 Change</th></tr></thead>
+<tbody>
+<tr><td>Colonization/Subjugation</td><td>unfold</td><td>L — Learning Subjugated Subject (History/Vertical Axis)</td><td>—</td></tr>
+<tr><td>Colonization/Subjugation</td><td>unfold</td><td>T — Group Structure Profile (Current Status/Horizontal Axis, Axis = Regional Definition)</td><td>—</td></tr>
+<tr><td>Structural Stress</td><td>unfold</td><td>H — Historical Pattern + ζ (Division Consequence ← §37)</td><td>▲ ζ Added</td></tr>
+<tr><td>Resource Variable</td><td>unfold</td><td>R×S — Resource Amount × Resource Sovereignty Coefficient</td><td>▲ S Added</td></tr>
+<tr><td>Institutional Trust (A3)</td><td>unfold</td><td>E(t) — Multipolar Foreign Power Vector × Time-Phase</td><td>▲ Multipolarization/Time</td></tr>
+</tbody>
+</table>
+</section>
+ 4. Variable Definitions 
+<section>
+<div class="sec-title">4. Core Variable Definitions</div>
+<div class="formula-block">
+<div class="ftitle">L — Learning Subjugated Subject (History/Vertical Axis)</div>
+      L = f(Subjugated Generations × Elite Observation Density × Resource Awareness)
+      <br/><br/>
+      6-Layer Inference Core: Colonial elite as a textbook → Learning the grammar of capital, resources, and negotiation/force
+      <br/>Liberation Amplitude (+): Resource Sovereignty = Restoration of Dignity / Shadow Amplitude (−): Learned Exploitation = Purging the Internal Vulnerable
+      <div class="note">Empirical Case: Traoré's expulsion of France = Reverse application of learned grammar. Shadow: Fulani massacre.</div>
+</div>
+<div class="formula-block">
+<div class="ftitle">T — Group Structure Profile (Current Status/Horizontal Axis) ★ Regional Adaptation</div>
+      Group Definition Axis = Regional Parameter { AFRO: Tribe / MENA: Sect × Ethnicity / ... }
+      <br/><br/>
+      Four Major Dimensions: ① Population % ② Power % ③ Wealth % ④ Infrastructure %
+      <br/>Deprivation: Dᵢ = Population % − (Weighted Sum of Power, Wealth, and Infrastructure)
+      <br/>Tension: T_tension = Σ|Dᵢ|
+      <div class="note">
+        Dᵢ &gt; 0: Exclusion → Direction of Indigenous Attractor A / Dᵢ &lt; 0: Concentration → Direction of Collaboration Attractor A'<br/>
+        Weight: Calibration in the Verification Stage (Hardcoding Prohibited)<br/>
+        Data: EPR (Ethnic Power Relations) + V-Dem
+      </div>
+</div>
+<div class="formula-block">
+<div class="ftitle">H — Historical Pattern Function + ζ Division Consequence ▲ v0.2</div>
+      H = { κ Colonial Type · σ Slave Status · ρ Indigenous Retention Rate · β Land-Identity Binding · ζ Division Consequence }
+      <br/><br/>
+      ζ = g(LRI-P*, PPI)  ← §37 Output Value
+      <br/>  LRI-P*↑ → Integrated Narrative → ζ→−1 (Unity)   e.g., Nyerere · Tanzania
+      <br/>  PPI↑   → Divide and Rule → ζ→+1 (Conflict)   e.g., Rwanda · Milles Collines Radio
+      <br/><br/>
+      Cross-Verification: ζ × BSLI → Distinguish Genuine Unity vs. Oppressive Sealing
+      <div class="note">
+        Even for the same forced borders (H-stress), the sign of ζ diverges depending on how the leader (§37) handles them<br/>
+        T (High Deprivation D) → §37 Leader Response → Determines the sign of ζ in H (Triangular Causality)
+      </div>
+</div>
+<div class="formula-block">
+<div class="ftitle">R×S — Resource Amount × Resource Sovereignty Coefficient ▲ v0.2</div>
+      R = Σ[ Resource_i × Reserves_i × Strategic Weight_i ]  (★ Continuous)
+      <br/>S = A (Mining GDP Contribution Rate) × B (Government Take Rate)
+      <br/><br/>
+      S Interpretation:
+      <br/>  High A × High B = True Resource Sovereignty
+      <br/>  High A × Low B = High production but profit outflow (Reform Transition Period)
+      <br/>  Low A × Low B = Resource Colony (Exploitative Structure)
+      <div class="note">
+        Data: WB Mineral Rents % GDP (NY.GDP.MINR.RT.ZS) · EITI Report<br/>
+        S is a function of Φ(t) — changes rapidly due to mining code revision, nationalization, or conflict → Hardcoding impossible<br/>
+        Discrepancy between R×S and BSLI = Quantitative evidence of the existence of constriction
+      </div>
+</div>
+<div class="formula-block">
+<div class="ftitle">A / A' — Dual Attractor (★ Continuous)</div>
+      Attractor Type: { Fixed Point / Period (Coup Cycle) / Strange (Multipolar Warlords) }
+      <br/>A' = h(E) · Conflict Axis = |A − A'|
+      <div class="note">
+        A (Indigenous): Sovereignty/Expulsion (Traoré) / A' (Collaborative): Foreign-bound internal proxy<br/>
+        §37 is a common node driving both A and ζ simultaneously
+      </div>
+</div>
+<div class="formula-block">
+<div class="ftitle">M — Mass Field + IC Information Channel (Auxiliary Term)</div>
+      M = { Attraction Coefficient · Escape Coefficient · Bias Vector · Resonance Status }
+      <br/>IC = Information Channel Auxiliary Term (Oral Authority × Radio × Smartphone Penetration × SNS Block Status)
+      <br/><br/>
+      Oral → Radio → Smartphone: The three-stage evolution of African information channels
+      <br/>★ Oral tradition is not a deficiency, but a knowledge system of thousands of years — radio and SNS are its modern extension
+      <div class="note">
+        IC is a conditional/mediating variable, not a determining variable — Prohibit excessive weighting<br/>
+        Smartphone Penetration Rate: Burkina Faso mobile phone 92% (Afrobarometer)<br/>
+        SNS Block = Signal of a leader's blunder (Nepal 2025.9 Empirical Case)<br/>
+        However, smartphones themselves do not become triggers<br/>
+        Voice-Interface Smartphone = The digital culmination of oral culture
+      </div>
+</div>
+<div class="formula-block">
+<div class="ftitle">E(t) — Multipolar Foreign Power Persistence Vector × Time-Phase ▲ v0.2</div>
+      E(t) = Σ[ Foreign Power_i × Intervention Intensity_i × Direction_i ] × Φ(t)
+      <br/>Foreign Power_i ∈ { Former Suzerain · Russia · China · Gulf · US · ... }
+      <br/>Direction_i ∈ { Dominance +1 · Cooperation 0 · Retreat −1 }
+      <div class="note">
+        ★ E Unipolar to Multipolar Correction: E is not 0 even if France leaves; Russia fills it<br/>
+        Mali Empirical Case: Africa Corps 2,500 people → 1,000 people → Kidal retreat (2026.4)<br/>
+        If the replacement of the actor of E does not change S, BSLI does not rise<br/>
+        Burkina Faso: Nordgold owns 90% → France-to-Russia replacement, but S structure remains the same<br/>
+        E cannot be a fixed value — Combined with Φ(t), it requires actual measurement every time
+      </div>
+</div>
+<div class="formula-block">
+<div class="ftitle">Φ(t) — Historical Oscillation Phase</div>
+      Φ = { T Period · φ Current Phase (Latency/Threshold/Explosion/Lull) · Resonance Timing · Attractor Transition }
+      <div class="note">
+        Coup Domino Cycle: Mali '20 → Burkina '22 → Niger '23<br/>
+        Resonance when R, A, M overlap in-phase → Ignition. Climate analysis of "Black Rose".
+      </div>
+</div>
+</section>
+ 5. Institutional Trust Supplement 
+<section>
+<div class="sec-title">5. Institutional Trust A3 Supplement — Literacy Rate · Oral Tradition · Media</div>
+<p>African regional extension of Λ¹² A3 (Institutional Trust). While the existing indicator looks at "whether they trust," this term <strong>focuses on the nature and formation path of trust</strong>.</p>
+<div class="dual-col">
+<div class="col-box liberation">
+<div class="col-title">Understanding-Based Trust (High Literacy Rate)</div>
+        Reading and judging policies → Autonomous participation
+        <br/>Voting = Personal choice
+        <br/>Media pluralism possible
+      </div>
+<div class="col-box shadow">
+<div class="col-title">Mobilization-Based Submission (Low Literacy Rate)</div>
+        Inability to judge policies → Following the community
+        <br/>Voting = Community narrative confirmation ritual
+        <br/>Relying on a single channel → Controllable
+      </div>
+</div>
+<div class="formula-block">
+<div class="ftitle">Oral Narrative Power Index (ONPI — Oral Narrative Power Index)</div>
+      ONPI = Oral Channel Strength × Narrative Controller's §37 Index
+      <br/><br/>
+      High: Leader dominates the integrated narrative → ζ→−1 (Unity possible)
+      <br/>Low: Proliferation of divisive narratives → ζ→+1 risk
+      <br/>Manipulation: Milles Collines-type → Genocide
+      <div class="note">
+        Interpreting the paradox of high voter turnout in nations with high illiteracy:<br/>
+        = A signal that the community narrative is strong, rather than autonomous participation<br/>
+        = The nature of voting is a "collective ritual," not "personal judgment"<br/>
+        74% of African web traffic is mobile (14%p higher than the world average)<br/>
+        Burkina Faso: Illiteracy 34.5% + Mobile phone 92% → Voice channels are the information pathway
+      </div>
+</div>
+</section>
+ 6. Empirical Case of Three AES Countries 
+<section>
+<div class="sec-title">6. AES Three-Country Empirical Case — R×S Actual Measurement (2026-06-27)</div>
+<div class="empirical-box">
+<div class="etitle">Verification Method: Proposed by Cheonghae (淸海) — Measuring S through "resource rents as % of GDP"</div>
+<p>S = A (Mining GDP Contribution Rate) × B (Government Take Rate). World Bank API (NY.GDP.MINR.RT.ZS) × EITI Cross-Verification.</p>
+</div>
+<table>
+<thead><tr><th>Country</th><th>Core Resource</th><th>A (GDP Contribution)</th><th>B (Take Rate)</th><th>S Assessment</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Mali</td><td>Gold (80% of exports)</td><td>9.2%(2021)</td><td>2024 +52.5%↑ (New Mining Code)</td><td>Rising ★</td><td>S reform in progress. Barrick dispute is a new trigger</td></tr>
+<tr><td>Niger</td><td>Uranium (70% of exports)</td><td>5%</td><td>Extremely Low (87% outflow)</td><td>S ≈ 0 Lowest</td><td>Orano license revoked → S↑ attempted</td></tr>
+<tr><td>Burkina</td><td>Gold (15% of GDP)</td><td>15%</td><td>Nordgold 90% → Government 10%</td><td>Low S Structure</td><td>Only E replaced (Fr→Ru), S remains the same</td></tr>
+</tbody>
+</table>
+<div class="verification-box">
+<div class="vtitle">Wiki (Argos) × WB API Cross-Verification Results</div>
+<p>Niger "Uranium 70% of exports, GDP 5%" — Wiki description ↔ WB rents actual measurement match ✅<br/>
+      Mali WB rents 16.18% (2021) ↔ EITI "Government take 23%" match ✅<br/>
+      Burkina WB rents 15.45% (2021) ↔ Nordgold 90% structure → Low B consistent ✅</p>
+</div>
+<div class="warning-box">
+<div class="wtitle">Key Finding — E replacement ≠ S improvement</div>
+<p>Burkina Faso: Expulsion of France (A attractor activated) → Russian Nordgold entry → S structure remains the same.<br/>
+      Traoré's "liberation narrative" ≠ BSLI rise. Proposition 2 Prediction: High probability of BSLI not rising.<br/>
+      "The shaking (expulsion of France) touched the indicator, but the constriction (Nordgold) remains as is → Possibility of blunder."</p>
+</div>
+</section>
+ 7. Verification Protocol 
+<section>
+<div class="sec-title">7. Engine Design Standard Protocol — 2026-06-27 Established</div>
+<div class="protocol-box">
+<div class="ptitle">Design, Analysis, and Verification 3 Stages — Basic application when designing a new engine</div>
+<div class="layer-stack">
+<div class="layer-item">
+<div class="layer-num">①</div>
+<div class="layer-body">
+<div class="lname">Cheonghae (淸海) Intuition/Direction (Idea)</div>
+<div class="ldesc">Structural propositions confirmed. Hardcoding only for directionality.</div>
+</div>
+</div>
+<div class="layer-item">
+<div class="layer-num">②</div>
+<div class="layer-body">
+<div class="lname">Claude Structural Design (Specification)</div>
+<div class="ldesc">Designing variable genealogy, inference core, and causal chain. Skeleton only, without numerical values.</div>
+</div>
+</div>
+<div class="layer-item">
+<div class="layer-num">③</div>
+<div class="layer-body">
+<div class="lname">Wiki (Argos RAG) Structural Verification</div>
+<div class="ldesc">Checking historical, structural, and contextual facts. Numerical values as approximations only.</div>
+</div>
+</div>
+<div class="layer-item">
+<div class="layer-num">④</div>
+<div class="layer-body">
+<div class="lname">WB, WTO, EITI, ACLED API Numerical Verification</div>
+<div class="ldesc">Actual measured values. Time-series tracking. Machine-automated collection possible.</div>
+</div>
+</div>
+<div class="layer-item">
+<div class="layer-num">⑤</div>
+<div class="layer-body">
+<div class="lname">Cross-checking → Confidence if matched / Redesign if diverged</div>
+<div class="ldesc">Wiki (Structure) × API (Numbers) Match = Trust. Discrepancy = Review Flag.</div>
+</div>
+</div>
+<div class="layer-item">
+<div class="layer-num">⑥</div>
+<div class="layer-body">
+<div class="lname">Claude Code → AI-Computer Pipeline Automation</div>
+<div class="ldesc">Argos + WB API + EITI automatic collection → Calculating S, T_tension, and Φ → Automated reinforcement report.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+ 8. Gate 
+<section>
+<div class="sec-title">8. Gate — Self-Learning Hybrid (Confirmation → Automatic Convergence)</div>
+<div class="layer-stack">
+<div class="layer-item"><div class="layer-num">v0.x</div><div class="layer-body"><div class="lname">Cheonghae (淸海) Confirmation Intervention ← Current</div><div class="ldesc">Deciding whether to proceed with regional analysis based on the Λ¹² result report</div></div></div>
+<div class="layer-item"><div class="layer-num">v1.0</div><div class="layer-body"><div class="lname">Automatic bypass of quantitative thresholds + Checking boundary values</div><div class="ldesc">Calibrating threshold values through accumulated corrections</div></div></div>
+<div class="layer-item"><div class="layer-num">v2.0</div><div class="layer-body"><div class="lname">Fully Automated (BSLI Evolution Path)</div><div class="ldesc">AI-Computer Pipeline Real-Time Update</div></div></div>
+</div>
+</section>
+ 9. Connection Structure 
+<section>
+<div class="sec-title">9. Λ¹² Connection Structure</div>
+<div class="conn-grid">
+<span class="conn-tag primary">E(t) ↔ BSLI (Negative Correlation)</span>
+<span class="conn-tag primary">R×S ↔ §36 SCDI L1</span>
+<span class="conn-tag primary">A/A' ↔ §37 PPI (Power Parasitism)</span>
+<span class="conn-tag primary">ζ ↔ §37 LRI-P* (Output)</span>
+<span class="conn-tag">H ↔ §33 BBD (Fractal/Hegemony)</span>
+<span class="conn-tag">M·IC ↔ §38 SDVI (Velocity Vector)</span>
+<span class="conn-tag">Φ ↔ §39 Fractal Social Structure</span>
+<span class="conn-tag">T ↔ §34 GEI (Geography/Group Extinction)</span>
+</div>
+<div class="note-box">
+<strong>Integration Node Principle:</strong> AFRO-Λ is the only regional engine that simultaneously combines §36, §37, and BSLI.
+      Resource (R×S) is linked with §36 SCDI L1, the leader (§37) simultaneously drives ζ and A, and the foreign power (E) is negatively correlated with BSLI.
+      This triangle quantitatively captures the constriction structure of "rich in resources, yet the grassroots are poor."
+    </div>
+</section>
+ 10. Change History 
+<section>
+<div class="sec-title">10. Change History</div>
+<ul class="changelog">
+<li><span class="new">v0.1</span> 2026-06-27 Draft. All variables of L, H, R, A/A', M, E, T, and Φ derived. E↔BSLI coupled. Trio positioning.</li>
+<li><span class="new">v0.2</span> 2026-06-27 Empirical Verification Reflected.
+        ① Core proposition added (Shaking → Indicator → Trigger → Blunder)
+        ② R → R×S (Resource Sovereignty S = A × B, WB API actual measurement)
+        ③ E → E(t) Multipolar vector + time-phase coupling (Mali/Burkina Faso empirical cases)
+        ④ Added ζ to H (§37 output, unity ↔ conflict, triangular causality)
+        ⑤ Added IC (Information Channel) auxiliary term to M (Oral → Radio → Smartphone, caution on weight)
+        ⑥ Causal chain diagnostic flow chart finalized
+        ⑦ Institutional Trust A3 supplemented (ONPI, Oral Narrative Power Index)
+        ⑧ AES three-country R×S actual measurement (Wiki × WB API cross-verification completed)
+        ⑨ Engine design standard protocol established (6 stages)
+      </li>
+</ul>
+</section>
+</main>
+<footer>
+<div class="fname">Everblue Sea Institute for Social Dynamics</div>
+<div>Everbluesea Institute of Social Dynamics</div>
+<div><a href="http://everbluesea.org">everbluesea.org</a></div>
+<div class="ssrn" style="font-family:monospace; font-size:0.79rem; margin-top:0.3rem;">
+    SSRN Λ¹² · Paper ID: 6632858 · <a href="https://ssrn.com/abstract=6632858">ssrn.com/abstract=6632858</a>
+</div>
+<div class="fver">§40 AFRO-Λ · v0.2 · 2026-06-27 · Λ¹² Extension Section (Regional Integrated Engine)</div>
+</footer>
+</body>
+</html>

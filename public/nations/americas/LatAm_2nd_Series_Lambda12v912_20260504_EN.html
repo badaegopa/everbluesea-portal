@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Latin America Part 2 Individual Edition | Λ¹²v9.12 Sociodynamics Report</title>
+<style>
+  /* ===== 티스토리 검증: var()0 · @import0 · script0 · :root0 · SVG w/h명시 ===== */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Georgia,'Times New Roman',serif; background-color:#F5F3EE; color:#2A2A2A; line-height:1.75; }
+
+  .report-header { background-color:#5E9186; color:#FFFFFF; padding:48px 40px 36px; border-bottom:4px solid #B8850E; }
+  .series-tag { font-family:'Courier New',monospace; font-size:11px; letter-spacing:3px; color:#C8E0DC; margin-bottom:12px; }
+  .report-header h1 { font-size:30px; font-weight:normal; line-height:1.3; margin-bottom:6px; }
+  .en-title { font-size:14px; color:#C8E0DC; margin-bottom:18px; font-style:italic; }
+  .engine-badge { display:inline-block; background-color:#B8850E; color:#FFFFFF; font-family:'Courier New',monospace; font-size:10px; padding:4px 12px; letter-spacing:2px; margin-right:6px; }
+  .meta-row { margin-top:16px; font-size:12px; color:#C8E0DC; font-family:'Courier New',monospace; }
+
+  .container { max-width:960px; margin:0 auto; padding:40px 24px; }
+
+  /* 국가 구분선 */
+  .country-divider { background-color:#5E9186; color:#FFFFFF; padding:22px 32px; margin:48px 0 28px; display:flex; align-items:center; gap:16px; }
+  .country-flag { font-size:28px; }
+  .country-divider h2 { font-size:22px; font-weight:normal; }
+  .country-divider .sub { font-size:12px; font-family:'Courier New',monospace; color:#C8E0DC; margin-top:4px; }
+  .lambda-badge { background-color:#B8850E; font-family:'Courier New',monospace; font-size:13px; padding:6px 14px; margin-left:auto; white-space:nowrap; }
+
+  .section-title { font-size:12px; letter-spacing:3px; color:#5E9186; font-family:'Courier New',monospace; margin:32px 0 16px; padding-bottom:8px; border-bottom:1px solid #DDD8CE; }
+
+  .intro-block { background-color:#FFFFFF; border:1px solid #DDD8CE; border-left:4px solid #5E9186; padding:24px 28px; margin-bottom:24px; }
+  .intro-block p { font-size:14.5px; line-height:1.85; color:#3A3A3A; }
+
+  /* 위기 알림 블록 */
+  .crisis-block { background-color:#FDEDED; border:1px solid #E8B8B8; border-left:4px solid #C0392B; padding:18px 22px; margin-bottom:20px; font-size:13.5px; color:#333; line-height:1.8; }
+  .watch-block { background-color:#FEF5E7; border:1px solid #E8D4A0; border-left:4px solid #B8850E; padding:18px 22px; margin-bottom:20px; font-size:13.5px; color:#333; line-height:1.8; }
+  .stable-block { background-color:#EEF5F3; border:1px solid #B0CFC9; border-left:4px solid #5E9186; padding:18px 22px; margin-bottom:20px; font-size:13.5px; color:#333; line-height:1.8; }
+  .update-block { background-color:#F0F0FF; border:1px solid #C0C0E8; border-left:4px solid #5050C0; padding:18px 22px; margin-bottom:20px; font-size:13.5px; color:#333; line-height:1.8; }
+
+  .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
+  .stat-card { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:16px 14px; text-align:center; }
+  .stat-card.d { border-top:3px solid #C0392B; }
+  .stat-card.w { border-top:3px solid #B8850E; }
+  .stat-card.s { border-top:3px solid #5E9186; }
+  .stat-card.x { border-top:3px solid #5050C0; }
+  .stat-val { font-family:'Courier New',monospace; font-size:22px; font-weight:bold; color:#2A2A2A; }
+  .stat-label { font-size:11px; color:#888; font-family:'Courier New',monospace; letter-spacing:1px; margin-top:4px; }
+  .stat-src { font-size:10px; color:#aaa; margin-top:5px; }
+
+  .var-table-wrap { overflow-x:auto; margin-bottom:24px; }
+  table { width:100%; border-collapse:collapse; background-color:#FFFFFF; }
+  thead th { background-color:#5E9186; color:#FFFFFF; padding:9px 7px; text-align:center; font-family:'Courier New',monospace; font-size:10.5px; border:1px solid #4A7870; }
+  thead th.L { text-align:left; padding-left:12px; }
+  tbody td { padding:8px 7px; text-align:center; border:1px solid #DDD8CE; font-family:'Courier New',monospace; font-size:11.5px; }
+  tbody td.L { text-align:left; padding-left:12px; font-family:Georgia,serif; }
+  tbody tr:nth-child(even) { background-color:#F9F8F5; }
+  .rh { color:#C0392B; font-weight:bold; }
+  .rw { color:#B8850E; font-weight:bold; }
+  .rs { color:#5E9186; font-weight:bold; }
+
+  .diagram-wrap { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:20px 24px; margin-bottom:24px; }
+  .diagram-title { font-size:10.5px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:2px; margin-bottom:14px; }
+
+  .phase-tag { display:inline-block; padding:2px 8px; font-size:10px; font-family:'Courier New',monospace; letter-spacing:1px; border-radius:2px; }
+  .pc { background-color:#FDEDED; color:#C0392B; border:1px solid #E8B8B8; }
+  .pt { background-color:#FEF5E7; color:#B8850E; border:1px solid #E8D4A0; }
+  .pw { background-color:#EEF5F3; color:#3A6A5E; border:1px solid #B0CFC9; }
+  .px { background-color:#F0F0FF; color:#5050C0; border:1px solid #C0C0E8; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+  .info-card { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:18px; }
+  .info-card h4 { font-size:11px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:1px; margin-bottom:10px; border-bottom:1px solid #EEE; padding-bottom:6px; }
+  .info-row { display:flex; justify-content:space-between; font-size:11.5px; font-family:'Courier New',monospace; padding:4px 0; border-bottom:1px solid #F5F3EE; }
+  .info-row:last-child { border-bottom:none; }
+  .il { color:#666; }
+  .iv { font-weight:bold; }
+
+  .history-block { background-color:#F3F8F5; border:1px solid #C8DFDA; padding:20px 24px; margin-bottom:24px; }
+  .history-block h4 { font-size:11px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:2px; margin-bottom:12px; }
+  .h-item { font-size:13px; line-height:1.8; color:#3A3A3A; margin-bottom:7px; padding-left:14px; border-left:2px solid #B0CFC9; }
+
+  .ppr-block { background-color:#F3F8F5; border:1px solid #B0CFC9; padding:18px 22px; margin-bottom:16px; }
+  .ppr-head { font-family:'Courier New',monospace; font-size:10.5px; letter-spacing:2px; color:#5E9186; margin-bottom:10px; }
+  .ppr-item { font-size:13px; line-height:1.8; color:#333; margin-bottom:5px; padding-left:14px; border-left:2px solid #5E9186; }
+
+  .seismos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:24px; }
+  .seismos-cell { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:14px; text-align:center; }
+  .sn { font-family:'Courier New',monospace; font-size:9px; color:#5E9186; letter-spacing:1px; margin-bottom:5px; }
+  .sl { font-size:11px; font-weight:bold; color:#3A6A5E; margin-bottom:5px; }
+  .sd { font-size:10.5px; color:#666; line-height:1.5; }
+
+  .conclusion-block { background-color:#EBF4F0; border:1px solid #B0CFC9; padding:28px 32px; margin-bottom:36px; }
+  .conclusion-block p { font-size:14.5px; line-height:1.95; color:#2A2A2A; margin-bottom:12px; }
+
+  /* 4개국 종합비교 */
+  .final-compare { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:24px; margin-bottom:32px; }
+  .final-compare h3 { font-size:13px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:2px; margin-bottom:18px; padding-bottom:8px; border-bottom:1px solid #EEE; }
+
+  .report-footer { background-color:#EBF4F0; border-top:2px solid #5E9186; padding:28px 40px; text-align:center; }
+  .footer-logo { font-family:'Courier New',monospace; font-size:13px; color:#3A6A5E; font-weight:bold; margin-bottom:6px; letter-spacing:1px; }
+  .footer-meta { font-family:'Courier New',monospace; font-size:10px; color:#5E9186; letter-spacing:1px; line-height:1.8; }
+  .footer-link a { color:#B8850E; text-decoration:none; font-family:'Courier New',monospace; font-size:11px; }
+  .divider { border:none; border-top:2px solid #B8850E; margin:48px 0 0; }
+
+  @media(max-width:680px){
+    .stat-row{grid-template-columns:repeat(2,1fr);}
+    .two-col{grid-template-columns:1fr;}
+    .seismos-grid{grid-template-columns:repeat(2,1fr);}
+    .country-divider{flex-wrap:wrap;}
+    .lambda-badge{margin-left:0;}
+    .report-header{padding:32px 20px 24px;}
+    .container{padding:24px 14px;}
+  }
+</style>
+</head>
+<body>
+<!-- MAIN HEADER -->
+<div class="report-header">
+<div class="series-tag">Everblue Sea Institute for Social Dynamics · SYNTHESIS Framework · Part 2 Individual Edition Integration</div>
+<h1>Latin America Part 2 Individual Edition Integrated Report</h1>
+<div class="en-title">Latin America 2nd Series — Colombia · Peru · Venezuela · Ecuador · Λ¹²v9.12</div>
+<div>
+<span class="engine-badge">Λ¹²v9.12</span>
+<span class="engine-badge">§31 ADI</span>
+<span class="engine-badge">Integration of 4 Countries</span>
+<span class="engine-badge">SSRN 6632858</span>
+</div>
+<div class="meta-row">This report is calculated based on the Λ¹²v9.12 engine · Date of Issue: 2026-05-04 · Director: Cheonghae (淸海)</div>
+</div>
+<div class="container">
+<!-- ============================================================ -->
+  Colombia                                                     
+<!-- ============================================================ -->
+<div class="country-divider">
+<span class="country-flag">🇨🇴</span>
+<div>
+<h2>Colombia Individual Report</h2>
+<div class="sub">Colombia · Petro's Total Peace &amp; Armed Group Paradox</div>
+</div>
+<div class="lambda-badge">Λ=0.468 · PWT-r=0.775</div>
+</div>
+<p class="section-title">§01 · National Overview</p>
+<div class="intro-block">
+<p>
+    Colombia stands on the legacy of a civil war that has persisted since the 1960s. Following the historic 2016 peace agreement with the FARC, Gustavo Petro (2022–2026) pursued the 'Total Peace (Paz Total)' policy. However, a paradox has been identified where the ceasefires strengthened armed groups while civilian casualties continued. The resumption of ELN offensives, the displacement of over 65,000 people in the Catatumbo region, and a 15% increase in EMC/ELN armed forces occurred simultaneously in 2024–2025. The Λ¹²v9.12 calculation shows Λ=0.468, PWT-r=0.775 — a slight increase compared to the Regional Comparison Edition (0.462). The driving factor is the simultaneous rise of GPI, EPI, and MFI.
+  </p>
+</div>
+<div class="stat-row">
+<div class="stat-card w"><div class="stat-val">39</div><div class="stat-label">CPI 2024</div><div class="stat-src">TI</div></div>
+<div class="stat-card d"><div class="stat-val">173 people</div><div class="stat-label">Social Leaders Assassinated (2024)</div><div class="stat-src">Indepaz</div></div>
+<div class="stat-card d"><div class="stat-val">+15%</div><div class="stat-label">Armed Forces Increase (2024–25)</div><div class="stat-src">Accam</div></div>
+<div class="stat-card w"><div class="stat-val">37%</div><div class="stat-label">Petro Approval Rating (2025.4)</div><div class="stat-src">Public Opinion Poll</div></div>
+</div>
+<p class="section-title">§02 · 12-Variable Calculation</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L" style="width:80px;">Variable</th>
+<th class="L" style="width:160px;">Item</th>
+<th>Normalized Value</th><th>Direction</th><th>Adjusted Value</th><th>Weight</th>
+<th class="L">Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights and Civil Liberties</td><td>0.42</td><td>+1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:10.5px;">FH Partly Free · Political leaders assassinated · Press threats</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Structural Instability</td><td>0.74</td><td>-1</td><td class="rh">0.74</td><td>2.0</td><td class="L" style="font-size:10.5px;">Gini 52.2 (highest in region) · Poverty rate 32.7%</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.55</td><td>-1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:10.5px;">ELN at the Venezuelan border · Spillover of crime from Ecuador</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity Index</td><td>0.62</td><td>-1</td><td class="rw">0.62</td><td>1.4</td><td class="L" style="font-size:10.5px;">Catatumbo conflict · Forecast of violence in the 2026 election</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td>0.42</td><td>+1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:10.5px;">Congress and Constitutional Court partially functioning · Many reform bills rejected</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader–People Responsiveness</td><td>0.40</td><td>+1</td><td class="rw">0.40</td><td>1.4</td><td class="L" style="font-size:10.5px;">Petro approval rating 37% · Family bribery scandal</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight Index</td><td>0.55</td><td>-1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:10.5px;">Suspension of oil exploration · Decreased investment · Budget cuts</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization Index</td><td>0.58</td><td>-1</td><td class="rw">0.58</td><td>1.4</td><td class="L" style="font-size:10.5px;">Resumption of ELN offensives · Military intervention in Catatumbo</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience and Human Capital</td><td>0.45</td><td>+1</td><td class="rw">0.45</td><td>1.4</td><td class="L" style="font-size:10.5px;">Tax reform passed · Pension reform partially passed</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage Index</td><td>0.68</td><td>-1</td><td class="rh">0.68</td><td>2.0</td><td class="L" style="font-size:10.5px;">Indigenous, Afro-descendant, and peasant conflicts · 2.3 million migrants</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Reciprocal of Oligarchic Dominance</td><td>0.70</td><td>-1</td><td class="rh">0.70</td><td>2.0</td><td class="L" style="font-size:10.5px;">Infiltration of drug funds into politics · World's highest corruption perception</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression §31</td><td>0.55</td><td>-1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:10.5px;">Petro's populism · Judicial reform bill passed</td></tr>
+</tbody>
+</table>
+</div>
+<div class="watch-block">
+<strong>Λ-Score Calculation:</strong> Weighted Sum = 0.42×1.4+0.74×2.0+0.55×1.4+0.62×1.4+0.42×1.4+0.40×1.4+0.55×1.4+0.58×1.4+0.45×1.4+0.68×2.0+0.70×2.0+0.55×1.4 = 9.716<br/>
+  Λ = 9.716 ÷ 12 ÷ 1.29 = <strong>0.628</strong> → ADI Adjustment (γ=0.15): 0.628×(1−0.55×0.15) = <strong>0.576</strong><br/>
+  ※ Upward adjustment compared to the simplified regional comparison value of 0.462. Reflecting the subdivision of variables for the 'Total Peace Paradox'<br/>
+  PWT-r = 1 − 0.576×(0.40×0.62+0.35×0.55+0.25×(1−0.39)) = 1 − 0.576×0.576 = <strong>0.668</strong>
+</div>
+<p class="section-title">§03 · Core Driving Factor Analysis</p>
+<div class="history-block">
+<h4>Structural Core — 'Total Peace Paradox'</h4>
+<div class="h-item"><strong>Peace negotiations strengthening armed groups:</strong> The ceasefire with the ELN and EMC granted both sides reorganization time. A 15% increase in the size of armed forces in 2024–25. Coca production surpassed 3,000 tons (estimated for 2024).</div>
+<div class="h-item"><strong>Continued killings of social leaders:</strong> 173 killed in 2024. Human rights defenders, indigenous groups, and environmental activists were targeted. Despite the 'era of peace,' continuous civilian casualties simultaneously pressure LPI and BRI.</div>
+<div class="h-item"><strong>Petro family scandals:</strong> Suspicions of his son receiving drug money and the indictment of a former minister for embezzling aid funds. Direct drivers of the rise in OLI_inv (=0.70). Centripetal force is expected to continue weakening until the 2026 presidential election.</div>
+<div class="h-item"><strong>Venezuela linkage risk:</strong> Remaining ELN and FARC forces using Venezuela as a rear base. Instability of the Maduro regime → possibility of weakening Venezuela's rear base. A variable that could change the direction of GPI in 2026.</div>
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">A dual structure is identified where armed groups grow stronger and civilian casualties persist while peace negotiations are underway.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Directional Signal</div><div class="sd">The 2026 presidential election is the turning point. The EMC's "warning of electoral violence" is likely to drive EPI higher.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Pacing</div><div class="sd">Possibility of a power vacuum around the end of Petro's term (2026.8) impacting the IGI. Keep monitoring until the 2026 election.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Withholding Judgment</div><div class="sd">Colombia's path to peace is determined by civil society and local communities. Λ¹² only displays the coordinates.</div></div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-1 · Potential transition from Total Peace to regional peace</div>
+<div class="ppr-item">ICG (International Crisis Group) Recommendation: A tailored regional approach is more effective than nationwide negotiations. The Nariño Comuneros case (legalization of mining) serves as a model. This is the most practical path to lowering OLI and EPI.</div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-2 · Without transition of the coca economy, the GPI structure remains unchanged</div>
+<div class="ppr-item">Despite a record drug seizure of 836 tons, production has increased. Only when the three pillars of land reform, transition to legal crops, and resolution of youth unemployment operate simultaneously can CFD and OLI decline. A structure where short-term results are difficult to achieve.</div>
+</div>
+<hr class="divider"/>
+<!-- ============================================================ -->
+  Peru                                                         
+<!-- ============================================================ -->
+<div class="country-divider">
+<span class="country-flag">🇵🇪</span>
+<div>
+<h2>Peru Individual Report</h2>
+<div class="sub">Peru · Hollow Democracy — Congressional Capture &amp; 8th President in 10 Years</div>
+</div>
+<div class="lambda-badge">Λ=0.541 · PWT-r=0.726</div>
+</div>
+<p class="section-title">§01 · National Overview</p>
+<div class="intro-block">
+<p>
+    Peru is experiencing extreme political instability, with 8 presidents replaced over 10 years. On October 10, 2025, Dina Boluarte was impeached by Congress for "moral incapacity," and José Jerí took office as the 8th president. Massive protests followed. Congressional approval rating is at 8%, and the former president's approval is under 5%. Five former presidents have been indicted on corruption charges, and four are in detention. A state of 'Congressional Capture,' where Congress systematically weakens the judicial and anti-corruption systems, is underway. A presidential election is scheduled for April 2026. Λ¹²v9.12 calculation: Λ=0.541, PWT-r=0.726 — significantly higher than the Regional Comparison Edition (0.471). Reflecting subdivision of institutional collapse.
+  </p>
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">8 people</div><div class="stat-label">Number of Presidents in 10 Years</div><div class="stat-src">Peru Constitutional Crisis</div></div>
+<div class="stat-card d"><div class="stat-val">5%</div><div class="stat-label">Boluarte Approval Rating</div><div class="stat-src">Mid-2025</div></div>
+<div class="stat-card d"><div class="stat-val">67 people</div><div class="stat-label">Lawmakers Under Criminal Investigation (out of 130)</div><div class="stat-src">Attorney General's Office 2024</div></div>
+<div class="stat-card w"><div class="stat-val">33</div><div class="stat-label">CPI 2024 (Historical Low)</div><div class="stat-src">TI</div></div>
+</div>
+<p class="section-title">§02 · 12-Variable Calculation</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L" style="width:80px;">Variable</th>
+<th class="L" style="width:160px;">Item</th>
+<th>Normalized Value</th><th>Direction</th><th>Adjusted Value</th><th>Weight</th>
+<th class="L">Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights and Civil Liberties</td><td>0.38</td><td>+1</td><td class="rw">0.38</td><td>0.6</td><td class="L" style="font-size:10.5px;">FH Partly Free · 80 deaths in protests · Amnesty Law</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Structural Instability</td><td>0.70</td><td>-1</td><td class="rh">0.70</td><td>2.0</td><td class="L" style="font-size:10.5px;">Gini 44.4 · Poverty rate 32.7% · Informal economy 73%</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.35</td><td>-1</td><td class="rs">0.35</td><td>0.6</td><td class="L" style="font-size:10.5px;">Spillover of crime from Ecuador · Cocaine transit route</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity Index</td><td>0.75</td><td>-1</td><td class="rh">0.75</td><td>2.0</td><td class="L" style="font-size:10.5px;">Protests after Boluarte's impeachment · Protests against the 8th president</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td>0.22</td><td>+1</td><td class="rs">0.22</td><td>0.6</td><td class="L" style="font-size:10.5px;">Congress neutralizing the judiciary and prosecution · Immunity law</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader–People Responsiveness</td><td>0.18</td><td>+1</td><td class="rs">0.18</td><td>0.6</td><td class="L" style="font-size:10.5px;">Lowest LPI among 12 countries. Complete disconnect between leader and people</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight Index</td><td>0.50</td><td>-1</td><td class="rw">0.50</td><td>1.4</td><td class="L" style="font-size:10.5px;">Moody's credit rating downgrade · GDP growth -0.5%</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization Index</td><td>0.52</td><td>-1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:10.5px;">Deployment of military to suppress protests · Policing in response to organized crime</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience and Human Capital</td><td>0.42</td><td>+1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:10.5px;">Mining exports sustained · Vulnerable education · Regional disparities</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage Index</td><td>0.72</td><td>-1</td><td class="rh">0.72</td><td>2.0</td><td class="L" style="font-size:10.5px;">Lima vs. provinces · Indigenous vs. non-indigenous structural cleavage</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Reciprocal of Oligarchic Dominance</td><td>0.72</td><td>-1</td><td class="rh">0.72</td><td>2.0</td><td class="L" style="font-size:10.5px;">Congressional state capture · CPI 33 historical low</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression §31</td><td>0.78</td><td>-1</td><td class="rh">0.78</td><td>2.0</td><td class="L" style="font-size:10.5px;">Amnesty Law · NGO restriction bill · Neutralization of anti-corruption agencies</td></tr>
+</tbody>
+</table>
+</div>
+<div class="crisis-block">
+<strong>Λ-Score Calculation:</strong> Weighted Sum = 0.38×0.6+0.70×2.0+0.35×0.6+0.75×2.0+0.22×0.6+0.18×0.6+0.50×1.4+0.52×1.4+0.42×1.4+0.72×2.0+0.72×2.0+0.78×2.0 = 10.574<br/>
+  Λ = 10.574 ÷ 12 ÷ 1.29 = <strong>0.682</strong> → ADI Adjustment (γ=0.15): 0.682×(1−0.78×0.15) = <strong>0.602</strong><br/>
+  ※ Significant upward adjustment compared to regional comparison 0.471. Reflecting the highest level of ADI §31 (=0.78). Reflecting continued protests after Boluarte's impeachment and Jerí's inauguration<br/>
+  PWT-r = 1 − 0.602×(0.40×0.72+0.35×0.50+0.25×(1−0.33)) = 1 − 0.602×0.630 = <strong>0.621</strong>
+</div>
+<p class="section-title">§03 · Core Driving Factor Analysis</p>
+<div class="crisis-block">
+<strong>⚠ Peru ADI §31 Analysis: Collapse of Democracy via Congressional Capture</strong><br/>
+  ADI = (Ed×Ds)÷(Ac×Di+ε). Ed(erosion of democratic education)=0.78, Ds(institutional blockade)=0.85, Ac(civic resistance capacity)=0.42, Di(institutional transparency)=0.28. ADI = (0.78×0.85)÷(0.42×0.28+ε) = 0.663÷0.118 = <strong>5.62</strong> → After γ-adjustment, Peru recorded the highest ADI value among the 4 countries in Part 2 Individual Edition. As Congress passed the law granting immunity from corruption investigations and the NGO control law, it is walking the path of "institutional collapse from within" rather than dictatorship from the outside.
+</div>
+<div class="history-block">
+<h4>10-Year Political Cycle — Causes of Structural Recurrence</h4>
+<div class="h-item"><strong>8 Presidents (2016–2026):</strong> Kuczynski (resigned over corruption) → Vizcarra (impeached) → Sagasti (interim) → Castillo (self-coup) → Boluarte (dismissed) → Jerí (inaugurated). Structural reason for repeated replacements: while the Lima-province cleavage (DCI=0.72) elects the president, the Lima-centric Congress always holds a veto-like structure.</div>
+<div class="h-item"><strong>Acceleration of Congressional Capture:</strong> 67 out of 130 lawmakers are under criminal investigation. They passed the law shortening corruption investigations and the military immunity law. A structure where "Congress neutralizes institutions for self-protection."</div>
+<div class="h-item"><strong>April 2026 Presidential Election:</strong> Peru's own DCI and OLI structures are operating without the influence of the EMC's warnings of violence. No matter who the new president is, they are highly likely to face the same structural constraints.</div>
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">An 'inverse democracy' where Congress captures institutions and protects corruption is observed. Highest value in Part 2 Individual Edition based on ADI §31.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Directional Signal</div><div class="sd">The 2026 presidential election is the turning point. The candidate vetting itself is under congressional control.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Pacing</div><div class="sd">LPI_inv=0.18 is the lowest among the 12 countries. The leader-people disconnect has become structured. No signs of short-term rebound.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Withholding Judgment</div><div class="sd">The only path of change: broad civic resistance forcing electoral system reform. The probability is low but cannot be excluded.</div></div>
+</div>
+<hr class="divider"/>
+<!-- ============================================================ -->
+  Venezuela                                                    
+<!-- ============================================================ -->
+<div class="country-divider">
+<span class="country-flag">🇻🇪</span>
+<div>
+<h2>Venezuela Individual Report</h2>
+<div class="sub">Venezuela · Maduro Captured · Rodríguez Interim · System Transition in Flux</div>
+</div>
+<div class="lambda-badge">Λ=0.621 · PWT-r=0.682</div>
+</div>
+<p class="section-title">§01 · National Overview — Dramatic Regime Transition Phase</p>
+<div class="intro-block">
+<p>
+    Venezuela faced an unprecedented situation on January 3, 2026, when Nicolás Maduro was arrested by the US military's 'Absolute Resolve' operation. Maduro was transported to New York and indicted on narco-terrorism charges, and Vice President Delcy Rodríguez took office as the acting president. While negotiations for the release of political prisoners, passage of the amnesty law, and the return of exiled politicians are underway, the military and economic foundations of the Maduro regime have not been immediately dismantled. The Λ¹²v9.12 calculation simultaneously reflects the structural values just before the collapse of the Maduro regime and the transition phase after January 2026. Λ=0.621 (undergoing regime transition), PWT-r=0.682 — a slight decrease compared to the Regional Comparison Edition (0.712). Reflecting the change of direction from collapse to transition.
+  </p>
+</div>
+<div class="update-block">
+<strong>⚡ January 2026 Emergency Update — After Maduro's Arrest</strong><br/>
+  2026.01.03 US Special Forces (Delta Force)/CIA surprise operation in Caracas → Maduro and Flores arrested, transported to New York, and indicted.<br/>
+  Acting President: Delcy Rodríguez (Vice President, history as a pro-Maduro hardliner).<br/>
+  Response: Part of the military maintains loyalty, opposition supporters street protests, partial release of political prisoners, and the first-round legislative vote on the amnesty law passed.<br/>
+  OLI and ADI are in transition, but CFD and MFI remain at high points. Downward reflections of D1, D5, D6, and D12 are scheduled for the next Λ update.
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">10</div><div class="stat-label">CPI 2024 (3rd Most Corrupt in the World)</div><div class="stat-src">TI</div></div>
+<div class="stat-card d"><div class="stat-val">73.2%</div><div class="stat-label">Poverty Rate 2024</div><div class="stat-src">Venezuelan Universities Survey</div></div>
+<div class="stat-card d"><div class="stat-val">7.9M people</div><div class="stat-label">Global Refugees and Migrants</div><div class="stat-src">UN 2024.12</div></div>
+<div class="stat-card x"><div class="stat-val">Regime Transition</div><div class="stat-label">Phase After 2026.01</div><div class="stat-src">After Maduro's Arrest</div></div>
+</div>
+<p class="section-title">§02 · 12-Variable Calculation (Reflecting Transition Phase)</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L" style="width:80px;">Variable</th>
+<th class="L" style="width:160px;">Item</th>
+<th>Maduro Regime Value</th><th>Post-Transition Estimate</th><th>Direction</th><th>Weight</th>
+<th class="L">Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights and Civil Liberties</td><td class="rh">0.12</td><td class="rw">0.28</td><td>+1</td><td>0.6</td><td class="L" style="font-size:10.5px;">Release of political prisoners underway · Partial relaxation of media control</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Structural Instability</td><td class="rh">0.92</td><td class="rh">0.88</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10.5px;">Poverty 73% · Economic collapse · Cannot be resolved immediately</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td class="rh">0.82</td><td class="rh">0.78</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10.5px;">US military operations · Trump's pressure · Sanctions maintained</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity Index</td><td class="rh">0.85</td><td class="rh">0.72</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10.5px;">Post-Maduro tensions between pro-Maduro and opposition forces</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td class="rh">0.15</td><td class="rw">0.32</td><td>+1</td><td>0.6</td><td class="L" style="font-size:10.5px;">Passage of the amnesty law · Expansion of the negotiation base</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader–People Responsiveness</td><td class="rh">0.12</td><td class="rw">0.30</td><td>+1</td><td>0.6</td><td class="L" style="font-size:10.5px;">Public sentiment toward the Rodríguez acting regime not yet measured</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight Index</td><td class="rh">0.92</td><td class="rh">0.85</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10.5px;">PDVSA collapse · Oil production remains 70% lower</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization Index</td><td class="rh">0.88</td><td class="rw">0.68</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10.5px;">Part of the military maintains loyalty · State of emergency declared</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience and Human Capital</td><td class="rh">0.18</td><td class="rw">0.22</td><td>+1</td><td>0.6</td><td class="L" style="font-size:10.5px;">Extreme hollow-out of human resources due to the migration of 8 million people</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage Index</td><td class="rh">0.85</td><td class="rh">0.80</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10.5px;">Chavistas vs. opposition · Division among regional forces</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Reciprocal of Oligarchic Dominance</td><td class="rh">0.95</td><td class="rh">0.75</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10.5px;">Structure of Maduro's military elite partially maintained</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression §31</td><td class="rh">0.92</td><td class="rh">0.65</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10.5px;">Maduro's absence · Rodríguez's authoritarianism remains</td></tr>
+</tbody>
+</table>
+</div>
+<div class="crisis-block">
+<strong>Λ-Score Calculation (Applying Transition Value):</strong><br/>
+  Weighted Sum = 0.28×0.6+0.88×2.0+0.78×2.0+0.72×2.0+0.32×0.6+0.30×0.6+0.85×2.0+0.68×2.0+0.22×0.6+0.80×2.0+0.75×2.0+0.65×2.0 = 12.876<br/>
+  Λ = 12.876 ÷ 12 ÷ 1.29 = <strong>0.832</strong> → ADI Adjustment (γ=0.15): 0.832×(1−0.65×0.15) = <strong>0.750</strong><br/>
+  ※ Reflecting instability during regime transition. Temporary rise in the Maduro regime's peak value (0.712 → 0.750). Potential for a downward trend as the transition progresses.<br/>
+  PWT-r = 1 − 0.750×(0.40×0.75+0.35×0.85+0.25×(1−0.10)) = 1 − 0.750×0.822 = <strong>0.383</strong>
+</div>
+<div class="update-block">
+<strong>3 Transition Scenarios (Λ¹² Dynamics)</strong><br/>
+<strong>[A] Successful Negotiated Transition:</strong> Complete passage of the amnesty law, holding elections, opposition taking power → D1, D5, D6, D12 improved → Λ converges to the 0.45 level (takes 2–3 years)<br/>
+<strong>[B] Rodríguez's Hardline Rule:</strong> Military and Chavista block regrouping → ADI maintained → Λ remains above 0.70<br/>
+<strong>[C] Internal Armed Conflict:</strong> Pro-Maduro military vs. opposition-supporting forces → EPI peak → crisis above Λ 0.85
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">Maduro's absence was confirmed, but the Chavista structure remains in place. The pace of the amnesty law's progress is a key indicator.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Directional Signal</div><div class="sd">Divergence is possible in any direction among scenarios A, B, and C. The military's choice within 6 months is decisive.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Pacing</div><div class="sd">A structure where the hollow-out of human resources (8 million migrated) delays economic recovery by more than 5 years under any scenario.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Withholding Judgment</div><div class="sd">Venezuela's next step is outside the calculation scope of Λ¹². Cooperation between citizens and the international community determines it.</div></div>
+</div>
+<hr class="divider"/>
+<!-- ============================================================ -->
+  Ecuador                                                      
+<!-- ============================================================ -->
+<div class="country-divider">
+<span class="country-flag">🇪🇨</span>
+<div>
+<h2>Ecuador Individual Report</h2>
+<div class="sub">Ecuador · From Island of Peace to Most Violent Country — Noboa's Iron Fist</div>
+</div>
+<div class="lambda-badge">Λ=0.512 · PWT-r=0.729</div>
+</div>
+<p class="section-title">§01 · National Overview</p>
+<div class="intro-block">
+<p>
+    Before 2019, Ecuador was called Latin America's 'island of peace.' The homicide rate soared from 5.8 per 100,000 people in 2018 to 45 in 2023, exploding by 430% in just five years. Emerging as a cocaine transit route to Europe for Colombian and Mexican cartels, Ecuador transitioned into a structurally violent state. President Daniel Noboa (took office in 2023, re-elected in 2025 with 55.7%) responded by declaring an 'internal armed conflict,' deploying the military to prisons, and repeatedly declaring states of emergency. The homicide rate in 2025 spiked again by 40% compared to 2024. Noboa's hardline policies are repeating a pattern of temporary decline followed by a rebound. Λ¹²v9.12: Λ=0.512, PWT-r=0.729 — an upward adjustment compared to the Regional Comparison Edition (0.488).
+  </p>
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">+430%</div><div class="stat-label">Homicide Rate Increase (2019→2024)</div><div class="stat-src">Ecuadorian Crime Observatory</div></div>
+<div class="stat-card d"><div class="stat-val">868 cases</div><div class="stat-label">Kidnapping 2024 (10-Year High)</div><div class="stat-src">Attorney General's Office</div></div>
+<div class="stat-card w"><div class="stat-val">32</div><div class="stat-label">CPI 2024</div><div class="stat-src">TI</div></div>
+<div class="stat-card w"><div class="stat-val">28%</div><div class="stat-label">Poverty Rate (Urban basis)</div><div class="stat-src">HRW 2025</div></div>
+</div>
+<p class="section-title">§02 · 12-Variable Calculation</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L" style="width:80px;">Variable</th>
+<th class="L" style="width:160px;">Item</th>
+<th>Normalized Value</th><th>Direction</th><th>Adjusted Value</th><th>Weight</th>
+<th class="L">Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights and Civil Liberties</td><td>0.35</td><td>+1</td><td class="rs">0.35</td><td>0.6</td><td class="L" style="font-size:10.5px;">State of emergency · Military human rights violations · Constitutional Court rejecting "internal armed conflict" declaration</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Structural Instability</td><td>0.68</td><td>-1</td><td class="rh">0.68</td><td>2.0</td><td class="L" style="font-size:10.5px;">Poverty rate 28% · Child homicide +68% · Youth unemployment</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.58</td><td>-1</td><td class="rw">0.58</td><td>1.4</td><td class="L" style="font-size:10.5px;">Colombian and Mexican cartels · Balkan networks</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity Index</td><td>0.80</td><td>-1</td><td class="rh">0.80</td><td>2.0</td><td class="L" style="font-size:10.5px;">Homicide rate spiking again by 40% · Child casualties reaching a peak</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td>0.32</td><td>+1</td><td class="rs">0.32</td><td>0.6</td><td class="L" style="font-size:10.5px;">Constitutional Court partially limiting Noboa's powers · Conflict with the vice president</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader–People Responsiveness</td><td>0.52</td><td>+1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:10.5px;">Noboa re-elected with 55.7% · Public support for security policies</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight Index</td><td>0.55</td><td>-1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:10.5px;">GDP growth 0.3% · Dollarized economy · Energy crisis</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization Index</td><td>0.78</td><td>-1</td><td class="rh">0.78</td><td>2.0</td><td class="L" style="font-size:10.5px;">Military prison management · Repeated states of emergency · Cooperation with Erik Prince</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience and Human Capital</td><td>0.38</td><td>+1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:10.5px;">Vulnerable youth education · IMF $4B support</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage Index</td><td>0.65</td><td>-1</td><td class="rw">0.65</td><td>1.4</td><td class="L" style="font-size:10.5px;">Indigenous, Afro-descendant, and Venezuelan immigrant conflicts</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Reciprocal of Oligarchic Dominance</td><td>0.65</td><td>-1</td><td class="rw">0.65</td><td>1.4</td><td class="L" style="font-size:10.5px;">Noboa family (largest conglomerate) in power · Infiltration of drug funds into politics</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression §31</td><td>0.68</td><td>-1</td><td class="rh">0.68</td><td>2.0</td><td class="L" style="font-size:10.5px;">Referendum bypassing the Constitutional Court · Disqualification of candidates · Abuse of states of emergency</td></tr>
+</tbody>
+</table>
+</div>
+<div class="crisis-block">
+<strong>Λ-Score Calculation:</strong> Weighted Sum = 0.35×0.6+0.68×2.0+0.58×1.4+0.80×2.0+0.32×0.6+0.52×1.4+0.55×1.4+0.78×2.0+0.38×0.6+0.65×1.4+0.65×1.4+0.68×2.0 = 10.808<br/>
+  Λ = 10.808 ÷ 12 ÷ 1.29 = <strong>0.698</strong> → ADI Adjustment (γ=0.15): 0.698×(1−0.68×0.15) = <strong>0.627</strong><br/>
+  ※ Significant upward revision compared to 0.488 in the regional comparison. Driven by the simultaneous surge in EPI=0.80 and MFI=0.78.<br/>
+  PWT-r = 1 − 0.627×(0.40×0.68+0.35×0.55+0.25×(1−0.32)) = 1 − 0.627×0.634 = <strong>0.603</strong>
+</div>
+<p class="section-title">§03 · Key Driver Analysis</p>
+<div class="crisis-block">
+<strong>⚠ From 'Island of Peace' to 'Warring State' — 5-Year Structural Transition</strong><br/>
+  Ecuador's collapse was not sudden. A six-year chain of events unfolded: 2017 Moreno austerity → dissolution of security ministries → prison vacuum → cartel infiltration → exploding homicide rates. Noboa's hardline measures achieved a short-term 16% reduction in the homicide rate, but the 40% resurge in 2025 illustrates the limitations of the "whack-a-mole" approach. EPI=0.80 is the highest value in the 2nd individual volume.
+</div>
+<div class="history-block">
+<h4>Structural Disintegration Path (2017~2026)</h4>
+<div class="h-item"><strong>2017~2021 Moreno Austerity:</strong> IMF restructuring → abolition of security-related ministries → occurrence of prison management vacuum.</div>
+<div class="h-item"><strong>2021~2023 Lasso Administration:</strong> Homicide rate of 46.2 (per 100,000 people). Invoked muerte cruzada to avoid impeachment → early elections.</div>
+<div class="h-item"><strong>2023 Villavicencio Assassination:</strong> Assassinated during a presidential campaign rally. Shock of the Ecuadorian version of the 'Galán assassination'. Noboa elected.</div>
+<div class="h-item"><strong>2024.01 TV Station Hostage Crisis:</strong> Armed group occupies the station during a live broadcast → Noboa declares 'internal armed conflict' → military deployed.</div>
+<div class="h-item"><strong>2025 Noboa Re-election (55.7%):</strong> Re-elected showcasing security achievements. However, the 40% resurge in the homicide rate in 2025 exposes structural limits.</div>
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">The five-year explosion of homicide rates resurged despite military-style responses. The limits of the whack-a-mole approach have been statistically confirmed.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Directional Signal</div><div class="sd">Noboa's attempt to cooperate with Erik Prince and constitutionalize foreign military bases was rejected. Further rise of ADI is blocked for now.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Pace Adjustment</div><div class="sd">Youth unemployment and a 28% poverty rate serve as the recruiting base for cartels. Militarization without social investment cannot alter the structure.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Deferred Judgment</div><div class="sd">Whether Ecuador will choose the 'El Salvador style' or a path combined with social investment remains to be seen.</div></div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-1 · Choice between Militarization vs. Parallel Social Investment</div>
+<div class="ppr-item">Carnegie Analysis: Without resolving youth unemployment, strengthening education, and reducing poverty, suppressing structural violence is impossible. Currently, Noboa is focusing on militarization, but a path linking IMF's $4B aid to social investment is possible. This is the only sustainable way to lower the Explosion Proximity Index (EPI).</div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-2 · Regional Cooperation with Colombia and Chile</div>
+<div class="ppr-item">Ecuador alone cannot counter transnational cartels. Sharing intelligence and cooperating on tracking criminal proceeds with Colombia (Petro → next administration) and Chile (Kast) is the path to simultaneously control GPI and MFI. A cooperative intelligence network is more effective than foreign military bases.</div>
+</div>
+<hr class="divider"/>
+<!-- ============================================================ -->
+  Comprehensive Comparison of 4 Countries                                               
+<!-- ============================================================ -->
+<p class="section-title" style="margin-top:48px;">§ Synthesis · Final Comparison of 4 Countries in the 2nd Individual Volume Λ¹²v9.12</p>
+<div class="final-compare">
+<h3>Confirmed Figures for the 2nd Individual Volume — Colombia, Peru, Venezuela, Ecuador</h3>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L">Country</th>
+<th>Λ-Score<br/>(Individual Volume)</th>
+<th>Regional Comparison Volume</th>
+<th>Difference</th>
+<th>PWT-r</th>
+<th>Status</th>
+<th class="L">Core Upward Driving Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="L"><strong>🇨🇴 Colombia</strong></td>
+<td><span class="rh">0.576</span></td>
+<td>0.462</td>
+<td><span class="rh">+0.114</span></td>
+<td class="rw">0.668</td>
+<td><span class="phase-tag pt">Peace Paradox</span></td>
+<td class="L" style="font-size:11px;">EPI, MFI, OLI Sub-segmentation</td>
+</tr>
+<tr>
+<td class="L"><strong>🇵🇪 Peru</strong></td>
+<td><span class="rh">0.602</span></td>
+<td>0.471</td>
+<td><span class="rh">+0.131</span></td>
+<td class="rh">0.621</td>
+<td><span class="phase-tag pc">Congressional Capture Collapse</span></td>
+<td class="L" style="font-size:11px;">ADI §31 Highest · IGI Lowest</td>
+</tr>
+<tr>
+<td class="L"><strong>🇻🇪 Venezuela</strong></td>
+<td><span class="rh">0.750</span></td>
+<td>0.712</td>
+<td><span class="rh">+0.038</span></td>
+<td class="rh">0.383</td>
+<td><span class="phase-tag px">Undergoing Regime Transition</span></td>
+<td class="L" style="font-size:11px;">Transition Instability · Post-Maduro Vacuum</td>
+</tr>
+<tr>
+<td class="L"><strong>🇪🇨 Ecuador</strong></td>
+<td><span class="rh">0.627</span></td>
+<td>0.488</td>
+<td><span class="rh">+0.139</span></td>
+<td class="rh">0.603</td>
+<td><span class="phase-tag pc">Violence Crisis</span></td>
+<td class="L" style="font-size:11px;">EPI=0.80 Highest · MFI Surge</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:11.5px;color:#888;font-family:'Courier New',monospace;margin-top:12px;">
+    ※ For all four countries, the values in the individual volume significantly increased compared to the regional comparison volume. This is the result of detailed driving variables (ADI §31, EPI surge, MFI, OLI) that were missed in the simplification of the regional comparison being revealed through the granularization of the individual volume.
+  </p>
+</div>
+ SVG: Comparison of Λ Distribution in the 2nd Individual Volume 
+<div class="diagram-wrap">
+<div class="diagram-title">Comprehensive Diagram · 2nd Individual Volume Λ-Score vs PWT-r Scatter Plot (Including Comparison with 1st Individual Volume)</div>
+<svg height="360" viewbox="0 0 800 360" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="360" width="800"></rect>
+ Axis 
+<line stroke="#3A6A5E" stroke-width="1.5" x1="100" x2="750" y1="310" y2="310"></line>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="100" x2="100" y1="30" y2="310"></line>
+ Axis Label 
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="420" y="340">Λ-Score (Risk →)</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" transform="rotate(-90,62,175)" x="62" y="175">PWT-r (Peace Transition Rate →)</text>
+ Scale 
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="100" y="325">0.2</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="295" y="325">0.4</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="490" y="325">0.6</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="685" y="325">0.8</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="end" x="92" y="313">0.35</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="end" x="92" y="175">0.70</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="end" x="92" y="33">1.0</text>
+ Boundary Line 
+<line stroke="#DDD8CE" stroke-dasharray="4,3" stroke-width="1" x1="295" x2="295" y1="30" y2="310"></line>
+<line stroke="#DDD8CE" stroke-dasharray="4,3" stroke-width="1" x1="490" x2="490" y1="30" y2="310"></line>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" opacity="0.7" text-anchor="middle" x="200" y="48">Stable Zone</text>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="9" opacity="0.7" text-anchor="middle" x="393" y="48">Tension Zone</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="9" opacity="0.7" text-anchor="middle" x="590" y="48">Crisis Zone</text>
+ 1st Individual Volume (See light colors) 
+ Uruguay Λ=0.229 PWT=0.898 → x=100+(0.229-0.2)/0.6*650=131, y=310-(0.898-0.35)/0.65*280=73 
+<circle cx="131" cy="73" fill="#5E9186" opacity="0.4" r="6"></circle>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="8" opacity="0.6" text-anchor="middle" x="131" y="64">Uruguay</text>
+ Chile 0.430/0.799 → x=100+(0.430-0.2)/0.6*650=350, y=310-(0.799-0.35)/0.65*280=116 
+<circle cx="350" cy="116" fill="#5E9186" opacity="0.4" r="6"></circle>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="8" opacity="0.6" text-anchor="middle" x="350" y="107">Chile</text>
+ Brazil 0.421/0.800 
+<circle cx="340" cy="115" fill="#B8850E" opacity="0.4" r="6"></circle>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="8" opacity="0.6" text-anchor="middle" x="340" y="132">Brazil</text>
+ Mexico 0.429/0.793 
+<circle cx="348" cy="120" fill="#B8850E" opacity="0.4" r="6"></circle>
+ Argentina 0.480/0.689 → x=100+(0.280/0.6)*650=403, y=310-(0.339/0.65)*280=164 
+<circle cx="403" cy="164" fill="#C0392B" opacity="0.4" r="6"></circle>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" opacity="0.6" text-anchor="middle" x="403" y="180">Argentina</text>
+ 2nd Individual Volume (Dark colors) 
+ Colombia 0.576/0.668 → x=100+(0.376/0.6)*650=508, y=310-(0.318/0.65)*280=173 
+<circle cx="508" cy="173" fill="#C0392B" opacity="0.85" r="8"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="508" y="161">Colombia</text>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="508" y="188">0.576</text>
+ Peru 0.602/0.621 → x=100+(0.402/0.6)*650=535, y=310-(0.271/0.65)*280=193 
+<circle cx="535" cy="193" fill="#C0392B" opacity="0.85" r="8"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="535" y="181">Peru</text>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="535" y="208">0.602</text>
+ Ecuador 0.627/0.603 → x=100+(0.427/0.6)*650=562, y=310-(0.253/0.65)*280=201 
+<circle cx="562" cy="201" fill="#8B0000" opacity="0.85" r="8"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="562" y="189">Ecuador</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="562" y="216">0.627</text>
+ Venezuela 0.750/0.383 → x=100+(0.550/0.6)*650=696, y=310-(0.033/0.65)*280=296 
+<circle cx="696" cy="296" fill="#8B0000" opacity="0.9" r="10"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="696" y="284">Venezuela</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="696" y="314">0.750/Transitioning</text>
+ Legend 
+<circle cx="120" cy="335" fill="#5E9186" opacity="0.4" r="5"></circle>
+<text fill="#666" font-family="'Courier New',monospace" font-size="8" x="130" y="339">1st Individual Volume</text>
+<circle cx="200" cy="335" fill="#C0392B" opacity="0.85" r="6"></circle>
+<text fill="#666" font-family="'Courier New',monospace" font-size="8" x="212" y="339">2nd Vol: Tension · Crisis</text>
+<circle cx="300" cy="335" fill="#8B0000" opacity="0.9" r="7"></circle>
+<text fill="#666" font-family="'Courier New',monospace" font-size="8" x="312" y="339">2nd Vol: Collapse · Transition</text>
+</svg>
+</div>
+ Synthesis Conclusion 
+<p class="section-title">§ Synthesis Conclusion Trajectory</p>
+<div class="conclusion-block">
+<p>
+    The four countries of the 2nd individual volume share one commonality — all of their risk levels increased in the individual volume compared to the figures in the regional comparison volume. This is not a simple calculation error. What the regional comparison missed — namely, the 'collapse path from within' — was revealed in the granularization of the individual volume.
+  </p>
+<p>
+    In Peru, the congress captured democracy; in Ecuador, cartels occupied the state; in Colombia, peace negotiations intensified war; and in Venezuela, the dictator was removed, but the structure remains. Though these are four different forms of institutional failure, Λ¹² reads them in the same language — the distance between the leader and the public (LPI), institutional resilience (IGI), and the thickness of the oligarchical structure (OLI).
+  </p>
+<p>
+    What these coordinates tell us is not a prediction. They merely show where we stand. Where to go is decided by the people within that country.
+  </p>
+</div>
+</div><!-- /container -->
+<div class="report-footer">
+<div class="footer-logo">Everblue Sea Institute for Social Dynamics (Everblue Sea Institute for Social Dynamics)</div>
+<div class="footer-meta">
+    Director Cheonghae (淸海) · SYNTHESIS Framework · Integration of the 2nd Latin American Individual Volume (Colombia, Peru, Venezuela, Ecuador)<br/>
+    Engine: Λ¹²v9.12 | ADI §31 Included | Based on SSRN 6632858 | Publication Date 2026-05-04<br/>
+    Claude AI Research Partner
+  </div>
+<div class="footer-link" style="margin-top:10px;">
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>
+     · 
+    <a href="https://everbluesea.org">everbluesea.org</a>
+     · 
+    <a href="https://ssrn.com/abstract=6632858">SSRN 6632858</a>
+</div>
+</div>
+</body>
+</html>

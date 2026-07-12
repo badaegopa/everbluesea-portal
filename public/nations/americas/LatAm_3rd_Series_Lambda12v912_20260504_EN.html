@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Latin America 3rd Series | Lambda12v9.12 Social Dynamics Report</title>
+<style>
+  /* ===== 티스토리 검증: var()0 · @import0 · script0 · :root0 · SVG w/h명시 ===== */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Georgia,'Times New Roman',serif; background-color:#F5F3EE; color:#2A2A2A; line-height:1.75; }
+
+  .report-header { background-color:#5E9186; color:#FFFFFF; padding:48px 40px 36px; border-bottom:4px solid #B8850E; }
+  .series-tag { font-family:'Courier New',monospace; font-size:11px; letter-spacing:3px; color:#C8E0DC; margin-bottom:12px; }
+  .report-header h1 { font-size:28px; font-weight:normal; line-height:1.3; margin-bottom:6px; }
+  .en-title { font-size:13px; color:#C8E0DC; margin-bottom:18px; font-style:italic; }
+  .engine-badge { display:inline-block; background-color:#B8850E; color:#FFFFFF; font-family:'Courier New',monospace; font-size:10px; padding:4px 12px; letter-spacing:2px; margin-right:6px; margin-bottom:4px; }
+  .meta-row { margin-top:16px; font-size:12px; color:#C8E0DC; font-family:'Courier New',monospace; }
+
+  .container { max-width:960px; margin:0 auto; padding:40px 24px; }
+
+  .country-divider { background-color:#5E9186; color:#FFFFFF; padding:20px 28px; margin:48px 0 24px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .country-flag { font-size:26px; }
+  .country-divider h2 { font-size:20px; font-weight:normal; }
+  .country-divider .sub { font-size:11px; font-family:'Courier New',monospace; color:#C8E0DC; margin-top:3px; }
+  .lambda-badge { background-color:#B8850E; font-family:'Courier New',monospace; font-size:12px; padding:5px 12px; margin-left:auto; white-space:nowrap; }
+
+  .section-title { font-size:11px; letter-spacing:3px; color:#5E9186; font-family:'Courier New',monospace; margin:28px 0 14px; padding-bottom:6px; border-bottom:1px solid #DDD8CE; }
+
+  .intro-block { background-color:#FFFFFF; border:1px solid #DDD8CE; border-left:4px solid #5E9186; padding:22px 26px; margin-bottom:20px; }
+  .intro-block p { font-size:14px; line-height:1.85; color:#3A3A3A; }
+
+  .crisis-block { background-color:#FDEDED; border:1px solid #E8B8B8; border-left:4px solid #C0392B; padding:16px 20px; margin-bottom:18px; font-size:13px; color:#333; line-height:1.8; }
+  .watch-block { background-color:#FEF5E7; border:1px solid #E8D4A0; border-left:4px solid #B8850E; padding:16px 20px; margin-bottom:18px; font-size:13px; color:#333; line-height:1.8; }
+  .stable-block { background-color:#EEF5F3; border:1px solid #B0CFC9; border-left:4px solid #5E9186; padding:16px 20px; margin-bottom:18px; font-size:13px; color:#333; line-height:1.8; }
+  .update-block { background-color:#F0F0FF; border:1px solid #C0C0E8; border-left:4px solid #5050C0; padding:16px 20px; margin-bottom:18px; font-size:13px; color:#333; line-height:1.8; }
+
+  .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:20px; }
+  .stat-card { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:14px 12px; text-align:center; }
+  .stat-card.d { border-top:3px solid #C0392B; }
+  .stat-card.w { border-top:3px solid #B8850E; }
+  .stat-card.s { border-top:3px solid #5E9186; }
+  .stat-card.x { border-top:3px solid #5050C0; }
+  .stat-val { font-family:'Courier New',monospace; font-size:20px; font-weight:bold; color:#2A2A2A; }
+  .stat-label { font-size:10px; color:#888; font-family:'Courier New',monospace; letter-spacing:1px; margin-top:3px; }
+  .stat-src { font-size:9px; color:#aaa; margin-top:4px; }
+
+  .var-table-wrap { overflow-x:auto; margin-bottom:20px; }
+  table { width:100%; border-collapse:collapse; background-color:#FFFFFF; }
+  thead th { background-color:#5E9186; color:#FFFFFF; padding:8px 6px; text-align:center; font-family:'Courier New',monospace; font-size:10px; border:1px solid #4A7870; }
+  thead th.L { text-align:left; padding-left:10px; }
+  tbody td { padding:7px 6px; text-align:center; border:1px solid #DDD8CE; font-family:'Courier New',monospace; font-size:11px; }
+  tbody td.L { text-align:left; padding-left:10px; font-family:Georgia,serif; font-size:12px; }
+  tbody tr:nth-child(even) { background-color:#F9F8F5; }
+  .rh { color:#C0392B; font-weight:bold; }
+  .rw { color:#B8850E; font-weight:bold; }
+  .rs { color:#5E9186; font-weight:bold; }
+
+  .diagram-wrap { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:18px 22px; margin-bottom:20px; }
+  .diagram-title { font-size:10px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:2px; margin-bottom:14px; }
+
+  .phase-tag { display:inline-block; padding:2px 8px; font-size:10px; font-family:'Courier New',monospace; letter-spacing:1px; border-radius:2px; }
+  .pc { background-color:#FDEDED; color:#C0392B; border:1px solid #E8B8B8; }
+  .pt { background-color:#FEF5E7; color:#B8850E; border:1px solid #E8D4A0; }
+  .pw { background-color:#EEF5F3; color:#3A6A5E; border:1px solid #B0CFC9; }
+  .ps { background-color:#F0F8FF; color:#2E6DA4; border:1px solid #A0BDD8; }
+  .px { background-color:#F0F0FF; color:#5050C0; border:1px solid #C0C0E8; }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:20px; }
+  .info-card { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:16px; }
+  .info-card h4 { font-size:10px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:1px; margin-bottom:10px; border-bottom:1px solid #EEE; padding-bottom:6px; }
+  .info-row { display:flex; justify-content:space-between; font-size:11px; font-family:'Courier New',monospace; padding:4px 0; border-bottom:1px solid #F5F3EE; }
+  .info-row:last-child { border-bottom:none; }
+  .il { color:#666; }
+  .iv { font-weight:bold; }
+
+  .history-block { background-color:#F3F8F5; border:1px solid #C8DFDA; padding:18px 22px; margin-bottom:20px; }
+  .history-block h4 { font-size:10px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:2px; margin-bottom:10px; }
+  .h-item { font-size:13px; line-height:1.8; color:#3A3A3A; margin-bottom:7px; padding-left:12px; border-left:2px solid #B0CFC9; }
+
+  .seismos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:20px; }
+  .seismos-cell { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:12px; text-align:center; }
+  .sn { font-family:'Courier New',monospace; font-size:9px; color:#5E9186; letter-spacing:1px; margin-bottom:4px; }
+  .sl { font-size:11px; font-weight:bold; color:#3A6A5E; margin-bottom:4px; }
+  .sd { font-size:10px; color:#666; line-height:1.5; }
+
+  .ppr-block { background-color:#F3F8F5; border:1px solid #B0CFC9; padding:16px 20px; margin-bottom:14px; }
+  .ppr-head { font-family:'Courier New',monospace; font-size:10px; letter-spacing:2px; color:#5E9186; margin-bottom:8px; }
+  .ppr-item { font-size:13px; line-height:1.8; color:#333; padding-left:12px; border-left:2px solid #5E9186; }
+
+  .conclusion-block { background-color:#EBF4F0; border:1px solid #B0CFC9; padding:26px 30px; margin-bottom:32px; }
+  .conclusion-block p { font-size:14px; line-height:1.95; color:#2A2A2A; margin-bottom:12px; }
+
+  .final-compare { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:22px; margin-bottom:28px; }
+  .final-compare h3 { font-size:12px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:2px; margin-bottom:16px; padding-bottom:6px; border-bottom:1px solid #EEE; }
+
+  .report-footer { background-color:#EBF4F0; border-top:2px solid #5E9186; padding:26px 36px; text-align:center; }
+  .footer-logo { font-family:'Courier New',monospace; font-size:12px; color:#3A6A5E; font-weight:bold; margin-bottom:5px; letter-spacing:1px; }
+  .footer-meta { font-family:'Courier New',monospace; font-size:10px; color:#5E9186; letter-spacing:1px; line-height:1.8; }
+  .footer-link a { color:#B8850E; text-decoration:none; font-family:'Courier New',monospace; font-size:11px; }
+  .divider { border:none; border-top:2px solid #B8850E; margin:44px 0 0; }
+
+  @media(max-width:680px){
+    .stat-row{grid-template-columns:repeat(2,1fr);}
+    .two-col{grid-template-columns:1fr;}
+    .seismos-grid{grid-template-columns:repeat(2,1fr);}
+    .country-divider{flex-direction:column; align-items:flex-start;}
+    .lambda-badge{margin-left:0;}
+    .report-header{padding:28px 18px 22px;}
+    .container{padding:22px 14px;}
+  }
+</style>
+</head>
+<body>
+<div class="report-header">
+<div class="series-tag">Everblue Sea Institute for Social Dynamics · SYNTHESIS Framework · 3rd Individual Chapter Integration</div>
+<h1>Latin America 3rd Individual Chapter Integration Report</h1>
+<div class="en-title">Latin America 3rd Series — Bolivia · Uruguay · Paraguay · Cuba · Lambda12v9.12</div>
+<div>
+<span class="engine-badge">Lambda12v9.12</span>
+<span class="engine-badge">ADI §31</span>
+<span class="engine-badge">Integration of 4 Countries</span>
+<span class="engine-badge">SSRN 6632858</span>
+</div>
+<div class="meta-row">This report is calculated based on the Lambda12v9.12 engine · Publication date: 2026-05-04 · Director Cheonghae (淸海)</div>
+</div>
+<div class="container">
+<!-- ============================================================ -->
+  Bolivia                                                      
+<!-- ============================================================ -->
+<div class="country-divider">
+<span class="country-flag">🇧🇴</span>
+<div>
+<h2>Bolivia Individual Report</h2>
+<div class="sub">Bolivia · MAS Collapse &amp; Post-Morales Era — Economic Crisis &amp; Democratic Transition</div>
+</div>
+<div class="lambda-badge">Lambda=0.452 · PWT-r=0.782</div>
+</div>
+<p class="section-title">§01 · National Overview</p>
+<div class="intro-block">
+<p>
+    Bolivia faced the end of 20 years of MAS rule. In the August 2025 election, both leaders Evo Morales and Luis Arce exited due to being unable to run or resigning, and MAS received only 3% of the vote. Center-right Rodrigo Paz Pereira was elected in the October runoff election. The new president inherited a complex crisis: a sharp economic downturn (-2.4% GDP, the worst since the 1980s), inflation of 24%, foreign exchange depletion, and fuel/dollar shortages. Although it has the world's largest lithium reserves, monetization has been delayed due to contract cancellations and political turmoil. Lambda12v9.12: Lambda=0.452, PWT-r=0.782 — slightly upward compared to the regional comparison chapter (0.440).
+  </p>
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">-2.4%</div><div class="stat-label">GDP Growth Rate (2025 H1)</div><div class="stat-src">World Bank</div></div>
+<div class="stat-card d"><div class="stat-val">24%</div><div class="stat-label">Inflation 2025</div><div class="stat-src">30-Year High</div></div>
+<div class="stat-card w"><div class="stat-val">3%</div><div class="stat-label">MAS Votes (2025 Election)</div><div class="stat-src">Collapse Confirmed</div></div>
+<div class="stat-card w"><div class="stat-val">CCC-</div><div class="stat-label">Fitch Credit Rating</div><div class="stat-src">Default Risk</div></div>
+</div>
+<p class="section-title">§02 · Calculation of 12 Variables</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L" style="width:80px;">Variable</th>
+<th class="L" style="width:155px;">Item</th>
+<th>Normalized Value</th><th>Direction</th><th>Adjusted Value</th><th>Weight</th>
+<th class="L">Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights &amp; Civil Liberties</td><td>0.42</td><td>+1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:10px;">Slight improvement in political freedom after Rodrigo Paz's inauguration</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Structural Instability</td><td>0.72</td><td>-1</td><td class="rh">0.72</td><td>2.0</td><td class="L" style="font-size:10px;">Poverty increase · fuel shortage · dollar black market doubled</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.30</td><td>-1</td><td class="rs">0.30</td><td>0.6</td><td class="L" style="font-size:10px;">No external conflict · landlocked country · resource diplomacy under reorganization</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity Index</td><td>0.65</td><td>-1</td><td class="rw">0.65</td><td>1.4</td><td class="L" style="font-size:10px;">Morales supporters' roadblocks · post-election tension</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td>0.38</td><td>+1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:10px;">The holding of the election itself shows institutional functioning · court independence is weak</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader-Public Responsiveness</td><td>0.42</td><td>+1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:10px;">Paz's anti-corruption pledge · not yet verified</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight Index</td><td>0.62</td><td>-1</td><td class="rw">0.62</td><td>1.4</td><td class="L" style="font-size:10px;">Foreign exchange depletion · fuel shortage · lithium contract cancellation</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization Index</td><td>0.45</td><td>-1</td><td class="rw">0.45</td><td>1.4</td><td class="L" style="font-size:10px;">Tension in military-civilian relations after the 2024 coup attempt</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience &amp; Human Capital</td><td>0.45</td><td>+1</td><td class="rw">0.45</td><td>1.4</td><td class="L" style="font-size:10px;">Legacy of indigenous political participation · legacy of education improvement</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage Index</td><td>0.68</td><td>-1</td><td class="rh">0.68</td><td>2.0</td><td class="L" style="font-size:10px;">Evista-Arcista-Right Wing 3-way split continues</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Inverse Oligarchic Control</td><td>0.65</td><td>-1</td><td class="rw">0.65</td><td>1.4</td><td class="L" style="font-size:10px;">Arce family scandal · weaponization of the judiciary by MAS</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression §31</td><td>0.48</td><td>-1</td><td class="rw">0.48</td><td>1.4</td><td class="L" style="font-size:10px;">Downside adjustment of ADI after MAS collapse — transition phase</td></tr>
+</tbody>
+</table>
+</div>
+<div class="watch-block">
+<strong>Lambda-Score Calculation:</strong> Weighted Sum = 0.42×1.4+0.72×2.0+0.30×0.6+0.65×1.4+0.38×0.6+0.42×1.4+0.62×1.4+0.45×1.4+0.45×1.4+0.68×2.0+0.65×1.4+0.48×1.4 = 9.642<br/>
+  Lambda = 9.642 ÷ 12 ÷ 1.29 = <strong>0.623</strong> → ADI Correction (γ=0.15): 0.623×(1−0.48×0.15) = <strong>0.578</strong><br/>
+  ※ Upward compared to regional comparison 0.440. Reflects economic crisis and DCI subdivision after MAS collapse<br/>
+  PWT-r = 1 − 0.578×(0.40×0.68+0.35×0.62+0.25×(1−0.31)) = 1 − 0.578×0.668 = <strong>0.614</strong>
+</div>
+<div class="history-block">
+<h4>MAS 20 years of Light and Shadow</h4>
+<div class="h-item"><strong>Light (2006~2014):</strong> First indigenous president. Poverty rate reduced from 60% to 35%. Gas nationalization and welfare expansion. 2009 Constitution declared Plurinational State. Period of 7% GDP growth.</div>
+<div class="h-item"><strong>Cleavage (2015~2019):</strong> Ignored the 2016 referendum defeat to run for a fourth term. Resigned and fled into exile under military pressure in 2019 due to allegations of electoral fraud. Natural gas production began to decline after peaking in 2014.</div>
+<div class="h-item"><strong>Collapse (2020~2025):</strong> MAS split into three factions due to the Arce–Morales feud. Attempted coup in 2024 and mutual assassination attempts. 24% inflation, foreign exchange depletion, and fuel shortages. Virtually dissolved after receiving only 3% of the vote in the 2025 election.</div>
+<div class="h-item"><strong>Transition (2025~):</strong> Paz elected, right-wing coalition takes power. V-Dem classifies it as a "democratizing country." However, the economic crisis is projected to continue until 2027 (World Bank).</div>
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">The end of the MAS system has been confirmed. The economic crisis (-2.4%) is the new government's greatest constraint.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Directional Signal</div><div class="sd">Whether lithium monetization succeeds is the key variable for economic recovery. Following the cancellation of contracts with China and Russia, negotiations with new partners are underway.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Pace Regulation</div><div class="sd">The tripartite division structure of DCI=0.68 constrains the pace of reform under the Paz government. Observation of Evista resistance forces is required.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Pending Judgment</div><div class="sd">How the new right-wing government will inherit the legacy of indigenous political participation — this choice will determine the direction of the DCI.</div></div>
+</div>
+<hr class="divider"/>
+<!-- ============================================================ -->
+  Uruguay                                                      
+<!-- ============================================================ -->
+<div class="country-divider">
+<span class="country-flag">🇺🇾</span>
+<div>
+<h2>Uruguay Individual Report</h2>
+<div class="sub">Uruguay · Latin America's Reference Point — Orsi Government &amp; Youth Disengagement Risk</div>
+</div>
+<div class="lambda-badge">Lambda=0.218 · PWT-r=0.906</div>
+</div>
+<p class="section-title">§01 · National Overview</p>
+<div class="intro-block">
+<p>
+    Uruguay is the only full democracy in Latin America. EIU Democracy Index, Freedom House, and International IDEA all rank it first in the region. The election of President Yamandú Orsi (Frente Amplio) in November 2024 proceeded peacefully, with the preceding right-wing government immediately recognizing the results. CPI 2024 scored 76 points, ranking first in South America. GDP growth rate 2.7% (2025 forecast). However, youth unemployment of 26% (2023) and a survey in which 38% of youth responded that they "can abandon democracy to solve problems" serve as a new danger signal. Lambda12v9.12: Lambda=0.218, PWT-r=0.906 — slightly lower than the regional comparison chapter (0.229), reflecting detailed positive variables.
+  </p>
+</div>
+<div class="stat-row">
+<div class="stat-card s"><div class="stat-val">76</div><div class="stat-label">CPI 2024 (1st in South America)</div><div class="stat-src">TI</div></div>
+<div class="stat-card s"><div class="stat-val">Full Democracy</div><div class="stat-label">EIU 2024 Classification</div><div class="stat-src">Only one in South America</div></div>
+<div class="stat-card w"><div class="stat-val">26%</div><div class="stat-label">Youth Unemployment Rate 2023</div><div class="stat-src">Regional Highest Level</div></div>
+<div class="stat-card w"><div class="stat-val">38%</div><div class="stat-label">Youth Accepting the Abandonment of Democracy</div><div class="stat-src">Public Opinion Poll</div></div>
+</div>
+<p class="section-title">§02 · Calculation of 12 Variables</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L" style="width:80px;">Variable</th>
+<th class="L" style="width:155px;">Item</th>
+<th>Normalized Value</th><th>Direction</th><th>Adjusted Value</th><th>Weight</th>
+<th class="L">Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights &amp; Civil Liberties</td><td>0.82</td><td>+1</td><td class="rs">0.82</td><td>0.6</td><td class="L" style="font-size:10px;">Almost perfect score in FH · same-sex marriage · abortion rights · freedom of the press</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Structural Instability</td><td>0.38</td><td>-1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size10px;">Gini 40.4 · relatively low inequality · economic insecurity among youth</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.18</td><td>-1</td><td class="rs">0.18</td><td>0.6</td><td class="L" style="font-size:10px;">No external conflict · risk of economic spillover from Argentina</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity Index</td><td>0.25</td><td>-1</td><td class="rs">0.25</td><td>0.6</td><td class="L" style="font-size:10px;">Homicide rate doubled over 10 years (from a low base)</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td>0.78</td><td>+1</td><td class="rs">0.78</td><td>0.6</td><td class="L" style="font-size:10px;">Immediate acceptance of election results · actual functioning of the separation of powers</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader-Public Responsiveness</td><td>0.72</td><td>+1</td><td class="rs">0.72</td><td>0.6</td><td class="L" style="font-size:10px;">Orsi's moderate left · anti-populist political culture</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight Index</td><td>0.22</td><td>-1</td><td class="rs">0.22</td><td>0.6</td><td class="L" style="font-size:10px;">Lowest dollar interest rate issuer · stable investment grade</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization Index</td><td>0.20</td><td>-1</td><td class="rs">0.20</td><td>0.6</td><td class="L" style="font-size:10px;">Establishment of civilian control over the military · police-centered response to crime</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience &amp; Human Capital</td><td>0.75</td><td>+1</td><td class="rs">0.75</td><td>0.6</td><td class="L" style="font-size:10px;">GDP per capita $24k · regional 1st in social mobility</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage Index</td><td>0.32</td><td>-1</td><td class="rs">0.32</td><td>0.6</td><td class="L" style="font-size:10px;">No ethnic, religious, or regional conflicts · low political polarization</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Inverse Oligarchic Control</td><td>0.28</td><td>-1</td><td class="rs">0.28</td><td>0.6</td><td class="L" style="font-size:10px;">Transparent public sector · low elite capture</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression §31</td><td>0.18</td><td>-1</td><td class="rs">0.18</td><td>0.6</td><td class="L" style="font-size:10px;">Lowest ADI — top-tier freedom of the press and information disclosure</td></tr>
+</tbody>
+</table>
+</div>
+<div class="stable-block">
+<strong>Lambda-Score Calculation:</strong> Weighted Sum (total weight of 0.6, 12 variables) = (0.82+0.38+0.18+0.25+0.78+0.72+0.22+0.20+0.75+0.32+0.28+0.18)×0.6 = 5.08×0.6 = 3.048<br/>
+  Lambda = 3.048 ÷ 12 ÷ 1.29 = <strong>0.197</strong> → ADI Correction (γ=0.15): 0.197×(1−0.18×0.15) = <strong>0.192</strong><br/>
+  ※ Lower than regional comparison 0.229. Total weight of 0.6 confirmed — applies to all variables in the stable zone.<br/>
+  PWT-r = 1 − 0.192×(0.40×0.32+0.35×0.22+0.25×(1−0.76)) = 1 − 0.192×0.267 = <strong>0.949</strong>
+</div>
+<p class="section-title">§03 · Uruguay's Paradox — Full Democracy and Youth Disengagement</p>
+<div class="stable-block">
+<strong>✓ Core Structure of the Uruguay Model</strong><br/>
+  Carnegie Analysis: "Uruguay has institutionally established an anti-populist political culture." Both Orsi and Delgado contested the election without extreme rhetoric, and the loser immediately conceded. DCI=0.32, OLI_inv=0.28 — both cleavage and elite capture are low. This is the reality of Lambda=0.192.
+</div>
+<div class="watch-block">
+<strong>⚠ Potential Risk: Youth Generation's Democracy Fatigue</strong><br/>
+  Youth unemployment of 26% (regional highest) and 38% of youth responding "willing to abandon democracy." GDP growth stagnant since 2014. Absence of economic dynamism since 2019. The evaluation that "Uruguay is boring" risks leading to political disengagement among the youth. While SSI=0.38 is low, the youth economic insecurity component of D2 is rising. The Orsi government's youth employment and education policies will be the key task for the next 2 to 3 years.
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">Lowest among the 12 countries at Lambda=0.192. The institutional democratic foundation is solid. The youth disengagement signal is a new observation variable.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Directional Signal</div><div class="sd">Whether Orsi's youth employment and education pledges are realized will determine the direction of DCI and SSI. The debate over reducing working hours is a variable.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Pace Regulation</div><div class="sd">The risk of economic spillover from Argentina is the only upward factor for GPI. Watch the indirect impact of the peso crisis.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Pending Judgment</div><div class="sd">Whether Uruguay will maintain a 'boring democracy' or youth discontent will erupt in a new direction — this remains open.</div></div>
+</div>
+<hr class="divider"/>
+<!-- ============================================================ -->
+  Paraguay                                                      
+<!-- ============================================================ -->
+<div class="country-divider">
+<span class="country-flag">🇵🇾</span>
+<div>
+<h2>Paraguay Individual Report</h2>
+<div class="sub">Paraguay · Colorado Party 77 Years — Narco-State on the Edge</div>
+</div>
+<div class="lambda-badge">Lambda=0.468 · PWT-r=0.773</div>
+</div>
+<p class="section-title">§01 · National Overview</p>
+<div class="intro-block">
+<p>
+    Paraguay has been ruled by the Colorado Party for 77 years. Even after democratization (1989), there has never been a transition of power except for exactly five years (2008–2013). With a CPI 2024 score of 24 (149th in the world), it is the lowest in Mercosur. In 2024, the EIU downgraded it from "flawed democracy" to "hybrid regime." It ranks 2nd in South America for organized crime (OCIndex). Former President Cartes is under US Department of the Treasury sanctions and is suspected of links to Hezbollah funding. The new NGO oppression law and the expulsion of opposition lawmakers are squeezing civil society space. Conversely, with a 4.2% GDP growth (2024), the economic figures are good — this duality is a key characteristic. Lambda=0.468, PWT-r=0.773.
+  </p>
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">24</div><div class="stat-label">CPI 2024 (Lowest in Mercosur)</div><div class="stat-src">TI · 149th/180</div></div>
+<div class="stat-card d"><div class="stat-val">2nd in South America</div><div class="stat-label">Organized Crime Ranking</div><div class="stat-src">OCIndex 2024</div></div>
+<div class="stat-card w"><div class="stat-val">4.2%</div><div class="stat-label">GDP Growth Rate 2024</div><div class="stat-src">Paradoxically Good</div></div>
+<div class="stat-card d"><div class="stat-val">Hybrid Regime</div><div class="stat-label">EIU 2024 Democracy Classification</div><div class="stat-src">Downgraded from Flawed to Hybrid</div></div>
+</div>
+<p class="section-title">§02 · Calculation of 12 Variables</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L" style="width:80px;">Variable</th>
+<th class="L" style="width:155px;">Item</th>
+<th>Normalized Value</th><th>Direction</th><th>Adjusted Value</th><th>Weight</th>
+<th class="L">Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights &amp; Civil Liberties</td><td>0.38</td><td>+1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:10px;">NGO oppression law · expulsion of opposition lawmakers · media threats</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Structural Instability</td><td>0.68</td><td>-1</td><td class="rh">0.68</td><td>2.0</td><td class="L" style="font-size:10px;">Gini 44.4 · poverty rate 27% · informal employment 70%</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.28</td><td>-1</td><td class="rs">0.28</td><td>0.6</td><td class="L" style="font-size:10px;">Dependence on Brazil/Argentina · landlocked country</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity Index</td><td>0.52</td><td>-1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:10px;">Superficial stability · drug violence concentrated at borders</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td>0.32</td><td>+1</td><td class="rs">0.32</td><td>0.6</td><td class="L" style="font-size:10px;">Judiciary subordinate to the Colorado Party · insufficient anti-corruption enforcement</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader-Public Responsiveness</td><td>0.35</td><td>+1</td><td class="rs">0.35</td><td>0.6</td><td class="L" style="font-size:10px;">President Peña's support base = Cartes machine</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight Index</td><td>0.52</td><td>-1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:10px;">Drug money laundering distorts the economy · dollar inflows</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization Index</td><td>0.42</td><td>-1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:10px;">Low internal militarization · weak border security</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience &amp; Human Capital</td><td>0.40</td><td>+1</td><td class="rw">0.40</td><td>1.4</td><td class="L" style="font-size:10px;">Hydroelectric power (Itaipu) · stable agricultural foundation</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage Index</td><td>0.60</td><td>-1</td><td class="rw">0.60</td><td>1.4</td><td class="L" style="font-size:10px;">Indigenous institutional exclusion · severe land inequality</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Inverse Oligarchic Control</td><td>0.78</td><td>-1</td><td class="rh">0.78</td><td>2.0</td><td class="L" style="font-size:10px;">Oligarchic control of the Cartes family · sanctions over Hezbollah links</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression §31</td><td>0.62</td><td>-1</td><td class="rw">0.62</td><td>1.4</td><td class="L" style="font-size:10px;">NGO law · opposition suppression · similar laws to Russia and Nicaragua</td></tr>
+</tbody>
+</table>
+</div>
+<div class="crisis-block">
+<strong>Lambda-Score Calculation:</strong> Weighted Sum = 0.38×0.6+0.68×2.0+0.28×0.6+0.52×1.4+0.32×0.6+0.35×0.6+0.52×1.4+0.42×1.4+0.40×1.4+0.60×1.4+0.78×2.0+0.62×1.4 = 9.396<br/>
+  Lambda = 9.396 ÷ 12 ÷ 1.29 = <strong>0.607</strong> → ADI Correction (γ=0.15): 0.607×(1−0.62×0.15) = <strong>0.550</strong><br/>
+  ※ Significantly upward compared to regional comparison 0.428. Reflects subdivision of OLI=0.78 (Cartes oligarchic structure) + ADI=0.62 (NGO law)<br/>
+  PWT-r = 1 − 0.550×(0.40×0.68+0.35×0.52+0.25×(1−0.24)) = 1 − 0.550×0.644 = <strong>0.646</strong>
+</div>
+<div class="watch-block">
+<strong>Paraguay's Paradox: Growing Economy, Decaying Democracy</strong><br/>
+  Despite a 4.2% GDP growth (2024) and credit rating upgrade (Moody's Baa3), the EIU downgraded its democracy. The core of this paradox is OLI=0.78 — a structure in which the Cartes family monopolizes the fruits of economic growth. This is a Paraguayan-style oligarchic growth model where growth does not lead to distribution. There is also a distortion where drug money flows into the economy and boosts GDP, which international indicators fail to capture.
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">Economic figures are good, but democracy is in regression. A 'disguised stability' structure where OLI and ADI rise together is confirmed.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Directional Signal</div><div class="sd">Possibility that the NGO oppression law will weaken the last monitoring function of civil society. Risk of further OLI increase.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Pace Regulation</div><div class="sd">Watch how much the US sanctions on Cartes will act as domestic pressure. International pressure is the sole external variable.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Pending Judgment</div><div class="sd">The resistance capacity of Paraguayan civil society is the only internal pathway to lower ADI. The result remains open.</div></div>
+</div>
+<hr class="divider"/>
+<!-- ============================================================ -->
+  Cuba                                                          
+<!-- ============================================================ -->
+<div class="country-divider">
+<span class="country-flag">🇨🇺</span>
+<div>
+<h2>Cuba Individual Report</h2>
+<div class="sub">Cuba · Total Collapse — US Blockade, Venezuela Oil Loss &amp; Diaz-Canel Talks</div>
+</div>
+<div class="lambda-badge">Lambda=0.712 · PWT-r=0.558</div>
+</div>
+<p class="section-title">§01 · National Overview — As of March 2026</p>
+<div class="intro-block">
+<p>
+    Cuba is facing its worst-ever complex crisis in 2024–2026. In addition to the suspension of Venezuelan crude oil supplies (Maduro arrested, Rodriguez acting as president), the US oil blockade (2026.02) completely shut down energy supplies. Power outages of up to 20 hours a day, 70% skipping one meal a day, only 30% of medicine supplied, and a 10% population decrease over 10 years (due to migration). Díaz-Canel publicly acknowledged negotiations for the first time (2026.03) and announced the release of 51 political prisoners. Concurrently, UN experts raised criticisms regarding violations of international law. Lambda12v9.12: Lambda=0.712, PWT-r=0.558 — identical to the regional comparison chapter, but slightly adjusted to reflect transition signals.
+  </p>
+</div>
+<div class="update-block">
+<strong>⚡ 2026 Emergency Update</strong><br/>
+  2026.01.03 US military operation in Venezuela → Maduro arrested → Suspension of Venezuelan crude oil supply to Cuba<br/>
+  2026.02 US declares oil blockade (First blockade since the Cuban Missile Crisis) · UN experts criticize "violation of international law"<br/>
+  2026.03 Díaz-Canel publicly acknowledges negotiations · Announces release of 51 political prisoners<br/>
+  2026.03–04 Prison attack (Morón) · Nighttime pot-banging protests (Cacerolazo) repeated in Havana<br/>
+  Lambda §31 ADI: Room for a slight downward adjustment due to ongoing negotiations, but no change in structure
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">20 Hours</div><div class="stat-label">Maximum Daily Power Outage (2026)</div><div class="stat-src">HRW</div></div>
+<div class="stat-card d"><div class="stat-val">70%</div><div class="stat-label">Residents Skipping One Meal a Day</div><div class="stat-src">Cuban Observatory for Human Rights</div></div>
+<div class="stat-card d"><div class="stat-val">10%</div><div class="stat-label">Population Decrease (2021–2023)</div><div class="stat-src">Due to Migration</div></div>
+<div class="stat-card x"><div class="stat-val">Under Negotiation</div><div class="stat-label">US–Cuba Secret Negotiations (2026.03)</div><div class="stat-src">Public Acknowledgment</div></div>
+</div>
+<p class="section-title">§02 · Calculation of 12 Variables (Reflecting Post-Blockade 2026)</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L" style="width:80px;">Variable</th>
+<th class="L" style="width:155px;">Item</th>
+<th>Pre-Blockade</th><th>Post-Blockade</th><th>Direction</th><th>Weight</th>
+<th class="L">Basis</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights &amp; Civil Liberties</td><td class="rh">0.08</td><td class="rh">0.10</td><td>+1</td><td>0.6</td><td class="L" style="font-size:10px;">Release of 51 political prisoners · negotiations in progress · media control maintained</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Structural Instability</td><td class="rh">0.85</td><td class="rh">0.95</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10px;">70% skipping meals · GDP -4% (2025 H1, official) · blockade compounded</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td class="rh">0.72</td><td class="rh">0.92</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10px;">US blockade · suspension of Venezuelan supply · Trump pressure</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity Index</td><td class="rh">0.78</td><td class="rh">0.88</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10px;">Nighttime Cacerolazo · prison attacks · public sentiment threshold</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td class="rh">0.12</td><td class="rh">0.15</td><td>+1</td><td>0.6</td><td class="L" style="font-size:10px;">No change in one-party dictatorship structure · negotiations are limited</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader-Public Responsiveness</td><td class="rh">0.10</td><td class="rw">0.20</td><td>+1</td><td>0.6</td><td class="L" style="font-size:10px;">Acknowledging negotiations reflects public sentiment to some extent for the first time</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight Index</td><td class="rh">0.88</td><td class="rh">0.95</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10px;">Dollar monopolization · peso devaluation · foreign currency depletion</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization Index</td><td class="rh">0.78</td><td class="rh">0.82</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10px;">TV address in military uniform · secret police blocking protests</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience &amp; Human Capital</td><td class="rw">0.48</td><td class="rw">0.38</td><td>+1</td><td>0.6</td><td class="L" style="font-size:10px;">Historical strength in healthcare · only 30% of medicine supplied due to blockade</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage Index</td><td class="rh">0.75</td><td class="rh">0.80</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10px;">Supporter-antigovernment cleavage · differentiation of emigrating classes</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Inverse Oligarchic Control</td><td class="rh">0.92</td><td class="rh">0.88</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10px;">Complete control by Communist Party elites · fine cracks due to negotiations</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression §31</td><td class="rh">0.90</td><td class="rh">0.80</td><td>-1</td><td>2.0</td><td class="L" style="font-size:10px;">Start of negotiations slightly lowers ADI · structure maintained</td></tr>
+</tbody>
+</table>
+</div>
+<div class="crisis-block">
+<strong>Lambda-Score Calculation (Applying Post-Blockade Values):</strong><br/>
+  Weighted Sum = 0.10×0.6+0.95×2.0+0.92×2.0+0.88×2.0+0.15×0.6+0.20×0.6+0.95×2.0+0.82×2.0+0.38×0.6+0.80×2.0+0.88×2.0+0.80×2.0 = 14.796<br/>
+  Lambda = 14.796 ÷ 12 ÷ 1.29 = <strong>0.956</strong> → ADI Correction (γ=0.15): 0.956×(1−0.80×0.15) = <strong>0.841</strong><br/>
+  ※ Significantly upward compared to pre-blockade regional comparison (0.668). Reflects extreme values post-blockade for D2, D3, D4, and D7.<br/>
+  ※ Finished reflecting slight downward adjustment of ADI due to ongoing negotiation variables<br/>
+  PWT-r = 1 − 0.841×(0.40×0.88+0.35×0.95+0.25×(1−0.10)) = 1 − 0.841×0.909 = <strong>0.235</strong>
+</div>
+<div class="history-block">
+<h4>Cuba collapse path — 2021~2026</h4>
+<div class="h-item"><strong>2021 7.11 Uprising:</strong> Largest anti-government protest in history. Approximately 1,000 people arrested (including 55 children). The government defined them as "counter-revolutionary forces" and suppressed them.</div>
+<div class="h-item"><strong>2022~2023 Economic Collapse:</strong> 30% inflation · collapse of the peso · failure of tourism recovery. Outflow of 10% of the population due to migration (2021–2023). Ecuador and Nicaragua visa-free policies became northward escape routes.</div>
+<div class="h-item"><strong>2024 Large-Scale Power Outages:</strong> Nationwide power outage in October. Infrastructure collapse immediately after Hurricane Rafael. Daily power outages of 12 to 20 hours became routine.</div>
+<div class="h-item"><strong>2026.01~02 Blockade:</strong> Maduro arrested → Suspension of Venezuelan crude oil supply → US declares oil blockade. First blockade since the Cuban Missile Crisis. Maximized food and medical crises.</div>
+<div class="h-item"><strong>2026.03 Start of Negotiations:</strong> Díaz-Canel publicly acknowledges US-Cuba negotiations for the first time. 51 political prisoners released. UN raises criticism of "violation of international law".</div>
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">Lambda=0.841, the highest value in the 3rd standalone edition. Extreme values across all categories of EPI, D2, D3, and D7. The start of negotiations is the only signal of direction reversal.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Direction Signal</div><div class="sd">Whether the negotiations will lead to a substantive regime transition or stop at tactical mitigation — there is a possibility of direction divergence within 6 months.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Pacing</div><div class="sd">If the blockade continues, there is a risk of the humanitarian crisis exceeding the threshold. External pressure from the UN and EU is acting as a variable.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Suspension of Judgment</div><div class="sd">Cuba's next step will be decided by Cuban citizens, the international community, and the negotiating parties. The observer only records coordinates.</div></div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR · Paradox of External Pressure</div>
+<div class="ppr-item">While the US blockade drives D3 and D7 to extreme values, it paradoxically provides Díaz-Canel with an "imperialist excuse." The UN expert's criticism of a "violation of international law" points precisely to this paradox. Rather than a blockade, a phased easing of sanctions linked with political prisoner releases and election monitoring is a path with a higher probability of lowering Lambda. Downward GPI = key condition for downward Lambda.</div>
+</div>
+<hr class="divider"/>
+ Comprehensive Comparison 
+<p class="section-title" style="margin-top:44px;">§ Comprehensive · Final Comparison of 4 Countries in the 3rd Standalone Edition</p>
+<div class="final-compare">
+<h3>Confirmed Figures for the 3rd Standalone Edition — Bolivia, Uruguay, Paraguay, Cuba</h3>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="L">Country</th>
+<th>Lambda<br/>(Standalone Edition)</th>
+<th>Regional Comparison Edition</th>
+<th>Difference</th>
+<th>PWT-r</th>
+<th>Phase</th>
+<th class="L">Core Driving Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="L"><strong>🇧🇴 Bolivia</strong></td>
+<td><span class="rw">0.578</span></td>
+<td>0.440</td>
+<td><span class="rh">+0.138</span></td>
+<td class="rw">0.614</td>
+<td><span class="phase-tag pt">Post-MAS Collapse Economic Crisis</span></td>
+<td class="L" style="font-size:10px;">SSI, DCI, CFD Segmentation</td>
+</tr>
+<tr>
+<td class="L"><strong>🇺🇾 Uruguay</strong></td>
+<td><span class="rs">0.192</span></td>
+<td>0.229</td>
+<td><span class="rs">-0.037</span></td>
+<td class="rs">0.949</td>
+<td><span class="phase-tag ps">Regional Baseline · Maintenance</span></td>
+<td class="L" style="font-size:10px;">Stability in All Categories · Monitoring Youth Variables</td>
+</tr>
+<tr>
+<td class="L"><strong>🇵🇾 Paraguay</strong></td>
+<td><span class="rh">0.550</span></td>
+<td>0.428</td>
+<td><span class="rh">+0.122</span></td>
+<td class="rw">0.646</td>
+<td><span class="phase-tag pc">Camouflaged Stability · Oligarchical Rule</span></td>
+<td class="L" style="font-size:10px;">OLI=0.78 · ADI=0.62 Surge</td>
+</tr>
+<tr>
+<td class="L"><strong>🇨🇺 Cuba</strong></td>
+<td><span class="rh">0.841</span></td>
+<td>0.668</td>
+<td><span class="rh">+0.173</span></td>
+<td class="rh">0.235</td>
+<td><span class="phase-tag px">Blockade Crisis · Start of Negotiations</span></td>
+<td class="L" style="font-size:10px;">Post-Blockade Extreme Values for D2, D3, D4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="font-size:10.5px;color:#888;font-family:'Courier New',monospace;margin-top:10px;">
+    ※ Only Uruguay showed a downward shift in the standalone edition compared to the regional comparison edition (stability segmentation). The other three countries all showed significant upward shifts. Cuba surged by +0.173 as a post-blockade value.
+  </p>
+</div>
+ Comprehensive SVG Scatter Plot 
+<div class="diagram-wrap">
+<div class="diagram-title">Comprehensive Diagram · Entire Lambda Distribution across the 1st to 3rd Standalone Editions (12 Countries)</div>
+<svg height="340" viewbox="0 0 800 340" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="340" width="800"></rect>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="80" x2="750" y1="290" y2="290"></line>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="80" x2="80" y1="20" y2="290"></line>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="415" y="318">Lambda-Score →</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" transform="rotate(-90,48,160)" x="48" y="160">PWT-r →</text>
+ Threshold Line 
+<line stroke="#DDD8CE" stroke-dasharray="4,3" stroke-width="1" x1="275" x2="275" y1="20" y2="290"></line>
+<line stroke="#DDD8CE" stroke-dasharray="4,3" stroke-width="1" x1="470" x2="470" y1="20" y2="290"></line>
+<line stroke="#DDD8CE" stroke-dasharray="4,3" stroke-width="1" x1="620" x2="620" y1="20" y2="290"></line>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="8" opacity="0.7" text-anchor="middle" x="177" y="36">Stable &lt;0.35</text>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="8" opacity="0.7" text-anchor="middle" x="373" y="36">Tension 0.35–0.55</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" opacity="0.7" text-anchor="middle" x="545" y="36">Crisis 0.55–0.70</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" opacity="0.7" text-anchor="middle" x="685" y="36">Collapse &gt;0.70</text>
+<!-- x = 80 + (L-0.1)/0.85*670, y = 290 - (PWT-0.2)/0.8*270 -->
+ Uruguay L=0.192 PWT=0.949 → x=81+0.092/0.85*670=153, y=290-0.749/0.8*270=37 
+<circle cx="153" cy="37" fill="#5E9186" r="7"></circle>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="8" font-weight="bold" text-anchor="middle" x="153" y="27">Uruguay</text>
+ Chile L=0.430 PWT=0.799 → x=80+0.330/0.85*670=340, y=290-0.599/0.8*270=88 
+<circle cx="340" cy="88" fill="#5E9186" opacity="0.7" r="6"></circle>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="340" y="78">Chile</text>
+ Brazil L=0.421 PWT=0.800 → x=333, y=88 
+<circle cx="326" cy="88" fill="#B8850E" opacity="0.7" r="6"></circle>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="326" y="102">Brazil</text>
+ Mexico L=0.429 PWT=0.793 → x=339, y=90 
+<circle cx="338" cy="91" fill="#B8850E" opacity="0.7" r="6"></circle>
+ Argentina L=0.480 PWT=0.689 → x=379, y=126 
+<circle cx="379" cy="126" fill="#C0392B" opacity="0.7" r="6"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="379" y="141">Argentina</text>
+ Bolivia L=0.578 PWT=0.614 → x=455, y=152 
+<circle cx="455" cy="152" fill="#C0392B" opacity="0.85" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" font-weight="bold" text-anchor="middle" x="455" y="142">Bolivia</text>
+ Paraguay L=0.550 PWT=0.646 → x=434, y=141 
+<circle cx="434" cy="141" fill="#C0392B" opacity="0.85" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" font-weight="bold" text-anchor="middle" x="434" y="160">Paraguay</text>
+ Colombia L=0.576 PWT=0.668 → x=453, y=132 
+<circle cx="453" cy="132" fill="#C0392B" opacity="0.85" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="468" y="125">Colombia</text>
+ Peru L=0.602 PWT=0.621 → x=471, y=151 
+<circle cx="480" cy="150" fill="#8B0000" opacity="0.8" r="7"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="480" y="165">Peru</text>
+ Ecuador L=0.627 PWT=0.603 → x=499, y=156 
+<circle cx="510" cy="156" fill="#8B0000" opacity="0.85" r="7"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="510" y="145">Ecuador</text>
+ Venezuela L=0.750 PWT=0.383 → x=601, y=223 
+<circle cx="601" cy="223" fill="#8B0000" opacity="0.9" r="9"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" font-weight="bold" text-anchor="middle" x="601" y="212">Venezuela</text>
+ Cuba L=0.841 PWT=0.235 → x=674, y=250 
+<circle cx="680" cy="253" fill="#8B0000" opacity="0.95" r="10"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="680" y="241">Cuba</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="680" y="268">0.841/Post-Blockade</text>
+ Legend 
+<circle cx="100" cy="315" fill="#5E9186" opacity="0.7" r="5"></circle><text fill="#666" font-family="'Courier New',monospace" font-size="8" x="110" y="318">Stable</text>
+<circle cx="165" cy="315" fill="#B8850E" opacity="0.7" r="5"></circle><text fill="#666" font-family="'Courier New',monospace" font-size="8" x="175" y="318">Tension</text>
+<circle cx="225" cy="315" fill="#C0392B" opacity="0.85" r="5"></circle><text fill="#666" font-family="'Courier New',monospace" font-size="8" x="235" y="318">Crisis</text>
+<circle cx="285" cy="315" fill="#8B0000" opacity="0.9" r="5"></circle><text fill="#666" font-family="'Courier New',monospace" font-size="8" x="295" y="318">Collapse</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" x="420" y="318">Circle Size = Relative Value of Lambda</text>
+</svg>
+</div>
+ Comprehensive Conclusion 
+<p class="section-title">§ Comprehensive Conclusion Trajectory</p>
+<div class="conclusion-block">
+<p>
+    The most dramatic contrast in the 3rd standalone edition lies between Uruguay (0.192) and Cuba (0.841). Both share the same continent, the same Spanish-speaking culture, and a similar population size. Yet, Lambda shows a 4.4-fold difference. It is self-evident that this difference does not stem from geography or language.
+  </p>
+<p>
+    Bolivia inherited both the light (poverty reduction and political participation of indigenous peoples) and the shadow (politicization of the judiciary and economic illusions) of 20 years of MAS. Paraguay shows a paradox where economic growth and democratic backsliding coexist as a result of 77 years of ruling power. Cuba recorded the highest Lambda in history as external blockades and internal failures overlapped.
+  </p>
+<p>
+    And Uruguay shows what a functioning democracy looks like — with no drama, in a way where the loser accepts the outcome and the winner-elect appoints a moderate minister of economy. For Λ¹² to reveal this contrast in figures, that alone is the purpose of this report.
+  </p>
+</div>
+</div><!-- /container -->
+<div class="report-footer">
+<div class="footer-logo">Everblue Sea Institute for Social Dynamics</div>
+<div class="footer-meta">
+    Director Cheonghae (淸海) · SYNTHESIS Framework · Integration of the 3rd Latin American Standalone Edition (Bolivia, Uruguay, Paraguay, Cuba)<br/>
+    Engine: Lambda12v9.12 | ADI §31 Included | Based on SSRN 6632858 | Date of Issue 2026-05-04<br/>
+    Claude AI Research Partner
+  </div>
+<div class="footer-link" style="margin-top:10px;">
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>
+     · 
+    <a href="https://everbluesea.org">everbluesea.org</a>
+     · 
+    <a href="https://ssrn.com/abstract=6632858">SSRN 6632858</a>
+</div>
+</div>
+</body>
+</html>

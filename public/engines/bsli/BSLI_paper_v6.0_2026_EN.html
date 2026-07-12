@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BSLI Paper v6.0 — Basic Social Life Index Empirical Verification in 139 Countries | Everblue Sea</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap');
+
+  :root {
+    --ink: #1a1814;
+    --ink-light: #4a4540;
+    --ink-faint: #8a8580;
+    --paper: #F5F3EE;
+    --paper-dark: #EAE7E0;
+    --accent: #5E9186;
+    --accent-warm: #B8850E;
+    --rule: #DDD8CE;
+    --danger: #8B2020;
+    --warning: #7A5C00;
+    --safe: #1A5C3A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    line-height: 1.95;
+  }
+  .journal-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 13px 0;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .paper-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 48px 140px;
+  }
+
+  /* ── 제목 블록 ── */
+  .title-block {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 52px 0 44px;
+    margin-bottom: 52px;
+  }
+  .paper-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .paper-title-ko {
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+  .paper-title-en {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--ink-light);
+    margin-bottom: 36px;
+    font-style: italic;
+  }
+  .meta-row {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  .meta-item strong { color: var(--ink); font-weight: 600; }
+
+  /* ── AI 공개 선언 ── */
+  .ai-disclosure {
+    background: var(--paper-dark);
+    border-left: 3px solid var(--accent-warm);
+    padding: 24px 28px;
+    margin-bottom: 48px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+    line-height: 1.85;
+  }
+  .ai-disclosure-title {
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-warm);
+    margin-bottom: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .ai-part { margin-bottom: 10px; }
+  .ai-part strong { color: var(--ink); }
+
+  /* ── 초록 ── */
+  .abstract-box {
+    border: 1px solid var(--rule);
+    padding: 32px 36px;
+    margin-bottom: 56px;
+    background: var(--paper-dark);
+  }
+  .abstract-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .abstract-text { font-size: 15px; line-height: 2.0; }
+  .keywords {
+    margin-top: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12.5px;
+    color: var(--ink-light);
+  }
+  .keywords strong { color: var(--ink); }
+
+  /* ── 섹션 ── */
+  .section { margin-bottom: 64px; }
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .section h2 {
+    font-size: 21px;
+    font-weight: 700;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 12px;
+    margin-bottom: 28px;
+  }
+  .section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 32px;
+    margin-bottom: 14px;
+  }
+  .section p { margin-bottom: 16px; font-size: 15.5px; }
+
+  /* ── 수식 블록 ── */
+  .formula-box {
+    background: var(--paper-dark);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent);
+    padding: 24px 28px;
+    margin: 24px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    line-height: 2.0;
+  }
+  .formula-main {
+    font-size: 19px;
+    font-weight: 400;
+    margin-bottom: 12px;
+    color: var(--ink);
+  }
+  .formula-sub { font-size: 13px; color: var(--ink-light); }
+
+  /* ── 표 ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13.5px;
+  }
+  th {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: var(--paper-dark); }
+
+  /* ── 강조 카드 ── */
+  .insight-card {
+    border-left: 4px solid var(--accent);
+    padding: 18px 22px;
+    background: var(--paper-dark);
+    margin: 24px 0;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+  .warn-card {
+    border-left: 4px solid var(--accent-warm);
+    padding: 18px 22px;
+    background: #FBF7EF;
+    margin: 24px 0;
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  /* ── 사분면 표 ── */
+  .quadrant-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .quad-cell {
+    border: 1px solid var(--rule);
+    padding: 18px 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 13px;
+  }
+  .quad-cell .quad-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .q-safe { border-top: 3px solid var(--safe); }
+  .q-warn { border-top: 3px solid var(--accent-warm); }
+  .q-alert { border-top: 3px solid var(--danger); }
+  .q-neutral { border-top: 3px solid var(--ink-faint); }
+
+  /* ── 순위 표 ── */
+  .rank-badge {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    border-radius: 50%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .badge-top { background: var(--safe); color: white; }
+  .badge-mid { background: var(--rule); color: var(--ink); }
+  .badge-bot { background: var(--danger); color: white; }
+
+  .grade-label {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .grade-A { background: #C8E6C9; color: #1B5E20; }
+  .grade-B { background: #DCEDC8; color: #33691E; }
+  .grade-C { background: #FFF9C4; color: #F57F17; }
+  .grade-D { background: #FFCCBC; color: #BF360C; }
+  .grade-E { background: #FFCDD2; color: #B71C1C; }
+
+  /* ── 참고문헌 ── */
+  .references { font-size: 13.5px; }
+  .ref-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    padding-left: 28px;
+    text-indent: -28px;
+    line-height: 1.75;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .ref-num {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    font-size: 12px;
+    margin-right: 8px;
+  }
+
+  /* ── 각주 ── */
+  .footnote-section {
+    border-top: 1px solid var(--rule);
+    margin-top: 56px;
+    padding-top: 24px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12.5px;
+    color: var(--ink-light);
+    line-height: 1.85;
+  }
+  .fn { margin-bottom: 8px; }
+  sup { font-size: 10px; color: var(--accent); }
+
+  /* ── 통계 하이라이트 ── */
+  .stat-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 24px 0;
+  }
+  .stat-box {
+    flex: 1;
+    min-width: 140px;
+    border: 1px solid var(--rule);
+    padding: 18px 16px;
+    text-align: center;
+    background: var(--paper-dark);
+  }
+  .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    line-height: 1.2;
+  }
+  .stat-label {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-top: 6px;
+  }
+
+  /* ── 부록 스타일 ── */
+  #appendix-a {
+    border-top: 3px solid var(--ink);
+    margin-top: 80px;
+    padding-top: 48px;
+  }
+  #appendix-a table td:first-child {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-align: center;
+  }
+  #appendix-a table td:nth-child(2) {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-light);
+  }
+
+  @media print {
+    .journal-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .paper-wrap { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="journal-header">
+  Everblue Sea Institute for Social Dynamics · EVERBLUESEA INSTITUTE OF SOCIAL DYNAMICS · WORKING PAPER 2026
+</div>
+<div class="paper-wrap">
+ ── Title Block ── 
+<div class="title-block">
+<div class="paper-label">Working Paper · BSLI-v6.0 · 2026</div>
+<div class="paper-title-ko">
+    Basic Social Life Index (BSLI) —<br/>
+    Framework Design for Measuring the Life Stability of the Grassroots Stratum and Empirical Verification in 139 Countries
+  </div>
+<div class="paper-title-en">
+    Basic Social Living Index (BSLI): Framework Design and 142-Country Empirical Validation<br/>
+    for Measuring Grassroots Stratum Living Stability
+  </div>
+<div class="meta-row">
+<div class="meta-item"><strong>Author</strong> Giseub Kim (Gi-seub Kim, Cheonghae (淸海))</div>
+<div class="meta-item"><strong>ORCID</strong> 0009-0004-7638-0182</div>
+<div class="meta-item"><strong>Affiliation</strong> Everblue Sea Institute for Social Dynamics</div>
+<div class="meta-item"><strong>Year</strong> 2026</div>
+<div class="meta-item"><strong>Version</strong> v6.0 — Confirmation of Recalculation Based on Empirical Measurements in 139 Countries (for SSRN Submission)</div>
+</div>
+<div class="meta-row" style="margin-top:10px;">
+<div class="meta-item"><strong>Prior Papers</strong> Λ¹¹ SSRN:6509200 · Λ¹² SSRN:6632858</div>
+<div class="meta-item"><strong>Copyright</strong> Copyright Registration Pending</div>
+<div class="meta-item"><strong>Data</strong> World Bank PIP · OWID · WTO Timeseries API (2023)</div>
+</div>
+</div>
+ ── AI Disclosure ── 
+<div class="ai-disclosure">
+<div class="ai-disclosure-title">⚑ Generative AI Disclosure</div>
+<div class="ai-part">
+<strong>① Overall Summary of the Work</strong><br/>
+    This paper designs the BSLI (Basic Social Life Index) framework, and based on World Bank PIP<sup>*1</sup> and OWID<sup>*2</sup> empirical data, applies and verifies it for 139 countries (countries where BSLI calculation is possible). BSLI, together with the preceding paper Λ¹¹,<sup>*3</sup>·Λ¹²<sup>*4</sup> is a complementary index designed on top of decades of dedicated data building by international researchers, independently measuring the life stability of the grassroots stratum (30–50% income deciles) which was not the primary target of existing index systems.
+  </div>
+<div class="ai-part">
+<strong>② GAI Output (Claude, Anthropic)</strong><br/>
+    · Proofreading draft manuscript sentences and refining academic expressions<br/>
+    · Assisting in equation notation conversion and reviewing internal consistency<br/>
+    · Assisting in building World Bank PIP/OWID data collection pipelines (Claude Code)<br/>
+    · Reviewing counterarguments and discussing during the analytical logic development process<br/>
+    · Assisting in formatting references<br/>
+<em>GAI did not generate independent ideas, theories, or analysis results, and the conceptual conclusions of all judgments were directly overseen by the researcher.</em>
+</div>
+<div class="ai-part">
+<strong>③ Human Creative Expression (Direct Creation by Researcher)</strong><br/>
+    · Design of the BSLI formula (F_ML·H·D·Hs) and weight system<br/>
+    · Conceptual definition and measurement targeting of the ML Layer (30–50% income deciles)<br/>
+    · Triple System (三重界) — Theory of Clothing, Food, and Housing<br/>
+    · Declaration of independence from Eurostat standards and establishment of the ML Layer philosophy<br/>
+    · Design of the Stratified BSLI 5-axis cross-coordinate system<br/>
+    · Independence verification design and interpretation of Λ¹² × BSLI<br/>
+    · Entire description of manuscript argument development, conclusions, and policy implications<br/>
+    → Core creativity is attributed to the researcher (Giseub Kim)
+  </div>
+</div>
+ ── Abstract ── 
+<div class="abstract-box">
+<div class="abstract-label">Abstract</div>
+<div class="abstract-text">
+    Existing international indices such as HDI, Gini, and WHR are shared intellectual assets of humanity built through the dedicated efforts of international researchers over decades. These indices have faithfully measured national development levels, income distribution structures, and subjective quality of life according to their respective design purposes. However, because these indices are designed to measure the overall average state of a nation, there is a difference in scope for their design purposes in independently reflecting the basic life pressure of the grassroots stratum (30–50% income deciles, ML Layer), which this study assumes is highly sensitive to social change. The Basic Social Life Index (BSLI) is designed to fill this measurement gap, and was verified by applying it to 139 countries (excluding 3 countries lacking PIP data) based on open data (World Bank PIP and OWID) accumulated by existing indices. It is explicitly stated that this study could not have existed without the data of preceding researchers.
+
+    BSLI consists of Food Stability (F_ML: average of the 30–50% income deciles), Basic Life Sufficiency (H: median income), Deprivation Index (D: $3.65 poverty rate), and Housing Stress (Hs: Palma ratio). The formula BSLI = 0.40·F_ML + 0.60·H − D − Hs follows traditional economic index design methods, yet reflects the clothing, food, and housing living realities of the middle-low stratum.
+
+    Empirical analysis of 139 countries showed that Nordic and Middle Eastern resource-rich countries (NOR, LUX, ARE) recorded the highest BSLI, while Sub-Saharan Africa (ZMB, MOZ, ZAF) showed the lowest levels. In the independence verification with the preceding paper Λ¹² sociodynamics engine, Pearson r = +0.172 (r² = 0.030) confirmed that it is virtually an independent dimension: while Λ¹² measures the macro-dynamics of state structures, BSLI measures the actual level of basic life pressure experienced by the ML Layer within those structures.
+
+    This study also analyzes the structural pressures that the AI and automation transition exert on the ML Layer, and proposes a Stratified BSLI design direction that will enable cross-sectional analysis by income decile, age, housing type, and region in the future.
+  </div>
+<div class="keywords">
+<strong>Keywords</strong>: Basic Social Life Index, BSLI, ML Layer, grassroots stratum, basic life stability, poverty, income distribution, sociodynamics, Λ¹², Uprising Index, World Bank PIP, empirical verification in 139 countries<br/>
+<strong>Keywords</strong>: BSLI, Basic Social Living Index, Grassroots Stratum, ML-Layer, Living Stability, Poverty, Income Distribution, Social Dynamics, Lambda-12, World Bank PIP
+  </div>
+</div>
+ ── §1 Introduction ── 
+<div class="section">
+<div class="section-num">§ 1 · Introduction</div>
+<h2>Introduction — Why the Basic Social Life Index?</h2>
+<p>Hong Kong in 2019, Iran in 2022, Bangladesh in 2024 — we repeatedly witness the same scene. GDP was growing, unemployment was manageable, and the official poverty rate was showing a trend of improvement. Yet, people poured onto the streets. The failure of existing indicators to sufficiently predict and reflect this phenomenon stems from the difference between the purposes for which they were designed and their measurement scope.</p>
+<p>Existing international indices like HDI, Gini, and MPI are outstanding measurement tools that align with their respective design purposes. However, due to their structural design targeting either national averages or the lowest strata, they face structural constraints in reflecting the accumulated basic life pressure on the lower-middle stratum (30–50% income deciles) as an independent variable when growth is concentrated in specific deciles. BSLI is proposed as a measurement tool to address these structural constraints.</p>
+<div class="insight-card">
+    While national average indicators faithfully reflect average levels,<br/>
+    the basic life pressure of specific income strata is difficult to fully identify without separate indicators.<br/>
+    BSLI is a measurement framework that addresses this identification gap.
+  </div>
+<p>To fill this measurement gap, this study proposes the Basic Social Life Index (BSLI). BSLI measures the actual life stability of the ML Layer (lower-middle stratum) located in the 30–50% income deciles across four dimensions—food, housing, debt, and inequality—occupying an independent measurement space distinct from traditional poverty indicators (concentrated on the lowest stratum) or average indicators (diluted overall).</p>
+<p>This study also performs an integrated empirical analysis with the preceding paper Λ¹² sociodynamics engine<sup>*4</sup> . We confirm that the dimensions measured by the two engines are independent at r = +0.172, and present empirical grounds for the combined formula: Uprising Index (UI) = (Λ¹² Vulnerability × BSLI Pressure) / SE (Social Elasticity).</p>
+<h3>1.1 Research Objectives</h3>
+<p>① Design an empirically verifiable international comparison index that measures the life stability of the ML Layer (30–50% income deciles)<br/>
+  ② Apply and verify across 139 countries based on World Bank PIP empirical data<br/>
+  ③ Demonstrate empirical independence from the preceding paper's Λ¹² engine (r = +0.172)<br/>
+  ④ Analyze the structural pressures that the AI and automation transition exert on the ML Layer<br/>
+  ⑤ Establish a measurement framework capable of automatic quarterly and annual updates</p>
+<h3>1.2 Structure of the Paper</h3>
+<p>§2 ML Layer Theory and the Triple System · §3 Position Relative to Existing Indices · §4 Formula Design v4.2 · §5 Data and Methodology · §6 Empirical Verification in 139 Countries · §7 Λ¹² Independence Verification · §8 Special Analysis of South Korea · §9 AI/Automation and BSLI · §10 Stratified BSLI · §11 Conclusion · <strong>Appendix A: Complete Results Table for 139 Countries</strong></p>
+</div>
+ ── §2 Theoretical Foundation ── 
+<div class="section">
+<div class="section-num">§ 2 · Theoretical Foundation</div>
+<h2>Theoretical Foundation — The ML Layer and the Triple System</h2>
+<h3>2.1 The Triple System (三重界) — Theory of Clothing, Food, and Housing</h3>
+<p>The most primal social contracts running through human history converge on three things: whether one can eat (food), whether one can live (housing), and whether one can exist healthily (medicine). This study names these three layers the 'Triple System (三重界)' and assumes that if any one of these reaches a critical threshold simultaneously (TC ≥ 1), social instability will manifest, and when all three collapse (TC = 3), a critical transition will occur.</p>
+<p>BSLI measures this Triple System based on the layer that experiences it first and most directly—the ML Layer. The upper stratum (Q4–Q5) has buffer assets, while the lower stratum (Q1) is already covered by existing poverty indicators (or is their blind spot). The ML Layer is a leading detection layer of social change because it is immediately exposed to market price changes without any asset buffer.</p>
+<div class="insight-card">
+    "The ML Layer is a stratum exposed to the market without a buffer.<br/>
+    Thus, it is the first to detect social change.<br/>
+    The rate at which the BSLI of this layer falls is a leading signal of the next event."
+  </div>
+<h3>2.2 Defining the ML Layer — 30–50% Income Deciles</h3>
+<p>In this study, the ML Layer (Middle-Low Layer) is defined as income deciles <strong>30~50%</strong>. This is intentionally differentiated from Eurostat's "60–80% of median income" standard, and there are four theoretical grounds for establishing this interval.</p>
+<p><strong>① Lower Boundary (30%) — Starting Point of the Welfare Blind Spot:</strong> The bottom 30% or less of income deciles are included in the international poverty line ($3.65/day) or each country's minimum cost of living benefit criteria, making them subjects of measurement and support under existing poverty indicators (MPI, poverty rate) and welfare systems. The 30% income decile lies just above this poverty benefit baseline, marking the starting point of a structural blind spot where individuals receive no official welfare benefits yet are directly exposed to market price fluctuations without asset buffers.</p>
+<p><strong>② Upper Boundary (50%) — Ending Point of the Unformed Asset Buffer Interval:</strong> The 50% income decile is on the line of median income, up to which housing and food expenses account for 50–70% of income, structurally limiting surplus asset formation. Since deciles exceeding 50% (upper Q3 to Q5) gradually begin to secure asset buffer capacity, they are excluded from the measurement target of the BSLI.</p>
+<p><strong>③ Demographic and Structural Characteristics of the Interval:</strong> The 30–50% interval is the most densely populated interval in most countries, corresponding to an income level of approximately 1.2 to 2.0 times the minimum wage. This stratum simultaneously possesses grievance (economic pressure), organizational capacity (social networks), and mobility (capacity to participate in protests and collective action), and has been recorded as a major driver of historical social changes (Λ¹², SSRN:6632858).</p>
+<p><strong>④ Measurement Gap with Existing Indicators:</strong> Q1 (bottom 20% income deciles) is the subject of MPI and poverty rate measurements, while Q4–Q5 (top 40%) are overrepresented in the weighted averages of HDI and GDP. The 30–50% interval is a structural gap that is not independently captured in either measurement system. BSLI sets this interval as its measurement target to fill this gap.</p>
+<table>
+<tr>
+<th>Standard</th>
+<th>Definition</th>
+<th>Purpose</th>
+<th>Limitations</th>
+</tr>
+<tr>
+<td>Eurostat (60–80% of median income)</td>
+<td>Relative position to median income</td>
+<td>Convenience of EU welfare policy execution</td>
+<td>Discrepancy in countries with asymmetrical income distribution; not a standard for structural exclusion</td>
+</tr>
+<tr>
+<td><strong>BSLI ML Layer (30–50% income deciles)</strong></td>
+<td>Absolute decile-based — top of the welfare blind spot to the bottom of the unformed asset buffer</td>
+<td>Detection of structural exclusion phenomena</td>
+<td>Inability to compare absolute income values between countries (→ compensated by normalization)</td>
+</tr>
+</table>
+<div class="warn-card">
+<strong>Measurement Gap Declaration:</strong> The lack of independent definition for this layer in existing international statistics reflects that this decile falls outside the primary measurement targets of conventional index designs. National average indicators structurally dilute intra-decile heterogeneity, and BSLI measures the life pressure of the ML Layer omitted in that dilution process.
+  </div>
+<h3>2.3 Relationship with Social Elasticity (SE)</h3>
+<p>While BSLI measures the current level of life pressure, Social Elasticity (SE) measures the institutional capacity to absorb that pressure. The Uprising Index (UI) proposed in subsequent research combines these two engines:</p>
+<div class="formula-box">
+<div class="formula-main">UI = (Λ¹² Vulnerability × BSLI Pressure) / SE</div>
+<div class="formula-sub">
+      Λ¹² Vulnerability = 1 − η (inverse of Λ¹² sociodynamics score)<br/>
+      BSLI Pressure = 1 − BSLI_norm (degree of life pressure)<br/>
+      SE = norm(A2_history + A8_history) (Social Elasticity, institutional DNA)
+    </div>
+</div>
+</div>
+ ── §3 Relationship with Existing Indices ── 
+<div class="section">
+<div class="section-num">§ 3 · Positioning</div>
+<h2>Existing International Index Systems and the Position of BSLI</h2>
+<h3>3.1 Academic Contributions of Existing Indices</h3>
+<table>
+<tr>
+<th>Index</th>
+<th>Development</th>
+<th>Measurement Target</th>
+<th>Difference with BSLI</th>
+</tr>
+<tr>
+<td>HDI</td>
+<td>UNDP, 1990</td>
+<td>National averages of income, education, and life expectancy</td>
+<td>Average indicators — Exclusion of the ML Layer</td>
+</tr>
+<tr>
+<td>Gini Coefficient</td>
+<td>OECD/World Bank</td>
+<td>Income inequality distribution</td>
+<td>Measures distribution structure only — not living standards</td>
+</tr>
+<tr>
+<td>WHR (World Happiness Report)</td>
+<td>Gallup, 2012~</td>
+<td>Subjective happiness satisfaction</td>
+<td>Subjective survey — structural pressure not captured</td>
+</tr>
+<tr>
+<td>MPI (Multidimensional Poverty Index)</td>
+<td>UNDP/Oxford, 2010</td>
+<td>Multidimensional deprivation of the bottom stratum (Q1)</td>
+<td>Concentrated on the bottom — ML Layer (30–50%) not captured</td>
+</tr>
+<tr>
+<td><strong>BSLI</strong></td>
+<td>Giseub Kim, 2026</td>
+<td>Basic life stability of the ML Layer (30–50% income deciles)</td>
+<td>Measures the blind spot that is neither the average nor the bottom stratum</td>
+</tr>
+</table>
+<h3>3.2 Position of BSLI — Adhesive Index</h3>
+<p>BSLI is not a replacement but a complement to existing indices. HDI, Gini, MPI, and WHR are each reliable international standards created through decades of accumulated research, and BSLI stands on the foundation established by these standards. While HDI reports the level of development reached by a nation and MPI highlights the most vulnerable stratum, BSLI complementarily measures the measurement gap between them—the stratum that lives without an asset buffer yet remains above the official poverty line. The role of BSLI is to capture the mechanism through which social instability manifests when the basic life pressure of this stratum reaches a critical threshold.</p>
+</div>
+ ── §4 Formula Design ── 
+<div class="section">
+<div class="section-num">§ 4 · Index Design &amp; Formula</div>
+<h2>BSLI Formula Design — v4.2 Final</h2>
+<h3>4.1 Basic Formula</h3>
+<div class="formula-box">
+<div class="formula-main">BSLI = 0.40·F<sub style="font-size:13px">ML</sub> + 0.60·H − D − H<sub style="font-size:13px">s</sub></div>
+<div class="formula-sub" style="margin-top:14px; line-height:2.2">
+<strong>F<sub>ML</sub></strong> : Livelihood Index (Food/ML-Layer Index)<br/>
+          → Normalized value of average income in deciles 3–5 · Weight <strong>0.40</strong><br/>
+          → Corresponds to food (whether one can eat) within the Triple System<br/><br/>
+<strong>H</strong>    : Basic Life Sufficiency (Housing/Living Index)<br/>
+          → Normalized value of median income · Weight <strong>0.60</strong><br/>
+          → Corresponds to housing (whether one can live) within the Triple System<br/><br/>
+<strong>D</strong>     : Deprivation Index — <span style="color:#8B2020">Subtrahend</span><br/>
+          → Poverty rate below the $3.65/day (2017 PPP) international poverty line · Coefficient 1.0<br/>
+          → Measures the extent of bottom-of-society pressure spreading to the ML Layer<br/><br/>
+<strong>H<sub>s</sub></strong> : Housing Stress — <span style="color:#8B2020">Subtrahend</span><br/>
+          → Normalized value of the Palma ratio (top 10% income ÷ bottom 40% income) · Coefficient 1.0<br/>
+          → Proxy for cost pressures including medicine (whether one can exist healthily) within the Triple System
+    </div>
+</div>
+<table>
+<tr><th>Component</th><th>Role</th><th>Direction</th><th>Theoretical Range</th><th>Data Source</th></tr>
+<tr><td>F<sub>ML</sub> (0.40)</td><td>ML Layer Real Income Proxy</td><td>↑ Higher is better</td><td>[0, 1]</td><td>World Bank PIP decile 3~5</td></tr>
+<tr><td>H (0.60)</td><td>Basic Life Sufficiency Baseline</td><td>↑ Higher is better</td><td>[0, 1]</td><td>World Bank PIP median income</td></tr>
+<tr><td>D (−1.0)</td><td>Poverty Spreading Pressure</td><td>↓ Higher is worse</td><td>[0, 1]</td><td>World Bank PIP $3.65 headcount</td></tr>
+<tr><td>H<sub>s</sub> (−1.0)</td><td>Inequality and Housing Pressure</td><td>↓ Higher is worse</td><td>[0, 1]</td><td>OWID Palma ratio</td></tr>
+<tr><td colspan="2"><strong>BSLI Summation</strong></td><td colspan="3">Theoretical Range [−2.0, +1.0] · Empirical Median approx. 0.00</td></tr>
+</table>
+<p>The rationale for the weight design is derived from three levels.</p>
+<p><strong>① Deduction from Preceding Research:</strong> Weight structure (F<sub>ML</sub> 0.40 · H 0.60) was deduced from the Triple-Sphere (三重界) theory — clothing, food, and housing (衣·食·住) — of the preceding paper Λ¹² (SSRN:6632858). The Triple-Sphere theory proposes that in human history, clothing (衣) converges into a global common constant due to global manufacturing oversupply, and the core variables of basic social life pressure are structured around the two axes of food (食) and housing (住). BSLI converts this theoretical framework into an empirically testable formula.</p>
+<p><strong>② F<sub>ML</sub> 0.40 — Short-term recovery potential of food (食):</strong> Food pressure is severe, but it can be buffered in the short term through the government's temporary release of reserves, international aid supply, and food subsidy policies. In other words, there exists a path through which the crisis of food (食) can be temporarily recovered by external intervention. This recovery potential is the theoretical basis for setting the relative weight of F<sub>ML</sub>'s relative weight to 0.40.</p>
+<p><strong>③ H 0.60 — Irreversible departure structure of housing (住):</strong> Unlike food pressure, once housing pressure leads to a departure from economic residence, it takes a significant amount of time to recover, forming a chain structure where individuals are pushed to the next level without recovering. Downward residential mobility, transitioning from Jeonse (lump-sum deposit) to monthly rent, Goshiwon (tiny room), and then homelessness, is difficult to reverse through short-term intervention. This irreversibility and chain effect provide the theoretical basis for setting the weight of H to 0.60, which is higher than that of food (食). D and H<sub>s</sub> are subtracted equally with a coefficient of 1.0, explicitly reflecting the structure in which income gains are offset by cost pressures.</p>
+<h3>4.2 F<sub>ML</sub> — Livelihood Index (Food [食], weight 40%)</h3>
+<div class="formula-box">
+<div class="formula-main">F<sub style="font-size:13px">ML</sub> = norm( mean(decile₃, decile₄, decile₅) )</div>
+<div class="formula-sub" style="margin-top:10px; line-height:2.0">
+      decile₃ : Average daily income of the 20th–30th income percentile (2017 PPP $)<br/>
+      decile₄ : Average daily income of the 30th–40th income percentile (2017 PPP $)<br/>
+      decile₅ : Average daily income of the 40th–50th income percentile (2017 PPP $)<br/>
+      norm()  : Min-Max normalization of 139 countries → [0, 1]
+    </div>
+</div>
+<p>F<sub>ML</sub> proxies the real income that the ML stratum (income percentiles 30–50%) can allocate to the consumption of food and basic goods. It directly collects the decile 3, 4, and 5 values from the World Bank PIP API's <code>pip_owid.csv</code> is where decile 3, 4, and 5 values are directly collected. When this value falls, the ML stratum feels the pressure first in food (食) (can they eat?) among the Triple-Sphere. F<sub>ML</sub> has meaning in cross-country comparison because it is not absolute income, but rather relative percentile position — even the same 1 dollar takes up a different proportion of the 30–50% percentile depending on the country.</p>
+<div class="insight-card">
+    F<sub>ML</sub> is an indicator that asks, "Can this stratum make a living?"<br/>
+    When GDP growth is concentrated in the upper percentiles, F<sub>ML</sub> supplementarily measures the real income fluctuations of the ML stratum that national averages do not sufficiently reflect.
+  </div>
+<h3>4.3 H — Basic Living Adequacy (Housing [住], weight 60%)</h3>
+<div class="formula-box">
+<div class="formula-main">H = norm( median_income )</div>
+<div class="formula-sub" style="margin-top:10px; line-height:2.0">
+      median_income : Median daily income of each country (2017 PPP $, World Bank PIP)<br/>
+      norm()        : Min-Max normalization of 139 countries → [0, 1]
+    </div>
+</div>
+<p>H is the normalized value of median income. Median income reflects the baseline for meeting basic living needs, such as housing, transportation, and medical costs, and has the statistical advantage of being less distorted by extreme values of the upper percentiles compared to mean income. There are two reasons why BSLI assigns the highest weight (0.60) to H: ① median income most directly proxies the 'feasibility threshold' of basic social life, and ② it exhibits the most stable data availability in international comparisons. When H rises, basic living capacity across society improves, whereas a decline in H alone signals a crisis for the middle class as a whole.</p>
+<table>
+<tr><th>Indicator</th><th>H (Median income)</th><th>GDP per capita (Mean income)</th></tr>
+<tr><td>Upper-percentile distortion</td><td>Low ✅</td><td>High ❌</td></tr>
+<tr><td>ML stratum proxy accuracy</td><td>High ✅</td><td>Low ❌</td></tr>
+<tr><td>Data availability</td><td>PIP 139 countries ✅</td><td>Broad ✅</td></tr>
+<tr><td>BSLI Selection</td><td><strong>Adopted (0.60)</strong></td><td>Not adopted</td></tr>
+</table>
+<h3>4.4 D — Deprivation Index (Subtraction term, coefficient −1.0)</h3>
+<div class="formula-box">
+<div class="formula-main">D = norm( poverty_rate<sub style="font-size:12px">$3.65</sub> )</div>
+<div class="formula-sub" style="margin-top:10px; line-height:2.0">
+      poverty_rate<sub>$3.65</sub> : Percentage of population below the international poverty line of $3.65/day (2017 PPP) (%)<br/>
+          = World Bank PIP headcount_ratio_upper_mid_income_povline<br/>
+      norm() : Min-Max normalization of 139 countries → [0, 1]<br/>
+      Applied as subtraction (−D) in the BSLI formula
+    </div>
+</div>
+<p>D is the normalized value of the poverty rate below the international poverty line ($3.65/day, 2017 PPP). The higher this value, the greater the risk that pressure at the bottom of society spreads to the ML stratum — capturing the vulnerability of the lower end of the ML stratum (30th income percentile) sliding below the poverty line during an economic downturn. In v4.1, directional processing was unified as Method A (subtraction in formula, no inversion) to ensure internal consistency.</p>
+<div class="warn-card">
+<strong>v4.1 Revision History: D Directional Processing</strong><br/>
+    Until v4.0, D was inverted to (1 − D_norm) and then added, but this had different directional criteria from F<sub>ML</sub> and H, undermining the internal consistency of the formula. In v4.1, it was unified to Method A, which subtracts D_norm directly (−D). Consequently, all positive (+) terms have a consistent directional structure of "higher is better," and all negative (−) terms have "higher is worse."
+  </div>
+<h3>4.5 H<sub>s</sub> — Housing Stress (Subtraction term, coefficient −1.0)</h3>
+<div class="formula-box">
+<div class="formula-main">H<sub style="font-size:13px">s</sub> = norm( D₅* )    where D₅* = (Palma)<sup>1.5</sup></div>
+<div class="formula-sub" style="margin-top:10px; line-height:2.0">
+      Palma ratio = Sum of top 10% income ÷ Sum of bottom 40% income<br/>
+      D₅*         = (Palma)<sup>1.5</sup>  — Non-linear transformation (weighting extreme inequality)<br/>
+      norm()      : Min-Max normalization of 139 countries → [0, 1]<br/>
+      Applied as subtraction (−H<sub>s</sub>) in the BSLI formula
+    </div>
+</div>
+<p>H<sub>s</sub> is the normalized value of the non-linear transformation of the Palma ratio. While the traditional Gini coefficient is insensitive to the middle of the distribution (near the ML stratum) and thus under-represents extreme inequality, the Palma ratio compares only the top 10% and bottom 40%, thereby capturing asset inequality affecting the ML stratum more directly.</p>
+<table>
+<tr><th>Inequality Indicator</th><th>Sensitive Range</th><th>Reflects Extreme Inequality</th><th>ML Stratum Relevance</th></tr>
+<tr><td>Gini Coefficient</td><td>Middle of distribution</td><td>Low ❌</td><td>Indirect</td></tr>
+<tr><td><strong>Palma Ratio</strong></td><td><strong>Top 10% vs Bottom 40%</strong></td><td><strong>High ✅</strong></td><td><strong>Direct ✅</strong></td></tr>
+<tr><td>Theil Index</td><td>Between/within groups</td><td>Medium</td><td>Indirect</td></tr>
+</table>
+<div class="warn-card">
+<strong>v4.1 Revision History: κ Circular Logic Elimination → Introduction of D₅* Non-linear Transformation</strong><br/>
+    The κ (housing cost correction coefficient) used in v4.0 had a circular reference problem where the BSLI calculation result was fed back into the κ calculation. In v4.1, κ was completely removed, and instead, a non-linear transformation (D₅* = Palma<sup>1.5</sup>) was introduced. This applies stronger subtraction pressure to countries with extreme inequality (Palma &gt; 3.0), completing one-way calculation without circular logic.
+  </div>
+<h3>4.6 Normalization Formula — Min-Max (Based on 139 countries)</h3>
+<div class="formula-box">
+<div class="formula-main">X<sub style="font-size:13px">norm</sub> = (X − X<sub style="font-size:13px">min</sub>) / (X<sub style="font-size:13px">max</sub> − X<sub style="font-size:13px">min</sub>)</div>
+<div class="formula-sub" style="margin-top:10px; line-height:2.0">
+      X     : Raw value (F<sub>ML</sub>, H, D, H<sub>s</sub> respectively)<br/>
+      X<sub>min</sub> : Minimum value among 139 countries for the corresponding year<br/>
+      X<sub>max</sub> : Maximum value among 139 countries for the corresponding year<br/>
+      Scope of application : Simultaneous normalization of all 139 countries in the same year (recalculation required for comparison across years)
+    </div>
+</div>
+<p>Each component is converted to the range [0, 1] by applying Min-Max normalization based on all 139 countries (countries for which BSLI can be calculated) simultaneously and then put into the BSLI formula. As a result, the summed BSLI value has a theoretical range of [−2.0, +1.0] (maximum: 0.40×1 + 0.60×1 − 0 − 0 = 1.0; minimum: 0 + 0 − 1 − 1 = −2.0). Since normalization is recalculated annually based on the entirety of the 139 countries, care should be taken as the reference point for the corresponding year may differ when comparing across years.</p>
+<h3>4.7 BSLI Grade Criteria</h3>
+<table>
+<tr><th>Grade</th><th>BSLI Score</th><th>Interpretation</th><th>Policy Signal</th></tr>
+<tr><td><span class="grade-label grade-A">A</span></td><td>0.70 or higher</td><td>Basic social life stability — Lowest pressure on the ML stratum</td><td>Status quo maintenance and preventive monitoring</td></tr>
+<tr><td><span class="grade-label grade-B">B</span></td><td>0.50 ~ 0.70</td><td>Basic social life good — Minor pressure</td><td>H<sub>s</sub>·D items preemptive management</td></tr>
+<tr><td><span class="grade-label grade-C">C</span></td><td>0.30 ~ 0.50</td><td>Basic social life unstable — Structural pressure exists</td><td>F<sub>ML</sub> Analysis of the cause of decline · Income preservation intervention</td></tr>
+<tr><td><span class="grade-label grade-D">D</span></td><td>0.10 ~ 0.30</td><td>Basic social life crisis — Threat to the livelihood of the ML stratum</td><td>Emergency welfare intervention · Stratified BSLI analysis</td></tr>
+<tr><td><span class="grade-label grade-E">E</span></td><td>Below 0.10</td><td>Basic social life collapse — Simultaneous collapse of the Triple-Sphere</td><td>International humanitarian intervention level</td></tr>
+</table>
+<div class="insight-card">
+    The division points of the grade criteria (0.70 / 0.50 / 0.30 / 0.10) are absolute reference values fixed at the time of designing the v4.2 formula, and were not post-fitted to the measured distribution of the 139 countries. Applying this criteria to the measured values of the 139 countries, 45 countries (32.4%) were distributed in grades A to D, and 94 countries (67.6%, including negative numbers) in grade E, showing that the grades are not evenly distributed and are heavily skewed toward the bottom. This reflects the actual income imbalance structure where the subtraction terms D and H<sub>s</sub> in many developing countries significantly exceed the F<sub>ML</sub> and H contributions, reflecting the actual income imbalance structure, and it is reported as is without arbitrary adjustment.
+  </div>
+<h3>4.8 v4.2 Internal Consistency Verification</h3>
+<table>
+<tr><th>Verification Item</th><th>Content</th><th>Result</th></tr>
+<tr><td>D·H<sub>s</sub> Directional processing (Method A)</td><td>Formula minus, no inversion — Directional consistency</td><td>✅ Confirmed</td></tr>
+<tr><td>Elimination of κ circular logic</td><td>D₅* = (Palma)<sup>1.5</sup> Replaced with non-linear transformation</td><td>✅ Confirmed</td></tr>
+<tr><td>Unification of ML stratum definition</td><td>Unification of 30–50% of the entire income percentile (independent of Eurostat standards)</td><td>✅ Confirmed</td></tr>
+<tr><td>Unification of normalization criteria</td><td>Simultaneous Min-Max of 139 countries in the same year</td><td>✅ Confirmed</td></tr>
+<tr><td>Theoretical range verification</td><td>BSLI ∈ [−2.0, +1.0] — Confirmed within empirical value range</td><td>✅ Confirmed</td></tr>
+<tr><td>Overall consistency from Abstract to §8</td><td>Cross-verification of all formulas, definitions, and interpretations</td><td>✅ Confirmed</td></tr>
+<tr><td>AI Disclosure Declaration 3 Parts</td><td>Explicit separation of researcher creation vs GAI assistance</td><td>✅ Confirmed</td></tr>
+</table>
+</div>
+ ── §5 Data and Methodology ── 
+<div class="section">
+<div class="section-num">§ 5 · Data &amp; Methodology</div>
+<h2>Data and Methodology</h2>
+<h3>5.1 Data Source</h3>
+<table>
+<tr><th>Item</th><th>Source</th><th>Indicator</th><th>Status</th></tr>
+<tr>
+<td>Income percentile (decile 3–5, median)</td>
+<td>World Bank PIP / OWID pip_owid.csv</td>
+<td>decile 3–5 average, median</td>
+<td>✅ 142 countries collected (139 countries with BSLI calculated)</td>
+</tr>
+<tr>
+<td>Poverty rate ($3.65/day)</td>
+<td>World Bank PIP</td>
+<td>headcount_ratio_upper_mid_income_povline</td>
+<td>✅ Included</td>
+</tr>
+<tr>
+<td>Inequality (Palma ratio)</td>
+<td>OWID / World Bank</td>
+<td>palma_ratio</td>
+<td>✅ Included</td>
+</tr>
+<tr>
+<td>Λ¹² sociodynamics score</td>
+<td>WTO Timeseries API (2023)</td>
+<td>12-dimensional composite score</td>
+<td>✅ 206 countries (intersection 62 countries)</td>
+</tr>
+</table>
+<h3>5.2 142 Countries Collected → 139 Countries Empirical Determination Process</h3>
+<p>When the World Bank PIP ppp_version=2017 filter was first applied, a problem occurred where only 9 countries were collected. To resolve this, the ppp filter was completely removed, and a ±10-year fallback (dynamic calculation based on the latest data for each country) was introduced. By adding 80 countries mapped via ISO_TO_PIP, the collection of the final 142 countries was completed.</p>
+<p>Excluded from collection phase: HKG·SGP·SAU·NZL (PIP data not possessed), ARG·COD (data gap exceeds 10 years) — originally excluded from collection targets.</p>
+<p><strong>3 additional countries excluded at the empirical phase</strong>: Among the 142 collected countries, SOM·SSD·ZWE did not have data for core components such as poverty rate (D) and Palma (H<sub>s</sub>) and other core component data did not exist, making the calculation of BSLI itself impossible. Excluding these 3 countries from the entire normalization, ranking, and statistical processes, <strong>139 countries</strong> are the actual empirical subjects of this paper. (The notation of "142 countries" in versions prior to v5.5 was a notation error confusing the collection phase figures with the empirical phase figures, which is corrected in this v6.0.)</p>
+<h3>5.3 Normalization</h3>
+<p>All components were converted to a range of 0 to 1 by applying Min-Max normalization based on the entirety of the 139 countries. Time-series comparison is possible if the entire normalization criteria is updated annually.</p>
+<div class="formula-box">
+<div class="formula-sub">
+      X_norm = (X − X_min) / (X_max − X_min)<br/>
+      Criteria: Entirety of 139 countries in the same year (recalculated annually)
+    </div>
+</div>
+<h3>5.4 Reliability Verification</h3>
+<p>AUC (Receiver Operating Characteristic curve) = 0.905, confirming high discriminative power in the 30-country verification sample. Pearson r vs Gini = +0.196, confirming that it is an independent dimension from existing inequality indices.</p>
+<h3>5.5 Research Limitations</h3>
+<p>This study entails the following methodological limitations. First, due to the application of the ±10-year fallback, the reference year varies by country, which may result in the current living standards of some countries being proxied by historical data. This may affect the accuracy of BSLI estimates, especially in lower-ranked countries with weak statistical infrastructure. Second, if data for specific items among the components (F<sub>ML</sub>·H·D·H<sub>s</sub>) is missing in some countries, it may have been reflected without correction, potentially affecting the final index calculation. Third, Min-Max normalization can cause the score distribution of intermediate countries to fluctuate. These limitations are planned to be supplemented in the future through Bootstrap confidence interval estimation and the establishment of an annual update system.</p>
+<div class="stat-row">
+<div class="stat-box">
+<div class="stat-num">139</div>
+<div class="stat-label">Number of empirical countries (BSLI calculated among 142 collected)</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">0.905</div>
+<div class="stat-label">AUC (30-country verification)</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">+0.172</div>
+<div class="stat-label">r vs Λ¹² (Independence)</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">+0.196</div>
+<div class="stat-label">r vs Gini (Independence)</div>
+</div>
+</div>
+</div>
+ ── §6 139-Country Empirical Analysis ── 
+<div class="section">
+<div class="section-num">§ 6 · 139-Country Empirical Analysis</div>
+<h2>139-Country Empirical Analysis</h2>
+<h3>6.1 Overview of the Overall Distribution</h3>
+<p>The BSLI distribution across 139 countries shows a strong regional pattern. Northern Europe and resource-rich Middle Eastern countries occupy the top, while sub-Saharan Africa is concentrated at the bottom. However, economic scale and BSLI often do not align, proving that they are independent dimensions of measurement. (See §4.6: Since the measured grade distribution is heavily biased toward grade E, presenting absolute values and percentiles together provides a more accurate interpretation than showing rankings alone.)</p>
+<h3>6.2 Top 20 Countries — Highest BSLI (ML stratum living stability, 139 countries measured)</h3>
+<table>
+<tr><th>Rank</th><th>ISO</th><th>Country Name</th><th>BSLI Score</th><th>Grade</th><th>Data Reliability</th></tr>
+<tr><td>1</td><td>NOR</td><td>Norway</td><td style="font-family:'IBM Plex Mono',monospace">0.9254</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>2</td><td>LUX</td><td>Luxembourg</td><td style="font-family:'IBM Plex Mono',monospace">0.8993</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>3</td><td>ARE</td><td>United Arab Emirates</td><td style="font-family:'IBM Plex Mono',monospace">0.8472</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>4</td><td>CHE</td><td>Switzerland</td><td style="font-family:'IBM Plex Mono',monospace">0.8422</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>5</td><td>ISL</td><td>Iceland</td><td style="font-family:'IBM Plex Mono',monospace">0.8020</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>6</td><td>AUT</td><td>Austria</td><td style="font-family:'IBM Plex Mono',monospace">0.7738</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>7</td><td>DNK</td><td>Denmark</td><td style="font-family:'IBM Plex Mono',monospace">0.7538</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>8</td><td>NLD</td><td>Netherlands</td><td style="font-family:'IBM Plex Mono',monospace">0.7441</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>9</td><td>BEL</td><td>Belgium</td><td style="font-family:'IBM Plex Mono',monospace">0.7387</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>10</td><td>DEU</td><td>Germany</td><td style="font-family:'IBM Plex Mono',monospace">0.7202</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>11</td><td>FIN</td><td>Finland</td><td style="font-family:'IBM Plex Mono',monospace">0.7117</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>12</td><td>CAN</td><td>Canada</td><td style="font-family:'IBM Plex Mono',monospace">0.7012</td><td><span class="grade-label grade-A">A</span></td><td>fallback_10yr</td></tr>
+<tr><td>13</td><td>USA</td><td>United States</td><td style="font-family:'IBM Plex Mono',monospace">0.6998</td><td><span class="grade-label grade-B">B</span></td><td>fallback_10yr</td></tr>
+<tr><td>14</td><td>SWE</td><td>Sweden</td><td style="font-family:'IBM Plex Mono',monospace">0.6877</td><td><span class="grade-label grade-B">B</span></td><td>fallback_10yr</td></tr>
+<tr><td>15</td><td>AUS</td><td>Australia</td><td style="font-family:'IBM Plex Mono',monospace">0.6538</td><td><span class="grade-label grade-B">B</span></td><td>fallback_10yr</td></tr>
+<tr><td>16</td><td>FRA</td><td>France</td><td style="font-family:'IBM Plex Mono',monospace">0.6361</td><td><span class="grade-label grade-B">B</span></td><td>fallback_10yr</td></tr>
+<tr><td>17</td><td>MLT</td><td>Malta</td><td style="font-family:'IBM Plex Mono',monospace">0.5923</td><td><span class="grade-label grade-B">B</span></td><td>fallback_10yr</td></tr>
+<tr><td>18</td><td>IRL</td><td>Ireland</td><td style="font-family:'IBM Plex Mono',monospace">0.5862</td><td><span class="grade-label grade-B">B</span></td><td>fallback_10yr</td></tr>
+<tr><td>19</td><td>SVN</td><td>Slovenia</td><td style="font-family:'IBM Plex Mono',monospace">0.5624</td><td><span class="grade-label grade-B">B</span></td><td>fallback_10yr</td></tr>
+<tr><td>20</td><td>CYP</td><td>Cyprus</td><td style="font-family:'IBM Plex Mono',monospace">0.5501</td><td><span class="grade-label grade-B">B</span></td><td>fallback_10yr</td></tr>
+</table>
+<h3>6.3 Bottom 20 Countries — Lowest BSLI (ML stratum living collapse, 139 countries measured)</h3>
+<table>
+<tr><th>Rank</th><th>ISO</th><th>Country Name</th><th>BSLI Score</th><th>Grade</th><th>Data Reliability</th></tr>
+<tr><td>139</td><td>ZMB</td><td>Zambia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.5316</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>138</td><td>MOZ</td><td>Mozambique</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.4078</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>137</td><td>ZAF</td><td>South Africa</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.3981</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>136</td><td>SWZ</td><td>Eswatini</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.1499</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>135</td><td>MWI</td><td>Malawi</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.1408</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>134</td><td>BDI</td><td>Burundi</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.1127</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>133</td><td>RWA</td><td>Rwanda</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.0931</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>132</td><td>NAM</td><td>Namibia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.0649</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>131</td><td>NER</td><td>Niger</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.0291</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>130</td><td>UGA</td><td>Uganda</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.0022</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>129</td><td>TZA</td><td>Tanzania</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.9945</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>128</td><td>AGO</td><td>Angola</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.9895</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>127</td><td>BFA</td><td>Burkina Faso</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.9458</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>126</td><td>BWA</td><td>Botswana</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8549</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>125</td><td>LSO</td><td>Lesotho</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8483</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>124</td><td>TCD</td><td>Chad</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8346</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>123</td><td>KEN</td><td>Kenya</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8220</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>122</td><td>TGO</td><td>Togo</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8166</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>121</td><td>ETH</td><td>Ethiopia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8096</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+<tr><td>120</td><td>SLE</td><td>Sierra Leone</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8084</td><td><span class="grade-label grade-E">E</span></td><td>fallback_10yr</td></tr>
+</table>
+<h3>6.4 Regional Patterns</h3>
+<table>
+<tr><th>Region</th><th>BSLI Characteristics</th><th>Major Pressures</th></tr>
+<tr><td>Northern Europe</td><td>Highest stability (concentrated in grade A)</td><td>-</td></tr>
+<tr><td>Western Europe</td><td>High (A–B)</td><td>Upward pressure on Hs in some countries</td></tr>
+<tr><td>Eastern Europe</td><td>Medium-high (B–C)</td><td>Widening asset inequality</td></tr>
+<tr><td>East Asia</td><td>Mixed (B–D)</td><td>Structural pressure from housing costs and debt</td></tr>
+<tr><td>Southeast Asia</td><td>Medium-low (C–D)</td><td>Informal employment, lack of social security</td></tr>
+<tr><td>South Asia</td><td>Low (D–E)</td><td>Poverty rate, income disparity</td></tr>
+<tr><td>Latin America and the Caribbean</td><td>Low (C–E)</td><td>Palma ratio at the highest level globally</td></tr>
+<tr><td>Sub-Saharan Africa</td><td>Lowest (concentrated in E)</td><td>Complex collapse of the Triple-Sphere</td></tr>
+<tr><td>North America</td><td>Medium-high (B)</td><td>Inherent distribution inequality (low protection for the ML stratum relative to high η)</td></tr>
+<tr><td>Middle East and North Africa</td><td>Mixed (B–D)</td><td>Gap between resource-exporting and resource-poor countries</td></tr>
+</table>
+</div>
+ ── §7 Λ¹² Independence Verification ── 
+<div class="section">
+<div class="section-num">§ 7 · Independence Validation vs Λ¹²</div>
+<h2>Independence Verification with the Λ¹² Sociodynamics Engine</h2>
+<h3>7.1 Verification Design</h3>
+<p>To verify whether the national structure score calculated by the Λ¹² sociodynamics engine (SSRN:6632858) and BSLI actually measure independent dimensions, a Pearson correlation analysis was performed on 62 intersection countries between the Λ¹² score based on the WTO Timeseries API and the BSLI 139 countries (valid output countries). Null hypothesis (H₀): correlation coefficient between the two indices = 0 (independent).</p>
+<h3>7.2 Key Results</h3>
+<div class="stat-row">
+<div class="stat-box">
+<div class="stat-num">+0.172</div>
+<div class="stat-label">Pearson r (n=62)</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">0.030</div>
+<div class="stat-label">r² (explanatory power 3%)</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">0.181</div>
+<div class="stat-label">p-value (two-tailed)</div>
+</div>
+<div class="stat-box">
+<div class="stat-num">62</div>
+<div class="stat-label">Number of intersection countries</div>
+</div>
+</div>
+<p style="font-family:'Noto Sans KR',sans-serif; font-size:13.5px; margin-top:8px;">
+    t = 1.352 (df = 60), p = 0.181 (two-tailed) — Null hypothesis cannot be rejected at the 5% significance level. That is, the correlation between the two indices is not statistically significant, which statistically confirms that Λ¹² and BSLI <strong>measure dimensions independent of each other</strong>. 95% confidence interval: r ∈ [−0.079, +0.401].
+  </p>
+<div class="insight-card">
+    r² = 0.030 → Λ¹² explains only 3% of the BSLI variation.<br/>
+    The remaining 97% is determined by different dimensions.<br/><br/>
+<strong>Λ¹² measures the macro-dynamics of the state structure, and BSLI measures the basic social life pressure of the ML stratum within that structure.</strong><br/>
+    The two engines are complementary goods, not substitutes.
+  </div>
+<h3>7.3 Quadrant Analysis (62 countries)</h3>
+<p>Classified into 4 quadrants based on the Λ¹² median (η=0.278) and BSLI median (BSLI=-0.012).</p>
+<div class="quadrant-grid">
+<div class="quad-cell q-safe">
+<div class="quad-label">Low-η · High-BSLI — Welfare Model (19 countries)</div>
+      Low trade openness but high grassroots life stability<br/>
+      → Choice of Welfare States: Prioritizing distribution over openness<br/><br/>
+<strong>Major countries:</strong> GRC·FIN·HUN·CZE·POL·SWE·DNK·BEL·AUT·NOR·KOR·ESP·ITA·TUR·THA·TWN·ROU·PRT
+    </div>
+<div class="quad-cell q-neutral">
+<div class="quad-label">High-η · High-BSLI — Equilibrium Point (14 countries)</div>
+      Both trade openness and grassroots life are favorable<br/>
+      → Countries that achieved both openness and distribution simultaneously<br/><br/>
+<strong>Major countries:</strong> USA·GBR·DEU·FRA·CHE·CAN·AUS·NLD·ARE·JPN·MYS·ISR·UKR·RUS
+    </div>
+<div class="quad-cell q-warn">
+<div class="quad-label">High-η · Low-BSLI — Openness Trap (10 countries)</div>
+      Opened but grassroots struggle to make a living<br/>
+      → Trade benefits do not reach the bottom stratum<br/><br/>
+<strong>Major countries:</strong> CHN·IND·IDN·BRA·MEX·COL·CIV·SEN·CHL·PER·UGA
+    </div>
+<div class="quad-cell q-alert">
+<div class="quad-label">Low-η · Low-BSLI — Double Marginalization (20 countries)</div>
+      Trade is closed and life is difficult<br/>
+      → Overlapping structural vulnerabilities<br/><br/>
+<strong>Major countries:</strong> ETH, KEN, NGA, TZA, AGO, MOZ, ZAF, ZMB, BGD, PAK, LKA, etc.
+    </div>
+</div>
+<h3>7.4 Interpretation of Major Outlier Countries</h3>
+<table>
+<tr><th>Country</th><th>η (Λ¹²)</th><th>BSLI</th><th>Residual</th><th>Interpretation</th></tr>
+<tr>
+<td>🇳🇴 Norway (NOR)</td>
+<td>0.249 (Low-η)</td>
+<td>0.9254 (Highest)</td>
+<td>Maximum positive deviation<sup>†</sup></td>
+<td>Low trade openness but BSLI maximized through welfare distribution — Reason for the highest social elasticity (SE)</td>
+</tr>
+<tr>
+<td>🇲🇿 Mozambique (MOZ)</td>
+<td>0.261 (Low-η)</td>
+<td>-1.4078 (Extremely low)</td>
+<td>Large negative deviation<sup>†</sup></td>
+<td>Resource export structure — Not transmitted to the ML layer</td>
+</tr>
+<tr>
+<td>🇿🇲 Zambia (ZMB)</td>
+<td>0.277 (Medium)</td>
+<td>-1.5316 (Lowest)</td>
+<td>Maximum negative deviation<sup>†</sup></td>
+<td>Extreme drop in BSLI compared to η level — Copper export vs. grassroots life completely disconnected</td>
+</tr>
+<tr>
+<td>🇺🇸 United States (USA)</td>
+<td>0.566 (Highest)</td>
+<td>0.6998 (Favorable)</td>
+<td>Outlier</td>
+<td>High-η · High-BSLI — However, pressure from widening gap within the ML layer is inherent</td>
+</tr>
+<tr>
+<td>🇺🇬 Uganda (UGA)</td>
+<td>0.383 (High)</td>
+<td>-1.0022 (Lowest tier)</td>
+<td>WTO Outlier</td>
+<td>Despite high WTO openness, grassroots life is extremely low — Typical openness trap</td>
+</tr>
+</table>
+<p><sup>†</sup> The BSLI values in the table above have been updated based on the recalculated empirical values for 139 countries (v6.0). Precise recalculation of residuals (deviation from the η regression line) requires separate validation of the Λ¹² η dataset (intersection of 62 countries), so only qualitative directionality is indicated in this v6.0 revision scope.</p>
+<p>Outlier analysis most clearly demonstrates that Λ¹² and BSLI do not measure the same thing. Herein lies the theoretical rationale for combining them into an integrated index (UI) while keeping the two engines separate.</p>
+</div>
+ ── §8 South Korea Special Analysis ── 
+<div class="section">
+<div class="section-num">§ 8 · Korea Case Study</div>
+<h2>South Korea Special Analysis — Structural Pressure of D·Hs</h2>
+<h3>8.1 South Korea BSLI Structure</h3>
+<p>South Korea's BSLI, based on empirical measurements of 139 countries, <strong>is 0.4627 points, Grade C, top 18.0%</strong> (since rankings fluctuate depending on the population size, the value, grade, and percentile are written together). South Korea is located in the 'Low-η · High-BSLI' region of the Λ¹² quadrant, outwardly falling into the welfare model group. However, decomposing the internal composition of BSLI reveals severe structural pressure.</p>
+<table>
+<tr><th>Component</th><th>South Korea's Level</th><th>Global Comparison</th></tr>
+<tr><td>F_ML (ML Layer Income)</td><td>Upper-middle</td><td>OECD mid-tier</td></tr>
+<tr><td>H (Median Income)</td><td>Upper-middle</td><td>OECD mid-tier</td></tr>
+<tr><td>D (Poverty Rate)</td><td>High ↑</td><td>Highest level in OECD — Elderly poverty rate is the highest in the world</td></tr>
+<tr><td>Hs (Housing Stress)</td><td>Very High ↑↑</td><td>Debt-to-income ratio is among the highest in the world; uniqueness of the Jeonse system</td></tr>
+</table>
+<div class="warn-card">
+<strong>South Korea's Paradox:</strong> Although median income is high, debt (D) and housing stress (Hs) are simultaneously at the world's highest levels. In the formula BSLI = 0.40·F_ML + 0.60·H − D − Hs, the subtraction effects of D and Hs substantially offset the contributions of F_ML·H. Although South Korea's ML layer has income, their actual livelihood leeway is extremely restricted due to debt and housing costs.
+  </div>
+<h3>8.2 The Jeonse System and Hs</h3>
+<p>South Korea's unique Jeonse (lump-sum deposit) system generates housing stress that is not fully captured by the Palma ratio. The Jeonse deposit of ML-layer households is dozens of times their income, which instantly translates into livelihood pressure during periods of rising interest rates. This is why a cross-sectional analysis of housing occupancy types (self-owned, Jeonse, monthly rent, public) is required in the future Stratified BSLI.</p>
+<h3>8.3 Time-Series Direction</h3>
+<p>From 2020 to 2024, South Korea's BSLI is exposed to gradual downward pressure because the deterioration rate of Hs (Jeonse prices, Palma ratio) is progressing faster than the improvement rate of D (elderly poverty). If this structure persists, it will lead to a cycle of: reduced consumption capacity of the ML layer → contraction of domestic demand → reduction in employment.</p>
+</div>
+ ── §9 AI·Automation and BSLI ── 
+<div class="section">
+<div class="section-num">§ 9 · AI, Automation &amp; BSLI</div>
+<h2>AI·Automation Transition and ML Layer Livelihood Pressure</h2>
+<h3>9.1 Structural Characteristics of Automation Transition</h3>
+<p>Humanity is currently at a turning point from a manufacturing-centered economy to a digital/AI economy. This transition is assumed to progress through a natural attrition period of about 40 to 50 years — a period in which the employment structure of the manufacturing era naturally dissolves with aging. However, it is the ML layer that receives the greatest impact during this transition process.</p>
+<table>
+<tr><th>Transition Characteristics</th><th>ML Layer Impact</th><th>BSLI Component Response</th></tr>
+<tr><td>Automation of medium-skilled jobs</td><td>Replacement of core occupations of the ML layer</td><td>F_ML decline (income decrease)</td></tr>
+<tr><td>Platform economy expansion</td><td>Decrease in employment security</td><td>D increase (poverty vulnerability)</td></tr>
+<tr><td>Digital asset price surge</td><td>Deterioration of housing accessibility</td><td>Hs increase (housing stress)</td></tr>
+<tr><td>Rising healthcare costs (aging)</td><td>Decrease in disposable income of the ML layer</td><td>H decline (real median)</td></tr>
+</table>
+<h3>9.2 'Double Pressure' Mechanism</h3>
+<p>During the AI/automation transition period, the ML layer faces double pressure. From above, automation replaces medium-skilled occupations, and from below, digital platforms lower entry barriers for low-skilled jobs, intensifying competition. At the same time, asset prices (real estate, finance) rise based on profits concentrated in upper quantiles, worsening Hs. BSLI captures this double pressure in both F_ML·H (income aspect) and D·Hs (expenditure aspect).</p>
+<div class="insight-card">
+    "Automation reduces the numerator (income) of BSLI and increases the denominator (housing and debt).<br/>
+    The ML layer is placed at the intersection of decreasing income and increasing costs.<br/>
+    In countries with low SE (social elasticity), this pressure translates into an uprising."
+  </div>
+<h3>9.3 Social Elasticity (SE) and Transition Cost</h3>
+<p>Even with the same automation shock, in countries with high SE (social elasticity) like Northern Europe, the retraining and social security systems absorb the shock. In countries with low SE (failed states, authoritarian regimes), the same shock directly leads to a sharp drop in BSLI → rise in UI (Uprising Index). This is the theoretical basis for SE acting as the denominator in the Uprising Index (UI) formula.</p>
+<h3>9.4 BSLI Leading Signals Flow</h3>
+<p>As the AI/automation transition accelerates, the early warning function of BSLI becomes more important. A country where the ML-layer BSLI declines for 2 to 3 consecutive years can be interpreted as emitting a leading signal of social unrest. Combining this with Λ¹² dimensional analysis (especially A7 Demographics, A4 Economic Capability) allows preemptive capturing of policy intervention timing.</p>
+</div>
+<!-- ── §10 Stratified BSLI ── -->
+<div class="section">
+<div class="section-num">§ 10 · Stratified BSLI (Future Research)</div>
+<h2>Stratified BSLI — Stratum-Specific Index Design</h2>
+<h3>10.1 Concept</h3>
+<p>If the national average BSLI is a thermometer used by politicians, the Stratified BSLI is a diagnostic report showing which ward is crowded with patients. Even within the same national BSLI, extremely different realities can coexist across different strata.</p>
+<h3>10.2 Five-Axis Cross Coordinate System</h3>
+<table>
+<tr><th>Axis</th><th>Classification</th><th>Measurement Purpose</th></tr>
+<tr><td>① Income Quantile</td><td>Q1·Q2·Q3(ML)·Q4·Q5</td><td>Capture heterogeneity within the ML layer</td></tr>
+<tr><td>② Age Group</td><td>Children, youth, middle-aged, elderly</td><td>Life-cycle pressure patterns</td></tr>
+<tr><td>③ Housing Occupancy Type</td><td>Self-owned, rental, public, informal</td><td>Differences in Hs by housing structure</td></tr>
+<tr><td>④ Region</td><td>Metropolitan, urban-rural</td><td>Regional disparity detection</td></tr>
+<tr><td>⑤ Employment Status</td><td>Full-time, part-time, unemployed, economically inactive</td><td>Differences in F_ML by employment stability</td></tr>
+</table>
+<div class="warn-card">
+<strong>Example case of Korean youth × renting × Seoul:</strong><br/>
+    Even if the national average BSLI = Grade C, the Stratified BSLI for 'youth in their 20s × monthly rent × Seoul' could be Grade E. This cross-intersection signifies a structurally vulnerable group where the risk of social unrest is concentrated, identified as a priority target for policy intervention.
+  </div>
+<h3>10.3 Data Priority</h3>
+<p>Data procurement priorities for implementing the Stratified BSLI: ① South Korea KOSIS microdata (income quantile × housing occupancy type) → ② Spain Eurostat EU-SILC by stratum → ③ OECD household panel data. This study is planned to expand step-by-step in future sessions.</p>
+</div>
+ ── §11 Conclusion ── 
+<div class="section">
+<div class="section-num">§ 11 · Conclusion</div>
+<h2>Conclusion and Policy Implications</h2>
+<h3>11.1 Summary of Key Findings</h3>
+<table>
+<tr><th>Finding</th><th>Significance</th></tr>
+<tr><td>AUC = 0.905 (30-country validation)</td><td>BSLI measures ML layer livelihood pressure with high discriminative power</td></tr>
+<tr><td>r = +0.172 vs Λ¹²</td><td>The two engines are independent dimensions — Theoretical basis of UI when combined</td></tr>
+<tr><td>r = +0.196 vs Gini</td><td>Independent of existing inequality indices — A new measurement space</td></tr>
+<tr><td>62 countries classified in quadrants</td><td>Identification of country groups with structural disconnection between openness and life</td></tr>
+<tr><td>South Korea's D and Hs are the world's highest</td><td>Livelihood pressure structure relative to income — Stratified analysis required</td></tr>
+</table>
+<h3>11.2 Theoretical Contribution of BSLI</h3>
+<p>BSLI directly measures the basic livelihood stability of the ML layer (income quantiles 30-50%), which has not been measured in the existing international index ecosystem, using World Bank PIP empirical data. This has three theoretical contributions:</p>
+<p>① <strong>Filling the measurement gap</strong>: Fills the blind spot in between, which is neither the lowest class (poverty index) nor the overall average (HDI, GDP).<br/>
+  ② <strong>Securing independence</strong>: Functions as an independent variable for integrated analysis by measuring a dimension independent of existing indices (Gini, Λ¹²).<br/>
+  ③ <strong>Securing lead-time</strong>: Since the ML layer responds first to social changes, BSLI captures leading social unrest signals ahead of GDP and unemployment rates.</p>
+<h3>11.3 Policy Implications</h3>
+<p>In countries where BSLI is declining, the areas where policy intervention should be concentrated are the F_ML component (ML layer income) and the Hs component (housing accessibility). Particularly during the AI/automation transition period, investment in retraining the ML layer, stabilization of housing costs, and debt restructuring serve as key policy levers to defend against BSLI decline.</p>
+<h3>11.4 Future Research</h3>
+<p>① <strong>Design of the State Social Uprising Index (UI: Uprising Index) measured by Λ¹² and BSLI, and report on the empirical time-series analysis of Λ¹²</strong> — Multi-country validation of the formula UI = (Λ¹² vulnerability × BSLI pressure) / SE (social elasticity) and verification of leading uprising signals through Λ¹² 2016~2024 time-series analysis (previously completed, scheduled to be submitted as a follow-up paper)<br/>
+  ② Actual Calculation of Stratified BSLI (South Korea and Spain microdata)<br/>
+  ③ Bootstrap Confidence Interval Estimation (statistical significance of AUC and r)<br/>
+  ④ Cross-analysis of DURE-η Ulsan Region BSLI × by District</p>
+<div class="insight-card">
+    "A step forward for citizens and future generations.<br/>
+    While society still elastically accepts it,<br/>
+    To prove the suffering of the ML layer through data and connect it to policy —<br/>
+    that is the very reason for this research's existence."<br/><br/>
+<em>— Giseub Kim (Cheonghae (淸海)), Everblue Sea Institute for Social Dynamics</em>
+</div>
+</div>
+ ── References ── 
+<div class="section references">
+<div class="section-num">References · Bibliography</div>
+<h2>References</h2>
+<div class="ref-item">
+<span class="ref-num">[1]</span>
+    Kim, G. (2024). Λ¹¹ Sociodynamics Engine: National Structure Analysis Framework. <em>SSRN</em>, 6509200. https://ssrn.com/abstract=6509200
+  </div>
+<div class="ref-item">
+<span class="ref-num">[2]</span>
+    Kim, G. (2025). Λ¹² Extended Social Dynamics Engine: Empirical Analysis of 197 Countries. <em>SSRN</em>, 6632858. https://ssrn.com/abstract=6632858
+  </div>
+<div class="ref-item">
+<span class="ref-num">[3]</span>
+    World Bank. (2023). Poverty and Inequality Platform (PIP). Retrieved from https://pip.worldbank.org
+  </div>
+<div class="ref-item">
+<span class="ref-num">[4]</span>
+    Roser, M., &amp; Hasell, J. (2023). Our World in Data — Poverty. Oxford: Global Change Data Lab. https://ourworldindata.org/poverty
+  </div>
+<div class="ref-item">
+<span class="ref-num">[5]</span>
+    WTO. (2023). World Trade Organization Timeseries API. Statistics Database. https://stats.wto.org
+  </div>
+<div class="ref-item">
+<span class="ref-num">[6]</span>
+    Cobham, A., &amp; Sumner, A. (2013). Putting the Gini Back in the Bottle? 'The Palma' as a Policy-Relevant Measure of Inequality. <em>King's College London</em>.
+  </div>
+<div class="ref-item">
+<span class="ref-num">[7]</span>
+    UNDP. (2023). Human Development Report 2023. New York: United Nations Development Programme.
+  </div>
+<div class="ref-item">
+<span class="ref-num">[8]</span>
+    Alkire, S., &amp; Foster, J. (2011). Counting and Multidimensional Poverty Measurement. <em>Journal of Public Economics</em>, 95(7), 476–487.
+  </div>
+<div class="ref-item">
+<span class="ref-num">[9]</span>
+    Helliwell, J., Layard, R., &amp; Sachs, J. (2024). World Happiness Report 2024. New York: Sustainable Development Solutions Network.
+  </div>
+<div class="ref-item">
+<span class="ref-num">[10]</span>
+    Acemoglu, D., &amp; Johnson, S. (2023). Power and Progress: Our Thousand-Year Struggle Over Technology and Prosperity. New York: PublicAffairs.
+  </div>
+<div class="ref-item">
+<span class="ref-num">[11]</span>
+    Statistics Korea. (2023). Survey of Household Finances and Welfare. Seoul: Statistics Korea.
+  </div>
+<div class="ref-item">
+<span class="ref-num">[12]</span>
+    Eurostat. (2023). EU Statistics on Income and Living Conditions (EU-SILC). Luxembourg: European Commission.
+  </div>
+</div>
+ ── Footnotes ── 
+<div class="footnote-section">
+<div class="fn"><sup>*1</sup> World Bank PIP (Poverty and Inequality Platform, World Bank) — https://pip.worldbank.org</div>
+<div class="fn"><sup>*2</sup> OWID (Our World in Data, Oxford) — https://ourworldindata.org</div>
+<div class="fn"><sup>*3</sup> Λ¹¹ Sociodynamics Engine SSRN:6509200 (Giseub Kim, 2024)</div>
+<div class="fn"><sup>*4</sup> Λ¹² Sociodynamics Engine SSRN:6632858 (Giseub Kim, 2025)</div>
+<div class="fn" style="margin-top:16px; color:var(--ink);">
+<strong>Research Identification Information</strong><br/>
+    Author: Giseub Kim (Cheonghae (淸海)) · ORCID: 0009-0004-7638-0182<br/>
+    Affiliation: Everblue Sea Institute for Social Dynamics<br/>
+    Publishing Channel: everbluesea.org · badaegopa.tistory.com · SSRN<br/>
+    Version: BSLI v6.0 (Empirical Recalculation for 139 Countries, 2026-07-01) · Target for Submission: SSRN
+  </div>
+</div>
+ ── Appendix A: 139-Country Full Results Table (v6.0 Empirical Recalculation) ── 
+<div class="section" id="appendix-a">
+<div class="section-num">Appendix A · Appendix A · BSLI 139-Country Full Results (v6.0)</div>
+<h2>Appendix A — 139-Country BSLI Full Results Table (As of 2023, Empirical Recalculation)</h2>
+<p style="font-family:'Noto Sans KR',sans-serif; font-size:13.5px; margin-bottom:20px;">
+    Data Standard: World Bank PIP (ppp_version=2017, ±10-year fallback applied) · OWID Palma ratio · bsli_all_2023.json (BSLI_v3.2, updated 2026-06-15)<br/>
+    Normalization: Same-year Min-Max for 139 countries · BSLI theoretical range [−2.0, +1.0]<br/>
+    Excluded from Collection Stage: HKG·SGP·SAU·NZL (PIP data not held) · ARG·COD (data gap &gt; 10 years) — excluded from the 142-country raw collection target from the beginning<br/>
+    Additionally Excluded 3 Countries from Empirical Stage: SOM·SSD·ZWE — collected but D·H<sub>s</sub> component data is absent, rendering BSLI calculation impossible<br/>
+<strong>This table presents the recalculated results that have passed 5 types of automated validation (number of countries = 139, monotonic decrease in sorting, 0 cases of grade boundary violation, 0 cases of ISO duplication, continuous rankings 1-139), and does not include hardcoded values.</strong>
+</p>
+<div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:20px; font-family:'Noto Sans KR',sans-serif; font-size:12.5px;">
+<span style="background:#C8E6C9; color:#1B5E20; padding:3px 10px; border-radius:2px; font-weight:700;">■ Grade A (0.70+): 12 countries</span>
+<span style="background:#DCEDC8; color:#33691E; padding:3px 10px; border-radius:2px; font-weight:700;">■ Grade B (0.50~0.70): 10 countries</span>
+<span style="background:#FFF9C4; color:#F57F17; padding:3px 10px; border-radius:2px; font-weight:700;">■ Grade C (0.30~0.50): 10 countries</span>
+<span style="background:#FFCCBC; color:#BF360C; padding:3px 10px; border-radius:2px; font-weight:700;">■ Grade D (0.10~0.30): 13 countries</span>
+<span style="background:#FFCDD2; color:#B71C1C; padding:3px 10px; border-radius:2px; font-weight:700;">■ Grade E (&lt;0.10): 94 countries</span>
+</div>
+<table style="font-size:12.5px;">
+<tr>
+<th style="width:44px">Rank</th>
+<th style="width:52px">ISO</th>
+<th>Country Name</th>
+<th style="width:80px">BSLI Score</th>
+<th style="width:44px">Grade</th>
+<th style="width:70px">Top %</th>
+<th>Data Reliability / Reference Year</th>
+</tr>
+<tr><td colspan="7" style="background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; padding:7px 14px;">▌ GRADE A — Basic Livelihood Stability (0.70 or higher) · 12 countries</td></tr>
+<tr><td>1</td><td>NOR</td><td>Norway</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.9254</td><td><span class="grade-label grade-A">A</span></td><td>0.7%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>2</td><td>LUX</td><td>Luxembourg</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.8993</td><td><span class="grade-label grade-A">A</span></td><td>1.4%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>3</td><td>ARE</td><td>United Arab Emirates</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.8472</td><td><span class="grade-label grade-A">A</span></td><td>2.2%</td><td>fallback_10yr · 2013</td></tr>
+<tr><td>4</td><td>CHE</td><td>Switzerland</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.8422</td><td><span class="grade-label grade-A">A</span></td><td>2.9%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>5</td><td>ISL</td><td>Iceland</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.8020</td><td><span class="grade-label grade-A">A</span></td><td>3.6%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>6</td><td>AUT</td><td>Austria</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.7738</td><td><span class="grade-label grade-A">A</span></td><td>4.3%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>7</td><td>DNK</td><td>Denmark</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.7538</td><td><span class="grade-label grade-A">A</span></td><td>5.0%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>8</td><td>NLD</td><td>Netherlands</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.7441</td><td><span class="grade-label grade-A">A</span></td><td>5.8%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>9</td><td>BEL</td><td>Belgium</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.7387</td><td><span class="grade-label grade-A">A</span></td><td>6.5%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>10</td><td>DEU</td><td>Germany</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.7202</td><td><span class="grade-label grade-A">A</span></td><td>7.2%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>11</td><td>FIN</td><td>Finland</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.7117</td><td><span class="grade-label grade-A">A</span></td><td>7.9%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>12</td><td>CAN</td><td>Canada</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--safe)">0.7012</td><td><span class="grade-label grade-A">A</span></td><td>8.6%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td colspan="7" style="background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; padding:7px 14px;">▌ GRADE B — Good Basic Livelihood (0.50–0.70) · 10 countries</td></tr>
+<tr><td>13</td><td>USA</td><td>United States</td><td style="font-family:'IBM Plex Mono',monospace;">0.6998</td><td><span class="grade-label grade-B">B</span></td><td>9.4%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>14</td><td>SWE</td><td>Sweden</td><td style="font-family:'IBM Plex Mono',monospace;">0.6877</td><td><span class="grade-label grade-B">B</span></td><td>10.1%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>15</td><td>AUS</td><td>Australia</td><td style="font-family:'IBM Plex Mono',monospace;">0.6538</td><td><span class="grade-label grade-B">B</span></td><td>10.8%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>16</td><td>FRA</td><td>France</td><td style="font-family:'IBM Plex Mono',monospace;">0.6361</td><td><span class="grade-label grade-B">B</span></td><td>11.5%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>17</td><td>MLT</td><td>Malta</td><td style="font-family:'IBM Plex Mono',monospace;">0.5923</td><td><span class="grade-label grade-B">B</span></td><td>12.2%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>18</td><td>IRL</td><td>Ireland</td><td style="font-family:'IBM Plex Mono',monospace;">0.5862</td><td><span class="grade-label grade-B">B</span></td><td>12.9%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>19</td><td>SVN</td><td>Slovenia</td><td style="font-family:'IBM Plex Mono',monospace;">0.5624</td><td><span class="grade-label grade-B">B</span></td><td>13.7%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>20</td><td>CYP</td><td>Cyprus</td><td style="font-family:'IBM Plex Mono',monospace;">0.5501</td><td><span class="grade-label grade-B">B</span></td><td>14.4%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>21</td><td>GBR</td><td>United Kingdom</td><td style="font-family:'IBM Plex Mono',monospace;">0.5249</td><td><span class="grade-label grade-B">B</span></td><td>15.1%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>22</td><td>JPN</td><td>Japan</td><td style="font-family:'IBM Plex Mono',monospace;">0.5020</td><td><span class="grade-label grade-B">B</span></td><td>15.8%</td><td>fallback_10yr · 2013</td></tr>
+<tr><td colspan="7" style="background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; padding:7px 14px;">▌ GRADE C — Unstable Basic Livelihood (0.30–0.50) · 10 countries</td></tr>
+<tr><td>23</td><td>CZE</td><td>Czechia</td><td style="font-family:'IBM Plex Mono',monospace;">0.4856</td><td><span class="grade-label grade-C">C</span></td><td>16.5%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>24</td><td>TWN</td><td>Taiwan</td><td style="font-family:'IBM Plex Mono',monospace;">0.4757</td><td><span class="grade-label grade-C">C</span></td><td>17.3%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>25</td><td>KOR</td><td>South Korea</td><td style="font-family:'IBM Plex Mono',monospace;">0.4627</td><td><span class="grade-label grade-C">C</span></td><td>18.0%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>26</td><td>ESP</td><td>Spain</td><td style="font-family:'IBM Plex Mono',monospace;">0.4612</td><td><span class="grade-label grade-C">C</span></td><td>18.7%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>27</td><td>ITA</td><td>Italy</td><td style="font-family:'IBM Plex Mono',monospace;">0.4452</td><td><span class="grade-label grade-C">C</span></td><td>19.4%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>28</td><td>EST</td><td>Estonia</td><td style="font-family:'IBM Plex Mono',monospace;">0.4257</td><td><span class="grade-label grade-C">C</span></td><td>20.1%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>29</td><td>SVK</td><td>Slovakia</td><td style="font-family:'IBM Plex Mono',monospace;">0.3478</td><td><span class="grade-label grade-C">C</span></td><td>20.9%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>30</td><td>PRT</td><td>Portugal</td><td style="font-family:'IBM Plex Mono',monospace;">0.3308</td><td><span class="grade-label grade-C">C</span></td><td>21.6%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>31</td><td>HRV</td><td>Croatia</td><td style="font-family:'IBM Plex Mono',monospace;">0.3177</td><td><span class="grade-label grade-C">C</span></td><td>22.3%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>32</td><td>LTU</td><td>Lithuania</td><td style="font-family:'IBM Plex Mono',monospace;">0.3172</td><td><span class="grade-label grade-C">C</span></td><td>23.0%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td colspan="7" style="background:var(--ink); color:var(--paper); font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; padding:7px 14px;">▌ GRADE D — Basic Livelihood Crisis (0.10–0.30) · 13 countries</td></tr>
+<tr><td>33</td><td>ISR</td><td>Israel</td><td style="font-family:'IBM Plex Mono',monospace;">0.2964</td><td><span class="grade-label grade-D">D</span></td><td>23.7%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>34</td><td>HUN</td><td>Hungary</td><td style="font-family:'IBM Plex Mono',monospace;">0.2845</td><td><span class="grade-label grade-D">D</span></td><td>24.5%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>35</td><td>LVA</td><td>Latvia</td><td style="font-family:'IBM Plex Mono',monospace;">0.2679</td><td><span class="grade-label grade-D">D</span></td><td>25.2%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>36</td><td>GRC</td><td>Greece</td><td style="font-family:'IBM Plex Mono',monospace;">0.2425</td><td><span class="grade-label grade-D">D</span></td><td>25.9%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>37</td><td>BLR</td><td>Belarus</td><td style="font-family:'IBM Plex Mono',monospace;">0.2263</td><td><span class="grade-label grade-D">D</span></td><td>26.6%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>38</td><td>SYC</td><td>Seychelles</td><td style="font-family:'IBM Plex Mono',monospace;">0.1781</td><td><span class="grade-label grade-D">D</span></td><td>27.3%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>39</td><td>POL</td><td>Poland</td><td style="font-family:'IBM Plex Mono',monospace;">0.1755</td><td><span class="grade-label grade-D">D</span></td><td>28.1%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>40</td><td>MDV</td><td>Maldives</td><td style="font-family:'IBM Plex Mono',monospace;">0.1677</td><td><span class="grade-label grade-D">D</span></td><td>28.8%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>41</td><td>UKR</td><td>Ukraine</td><td style="font-family:'IBM Plex Mono',monospace;">0.1453</td><td><span class="grade-label grade-D">D</span></td><td>29.5%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>42</td><td>RUS</td><td>Russia</td><td style="font-family:'IBM Plex Mono',monospace;">0.1113</td><td><span class="grade-label grade-D">D</span></td><td>30.2%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>43</td><td>MDA</td><td>Moldova</td><td style="font-family:'IBM Plex Mono',monospace;">0.1088</td><td><span class="grade-label grade-D">D</span></td><td>30.9%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>44</td><td>ALB</td><td>Albania</td><td style="font-family:'IBM Plex Mono',monospace;">0.1044</td><td><span class="grade-label grade-D">D</span></td><td>31.7%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>45</td><td>ROU</td><td>Romania</td><td style="font-family:'IBM Plex Mono',monospace;">0.1014</td><td><span class="grade-label grade-D">D</span></td><td>32.4%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td colspan="7" style="background:var(--danger); color:white; font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:2px; padding:7px 14px;">▌ GRADE E — Collapse of Basic Livelihood (less than 0.10, including negative values) · 94 countries</td></tr>
+<tr><td>46</td><td>MYS</td><td>Malaysia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0948</td><td><span class="grade-label grade-E">E</span></td><td>33.1%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>47</td><td>KAZ</td><td>Kazakhstan</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0913</td><td><span class="grade-label grade-E">E</span></td><td>33.8%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>48</td><td>URY</td><td>Uruguay</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0848</td><td><span class="grade-label grade-E">E</span></td><td>34.5%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>49</td><td>BGR</td><td>Bulgaria</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0754</td><td><span class="grade-label grade-E">E</span></td><td>35.3%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>50</td><td>SRB</td><td>Serbia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0586</td><td><span class="grade-label grade-E">E</span></td><td>36.0%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>51</td><td>THA</td><td>Thailand</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0550</td><td><span class="grade-label grade-E">E</span></td><td>36.7%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>52</td><td>TUN</td><td>Tunisia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0407</td><td><span class="grade-label grade-E">E</span></td><td>37.4%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>53</td><td>PSE</td><td>Palestine</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0231</td><td><span class="grade-label grade-E">E</span></td><td>38.1%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>54</td><td>MUS</td><td>Mauritius</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0155</td><td><span class="grade-label grade-E">E</span></td><td>38.8%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>55</td><td>XKX</td><td>Kosovo</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0036</td><td><span class="grade-label grade-E">E</span></td><td>39.6%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>56</td><td>MKD</td><td>North Macedonia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">0.0019</td><td><span class="grade-label grade-E">E</span></td><td>40.3%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>57</td><td>MNE</td><td>Montenegro</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0063</td><td><span class="grade-label grade-E">E</span></td><td>41.0%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>58</td><td>TUR</td><td>Turkey</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0150</td><td><span class="grade-label grade-E">E</span></td><td>41.7%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>59</td><td>ARM</td><td>Armenia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0163</td><td><span class="grade-label grade-E">E</span></td><td>42.4%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>60</td><td>VNM</td><td>Vietnam</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0346</td><td><span class="grade-label grade-E">E</span></td><td>43.2%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>61</td><td>CHN</td><td>China</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0464</td><td><span class="grade-label grade-E">E</span></td><td>43.9%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>62</td><td>CHL</td><td>Chile</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0510</td><td><span class="grade-label grade-E">E</span></td><td>44.6%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>63</td><td>MNG</td><td>Mongolia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0596</td><td><span class="grade-label grade-E">E</span></td><td>45.3%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>64</td><td>MHL</td><td>Marshall Islands</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0646</td><td><span class="grade-label grade-E">E</span></td><td>46.0%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>65</td><td>DOM</td><td>Dominican Republic</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.0908</td><td><span class="grade-label grade-E">E</span></td><td>46.8%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>66</td><td>SLV</td><td>El Salvador</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1060</td><td><span class="grade-label grade-E">E</span></td><td>47.5%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>67</td><td>GAB</td><td>Gabon</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1118</td><td><span class="grade-label grade-E">E</span></td><td>48.2%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>68</td><td>FJI</td><td>Fiji</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1200</td><td><span class="grade-label grade-E">E</span></td><td>48.9%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>69</td><td>BOL</td><td>Bolivia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1227</td><td><span class="grade-label grade-E">E</span></td><td>49.6%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>70</td><td>IRN</td><td>Iran</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1301</td><td><span class="grade-label grade-E">E</span></td><td>50.4%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>71</td><td>TON</td><td>Tonga</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1347</td><td><span class="grade-label grade-E">E</span></td><td>51.1%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>72</td><td>PRY</td><td>Paraguay</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1377</td><td><span class="grade-label grade-E">E</span></td><td>51.8%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>73</td><td>BTN</td><td>Bhutan</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1396</td><td><span class="grade-label grade-E">E</span></td><td>52.5%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>74</td><td>PAN</td><td>Panama</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1500</td><td><span class="grade-label grade-E">E</span></td><td>53.2%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>75</td><td>WSM</td><td>Samoa</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1833</td><td><span class="grade-label grade-E">E</span></td><td>54.0%</td><td>fallback_10yr · 2013</td></tr>
+<tr><td>76</td><td>MAR</td><td>Morocco</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1859</td><td><span class="grade-label grade-E">E</span></td><td>54.7%</td><td>fallback_10yr · 2013</td></tr>
+<tr><td>77</td><td>KIR</td><td>Kiribati</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1944</td><td><span class="grade-label grade-E">E</span></td><td>55.4%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>78</td><td>KGZ</td><td>Kyrgyzstan</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.1970</td><td><span class="grade-label grade-E">E</span></td><td>56.1%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>79</td><td>MMR</td><td>Myanmar</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.2231</td><td><span class="grade-label grade-E">E</span></td><td>56.8%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>80</td><td>BRA</td><td>Brazil</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.2409</td><td><span class="grade-label grade-E">E</span></td><td>57.6%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>81</td><td>LKA</td><td>Sri Lanka</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.2457</td><td><span class="grade-label grade-E">E</span></td><td>58.3%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>82</td><td>CRI</td><td>Costa Rica</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.2546</td><td><span class="grade-label grade-E">E</span></td><td>59.0%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>83</td><td>EGY</td><td>Egypt</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.2649</td><td><span class="grade-label grade-E">E</span></td><td>59.7%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>84</td><td>MEX</td><td>Mexico</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.2665</td><td><span class="grade-label grade-E">E</span></td><td>60.4%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>85</td><td>GEO</td><td>Georgia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.2697</td><td><span class="grade-label grade-E">E</span></td><td>61.2%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>86</td><td>MRT</td><td>Mauritania</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.3127</td><td><span class="grade-label grade-E">E</span></td><td>61.9%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>87</td><td>TJK</td><td>Tajikistan</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.3229</td><td><span class="grade-label grade-E">E</span></td><td>62.6%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>88</td><td>IDN</td><td>Indonesia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.3315</td><td><span class="grade-label grade-E">E</span></td><td>63.3%</td><td>fallback_10yr · 2021</td></tr>
+<tr><td>89</td><td>PHL</td><td>Philippines</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.3407</td><td><span class="grade-label grade-E">E</span></td><td>64.0%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>90</td><td>PER</td><td>Peru</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.3434</td><td><span class="grade-label grade-E">E</span></td><td>64.7%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>91</td><td>CPV</td><td>Cape Verde</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.3515</td><td><span class="grade-label grade-E">E</span></td><td>65.5%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>92</td><td>NIC</td><td>Nicaragua</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.3583</td><td><span class="grade-label grade-E">E</span></td><td>66.2%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>93</td><td>ECU</td><td>Ecuador</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.3679</td><td><span class="grade-label grade-E">E</span></td><td>66.9%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>94</td><td>LCA</td><td>Saint Lucia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.4011</td><td><span class="grade-label grade-E">E</span></td><td>67.6%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>95</td><td>VUT</td><td>Vanuatu</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.4177</td><td><span class="grade-label grade-E">E</span></td><td>68.3%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>96</td><td>PAK</td><td>Pakistan</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.4598</td><td><span class="grade-label grade-E">E</span></td><td>69.1%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>97</td><td>LAO</td><td>Laos</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.4694</td><td><span class="grade-label grade-E">E</span></td><td>69.8%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>98</td><td>TLS</td><td>Timor</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.4883</td><td><span class="grade-label grade-E">E</span></td><td>70.5%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>99</td><td>SEN</td><td>Senegal</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.5209</td><td><span class="grade-label grade-E">E</span></td><td>71.2%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>100</td><td>GIN</td><td>Guinea</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.5316</td><td><span class="grade-label grade-E">E</span></td><td>71.9%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>101</td><td>CIV</td><td>Cote d'Ivoire</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.5322</td><td><span class="grade-label grade-E">E</span></td><td>72.7%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>102</td><td>GTM</td><td>Guatemala</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.5607</td><td><span class="grade-label grade-E">E</span></td><td>73.4%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>103</td><td>HND</td><td>Honduras</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.5731</td><td><span class="grade-label grade-E">E</span></td><td>74.1%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>104</td><td>GMB</td><td>Gambia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.5783</td><td><span class="grade-label grade-E">E</span></td><td>74.8%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>105</td><td>FSM</td><td>Micronesia (country)</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.5818</td><td><span class="grade-label grade-E">E</span></td><td>75.5%</td><td>fallback_10yr · 2013</td></tr>
+<tr><td>106</td><td>IND</td><td>India</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.5832</td><td><span class="grade-label grade-E">E</span></td><td>76.3%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>107</td><td>MLI</td><td>Mali</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.6118</td><td><span class="grade-label grade-E">E</span></td><td>77.0%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>108</td><td>SDN</td><td>Sudan</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.6201</td><td><span class="grade-label grade-E">E</span></td><td>77.7%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>109</td><td>BGD</td><td>Bangladesh</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.6223</td><td><span class="grade-label grade-E">E</span></td><td>78.4%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>110</td><td>DJI</td><td>Djibouti</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.6517</td><td><span class="grade-label grade-E">E</span></td><td>79.1%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>111</td><td>COM</td><td>Comoros</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.6706</td><td><span class="grade-label grade-E">E</span></td><td>79.9%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>112</td><td>COL</td><td>Colombia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.6808</td><td><span class="grade-label grade-E">E</span></td><td>80.6%</td><td>fallback_10yr · 2020</td></tr>
+<tr><td>113</td><td>YEM</td><td>Yemen</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.7021</td><td><span class="grade-label grade-E">E</span></td><td>81.3%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>114</td><td>BEN</td><td>Benin</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.7022</td><td><span class="grade-label grade-E">E</span></td><td>82.0%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>115</td><td>GNB</td><td>Guinea-Bissau</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.7072</td><td><span class="grade-label grade-E">E</span></td><td>82.7%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>116</td><td>GHA</td><td>Ghana</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.7475</td><td><span class="grade-label grade-E">E</span></td><td>83.5%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>117</td><td>LBR</td><td>Liberia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.7564</td><td><span class="grade-label grade-E">E</span></td><td>84.2%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>118</td><td>NGA</td><td>Nigeria</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.7890</td><td><span class="grade-label grade-E">E</span></td><td>84.9%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>119</td><td>CMR</td><td>Cameroon</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.7954</td><td><span class="grade-label grade-E">E</span></td><td>85.6%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>120</td><td>SLE</td><td>Sierra Leone</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8084</td><td><span class="grade-label grade-E">E</span></td><td>86.3%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>121</td><td>ETH</td><td>Ethiopia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8096</td><td><span class="grade-label grade-E">E</span></td><td>87.1%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>122</td><td>TGO</td><td>Togo</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8166</td><td><span class="grade-label grade-E">E</span></td><td>87.8%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>123</td><td>KEN</td><td>Kenya</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8220</td><td><span class="grade-label grade-E">E</span></td><td>88.5%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>124</td><td>TCD</td><td>Chad</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8346</td><td><span class="grade-label grade-E">E</span></td><td>89.2%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>125</td><td>LSO</td><td>Lesotho</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8483</td><td><span class="grade-label grade-E">E</span></td><td>89.9%</td><td>fallback_10yr · 2017</td></tr>
+<tr><td>126</td><td>BWA</td><td>Botswana</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.8549</td><td><span class="grade-label grade-E">E</span></td><td>90.6%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>127</td><td>BFA</td><td>Burkina Faso</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.9458</td><td><span class="grade-label grade-E">E</span></td><td>91.4%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>128</td><td>AGO</td><td>Angola</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.9895</td><td><span class="grade-label grade-E">E</span></td><td>92.1%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>129</td><td>TZA</td><td>Tanzania</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-0.9945</td><td><span class="grade-label grade-E">E</span></td><td>92.8%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>130</td><td>UGA</td><td>Uganda</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.0022</td><td><span class="grade-label grade-E">E</span></td><td>93.5%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>131</td><td>NER</td><td>Niger</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.0291</td><td><span class="grade-label grade-E">E</span></td><td>94.2%</td><td>fallback_10yr · 2018</td></tr>
+<tr><td>132</td><td>NAM</td><td>Namibia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.0649</td><td><span class="grade-label grade-E">E</span></td><td>95.0%</td><td>fallback_10yr · 2015</td></tr>
+<tr><td>133</td><td>RWA</td><td>Rwanda</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.0931</td><td><span class="grade-label grade-E">E</span></td><td>95.7%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>134</td><td>BDI</td><td>Burundi</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.1127</td><td><span class="grade-label grade-E">E</span></td><td>96.4%</td><td>fallback_10yr · 2013</td></tr>
+<tr><td>135</td><td>MWI</td><td>Malawi</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.1408</td><td><span class="grade-label grade-E">E</span></td><td>97.1%</td><td>fallback_10yr · 2019</td></tr>
+<tr><td>136</td><td>SWZ</td><td>Eswatini</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.1499</td><td><span class="grade-label grade-E">E</span></td><td>97.8%</td><td>fallback_10yr · 2016</td></tr>
+<tr><td>137</td><td>ZAF</td><td>South Africa</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.3981</td><td><span class="grade-label grade-E">E</span></td><td>98.6%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>138</td><td>MOZ</td><td>Mozambique</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.4078</td><td><span class="grade-label grade-E">E</span></td><td>99.3%</td><td>fallback_10yr · 2014</td></tr>
+<tr><td>139</td><td>ZMB</td><td>Zambia</td><td style="font-family:'IBM Plex Mono',monospace; color:var(--danger)">-1.5316</td><td><span class="grade-label grade-E">E</span></td><td>100.0%</td><td>fallback_10yr · 2015</td></tr>
+</table>
+<div class="warn-card" style="margin-top:24px;">
+<strong>Guide to Grade Distribution</strong><br/>
+    94 out of 139 countries (67.6%) fall into Grade E (less than 0.10). This is a result of applying the fixed standards at the time of the v4.2 formula design, without adjusting the grade boundaries (0.70/0.50/0.30/0.10) to the empirically measured distribution ex-post (see §4.6). The subtraction terms D and H<sub>s</sub> subtraction terms in many developing countries exceed the contributions of F<sub>ML</sub>·H, directly reflecting the actual income structure.
+  </div>
+<div class="footnote-section" style="margin-top:32px; border-top:2px solid var(--rule);">
+<strong style="font-size:13px; color:var(--ink);">Appendix A Data Notes (v6.0)</strong><br/><br/>
+<div class="fn">① BSLI Score = 0.40·F<sub>ML</sub> + 0.60·H − D − H<sub>s</sub> (summed after Min-Max normalization for each item across 139 countries)</div>
+<div class="fn">② Score Range: Theoretical [−2.0, +1.0] · countries with negative values (where the subtraction of D·H<sub>s</sub> exceeds the contribution of F<sub>ML</sub>·H) total 83 countries (59.7%)</div>
+<div class="fn">③ Since rankings are dependent on the population size (139 countries), the principle is to write value, grade, and percentile (top %) together in the body text</div>
+<div class="fn">④ Data Reference Year: Based on the latest reporting year for each country (with ±10-year fallback applied, refer to the year in the "Data Reliability" column) · Principal reference year: 2023</div>
+<div class="fn">⑤ Countries Excluded from Collection Stage: HKG·SGP·SAU·NZL (PIP not held) · ARG·COD (gap &gt; 10 years) · Countries Excluded from Empirical Stage: SOM·SSD·ZWE (BSLI calculation impossible)</div>
+<div class="fn">⑥ This table was derived from bsli_all_2023.json (BSLI_v3.2, updated on 2026-06-15) using an automatic script (recalc_bsli_139.py), and contains no manually entered values. It has passed all 5 types of verification scripts (verify_bsli_139.py).</div>
+</div>
+</div>
+</div><!-- /paper-wrap -->
+</body>
+</html>

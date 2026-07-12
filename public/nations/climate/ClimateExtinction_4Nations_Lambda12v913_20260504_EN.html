@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Special Report on Climate-Extinction Crisis Countries — Everblue Sea Institute for Social Dynamics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=Courier+Prime:wght@400;700&display=swap');
+
+  :root {
+    --bg: #F5F3EE;
+    --green: #5E9186;
+    --green-dark: #3A6A5E;
+    --gold: #B8850E;
+    --card: #FFFFFF;
+    --border: #DDD8CE;
+    --text: #2C2C2C;
+    --text-light: #666;
+    --ocean: #1A4A6B;
+    --ocean-light: #2E6A9E;
+    --danger: #C0392B;
+    --warning: #E67E22;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(160deg, #0A1628 0%, #1A3A5C 40%, #0D2A3A 100%);
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232E6A9E' fill-opacity='0.08'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: drift 20s linear infinite;
+  }
+
+  @keyframes drift {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-60px); }
+  }
+
+  .hero-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: #7BA8C4;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .hero-title span {
+    color: #7BC4E8;
+  }
+
+  .hero-sub {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: #A8C8E0;
+    font-weight: 300;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .hero-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: #5A8EAA;
+    letter-spacing: 2px;
+    position: relative;
+  }
+
+  .wave-divider {
+    width: 100%;
+    height: 60px;
+    background: var(--bg);
+    clip-path: ellipse(55% 100% at 50% 100%);
+    margin-top: -1px;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section {
+    padding: 60px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--green-dark);
+    line-height: 1.3;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    margin-bottom: 4px;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: linear-gradient(135deg, #0A1628 0%, #1A3A5C 100%);
+    border-left: 4px solid #7BC4E8;
+    padding: 32px 40px;
+    border-radius: 0 8px 8px 0;
+    margin: 32px 0;
+  }
+
+  .callout p {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    color: #E8F4FF;
+    line-height: 1.9;
+    font-weight: 300;
+  }
+
+  .callout em {
+    color: #7BC4E8;
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── NATION CARDS ── */
+  .nations-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 32px 0;
+  }
+
+  .nation-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .nation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+
+  .nation-card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nation-flag-emoji {
+    font-size: 32px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .nation-name-kr {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green-dark);
+  }
+
+  .nation-name-en {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+  }
+
+  .nation-card-body {
+    padding: 20px 24px;
+  }
+
+  .nation-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid #F0EDE8;
+  }
+
+  .nation-stat:last-child { border-bottom: none; }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  .stat-value {
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .stat-value.danger { color: var(--danger); }
+  .stat-value.warning { color: var(--warning); }
+  .stat-value.ocean { color: var(--ocean-light); }
+
+  .gei-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #C0392B, #E74C3C);
+    color: white;
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 12px;
+  }
+
+  /* ── DATA TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 14px;
+  }
+
+  .data-table th {
+    background: var(--green);
+    color: white;
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  .data-table th:first-child { border-radius: 6px 0 0 0; }
+  .data-table th:last-child { border-radius: 0 6px 0 0; }
+
+  .data-table td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  .data-table tr:nth-child(even) td { background: #FAFAF8; }
+  .data-table tr:hover td { background: #F0EDE8; }
+
+  .data-table .num {
+    font-family: 'Courier Prime', monospace;
+    font-weight: 700;
+  }
+
+  .data-table .red { color: var(--danger); }
+  .data-table .orange { color: var(--warning); }
+  .data-table .blue { color: var(--ocean-light); }
+  .data-table .green { color: var(--green-dark); }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+    margin: 24px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--ocean-light), var(--danger));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -28px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--card);
+    box-shadow: 0 0 0 2px currentColor;
+  }
+
+  .timeline-dot.now { color: var(--ocean-light); background: var(--ocean-light); }
+  .timeline-dot.warn { color: var(--warning); background: var(--warning); }
+  .timeline-dot.crisis { color: #E74C3C; background: #E74C3C; }
+  .timeline-dot.extinct { color: var(--danger); background: var(--danger); }
+
+  .timeline-year {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .timeline-content {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  /* ── SUPPORT TABLE ── */
+  .support-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 24px 0;
+  }
+
+  .support-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .support-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--green);
+  }
+
+  .support-item {
+    font-size: 13px;
+    padding: 6px 0;
+    border-bottom: 1px solid #F0EDE8;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .support-item:last-child { border-bottom: none; }
+
+  .support-name { color: var(--text); flex: 1; }
+  .support-amount {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  /* ── GAP VISUAL ── */
+  .gap-visual {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 24px 0;
+  }
+
+  .gap-bar-wrapper { margin: 16px 0; }
+
+  .gap-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+
+  .gap-bar {
+    height: 28px;
+    border-radius: 4px;
+    background: #F0EDE8;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .gap-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    transition: width 1s ease;
+  }
+
+  .gap-fill.actual { background: linear-gradient(90deg, var(--ocean), var(--ocean-light)); }
+  .gap-fill.needed { background: linear-gradient(90deg, var(--green), var(--green-dark)); }
+  .gap-fill.debt { background: linear-gradient(90deg, #E74C3C, #C0392B); }
+
+  /* ── FALEPILI ── */
+  .falepili-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 24px 0;
+  }
+
+  .falepili-side {
+    padding: 24px;
+    border-radius: 10px;
+  }
+
+  .falepili-side.hope {
+    background: #F0F8F5;
+    border: 1px solid var(--green);
+  }
+
+  .falepili-side.concern {
+    background: #FEF5F5;
+    border: 1px solid #E74C3C;
+  }
+
+  .falepili-side-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid currentColor;
+  }
+
+  .falepili-side.hope .falepili-side-title { color: var(--green-dark); }
+  .falepili-side.concern .falepili-side-title { color: var(--danger); }
+
+  .falepili-item {
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    line-height: 1.6;
+  }
+
+  .falepili-item:last-child { border-bottom: none; }
+
+  /* ── CSZ PROPOSAL ── */
+  .csz-box {
+    background: linear-gradient(135deg, #F5F3EE, #EBF4F0);
+    border: 2px solid var(--green);
+    border-radius: 12px;
+    padding: 36px;
+    margin: 24px 0;
+  }
+
+  .csz-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+  }
+
+  .csz-en {
+    font-family: 'Courier Prime', monospace;
+    font-size: 13px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 24px;
+  }
+
+  .csz-formula {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    color: var(--ocean);
+    line-height: 2;
+    margin: 20px 0;
+  }
+
+  .csz-candidates {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .csz-candidate {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .csz-candidate-name {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+  }
+
+  .csz-candidate-score {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--text-light);
+  }
+
+  /* ── COMPARISON ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0;
+  }
+
+  .compare-side {
+    padding: 28px;
+  }
+
+  .compare-side.israel {
+    background: #F5F8FF;
+    border-right: 1px solid var(--border);
+  }
+
+  .compare-side.maldives {
+    background: #F0F8F5;
+  }
+
+  .compare-side-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--green-dark);
+  }
+
+  .compare-row {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 13px;
+  }
+
+  .compare-row:last-child { border-bottom: none; }
+
+  .compare-key {
+    color: var(--text-light);
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .compare-val { color: var(--text); font-weight: 500; }
+
+  /* ── RADAR ── */
+  .radar-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin: 24px 0;
+    align-items: start;
+  }
+
+  /* ── 6층 질문 ── */
+  .layer6 {
+    background: linear-gradient(160deg, #0A1628, #1A3A5C);
+    border-radius: 12px;
+    padding: 48px 40px;
+    margin: 40px 0;
+    text-align: center;
+  }
+
+  .layer6-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: #5A8EAA;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .layer6-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(16px, 2.5vw, 22px);
+    color: #E8F4FF;
+    line-height: 2.0;
+    font-weight: 300;
+  }
+
+  .layer6-text em {
+    color: #7BC4E8;
+    font-style: normal;
+  }
+
+  /* ── INDIVIDUAL REPORTS ── */
+  .individual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin: 32px 0;
+  }
+
+  .individual-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .individual-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+
+  .individual-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ocean), var(--green));
+  }
+
+  .individual-card-flag { font-size: 40px; margin-bottom: 12px; display: block; }
+
+  .individual-card-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 4px;
+  }
+
+  .individual-card-en {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+
+  .individual-card-desc {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .individual-card-link {
+    display: inline-block;
+    background: var(--green);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+
+  .individual-card-link:hover { background: var(--green-dark); }
+
+  /* ── BODY TEXT ── */
+  .body-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .body-text strong { color: var(--green-dark); }
+
+  .highlight-box {
+    background: #EBF4F0;
+    border-left: 3px solid var(--green);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin: 20px 0;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .source-tag {
+    font-family: 'Courier Prime', monospace;
+    font-size: 11px;
+    color: var(--text-light);
+    background: #F0EDE8;
+    padding: 2px 8px;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #EBF4F0;
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-institute {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 8px;
+  }
+
+  .footer-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    color: var(--text-light);
+    line-height: 2;
+  }
+
+  .footer-link {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  /* ── SVG RADAR ── */
+  .radar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    .nations-grid, .individual-grid, .falepili-grid, .radar-section { grid-template-columns: 1fr; }
+    .support-grid { grid-template-columns: 1fr; }
+    .csz-candidates { grid-template-columns: repeat(2, 1fr); }
+    .compare-grid { grid-template-columns: 1fr; }
+    .hero { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+<!-- ── HERO ── -->
+<div class="hero">
+<div class="hero-label">Everblue Sea Institute for Social Dynamics · Climate Extinction Series · §34 GEI</div>
+<h1 class="hero-title">
+    It is not <span>their fault</span>
+</h1>
+<p class="hero-sub">Special Report on Climate-Extinction Crisis Countries — 4-Country Integrated Edition</p>
+<div class="hero-meta">MALDIVES · TUVALU · KIRIBATI · MARSHALL ISLANDS · Lambda12 v9.13 · 2026-05-04</div>
+</div>
+<div class="wave-divider"></div>
+<div class="container">
+ ── §1 Preface ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§01</span>
+<h2 class="section-title">Series Preface</h2>
+<div class="section-line"></div>
+</div>
+<p class="body-text">
+      For a single endangered animal, the global media dedicates front-page coverage, international fundraising takes place, and intergovernmental treaties are signed. 24-hour armed security is provided. However, <strong>the fact that a country of 520,000 people is sinking into the ocean</strong> appears only briefly during climate summits and then vanishes.
+    </p>
+<div class="callout">
+<p>
+        The Maldives, Tuvalu, Kiribati, and the Marshall Islands. The only thing these four countries did was <em>to be born on coral reefs</em>.<br/>
+        Their CO₂ emissions account for a mere 0.003% of the global total.<br/>
+        Yet, the climate damage they endure reaches <em>27% to 71% of their national GDP</em>.
+      </p>
+</div>
+<p class="body-text">
+      This report is a special series that first applies the new module of the Λ¹² v9.13 framework, <strong>§34 GEI (Geographic Extinction Index)</strong>. While §32 NSAAC diagnoses the extinction of state functions, §34 GEI addresses <strong>the physical extinction of the territory itself</strong>. This is a dimension that does not exist anywhere in the existing 12 axes.
+    </p>
+<p class="body-text">
+      Perhaps this report will be the <strong>last living record</strong> of these nations. Leaving a record while they are still alive, before they are displayed in museums, is the very reason for this series' existence.
+    </p>
+</div>
+ ── §2 GEI Theory ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§02</span>
+<h2 class="section-title">§34 GEI — Geographic Extinction Index</h2>
+<div class="section-line"></div>
+</div>
+<p class="body-text">
+      GEI captures situations that shatter the assumptions of the Λ¹² basic engine (§1 to §26). The basic engine was designed assuming <strong>the physical existence of territory</strong> as a premise. GEI is a separate diagnostic system for countries where that very premise is disappearing.
+    </p>
+<div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:28px;margin:20px 0;">
+<div style="font-family:'Courier Prime',monospace;font-size:15px;color:var(--ocean);line-height:2.2;text-align:center;">
+        GEI = (SLR_rate × EAI × Pop_density) / (Support_intensity × CSZ_probability)<br/>
+<span style="font-size:11px;color:var(--text-light);">
+          SLR: Sea Level Rise Rate | EAI: Elevation Inverse Index | Pop: Population Density<br/>
+          Support: International Support Intensity | CSZ: Climate Sovereignty Zone Possibility
+        </span>
+</div>
+</div>
+<div class="highlight-box">
+<strong>§32 NSAAC vs §34 GEI Key Distinction</strong><br/>
+      NSAAC (Haiti): State functions are replaced by non-state armed organizations → Lambda &gt; 1.0<br/>
+      GEI (Maldives, etc.): Regardless of state functions, <strong>the physical territory itself disappears</strong> → Separate scale required<br/>
+      Both situations represent cases where the assumptions of the existing Lambda normalization scale break down.
+    </div>
+<p class="body-text">
+      Connection with §33 BBD (Bubble Boundary Dynamics): For GEI target countries, no matter how high the FTI (Film Thickness Index) is, it is meaningless. <strong>This is because the plate on which the bubble sits is itself disappearing.</strong> This is the most brutal case in BBD.
+    </p>
+</div>
+ ── §3 Overview of the 4 Countries ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§03</span>
+<h2 class="section-title">Comparison of the 4 Countries' Overviews</h2>
+<div class="section-line"></div>
+</div>
+<div class="nations-grid">
+<div class="nation-card">
+<div class="nation-card-header">
+<span class="nation-flag-emoji">🇲🇻</span>
+<div class="nation-name-kr">Maldives</div>
+<div class="nation-name-en">REPUBLIC OF MALDIVES</div>
+</div>
+<div class="nation-card-body">
+<div class="nation-stat">
+<span class="stat-label">Population</span>
+<span class="stat-value">520,000</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Average Elevation</span>
+<span class="stat-value danger">1.5m</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Number of Coral Islands</span>
+<span class="stat-value">1,192</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Groundwater Contamination</span>
+<span class="stat-value danger">97% Salinization</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Coastal Erosion</span>
+<span class="stat-value warning">90% Severe</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">2050 Outlook</span>
+<span class="stat-value danger">80% Uninhabitable</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">CO₂ Contribution</span>
+<span class="stat-value ocean">0.003%</span>
+</div>
+<div class="gei-badge">GEI: Extremely High Risk</div>
+</div>
+</div>
+<div class="nation-card">
+<div class="nation-card-header">
+<span class="nation-flag-emoji">🇹🇻</span>
+<div class="nation-name-kr">Tuvalu</div>
+<div class="nation-name-en">TUVALU</div>
+</div>
+<div class="nation-card-body">
+<div class="nation-stat">
+<span class="stat-label">Population</span>
+<span class="stat-value">11,000</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Average Elevation</span>
+<span class="stat-value danger">2m</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Sea Level Rise</span>
+<span class="stat-value danger">21 cm over 30 years</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Rate of Rise</span>
+<span class="stat-value warning">1.5 times the global average</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">2050 Inundation Days</span>
+<span class="stat-value danger">25+ days/year</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">2100 Outlook</span>
+<span class="stat-value danger">95% Submerged</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Australia Migration Application</span>
+<span class="stat-value warning">90%+</span>
+</div>
+<div class="gei-badge">GEI: Extremely High Risk</div>
+</div>
+</div>
+<div class="nation-card">
+<div class="nation-card-header">
+<span class="nation-flag-emoji">🇰🇮</span>
+<div class="nation-name-kr">Kiribati</div>
+<div class="nation-name-en">REPUBLIC OF KIRIBATI</div>
+</div>
+<div class="nation-card-body">
+<div class="nation-stat">
+<span class="stat-label">Population</span>
+<span class="stat-value">120,000</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Average Elevation</span>
+<span class="stat-value danger">Under 2m</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Composition</span>
+<span class="stat-value">33 Atolls</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">2050 Inundation Days</span>
+<span class="stat-value danger">65 days/year</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">GDP Damage (2100)</span>
+<span class="stat-value danger">15~29%</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Fiji Land Purchase</span>
+<span class="stat-value ocean">2,000 Acres</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">China Support</span>
+<span class="stat-value warning">Infrastructure investment underway</span>
+</div>
+<div class="gei-badge">GEI: Extremely High Risk</div>
+</div>
+</div>
+<div class="nation-card">
+<div class="nation-card-header">
+<span class="nation-flag-emoji">🇲🇭</span>
+<div class="nation-name-kr">Marshall Islands</div>
+<div class="nation-name-en">REPUBLIC OF THE MARSHALL ISLANDS</div>
+</div>
+<div class="nation-card-body">
+<div class="nation-stat">
+<span class="stat-label">Population</span>
+<span class="stat-value">42,000</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Maximum Elevation</span>
+<span class="stat-value danger">Under 2m</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Number of Nuclear Tests</span>
+<span class="stat-value danger">67 times (1946–58)</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Hiroshima Equivalent</span>
+<span class="stat-value danger">1 bomb daily for 20 years</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">GDP Damage (2100)</span>
+<span class="stat-value danger">27~43%</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Runit Dome</span>
+<span class="stat-value warning">Nuclear waste submersion crisis</span>
+</div>
+<div class="nation-stat">
+<span class="stat-label">Double Damage</span>
+<span class="stat-value danger">Nuclear + Climate</span>
+</div>
+<div class="gei-badge">GEI: Extremely High Risk + Nuclear Legacy</div>
+</div>
+</div>
+</div>
+</div>
+ ── §4 Submersion Timeline ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§04</span>
+<h2 class="section-title">Submersion Timeline — Countdown</h2>
+<div class="section-line"></div>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-dot now"></div>
+<div class="timeline-year">2026 Present</div>
+<div class="timeline-content">
+          Maldives: 97% of groundwater salinization complete, severe erosion underway on 90% of the islands.<br/>
+          Tuvalu: Sea level risen by 21 cm over 30 years, 1.5 times the global average rate.<br/>
+          Kiribati: Inundation days, which were fewer than 5 days a year, are increasing rapidly.<br/>
+          Marshall Islands: Cracking of the Runit Dome (nuclear waste storage facility) is progressing, risking leakage due to sea level rise.
+        </div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot warn"></div>
+<div class="timeline-year">2030~2040</div>
+<div class="timeline-content">
+          Minimum 15 cm sea level rise within 30 years locked in (NASA). Irreversible due to already emitted greenhouse gases.<br/>
+          Forced relocation of residents on the outer islands of the Maldives expected to begin.<br/>
+          Kiribati: Inundation zones of 25+ days per year expanding rapidly.
+        </div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot crisis"></div>
+<div class="timeline-year">2050</div>
+<div class="timeline-content">
+          Maldives: 80% of islands projected to be uninhabitable (IPCC).<br/>
+          Tuvalu: 50% of the capital, Funafuti, projected to be submerged (NASA).<br/>
+          Kiribati: 65 inundation days per year — continued habitation virtually impossible.<br/>
+          All four countries experience annual climate shocks exceeding 3% of GDP. Incapable of self-recovery.
+        </div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot extinct"></div>
+<div class="timeline-year">2100</div>
+<div class="timeline-content">
+          Tuvalu: 95% submersion projected.<br/>
+          Marshall Islands: 27% to 43% of GDP destroyed.<br/>
+          Kiribati: 15% to 29% of GDP destroyed.<br/>
+          Maldives: Entire territory could be submerged (total submersion with a 1m sea level rise).<br/>
+<strong>This point is 74 years from now. The year a child born today turns 74.</strong>
+</div>
+</div>
+</div>
+</div>
+ ── §5 Support Status ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§05</span>
+<h2 class="section-title">Support Status — What the Numbers Say</h2>
+<div class="section-line"></div>
+</div>
+<div class="gap-visual">
+<h3 style="font-family:'Noto Serif KR',serif;font-size:16px;color:var(--green-dark);margin-bottom:24px;">Annual Climate Adaptation Funding — Needs vs. Actual</h3>
+<div class="gap-bar-wrapper">
+<div class="gap-label">
+<span>Actual Support Amount</span>
+<span style="font-family:'Courier Prime',monospace;font-weight:700;color:var(--ocean-light);">US$ 2 billion/year</span>
+</div>
+<div class="gap-bar">
+<div class="gap-fill actual" style="width:16.7%">$2 billion</div>
+</div>
+</div>
+<div class="gap-bar-wrapper">
+<div class="gap-label">
+<span>Expert-Recommended Required Amount</span>
+<span style="font-family:'Courier Prime',monospace;font-weight:700;color:var(--green-dark);">US$ 12 billion/year</span>
+</div>
+<div class="gap-bar">
+<div class="gap-fill needed" style="width:100%">$12 billion</div>
+</div>
+</div>
+<div class="gap-bar-wrapper">
+<div class="gap-label">
+<span>Debt Ratio in Support Funds</span>
+<span style="font-family:'Courier Prime',monospace;font-weight:700;color:var(--danger);">44%</span>
+</div>
+<div class="gap-bar">
+<div class="gap-fill debt" style="width:44%">Debt to be Repaid</div>
+</div>
+</div>
+<p style="font-size:13px;color:var(--text-light);margin-top:16px;">
+        Source: Global Center on Adaptation, State and Trends 2025 · Climate Policy Initiative 2025
+      </p>
+</div>
+<div class="support-grid">
+<div class="support-card">
+<div class="support-card-title">🏛️ Major Support Countries</div>
+<div class="support-item">
+<span class="support-name">Australia</span>
+<span class="support-amount">Falepili Union + AUD 153M+</span>
+</div>
+<div class="support-item">
+<span class="support-name">New Zealand</span>
+<span class="support-amount">Migration Quotas + Development Support</span>
+</div>
+<div class="support-item">
+<span class="support-name">China</span>
+<span class="support-amount">Kiribati Infrastructure Investment</span>
+</div>
+<div class="support-item">
+<span class="support-name">EU</span>
+<span class="support-amount">Participation in the IRIS Initiative</span>
+</div>
+<div class="support-item">
+<span class="support-name">India</span>
+<span class="support-amount">IRIS $35M Co-investment</span>
+</div>
+<div class="support-item">
+<span class="support-name">United States</span>
+<span class="support-amount">Marshall Islands Nuclear Compensation (Insufficient)</span>
+</div>
+</div>
+<div class="support-card">
+<div class="support-card-title">🌐 Major International Organizations &amp; Groups</div>
+<div class="support-item">
+<span class="support-name">GCF (Green Climate Fund)</span>
+<span class="support-amount">Headquarters: Songdo, Incheon</span>
+</div>
+<div class="support-item">
+<span class="support-name">AOSIS</span>
+<span class="support-amount">Alliance of Small Island States of 39 Countries</span>
+</div>
+<div class="support-item">
+<span class="support-name">GCA (Global Center on Adaptation)</span>
+<span class="support-amount">Policy Research &amp; Recommendations</span>
+</div>
+<div class="support-item">
+<span class="support-name">Rising Nations Initiative</span>
+<span class="support-amount">UN Sovereignty Preservation Program</span>
+</div>
+<div class="support-item">
+<span class="support-name">IRIS</span>
+<span class="support-amount">Infrastructure Resilience $35M</span>
+</div>
+<div class="support-item">
+<span class="support-name">Greenpeace</span>
+<span class="support-amount">Marshall Islands Nuclear &amp; Climate Investigation</span>
+</div>
+</div>
+<div class="support-card">
+<div class="support-card-title">⚠️ Structural Limits of Support</div>
+<div class="support-item">
+<span class="support-name">Actually Accessible Amount</span>
+<span class="support-amount">$1.9B/year (16% of need)</span>
+</div>
+<div class="support-item">
+<span class="support-name">44% in the Form of Debt</span>
+<span class="support-amount">Support Funds to be Repaid</span>
+</div>
+<div class="support-item">
+<span class="support-name">Share of Global Climate Finance</span>
+<span class="support-amount">Only 0.2% to SIDS</span>
+</div>
+<div class="support-item">
+<span class="support-name">Private Capital Untraceable</span>
+<span class="support-amount">Virtually Zero</span>
+</div>
+<div class="support-item">
+<span class="support-name">Fear of Precedent</span>
+<span class="support-amount">Refusal to Provide Autonomous Zones</span>
+</div>
+<div class="support-item">
+<span class="support-name">Illusion of Time</span>
+<span class="support-amount">"Not urgent yet"</span>
+</div>
+</div>
+</div>
+</div>
+ ── §6 Falepili Union ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§06</span>
+<h2 class="section-title">Falepili Union — Hope or Neo-colonialism?</h2>
+<div class="section-line"></div>
+</div>
+<p class="body-text">
+      Signed in November 2023 by Australia and Tuvalu, the <strong>Falepili Union</strong> is the world's first bilateral agreement on climate mobility. It officially took effect in August 2024. 'Falepili' in Tuvaluan culture means <em>the act of caring for neighbors without expecting anything in return</em>.
+    </p>
+<div class="falepili-grid">
+<div class="falepili-side hope">
+<div class="falepili-side-title">Aspects of Hope</div>
+<div class="falepili-item">Permanent residency for 280 people annually — offering options to 2.5% of the population</div>
+<div class="falepili-item">AUD 38M Coastal Adaptation Project (expanding habitable land)</div>
+<div class="falepili-item">AUD 50M Undersea Fiber-optic Cable — digital connectivity</div>
+<div class="falepili-item">Legally binding recognition of the permanence of Tuvalu's sovereignty (world's first)</div>
+<div class="falepili-item">Free movement — maintaining mobility between Tuvalu and Australia</div>
+<div class="falepili-item">Guaranteed access to social protection, healthcare, and education</div>
+</div>
+<div class="falepili-side concern">
+<div class="falepili-side-title">Aspects of Concern</div>
+<div class="falepili-item">Security Veto: Australia's prior consent required for security agreements with third countries</div>
+<div class="falepili-item">Opposition party: "We auctioned off our sovereignty in exchange for migration rights."</div>
+<div class="falepili-item">No public hearings for Tuvaluan residents during the negotiation process</div>
+<div class="falepili-item">Agreement published only in English — absence of local language translation</div>
+<div class="falepili-item">Criticism as a tool for Australia to expand its influence in the Pacific</div>
+<div class="falepili-item">Absolutely no obligation for actual CO₂ reductions</div>
+</div>
+</div>
+<div class="highlight-box">
+<strong>Λ¹² Analysis:</strong> The Falepili Union is a real-world case of <em>a structure where a small bubble is absorbed by a large bubble</em> described in §33 BBD. Australia secured a strategic asset, namely Tuvalu's maritime sovereignty (900,000 km² — the size of Nigeria), while Tuvalu gained a survival option. However, this structure is the exact opposite of the original meaning of Falepili — caring without expecting anything in return.
+    </div>
+</div>
+ ── §7 Israel vs. Maldives ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§07</span>
+<h2 class="section-title">Why is Israel possible but not the Maldives?</h2>
+<div class="section-line"></div>
+</div>
+<p class="body-text">
+      This question is the core of this report. Though the two cases seem different on the surface, they ask structurally the same question: <strong>Which people's migration and settlement does the international community support, and toward which people does it remain silent?</strong>
+</p>
+<div class="compare-grid">
+<div class="compare-side israel">
+<div class="compare-side-title">🇮🇱 The Case of Israel (1947–48)</div>
+<div class="compare-row"><span class="compare-key">Motivation</span><span class="compare-val">Geopolitical interests of major powers (Middle East foothold)</span></div>
+<div class="compare-row"><span class="compare-key">Support Method</span><span class="compare-val">UN resolution + British Balfour Declaration + US diplomatic power</span></div>
+<div class="compare-row"><span class="compare-key">Land Provision</span><span class="compare-val">Land with existing residents</span></div>
+<div class="compare-row"><span class="compare-key">International Reaction</span><span class="compare-val">Immediate, concrete, and legally binding</span></div>
+<div class="compare-row"><span class="compare-key">Key Reason</span><span class="compare-val">Alignment with the interests of major powers</span></div>
+</div>
+<div class="compare-side maldives">
+<div class="compare-side-title">🇲🇻 The Case of Maldives, etc. (Present)</div>
+<div class="compare-row"><span class="compare-key">Motivation</span><span class="compare-val">Climate justice — no interest of major powers</span></div>
+<div class="compare-row"><span class="compare-key">Support Method</span><span class="compare-val">Declarations, pledges, target figures — mostly unfulfilled</span></div>
+<div class="compare-row"><span class="compare-key">Land Provision</span><span class="compare-val">Not even discussed</span></div>
+<div class="compare-row"><span class="compare-key">International Reaction</span><span class="compare-val">Brief appearance during climate summits, followed by silence</span></div>
+<div class="compare-row"><span class="compare-key">Key Reason</span><span class="compare-val">Irrelevant to the interests of major powers</span></div>
+</div>
+</div>
+<div class="callout">
+<p>
+        There is a brutally simple answer.<br/>
+<em>Israel = There were interests of major powers.</em><br/>
+<em>Maldives = There are no interests of major powers.</em><br/><br/>
+        However, the approach proposed by the director is different. <em>Through international consensus rather than the interests of major powers</em>, to create a voluntary, cooperative, and coexistence-oriented autonomous zone. This is the concept of CSZ.
+      </p>
+</div>
+</div>
+ ── §8 CSZ Proposal ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§08</span>
+<h2 class="section-title">CSZ Proposal — Climate Sovereignty Zone</h2>
+<div class="section-line"></div>
+</div>
+<div class="csz-box">
+<div class="csz-title">Climate Sovereignty Zone (CSZ)</div>
+<div class="csz-en">Climate Sovereignty Zone — Proposed New Category of International Law</div>
+<p class="body-text" style="font-size:14px;">
+        A new legal framework in which the international community guarantees the sovereignty and culture of nations whose territories are physically disappearing. It is not the Israel model (conflict, coercion, exclusion), but a voluntary, cooperative, and coexistence-oriented autonomous zone concept.
+      </p>
+<div class="csz-formula">
+        CSZ Possibility Index =<br/>
+          (Host Country's Available Territory × International Consensus × Capital Mobilization Feasibility)<br/>
+          / (Host Country's Internal Resistance × Fear of Precedent Index)
+      </div>
+<h4 style="font-size:14px;color:var(--green-dark);margin-bottom:12px;font-family:'Noto Serif KR',serif;">Evaluation of South American Host Country Candidates</h4>
+<div class="csz-candidates">
+<div class="csz-candidate">
+<div class="csz-candidate-name">🇬🇾 Guyana</div>
+<div class="csz-candidate-score">Feasibility: ★★★★</div>
+<div class="csz-candidate-score">Low density, oil money, coastline</div>
+</div>
+<div class="csz-candidate">
+<div class="csz-candidate-name">🇨🇱 Chile</div>
+<div class="csz-candidate-score">Feasibility: ★★★</div>
+<div class="csz-candidate-score">Long coastline, Patagonia</div>
+</div>
+<div class="csz-candidate">
+<div class="csz-candidate-name">🇪🇨 Ecuador</div>
+<div class="csz-candidate-score">Feasibility: ★★★</div>
+<div class="csz-candidate-score">Familiarity with maritime culture</div>
+</div>
+<div class="csz-candidate">
+<div class="csz-candidate-name">🇫🇯 Fiji</div>
+<div class="csz-candidate-score">Feasibility: ★★★★</div>
+<div class="csz-candidate-score">Kiribati already purchased</div>
+</div>
+</div>
+<div class="highlight-box" style="margin-top:20px;background:rgba(255,255,255,0.6);">
+<strong>Precedents</strong>: Vatican City (an independent state within Italian territory), Åland Islands (a Swedish-speaking autonomous region in Finland), Kosovo (independence supported by the international community). CSZ is not a new invention. It is <strong>the application of existing international law structures to the climate crisis</strong>.
+      </div>
+</div>
+</div>
+ ── §9 Marshall Islands' Special Situation ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§09</span>
+<h2 class="section-title">Marshall Islands — The Brutality of Double Damage</h2>
+<div class="section-line"></div>
+</div>
+<div class="callout">
+<p>
+<em>"for the good of mankind"</em> — These were the words spoken by a US Navy Admiral to 167 residents of Bikini Atoll in 1946.<br/>
+        They did not return for 20 years. And now, that land is disappearing again due to climate change.<br/>
+<em>This was not a mistake. It was intentional and planned.</em>
+</p>
+</div>
+<p class="body-text">
+      The Marshall Islands is the only country in the world to <strong>suffer from both nuclear damage and climate damage simultaneously</strong>. Between 1946 and 1958, the United States conducted 67 nuclear tests on these atolls. The equivalent of 20 years' worth of Hiroshima bomb yields exploded over these small islands.
+    </p>
+<table class="data-table">
+<tr>
+<th>Item</th>
+<th>Value</th>
+<th>Note</th>
+</tr>
+<tr>
+<td>Number of Nuclear Tests</td>
+<td class="num red">67</td>
+<td>1946–1958</td>
+</tr>
+<tr>
+<td>Total Yield</td>
+<td class="num red">108 Megatons</td>
+<td>1 Hiroshima bomb daily × 20 years</td>
+</tr>
+<tr>
+<td>Largest Test</td>
+<td class="num red">Castle Bravo</td>
+<td>1,000 times Hiroshima</td>
+</tr>
+<tr>
+<td>Global Excess Cancer Deaths</td>
+<td class="num red">Estimated around 100,000</td>
+<td>IEER·Greenpeace 2025</td>
+</tr>
+<tr>
+<td>Runit Dome</td>
+<td class="num orange">Cracking in progress</td>
+<td>Nuclear waste submersion crisis</td>
+</tr>
+<tr>
+<td>2100 GDP Damage</td>
+<td class="num red">27~43%</td>
+<td>From climate change alone</td>
+</tr>
+<tr>
+<td>US Compensation</td>
+<td class="num orange">Ruled insufficient</td>
+<td>Marshall Islands government continuously demanding</td>
+</tr>
+</table>
+<div class="highlight-box">
+      Forced relocation due to nuclear testing, loss of livelihood from radioactive contamination, and physical disappearance of territory due to climate change. The Marshall Islands stands <strong>at the intersection of two sins of the major powers</strong>. The sin of the Cold War and the sin of industrialization combined. Yet, the Runit Dome is still assessed as "safe" even now. While sea levels are rising.
+    </div>
+</div>
+ ── §10 Cultural Extinction ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§10</span>
+<h2 class="section-title">What is Vanishing — The Extinction of Civilizations</h2>
+<div class="section-line"></div>
+</div>
+<table class="data-table">
+<tr>
+<th>Country</th>
+<th>Language</th>
+<th>History</th>
+<th>Endangered Cultural Heritage</th>
+</tr>
+<tr>
+<td><strong>Maldives</strong></td>
+<td>Dhivehi (with its unique script, Thaana)</td>
+<td>800 years of Sultanate + Buddhist-to-Islamic layers</td>
+<td>Coral stone architecture, Indian Ocean seafaring civilization, 3% of world's coral reefs</td>
+</tr>
+<tr>
+<td><strong>Tuvalu</strong></td>
+<td>Tuvaluan (Polynesian branch)</td>
+<td>Migration 3,000 years ago, independence in 1978</td>
+<td>Fatele dance, ancestral canoe-building, lagoon agriculture, patrilineal &amp; traditional assembly culture</td>
+</tr>
+<tr>
+<td><strong>Kiribati</strong></td>
+<td>Kiribati (Micronesian branch)</td>
+<td>Vast pre-colonial maritime navigation traditions</td>
+<td>Celestial navigation, ancestral land ownership concepts, Maneaba (communal meeting house) culture</td>
+</tr>
+<tr>
+<td><strong>Marshall Islands</strong></td>
+<td>Marshallese (matrilineal society traditions)</td>
+<td>Traditional matrilineal society prior to nuclear testing</td>
+<td>Open-ocean navigation, matrilineal land ownership, Bikini Islander culture (already vanishing)</td>
+</tr>
+</table>
+<div class="callout">
+<p>
+        In 2022, Tuvalu declared the world's first <em>Digital Nation</em> in the metaverse. It is a declaration that even if its physical territory is submerged, the state continues to exist.<br/>
+        Tuvalu's constitution has already been amended: <em>"Even if territory is lost due to sea level rise, the statehood and sovereignty of Tuvalu remain perpetual."</em><br/>
+        Is this desperation, or is it a new concept of sovereignty that humanity needs to learn?
+      </p>
+</div>
+</div>
+ ── §11 BBD Connection ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§11</span>
+<h2 class="section-title">§33 BBD Connection — Bubbles whose Plate is Vanishing</h2>
+<div class="section-line"></div>
+</div>
+<p class="body-text">
+      In §33 BBD (Bubble Boundary Dynamics), GEI target countries occupy the most brutal position. No matter how high the FTI (Film Thickness Index) is or how strong the STI (Surface Tension) is, it is meaningless. <strong>The plate on which the bubble sits is itself disappearing.</strong>
+</p>
+<table class="data-table">
+<tr>
+<th>BBD Variable</th>
+<th>Meaning</th>
+<th>GEI Country Status</th>
+</tr>
+<tr>
+<td>FTI (Film Thickness)</td>
+<td>Internal cohesion &amp; institutional strength</td>
+<td class="orange">Irrelevant — the plate itself is disappearing</td>
+</tr>
+<tr>
+<td>STI (Surface Tension)</td>
+<td>Resistance to external pressure</td>
+<td class="orange">Irrelevant — lack of physical foundation</td>
+</tr>
+<tr>
+<td>TPI (Triple Point)</td>
+<td>Simultaneous contact of three hegemonic powers</td>
+<td class="blue">Applicable — intersection of US, China, and Australia interests</td>
+</tr>
+<tr>
+<td>AMV (Absorption Merger Vector)</td>
+<td>Direction of energy movement</td>
+<td class="red">Absorbed — Falepili structure</td>
+</tr>
+<tr>
+<td class="num">§34 GEI (New)</td>
+<td>Geographic Extinction Rate</td>
+<td class="red">Extremely High Risk — existing modules inapplicable</td>
+</tr>
+</table>
+<div class="highlight-box">
+      §32 NSAAC = Haiti = bubble whose film has dissolved (Lambda &gt; 1.0)<br/>
+      §34 GEI = Maldives, etc. = a situation where the <strong>water surface itself on which the bubble sits</strong> is rising<br/>
+      In both cases, the premise of the existing Lambda scale breaks down. However, the causes and mechanisms are fundamentally different.
+    </div>
+</div>
+ ── §12 Benevolent Pipeline ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§12</span>
+<h2 class="section-title">Benevolent Pipeline — Present Diagnosis</h2>
+<div class="section-line"></div>
+</div>
+<p class="body-text">
+      We diagnose the international support pipelines toward the current four countries using the director's four conditions of the Benevolent Pipeline (plurality, density, directionality, and sustainability).
+    </p>
+<table class="data-table">
+<tr>
+<th>Condition</th>
+<th>Definition</th>
+<th>Current Status</th>
+<th>Evaluation</th>
+</tr>
+<tr>
+<td>① Plurality</td>
+<td>Diverse suppliers</td>
+<td>GCF, AOSIS, and some bilateral channels</td>
+<td class="orange">Extremely limited</td>
+</tr>
+<tr>
+<td>② Density</td>
+<td>Closeness of connections</td>
+<td>Actual support at 16% of the required amount</td>
+<td class="red">Dangerously sparse</td>
+</tr>
+<tr>
+<td>③ Directionality</td>
+<td>Clarity of flow</td>
+<td>44% backflows in the form of debt</td>
+<td class="red">Distorted &amp; backflowing</td>
+</tr>
+<tr>
+<td>④ Sustainability</td>
+<td>Extending to future generations</td>
+<td>Fluctuating with election cycles</td>
+<td class="red">No sustainability</td>
+</tr>
+</table>
+<div class="callout">
+<p>
+        It is not that there is no pipeline. <em>They are being denied connection itself.</em><br/>
+        What is needed is not charity. It is a dense, clearly directed, and sustainable <em>structural pipeline</em>.<br/>
+        The reason why capitalists like Warren Buffett spend billions on malaria yet remain silent on the Maldives — is because the ROI is not visible. However, <em>moral ROI</em>, how do we calculate that?
+      </p>
+</div>
+</div>
+ ── §13 6-Layer Question ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§13</span>
+<h2 class="section-title">Conclusive Orbit — The 6th Layer of Discourse</h2>
+<div class="section-line"></div>
+</div>
+<div class="layer6">
+<div class="layer6-label">Six-Layer Discourse · 6th Layer · Non-numerical Realm</div>
+<div class="layer6-text">
+        While providing 24-hour armed security for endangered animals,<br/>
+<em>we give debt to endangered civilizations.</em><br/><br/>
+        We are reading this report with the air conditioner on.<br/>
+<em>The CO₂ generated by that electricity is submerging the Maldives.</em><br/><br/>
+        We turn a blind eye when it is alive,<br/>
+        and exhibit it in museums after it disappears.<br/><br/>
+<em>What is it that we want to preserve?</em>
+</div>
+</div>
+</div>
+ ── §14 Standalone Edition ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§14</span>
+<h2 class="section-title">Standalone Report Series</h2>
+<div class="section-line"></div>
+</div>
+<p class="body-text">In-depth analyses of individual countries are covered in Standalone Editions. It consists of an entire section at the level of the Iran Edition.</p>
+<div class="individual-grid">
+<div class="individual-card">
+<span class="individual-card-flag">🇲🇻</span>
+<div class="individual-card-name">Maldives Standalone Edition</div>
+<div class="individual-card-en">MALDIVES · STANDALONE REPORT</div>
+<div class="individual-card-desc">
+          Average elevation of 1.5m. 1,192 coral islands. 97% groundwater salinization. A nation possessing 3% of the world's coral reefs, yet the fastest-disappearing country in the world. The limitations of the Hulhumalé Artificial Island Project and the applicability of CSZ.
+        </div>
+<a class="individual-card-link" href="Maldives_Lambda12v913_GEI_20260504.html">View Standalone Report →</a>
+</div>
+<div class="individual-card">
+<span class="individual-card-flag">🇹🇻</span>
+<div class="individual-card-name">Tuvalu Standalone Edition</div>
+<div class="individual-card-en">TUVALU · STANDALONE REPORT</div>
+<div class="individual-card-desc">
+          Population of 11,000. The actual meaning of the Falepili Union. Declaration of a digital nation. 21cm sea level rise over 30 years. The story of a nation where 90% of the population has applied for immigration to Australia.
+        </div>
+<a class="individual-card-link" href="Tuvalu_Lambda12v913_GEI_20260504.html">View Standalone Report →</a>
+</div>
+<div class="individual-card">
+<span class="individual-card-flag">🇰🇮</span>
+<div class="individual-card-name">Kiribati Standalone Edition</div>
+<div class="individual-card-en">KIRIBATI · STANDALONE REPORT</div>
+<div class="individual-card-desc">
+          33 atolls. Purchased 2,000 acres of land in Fiji — a precedent for CSZ. Shift in relations with China. Projected flooding 65 days a year by 2050. The paradox of vast maritime territory (an EEZ larger than the British Isles).
+        </div>
+<a class="individual-card-link" href="Kiribati_Lambda12v913_GEI_20260504.html">View Standalone Report →</a>
+</div>
+<div class="individual-card">
+<span class="individual-card-flag">🇲🇭</span>
+<div class="individual-card-name">Marshall Islands Standalone Edition</div>
+<div class="individual-card-en">MARSHALL ISLANDS · STANDALONE REPORT</div>
+<div class="individual-card-desc">
+          67 nuclear tests + climate submersion. The paradox of the Runit Dome. People sacrificed "for the good of mankind." The dual suffering of nuclear damage and climate damage. The most unjustly treated country in the world.
+        </div>
+<a class="individual-card-link" href="MarshallIslands_Lambda12v913_GEI_20260504.html">View Standalone Report →</a>
+</div>
+</div>
+</div>
+ ── References ── 
+<div class="section">
+<div class="section-header">
+<span class="section-num">§15</span>
+<h2 class="section-title">Key Data Sources</h2>
+<div class="section-line"></div>
+</div>
+<table class="data-table" style="font-size:13px;">
+<tr><th>Institution</th><th>Data Title</th><th>Year</th></tr>
+<tr><td>Nature Sustainability</td><td>Small Island Developing States under threat by rising seas</td><td>2023</td></tr>
+<tr><td>Scientific Reports (Nature)</td><td>Impacts of sea level rise and adaptation across Asia and Pacific</td><td>2025</td></tr>
+<tr><td>Global Center on Adaptation</td><td>State and Trends in Adaptation 2025: SIDS</td><td>2025</td></tr>
+<tr><td>Climate Policy Initiative</td><td>State and Trends of Climate Adaptation Finance in SIDS</td><td>2025</td></tr>
+<tr><td>NASA JPL</td><td>Sea Level Rise for Pacific Islands Analysis</td><td>2024</td></tr>
+<tr><td>UN News</td><td>Tuvalu battle against rising sea levels</td><td>2026</td></tr>
+<tr><td>Carnegie Endowment</td><td>Australia-Tuvalu Falepili Union Treaty</td><td>2025</td></tr>
+<tr><td>IEER / Greenpeace</td><td>Legacy of US Nuclear Testing in Marshall Islands</td><td>2025</td></tr>
+<tr><td>ScienceDirect</td><td>Scale and access to Green Climate Fund: SIDS</td><td>2024</td></tr>
+<tr><td>Wikipedia / UNDP</td><td>Climate change in the Maldives</td><td>2026</td></tr>
+</table>
+</div>
+</div><!-- /container -->
+<!-- ── FOOTER ── -->
+<div class="footer">
+<div class="footer-institute">Everblue Sea Institute for Social Dynamics (Everblue Sea Institute for Social Dynamics)</div>
+<div class="footer-meta">
+    Director Cheonghae (淸海) · SYNTHESIS Framework · Lambda12 v9.13 · First application of §34 GEI<br/>
+<a class="footer-link" href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · 
+    <a class="footer-link" href="https://everbluesea.org">everbluesea.org</a> · 
+    SSRN 6632858 · 2026-05-04<br/>
+<span style="color:#AAA;font-size:11px;">This report is based on public data and academic resources and is written from an observer standpoint. The 6th-layer judgment is left to the reader.</span>
+</div>
+</div>
+</body>
+</html>

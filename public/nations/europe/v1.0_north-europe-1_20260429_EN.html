@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Λ¹² Nordic Comparison I — Sweden, Norway, Denmark, Finland</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;family=Bebas+Neue&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#F5F3EE;font-family:'Noto Sans KR',sans-serif;color:#2A2A2A;font-size:13px;line-height:1.75;}
+.se-c{color:#006AA7;} .no-c{color:#EF2B2D;} .dk-c{color:#C60C30;} .fi-c{color:#003580;}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;}
+.tag-tbi{background:#FCEBEB;color:#791F1F;} .tag-sr{background:#E1F5EE;color:#085041;}
+.tag-sig{background:#EEEDFE;color:#3C3489;} .tag-lpi{background:#FAEEDA;color:#633806;}
+.tag-cfd{background:#FAECE7;color:#712B13;} .tag-oli{background:#E6F1FB;color:#0C447C;}
+
+.hero{background:linear-gradient(135deg,#7BADA0,#5E9186);color:#fff;padding:50px 40px 38px;text-align:center;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;opacity:.75;margin-bottom:12px;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:.06em;line-height:1.1;margin-bottom:10px;}
+.hero-sub{font-size:13px;opacity:.85;line-height:1.7;}
+.hero-meta{margin-top:16px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 13px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;}
+
+.score-banner{display:flex;gap:10px;margin:20px 24px;flex-wrap:wrap;}
+.score-card{flex:1;min-width:140px;background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:12px 14px;text-align:center;border-top:3px solid;}
+.score-card.se{border-top-color:#006AA7;} .score-card.no{border-top-color:#EF2B2D;}
+.score-card.dk{border-top-color:#C60C30;} .score-card.fi{border-top-color:#003580;}
+.score-flag{font-size:22px;margin-bottom:3px;}
+.score-country{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.05em;margin-bottom:5px;}
+.score-lambda{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;margin-bottom:2px;}
+.score-lambda.se{color:#006AA7;} .score-lambda.no{color:#EF2B2D;}
+.score-lambda.dk{color:#C60C30;} .score-lambda.fi{color:#003580;}
+.score-zone{font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:3px;}
+.zone-watch{background:#FFF3E0;color:#E65100;} .zone-danger{background:#FCEBEB;color:#791F1F;}
+.zone-stable{background:#E8F5E9;color:#1B5E20;}
+.score-pwt{font-size:10px;color:#888;font-family:'JetBrains Mono',monospace;}
+
+.declaration{background:#FFFDF8;border-left:4px solid #5E9186;margin:0 24px 24px;padding:16px 20px;border-radius:0 8px 8px 0;}
+.declaration-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.05em;margin-bottom:7px;}
+.declaration p{font-size:12.5px;color:#444;line-height:1.8;}
+.peoples-view{margin:0 24px 24px;background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:18px 20px;}
+.pv-title{font-family:'Bebas Neue',sans-serif;font-size:14px;color:#B8850E;letter-spacing:.06em;margin-bottom:10px;}
+.pv-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;}
+.pv-card{background:#F5F3EE;border-radius:8px;padding:10px 12px;border-top:3px solid;}
+.pv-card.se{border-color:#006AA7;} .pv-card.no{border-color:#EF2B2D;}
+.pv-card.dk{border-color:#C60C30;} .pv-card.fi{border-color:#003580;}
+.pv-flag{font-size:20px;margin-bottom:3px;}
+.pv-name{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.04em;margin-bottom:4px;}
+.pv-quote{font-size:11px;color:#555;line-height:1.65;font-style:italic;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.07em;color:#3A6A5E;border-bottom:2px solid #5E9186;margin:26px 24px 13px;padding-bottom:7px;}
+.four-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:11px;margin:0 24px 22px;}
+.note{font-size:10.5px;color:#888;font-style:italic;margin:0 24px 14px;}
+
+.hist-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:12px 14px;}
+.hist-title{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;margin-bottom:7px;}
+.hist-title.se{color:#006AA7;} .hist-title.no{color:#EF2B2D;}
+.hist-title.dk{color:#C60C30;} .hist-title.fi{color:#003580;}
+.hist-item{display:flex;gap:8px;margin-bottom:6px;font-size:11px;}
+.hist-year{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9.5px;min-width:40px;color:#B8850E;}
+.hist-text{color:#444;line-height:1.6;}
+
+.stats-table{width:calc(100% - 48px);margin:0 24px 22px;border-collapse:collapse;font-size:11.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.stats-table th{background:#3A6A5E;color:#fff;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;text-align:center;}
+.stats-table td{padding:7px 12px;border-bottom:1px solid #f0ede7;text-align:center;color:#444;}
+.stats-table tr:last-child td{border:none;}
+.stats-table .label{text-align:left;font-weight:500;color:#3A6A5E;}
+.val-se{color:#006AA7;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-no{color:#EF2B2D;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-dk{color:#C60C30;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-fi{color:#003580;font-weight:700;font-family:'JetBrains Mono',monospace;}
+
+.coord-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:12px 14px;}
+.coord-head{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.04em;margin-bottom:8px;}
+.coord-head.se{color:#006AA7;} .coord-head.no{color:#EF2B2D;}
+.coord-head.dk{color:#C60C30;} .coord-head.fi{color:#003580;}
+.coord-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.coord-label{font-size:10px;}
+.coord-bar-wrap{flex:1;height:5px;background:#eee;border-radius:3px;margin:0 8px;}
+.coord-bar{height:5px;border-radius:3px;}
+.coord-num{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;min-width:32px;text-align:right;}
+
+.formula-box{margin:0 24px 22px;background:linear-gradient(135deg,#f0ede7,#e8e4dc);border:1px solid #DDD8CE;border-radius:10px;padding:13px 17px;}
+.formula-title{font-family:'Bebas Neue',sans-serif;font-size:13px;color:#3A6A5E;letter-spacing:.05em;margin-bottom:7px;}
+.formula-eq{font-family:'JetBrains Mono',monospace;font-size:12px;color:#3A6A5E;background:#fff;display:inline-block;padding:4px 11px;border-radius:5px;margin-bottom:6px;}
+.formula-note{font-size:11px;color:#666;line-height:1.7;}
+
+.radar-wrap{margin:0 24px 22px;background:#fff;border:1px solid #DDD8CE;border-radius:12px;padding:16px;}
+.radar-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.06em;text-align:center;margin-bottom:4px;}
+.radar-legend{display:flex;justify-content:center;gap:18px;margin-top:10px;flex-wrap:wrap;}
+.radar-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;}
+.radar-dot{width:10px;height:10px;border-radius:50%;}
+
+.ppr-grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin:0 24px 15px;}
+.ppr-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;overflow:hidden;}
+.ppr-card-head{padding:7px 11px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#fff;}
+.ppr-card-head.se{background:#006AA7;} .ppr-card-head.no{background:#EF2B2D;}
+.ppr-card-head.dk{background:#C60C30;} .ppr-card-head.fi{background:#003580;}
+.ppr-card-body{padding:9px 11px;font-size:11px;color:#444;line-height:1.7;}
+.ppr-stack-label{font-size:9px;font-family:'JetBrains Mono',monospace;background:#F5F3EE;color:#666;display:inline-block;padding:1px 5px;border-radius:3px;margin-bottom:3px;}
+
+.paradox-box{margin:0 24px 22px;background:linear-gradient(135deg,#EEF6F4,#E4F0ED);border:2px solid #5E9186;border-radius:12px;padding:16px 20px;}
+.paradox-title{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:10px;}
+.paradox-text{font-size:12px;color:#444;line-height:1.9;}
+.stat-badge{display:inline-block;padding:2px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;margin:1px 2px;}
+.sb-se{background:#006AA7;} .sb-no{background:#EF2B2D;}
+.sb-dk{background:#C60C30;} .sb-fi{background:#003580;}
+.sb-n{background:#3A6A5E;}
+
+.layer-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:11px 13px;}
+.layer-card-head{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.04em;margin-bottom:8px;}
+.layer-card-head.se{color:#006AA7;} .layer-card-head.no{color:#EF2B2D;}
+.layer-card-head.dk{color:#C60C30;} .layer-card-head.fi{color:#003580;}
+.layer-row{display:flex;gap:7px;margin-bottom:5px;font-size:10.5px;line-height:1.6;}
+.layer-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9.5px;min-width:14px;color:#B8850E;}
+
+.phase-wrap{margin:0 24px 22px;background:#fff;border:1px solid #DDD8CE;border-radius:12px;padding:16px;}
+.phase-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.06em;text-align:center;margin-bottom:3px;}
+.phase-sub{font-size:10px;color:#888;text-align:center;margin-bottom:12px;font-family:'JetBrains Mono',monospace;}
+
+.err-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:10px 12px;}
+.err-head{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;margin-bottom:6px;}
+.err-head.se{color:#006AA7;} .err-head.no{color:#EF2B2D;}
+.err-head.dk{color:#C60C30;} .err-head.fi{color:#003580;}
+.err-item{font-size:10.5px;color:#555;line-height:1.6;margin-bottom:3px;}
+
+.kr-box{margin:0 24px 22px;background:linear-gradient(135deg,#eef6f4,#e4f0ed);border:1px solid #c5ddd9;border-radius:10px;padding:15px 19px;}
+.kr-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:7px;}
+.kr-text{font-size:12px;color:#444;line-height:1.85;}
+.conclusion{margin:0 24px 22px;background:linear-gradient(135deg,#7BADA0,#5E9186);color:#fff;border-radius:12px;padding:20px 24px;}
+.conclusion-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.07em;margin-bottom:11px;}
+.conclusion-text{font-size:12.5px;line-height:1.9;opacity:.93;}
+.series-box{margin:0 24px 22px;border:2px solid #5E9186;border-radius:10px;padding:11px 15px;}
+.series-title{font-family:'Bebas Neue',sans-serif;font-size:13px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:6px;}
+.series-list{display:flex;flex-wrap:wrap;gap:7px;}
+.series-item{font-size:11px;background:#F5F3EE;border:1px solid #DDD8CE;border-radius:6px;padding:3px 9px;color:#666;}
+.series-item.done{background:#5E9186;color:#fff;border-color:#5E9186;}
+.series-item.current{background:#B8850E;color:#fff;border-color:#B8850E;}
+.footer{background:#3A6A5E;color:rgba(255,255,255,.8);text-align:center;padding:20px;font-size:11px;line-height:1.9;}
+.footer a{color:#F0C040;text-decoration:none;}
+.freach-s{color:#2E7D32;font-weight:700;} .freach-i{color:#1565C0;font-weight:700;} .freach-d{color:#AD1457;font-weight:700;}
+</style>
+</head>
+<body>
+ ══ Hero ══ 
+<div class="hero">
+<div class="hero-eyebrow">Everblue Sea Institute for Social Dynamics · Λ¹² Country Comparison Series — Europe III</div>
+<div class="hero-title">Nordic Comparison I</div>
+<div class="hero-sub">Sweden · Norway · Denmark · Finland<br/>The Paradox of the Golden Welfare Model — World's Top Indicators, yet why is Populism at 20%?</div>
+<div class="hero-meta">
+<span class="hero-badge">Λ¹² v9.11 Engine</span>
+<span class="hero-badge">§30 Λ-Score</span>
+<span class="hero-badge">World's Highest HDI</span>
+<span class="hero-badge">Sweden's Organized Crime Paradox</span>
+<span class="hero-badge">SSRN 6509200</span>
+<span class="hero-badge">2026-04-29</span>
+</div>
+</div>
+ ══ Λ-Score Badge ══ 
+<div class="score-banner">
+<div class="score-card se">
+<div class="score-flag">🇸🇪</div>
+<div class="score-country se-c">Sweden</div>
+<div class="score-lambda se">0.432</div>
+<div><span class="score-zone zone-danger">Danger</span></div>
+<div class="score-pwt">PWT-r 0.821 · β 0.414</div>
+</div>
+<div class="score-card no">
+<div class="score-flag">🇳🇴</div>
+<div class="score-country no-c">Norway</div>
+<div class="score-lambda no">0.407</div>
+<div><span class="score-zone zone-danger">Danger</span></div>
+<div class="score-pwt">PWT-r 0.878 · β 0.299</div>
+</div>
+<div class="score-card dk">
+<div class="score-flag">🇩🇰</div>
+<div class="score-country dk-c">Denmark</div>
+<div class="score-lambda dk">0.403</div>
+<div><span class="score-zone zone-danger">Danger</span></div>
+<div class="score-pwt">PWT-r 0.904 · β 0.238</div>
+</div>
+<div class="score-card fi">
+<div class="score-flag">🇫🇮</div>
+<div class="score-country fi-c">Finland</div>
+<div class="score-lambda fi">0.408</div>
+<div><span class="score-zone zone-danger">Danger</span></div>
+<div class="score-pwt">PWT-r 0.906 · β 0.231</div>
+</div>
+</div>
+ ══ Research Purpose ══ 
+<div class="declaration">
+<div class="declaration-title">Research Purpose Declaration</div>
+<p>
+    Ranked 1st in the World Happiness Index, at the very top of HDI globally, in the highest tier of CPI, and designated as GPI world peace countries — the four Nordic countries have been cited as models of the most successful social systems humanity has ever created. Yet, in these very same countries, far-right anti-immigration parties secure over 20% of the vote, and in Sweden, more than 30 bomb attacks occur in a single month.
+    How is this possible — read through the Λ¹² universal standard.
+  </p>
+</div>
+ ══ Nordic Paradox Special ══ 
+<div class="sec-title">⚡  Nordic Paradox — Where did the cracks in the golden model come from?</div>
+<div class="paradox-box">
+<div class="paradox-title">World's Top Indicators + 20% Populism = Subject of Λ¹² Analysis</div>
+<div class="paradox-text">
+<strong>Numbers First:</strong><br/>
+    Sweden <span class="stat-badge sb-se">HDI 0.959</span> 4th in the World · <span class="stat-badge sb-se">CPI 84</span> 7th in the World · <span class="stat-badge sb-se">Sweden Democrats 20%+</span> · 62,000 people involved in organized crime<br/>
+    Norway <span class="stat-badge sb-no">HDI 0.970</span> 2nd in the World · <span class="stat-badge sb-no">Oil Fund $1.7T</span> · Progress Party ruling coalition<br/>
+    Denmark <span class="stat-badge sb-dk">HDI 0.962</span> 3rd in the World · <span class="stat-badge sb-dk">Immigration at an all-time low of 864 people</span>(2024) · World's strictest immigration laws<br/>
+    Finland <span class="stat-badge sb-fi">HDI 0.962</span> 3rd in the World · <span class="stat-badge sb-fi">Finns Party power entry → exit</span> · 2025 Economic recovery begins<br/><br/>
+<strong>Λ¹² Interpretation — Why did cracks appear in the golden model?:</strong><br/><br/>
+
+    ① <strong>CFD Shock of Integration Failure</strong>: Large-scale influx of immigrants in 2015 (160,000 in Sweden). The welfare state tried to absorb them, but the speed of integration could not keep up with the rate of influx. This is why CFD (Cultural Diversity Fragmentation) rose. Immigration itself was not the issue, but rather <em>the absence of an integration mechanism</em> was the problem.<br/><br/>
+
+    ② <strong>Structural Paradox of Swedish Organized Crime</strong>: Why does organized crime flourish in the world's best welfare state? Due to the failure of intergenerational integration, second- and third-generation immigrants failed to enter the mainstream economy and instead flowed into organized crime. The paradox where welfare failed to provide an escape route — not TBI, but rather <em>structural exclusion</em> raised the BRI.<br/><br/>
+
+    ③ <strong>Denmark's Different Choice</strong>: Denmark dramatically tightened its immigration policy after 2015 — the Social Democrats absorbed the far-right's immigration policies. While Σ is low, the question of whether this is sustainable remains.
+  </div>
+</div>
+ ══ Grassroots Perspective ══ 
+<div class="peoples-view">
+<div class="pv-title">Grassroots Perspective — A Window through the Eyes of Four Youth</div>
+<div class="pv-grid">
+<div class="pv-card se">
+<div class="pv-flag">🇸🇪</div>
+<div class="pv-name se-c">Youth in Malmö</div>
+<div class="pv-quote">"Sweden was a good country. Our parents came because they liked it here. But I lost my gang friends. The system failed to absorb us. Whose fault is it?"</div>
+</div>
+<div class="pv-card no">
+<div class="pv-flag">🇳🇴</div>
+<div class="pv-name no-c">Youth in Oslo</div>
+<div class="pv-quote">"Norway is rich thanks to oil. Would it have been like this without oil? Will our welfare last forever? They say we shouldn't sell oil because of the climate — then where will our money come from?"</div>
+</div>
+<div class="pv-card dk">
+<div class="pv-flag">🇩🇰</div>
+<div class="pv-name dk-c">Youth in Copenhagen</div>
+<div class="pv-quote">"I'm not proud that Denmark doesn't accept immigrants. But honestly, looking at Sweden, I think our policy might have been right. That makes me feel even more uncomfortable."</div>
+</div>
+<div class="pv-card fi">
+<div class="pv-flag">🇫🇮</div>
+<div class="pv-name fi-c">Youth in Helsinki</div>
+<div class="pv-quote">"The Finns Party entered power and then exited. Finland's economy was negative for two years. It barely turned positive just now. They say we are 1st in the happiness index, but honestly, I don't know. Jobs come first."</div>
+</div>
+</div>
+</div>
+ ══ §0 Terminology ══ 
+<div class="sec-title">§0  Key Terms — Nordic Special Application</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 24px 22px;">
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:10px 13px;">
+<div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:#3A6A5E;margin-bottom:3px;">CFD — Nordic-style Fragmentation</div>
+<div style="font-size:11px;color:#555;line-height:1.6;">Southern Europe = regional disparity, Western Europe = immigration + economy, Northern Europe = failure of immigration integration. The paradox of rising CFD in the most open societies.</div>
+</div>
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:10px 13px;">
+<div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:#3A6A5E;margin-bottom:3px;">BRI — Structural Exclusion Path</div>
+<div style="font-size:11px;color:#555;line-height:1.6;">Sweden: Failure of second- and third-generation immigrants to enter the mainstream (rather than TBI) → influx into organized crime → rising BRI. The paradoxical blind spot of the welfare state.</div>
+</div>
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:10px 13px;">
+<div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:#3A6A5E;margin-bottom:3px;">Σ — Danish-style Suppression</div>
+<div style="font-size:11px;color:#555;line-height:1.6;">Denmark keeps Σ low by tightening its immigration policy. However, is this an increase in PWT-r or the suppression of CFD? — Goodhart's law needs to be applied.</div>
+</div>
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:10px 13px;">
+<div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:#3A6A5E;margin-bottom:3px;">F_reach — Nordic Strength</div>
+<div style="font-size:11px;color:#555;line-height:1.6;">All four countries have the highest F_reach. Norway's Oil Fund → overwhelming I·D. Finland's organic and dairy S strengths. Welfare guarantees D.</div>
+</div>
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:10px 13px;">
+<div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:#3A6A5E;margin-bottom:3px;">OLI — World's Highest Confidence Interval</div>
+<div style="font-size:11px;color:#555;line-height:1.6;">Sweden, Norway, Denmark, and Finland OLI 0.85–0.92 — the world's highest statistical transparency. Highest reliability of Λ-Score.</div>
+</div>
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:10px 13px;">
+<div style="font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:#3A6A5E;margin-bottom:3px;">PWT-r — Welfare State Effect</div>
+<div style="font-size:11px;color:#555;line-height:1.6;">Nordic welfare state = minimization of β (blocking). A structural guarantee that the leader's priming water reaches the grassroots. Expected to be in the highest tier of PWT-r.</div>
+</div>
+</div>
+ ══ Ⅰ Theory ══ 
+<div class="sec-title">Ⅰ  Theoretical Self-Positioning (§1-B)</div>
+<div style="margin:0 24px 14px;background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:13px 17px;">
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;font-size:11px;">
+<div style="background:#F5F3EE;border-radius:6px;padding:8px 10px;">
+<div style="font-weight:700;color:#006AA7;margin-bottom:3px;">🇸🇪 Sweden</div>
+<div style="color:#555;line-height:1.65;">Durkheim's challenge of organic solidarity — second-generation immigrants departing from solidarity. Merton's Anomie: The welfare state presented the goal (success) but blocked the means (entry path). Organized crime = the manifestation of this anomie. Gramsci: Alternative organization of groups unable to enter mainstream hegemony.</div>
+</div>
+<div style="background:#F5F3EE;border-radius:6px;padding:8px 10px;">
+<div style="font-weight:700;color:#EF2B2D;margin-bottom:3px;">🇳🇴 Norway</div>
+<div style="color:#555;line-height:1.65;">Weber's most successful case of legal-rational authority. Oil Fund = practice of Rawls' Theory of Justice — sharing resources across generations. Keynesian welfare capitalism in action. However, Jeffrey Sachs' warning: Oil dependence threatens long-term sustainability.</div>
+</div>
+<div style="background:#F5F3EE;border-radius:6px;padding:8px 10px;">
+<div style="font-weight:700;color:#C60C30;margin-bottom:3px;">🇩🇰 Denmark</div>
+<div style="color:#555;line-height:1.65;">Lijphart's variant of consensual democracy — instead of consensus on the immigration issue, the Social Democratic Party absorbed far-right policies. Gramsci: Forming a new hegemony. Tocqueville: The danger of majoritarian democracy excluding the minority in the name of the majority.</div>
+</div>
+<div style="background:#F5F3EE;border-radius:6px;padding:8px 10px;">
+<div style="font-weight:700;color:#003580;margin-bottom:3px;">🇫🇮 Finland</div>
+<div style="color:#555;line-height:1.65;">Gurr's Relative Deprivation: Economic recession acting as a disappointment in the country ranked 1st in the happiness index. High expectations + low performance = greater deprivation. Durkheim's Anomie: The Finns Party entering and exiting power = populism becoming generalized as it is institutionalized.</div>
+</div>
+</div>
+</div>
+ ══ Ⅱ History ══ 
+<div class="sec-title">Ⅱ  History — From Vikings to the Welfare State</div>
+<div class="four-grid">
+<div class="hist-card">
+<div class="hist-title se">🇸🇪 Sweden</div>
+<div class="hist-item"><span class="hist-year">1939~45</span><span class="hist-text">Maintained neutrality. Traded with Nazi Germany but did not participate in the war. Low TBI.</span></div>
+<div class="hist-item"><span class="hist-year">1930~70</span><span class="hist-text">Long-term rule by the Social Democratic Party completed the foundation of the welfare state. Birth of the 'Swedish Model'.</span></div>
+<div class="hist-item"><span class="hist-year">2015</span><span class="hist-text">Accepted 160,000 refugees — the most per capita in Europe. Start of integration overload.</span></div>
+<div class="hist-item"><span class="hist-year">2022~</span><span class="hist-text">Right-wing coalition takes power with the support of the Sweden Democrats. Major shift in immigration policy.</span></div>
+<div class="hist-item"><span class="hist-year">2025</span><span class="hist-text">Surge in organized crime. Over 30 bomb attacks in January. NATO accession (2024) completed.</span></div>
+<div style="margin-top:5px;font-size:9px;color:#006AA7;font-family:'JetBrains Mono',monospace;">★ Integration failure of the welfare state is a key Λ¹² variable</div>
+</div>
+<div class="hist-card">
+<div class="hist-title no">🇳🇴 Norway</div>
+<div class="hist-item"><span class="hist-year">1940~45</span><span class="hist-text">Nazi occupation. Resistance. TBI exists.</span></div>
+<div class="hist-item"><span class="hist-year">1969</span><span class="hist-text">North Sea oil discovery. Turning point for national wealth.</span></div>
+<div class="hist-item"><span class="hist-year">1990</span><span class="hist-text">Establishment of the Government Pension Fund Global (GPFG). Structuring the intergenerational sharing of oil revenues.</span></div>
+<div class="hist-item"><span class="hist-year">2011</span><span class="hist-text">Breivik attacks kill 77. Highest TBI shock. Rallying to defend democracy.</span></div>
+<div class="hist-item"><span class="hist-year">2025</span><span class="hist-text">GDP +1.8%. Fund $1.7T. Progress Party participates in the ruling coalition.</span></div>
+<div style="margin-top:5px;font-size:9px;color:#EF2B2D;font-family:'JetBrains Mono',monospace;">★ Breivik (2011) = Core of current TBI</div>
+</div>
+<div class="hist-card">
+<div class="hist-title dk">🇩🇰 Denmark</div>
+<div class="hist-item"><span class="hist-year">1940~45</span><span class="hist-text">Nazi occupation. 95% rescued through Jewish rescue operations. TBI + pride.</span></div>
+<div class="hist-item"><span class="hist-year">1973</span><span class="hist-text">Predecessor of the Danish People's Party — appearance of the first far-right populism.</span></div>
+<div class="hist-item"><span class="hist-year">2001</span><span class="hist-text">Immigration restrictions begin. Since then, building the world's strictest immigration laws.</span></div>
+<div class="hist-item"><span class="hist-year">2015~</span><span class="hist-text">Mette Frederiksen of the Social Democrats — successfully takes power by absorbing far-right immigration policies.</span></div>
+<div class="hist-item"><span class="hist-year">2024</span><span class="hist-text">864 asylum applications — all-time low. Successful immigration suppression. Chega model?</span></div>
+<div style="margin-top:5px;font-size:9px;color:#C60C30;font-family:'JetBrains Mono',monospace;">★ A successful case where the left absorbed right-wing policies</div>
+</div>
+<div class="hist-card">
+<div class="hist-title fi">🇫🇮 Finland</div>
+<div class="hist-item"><span class="hist-year">1939~40</span><span class="hist-text">Winter War with the Soviet Union. Defense of independence. Strong national identity. TBI.</span></div>
+<div class="hist-item"><span class="hist-year">1944~91</span><span class="hist-text">Special relationship with the Soviet Union (Finlandization). Maintained Cold War neutrality.</span></div>
+<div class="hist-item"><span class="hist-year">1991~95</span><span class="hist-text">Economic crisis after the collapse of the Soviet Union, GDP -11%. Structural reform.</span></div>
+<div class="hist-item"><span class="hist-year">2023</span><span class="hist-text">Finns Party participates in the ruling coalition. Austerity and welfare cuts.</span></div>
+<div class="hist-item"><span class="hist-year">2024~25</span><span class="hist-text">Finns Party support falls. Recovery begins after two years of negative economic growth. Joined NATO in 2023.</span></div>
+<div style="margin-top:5px;font-size:9px;color:#003580;font-family:'JetBrains Mono',monospace;">★ 1st in happiness + economic recession = paradox of high expectations</div>
+</div>
+</div>
+ ══ Ⅲ Basic Statistics ══ 
+<div class="sec-title">Ⅲ  Basic Statistics (2024–2025)</div>
+<table class="stats-table">
+<thead>
+<tr>
+<th class="label" style="text-align:left;">Indicator</th>
+<th>🇸🇪 Sweden</th><th>🇳🇴 Norway</th><th>🇩🇰 Denmark</th><th>🇫🇮 Finland</th><th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="label">Population</td><td class="val-se">10.6 million</td><td class="val-no">5.5 million</td><td class="val-dk">6.0 million</td><td class="val-fi">5.5 million</td><td>UN 2024</td></tr>
+<tr><td class="label">GDP per capita</td><td class="val-se">$56,100</td><td class="val-no">$108,700 ⭐</td><td class="val-dk">$68,800</td><td class="val-fi">$53,600</td><td>IMF PPP 2024</td></tr>
+<tr><td class="label">GDP Growth Rate (2025)</td><td class="val-se">+0.5%</td><td class="val-no">+1.8%</td><td class="val-dk">+2.1% ⭐</td><td class="val-fi" style="background:#fff0f0;">+0.2% ⚠ Recovering</td><td>Danske Bank/EY 2026</td></tr>
+<tr><td class="label">HDI (2025)</td><td class="val-se">0.959 (4th)</td><td class="val-no">0.970 (2nd) ⭐</td><td class="val-dk">0.962 (3rd)</td><td class="val-fi">0.962 (3rd)</td><td>UNDP 2025; World's Highest</td></tr>
+<tr><td class="label">CPI 2025 (TI)</td><td class="val-se">82 / 7th</td><td class="val-no">84 / 5th</td><td class="val-dk">89 / 1st ⭐</td><td class="val-fi">87 / 3rd</td><td>TI 2026.02; World's Least Corrupt</td></tr>
+<tr><td class="label">GPI 2025 (IEP)</td><td class="val-se">1.302 / 9th</td><td class="val-no">1.488 / 16th</td><td class="val-dk">1.304 / 10th</td><td class="val-fi">1.107 / 2nd ⭐</td><td>IEP 2025</td></tr>
+<tr><td class="label">Far-Right Support Rate</td><td class="val-se">SD ~20% Coalition Support</td><td class="val-no">FrP ~15% Coalition</td><td class="val-dk">DF+Denmark ~15%</td><td class="val-fi">PS ~14% After Exit</td><td>2025 Poll</td></tr>
+<tr><td class="label">Immigrant Proportion</td><td class="val-se">20%+ ⚠</td><td class="val-no">18%</td><td class="val-dk">11% (Suppressed by Policy)</td><td class="val-fi">8%</td><td>National Statistics Offices 2024</td></tr>
+<tr><td class="label">Happiness Index (WHR)</td><td class="val-se">4th</td><td class="val-no">7th</td><td class="val-dk">2nd</td><td class="val-fi">1st ⭐ 7 consecutive years</td><td>World Happiness Report 2025</td></tr>
+<tr><td class="label">Public Expenditure/GDP</td><td class="val-se">49.4%</td><td class="val-no">48.3%</td><td class="val-dk">50.8%</td><td class="val-fi">55.8% ⭐</td><td>OECD; All significantly above the OECD average</td></tr>
+</tbody>
+</table>
+ ══ Ⅳ Basic Coordinates ══ 
+<div class="sec-title">Ⅳ  Λ¹² Basic Coordinates — Direction-Corrected Proxy Estimation</div>
+<div class="four-grid">
+<div class="coord-card" style="border:2px solid #006AA7;">
+<div class="coord-head se">🇸🇪 Sweden ⚠ Paradox</div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-tbi">TBI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:32%;background:#791F1F;opacity:.7;"></div></div><span class="coord-num" style="color:#791F1F;">0.32</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sr">SR</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:38%;background:#085041;opacity:.7;"></div></div><span class="coord-num" style="color:#085041;">0.38</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sig">Σ</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:45%;background:#3C3489;opacity:.7;"></div></div><span class="coord-num" style="color:#3C3489;">0.45</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-oli">OLI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:88%;background:#0C447C;opacity:.7;"></div></div><span class="coord-num" style="color:#0C447C;">0.88</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-lpi">LPI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:48%;background:#633806;opacity:.7;"></div></div><span class="coord-num" style="color:#633806;">+0.02</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-cfd">CFD</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:62%;background:#712B13;opacity:.7;"></div></div><span class="coord-num" style="color:#712B13;">0.62</span></div>
+<div style="margin-top:5px;font-size:9.5px;color:#888;">BRI:3.8·SSI:6.8·GPI:1.302·F_reach:0.88</div>
+<div style="font-size:9px;color:#006AA7;font-family:'JetBrains Mono',monospace;">★ BRI 3.8 — Combined rise of organized crime and CFD</div>
+</div>
+<div class="coord-card">
+<div class="coord-head no">🇳🇴 Norway</div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-tbi">TBI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:38%;background:#791F1F;opacity:.7;"></div></div><span class="coord-num" style="color:#791F1F;">0.38</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sr">SR</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:35%;background:#085041;opacity:.7;"></div></div><span class="coord-num" style="color:#085041;">0.35</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sig">Σ</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:32%;background:#3C3489;opacity:.7;"></div></div><span class="coord-num" style="color:#3C3489;">0.32</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-oli">OLI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:90%;background:#0C447C;opacity:.7;"></div></div><span class="coord-num" style="color:#0C447C;">0.90</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-lpi">LPI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:58%;background:#633806;opacity:.7;"></div></div><span class="coord-num" style="color:#633806;">+0.12</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-cfd">CFD</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:42%;background:#712B13;opacity:.7;"></div></div><span class="coord-num" style="color:#712B13;">0.42</span></div>
+<div style="margin-top:5px;font-size:9.5px;color:#888;">BRI:2.2·SSI:7.5·GPI:1.488·F_reach:0.92</div>
+<div style="font-size:9px;color:#EF2B2D;font-family:'JetBrains Mono',monospace;">★ TBI 0.38: Breivik (2011) Trauma</div>
+</div>
+<div class="coord-card">
+<div class="coord-head dk">🇩🇰 Denmark</div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-tbi">TBI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:30%;background:#791F1F;opacity:.7;"></div></div><span class="coord-num" style="color:#791F1F;">0.30</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sr">SR</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:32%;background:#085041;opacity:.7;"></div></div><span class="coord-num" style="color:#085041;">0.32</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sig">Σ</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:28%;background:#3C3489;opacity:.7;"></div></div><span class="coord-num" style="color:#3C3489;">0.28</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-oli">OLI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:92%;background:#0C447C;opacity:.7;"></div></div><span class="coord-num" style="color:#0C447C;">0.92</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-lpi">LPI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:62%;background:#633806;opacity:.7;"></div></div><span class="coord-num" style="color:#633806;">+0.18</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-cfd">CFD</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:35%;background:#712B13;opacity:.7;"></div></div><span class="coord-num" style="color:#712B13;">0.35</span></div>
+<div style="margin-top:5px;font-size:9.5px;color:#888;">BRI:2.0·SSI:7.8·GPI:1.304·F_reach:0.90</div>
+<div style="font-size:9px;color:#C60C30;font-family:'JetBrains Mono',monospace;">★ Σ 0.28 Lowest — Σ effect of immigration suppression</div>
+</div>
+<div class="coord-card">
+<div class="coord-head fi">🇫🇮 Finland</div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-tbi">TBI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:40%;background:#791F1F;opacity:.7;"></div></div><span class="coord-num" style="color:#791F1F;">0.40</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sr">SR</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:30%;background:#085041;opacity:.7;"></div></div><span class="coord-num" style="color:#085041;">0.30</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sig">Σ</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:38%;background:#3C3489;opacity:.7;"></div></div><span class="coord-num" style="color:#3C3489;">0.38</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-oli">OLI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:88%;background:#0C447C;opacity:.7;"></div></div><span class="coord-num" style="color:#0C447C;">0.88</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-lpi">LPI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:52%;background:#633806;opacity:.7;"></div></div><span class="coord-num" style="color:#633806;">+0.06</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-cfd">CFD</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:28%;background:#712B13;opacity:.7;"></div></div><span class="coord-num" style="color:#712B13;">0.28</span></div>
+<div style="margin-top:5px;font-size:9.5px;color:#888;">BRI:2.5·SSI:7.2·GPI:1.107·F_reach:0.88</div>
+<div style="font-size:9px;color:#003580;font-family:'JetBrains Mono',monospace;">★ TBI 0.40: Memory of Winter War + Soviet pressure</div>
+</div>
+</div>
+<div class="formula-box">
+<div class="formula-title">Λ¹² v9.11 §30 + Nordic OLI Note</div>
+<div class="formula-eq">Λ-Score = Σ(get_w(norm_i)) / 12 / 1.29</div>
+<div class="formula-note">
+    Nordic OLI: Sweden 0.88 · Norway 0.90 · Denmark 0.92 · Finland 0.88 — the world's highest confidence interval. The region with the highest reliability of Λ-Score values.<br/>
+<strong>HDI·CPI·GPI Inversion Effect:</strong> When 8 stable-direction variables are inverted (1-v) — these top indicators work in a direction that significantly lowers Λ. The Nordic region is expected to be the lowest Λ region in the world.<br/>
+<strong>Sweden BRI 3.8 Note:</strong> An increase in organized crime raises BRI. The gap with the other three countries occurs in this variable.
+  </div>
+</div>
+ ══ Ⅴ Radar ══ 
+<div class="sec-title">Ⅴ  Λ¹² 12-Index Radar — Four Nordic Countries</div>
+<div class="radar-wrap">
+<div class="radar-title">Four Nordic Countries Radar (Direction-Corrected Normalization)</div>
+<div style="display:flex;justify-content:center;">
+<svg height="400" viewbox="0 0 520 400" width="520" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(260,200)">
+<circle fill="none" r="40" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" r="80" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" opacity="0.5" r="104" stroke="#BA7517" stroke-dasharray="3,3" stroke-width="0.8"></circle>
+<circle fill="none" r="120" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" opacity="0.3" r="160" stroke="#E24B4A" stroke-dasharray="5,3" stroke-width="1"></circle>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="0" y1="0" y2="-160"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="80" y1="0" y2="-139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="139" y1="0" y2="-80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="160" y1="0" y2="0"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="139" y1="0" y2="80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="80" y1="0" y2="139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="0" y1="0" y2="160"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-80" y1="0" y2="139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-139" y1="0" y2="80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-160" y1="0" y2="0"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-139" y1="0" y2="-80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-80" y1="0" y2="-139"></line>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="7" x="5" y="-42">0.25</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="7" x="5" y="-82">0.5</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="7" x="5" y="-122">0.75</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="0" y="-172">BRI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="88" y="-150">SSI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="150" y="-86">SR</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="168" y="4">GPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="150" y="92">TBI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="88" y="155">Σ</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="0" y="178">OLI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-92" y="155">LPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-154" y="92">CFD</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-172" y="4">HDI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-154" y="-86">CPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-92" y="-150">F_reach</text>
+
+          Direction Correction: After Inverting Stable Directions
+          Sweden: BRI0.38,SSI0.32,SR0.38,GPI0.87,TBI0.32,Σ0.45,OLI0.12,LPI0.52,CFD0.62,HDI0.041,CPI0.18,Freach0.12
+          Norway: BRI0.22,SSI0.25,SR0.35,GPI0.85,TBI0.38,Σ0.32,OLI0.10,LPI0.62,CFD0.42,HDI0.030,CPI0.16,Freach0.08
+          Denmark: BRI0.20,SSI0.22,SR0.32,GPI0.87,TBI0.30,Σ0.28,OLI0.08,LPI0.68,CFD0.35,HDI0.038,CPI0.11,Freach0.10
+          Finland: BRI0.25,SSI0.28,SR0.30,GPI0.95,TBI0.40,Σ0.38,OLI0.12,LPI0.56,CFD0.28,HDI0.038,CPI0.13,Freach0.12
+        
+ Sweden (Blue) - Largest area among the four countries 
+<polygon fill="#006AA7" fill-opacity="0.15" points="0,-61 45,-32 96,-43 139,0 79,58 72,53 0,19 -59,60 -84,64 -7,0 -46,-15 -17,-21" stroke="#006AA7" stroke-opacity="0.9" stroke-width="2"></polygon>
+ Norway (Red) 
+<polygon fill="#EF2B2D" fill-opacity="0.12" points="0,-35 32,-25 89,-35 136,0 94,68 51,38 0,16 -70,68 -57,55 -5,0 -41,-13 -13,-15" stroke="#EF2B2D" stroke-opacity="0.85" stroke-width="1.8"></polygon>
+ Denmark (Dark Red) 
+<polygon fill="#C60C30" fill-opacity="0.12" points="0,-32 28,-23 80,-32 139,0 74,54 45,33 0,13 -77,75 -47,46 -6,0 -28,-9 -13,-14" stroke="#C60C30" stroke-dasharray="6,3" stroke-opacity="0.85" stroke-width="1.8"></polygon>
+ Finland (Navy) 
+<polygon fill="#003580" fill-opacity="0.12" points="0,-40 35,-27 76,-30 152,0 99,72 61,45 0,19 -63,61 -38,37 -6,0 -33,-11 -16,-17" stroke="#003580" stroke-dasharray="4,3" stroke-opacity="0.85" stroke-width="1.8"></polygon>
+<circle cx="0" cy="0" fill="#5E9186" r="3"></circle>
+</g>
+</svg>
+</div>
+<div class="radar-legend">
+<div class="radar-legend-item"><div class="radar-dot" style="background:#006AA7;"></div><span>🇸🇪 Sweden (Largest area among the four countries)</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#EF2B2D;"></div><span>🇳🇴 Norway</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#C60C30;border:1px dashed;"></div><span>🇩🇰 Denmark (Dotted Line)</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#003580;border:1px dashed;"></div><span>🇫🇮 Finland (Dotted Line)</span></div>
+</div>
+<div style="margin-top:9px;font-size:10.5px;color:#888;text-align:center;">
+    ※ Nordic 4 countries' radar area is the smallest in the world — because the inverted values of HDI·CPI·GPI·F_reach are extremely low.<br/>
+    Sweden protrudes in the CFD·BRI direction. Denmark is minimal in the CFD·Σ direction — the Λ¹² effect of the immigration suppression policy.
+  </div>
+</div>
+<!-- ══ PPR-5 ══ -->
+<div class="sec-title">Ⅶ  PPR-1 Politics</div>
+<div class="ppr-grid-4">
+<div class="ppr-card"><div class="ppr-card-head se">🇸🇪 Sweden</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Current Status</div>
+<div style="margin-bottom:5px;">Kristersson right-wing coalition (SD support). Major shift in immigration policy. 2024 NATO accession. Strengthening response to organized crime.</div>
+<div class="ppr-stack-label">Λ¹²</div>
+<div><span class="tag tag-sig">Σ 0.45</span> · <span class="tag tag-cfd">CFD 0.62</span> — Highest Σ·CFD among the four countries. Integration failure is the cause of political Σ rising. Supporting SD in power = attempt to suppress Σ.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head no">🇳🇴 Norway</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Current Status</div>
+<div style="margin-bottom:5px;">Støre Labour government (2021–). Progress Party (FrP) opposition. Dispute over continuing oil production. Conflict over climate policy.</div>
+<div class="ppr-stack-label">Λ¹²</div>
+<div><span class="tag tag-sig">Σ 0.32</span> · <span class="tag tag-lpi">LPI +0.12</span> — Favorable among the four countries. The Oil Fund buffers political conflict. Democratic rallying continues after Breivik.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head dk">🇩🇰 Denmark</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Current Status</div>
+<div style="margin-bottom:5px;">Frederiksen Social Democratic government continues. Successfully absorbed the far-right through immigration policy. Asylum applications 864 (2024), all-time low.</div>
+<div class="ppr-stack-label">Λ¹²</div>
+<div><span class="tag tag-sig">Σ 0.28</span> Lowest · <span class="tag tag-lpi">LPI +0.18</span> Highest — Danish-style approach where tightening immigration policy lowered Σ. Highest PWT-r expected.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head fi">🇫🇮 Finland</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Current Status</div>
+<div style="margin-bottom:5px;">Orpo coalition (2023–). Includes Finns Party → austerity policies. Support for Finns Party fell to 14% in 2025. 2023 NATO accession.</div>
+<div class="ppr-stack-label">Λ¹²</div>
+<div><span class="tag tag-sig">Σ 0.38</span> — After two years of negative economic growth, Σ rose but is now recovering. The coalition including the Finns Party has the effect of lowering Σ — the paradox of the institutionalization of populism.</div>
+</div></div>
+</div>
+<div class="sec-title">Ⅷ·Ⅸ  PPR-2 Economy + PPR-3 Society</div>
+<div class="ppr-grid-4">
+<div class="ppr-card"><div class="ppr-card-head se">🇸🇪 Sweden</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Economy</div>
+<div style="margin-bottom:5px;">GDP +0.5%. Escaping economic recession. Weak Krona. Housing market slump. Export strengths in Ericsson, Volvo, and IKEA.</div>
+<div class="ppr-stack-label">Society</div>
+<div>Immigrants 20%+. Integration failure → 62,000 people in organized crime. Image of segregation in Malmö. F_reach 0.88 strength, but distribution inequality is deepening. 1985–2010 income inequality showed the largest increase in the OECD.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head no">🇳🇴 Norway</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Economy</div>
+<div style="margin-bottom:5px;">GDP +1.8%. Oil Fund $1.7T. GDP per capita $108,700, among the world's highest. Controversy over the sustainability of oil and gas dependence.</div>
+<div class="ppr-stack-label">Society</div>
+<div>F_reach 0.92 — highest among the four countries. Fully guaranteed welfare. 'Norwegian way' after Breivik — responding to violence with more democracy. Reflects LPI +0.12.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head dk">🇩🇪 Denmark</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Economy</div>
+<div style="margin-bottom:5px;">GDP +2.1%, highest among the four countries. Strengths in pharmaceuticals and green energy (Novo Nordisk GLP-1 boom). Combined strengths: 1st in CPI · 10th in GPI · 3rd in HDI.</div>
+<div class="ppr-stack-label">Society</div>
+<div>F_reach 0.90. Immigration at 864, the lowest — low pressure on distribution. However, controversy over the human rights treatment of excluded immigrants. 'Danish Paradox': The happiest country has the strictest immigration laws.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head fi">🇫🇮 Finland</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Economy</div>
+<div style="margin-bottom:5px;">GDP +0.2%, barely recovering. After two consecutive years of negative growth. Impact of Russian border closure. Lack of new growth drivers after Nokia.</div>
+<div class="ppr-stack-label">Society</div>
+<div>1st in the happiness index for 7 consecutive years — paradox with economic recession. Gurr: The higher the expectations, the greater the disappointment. F_reach 0.88 favorable. Controversy over welfare pressure due to Finns Party austerity.</div>
+</div></div>
+</div>
+<div class="sec-title">Ⅹ·Ⅺ  PPR-4 Environment + PPR-5 Governance</div>
+<div class="ppr-grid-4">
+<div class="ppr-card"><div class="ppr-card-head se">🇸🇪 Sweden</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Environment</div>
+<div style="margin-bottom:4px;">Renewable energy 60%+. Nuclear phase-out debate ongoing (right-wing review). Forest management global model. Leading climate goals.</div>
+<div class="ppr-stack-label">Governance</div>
+<div>CPI 82 (7th). Slight LPI +0.02. Organized crime pressures CPI. Judicial-administrative transparency still maintains its place in the world's highest tier.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head no">🇳🇴 Norway</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Environment</div>
+<div style="margin-bottom:4px;">The paradox of being an oil-exporting nation + climate pioneer. 1st in EV adoption. Renewable energy 98%+. Leading carbon capture.</div>
+<div class="ppr-stack-label">Governance</div>
+<div>CPI 84 (5th). LPI +0.12, 2nd among the four countries. Oil Fund Ethics Committee — operating an investment exclusion list. Model of global governance.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head dk">🇩🇰 Denmark</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Environment</div>
+<div style="margin-bottom:4px;">World's 1st wind power technology. Wind power accounts for over 50% of electricity demand. Copenhagen 2025 carbon neutrality goal nearing achievement.</div>
+<div class="ppr-stack-label">Governance</div>
+<div>CPI 89 (1st), world's cleanest. LPI +0.18, highest among the four countries. Global model of transparency and anti-corruption. Minimization of β = highest PWT-r structure.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head fi">🇫🇮 Finland</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Environment</div>
+<div style="margin-bottom:4px;">New nuclear power construction (Olkiluoto 3). Controversy over forest carbon absorption. Russian border wall construction - ecological impact.</div>
+<div class="ppr-stack-label">Governance</div>
+<div>CPI 87 (3rd). LPI +0.06. GPI 2nd (world's 2nd most peaceful country) — maintaining peace even after military buildup. Low β = favorable PWT-r.</div>
+</div></div>
+</div>
+ ══ ⅩII Six-Layer Discourse ══ 
+<div class="sec-title">ⅩII  Six-Layer Discourse — 4 Countries in Parallel</div>
+<div class="four-grid">
+<div class="layer-card">
+<div class="layer-card-head se">🇸🇪 Sweden</div>
+<div class="layer-row"><span class="layer-num">①</span><span style="font-size:10.5px;color:#555;">Λ-Score highest among the four countries · CFD 0.62 · Organized crime 62,000</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span style="font-size:10.5px;color:#555;">Speed limit of the welfare state's integration mechanism.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span style="font-size:10.5px;color:#555;">Tradition of neutrality → tolerance policy → 2015 overload → rise of SD.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span style="font-size:10.5px;color:#555;">External: Model of tolerance. Internal: "Sweden has lost Sweden".</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span style="font-size:10.5px;color:#555;">"Diversity is a strength" vs "Openness without integration is a collapse".</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span style="font-size:10.5px;color:#B8850E;">A youth in Malmö asked: Has Sweden failed, or have we failed Sweden?</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head no">🇳🇴 Norway</div>
+<div class="layer-row"><span class="layer-num">①</span><span style="font-size:10.5px;color:#555;">Λ 2nd · HDI 2nd · Oil Fund $1.7T · Σ 0.32</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span style="font-size:10.5px;color:#555;">Oil wealth + complete welfare + democratic cohesion structure.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span style="font-size:10.5px;color:#555;">Nazi occupation → Breivik → repeatedly responding with democracy.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span style="font-size:10.5px;color:#555;">External: The world's best welfare. Internal: "Would it have been like this even without oil?".</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span style="font-size:10.5px;color:#555;">"Oil is a generational asset" vs "We must not sell oil during a climate crisis".</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span style="font-size:10.5px;color:#B8850E;">The way Norway answered Breivik — with more democracy to violence.</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head dk">🇩🇰 Denmark</div>
+<div class="layer-row"><span class="layer-num">①</span><span style="font-size:10.5px;color:#555;">Λ Lowest · CPI 1st · Immigrants 864 · Σ 0.28</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span style="font-size:10.5px;color:#555;">Immigration suppression + left-wing government's absorption of right-wing policies structure.</span></div>
+<div class="layer-row"><span class="hist-year" style="min-width:14px;font-size:9.5px;">③</span><span style="font-size:10.5px;color:#555;">Nazis → rescuing Jews → tolerance → 2001 transition → world's strictest.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span style="font-size:10.5px;color:#555;">External: A different path from Sweden. Internal: "Is this Danish value?".</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span style="font-size:10.5px;color:#555;">"Pragmatic immigration management" vs "Institutionalization of discrimination".</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span style="font-size:10.5px;color:#B8850E;">What is the country that rescued Jews choosing now?</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head fi">🇫🇮 Finland</div>
+<div class="layer-row"><span class="layer-num">①</span><span style="font-size:10.5px;color:#555;">Happiness 1st · GDP +0.2% · Finns Party exit · TBI 0.40</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span style="font-size:10.5px;color:#555;">Welfare strength + economic stagnation + Russian threat complexity.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span style="font-size:10.5px;color:#555;">Winter War → Finlandization → Independence → NATO — Security anxiety DNA.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span style="font-size:10.5px;color:#555;">External: The myth of 1st place in the happiness index. Internal: "Does the happiness index feed us?".</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span style="font-size:10.5px;color:#555;">"Sustaining the welfare state" vs "Unsustainable without austerity".</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span style="font-size:10.5px;color:#B8850E;">The happiest country in the world — we must ask whether that happiness is a number or a life.</span></div>
+</div>
+</div>
+ ══ ⅩⅢ Phase Space ══ 
+<div class="sec-title">ⅩⅢ  Phase Space — SR-Σ Quadrant (21 countries accumulated)</div>
+<div class="phase-wrap">
+<div class="phase-title">SR-Σ Quadrant — 4 Nordic countries + previous 17 countries</div>
+<div class="phase-sub">21 countries accumulated · Nordics clustered in the bottom-left of Q1/Q3 — the most stable coordinates in the world</div>
+<svg height="320" viewbox="0 0 620 320" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#E8F5E9" height="145" opacity="0.3" rx="3" width="250" x="40" y="15"></rect>
+<rect fill="#FFF3E0" height="145" opacity="0.3" rx="3" width="290" x="290" y="15"></rect>
+<rect fill="#E3F2FD" height="150" opacity="0.3" rx="3" width="250" x="40" y="160"></rect>
+<rect fill="#FCE4EC" height="150" opacity="0.3" rx="3" width="290" x="290" y="160"></rect>
+<text fill="#2E7D32" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="165" y="32">Q1 Healthy Resistance</text>
+<text fill="#E65100" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="435" y="32">Q2 Fake Stability</text>
+<text fill="#1565C0" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="165" y="178">Q3 Open Conflict</text>
+<text fill="#880E4F" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="435" y="178">Q4 Systemic Crisis</text>
+<line stroke="#999" stroke-width="1.5" x1="40" x2="40" y1="15" y2="310"></line>
+<line stroke="#999" stroke-width="1.5" x1="40" x2="580" y1="310" y2="310"></line>
+<line stroke="#999" stroke-dasharray="5,3" stroke-width="1" x1="290" x2="290" y1="15" y2="310"></line>
+<line stroke="#999" stroke-dasharray="5,3" stroke-width="1" x1="40" x2="580" y1="160" y2="160"></line>
+<line opacity="0.6" stroke="#E53935" stroke-dasharray="8,4" stroke-width="1.5" x1="40" x2="580" y1="100" y2="100"></line>
+<text fill="#E53935" font-family="JetBrains Mono" font-size="7" x="584" y="104">Σ=0.70</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" text-anchor="end" x="30" y="18">Σ1.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" text-anchor="end" x="30" y="160">Σ0.5</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" text-anchor="end" x="30" y="310">Σ0.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" x="40" y="322">SR0.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" text-anchor="middle" x="290" y="322">SR0.5</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" x="575" y="322">SR1.0</text>
+ Previous 17 countries translucent (abbreviated) 
+<circle cx="137" cy="104" fill="#8B1A1A" fill-opacity="0.08" r="9" stroke="#8B1A1A" stroke-width="1"></circle><text font-size="8" text-anchor="middle" x="137" y="107">🇰🇭</text>
+<circle cx="375" cy="122" fill="#1A6B3A" fill-opacity="0.08" r="10" stroke="#1A6B3A" stroke-width="1"></circle><text font-size="9" text-anchor="middle" x="375" y="125">🇧🇩</text>
+<circle cx="337" cy="131" fill="#0D5EAF" fill-opacity="0.08" r="11" stroke="#0D5EAF" stroke-width="1"></circle><text font-size="9" text-anchor="middle" x="337" y="134">🇬🇷</text>
+<circle cx="283" cy="145" fill="#009246" fill-opacity="0.08" r="10" stroke="#009246" stroke-width="1"></circle><text font-size="9" text-anchor="middle" x="283" y="148">🇮🇹</text>
+<circle cx="321" cy="142" fill="#012169" fill-opacity="0.08" r="11" stroke="#012169" stroke-width="1"></circle><text font-size="9" text-anchor="middle" x="321" y="145">🇬🇧</text>
+<circle cx="375" cy="136" fill="#002395" fill-opacity="0.08" r="12" stroke="#002395" stroke-width="1"></circle><text font-size="9" text-anchor="middle" x="375" y="139">🇫🇷</text>
+ Other translucent small 
+<circle cx="299" cy="163" fill="#AA151B" fill-opacity="0.06" r="8" stroke="#AA151B" stroke-width="0.8"></circle><text font-size="7" text-anchor="middle" x="299" y="166">🇪🇸</text>
+<circle cx="299" cy="159" fill="#333" fill-opacity="0.06" r="8" stroke="#333" stroke-width="0.8"></circle><text font-size="7" text-anchor="middle" x="310" y="154">🇩🇪</text>
+<circle cx="283" cy="165" fill="#AE1C28" fill-opacity="0.06" r="8" stroke="#AE1C28" stroke-width="0.8"></circle><text font-size="7" text-anchor="middle" x="275" y="178">🇳🇱</text>
+ 4 Nordic countries vivid — x=40+SR*540, y=310-Σ*290 
+ Sweden SR0.38 Σ0.45 → x=245, y=179 
+<circle cx="245" cy="179" fill="#006AA7" fill-opacity="0.22" r="16" stroke="#006AA7" stroke-width="2.5"></circle>
+<text font-size="13" text-anchor="middle" x="245" y="183">🇸🇪</text>
+<text fill="#006AA7" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="245" y="167">SE.38/.45</text>
+ Norway SR0.35 Σ0.32 → x=229, y=217 
+<circle cx="229" cy="217" fill="#EF2B2D" fill-opacity="0.2" r="14" stroke="#EF2B2D" stroke-width="2"></circle>
+<text font-size="12" text-anchor="middle" x="229" y="221">🇳🇴</text>
+<text fill="#EF2B2D" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="229" y="232">NO.35/.32</text>
+ Denmark SR0.32 Σ0.28 → x=213, y=229 
+<circle cx="213" cy="229" fill="#C60C30" fill-opacity="0.2" r="13" stroke="#C60C30" stroke-width="2"></circle>
+<text font-size="12" text-anchor="middle" x="213" y="233">🇩🇰</text>
+<text fill="#C60C30" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="185" y="248">DK.32/.28</text>
+ Finland SR0.30 Σ0.38 → x=202, y=200 
+<circle cx="202" cy="200" fill="#003580" fill-opacity="0.2" r="14" stroke="#003580" stroke-width="2"></circle>
+<text font-size="12" text-anchor="middle" x="202" y="204">🇫🇮</text>
+<text fill="#003580" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="170" y="192">FI.30/.38</text>
+ Nordic Cluster indication 
+<ellipse cx="222" cy="208" fill="none" opacity="0.5" rx="55" ry="40" stroke="#3A6A5E" stroke-dasharray="6,4" stroke-width="1.5"></ellipse>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="8" text-anchor="middle" x="222" y="258">Nordic Cluster</text>
+<text dy="10" fill="#555" font-family="JetBrains Mono" font-size="7.5" x="40" y="322">★ 4 Nordic countries Q1/Q3 boundary — most stable among all 21 countries. Only Sweden is deviating toward Q2. Translucent = previous countries</text>
+</svg>
+</div>
+ ══ ⅩⅣ Error ══ 
+<div class="sec-title">ⅩⅣ  Error Margin</div>
+<div class="four-grid">
+<div class="err-card"><div class="err-head se">🇸🇪 Sweden</div>
+<div class="err-item">· OLI 0.88 highest. SCB (Statistics Sweden) is among the world's best.</div>
+<div class="err-item">· BRI 3.8 — organized crime statistics accuracy is high, but range estimation is difficult.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.06</div>
+</div>
+<div class="err-card"><div class="err-head no">🇳🇴 Norway</div>
+<div class="err-item">· OLI 0.90 highest. Macro statistics transparency including the oil fund is superb.</div>
+<div class="err-item">· TBI 0.38 — limitation in quantifying Breivik trauma.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.05</div>
+</div>
+<div class="err-card"><div class="err-head dk">🇩🇰 Denmark</div>
+<div class="err-item">· OLI 0.92 highest in the world. DST (Statistics Denmark) is fully public.</div>
+<div class="err-item">· Immigrants 864 — immigration suppression itself could distort Σ measurement.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.05</div>
+</div>
+<div class="err-card"><div class="err-head fi">🇫🇮 Finland</div>
+<div class="err-item">· OLI 0.88. Statistics Finland transparency is high.</div>
+<div class="err-item">· Happiness 1st = subjective measurement — separate from OLI.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.06</div>
+</div>
+</div>
+ ══ ⅩⅤ Korean Peninsula ══ 
+<div class="sec-title">ⅩⅤ  The Nordics as Seen from the Korean Peninsula</div>
+<div class="kr-box">
+<div class="kr-title">Korean Peninsula Perspective</div>
+<div class="kr-text">
+    Finland is the country South Korea refers to most often — the education system. South Korea has continuously studied what the secret to being number one in PISA is. While Finland practiced "education without competition," South Korea maintained the world's most intense competition for college entrance examinations. Both achieved high educational accomplishments. That methods can differ — this is the lesson of the 5th layer (Frame) of the Six-Layer Discourse.
+    <br/><br/>
+    The surge in organized crime in Sweden is a warning to South Korea's multicultural policy. When immigrants increase, if the speed of integration cannot keep pace with the rate of inflow, CFD rises. South Korea also inevitably needs to expand immigration to respond to population decline in 2030–2040 — there is much to learn from Sweden's failure.
+    <br/><br/>
+    Norway's Oil Fund — to put it in South Korean terms, is a structure where the export revenues of Samsung and Hyundai are managed as a sovereign wealth fund. Although South Korea's National Pension Service partially plays that role, there is a large gap in scale and transparency. The fact that the institutionalization of intergenerational asset sharing is a structure that increases PWT-r — this is where it connects with F_reach.
+    <br/><br/>
+<strong>Economic Connection:</strong> Norway's Equinor (oil), Denmark's Novo Nordisk (GLP-1 obesity treatment), Sweden's Ericsson (5G) — all in direct competition and cooperation with South Korean companies.
+  </div>
+</div>
+ ══ Conclusion ══ 
+<div class="sec-title">Conclusion Orbit — Where is the crack in the Golden Model?</div>
+<div class="conclusion">
+<div class="conclusion-title">The world's highest indicators — why Λ is still not zero</div>
+<div class="conclusion-text">
+    The 4 Nordic countries are in the lowest risk bracket in the world based on Λ¹².<br/>
+    HDI, CPI, GPI, and F_reach are all low after inversion — a structure where stability-oriented variables strongly lower Λ.<br/><br/>
+    Yet, it is not zero. The reason is CFD and BRI.<br/>
+    Sweden alone is deviating from these two variables — the price of failed integration.<br/><br/>
+    Denmark made a different choice. It suppressed CFD to lower Σ.<br/>
+    Is it right? — Λ¹² does not answer. It merely shows the consequences of that choice.<br/><br/>
+<em>The crack in the Golden Model did not come from the outside.<br/>
+    It was a limitation created by the most open society itself.</em>
+</div>
+</div>
+ ══ Series ══ 
+<div class="series-box">
+<div class="series-title">Everblue Sea Λ¹² Country Edition Series</div>
+<div class="series-list">
+<span class="series-item done">#9 USA</span>
+<span class="series-item done">#10 Botswana</span>
+<span class="series-item done">#11 Southeast Asia Comparison I</span>
+<span class="series-item done">#12 Southeast Asia Comparison II</span>
+<span class="series-item done">#13 South Asia Comparison I</span>
+<span class="series-item done">#14 Southern Europe Comparison I</span>
+<span class="series-item done">#15 Western Europe Comparison I</span>
+<span class="series-item current">#16 Nordic Europe Comparison I (Sweden, Norway, Denmark, Finland)</span>
+<span class="series-item">Eastern Europe Comparison (Planned)</span>
+<span class="series-item">Balkans Comparison (Planned)</span>
+</div>
+</div>
+ ══ Footer ══ 
+<div class="footer">
+<strong>Everblue Sea Institute for Social Dynamics</strong> · Everblue Sea Institute for Social Dynamics<br/>
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>  · 
+  SSRN Abstract ID 6509200  · 
+  Slogan: Beyond analysis, to reassembly / Not analysis, but synthesis.<br/><br/>
+<span style="font-size:10px;opacity:.6;">
+    Λ¹² v9.11 · §30 Λ-Score·PWT-r · 2026-04-29<br/>
+    Data: GPI 2025(IEP) · CPI 2025(TI) · Danske Bank Nordic Outlook Mar.2026 · UNDP HDR 2025 · BISI Sweden Organised Crime 2025<br/>
+    OLI 0.88~0.92 — the world's highest confidence interval. Replaced after Python verification of the Λ-Score badge value.<br/>
+    Cheonghae (淸海) © 2026 · Unauthorized reproduction prohibited
+  </span>
+</div>
+</body>
+</html>

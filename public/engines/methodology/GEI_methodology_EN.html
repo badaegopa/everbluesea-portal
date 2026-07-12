@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gini Economic Inequality Index — Formula and Methodology | Everblue Sea Institute for Social Dynamics</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background-color: #F5F3EE; color: #2A2A2A; line-height: 1.75; }
+  .hdr { background-color: #5E9186; color: #FFFFFF; padding: 44px 36px 32px; border-bottom: 4px solid #B8850E; }
+  .tag { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #C8E0DC; margin-bottom: 10px; }
+  .hdr h1 { font-size: 30px; font-weight: normal; line-height: 1.25; margin-bottom: 6px; }
+  .hdr .sub { font-size: 14px; color: #C8E0DC; }
+  .badge { display: inline-block; background-color: #B8850E; color: #FFF; font-family: 'Courier New', monospace; font-size: 10px; padding: 4px 12px; letter-spacing: 2px; margin: 14px 6px 0 0; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 36px 24px 56px; }
+  h2 { font-size: 15px; font-family: 'Courier New', monospace; letter-spacing: 3px; color: #5E9186; border-bottom: 1px solid #DDD8CE; padding-bottom: 8px; margin: 36px 0 16px; text-transform: uppercase; }
+  p { margin-bottom: 12px; font-size: 15px; }
+  .formula { background-color: #FDFCF9; border: 1px solid #DDD8CE; border-left: 4px solid #B8850E; padding: 18px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 17px; color: #2A3D35; overflow-x: auto; }
+  .fdesc { font-size: 13px; color: #6B6B6B; font-family: Georgia, serif; margin-top: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13.5px; }
+  th { background-color: #2A3D35; color: #FFF; font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 2px; padding: 9px 12px; text-align: left; }
+  td { border-bottom: 1px solid #DDD8CE; padding: 9px 12px; vertical-align: top; }
+  td.sym { font-family: 'Courier New', monospace; color: #B8850E; white-space: nowrap; font-size: 14px; }
+  .cls { background-color: rgba(94,145,134,0.08); border-radius: 8px; padding: 14px 18px; font-family: 'Courier New', monospace; font-size: 13px; color: #2A3D35; margin: 12px 0; }
+  .src a { color: #5E9186; }
+  .diagram { text-align: center; margin: 20px 0; }
+  .foot { border-top: 1px solid #DDD8CE; margin-top: 44px; padding-top: 18px; text-align: center; }
+  .slogan { font-style: italic; color: #C9A24B; font-size: 13.5px; margin-bottom: 8px; }
+  .foot small { font-family: 'Courier New', monospace; font-size: 10px; color: #9A9A9A; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="hdr">
+<div class="tag">EVERBLUE SEA · SOCIODYNAMICS · §34 SUB-ENGINE</div>
+<h1>Gini Economic Inequality Index — Formula and Methodology</h1>
+<div class="sub">Gini Economic Inequality Index — Formulas &amp; Methodology</div>
+<span class="badge">§34 GEI</span><span class="badge">Λ¹² Sub-Engine</span><span class="badge">Methodology Commentary</span>
+</div>
+<div class="wrap">
+<h2>01 · What Does It Measure?</h2>
+<p>Measures the structural deepening of income and asset inequality based on the Gini coefficient. Beyond the simple Gini coefficient, it also captures intergenerational and regional inequality mobility. Inequality is a core component of the Uprising Index (UI), and GEI is designed for precise measurement of the Λ¹² A3 (social) dimension.</p>
+<h2>02 · Core Formula</h2>
+<div class="formula">G = 1 − Σᵢ(Xᵢ − Xᵢ₋₁)(Yᵢ + Yᵢ₋₁)</div>
+<p class="fdesc">Calculates inequality as the area between the Lorenz curve and the line of perfect equality. From 0 (perfect equality) to 1 (perfect inequality).</p>
+<table><tr><th>Symbol</th><th>Meaning · Explanation</th></tr><tr><td class="sym">Xᵢ</td><td>Cumulative population ratio (i-th quantile)</td></tr><tr><td class="sym">Yᵢ</td><td>Cumulative income ratio</td></tr><tr><td class="sym">G = 0</td><td>Perfect Equality — Lorenz curve coincides with the diagonal</td></tr><tr><td class="sym">G = 1</td><td>Perfect Inequality — One person holds everything</td></tr><tr><td class="sym">G &gt; 0.4</td><td>Social Instability Threshold Interval</td></tr></table>
+<h2>03 · Diagram — Lorenz Curve</h2>
+<div class="diagram">
+<svg height="300" viewbox="0 0 480 300" width="480" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FDFCF9" height="300" stroke="#DDD8CE" width="480"></rect>
+<line stroke="#2A3D35" stroke-width="1.5" x1="70" x2="420" y1="250" y2="250"></line>
+<line stroke="#2A3D35" stroke-width="1.5" x1="70" x2="70" y1="250" y2="40"></line>
+<line stroke="#5E9186" stroke-dasharray="6,4" stroke-width="2" x1="70" x2="420" y1="250" y2="40"></line>
+<path d="M70,250 C200,248 320,220 420,40" fill="none" stroke="#B8850E" stroke-width="2.5"></path>
+<path d="M70,250 C260,250 390,240 420,40" fill="none" stroke="#C0392B" stroke-dasharray="3,3" stroke-width="2"></path>
+<text fill="#5E9186" font-family="Courier New" font-size="11" x="180" y="120">Line of Perfect Equality</text>
+<text fill="#B8850E" font-family="Courier New" font-size="11" x="255" y="205">Lorenz Curve (G≈0.35)</text>
+<text fill="#C0392B" font-family="Courier New" font-size="11" x="300" y="243">Extreme Inequality (G&gt;0.5)</text>
+<text fill="#6B6B6B" font-family="Courier New" font-size="11" x="180" y="278">Cumulative Population Ratio X →</text>
+<text fill="#6B6B6B" font-family="Courier New" font-size="11" transform="rotate(-90 20 150)" x="20" y="150">Cumulative Income Y →</text>
+</svg>
+</div>
+<h2>04 · Classification System</h2>
+<div class="cls">Equal (G&lt;0.3) · Moderate (0.3~0.4) · Unequal (0.4~0.5) · Extreme (G&gt;0.5)</div>
+<h2>05 · Data Sources</h2>
+<p class="src">World Bank Poverty &amp; Inequality · OECD Income Distribution · LIS Cross-National Data · Statistics Korea Survey of Household Finances and Living Conditions</p>
+<div class="foot">
+<div class="slogan">"With the hope that humanity's experience and countless brilliant data may come together and be reborn as a wise light like the Milky Way!"</div>
+<small>Everblue Sea Institute for Social Dynamics · Cheonghae (淸海) · everbluesea.org © 2026</small>
+</div>
+</div></body>
+</html>

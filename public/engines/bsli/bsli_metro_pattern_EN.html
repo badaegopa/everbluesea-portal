@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BSLI §7 — Metropolitan Housing Collapse Patterns</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=IBM+Plex+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+:root{--bg:#F5F3EE;--bg2:#EDEAE3;--ink:#1C1A17;--ink2:#4A4540;--ink3:#8A8580;
+--teal:#5E9186;--gold:#B8850E;--border:#DDD8CE;
+--stable:#1A6B3C;--managed:#2563A8;--alert:#B8850E;--critical:#C05000;--collapse:#8B1A1A;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Serif KR',serif;font-size:15px;line-height:1.85;}
+.site-header{background:var(--ink);color:var(--bg);padding:10px 0;text-align:center;
+font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;}
+.wrap{max-width:880px;margin:0 auto;padding:56px 36px 100px;}
+.title-block{border-top:3px solid var(--ink);border-bottom:1px solid var(--border);padding:40px 0 32px;margin-bottom:44px;}
+.label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:4px;color:var(--teal);text-transform:uppercase;margin-bottom:16px;}
+h1{font-family:'Playfair Display',serif;font-size:27px;font-weight:700;line-height:1.35;margin-bottom:10px;}
+.sub{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--ink2);margin-bottom:24px;}
+.meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink3);display:flex;gap:20px;flex-wrap:wrap;}
+.section{margin-bottom:52px;}
+.snum{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--teal);text-transform:uppercase;margin-bottom:6px;}
+h2{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;border-bottom:1px solid var(--border);padding-bottom:11px;margin-bottom:22px;}
+h3{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;font-style:italic;margin:30px 0 14px;}
+p{margin-bottom:16px;text-align:justify;}
+blockquote{border-left:3px solid var(--gold);background:var(--bg2);padding:14px 20px;margin:20px 0;font-style:italic;color:var(--ink2);}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin:18px 0 24px;}
+th{background:var(--ink);color:var(--bg);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.5px;font-weight:400;padding:9px 8px;text-align:left;}
+td{padding:7px 8px;border-bottom:1px solid var(--border);}
+tr:hover td{background:var(--bg2);}
+.num{font-family:'IBM Plex Mono',monospace;text-align:right;}
+.grade-pill{display:inline-block;padding:1px 7px;border-radius:2px;font-size:10px;font-weight:600;font-family:'IBM Plex Mono',monospace;}
+.g-m{background:#E8F0FB;color:var(--managed);}
+.g-a{background:#FDF5E0;color:var(--alert);}
+.g-c{background:#FFF0E5;color:var(--critical);}
+.g-x{background:#FAE5E5;color:var(--collapse);}
+.callout{background:white;border:1px solid var(--border);border-left:4px solid var(--gold);padding:16px 20px;margin:20px 0;font-size:14px;}
+.callout strong{color:var(--gold);}
+.refs{border-top:1px solid var(--border);padding-top:20px;margin-top:40px;font-size:12px;color:var(--ink2);line-height:1.9;}
+.refs .rn{font-family:'IBM Plex Mono',monospace;color:var(--teal);margin-right:6px;}
+.footer{text-align:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink3);margin-top:48px;padding-top:20px;border-top:1px solid var(--border);letter-spacing:1px;}
+
+/* 계단 차트 */
+.stair{display:flex;align-items:flex-end;gap:0;height:240px;margin:24px 0;padding:0 10px;border-bottom:2px solid var(--ink);position:relative;}
+.stair-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative;}
+.stair-bar{width:60%;border-radius:3px 3px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:6px;transition:height .4s;}
+.stair-val{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:white;}
+.stair-label{font-size:11px;margin-top:8px;text-align:center;color:var(--ink2);line-height:1.4;}
+.stair-zero{position:absolute;left:0;right:0;border-top:1px dashed var(--ink3);font-size:9px;color:var(--ink3);font-family:'IBM Plex Mono',monospace;}
+
+/* H<F 비교 바 */
+.hf-row{display:grid;grid-template-columns:80px 1fr;gap:10px;align-items:center;margin-bottom:10px;}
+.hf-city{font-size:12px;text-align:right;color:var(--ink2);}
+.hf-bars{display:flex;flex-direction:column;gap:3px;}
+.hf-bar{height:14px;border-radius:2px;display:flex;align-items:center;padding-left:6px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:white;}
+.hf-f{background:var(--teal);}
+.hf-h{background:var(--collapse);}
+.hf-legend{display:flex;gap:16px;font-size:11px;margin-bottom:12px;font-family:'IBM Plex Mono',monospace;}
+.hf-dot{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:middle;}
+</style>
+</head>
+<body>
+<div class="site-header">Everblue Sea Institute for Social Dynamics · BSLI §7 Metropolitan Pattern · v4.2</div>
+<div class="wrap">
+<div class="title-block">
+<div class="label">Section 7 · Metropolitan Collapse Pattern · June 2026</div>
+<h1>Metropolitan Housing Collapse Pattern<br/>The Metropolitan Housing Collapse</h1>
+<div class="sub">Why the Livelihood Base of the ML Stratum Collapses as Cities Grow Larger — A Universal Structure Transcending Borders</div>
+<div class="meta">
+<span>Author: Cheonghae (淸海)</span><span>SSRN 6806478 §7</span><span>Cross-Analysis of Korea's 17 Provinces/Cities + 10 Major International Cities</span>
+</div>
+</div>
+<div class="section">
+<div class="snum">§ 7.1 · The Core Question</div>
+<h2>Looking at the Structure, Not the Rankings</h2>
+<p>
+    The BSLI rankings by country are merely results. The true value of the formula lies in <strong>"why the livelihood base of the ML stratum collapses under specific conditions"</strong>to reveal this structural causality. This section tracks that structure at the city level. National averages obscure the truth by mixing urban and rural areas. Decomposing it to the city level reveals a single, universal pattern.
+  </p>
+<blockquote>
+    "As a city grows larger, capital concentrates in housing, and the ML stratum is simultaneously blocked from both homeownership (rising PIR) and renting (rising burden rate). This is not a problem unique to one country, but a structure shared by major cities worldwide."
+  </blockquote>
+</div>
+<div class="section">
+<div class="snum">§ 7.2 · Korea: The Urbanization Gradient</div>
+<h2>Korea — Step-like Collapse of H by Stage of Urbanization</h2>
+<p>
+    When classifying Korea's 17 provinces and cities into three categories based on their level of urbanization, the BSLI and Housing Index H <strong>decline in a step-like manner</strong>with urbanization. The Food Index F remains almost constant. In other words, urbanization strikes only housing.
+  </p>
+<div class="stair">
+<div class="stair-col">
+<div class="stair-bar" style="height:63%;background:var(--stable);"><span class="stair-val">6.3</span></div>
+<div class="stair-label">Provinces (7)<br/><span style="color:var(--ink3)">BSLI +0.22</span></div>
+</div>
+<div class="stair-col">
+<div class="stair-bar" style="height:35%;background:var(--critical);"><span class="stair-val">3.5</span></div>
+<div class="stair-label">Metropolitan Cities &amp; Seoul (7)<br/><span style="color:var(--ink3)">BSLI +0.06</span></div>
+</div>
+<div class="stair-col">
+<div class="stair-bar" style="height:25%;background:var(--collapse);"><span class="stair-val">2.5</span></div>
+<div class="stair-label">Metropolitan Satellites &amp; Special Areas (3)<br/><span style="color:var(--ink3)">BSLI −0.04</span></div>
+</div>
+</div>
+<p style="text-align:center;font-size:12px;color:var(--ink3);font-family:'IBM Plex Mono',monospace;">▲ Bar = Housing Index H Average (0–10). Urbanization Progress →</p>
+<p>
+    At the province level (Gangwon, Chungcheong, Jeolla, Gyeongsang), the average H is 6.3, meaning the housing of the ML stratum is relatively stable. Moving to metropolitan cities, H drops sharply to 3.5, and in metropolitan satellite areas (Gyeonggi, Sejong) and tourism capital concentration zones (Jeju), it falls further to 2.5, turning the BSLI negative.
+  </p>
+<div class="callout">
+<strong>Key Point.</strong> The Food Index F_ML is almost constant at around 5.4 across all provinces and cities. What urbanization collapses is not F, but <strong>only H</strong>. Province level H 6.3 → Metropolitan City 3.5 → Satellite 2.5. This step-down is the sole cause of the decline in BSLI.
+  </div>
+</div>
+<div class="section">
+<div class="snum">§ 7.3 · International Megacities</div>
+<h2>10 Major International Cities — Not a Single Safe/Management Grade</h2>
+<p>
+    When measuring 10 of the world's major cities using the BSLI, <strong>not a single Safe (+0.40↑) or Management (+0.20 to +0.40) grade is found.</strong> Six cities are in collapse, two are in danger, and two are in warning. Even countries that were in the management grade at the national average level fall entirely into negative territory or danger zones at the capital/largest city level.
+  </p>
+<table>
+<thead><tr><th>City</th><th>Country</th><th>PIR</th><th>Rent %</th><th>Ownership %</th><th>F</th><th>H</th><th>D</th><th>Hs</th><th>BSLI</th><th>Grade</th></tr></thead>
+<tbody>
+<tr><td>Seoul</td><td>Korea</td><td class="num">18.5</td><td class="num">38</td><td class="num">42</td><td class="num">5.4</td><td class="num">0.9</td><td class="num">3.0</td><td class="num">2.1</td><td class="num" style="color:var(--collapse);font-weight:600">−2.42</td><td><span class="grade-pill g-x">Collapse</span></td></tr>
+<tr><td>Hong Kong</td><td>Hong Kong</td><td class="num">16.7</td><td class="num">42</td><td class="num">51</td><td class="num">4.5</td><td class="num">0.0</td><td class="num">2.0</td><td class="num">1.0</td><td class="num" style="color:var(--collapse);font-weight:600">−1.20</td><td><span class="grade-pill g-x">Collapse</span></td></tr>
+<tr><td>Sydney</td><td>Australia</td><td class="num">13.3</td><td class="num">33</td><td class="num">60</td><td class="num">5.4</td><td class="num">1.2</td><td class="num">3.0</td><td class="num">0.6</td><td class="num" style="color:var(--collapse);font-weight:600">−0.72</td><td><span class="grade-pill g-x">Collapse</span></td></tr>
+<tr><td>Vancouver</td><td>Canada</td><td class="num">12.3</td><td class="num">34</td><td class="num">62</td><td class="num">4.0</td><td class="num">2.1</td><td class="num">2.5</td><td class="num">0.7</td><td class="num" style="color:var(--collapse);font-weight:600">−0.36</td><td><span class="grade-pill g-x">Collapse</span></td></tr>
+<tr><td>London</td><td>UK</td><td class="num">12.0</td><td class="num">40</td><td class="num">48</td><td class="num">2.8</td><td class="num">1.5</td><td class="num">1.5</td><td class="num">0.6</td><td class="num" style="color:var(--collapse);font-weight:600">−0.08</td><td><span class="grade-pill g-x">Collapse</span></td></tr>
+<tr><td>Toronto</td><td>Canada</td><td class="num">9.3</td><td class="num">35</td><td class="num">53</td><td class="num">4.0</td><td class="num">3.0</td><td class="num">2.5</td><td class="num">0.6</td><td class="num" style="color:var(--critical);font-weight:600">0.30</td><td><span class="grade-pill g-c">Danger</span></td></tr>
+<tr><td>New York</td><td>USA</td><td class="num">10.9</td><td class="num">36</td><td class="num">33</td><td class="num">4.8</td><td class="num">1.5</td><td class="num">1.0</td><td class="num">0.8</td><td class="num" style="color:var(--critical);font-weight:600">1.02</td><td><span class="grade-pill g-c">Danger</span></td></tr>
+<tr><td>Tokyo</td><td>Japan</td><td class="num">11.0</td><td class="num">30</td><td class="num">45</td><td class="num">2.6</td><td class="num">3.4</td><td class="num">1.0</td><td class="num">0.4</td><td class="num" style="color:var(--critical);font-weight:600">1.69</td><td><span class="grade-pill g-c">Danger</span></td></tr>
+<tr><td>Paris</td><td>France</td><td class="num">11.0</td><td class="num">35</td><td class="num">33</td><td class="num">5.4</td><td class="num">2.5</td><td class="num">1.0</td><td class="num">0.5</td><td class="num" style="color:var(--alert);font-weight:600">2.16</td><td><span class="grade-pill g-a">Warning</span></td></tr>
+<tr><td>Singapore</td><td>Singapore</td><td class="num">12.0</td><td class="num">28</td><td class="num">89</td><td class="num">4.8</td><td class="num">1.9</td><td class="num">0.5</td><td class="num">0.3</td><td class="num" style="color:var(--alert);font-weight:600">+0.14</td><td><span class="grade-pill g-a">Warning</span></td></tr>
+</tbody>
+</table>
+<p style="font-size:11px;color:var(--ink3);font-family:'IBM Plex Mono',monospace;">
+    City PIR: Demographia 2024 median multiple prioritized, Numbeo secondary. Rental burden/homeownership rate: national statistical offices/OECD. Household debt (D): national BIS values applied (cannot be isolated by city).
+  </p>
+</div>
+<div class="section">
+<div class="snum">§ 7.4 · Pattern 1 — Housing, Not Food</div>
+<h2>Commonality ① H ≪ F : What collapses is not food, but housing</h2>
+<p>
+    In 9 out of 10 cities, H is lower than F. The average F_ML is 4.4, but the average H is a mere 1.8. The ML stratum in major cities can afford food, but has nowhere to live. The epicenter of the crisis is not the dining table, but the roof.
+  </p>
+<div class="hf-legend">
+<span><span class="hf-dot hf-f"></span>F_ML (Food)</span>
+<span><span class="hf-dot hf-h"></span>H (Housing)</span>
+</div>
+<div id="hf-chart"></div>
+</div>
+<div class="section">
+<div class="snum">§ 7.5 · Pattern 2 — The Double Lock</div>
+<h2>Commonality ② Double Lock: Homeownership and renting are simultaneously blocked</h2>
+<p>
+    The ML stratum in major cities finds themselves with two doors closed at the same time. The door to homeownership is locked by PIR, and the door to renting is locked by the rent burden rate.
+  </p>
+<table>
+<thead><tr><th>Block Path</th><th>Indicator</th><th>International Baseline</th><th>Status of 10 Major Cities</th></tr></thead>
+<tbody>
+<tr><td>Homeownership Blockade</td><td>PIR</td><td>Demographia 9.0 = "Impossibly Unaffordable"<sup>1</sup></td><td><strong>10/10 Cities</strong>exceeding 9.0 (average 12.7)</td></tr>
+<tr><td>Rental Blockade</td><td>Rent Burden Rate</td><td>HUD 30% = "cost-burdened"<sup>2</sup></td><td><strong>8/10 Cities</strong>exceeding 30% (average 35%)</td></tr>
+</tbody>
+</table>
+<div class="callout">
+<strong>Double Lock.</strong> In rural areas and small-to-medium cities, even if homeownership is blocked, one can escape to renting, and if renting becomes burdensome, one can switch to homeownership. In major cities, both exits are closed simultaneously. A PIR of 12.7 means that the ML stratum must save for 12.7 years without spending a single penny of their lifetime income to buy a home, and a 35% rent burden means they must pay more than one-third of their income in rent during that time. Savings and rent press down on the ML stratum simultaneously.
+  </div>
+</div>
+<div class="section">
+<div class="snum">§ 7.6 · Pattern 3 — The Public Housing Divergence</div>
+<h2>Commonality ③ Divergence: Public Housing Policy Decides the Fate</h2>
+<p>
+    Not all major cities collapse in the same way. Looking at homeownership rates reveals a decisive turning point. <strong>Singapore (89% homeownership)</strong> recorded the highest BSLI (+0.14) among the 10 major cities by securing homeownership for the ML stratum through its HDB public housing policy. On the other hand, <strong>New York and Paris (33% homeownership)</strong> are highly dependent on renting, leaving them directly exposed to external shocks.
+  </p>
+<table>
+<thead><tr><th>Type</th><th>City</th><th>Ownership Rate</th><th>Policy Characteristics</th><th>BSLI</th></tr></thead>
+<tbody>
+<tr><td>Public Housing-Protected Type</td><td>Singapore</td><td class="num">89%</td><td>Securing homeownership for the ML stratum through HDB public sales</td><td class="num" style="color:var(--alert)">+0.14</td></tr>
+<tr><td>Intermediate Type</td><td>Sydney &amp; Vancouver</td><td class="num">60%</td><td>High homeownership, but offset by debt (D)</td><td class="num" style="color:var(--collapse)">−0.5</td></tr>
+<tr><td>Rent-Dependent Type</td><td>New York &amp; Paris</td><td class="num">33%</td><td>Exposure to rental market, lack of shock buffers</td><td class="num">1.0~2.2</td></tr>
+<tr><td>Complex Crisis Type</td><td>Seoul</td><td class="num">42%</td><td>Low homeownership + Jeonse risk + highest debt</td><td class="num" style="color:var(--collapse)">−2.42</td></tr>
+</tbody>
+</table>
+<p>
+    This divergence has decisive policy implications. Metropolitan housing collapse is not fate, but <strong>the result of policy choices</strong>. Singapore's case shows that a strong supply of public housing can break through the housing blockade of the ML stratum. The BSLI captures the effects of this policy intervention quantitatively.
+  </p>
+</div>
+<div class="section">
+<div class="snum">§ 7.7 · Synthesis</div>
+<h2>Synthesis — A Single Proposition Transcending Borders</h2>
+<p>
+    The cross-analysis of Korea's 17 provinces/cities and the 10 major international cities converges into a single proposition.
+  </p>
+<blockquote>
+    City scale and BSLI are negatively correlated. The cause is singular — the decline of H* (normalized housing value). As a city grows larger, capital concentrates in housing, causing H* to plummet, while F* (food) and D* (debt) play only secondary roles. Normalized output [−0.40, +0.60] based on v4.2. This pattern is identically observed in Korean metropolitan cities (average BSLI +0.06) and international metropolises (average +0.02), representing a universal structure transcending borders, income levels, and political systems.
+  </blockquote>
+<p>
+    This proposition is the ground for making the BSLI an international common index. The housing collapse of the ML stratum is not a unique circumstance of any single country, but a structural disease shared by major cities worldwide. By measuring this disease on the same coordinate system, the BSLI provides a common language for countries to diagnose together and respond to with policy.
+  </p>
+</div>
+<div class="section">
+<h2>References</h2>
+<div class="refs">
+<div><span class="rn">1.</span> Cox, W., &amp; Pavletich, H. (2024). <em>Demographia International Housing Affordability: 2024 Edition.</em> [Median Multiple: Impossibly Unaffordable ≥9.0.]</div>
+<div><span class="rn">2.</span> U.S. Department of Housing and Urban Development (HUD). <em>Cost-burdened threshold (30% of income), Brooke Amendment 1969.</em></div>
+<div><span class="rn">3.</span> Numbeo. (2024). <em>Property Prices Index by City.</em> [Supplementary sources for city PIR.]</div>
+<div><span class="rn">4.</span> OECD. (2023). <em>Affordable Housing Database (HC1.1, HM1.3).</em> Paris: OECD.</div>
+<div><span class="rn">5.</span> Cheonghae (淸海). (2026). <em>Basic Social Life Index by Country (BSLI).</em> SSRN Abstract ID: 6806478.</div>
+</div>
+</div>
+<div class="footer">
+  BSLI §7 Metropolitan Pattern · v4.2 · Everblue Sea Institute for Social Dynamics · June 2026
+</div>
+</div>
+<script>
+const HF = [
+  ["서울",5.4,0.9],["홍콩",4.5,0.0],["시드니",5.4,1.2],["밴쿠버",4.0,2.1],["런던",2.8,1.5],
+  ["토론토",4.0,3.0],["뉴욕",4.8,1.5],["도쿄",2.6,3.4],["파리",5.4,2.5],["싱가포르",4.8,1.9]
+];
+const el = document.getElementById('hf-chart');
+HF.forEach(([city,f,h])=>{
+  const row=document.createElement('div');row.className='hf-row';
+  row.innerHTML=`<div class="hf-city">${city}</div>
+    <div class="hf-bars">
+      <div class="hf-bar hf-f" style="width:${f*10}%">F ${f.toFixed(1)}</div>
+      <div class="hf-bar hf-h" style="width:${Math.max(h*10,8)}%">H ${h.toFixed(1)}</div>
+    </div>`;
+  el.appendChild(row);
+});
+</script>
+</body>
+</html>

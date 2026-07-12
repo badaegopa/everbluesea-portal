@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Λ¹² Balkan Comparison Part I — Serbia·Croatia·Bosnia</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;family=Bebas+Neue&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#F5F3EE;font-family:'Noto Sans KR',sans-serif;color:#2A2A2A;font-size:13px;line-height:1.75;}
+.rs-c{color:#C6363C;} .hr-c{color:#171796;} .ba-c{color:#002395;}
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;}
+.tag-tbi{background:#FCEBEB;color:#791F1F;} .tag-sr{background:#E1F5EE;color:#085041;}
+.tag-sig{background:#EEEDFE;color:#3C3489;} .tag-lpi{background:#FAEEDA;color:#633806;}
+.tag-cfd{background:#FAECE7;color:#712B13;} .tag-oli{background:#E6F1FB;color:#0C447C;}
+.hero{background:linear-gradient(135deg,#7BADA0,#5E9186);color:#fff;padding:50px 40px 38px;text-align:center;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;opacity:.75;margin-bottom:12px;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:.06em;line-height:1.1;margin-bottom:10px;}
+.hero-sub{font-size:13px;opacity:.85;line-height:1.7;}
+.hero-meta{margin-top:16px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:3px 13px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;}
+.score-banner{display:flex;gap:10px;margin:20px 24px;flex-wrap:wrap;}
+.score-card{flex:1;min-width:140px;background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:12px 14px;text-align:center;border-top:3px solid;}
+.score-card.rs{border-top-color:#C6363C;} .score-card.hr{border-top-color:#171796;} .score-card.ba{border-top-color:#002395;}
+.score-flag{font-size:22px;margin-bottom:3px;}
+.score-country{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:.05em;margin-bottom:5px;}
+.score-lambda{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;margin-bottom:2px;}
+.score-lambda.rs{color:#C6363C;} .score-lambda.hr{color:#171796;} .score-lambda.ba{color:#002395;}
+.score-zone{font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:3px;}
+.zone-watch{background:#FFF3E0;color:#E65100;} .zone-danger{background:#FCEBEB;color:#791F1F;}
+.zone-critical{background:#4A0000;color:#fff;}
+.score-pwt{font-size:10px;color:#888;font-family:'JetBrains Mono',monospace;}
+.declaration{background:#FFFDF8;border-left:4px solid #5E9186;margin:0 24px 24px;padding:16px 20px;border-radius:0 8px 8px 0;}
+.declaration-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.05em;margin-bottom:7px;}
+.declaration p{font-size:12.5px;color:#444;line-height:1.8;}
+.peoples-view{margin:0 24px 24px;background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:18px 20px;}
+.pv-title{font-family:'Bebas Neue',sans-serif;font-size:14px;color:#B8850E;letter-spacing:.06em;margin-bottom:10px;}
+.pv-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;}
+.pv-card{background:#F5F3EE;border-radius:8px;padding:10px 12px;border-top:3px solid;}
+.pv-card.rs{border-color:#C6363C;} .pv-card.hr{border-color:#171796;} .pv-card.ba{border-color:#002395;}
+.pv-flag{font-size:20px;margin-bottom:3px;}
+.pv-name{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:.04em;margin-bottom:4px;}
+.pv-quote{font-size:11px;color:#555;line-height:1.65;font-style:italic;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.07em;color:#3A6A5E;border-bottom:2px solid #5E9186;margin:26px 24px 13px;padding-bottom:7px;}
+.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:0 24px 22px;}
+.hist-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:12px 14px;}
+.hist-title{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;margin-bottom:7px;}
+.hist-title.rs{color:#C6363C;} .hist-title.hr{color:#171796;} .hist-title.ba{color:#002395;}
+.hist-item{display:flex;gap:8px;margin-bottom:6px;font-size:11px;}
+.hist-year{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9.5px;min-width:40px;color:#B8850E;}
+.hist-text{color:#444;line-height:1.6;}
+.stats-table{width:calc(100% - 48px);margin:0 24px 22px;border-collapse:collapse;font-size:11.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);}
+.stats-table th{background:#3A6A5E;color:#fff;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;text-align:center;}
+.stats-table td{padding:7px 12px;border-bottom:1px solid #f0ede7;text-align:center;color:#444;}
+.stats-table tr:last-child td{border:none;}
+.stats-table .label{text-align:left;font-weight:500;color:#3A6A5E;}
+.val-rs{color:#C6363C;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-hr{color:#171796;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-ba{color:#002395;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.coord-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:12px 14px;}
+.coord-head{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.04em;margin-bottom:8px;}
+.coord-head.rs{color:#C6363C;} .coord-head.hr{color:#171796;} .coord-head.ba{color:#002395;}
+.coord-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.coord-label{font-size:10px;}
+.coord-bar-wrap{flex:1;height:5px;background:#eee;border-radius:3px;margin:0 8px;}
+.coord-bar{height:5px;border-radius:3px;}
+.coord-num{font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:700;min-width:32px;text-align:right;}
+.formula-box{margin:0 24px 22px;background:linear-gradient(135deg,#f0ede7,#e8e4dc);border:1px solid #DDD8CE;border-radius:10px;padding:13px 17px;}
+.formula-title{font-family:'Bebas Neue',sans-serif;font-size:13px;color:#3A6A5E;letter-spacing:.05em;margin-bottom:7px;}
+.formula-eq{font-family:'JetBrains Mono',monospace;font-size:12px;color:#3A6A5E;background:#fff;display:inline-block;padding:4px 11px;border-radius:5px;margin-bottom:6px;}
+.formula-note{font-size:11px;color:#666;line-height:1.7;}
+.radar-wrap{margin:0 24px 22px;background:#fff;border:1px solid #DDD8CE;border-radius:12px;padding:16px;}
+.radar-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.06em;text-align:center;margin-bottom:4px;}
+.radar-legend{display:flex;justify-content:center;gap:18px;margin-top:10px;flex-wrap:wrap;}
+.radar-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;}
+.radar-dot{width:10px;height:10px;border-radius:50%;}
+.ppr-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:0 24px 15px;}
+.ppr-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;overflow:hidden;}
+.ppr-card-head{padding:7px 11px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:#fff;}
+.ppr-card-head.rs{background:#C6363C;} .ppr-card-head.hr{background:#171796;} .ppr-card-head.ba{background:#002395;}
+.ppr-card-body{padding:9px 11px;font-size:11px;color:#444;line-height:1.7;}
+.ppr-stack-label{font-size:9px;font-family:'JetBrains Mono',monospace;background:#F5F3EE;color:#666;display:inline-block;padding:1px 5px;border-radius:3px;margin-bottom:3px;}
+.tbi-box{margin:0 24px 22px;background:linear-gradient(135deg,#FFF0F0,#FFE0E0);border:2px solid #C6363C;border-radius:12px;padding:16px 20px;}
+.tbi-title{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#8B0000;letter-spacing:.06em;margin-bottom:10px;}
+.tbi-text{font-size:12px;color:#444;line-height:1.9;}
+.stat-badge{display:inline-block;padding:2px 7px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;margin:1px 2px;}
+.sb-rs{background:#C6363C;} .sb-hr{background:#171796;} .sb-ba{background:#002395;} .sb-n{background:#3A6A5E;}
+.layer-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:11px 13px;}
+.layer-card-head{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:.04em;margin-bottom:8px;}
+.layer-card-head.rs{color:#C6363C;} .layer-card-head.hr{color:#171796;} .layer-card-head.ba{color:#002395;}
+.layer-row{display:flex;gap:7px;margin-bottom:5px;font-size:10.5px;line-height:1.6;}
+.layer-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:9.5px;min-width:14px;color:#B8850E;}
+.phase-wrap{margin:0 24px 22px;background:#fff;border:1px solid #DDD8CE;border-radius:12px;padding:16px;}
+.phase-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.06em;text-align:center;margin-bottom:3px;}
+.phase-sub{font-size:10px;color:#888;text-align:center;margin-bottom:12px;font-family:'JetBrains Mono',monospace;}
+.err-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:10px 12px;}
+.err-head{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;margin-bottom:6px;}
+.err-head.rs{color:#C6363C;} .err-head.hr{color:#171796;} .err-head.ba{color:#002395;}
+.err-item{font-size:10.5px;color:#555;line-height:1.6;margin-bottom:3px;}
+.kr-box{margin:0 24px 22px;background:linear-gradient(135deg,#eef6f4,#e4f0ed);border:1px solid #c5ddd9;border-radius:10px;padding:15px 19px;}
+.kr-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:7px;}
+.kr-text{font-size:12px;color:#444;line-height:1.85;}
+.conclusion{margin:0 24px 22px;background:linear-gradient(135deg,#7BADA0,#5E9186);color:#fff;border-radius:12px;padding:20px 24px;}
+.conclusion-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.07em;margin-bottom:11px;}
+.conclusion-text{font-size:12.5px;line-height:1.9;opacity:.93;}
+.series-box{margin:0 24px 22px;border:2px solid #5E9186;border-radius:10px;padding:11px 15px;}
+.series-title{font-family:'Bebas Neue',sans-serif;font-size:13px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:6px;}
+.series-list{display:flex;flex-wrap:wrap;gap:7px;}
+.series-item{font-size:11px;background:#F5F3EE;border:1px solid #DDD8CE;border-radius:6px;padding:3px 9px;color:#666;}
+.series-item.done{background:#5E9186;color:#fff;border-color:#5E9186;}
+.series-item.current{background:#B8850E;color:#fff;border-color:#B8850E;}
+.footer{background:#3A6A5E;color:rgba(255,255,255,.8);text-align:center;padding:20px;font-size:11px;line-height:1.9;}
+.footer a{color:#F0C040;text-decoration:none;}
+.freach-s{color:#2E7D32;font-weight:700;} .freach-i{color:#1565C0;font-weight:700;} .freach-d{color:#AD1457;font-weight:700;}
+</style>
+</head>
+<body>
+<div class="hero">
+<div class="hero-eyebrow">Everblue Sea Institute for Social Dynamics · Λ¹² Country Comparison Series — Europe V (Final Europe)</div>
+<div class="hero-title">Balkan Comparison Part I</div>
+<div class="hero-sub">Serbia · Croatia · Bosnia and Herzegovina<br/>Highest TBI Cohort — The war of 30 years ago is the grammar of current politics</div>
+<div class="hero-meta">
+<span class="hero-badge">Λ¹² v9.11 Engine</span>
+<span class="hero-badge">§30 Λ-Score</span>
+<span class="hero-badge">Highest TBI Region</span>
+<span class="hero-badge">30 Years of Bosnian Frozen Conflict</span>
+<span class="hero-badge">SSRN 6509200</span>
+<span class="hero-badge">2026-04-29</span>
+</div>
+</div>
+<div class="score-banner">
+<div class="score-card rs"><div class="score-flag">🇷🇸</div><div class="score-country rs-c">Serbia</div>
+<div class="score-lambda rs">0.417</div><div><span class="score-zone zone-danger">Danger</span></div>
+<div class="score-pwt">PWT-r 0.734 · β 0.639</div></div>
+<div class="score-card hr"><div class="score-flag">🇭🇷</div><div class="score-country hr-c">Croatia</div>
+<div class="score-lambda hr">0.391</div><div><span class="score-zone zone-danger">Danger</span></div>
+<div class="score-pwt">PWT-r 0.807 · β 0.493</div></div>
+<div class="score-card ba"><div class="score-flag">🇧🇦</div><div class="score-country ba-c">Bosnia</div>
+<div class="score-lambda ba">0.508</div><div><span class="score-zone zone-danger">Danger</span></div>
+<div class="score-pwt">PWT-r 0.606 · β 0.775</div></div>
+</div>
+<div class="declaration">
+<div class="declaration-title">Declaration of Research Purpose</div>
+<p>The Balkans are the region with the highest TBI in Λ¹² history. The Yugoslav Wars of the 1990s — the 1,425-day Siege of Sarajevo, the Srebrenica massacre of 8,000 people, the Kosovo War — this history dominates the language of current politics. We read three different aftermath treatments of the same war through Λ¹².</p>
+</div>
+<div class="sec-title">⚡  Balkan TBI Special Feature — Causes of Omnidirectional Radar Expansion</div>
+<div class="tbi-box">
+<div class="tbi-title">Highest TBI Region in Λ¹² History — War has left traces on all variables</div>
+<div class="tbi-text">
+    Northern Europe — CFD unidirection. Western Europe — CFD+Σ. Eastern Europe — TBI+Σ complex. <strong>Balkans — Simultaneous rise in TBI·BRI·CFD·Σ·LPI.</strong><br/><br/>
+<span class="stat-badge sb-rs">Serbia TBI 0.88</span> Non-recognition of Milošević's war crime responsibility + trauma of losing Kosovo + Novi Sad station building collapse (2024) protests<br/>
+<span class="stat-badge sb-hr">Croatia TBI 0.82</span> War of Independence + memories of ethnic cleansing. EU accession (2013) partially absorbed it. Bidirectional trauma of the expulsion of 200,000 Serbs<br/>
+<span class="stat-badge sb-ba">Bosnia TBI 0.95</span> Srebrenica + Siege of Sarajevo + irreconcilable discord among three ethnic groups. <strong>Highest value across all Λ¹² regions</strong><br/><br/>
+    A high TBI means that history dominates the present. Dodik's denial of Srebrenica, Serbia's non-recognition of Kosovo, diplomatic conflicts over war crimes — all are the present tense of TBI.
+  </div>
+</div>
+<div class="peoples-view">
+<div class="pv-title">The Eyes of the Public — A window through which three young people look</div>
+<div class="pv-grid">
+<div class="pv-card rs"><div class="pv-flag">🇷🇸</div><div class="pv-name rs-c">A youth in Belgrade</div>
+<div class="pv-quote">"The roof collapsed at Novi Sad station, and people died. It was because of corruption. We took to the streets. In 400 cities. Whether that can change anything — still, we went out."</div></div>
+<div class="pv-card hr"><div class="pv-flag">🇭🇷</div><div class="pv-name hr-c">A youth in Zagreb</div>
+<div class="pv-quote">"We entered the EU. We use the Euro. But my friends are going to Germany. Only those who remained are left. I don't know if Croatia has gotten better — or just more expensive."</div></div>
+<div class="pv-card ba"><div class="pv-flag">🇧🇦</div><div class="pv-name ba-c">A youth in Sarajevo</div>
+<div class="pv-quote">"I am a Bosniak. I have a Serbian friend next to me. We get along well. But politicians keep dividing us. Why do they still rule using a war from 30 years ago?"</div></div>
+</div>
+</div>
+<div class="sec-title">Ⅱ  History — Yugoslav Dissolution, War, and Aftermath</div>
+<div class="three-grid">
+<div class="hist-card">
+<div class="hist-title rs">🇷🇸 Serbia</div>
+<div class="hist-item"><span class="hist-year">1991~99</span><span class="hist-text">Croatia·Bosnia·Kosovo wars under Milošević's leadership. International sanctions. War crimes.</span></div>
+<div class="hist-item"><span class="hist-year">2000</span><span class="hist-text">Milošević's ouster. Start of democratization. Structural remnants.</span></div>
+<div class="hist-item"><span class="hist-year">2008</span><span class="hist-text">Kosovo's declaration of independence — Non-recognition by Serbia. Core of TBI.</span></div>
+<div class="hist-item"><span class="hist-year">2024~25</span><span class="hist-text">Novi Sad station collapse (due to corruption) → Protest rallies in 400 cities. 2 general strikes. SR reverse causation preview signal.</span></div>
+<div style="font-size:9px;color:#C6363C;font-family:'JetBrains Mono',monospace;margin-top:5px;">★ EU accession negotiations halted since 2021. Approaching China and Russia</div>
+</div>
+<div class="hist-card">
+<div class="hist-title hr">🇭🇷 Croatia</div>
+<div class="hist-item"><span class="hist-year">1991~95</span><span class="hist-text">War of Independence. 1/3 of territory occupied → Reclaimed by Operation Storm. Expulsion of 200,000 Serbs.</span></div>
+<div class="hist-item"><span class="hist-year">2013</span><span class="hist-text">EU accession — Most recent in Balkans. Partial absorption of TBI.</span></div>
+<div class="hist-item"><span class="hist-year">2023</span><span class="hist-text">Eurozone and Schengen accession completed.</span></div>
+<div class="hist-item"><span class="hist-year">2025</span><span class="hist-text">Tourism GDP 20%+. Severe brain drain. Ongoing diplomatic conflict with Serbia over war crimes.</span></div>
+<div style="font-size:9px;color:#171796;font-family:'JetBrains Mono',monospace;margin-top:5px;">★ Only EU, Eurozone, and Schengen member state in the Balkans</div>
+</div>
+<div class="hist-card" style="border:2px solid #002395;">
+<div class="hist-title ba">🇧🇦 Bosnia and Herzegovina ⚠</div>
+<div class="hist-item"><span class="hist-year">1992~95</span><span class="hist-text">1,425-day Siege of Sarajevo. Srebrenica massacre of 8,000 people. Highest TBI at 0.95.</span></div>
+<div class="hist-item"><span class="hist-year">1995</span><span class="hist-text">Dayton Agreement — Three-ethnic power-sharing system. "war by other means" begins.</span></div>
+<div class="hist-item"><span class="hist-year">2025.02</span><span class="hist-text">Dodik sentenced to 1 year in prison and banned from political activity for 6 years. Execution controversy.</span></div>
+<div class="hist-item"><span class="hist-year">2025.03</span><span class="hist-text">Official launch of EU accession negotiations. But political paralysis continues.</span></div>
+<div style="font-size:9px;color:#002395;font-family:'JetBrains Mono',monospace;margin-top:5px;">★ 30 years of frozen conflict — The only Λ¹² Critical</div>
+</div>
+</div>
+<div class="sec-title">Ⅲ  Basic Statistics (2024–2025)</div>
+<table class="stats-table">
+<thead><tr>
+<th class="label" style="text-align:left;">Indicators</th>
+<th>🇷🇸 Serbia</th><th>🇭🇷 Croatia</th><th>🇧🇦 Bosnia</th><th>Source</th>
+</tr></thead>
+<tbody>
+<tr><td class="label">Population</td><td class="val-rs">6.9 million</td><td class="val-hr">4 million</td><td class="val-ba">3.1 million</td><td>UN 2024</td></tr>
+<tr><td class="label">GDP Growth (2025)</td><td class="val-rs">+3.6% ⭐</td><td class="val-hr">+2.9%</td><td class="val-ba">+2.0%</td><td>IMF/Coface 2025</td></tr>
+<tr><td class="label">HDI (2025)</td><td class="val-rs">0.805</td><td class="val-hr">0.878</td><td class="val-ba">0.780</td><td>UNDP 2025</td></tr>
+<tr><td class="label">CPI 2025 (TI)</td><td class="val-rs">38 / 106th</td><td class="val-hr">51 / 54th</td><td class="val-ba">36 / 114th ⚠</td><td>TI 2026.02</td></tr>
+<tr><td class="label">GPI 2025 (IEP)</td><td class="val-rs">2.015 / 88th</td><td class="val-hr">1.684 / 38th</td><td class="val-ba">2.188 / 101st ⚠</td><td>IEP 2025</td></tr>
+<tr><td class="label">EU Status</td><td class="val-rs">Candidate Country (Negotiations suspended)</td><td class="val-hr">Member State 2013 ⭐</td><td class="val-ba">Candidate Country (Negotiations launched 2025.03)</td><td>EC 2025</td></tr>
+<tr><td class="label">Ethnic Conflict</td><td class="val-rs">Non-recognition of Kosovo</td><td class="val-hr">Conflict with Serbia over war crimes</td><td class="val-ba" style="background:#fff0f0;">Three-ethnic power-sharing paralysis ⚠</td><td>Dayton System</td></tr>
+</tbody>
+</table>
+<div class="sec-title">Ⅳ  Λ¹² Basic Coordinates</div>
+<div class="three-grid">
+<div class="coord-card">
+<div class="coord-head rs">🇷🇸 Serbia</div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-tbi">TBI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:88%;background:#791F1F;opacity:.8;"></div></div><span class="coord-num" style="color:#791F1F;">0.88</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sr">SR</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:55%;background:#085041;opacity:.7;"></div></div><span class="coord-num" style="color:#085041;">0.55↑</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sig">Σ</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:62%;background:#3C3489;opacity:.7;"></div></div><span class="coord-num" style="color:#3C3489;">0.62</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-oli">OLI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:52%;background:#0C447C;opacity:.7;"></div></div><span class="coord-num" style="color:#0C447C;">0.52</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-lpi">LPI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:28%;background:#633806;opacity:.7;"></div></div><span class="coord-num" style="color:#633806;">−0.22</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-cfd">CFD</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:72%;background:#712B13;opacity:.7;"></div></div><span class="coord-num" style="color:#712B13;">0.72</span></div>
+<div style="margin-top:5px;font-size:9px;color:#888;">BRI:5.2·SSI:4.5·GPI:2.015·F_reach:0.65</div>
+<div style="font-size:9px;color:#C6363C;font-family:'JetBrains Mono',monospace;">★ SR↑ Novi Sad protests — SR reverse causation preview</div>
+</div>
+<div class="coord-card">
+<div class="coord-head hr">🇭🇷 Croatia</div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-tbi">TBI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:82%;background:#791F1F;opacity:.7;"></div></div><span class="coord-num" style="color:#791F1F;">0.82</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sr">SR</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:42%;background:#085041;opacity:.7;"></div></div><span class="coord-num" style="color:#085041;">0.42</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sig">Σ</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:48%;background:#3C3489;opacity:.7;"></div></div><span class="coord-num" style="color:#3C3489;">0.48</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-oli">OLI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:70%;background:#0C447C;opacity:.7;"></div></div><span class="coord-num" style="color:#0C447C;">0.70</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-lpi">LPI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:48%;background:#633806;opacity:.7;"></div></div><span class="coord-num" style="color:#633806;">+0.02</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-cfd">CFD</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:58%;background:#712B13;opacity:.7;"></div></div><span class="coord-num" style="color:#712B13;">0.58</span></div>
+<div style="margin-top:5px;font-size:9px;color:#888;">BRI:3.5·SSI:6.0·GPI:1.684·F_reach:0.72</div>
+<div style="font-size:9px;color:#171796;font-family:'JetBrains Mono',monospace;">★ EU accession partially absorbs TBI — Improvement in Σ·LPI</div>
+</div>
+<div class="coord-card" style="border:2px solid #002395;">
+<div class="coord-head ba">🇧🇦 Bosnia ⚠ Critical</div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-tbi">TBI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:95%;background:#791F1F;opacity:.9;"></div></div><span class="coord-num" style="color:#791F1F;">0.95 ⚠</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sr">SR</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:28%;background:#085041;opacity:.7;"></div></div><span class="coord-num" style="color:#085041;">0.28</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-sig">Σ</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:80%;background:#3C3489;opacity:.8;"></div></div><span class="coord-num" style="color:#3C3489;">0.80 ⚠</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-oli">OLI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:38%;background:#0C447C;opacity:.7;"></div></div><span class="coord-num" style="color:#0C447C;">0.38</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-lpi">LPI</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:18%;background:#633806;opacity:.7;"></div></div><span class="coord-num" style="color:#633806;">−0.42</span></div>
+<div class="coord-item"><span class="coord-label"><span class="tag tag-cfd">CFD</span></span><div class="coord-bar-wrap"><div class="coord-bar" style="width:90%;background:#712B13;opacity:.8;"></div></div><span class="coord-num" style="color:#712B13;">0.90 ⚠</span></div>
+<div style="margin-top:5px;font-size:9px;color:#888;">BRI:6.5·SSI:3.5·GPI:2.188·F_reach:0.55</div>
+<div style="font-size:9px;color:#002395;font-family:'JetBrains Mono',monospace;">★ Σ 0.80 + CFD 0.90 — Highest across all Λ¹² regions</div>
+</div>
+</div>
+<div class="formula-box">
+<div class="formula-title">Λ¹² v9.11 §30 + Balkan OLI Notes</div>
+<div class="formula-eq">Λ-Score = Σ(get_w(norm_i)) / 12 / 1.29</div>
+<div class="formula-note">
+    OLI: Serbia 0.52 · Croatia 0.70 · Bosnia 0.38 — Equivalence condition not met. Reading of patterns is recommended over absolute values.<br/>
+<strong>Bosnia OLI 0.38 Lowest:</strong> Statistical unification impossible under the three-ethnic power-sharing system. The Dayton system itself lowers the OLI.<br/>
+<strong>Bosnia Σ 0.80·CFD 0.90:</strong> Threshold (0.70) exceeded — Entry into the Critical interval is inevitable.
+  </div>
+</div>
+<div class="sec-title">Ⅴ  Λ¹² 12-Index Radar — 3 Balkan Countries</div>
+<div class="radar-wrap">
+<div class="radar-title">3 Balkan Countries Radar — Omnidirectional expansion. Extreme protrusion in TBI·CFD directions</div>
+<div style="display:flex;justify-content:center;">
+<svg height="380" viewbox="0 0 500 380" width="500" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(250,190)">
+<circle fill="none" r="40" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" r="80" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" opacity="0.5" r="104" stroke="#BA7517" stroke-dasharray="3,3" stroke-width="0.8"></circle>
+<circle fill="none" r="120" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" opacity="0.6" r="152" stroke="#E24B4A" stroke-dasharray="5,3" stroke-width="1.5"></circle>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="0" y1="0" y2="-152"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="76" y1="0" y2="-132"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="132" y1="0" y2="-76"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="152" y1="0" y2="0"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="132" y1="0" y2="76"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="76" y1="0" y2="132"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="0" y1="0" y2="152"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-76" y1="0" y2="132"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-132" y1="0" y2="76"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-152" y1="0" y2="0"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-132" y1="0" y2="-76"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-76" y1="0" y2="-132"></line>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="7" x="5" y="-42">0.25</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="7" x="5" y="-82">0.5</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="7" x="5" y="-122">0.75</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="0" y="-164">BRI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="84" y="-142">SSI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="142" y="-82">SR</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="160" y="4">GPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="142" y="86">TBI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="84" y="148">Σ</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="0" y="168">OLI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-88" y="148">LPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-146" y="86">CFD</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-164" y="4">HDI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-146" y="-82">CPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-88" y="-142">F_reach</text>
+
+          Direction-corrected normalization:
+          Serbia: BRI0.52,SSI0.55,SR0.55,GPI0.60,TBI0.88,Σ0.62,OLI0.48,LPI0.28,CFD0.72,HDI0.195,CPI0.62,Freach0.35
+          Croatia: BRI0.35,SSI0.40,SR0.42,GPI0.78,TBI0.82,Σ0.48,OLI0.30,LPI0.52,CFD0.58,HDI0.122,CPI0.49,Freach0.28
+          Bosnia: BRI0.65,SSI0.65,SR0.28,GPI0.42,TBI0.95,Σ0.80,OLI0.62,LPI0.18,CFD0.90,HDI0.220,CPI0.64,Freach0.45
+        
+ Serbia (Red) 
+<polygon fill="#C6363C" fill-opacity="0.15" points="0,-83 65,-42 141,-58 91,0 218,159 99,73 0,73 -32,33 -95,72 -30,0 -159,-47 -46,-60" stroke="#C6363C" stroke-opacity="0.9" stroke-width="2"></polygon>
+ Croatia (Navy) 
+<polygon fill="#171796" fill-opacity="0.13" points="0,-56 51,-37 107,-46 125,0 203,148 77,56 0,46 -59,60 -77,63 -19,0 -125,-37 -36,-47" stroke="#171796" stroke-dasharray="6,3" stroke-opacity="0.85" stroke-width="1.8"></polygon>
+ Bosnia (Blue) — Maximum omnidirectional expansion 
+<polygon fill="#002395" fill-opacity="0.14" points="0,-104 83,-47 71,-27 67,0 235,171 128,94 0,94 -21,21 -119,91 -34,0 -164,-48 -57,-72" stroke="#002395" stroke-opacity="0.9" stroke-width="2.5"></polygon>
+<circle cx="0" cy="0" fill="#5E9186" r="3"></circle>
+</g>
+</svg>
+</div>
+<div class="radar-legend">
+<div class="radar-legend-item"><div class="radar-dot" style="background:#C6363C;"></div><span>🇷🇸 Serbia</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#171796;border:1px dashed;"></div><span>🇭🇷 Croatia (dotted line)</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#002395;"></div><span>🇧🇦 Bosnia (maximum omnidirectional expansion)</span></div>
+</div>
+<div style="margin-top:9px;font-size:10.5px;color:#888;text-align:center;">
+    ※ The Balkans have the largest radar area among all European regions — simultaneously high values in TBI·CFD·Σ·BRI.<br/>
+    Bosnia: CFD 0.90 + Σ 0.80 + TBI 0.95 triple threshold — Critical interval. Only Croatia shows partial convergence due to EU accession.
+  </div>
+</div>
+<div class="sec-title">Ⅶ~Ⅺ  PPR-5 Summary</div>
+<div class="ppr-grid-3">
+<div class="ppr-card"><div class="ppr-card-head rs">🇷🇸 Serbia — Danger</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Politics</div>
+<div style="margin-bottom:5px;">Authoritarian rule of President Vučić. EU negotiations suspended. Approaching China and Russia. Sharp rise in SR due to 2024–25 Novi Sad protest rallies.</div>
+<div class="ppr-stack-label">Economy · Society</div>
+<div style="margin-bottom:5px;">GDP +3.6% highest in the Balkans. China FTA (2024). However, severe corruption CPI 38. Weak F_reach D.</div>
+<div class="ppr-stack-label">Λ¹²</div>
+<div><span class="tag tag-tbi">TBI 0.88</span>·<span class="tag tag-sig">Σ 0.62</span>·<span class="tag tag-lpi">LPI −0.22</span> — SR reverse causation previewing. Whether the protests lead to system change is the core variable.</div>
+</div></div>
+<div class="ppr-card"><div class="ppr-card-head hr">🇭🇷 Croatia — Watch</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Politics</div>
+<div style="margin-bottom:5px;">Stability of the Plenković HDZ government. Full integration with EU and NATO. Ongoing diplomatic tension with Serbia over war crimes.</div>
+<div class="ppr-stack-label">Economy · Society</div>
+<div style="margin-bottom:5px;">GDP +2.9%. Tourism 20%+. Price increases after Eurozone accession. Brain drain — to Germany and Ireland. F_reach Good.</div>
+<div class="ppr-stack-label">Λ¹²</div>
+<div><span class="tag tag-tbi">TBI 0.82</span> — EU accession improves Σ·LPI. Only Watch interval among the three Balkan countries. Structure where EU alignment raises PWT-r.</div>
+</div></div>
+<div class="ppr-card" style="border:2px solid #002395;"><div class="ppr-card-head ba">🇧🇦 Bosnia — Critical ⚠</div><div class="ppr-card-body">
+<div class="ppr-stack-label">Politics</div>
+<div style="margin-bottom:5px;">Three-ethnic power-sharing — Bosniaks, Serbs, and Croats. Dodik's secession threats. 2025 launch of EU negotiations but political paralysis.</div>
+<div class="ppr-stack-label">Economy · Society</div>
+<div style="margin-bottom:5px;">GDP +2.0%. Remittance 10% of GDP. Extreme brain drain. CPI 36 — chronic corruption. Lowest F_reach D.</div>
+<div class="ppr-stack-label">Λ¹²</div>
+<div><span class="tag tag-sig">Σ 0.80</span>·<span class="tag tag-cfd">CFD 0.90</span>·<span class="tag tag-tbi">TBI 0.95</span> — Three variables simultaneously exceed threshold. Critical. Lowest PWT-r expected.</div>
+</div></div>
+</div>
+<div class="sec-title">ⅩII  Six-Layer Discourse — Three-Country Parallel</div>
+<div class="three-grid">
+<div class="layer-card">
+<div class="layer-card-head rs">🇷🇸 Serbia</div>
+<div class="layer-row"><span class="layer-num">①</span><span style="font-size:10.5px;color:#555;">TBI 0.88·SR↑·Protests in 400 cities·GDP+3.6%</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span style="font-size:10.5px;color:#555;">Corruption structure + pressure to choose geopolitical alignment between EU and China-Russia.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span style="font-size:10.5px;color:#555;">Repetition of Milošević → democratization → Vučić.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span style="font-size:10.5px;color:#555;">External: EU candidate. Internal: "Even when the station collapses, no one takes responsibility."</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span style="font-size:10.5px;color:#555;">"EU accession is the answer" vs "The EU tells us to recognize Kosovo."</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span style="font-size:10.5px;color:#B8850E;">The roof of Novi Sad station collapsed — when corruption brings down a building, people take to the streets.</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head hr">🇭🇷 Croatia</div>
+<div class="layer-row"><span class="layer-num">①</span><span style="font-size:10.5px;color:#555;">Σ 0.48·Full EU integration·Tourism 20%·Brain drain</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span style="font-size:10.5px;color:#555;">EU alignment absorbs TBI + brain drain weakens D.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span style="font-size:10.5px;color:#555;">War of Independence → EU accession → Eurozone — Fastest transition.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span style="font-size:10.5px;color:#555;">External: Balkan success model. Internal: "Those who remained live in a place that has become more expensive."</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span style="font-size:10.5px;color:#555;">"Successful EU integration" vs "All the young people have left."</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span style="font-size:10.5px;color:#B8850E;">Those who fought for independence — we must ask who is left in that country.</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head ba">🇧🇦 Bosnia</div>
+<div class="layer-row"><span class="layer-num">①</span><span style="font-size:10.5px;color:#555;">TBI 0.95·Σ 0.80·CFD 0.90·Critical</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span style="font-size:10.5px;color:#555;">The Dayton system froze the conflict but failed to resolve it.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span style="font-size:10.5px;color:#555;">Repetition of Siege of Sarajevo → Dayton → Dodik's secession threats.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span style="font-size:10.5px;color:#555;">External: EU support. Internal three ethnic groups: Tell different stories.</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span style="font-size:10.5px;color:#555;">"One Bosnia" vs "Secession is reality."</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span style="font-size:10.5px;color:#B8850E;">A youth in Sarajevo said — "We get along well. Politicians divide us." This is the question of the 6th layer.</span></div>
+</div>
+</div>
+<div class="sec-title">ⅩⅢ  phase space — SR-Σ Quadrant (Cumulative 28 countries)</div>
+<div class="phase-wrap">
+<div class="phase-title">SR-Σ Quadrant — 3 Balkan Countries + Previous 25 Countries</div>
+<div class="phase-sub">Bosnia Σ 0.80 threshold exceeded — highest in Europe</div>
+<svg height="310" viewbox="0 0 620 310" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#E8F5E9" height="140" opacity="0.25" rx="3" width="250" x="40" y="15"></rect>
+<rect fill="#FFF3E0" height="140" opacity="0.25" rx="3" width="290" x="290" y="15"></rect>
+<rect fill="#E3F2FD" height="145" opacity="0.25" rx="3" width="250" x="40" y="155"></rect>
+<rect fill="#FCE4EC" height="145" opacity="0.25" rx="3" width="290" x="290" y="155"></rect>
+<text fill="#2E7D32" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="165" y="32">Q1</text>
+<text fill="#E65100" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="435" y="32">Q2</text>
+<text fill="#1565C0" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="165" y="172">Q3</text>
+<text fill="#880E4F" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="435" y="172">Q4</text>
+<line stroke="#999" stroke-width="1.5" x1="40" x2="40" y1="15" y2="300"></line>
+<line stroke="#999" stroke-width="1.5" x1="40" x2="580" y1="300" y2="300"></line>
+<line stroke="#999" stroke-dasharray="5,3" stroke-width="1" x1="290" x2="290" y1="15" y2="300"></line>
+<line stroke="#999" stroke-dasharray="5,3" stroke-width="1" x1="40" x2="580" y1="155" y2="155"></line>
+<line opacity="0.6" stroke="#E53935" stroke-dasharray="8,4" stroke-width="1.5" x1="40" x2="580" y1="97" y2="97"></line>
+<text fill="#E53935" font-family="JetBrains Mono" font-size="7" x="584" y="101">Σ=0.70</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" text-anchor="end" x="30" y="18">Σ1.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" text-anchor="end" x="30" y="155">Σ0.5</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" text-anchor="end" x="30" y="300">Σ0.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" x="40" y="312">SR0.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" text-anchor="middle" x="290" y="312">SR0.5</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="8" x="575" y="312">SR1.0</text>
+ Previous countries, ultra-small 
+<text font-size="9" text-anchor="middle" x="137" y="105">🇰🇭</text>
+<text font-size="9" text-anchor="middle" x="375" y="119">🇧🇩</text>
+<text font-size="9" text-anchor="middle" x="375" y="132">🇫🇷</text>
+<text font-size="9" text-anchor="middle" x="321" y="137">🇬🇧</text>
+<text font-size="9" text-anchor="middle" x="337" y="127">🇬🇷</text>
+<text font-size="9" text-anchor="middle" x="245" y="174">🇸🇪</text>
+<text font-size="9" text-anchor="middle" x="375" y="110">🇭🇺</text>
+<text font-size="9" text-anchor="middle" x="337" y="126">🇷🇴</text>
+ 3 Balkan countries 
+ Serbia SR0.55 Σ0.62 → x=337, y=119 
+<circle cx="337" cy="119" fill="#C6363C" fill-opacity="0.22" r="15" stroke="#C6363C" stroke-width="2.2"></circle>
+<text font-size="12" text-anchor="middle" x="337" y="123">🇷🇸</text>
+<text fill="#C6363C" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="337" y="108">RS.55/.62</text>
+ Croatia SR0.42 Σ0.48 → x=267, y=161 
+<circle cx="267" cy="161" fill="#171796" fill-opacity="0.2" r="14" stroke="#171796" stroke-width="2"></circle>
+<text font-size="12" text-anchor="middle" x="267" y="165">🇭🇷</text>
+<text fill="#171796" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="267" y="176">HR.42/.48</text>
+ Bosnia SR0.28 Σ0.80 → x=191, y=67 
+<circle cx="191" cy="67" fill="#002395" fill-opacity="0.25" r="18" stroke="#002395" stroke-width="3"></circle>
+<text font-size="14" text-anchor="middle" x="191" y="71">🇧🇦</text>
+<text fill="#002395" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="191" y="56">BA.28/.80⚠</text>
+ Critical marker 
+<rect fill="#4A0000" height="14" opacity="0.8" rx="3" width="72" x="155" y="40"></rect>
+<text fill="#fff" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="191" y="50">CRITICAL</text>
+<text dy="10" fill="#555" font-family="JetBrains Mono" font-size="7.5" x="40" y="312">★ Bosnia above Σ0.80 threshold line — highest in all of Europe. Serbia SR↑ (protests) precursory signal. Croatia Q3 stable.</text>
+</svg>
+</div>
+<div class="sec-title">ⅩⅣ·ⅩⅤ  Margin of Error + Korean Peninsula Perspective</div>
+<div class="three-grid">
+<div class="err-card"><div class="err-head rs">🇷🇸 Serbia</div>
+<div class="err-item">· OLI 0.52 — limited statistical transparency. Fails to meet EU standards.</div>
+<div class="err-item">· SR↑ protest variable — current value might be underestimated.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence interval: ±0.12</div>
+</div>
+<div class="err-card"><div class="err-head hr">🇭🇷 Croatia</div>
+<div class="err-item">· OLI 0.70 — statistical standards improved after EU accession.</div>
+<div class="err-item">· TBI 0.82 limits in quantification. Incomplete brain drain statistics.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence interval: ±0.09</div>
+</div>
+<div class="err-card"><div class="err-head ba">🇧🇦 Bosnia</div>
+<div class="err-item">· OLI 0.38 lowest — statistical unification impossible due to three-ethnic power-sharing.</div>
+<div class="err-item">· Σ·CFD threshold exceeded — measurement itself is difficult.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence interval: ±0.18 (maximum)</div>
+</div>
+</div>
+<div class="kr-box">
+<div class="kr-title">Korean Peninsula Perspective</div>
+<div class="kr-text">
+    Bosnia has a structure most similar to the division of the Korean Peninsula. A place that was once a single country was divided after war, and the conflict was frozen by international agreement (Dayton = the Armistice Agreement of the Korean Peninsula). Thirty years have passed, but there is no reconciliation. The three ethnic groups are officially one country, but practically live as different political units. In discussions on Korean Peninsula unification, Bosnia is frequently cited as a "precedent of failed reintegration" — by observing why the Dayton system is unsustainable.
+    <br/><br/>
+    The Novi Sad protests in Serbia resemble the post-Sewol ferry trend and structure in South Korea. When citizens die due to state corruption — and no one takes responsibility — citizens take to the streets. The SR reverse-causation hypothesis worked in South Korea as well. Candlelight protests after the Sewol ferry, and then impeachment. Where its end will go in Serbia is the open question of the 6th layer of the Six-Layer Discourse.
+    <br/><br/>
+    Croatia's EU accession path — shows that South Korea's integration into an economic community has the effect of absorbing TBI. It is similar to the structure in which South Korea's US-ROK alliance and Korea-EU FTA contribute to regime stability.
+  </div>
+</div>
+<div class="sec-title">Conclusion Trajectory</div>
+<div class="conclusion">
+<div class="conclusion-title">Balkans — Where history dominates the present</div>
+<div class="conclusion-text">
+    Croatia chose the EU. Even though TBI was high, institutional integration absorbed it.<br/>
+    Serbia sways between the EU and China-Russia. Corruption breeds corruption, and the station collapses.<br/>
+    Bosnia has been fighting by other means of war for 30 years.<br/><br/>
+    A youth in Sarajevo said — "We get along well. Politicians divide us."<br/>
+    This is the reality of CFD 0.90.<br/>
+    The public wants to connect. The structure forces separation.<br/><br/>
+<em>Λ¹² asks — what is it that changes that structure.<br/>
+    The answer lies in — the choices the Sarajevo youth makes at this very moment.</em>
+</div>
+</div>
+<div class="series-box">
+<div class="series-title">Everblue Sea Λ¹² Country Series — Completion of European Volume</div>
+<div class="series-list">
+<span class="series-item done">#9 United States</span>
+<span class="series-item done">#10 Botswana</span>
+<span class="series-item done">#11~12 Southeast Asia</span>
+<span class="series-item done">#13 South Asia</span>
+<span class="series-item done">#14 Southern Europe</span>
+<span class="series-item done">#15 Western Europe</span>
+<span class="series-item done">#16 Northern Europe</span>
+<span class="series-item done">#17 Eastern Europe</span>
+<span class="series-item current">#18 Balkan Comparison I (Serbia·Croatia·Bosnia) — Final Europe</span>
+<span class="series-item">Middle East · Africa (Scheduled)</span>
+<span class="series-item">Americas (Scheduled)</span>
+</div>
+</div>
+<div class="footer">
+<strong>Everblue Sea Institute for Social Dynamics</strong> · Everblue Sea Institute for Social Dynamics<br/>
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>  · 
+  SSRN Abstract ID 6509200  · 
+  Slogan: Beyond analysis, to synthesis / Not analysis, but synthesis.<br/><br/>
+<span style="font-size:10px;opacity:.6;">
+    Λ¹² v9.11 · §30 Λ-Score·PWT-r · 2026-04-29<br/>
+    Data: Balkan Peace Index 2024 · BTI 2026 Serbia/Croatia · Coface BiH 2025 · GPI 2025 · CPI 2025<br/>
+    OLI 0.38~0.70 — Equivalence not met. Pattern/direction reading recommended. Bosnia confidence interval ±0.18.<br/>
+    Cheonghae (淸海) © 2026 · Unauthorized redistribution prohibited
+  </span>
+</div>
+</body>
+</html>

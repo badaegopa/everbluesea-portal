@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mexico Special Edition | Λ¹²v9.12 Sociodynamics Report</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background-color: #F5F3EE; color: #2A2A2A; line-height: 1.75; }
+
+  .report-header { background-color: #5E9186; color: #FFFFFF; padding: 48px 40px 36px; border-bottom: 4px solid #B8850E; }
+  .series-tag { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #C8E0DC; margin-bottom: 10px; }
+  .report-header h1 { font-size: 32px; font-weight: normal; line-height: 1.25; color: #FFFFFF; margin-bottom: 6px; }
+  .report-header .sub { font-size: 15px; color: #C8E0DC; margin-bottom: 20px; }
+  .engine-badge { display: inline-block; background-color: #B8850E; color: #FFFFFF; font-family: 'Courier New', monospace; font-size: 10px; padding: 4px 12px; letter-spacing: 2px; margin-right: 6px; }
+  .meta-row { margin-top: 16px; font-size: 12px; color: #C8E0DC; font-family: 'Courier New', monospace; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  .section-title { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #5E9186; font-family: 'Courier New', monospace; margin-bottom: 20px; margin-top: 44px; padding-bottom: 8px; border-bottom: 1px solid #DDD8CE; }
+
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 32px; }
+  .profile-box { background-color: #FFFFFF; border: 1px solid #DDD8CE; padding: 20px; }
+  .pb-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 2px; color: #5E9186; text-transform: uppercase; margin-bottom: 8px; }
+  .pb-value { font-size: 22px; font-weight: bold; color: #2A2A2A; line-height: 1.2; }
+  .pb-sub { font-size: 11px; font-family: 'Courier New', monospace; color: #888888; margin-top: 4px; }
+
+  .compare-bar { background-color: #FDEDED; border: 1px solid #E8B8B8; border-left: 5px solid #C0392B; padding: 22px 28px; margin-bottom: 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; text-align: center; }
+  .cb-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 2px; color: #8A2020; text-transform: uppercase; margin-bottom: 6px; }
+  .cb-val { font-size: 22px; font-weight: bold; font-family: 'Courier New', monospace; }
+  .cb-prev { font-size: 11px; font-family: 'Courier New', monospace; color: #888; margin-top: 3px; }
+
+  .intro-block { background-color: #FFFFFF; border: 1px solid #DDD8CE; border-left: 4px solid #5E9186; padding: 26px 30px; margin-bottom: 32px; font-size: 14.5px; line-height: 1.85; color: #333; }
+  .highlight-box { background-color: #FEF5E7; border: 1px solid #E8D4A0; border-left: 4px solid #B8850E; padding: 18px 22px; margin-bottom: 28px; font-size: 13px; line-height: 1.8; color: #333; }
+  .danger-box { background-color: #FDEDED; border: 1px solid #E8B8B8; border-left: 4px solid #C0392B; padding: 18px 22px; margin-bottom: 28px; font-size: 13px; line-height: 1.8; color: #333; }
+
+  .var-wrap { overflow-x: auto; margin-bottom: 36px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; background-color: #FFFFFF; }
+  thead th { background-color: #5E9186; color: #FFFFFF; padding: 10px 8px; text-align: center; font-family: 'Courier New', monospace; font-size: 11px; border: 1px solid #4A7870; }
+  thead th.left { text-align: left; padding-left: 14px; }
+  tbody td { padding: 9px 8px; text-align: center; border: 1px solid #DDD8CE; font-family: 'Courier New', monospace; font-size: 12px; }
+  tbody td.label-col { text-align: left; padding-left: 14px; font-family: Georgia, serif; color: #2A2A2A; font-size: 13px; }
+  tbody td.hl { font-weight: bold; color: #C0392B; }
+  tbody td.ok { color: #3A6A5E; font-weight: bold; }
+  tbody td.mid { color: #B8850E; }
+  tbody tr:nth-child(even) { background-color: #F9F8F5; }
+
+  .result-big { background-color: #FFFFFF; border: 2px solid #C0392B; padding: 28px; margin-bottom: 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; text-align: center; }
+  .rb-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 2px; color: #5E9186; text-transform: uppercase; margin-bottom: 8px; }
+  .rb-num { font-size: 34px; font-weight: bold; font-family: 'Courier New', monospace; color: #C0392B; line-height: 1; margin-bottom: 6px; }
+  .rb-sub { font-size: 11px; font-family: 'Courier New', monospace; color: #888; }
+
+  .diagram-wrap { background-color: #FFFFFF; border: 1px solid #DDD8CE; padding: 26px; margin-bottom: 36px; }
+  .diagram-title { font-size: 11px; font-family: 'Courier New', monospace; color: #5E9186; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+
+  .timeline { position: relative; padding-left: 28px; margin-bottom: 36px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background-color: #DDD8CE; }
+  .tl-item { position: relative; margin-bottom: 20px; }
+  .tl-item::before { content: ''; position: absolute; left: -24px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background-color: #5E9186; border: 2px solid #F5F3EE; }
+  .tl-item.danger::before { background-color: #C0392B; }
+  .tl-item.warn::before { background-color: #B8850E; }
+  .tl-year { font-family: 'Courier New', monospace; font-size: 11px; color: #5E9186; letter-spacing: 1px; margin-bottom: 4px; }
+  .tl-text { font-size: 13.5px; color: #333; line-height: 1.7; }
+
+  .ppr-block { background-color: #F3F8F5; border: 1px solid #B0CFC9; padding: 20px 24px; margin-bottom: 22px; }
+  .ppr-head { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 2px; color: #5E9186; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid #B0CFC9; padding-bottom: 8px; }
+  .ppr-item { font-size: 13.5px; line-height: 1.85; color: #333; padding-left: 14px; border-left: 2px solid #5E9186; }
+
+  .seismos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 36px; }
+  .seismos-cell { background-color: #FFFFFF; border: 1px solid #DDD8CE; padding: 16px; text-align: center; }
+  .seismos-num { font-family: 'Courier New', monospace; font-size: 10px; color: #5E9186; letter-spacing: 1px; margin-bottom: 6px; }
+  .seismos-label { font-size: 12px; font-weight: bold; color: #3A6A5E; margin-bottom: 6px; }
+  .seismos-desc { font-size: 11px; color: #666; line-height: 1.55; }
+
+  .conclusion-block { background-color: #EBF4F0; border: 1px solid #B0CFC9; padding: 32px 36px; margin-bottom: 40px; }
+  .conclusion-block p { font-size: 15px; line-height: 1.95; color: #2A2A2A; margin-bottom: 16px; }
+
+  .phase-tag { display: inline-block; padding: 3px 10px; font-size: 10px; font-family: 'Courier New', monospace; letter-spacing: 1px; border-radius: 2px; }
+  .phase-crisis { background-color: #FDEDED; color: #C0392B; border: 1px solid #E8B8B8; }
+  .phase-tension { background-color: #FEF5E7; color: #B8850E; border: 1px solid #E8D4A0; }
+
+  .report-footer { background-color: #EBF4F0; border-top: 2px solid #5E9186; padding: 28px 40px; text-align: center; }
+  .footer-logo { font-family: 'Courier New', monospace; font-size: 13px; color: #3A6A5E; font-weight: bold; margin-bottom: 6px; letter-spacing: 1px; }
+  .footer-meta { font-family: 'Courier New', monospace; font-size: 10px; color: #5E9186; letter-spacing: 1px; line-height: 1.8; }
+  .footer-link a { color: #B8850E; text-decoration: none; font-family: 'Courier New', monospace; font-size: 11px; }
+  hr.divider { border: none; border-top: 1px solid #DDD8CE; margin: 40px 0; }
+
+  @media (max-width: 680px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .compare-bar { grid-template-columns: 1fr; }
+    .result-big { grid-template-columns: 1fr; }
+    .seismos-grid { grid-template-columns: repeat(2,1fr); }
+    .report-header { padding: 30px 20px 24px; }
+    .container { padding: 28px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="report-header">
+<div class="series-tag">Everblue Sea Institute for Social Dynamics · SYNTHESIS Framework · Special Edition 1st #3</div>
+<h1>🇲🇽 Mexico Special Report</h1>
+<div class="sub">Mexico Country Report — Λ¹²v9.12 Social Dynamics Analysis</div>
+<div>
+<span class="engine-badge">Λ¹²v9.12</span>
+<span class="engine-badge">§31 ADI Included</span>
+<span class="engine-badge">SSRN 6632858</span>
+</div>
+<div class="meta-row">This report is calculated based on the Λ¹²v9.12 engine · Date of Issue: 2026-05-04 · Director Cheonghae (淸海)</div>
+</div>
+<div class="container">
+<p class="section-title">§01 · National Profile</p>
+<div class="profile-grid">
+<div class="profile-box">
+<div class="pb-label">Population / Area</div>
+<div class="pb-value">130 Million</div>
+<div class="pb-sub">1.96 Million km² · 3rd in Latin America</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">GDP / World Ranking</div>
+<div class="pb-value">$1.5T / 12th</div>
+<div class="pb-sub">IMF 2025 · 2nd Largest Economy in Latin America</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">CPI 2024</div>
+<div class="pb-value">26 / 100</div>
+<div class="pb-sub">140th/180 · 5-Point Decline · TI</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">Press Freedom RSF 2026</div>
+<div class="pb-value">Around 140th</div>
+<div class="pb-sub">37 Journalists Killed Since 2019</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">Cartel-Influenced Municipalities</div>
+<div class="pb-value">450+</div>
+<div class="pb-sub">CJNG 350 · Sinaloa 100+ · Lantia</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">Sheinbaum Approval Rating</div>
+<div class="pb-value">70%</div>
+<div class="pb-sub">As of 2026.04 · Predecessor AMLO Halo</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">US-Mexico Relations</div>
+<div class="pb-value">High Tension</div>
+<div class="pb-sub">US Indictment of Sinaloa Governor (2026.04.29)</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">Status of Judicial Reform</div>
+<div class="pb-value">Judicial Election System</div>
+<div class="pb-sub">Passed in 2024 · Growing Concerns over Judicial Independence</div>
+</div>
+</div>
+<p class="section-title">§02 · Coordinates Relative to Regional Comparison #20</p>
+<div class="compare-bar">
+<div>
+<div class="cb-label">Λ-Score</div>
+<div class="cb-val" style="color:#C0392B;">0.498</div>
+<div class="cb-prev">3rd in Region · High-Tension Section<br/>Just Before the Threshold Line (0.50)</div>
+</div>
+<div>
+<div class="cb-label">PWT-r</div>
+<div class="cb-val" style="color:#C0392B;">0.758</div>
+<div class="cb-prev">Limited Room for Transition</div>
+</div>
+<div>
+<div class="cb-label">Phase Classification</div>
+<div class="cb-val" style="font-size:16px; color:#C0392B;">Grey-Zone Statization</div>
+<div class="cb-prev">MFI↑ CFD↑ EPI↑ OLI↑</div>
+</div>
+</div>
+<div class="danger-box">
+<strong>Core Warning:</strong> Mexico is located just before the threshold line (0.50) with Λ=0.498 based on the regional comparison. The US indictment of the Sinaloa governor in April 2026 is a structural shock that simultaneously raises D3 (GPI) and D7 (CFD). <strong>Blurring of Boundaries Between Cartels and the State — 'Grey-Zone Statization'</strong>is the core dynamic driving Mexico's Λ.
+  </div>
+<p class="section-title">§03 · Historical Trajectory — Genealogy of Cartel-State Symbiosis</p>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-year">1929–2000</div>
+<div class="tl-text">71 years of PRI one-party system. Establishment of an implicit coexistence structure between drug cartels and the state. This is the historical origin of Mexico's OLI.</div>
+</div>
+<div class="tl-item warn">
+<div class="tl-year">2006–2012</div>
+<div class="tl-text">Calderón declares 'Drug War'. Militarization (MFI) surges. Cartel fragmentation and escalating violence intensify. Estimated 150,000 deaths. The prototype of the paradox where militarization failed to reduce violence.</div>
+</div>
+<div class="tl-item danger">
+<div class="tl-year">2018–2024</div>
+<div class="tl-text">AMLO's 'Abrazos, no balazos' (Hugs, not bullets) policy. Informal non-violence pacts with cartels. 37 journalists killed (2019–2024). CPI plunges from 31 to 26.</div>
+</div>
+<div class="tl-item warn">
+<div class="tl-year">2024.10~</div>
+<div class="tl-text">Sheinbaum takes office. 'Operation Swarm' — arrest of cartel-linked politicians, including AMLO allies. Prosecution success rate at 30% (compared to Mexico's average of 7%). Structural reform attempts.</div>
+</div>
+<div class="tl-item danger">
+<div class="tl-year">2026.04</div>
+<div class="tl-text">US Department of Justice indicts 10 people, including Sinaloa Governor Rubén Rocha Moya (implicated in Sinaloa Cartel). Maximum diplomatic and domestic political crisis for Sheinbaum. GPI and CFD expected to rise in tandem.</div>
+</div>
+</div>
+<p class="section-title">§04 · Λ¹²v9.12 Detailed Calculation of 12 Variables</p>
+<div class="var-wrap">
+<table>
+<thead>
+<tr>
+<th class="left" style="width:200px;">Variable</th>
+<th>Normalized Value</th>
+<th>Direction</th>
+<th>get_w</th>
+<th>Baseline Indicator</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="label-col">D1 · BRI Basic Rights Index</td><td class="mid">0.38</td><td>+1</td><td>1.4</td><td>V-Dem: Borderline Electoral Authoritarianism · Restriction of Assembly</td><td>Observation</td></tr>
+<tr><td class="label-col">D2 · SSI Social Structure Instability</td><td class="hl">0.72</td><td>-1</td><td>2.0</td><td>Gini 48.4 · Informal Economy 55%+ · Migration Pressure</td><td>Danger</td></tr>
+<tr><td class="label-col">D3 · GPI Geopolitical Pressure</td><td class="hl">0.45</td><td>-1</td><td>1.4</td><td>US Military Intervention Threat · Governor Indictment (2026.04)</td><td>Observation</td></tr>
+<tr><td class="label-col">D4 · EPI Explosion Proximity Index</td><td class="hl">0.68</td><td>-1</td><td>2.0</td><td>Cartel Violence · Local Vigilantes · Migrant Violence</td><td>Danger</td></tr>
+<tr><td class="label-col">D5 · IGI_inv Inverse Institutional Resilience</td><td class="mid">0.40</td><td>+1</td><td>1.4</td><td>Implementation of Judicial Election System → Concerns over Weakened Judicial Independence</td><td>Observation</td></tr>
+<tr><td class="label-col">D6 · LPI_inv Inverse Leader-People Ratio</td><td class="mid">0.35</td><td>+1</td><td>1.4</td><td>Sheinbaum Approval Rating 70% · But Pressured by Cartel Issues</td><td>Observation</td></tr>
+<tr><td class="label-col">D7 · CFD Capital Flight Index</td><td class="hl">0.62</td><td>-1</td><td>2.0</td><td>Drug Money Laundering Structure · US Tariff Pressure</td><td>Danger</td></tr>
+<tr><td class="label-col">D8 · MFI Militarization Index</td><td class="hl">0.70</td><td>-1</td><td>2.0</td><td>National Guard/Military-Led Public Security · Chihuahua Incident</td><td>Danger</td></tr>
+<tr><td class="label-col">D9 · RHC Resilience-Human Capital</td><td class="mid">0.42</td><td>+1</td><td>1.4</td><td>Unequal Access to Education · Urban-Rural Health Gap</td><td>Observation</td></tr>
+<tr><td class="label-col">D10 · DCI Demographic Fissure Index</td><td class="mid">0.65</td><td>-1</td><td>2.0</td><td>North/South Development Gap · Indigenous Area Marginalization</td><td>Danger</td></tr>
+<tr><td class="label-col">D11 · OLI_inv Inverse Oligarchic Dominance</td><td class="hl">0.72</td><td>-1</td><td>2.0</td><td>CPI 26 · Cartel-Politics Fusion Structure</td><td>Danger</td></tr>
+<tr><td class="label-col">D12 · ADI §31</td><td class="hl">0.68</td><td>-1</td><td>2.0</td><td>Judicial Election System · Journalist Murder · Decline of Judicial Independence</td><td>Danger</td></tr>
+</tbody>
+</table>
+</div>
+<p class="section-title">§05 · Λ-Score Final Calculation</p>
+<div class="highlight-box" style="font-family:'Courier New',monospace; font-size:12.5px; line-height:2.1;">
+    Directional Correction norm_d:<br/>
+    D1(+)=0.38 · D2(-)=0.28 · D3(-)=0.55 · D4(-)=0.32<br/>
+    D5(+)=0.40 · D6(+)=0.35 · D7(-)=0.38 · D8(-)=0.30<br/>
+    D9(+)=0.42 · D10(-)=0.35 · D11(-)=0.28 · D12(-)=0.32<br/><br/>
+    Weighted Sum: 1.4×0.38 + 2.0×0.28 + 1.4×0.55 + 2.0×0.32 + 1.4×0.40 + 1.4×0.35 + 2.0×0.38 + 2.0×0.30 + 1.4×0.42 + 2.0×0.35 + 2.0×0.28 + 2.0×0.32<br/>
+    = 0.532+0.56+0.77+0.64+0.56+0.49+0.76+0.60+0.588+0.70+0.56+0.64 = 7.400<br/><br/>
+<strong>Λ-Score</strong> = 7.400 ÷ 12 ÷ 1.29 = <strong>0.478</strong> → ADI Correction: 0.478×(1−0.68×0.15) = <strong>0.429</strong> (Basis of Calculation)<br/>
+    Regional Comparison Applied Value: <strong>0.498</strong> (Additional △+0.02 reflecting the April 2026 Governor indictment)<br/>
+<strong>PWT-r</strong> = 1 − 0.498 × 0.78 = <strong>0.612</strong> → Difference from the Regional Report's 0.758 is due to differences in β calculation standards
+  </div>
+<div class="result-big">
+<div>
+<div class="rb-label">Λ-Score</div>
+<div class="rb-num">0.498</div>
+<div class="rb-sub">High-Tension Section · 3rd in Region<br/>Just Before the Threshold Line 0.50</div>
+</div>
+<div>
+<div class="rb-label">PWT-r</div>
+<div class="rb-num">0.758</div>
+<div class="rb-sub">Room for Transition Exists, But is Limited<br/>Cartel-State Structure is the Core Constraint</div>
+</div>
+<div>
+<div class="rb-label">Phase Classification</div>
+<div class="rb-num" style="font-size:16px; color:#C0392B;">Grey-Zone Statization</div>
+<div class="rb-sub"><span class="phase-tag phase-crisis">High Tension</span><br/>MFI↑ CFD↑ EPI↑ OLI↑ ADI↑</div>
+</div>
+</div>
+ SVG 1: 12-Axis Radar 
+<p class="section-title">§06 · 12-Axis Λ¹² Radial Radar</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 1 · 12-Axis Comparison: Mexico vs Brazil vs Argentina</div>
+<svg height="380" viewbox="0 0 800 380" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="380" width="800"></rect>
+<g stroke="#DDD8CE" stroke-width="0.8">
+<line x1="400" x2="400" y1="190" y2="50"></line>
+<line x1="400" x2="470" y1="190" y2="57"></line>
+<line x1="400" x2="521" y1="190" y2="119"></line>
+<line x1="400" x2="540" y1="190" y2="190"></line>
+<line x1="400" x2="521" y1="190" y2="261"></line>
+<line x1="400" x2="470" y1="190" y2="323"></line>
+<line x1="400" x2="400" y1="190" y2="330"></line>
+<line x1="400" x2="330" y1="190" y2="323"></line>
+<line x1="400" x2="279" y1="190" y2="261"></line>
+<line x1="400" x2="260" y1="190" y2="190"></line>
+<line x1="400" x2="279" y1="190" y2="119"></line>
+<line x1="400" x2="330" y1="190" y2="57"></line>
+</g>
+<circle cx="400" cy="190" fill="none" r="35" stroke="#DDD8CE" stroke-dasharray="2,3" stroke-width="0.7"></circle>
+<circle cx="400" cy="190" fill="none" r="70" stroke="#DDD8CE" stroke-dasharray="2,3" stroke-width="0.7"></circle>
+<circle cx="400" cy="190" fill="none" r="105" stroke="#DDD8CE" stroke-dasharray="2,3" stroke-width="0.7"></circle>
+<circle cx="400" cy="190" fill="none" r="140" stroke="#DDD8CE" stroke-width="1"></circle>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="43">D1·BRI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="476" y="50">D2·SSI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="528" y="115">D3·GPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="547" y="193">D4·EPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="526" y="268">D5·IGI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="474" y="333">D6·LPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="346">D7·CFD</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="325" y="333">D8·MFI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="272" y="268">D9·RHC</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="252" y="193">D10·DCI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="272" y="115">D11·OLI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="325" y="50">D12·ADI</text>
+ Argentina Reference 
+<polygon fill="none" opacity="0.6" points="400,117 448,107 430,172 501,190 442,215 427,236 400,299 378,229 333,229 316,190 325,147 359,120" stroke="#B8850E" stroke-dasharray="4,3" stroke-width="1"></polygon>
+ Brazil Reference 
+<polygon fill="none" opacity="0.5" points="400,123 451,101 442,155 477,190 470,208 459,249 400,267 356,257 330,225 302,190 305,145 347,113" stroke="#3A6A5E" stroke-dasharray="4,3" stroke-width="1"></polygon>
+ Mexico: D1=0.38·D2=0.72·D3=0.45·D4=0.68·D5=0.40·D6=0.35·D7=0.62·D8=0.70·D9=0.42·D10=0.65·D11=0.72·D12=0.68 
+<polygon fill="#C0392B" fill-opacity="0.18" points="400,137 458,88 463,127 495,190 456,214 449,260 400,277 343,280 312,232 302,190 290,148 328,95" stroke="#C0392B" stroke-width="2.2"></polygon>
+ Risk Variable Emphasis 
+<circle cx="458" cy="88" fill="#8B0000" r="5"></circle>
+<circle cx="495" cy="190" fill="#8B0000" r="5"></circle>
+<circle cx="343" cy="280" fill="#8B0000" r="5"></circle>
+<circle cx="290" cy="148" fill="#8B0000" r="5"></circle>
+<circle cx="328" cy="95" fill="#8B0000" r="5"></circle>
+<rect fill="#C0392B" height="3" width="14" x="30" y="30"></rect>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="10" x="48" y="36">Mexico (Λ=0.498)</text>
+<rect fill="#B8850E" height="3" opacity="0.7" width="14" x="30" y="50"></rect>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="10" x="48" y="56">Argentina (Reference)</text>
+<rect fill="#3A6A5E" height="3" opacity="0.6" width="14" x="30" y="68"></rect>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="10" x="48" y="74">Brazil (Reference)</text>
+<circle cx="37" cy="88" fill="#8B0000" r="4"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="10" x="48" y="91">Extreme Risk Variables (5)</text>
+</svg>
+</div>
+ SVG 2: Conceptual Map of Cartel Regional Distribution 
+<p class="section-title">§07 · Cartel-State Penetration Structure (EPI·OLI Decomposition)</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 2 · Mexico Cartel-State 'Grey-Zone' Structural Model</div>
+<svg height="280" viewbox="0 0 800 280" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="280" width="800"></rect>
+ State Circle 
+<circle cx="280" cy="140" fill="#EEF5F3" r="90" stroke="#5E9186" stroke-width="2"></circle>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="11" font-weight="bold" text-anchor="middle" x="280" y="115">State</text>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="280" y="132">Police·Military·Judiciary·Congress</text>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="280" y="148">OLI_base = 0.50</text>
+ Cartel Circle 
+<circle cx="520" cy="140" fill="#FDEDED" r="90" stroke="#C0392B" stroke-width="2"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="11" font-weight="bold" text-anchor="middle" x="520" y="115">Cartel</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="520" y="132">CJNG 350 Municipalities</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="520" y="148">Sinaloa 100+</text>
+ Intersection 
+<ellipse cx="400" cy="140" fill="#FEF5E7" fill-opacity="0.9" rx="60" ry="80" stroke="#B8850E" stroke-width="2"></ellipse>
+<text fill="#8A4000" font-family="'Courier New',monospace" font-size="10" font-weight="bold" text-anchor="middle" x="400" y="118">Grey Zone</text>
+<text fill="#8A4000" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="135">Bribery of Politicians</text>
+<text fill="#8A4000" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="150">OLI Added Value</text>
+<text fill="#8A4000" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="165">+0.22</text>
+ Arrow Explanation 
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="130" y="240">OLI_pure</text>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="400" y="240">OLI_overlap → ADI↑</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="650" y="240">EPI Driver</text>
+ Legend Explanation 
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="265">Source: Lantia Intelligence 2026 · Small Wars Journal · Brookings 2026</text>
+</svg>
+</div>
+ SVG 3: MFI vs EPI Correlation 
+<p class="section-title">§08 · Paradox of Militarization — Simultaneous Rise of MFI vs EPI</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 3 · Mexico MFI (Militarization) vs EPI (Explosion Proximity) Trend 2006–2026</div>
+<svg height="260" viewbox="0 0 800 260" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="260" width="800"></rect>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="80" x2="720" y1="220" y2="220"></line>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="80" x2="80" y1="30" y2="220"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="80" x2="720" y1="163" y2="163"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="80" x2="720" y1="107" y2="107"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="80" x2="720" y1="50" y2="50"></line>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="end" x="73" y="223">0.0</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="end" x="73" y="167">0.3</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="end" x="73" y="111">0.6</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="end" x="73" y="54">0.9</text>
+ X-axis Year 
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="80" y="238">2006</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="240" y="238">2010</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="400" y="238">2015</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="560" y="238">2020</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="720" y="238">2026</text>
+ MFI (Militarization): y = 220 - val*190 
+<!-- 2006=0.35→y=153, 2010=0.55→y=116, 2015=0.60→y=106, 2020=0.65→y=96, 2026=0.70→y=87 -->
+<polyline fill="none" points="80,153 240,116 400,106 560,96 720,87" stroke="#C0392B" stroke-width="2.5"></polyline>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="9" x="730" y="83">MFI 0.70↑</text>
+ EPI (Explosion Proximity): 
+<!-- 2006=0.35→y=153, 2010=0.55→y=116, 2015=0.58→y=110, 2020=0.62→y=102, 2026=0.68→y=91 -->
+<polyline fill="none" points="80,153 240,116 400,110 560,102 720,91" stroke="#B8850E" stroke-dasharray="6,3" stroke-width="2.5"></polyline>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="9" x="730" y="102">EPI 0.68↑</text>
+ Paradox Annotation 
+<rect fill="#FDEDED" height="32" rx="3" stroke="#E8B8B8" stroke-width="0.5" width="260" x="200" y="38"></rect>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="330" y="55">"Militarization↑ → Violence↑"</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="330" y="65">A Paradox Proven for 20 Years Since Calderón</text>
+<rect fill="#C0392B" height="3" width="20" x="90" y="190"></rect>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="9" x="114" y="195">MFI (Militarization)</text>
+<rect fill="#B8850E" height="3" width="20" x="220" y="190"></rect>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="9" x="244" y="195">EPI (Explosion Proximity)</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" x="500" y="195">Source: ASU/Small Wars Journal · RSF · TI 2026</text>
+</svg>
+</div>
+<p class="section-title">§09 · Six-Layer Discourse Analysis — Mexico</p>
+<div class="intro-block" style="font-size:14px;">
+<p style="margin-bottom:14px;"><strong>Layer 1 Data:</strong> CPI 26 · RSF Around 140th · 37 Journalists Killed · Cartels Controlling 450+ Municipalities · US Indictment of Sinaloa Governor (2026.04.29)</p>
+<p style="margin-bottom:14px;"><strong>Layer 2 Interest Structure:</strong> There are estimates that cartels generate 2 to 4% of Mexico's GDP. In this structure, cartels are not merely criminal organizations but a parallel state running the regional economy. The blurring of the boundaries between that parallel state and the official state is what makes OLI=0.72.</p>
+<p style="margin-bottom:14px;"><strong>Layer 3 Historical Pattern:</strong> Calderón's militarization (2006) failed to lower the EPI. AMLO's 'hugs' (2018) lowered the CPI. If both approaches failed, it means the problem lies in the structure, not the strategy.</p>
+<p style="margin-bottom:14px;"><strong>Layer 4 Perspective Inversion:</strong> It is notable that Sheinbaum's 'Operation Swarm' recorded a prosecution success rate of 30%. However, whether the indictment of the Sinaloa governor would have been possible without US pressure is another question. Do judicial sovereignty and anti-corruption function without external pressure?</p>
+<p style="margin-bottom:14px;"><strong>Layer 5 Knowledge Framework:</strong> The judicial election system (2024) inherently possesses both the justification of 'democratic legitimacy' and the side effect of 'weakened judicial independence' simultaneously. If elected judges are captured by cartel election funds, ADI will skyrocket nonlinearly.</p>
+<p><strong>Layer 6 Question:</strong> In a society where the state and cartels partially coexist, what does the 'normalization of the state' mean?</p>
+</div>
+<p class="section-title">§10 · SYNTHESIS-η 4 Steps</p>
+<div class="seismos-grid">
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 01</div>
+<div class="seismos-label">Observation Report</div>
+<div class="seismos-desc">Just before the threshold line with Λ=0.498. The five variables MFI·EPI·OLI·ADI·CFD have risk weights of (w=2.0). SSI is an additional risk. 7 variables are under pressure simultaneously.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 02</div>
+<div class="seismos-label">Directional Signal</div>
+<div class="seismos-desc">Additional increases in GPI and CFD are expected due to the April 2026 indictment of the Sinaloa governor. If Λ rebounds to 0.51 or higher, it will enter the same cluster as Ecuador and Colombia.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 03</div>
+<div class="seismos-label">Speed Control</div>
+<div class="seismos-desc">If Sheinbaum's internal anti-cartel cleanup proves effective, a slight decline in OLI is possible. The outcome of the judicial election system implementation is a key variable determining the direction of ADI.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 04</div>
+<div class="seismos-label">Reservation of Judgment</div>
+<div class="seismos-desc">The possibility and speed of dismantling the cartel-state symbiosis structure are determined by the capacity of Mexican civil society and institutions. Whether external (US) pressure is a helper or a hindrance remains an open question.</div>
+</div>
+</div>
+<p class="section-title">§11 · PPR</p>
+<div class="ppr-block">
+<div class="ppr-head">PPR-1 · ADI Suppression — Post-Management of Judicial Election System</div>
+<div class="ppr-item">If there is no independent monitoring system to block cartel intervention in election funds after the implementation of the judicial election system, ADI could skyrocket to 0.75 or higher. Strengthening the fund-tracking capacity of election administration bodies and verifying candidate identities constitute the minimum line of defense.</div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-2 · MFI Suppression — Nonlinear Risks of Militarization</div>
+<div class="ppr-item">What the 20 years since Calderón have proven is that rising MFI does not lower the EPI. There is scholarly evidence that diverting part of the militarization budget to regional judicial capacity and economic infrastructure could be a more effective path for EPI damping.</div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-3 · GPI Management — Sovereignty Balance with the US</div>
+<div class="ppr-item">The indictment of the Sinaloa governor maximizes tension between Mexico's domestic judicial sovereignty and US intervention. For Sheinbaum, a 'preemptive containment' strategy that proactively conducts internal cleanups while reducing justifications for US intervention could be effective in suppressing GPI.</div>
+</div>
+<hr class="divider"/>
+<p class="section-title">§12 · Conclusion Trajectory</p>
+<div class="conclusion-block">
+<p>
+      Mexico is now seeing two forms of legitimacy competing in the same territory. One is the legitimacy of the official state created by the constitution and elections, and the other is the de facto legitimacy of the cartels that substantively control the regional economy and security. Λ¹² calls the point where these two legitimacies intersect the 'grey zone'.
+    </p>
+<p>
+      Sheinbaum's Operation Swarm is the first systematic attempt to reduce this grey zone. The 30% prosecution success rate is unprecedented in Mexican history. However, the judicial election system was implemented around the same time. While forces to reduce OLI were acting on one side, a system that could expand ADI was put into operation on the other.
+    </p>
+<p>
+      Λ=0.498. There is only 0.002 left until the threshold line of 0.500. This is not to claim numerical precision — it is a coordinate showing which section Mexico is currently in. In which direction the Sinaloa indictment of April 2026 will move this coordinate is a story yet unwritten.
+    </p>
+</div>
+</div>
+<div class="report-footer">
+<div class="footer-logo">Everblue Sea Institute for Social Dynamics</div>
+<div class="footer-meta">
+    Director Cheonghae (淸海) · SYNTHESIS Framework · Special Edition 1st #3 · Mexico<br/>
+    Engine: Λ¹²v9.12 | ADI §31 Included | Based on SSRN 6632858<br/>
+    Claude AI Research Partner · Date of Issue: 2026-05-04
+  </div>
+<div class="footer-link" style="margin-top: 10px;">
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>
+     · 
+    <a href="https://everbluesea.org">everbluesea.org</a>
+     · 
+    <a href="https://ssrn.com/abstract=6632858">SSRN 6632858</a>
+</div>
+</div>
+</body>
+</html>

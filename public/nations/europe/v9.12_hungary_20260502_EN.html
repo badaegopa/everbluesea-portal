@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hungary Special Edition — Λ¹²v9.12 | Everblue Sea Institute for Social Dynamics</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F5F3EE; color:#2C2C2C; font-family:Georgia,'Times New Roman',serif; line-height:1.75; }
+.header { background:linear-gradient(135deg,#8B2A00 0%,#CC4400 50%,#6B1A00 100%); padding:48px 40px 36px; position:relative; overflow:hidden; }
+.header::before { content:'法'; position:absolute; right:40px; top:10px; font-size:160px; color:rgba(255,255,255,0.06); font-family:Georgia,serif; font-weight:bold; line-height:1; }
+.header-badge { display:inline-block; background:rgba(255,255,255,0.18); color:#fff; font-family:'Courier New',monospace; font-size:11px; padding:4px 12px; border-radius:2px; letter-spacing:1.5px; margin-bottom:16px; }
+.header h1 { color:#fff; font-size:30px; font-weight:normal; margin-bottom:6px; }
+.header h2 { color:rgba(255,255,255,0.85); font-size:15px; font-weight:normal; }
+.header-meta { margin-top:20px; color:rgba(255,255,255,0.65); font-family:'Courier New',monospace; font-size:11px; letter-spacing:1px; }
+.engine-box { background:#fff; border-left:4px solid #B8850E; padding:14px 20px; margin:24px 40px; font-family:'Courier New',monospace; font-size:12px; color:#595959; }
+.engine-box strong { color:#B8850E; }
+.section { padding:32px 40px; border-bottom:1px solid #DDD8CE; }
+.section-title { font-size:13px; font-family:'Courier New',monospace; color:#8B2A00; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
+.section h3 { font-size:20px; color:#1F1F1F; font-weight:normal; margin-bottom:14px; }
+.section p { font-size:14px; color:#3A3A3A; margin-bottom:10px; text-align:justify; }
+.minjung-box { background:#FFF5F0; border-left:4px solid #CC4400; padding:20px 24px; margin:14px 0; border-radius:2px; }
+.minjung-box p { font-size:14px; color:#3A1A00; line-height:1.85; margin-bottom:8px; }
+.term-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+.term-item { background:#fff; border:1px solid #DDD8CE; padding:12px 14px; border-radius:2px; }
+.term-item .term-key { font-family:'Courier New',monospace; font-size:12px; color:#8B2A00; font-weight:bold; margin-bottom:4px; }
+.term-item .term-val { font-size:12px; color:#444; }
+.data-table-wrap { margin:16px 0; overflow-x:auto; }
+.data-table { width:100%; border-collapse:collapse; font-size:13px; }
+.data-table th { background:#8B2A00; color:#fff; padding:10px 14px; text-align:center; font-family:'Courier New',monospace; font-size:11px; font-weight:normal; }
+.data-table th:first-child { text-align:left; }
+.data-table td { padding:9px 14px; border-bottom:1px solid #EEE; text-align:center; font-family:'Courier New',monospace; font-size:12px; }
+.data-table td:first-child { text-align:left; font-family:Georgia,serif; font-size:13px; }
+.data-table tr:nth-child(even) td { background:#F5F3EE; }
+.formula-box { background:#fff; border:1px solid #DDD8CE; border-top:3px solid #8B2A00; padding:20px 24px; margin:16px 0; }
+.formula-box .formula-title { font-family:'Courier New',monospace; font-size:11px; color:#8B2A00; letter-spacing:2px; margin-bottom:12px; }
+.formula-box .formula-eq { font-family:'Courier New',monospace; font-size:13px; color:#1F1F1F; background:#F5F3EE; padding:12px 16px; border-radius:2px; margin:8px 0; line-height:1.6; }
+.formula-box .formula-note { font-size:12px; color:#666; margin-top:8px; }
+.svg-wrap { text-align:center; margin:16px 0; }
+.obs-note { background:#FFF5F0; border:1px solid #E5C5B5; border-radius:3px; padding:14px 18px; margin:14px 0; font-size:13px; color:#3A1A00; line-height:1.7; }
+.obs-note::before { content:'◈ 관찰 신호'; display:block; font-family:'Courier New',monospace; font-size:10px; color:#8B2A00; letter-spacing:1px; margin-bottom:6px; }
+.error-box { background:#FAEEDA; border-left:3px solid #B8850E; padding:12px 16px; margin:14px 0; font-size:12px; color:#633806; font-family:'Courier New',monospace; }
+.ppr-card { background:#fff; border:1px solid #DDD8CE; border-radius:3px; overflow:hidden; margin-bottom:14px; }
+.ppr-head { background:#8B2A00; color:#fff; font-size:12px; font-family:'Courier New',monospace; padding:8px 14px; letter-spacing:1px; }
+.ppr-body { padding:14px; }
+.ppr-row { display:flex; justify-content:space-between; font-size:12px; padding:4px 0; border-bottom:1px solid #F0EDE8; }
+.ppr-row:last-child { border-bottom:none; }
+.ppr-key { color:#666; }
+.ppr-val { font-family:'Courier New',monospace; font-weight:bold; color:#8B2A00; }
+.discourse-layer { display:grid; grid-template-columns:130px 1fr; gap:0; margin-bottom:2px; }
+.layer-num { background:#8B2A00; color:#fff; font-family:'Courier New',monospace; font-size:11px; padding:12px 14px; display:flex; align-items:center; }
+.layer-content { background:#fff; border:1px solid #DDD8CE; border-left:none; padding:12px 18px; font-size:13px; color:#2C2C2C; line-height:1.7; }
+.layer-content strong { color:#8B2A00; }
+.signal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+.signal-card { background:#fff; border:1px solid #DDD8CE; padding:14px; border-radius:2px; text-align:center; }
+.signal-card .sig-label { font-size:11px; color:#888; font-family:'Courier New',monospace; margin-bottom:4px; }
+.signal-card .sig-val { font-size:16px; font-family:'Courier New',monospace; font-weight:bold; color:#8B2A00; }
+.signal-card .sig-note { font-size:10px; color:#666; margin-top:4px; }
+.timeline-box { background:#fff; border:1px solid #DDD8CE; padding:16px 20px; margin:14px 0; }
+.tl-row { display:grid; grid-template-columns:80px 1fr; gap:12px; padding:6px 0; border-bottom:1px solid #F5F3EE; font-size:12px; }
+.tl-row:last-child { border-bottom:none; }
+.tl-year { font-family:'Courier New',monospace; color:#8B2A00; font-weight:bold; }
+.tl-event { color:#444; }
+.conclusion { background:#FFF5F0; border-left:4px solid #CC4400; padding:24px 32px; margin:20px 40px; border-radius:2px; }
+.conclusion p { font-size:15px; line-height:1.95; color:#1F1F1F; text-align:justify; margin-bottom:12px; }
+.conclusion p:last-child { margin-bottom:0; }
+.series-box { background:#fff; border:1px solid #DDD8CE; margin:20px 40px; padding:20px; }
+.series-title { font-family:'Courier New',monospace; font-size:11px; color:#8B2A00; letter-spacing:2px; margin-bottom:12px; }
+.series-item { display:flex; gap:12px; padding:6px 0; border-bottom:1px solid #F0EDE8; font-size:12px; }
+.series-item:last-child { border-bottom:none; }
+.series-num { font-family:'Courier New',monospace; color:#B8850E; min-width:40px; }
+.series-status { margin-left:auto; font-family:'Courier New',monospace; font-size:10px; padding:2px 8px; border-radius:2px; }
+.status-done { background:#E8F4F0; color:#27500A; }
+.status-now { background:#FFF5F0; color:#8B2A00; }
+.status-plan { background:#F5F3EE; color:#888; }
+.footer { background:#FFF0E8; padding:28px 40px; text-align:center; border-top:1px solid #DDD8CE; }
+.footer p { font-size:12px; color:#8B2A00; margin-bottom:4px; font-family:'Courier New',monospace; }
+.footer a { color:#CC4400; text-decoration:none; }
+.footer .engine-tag { margin-top:10px; font-size:10px; color:#888; letter-spacing:1px; }
+@media(max-width:768px){ .section,.engine-box,.conclusion,.series-box,.footer{padding-left:16px;padding-right:16px;margin-left:0;margin-right:0;} .header{padding:32px 16px 24px;} .term-grid,.signal-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="header">
+<div class="header-badge">HUNGARY STANDALONE · #E-02 · Λ¹²v9.12</div>
+<h1>🇭🇺 Hungary Special Edition</h1>
+<h2>Dismantling Democracy with Democracy as a Tool — Orbán's 15 Years</h2>
+<div class="header-meta">Everblue Sea Institute for Social Dynamics · Based on Λ¹²v9.12 Engine · Date of Issue 2026.05.02</div>
+</div>
+<div class="engine-box">
+<strong>ENGINE:</strong> Λ¹²v9.12 | Including ADI §31 | Based on SSRN 6632858<br/>
+<strong>Special Notes:</strong> The Only 'Partly Free' Country in the EU / Classified as 'Electoral Authoritarianism' by V-Dem<br/>
+<strong>Calibration Formula:</strong> Λ¹²_corrected = Λ¹²_raw ÷ OLI × (1−TBI×θ) × (1−ADI×γ) × exp(−k×t) | OLI=0.80
+</div>
+<div class="section">
+<div class="section-title">Research Objective</div>
+<h3>This report records the reality of 9.8 million Hungarian people from the observer standpoint.</h3>
+<div class="minjung-box">
+<p>Hungary is a country where a dictator who dismantled democracy still wins democratic elections. Orbán did not stage a coup — he used the parliamentary majority to change the constitution, seize control of the courts, control the media, and redesign electoral rules to his own advantage.</p>
+<p>This is the textbook example of democratic backsliding in the 21st century. Λ¹² reads how this structure works.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§0 · Glossary</div>
+<div class="term-grid">
+<div class="term-item"><div class="term-key">Orbán (Viktor Orbán)</div><div class="term-val">Serving as Prime Minister since 2010. Classified as 'Electoral Authoritarianism' by V-Dem. Publicly declared himself the builder of "illiberal democracy".</div></div>
+<div class="term-item"><div class="term-key">Fidesz</div><div class="term-val">Orbán's ruling party. Four consecutive terms in office from 2010 to 2022. Capable of unilaterally amending the constitution with a two-thirds majority in parliament. Currently completed the 15th constitutional amendment.</div></div>
+<div class="term-item"><div class="term-key">Electoral Authoritarianism</div><div class="term-val">A system that holds elections but is not fair. Pre-determines results through gerrymandering, media dominance, and opposition restrictions. Defined by V-Dem.</div></div>
+<div class="term-item"><div class="term-key">Defense of Sovereignty Act (2023)</div><div class="term-val">Authority to investigate individuals and organizations suspected of foreign influence. Used as a tool to suppress independent media, NGOs, and opposition parties. Condemned by the EU as an illiberal law.</div></div>
+<div class="term-item"><div class="term-key">Tisza Party</div><div class="term-val">Founded in 2024 by Péter Magyar, a former Fidesz insider. Won 30% of the vote in the EU elections. The first substantial opposition challenger to the Orbán regime.</div></div>
+<div class="term-item"><div class="term-key">EU Sanctions and Funding Freeze</div><div class="term-val">In 2025.01, the EU froze $1 billion in funding due to violations of the rule of law. An unprecedented action in EU history. Hungary's EU subsidies account for 3–4% of its GDP.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅰ · Observer Standpoint</div>
+<h3>An 'Illiberal Democracy' Within the EU — 15-Year Dismantling Timeline</h3>
+<p>At the time of Orbán's return to power in 2010, Hungary was a 'Free Democracy' according to Freedom House. 15 years later, Hungary is the only country among the 27 EU member states classified as 'Partly Free'. V-Dem classifies it as 'electoral authoritarianism', the European Parliament as 'electoral authoritarianism', and Freedom House as a 'hybrid regime'.</p>
+<div class="signal-grid">
+<div class="signal-card"><div class="sig-label">Only Partly Free in the EU</div><div class="sig-val">57/100</div><div class="sig-note">Freedom House 2025</div></div>
+<div class="signal-card"><div class="sig-label">EU Funding Freeze (2025.01)</div><div class="sig-val">$1 Billion</div><div class="sig-note">Rule of Law Violation / First Time in EU History</div></div>
+<div class="signal-card"><div class="sig-label">Number of Constitutional Amendments</div><div class="sig-val">15 Times</div><div class="sig-note">Fidesz Alone / 2011–2025</div></div>
+</div>
+<div class="timeline-box">
+<div class="tl-row"><div class="tl-year">2010</div><div class="tl-event">Fidesz Secures 2/3 Majority → Power to Amend the Constitution</div></div>
+<div class="tl-row"><div class="tl-year">2011</div><div class="tl-event">Unilateral Enactment of New Constitution (Basic Law) · Gerrymandering</div></div>
+<div class="tl-row"><div class="tl-year">2014</div><div class="tl-event">Orbán Publicly Declares "Illiberal Democracy" / 3 Consecutive Terms</div></div>
+<div class="tl-row"><div class="tl-year">2019</div><div class="tl-event">First Classified as 'Electoral Authoritarianism' by V-Dem / First in the EU</div></div>
+<div class="tl-row"><div class="tl-year">2022</div><div class="tl-event">4 Consecutive Terms / European Parliament Resolution on 'Electoral Authoritarianism'</div></div>
+<div class="tl-row"><div class="tl-year">2024</div><div class="tl-event">Tisza Wins 30% in EU Election / Cracks Begin to Form in Orbán Regime</div></div>
+<div class="tl-row"><div class="tl-year">2025.01</div><div class="tl-event">EU Froze $1 Billion in Funding / Hungary's EU Presidency Concludes</div></div>
+<div class="tl-row"><div class="tl-year">2025.04</div><div class="tl-event">15th Constitutional Amendment / Ban on Pride, Codification of Gender Binary</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅱ · Basic Statistics</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Indicator</th><th>Value</th><th>Remarks</th><th>Source</th></tr>
+<tr><td>Population</td><td>Approx. 9.8 Million</td><td>Declining Trend</td><td>Eurostat</td></tr>
+<tr><td>GDP per capita</td><td>USD ~21,000</td><td>Below EU Average</td><td>IMF 2024</td></tr>
+<tr><td>Freedom House</td><td>57/100 (Partly Free)</td><td>Only in EU</td><td>FH 2025</td></tr>
+<tr><td>V-Dem Democracy</td><td>0.32 (Electoral Authoritarianism)</td><td>0.65 in 2010 → Declined</td><td>V-Dem 2024</td></tr>
+<tr><td>Total Fertility Rate 2024</td><td>1.39</td><td>Downward Trend Continues</td><td>Hungarian Central Statistical Office</td></tr>
+<tr><td>Unemployment Rate 2025.12</td><td>4.4%</td><td>Maintains Low Level</td><td>Cato 2025</td></tr>
+<tr><td>EU Funding Freeze</td><td>$1 Billion</td><td>2025.01 / Rule of Law Violation</td><td>European Commission</td></tr>
+<tr><td>Constitutional Amendment</td><td>15 Times</td><td>Fidesz Alone</td><td>BTI 2026</td></tr>
+</table>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅲ · Basic Coordinates &amp; Formula</div>
+<div class="formula-box">
+<div class="formula-title">ΛSCORE FORMULA — HUNGARY</div>
+<div class="formula-eq">Λ¹²_corrected = Λ¹²_raw ÷ 0.80 × (1 − 0.420 × 0.70) × (1 − 0.352 × 0.35) × exp(−k×t)</div>
+<div class="formula-eq">TBI Calibration Term: (1 − 0.420 × 0.70) = (1 − 0.294) = 0.706</div>
+<div class="formula-eq">ADI Calibration Term: (1 − 0.352 × 0.35) = (1 − 0.123) = 0.877 [Transitional]</div>
+<div class="formula-note">※ Hungary's core variable is not TBI, but IGI (Institutional Oppression Index). Democratic backsliding through 'dismantling of legal institutions' rather than violent trauma — this is what distinguishes Hungary from Cambodia and Bosnia. CFD (Cultural Fault-line) is a domestic divide compounded by anti-immigrant sentiment + LGBTQ suppression + Soros conspiracy theories.</div>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Variable</th><th>Value</th><th>Classification</th><th>Remarks</th></tr>
+<tr><td>LPI</td><td>0.68</td><td>Notice</td><td>Lower EU Tier / Wage Stagnation</td></tr>
+<tr><td>GPI</td><td>~25th</td><td>Stable</td><td>Low Military Threat</td></tr>
+<tr><td>CPI</td><td>42/100</td><td>Notice</td><td>Lowest-tier Corruption in the EU</td></tr>
+<tr><td>CFD</td><td>0.68</td><td>Danger</td><td>Immigration, LGBTQ, and Ideological Division</td></tr>
+<tr><td>DCI</td><td>0.55</td><td>Notice</td><td>Outflow of Youth Abroad</td></tr>
+<tr><td>MFI</td><td>~72nd</td><td>Notice</td><td>State Media Dominance</td></tr>
+<tr><td>RHC</td><td>0.520</td><td>Notice</td><td>EU-Hungary Conflict</td></tr>
+<tr><td>IGI</td><td>0.82</td><td>Danger</td><td>15 Years of Accumulated Institutional Dismantling</td></tr>
+<tr><td>TBI</td><td>0.420</td><td>Notice</td><td>Communist Regime Trauma</td></tr>
+<tr><td>ADI</td><td>0.352</td><td>Transitional</td><td>Moderate Level</td></tr>
+</table>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅳ · Phase Quadrant · Democratic Backsliding Path</div>
+<div class="svg-wrap">
+<svg height="420" viewbox="0 0 520 420" width="520" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="420" width="520"></rect>
+<rect fill="#EBF4F0" height="170" opacity="0.5" width="210" x="50" y="30"></rect>
+<rect fill="#FFF3CD" height="170" opacity="0.4" width="210" x="260" y="30"></rect>
+<rect fill="#FAEEDA" height="170" opacity="0.4" width="210" x="50" y="200"></rect>
+<rect fill="#FCEBEB" height="170" opacity="0.4" width="210" x="260" y="200"></rect>
+<line stroke="#555" stroke-width="1.5" x1="50" x2="470" y1="200" y2="200"></line>
+<line stroke="#555" stroke-width="1.5" x1="260" x2="260" y1="30" y2="370"></line>
+<text fill="#3A6A5E" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="18">High Openness</text>
+<text fill="#888" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="388">Low Openness</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,36,204)" x="36" y="204">Unstable</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,484,204)" x="484" y="204">Stable</text>
+ 2010 Starting Point 
+<circle cx="148" cy="88" fill="#EBF4F0" r="8" stroke="#5E9186" stroke-width="1.5"></circle>
+<text fill="#5E9186" font-size="8" text-anchor="middle" x="148" y="86">2010</text>
+ Trajectory Arrow 
+<defs><marker id="orbanarr" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#8B2A00"></path></marker></defs>
+<path d="M148,92 Q200,130 260,148 Q310,162 355,170" fill="none" marker-end="url(#orbanarr)" stroke="#8B2A00" stroke-dasharray="5,3" stroke-width="1.5"></path>
+<text fill="#8B2A00" font-family="Courier New" font-size="9" x="220" y="148">15-Year Backsliding Path</text>
+ Current Position 
+<circle cx="360" cy="172" fill="#FFF5F0" r="24" stroke="#8B2A00" stroke-width="2.5"></circle>
+<text font-size="18" text-anchor="middle" x="360" y="168">🇭🇺</text>
+<text fill="#8B2A00" font-family="Courier New" font-size="11" font-weight="bold" text-anchor="middle" x="360" y="205">Current</text>
+ Tisza Backlash Arrow 
+<defs><marker id="greenarr" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#3A6A5E"></path></marker></defs>
+<line marker-end="url(#greenarr)" stroke="#3A6A5E" stroke-dasharray="3,2" stroke-width="1" x1="340" x2="280" y1="160" y2="130"></line>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" x="270" y="122">Appearance of Tisza</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" x="270" y="134">Possibility of Recovery?</text>
+ Comparison 
+<circle cx="148" cy="78" fill="#EEF3FF" r="14" stroke="#1B4F8A" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="148" y="76">🇹🇼</text>
+<text fill="#8B2A00" font-family="Courier New" font-size="9" x="148" y="50">Hungary 2010 Start</text>
+</svg>
+</div>
+<div class="obs-note">Why Hungary's trajectory is significant in Λ¹² — starting from Q1 (Open/Stable), it slowly moved toward Q2 (Open/Unstable) over 15 years. This is not a coup, but a trajectory of gradual authoritarianization through institutional dismantling. Whether the Tisza Party's 30% vote share in the 2024 EU election is an inflection point that can reverse this path is of great interest.</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅴ · 12-Axis Radar</div>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 400 400" width="400" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="400" width="400"></rect>
+<circle cx="200" cy="200" fill="none" r="150" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="112" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="75" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="37" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="200" y1="200" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="275" y1="200" y2="62"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="330" y1="200" y2="118"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="350" y1="200" y2="200"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="330" y1="200" y2="282"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="275" y1="200" y2="338"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="200" y1="200" y2="350"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="125" y1="200" y2="338"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="70" y1="200" y2="282"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="50" y1="200" y2="200"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="70" y1="200" y2="118"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="125" y1="200" y2="62"></line>
+ Hungary — High IGI and CFD, Moderate LPI and GPI 
+<polygon fill="#8B2A00" fill-opacity="0.20" points="200,122 258,108 308,140 316,200 304,262 262,318 200,322 140,318 96,264 82,200 94,142 140,106" stroke="#8B2A00" stroke-width="2"></polygon>
+ Comparison with EU Average 
+<polygon fill="none" opacity="0.5" points="200,108 260,96 310,128 326,200 310,266 268,316 200,326 132,316 90,266 74,200 90,128 132,96" stroke="#5E9186" stroke-dasharray="4,3" stroke-width="1.5"></polygon>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="42">LPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="54">HDI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="108">GPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="362" y="202">CPI</text>
+<text fill="#CC2222" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="294">CFD</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="350">DCI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="366">MFI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="350">RHC</text>
+<text fill="#CC2222" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="294">IGI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="38" y="202">AHI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="108">TBI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="54">ADI</text>
+<rect fill="#8B2A00" fill-opacity="0.35" height="8" stroke="#8B2A00" stroke-width="1" width="10" x="230" y="380"></rect>
+<text fill="#8B2A00" font-family="Courier New" font-size="9" x="244" y="388">Hungary</text>
+<line stroke="#5E9186" stroke-dasharray="4,3" stroke-width="1.5" x1="296" x2="314" y1="384" y2="384"></line>
+<text fill="#5E9186" font-family="Courier New" font-size="9" x="318" y="388">EU Average</text>
+</svg>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅵ · PPR — 5 Structural Blocks</div>
+<div class="ppr-card"><div class="ppr-head">PPR-1 · Politics</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Regime</span><span class="ppr-val">Electoral Authoritarianism / Partly Free 57</span></div>
+<div class="ppr-row"><span class="ppr-key">Fidesz</span><span class="ppr-val">4 Consecutive Terms / 15 Unilateral Constitutional Amendments</span></div>
+<div class="ppr-row"><span class="ppr-key">Rise of Tisza</span><span class="ppr-val">30% Vote Share in 2024 EU Election / First Real Challenge</span></div>
+<div class="ppr-row"><span class="ppr-key">Gerrymandering</span><span class="ppr-val">Amended Again in 2024.12 / Disadvantageous for Budapest Opposition</span></div>
+<div class="ppr-row"><span class="ppr-key">Sovereignty Protection Act</span><span class="ppr-val">Enacted in 2023 / Tool for Suppressing NGOs and Media</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-2 · Economy</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">EU Funding Freeze</span><span class="ppr-val">$1 Billion / 2025.01 / Rule of Law Violation</span></div>
+<div class="ppr-row"><span class="ppr-key">Unemployment Rate</span><span class="ppr-val">4.4% (2025.12) / Low Level</span></div>
+<div class="ppr-row"><span class="ppr-key">Dependence on Russia</span><span class="ppr-val">Paks Energy / Stance Against Anti-Russian Sanctions</span></div>
+<div class="ppr-row"><span class="ppr-key">Corruption</span><span class="ppr-val">CPI 42 / Lowest in the EU / Crony Economy</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-3 · Society</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">LGBTQ</span><span class="ppr-val">2025.04 Constitutional Amendment Ban on Pride / Codification of Gender Binary</span></div>
+<div class="ppr-row"><span class="ppr-key">Fertility Rate</span><span class="ppr-val">1.39 (2024) / Decline Despite Pro-family Policies</span></div>
+<div class="ppr-row"><span class="ppr-key">Anti-Immigrant Sentiment</span><span class="ppr-val">State Campaign / Formalization of Soros Conspiracy Theories</span></div>
+<div class="ppr-row"><span class="ppr-key">Media</span><span class="ppr-val">Condemned State TV 'Fidesz Propaganda' / Pressure on Independent Media</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-4 · History</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.420 / Soviet Occupation + Communist Regime Trauma</span></div>
+<div class="ppr-row"><span class="ppr-key">1956 Revolution</span><span class="ppr-val">Soviet Suppression / Orbán's Historical Resource for Anti-communism</span></div>
+<div class="ppr-row"><span class="ppr-key">Treaty of Trianon</span><span class="ppr-val">1920 Loss of Territory / Historical Roots of Nationalism</span></div>
+<div class="ppr-row"><span class="ppr-key">Purging of Communist Regime</span><span class="ppr-key">Incomplete / Historical Background of IGI Rise</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-5 · Geopolitics</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">EU</span><span class="ppr-val">Funding Freeze / Investigation into Rule of Law Violations / Deepening Conflict</span></div>
+<div class="ppr-row"><span class="ppr-key">Russia</span><span class="ppr-val">Orbán-Putin Friendship / Neutralizing Anti-Russian Sanctions</span></div>
+<div class="ppr-row"><span class="ppr-key">NATO</span><span class="ppr-val">Blocking Aid to Ukraine Despite Member State Status</span></div>
+<div class="ppr-row"><span class="ppr-key">China</span><span class="ppr-val">Participation in Belt and Road / Budapest Fudan University Controversy</span></div>
+</div></div>
+</div>
+<div class="section">
+<div class="section-title">Ⅶ · Six-Layer Discourse</div>
+<div style="margin:14px 0;">
+<div class="discourse-layer"><div class="layer-num">1st Layer<br/>Data</div><div class="layer-content"><strong>What is Visible:</strong> V-Dem 0.32 Electoral Authoritarianism. Freedom House 57 Partly Free. CPI 42 Lowest Tier in the EU. IGI 0.82. 15 Constitutional Amendments. EU $1 Billion Frozen. Unemployment Rate 4.4%. Two sets of numbers coexist simultaneously — economic indicators are not bad, but democratic indicators are the lowest in the EU.</div></div>
+<div class="discourse-layer"><div class="layer-num">2nd Layer<br/>Interests</div><div class="layer-content"><strong>Who Benefits:</strong> The Fidesz elite benefits from a structure that redistributes EU subsidies to crony enterprises. Orbán maintains political mobilization through anti-immigrant, anti-Soros, and anti-LGBTQ campaigns. Russia gains leverage to neutralize EU sanctions through Hungary. Energy companies dependent on Russian gas benefit from opposing anti-Russian sanctions.</div></div>
+<div class="discourse-layer"><div class="layer-num">3rd Layer<br/>Historical Patterns</div><div class="layer-content"><strong>Has It Happened Before:</strong> Orbán's anti-communism uses the historical trauma of the 1956 Revolution and the Soviet occupation as a resource. The territorial loss of the Treaty of Trianon (1920) is the historical root of Hungarian nationalism. Without a complete purge of the communist regime, the public's familiarity with authoritarian leaders remained. Orbán read this precisely.</div></div>
+<div class="discourse-layer"><div class="layer-num">4th Layer<br/>Perspective Inversion</div><div class="layer-content"><strong>Looking at It the Other Way:</strong> That Orbán has won elections for 15 years is not simply due to rigged elections. A portion of the Hungarian public actually wanted Orbán — due to the threat of immigration, dissatisfaction with EU bureaucracy, and economic stability. However, Tisza's 30% vote share in 2024 shows that this choice is changing. Can the Hungarian people reverse it themselves?</div></div>
+<div class="discourse-layer"><div class="layer-num">5th Layer<br/>Frame</div><div class="layer-content"><strong>Λ¹² Topological Diagnosis:</strong> Hungary's IGI of 0.82 is achieved through institutional dismantling rather than violent suppression. Why this is more dangerous — violent suppression generates resistance, but institutional dismantling eliminates the means of resistance itself. However, the emergence of Tisza in 2024 signals that 'resistance is still possible within the institutions.' The 2026 parliamentary election is the true threshold.</div></div>
+<div class="discourse-layer"><div class="layer-num" style="background:#3A6A5E;">6th Layer<br/>Suspension of Judgment</div><div class="layer-content" style="background:#E8F4F0;"><strong>This layer belongs to the 9.8 million Hungarian people.</strong> Can it still be reversed within the system, or has it already gone too far — the 2026 election will provide the answer.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅷ · Conclusion Trajectory</div>
+<div class="conclusion">
+<p>Hungary is the textbook example of dismantling democracy in the 21st century. Not a single shot was fired. They used the law. They used parliament. They used elections. And they dismantled democracy.</p>
+<p>What IGI 0.82 says — when institutions are dismantled, the means of resistance also disappear. The courts were seized, the media was controlled, and electoral districts were gerrymandered. Yet, the Tisza Party won 30% in the 2024 EU election. People still vote. Even though institutions have been dismantled, the people have not given up yet.</p>
+<p>The 2026 parliamentary election. In districts designed by Orbán, alongside media controlled by Orbán, Tisza will fight. Can one confront with democracy the person who dismantled democracy using democracy as a tool — that is the question Hungary poses to us.</p>
+</div>
+</div>
+<div class="section">
+<div class="series-box">
+<div class="series-title">Special Edition Series — Λ¹²v9.12</div>
+<div class="series-item"><span class="series-num">C-01</span><span>Cambodia</span><span class="series-status status-done">Complete</span></div>
+<div class="series-item"><span class="series-num">E-01</span><span>Bosnia</span><span class="series-status status-done">Complete</span></div>
+<div class="series-item"><span class="series-num">E-02</span><span>Hungary (Current)</span><span class="series-status status-now">Complete</span></div>
+<div class="series-item"><span class="series-num">E-03</span><span>Greece Special Edition v1.0</span><span class="series-status status-plan">Upcoming</span></div>
+<div class="series-item"><span class="series-num">E-04</span><span>UK Special Edition v1.0</span><span class="series-status status-plan">Upcoming</span></div>
+</div>
+</div>
+<div class="footer">
+<p>Everblue Sea Institute for Social Dynamics</p>
+<p>Director Cheonghae (淸海) · Claude (Anthropic) Research Partner</p>
+<p><a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · <a href="https://everbluesea.org">everbluesea.org</a> · contact@everbluesea.org</p>
+<div class="engine-tag">Engine: Λ¹²v9.12 | ADI §31 | SSRN 6632858 | hungary_lambda12_v912_20260502.html</div>
+</div>
+</body>
+</html>

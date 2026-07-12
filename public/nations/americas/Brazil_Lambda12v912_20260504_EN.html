@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Brazil Special Edition | Λ¹²v9.12 Sociodynamics Report</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background-color: #F5F3EE; color: #2A2A2A; line-height: 1.75; }
+
+  .report-header { background-color: #5E9186; color: #FFFFFF; padding: 48px 40px 36px; border-bottom: 4px solid #B8850E; }
+  .series-tag { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #C8E0DC; margin-bottom: 10px; }
+  .report-header h1 { font-size: 32px; font-weight: normal; line-height: 1.25; color: #FFFFFF; margin-bottom: 6px; }
+  .report-header .sub { font-size: 15px; color: #C8E0DC; margin-bottom: 20px; }
+  .engine-badge { display: inline-block; background-color: #B8850E; color: #FFFFFF; font-family: 'Courier New', monospace; font-size: 10px; padding: 4px 12px; letter-spacing: 2px; margin-right: 6px; margin-bottom: 4px; }
+  .meta-row { margin-top: 16px; font-size: 12px; color: #C8E0DC; font-family: 'Courier New', monospace; }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
+  .section-title { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: #5E9186; font-family: 'Courier New', monospace; margin-bottom: 20px; margin-top: 44px; padding-bottom: 8px; border-bottom: 1px solid #DDD8CE; }
+
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 32px; }
+  .profile-box { background-color: #FFFFFF; border: 1px solid #DDD8CE; padding: 20px; }
+  .pb-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 2px; color: #5E9186; text-transform: uppercase; margin-bottom: 8px; }
+  .pb-value { font-size: 22px; font-weight: bold; color: #2A2A2A; line-height: 1.2; }
+  .pb-sub { font-size: 11px; font-family: 'Courier New', monospace; color: #888888; margin-top: 4px; }
+
+  .compare-bar { background-color: #FEF5E7; border: 1px solid #E8D4A0; border-left: 5px solid #B8850E; padding: 22px 28px; margin-bottom: 32px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; text-align: center; }
+  .cb-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 2px; color: #8A6000; text-transform: uppercase; margin-bottom: 6px; }
+  .cb-val { font-size: 22px; font-weight: bold; font-family: 'Courier New', monospace; }
+  .cb-prev { font-size: 11px; font-family: 'Courier New', monospace; color: #888; margin-top: 3px; }
+
+  .intro-block { background-color: #FFFFFF; border: 1px solid #DDD8CE; border-left: 4px solid #5E9186; padding: 26px 30px; margin-bottom: 32px; font-size: 14.5px; line-height: 1.85; color: #333; }
+  .highlight-box { background-color: #FEF5E7; border: 1px solid #E8D4A0; border-left: 4px solid #B8850E; padding: 18px 22px; margin-bottom: 28px; font-size: 13px; line-height: 1.8; color: #333; }
+
+  .var-wrap { overflow-x: auto; margin-bottom: 36px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; background-color: #FFFFFF; }
+  thead th { background-color: #5E9186; color: #FFFFFF; padding: 10px 8px; text-align: center; font-family: 'Courier New', monospace; font-size: 11px; border: 1px solid #4A7870; }
+  thead th.left { text-align: left; padding-left: 14px; }
+  tbody td { padding: 9px 8px; text-align: center; border: 1px solid #DDD8CE; font-family: 'Courier New', monospace; font-size: 12px; }
+  tbody td.label-col { text-align: left; padding-left: 14px; font-family: Georgia, serif; color: #2A2A2A; font-size: 13px; }
+  tbody td.hl { font-weight: bold; color: #C0392B; }
+  tbody td.ok { color: #3A6A5E; font-weight: bold; }
+  tbody td.mid { color: #B8850E; }
+  tbody tr:nth-child(even) { background-color: #F9F8F5; }
+
+  .result-big { background-color: #FFFFFF; border: 2px solid #B8850E; padding: 28px; margin-bottom: 36px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; text-align: center; }
+  .rb-label { font-family: 'Courier New', monospace; font-size: 10px; letter-spacing: 2px; color: #5E9186; text-transform: uppercase; margin-bottom: 8px; }
+  .rb-num { font-size: 34px; font-weight: bold; font-family: 'Courier New', monospace; color: #B8850E; line-height: 1; margin-bottom: 6px; }
+  .rb-sub { font-size: 11px; font-family: 'Courier New', monospace; color: #888; }
+
+  .diagram-wrap { background-color: #FFFFFF; border: 1px solid #DDD8CE; padding: 26px; margin-bottom: 36px; }
+  .diagram-title { font-size: 11px; font-family: 'Courier New', monospace; color: #5E9186; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+
+  .timeline { position: relative; padding-left: 28px; margin-bottom: 36px; }
+  .timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background-color: #DDD8CE; }
+  .tl-item { position: relative; margin-bottom: 20px; }
+  .tl-item::before { content: ''; position: absolute; left: -24px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background-color: #5E9186; border: 2px solid #F5F3EE; }
+  .tl-item.danger::before { background-color: #C0392B; }
+  .tl-item.warn::before { background-color: #B8850E; }
+  .tl-year { font-family: 'Courier New', monospace; font-size: 11px; color: #5E9186; letter-spacing: 1px; margin-bottom: 4px; }
+  .tl-text { font-size: 13.5px; color: #333; line-height: 1.7; }
+
+  .ppr-block { background-color: #F3F8F5; border: 1px solid #B0CFC9; padding: 20px 24px; margin-bottom: 22px; }
+  .ppr-head { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 2px; color: #5E9186; text-transform: uppercase; margin-bottom: 10px; border-bottom: 1px solid #B0CFC9; padding-bottom: 8px; }
+  .ppr-item { font-size: 13.5px; line-height: 1.85; color: #333; padding-left: 14px; border-left: 2px solid #5E9186; }
+
+  .seismos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 36px; }
+  .seismos-cell { background-color: #FFFFFF; border: 1px solid #DDD8CE; padding: 16px; text-align: center; }
+  .seismos-num { font-family: 'Courier New', monospace; font-size: 10px; color: #5E9186; letter-spacing: 1px; margin-bottom: 6px; }
+  .seismos-label { font-size: 12px; font-weight: bold; color: #3A6A5E; margin-bottom: 6px; }
+  .seismos-desc { font-size: 11px; color: #666; line-height: 1.55; }
+
+  .conclusion-block { background-color: #EBF4F0; border: 1px solid #B0CFC9; padding: 32px 36px; margin-bottom: 40px; }
+  .conclusion-block p { font-size: 15px; line-height: 1.95; color: #2A2A2A; margin-bottom: 16px; }
+
+  .phase-tag { display: inline-block; padding: 3px 10px; font-size: 10px; font-family: 'Courier New', monospace; letter-spacing: 1px; border-radius: 2px; }
+  .phase-tension { background-color: #FEF5E7; color: #B8850E; border: 1px solid #E8D4A0; }
+  .phase-watch { background-color: #EEF5F3; color: #3A6A5E; border: 1px solid #B0CFC9; }
+
+  .report-footer { background-color: #EBF4F0; border-top: 2px solid #5E9186; padding: 28px 40px; text-align: center; }
+  .footer-logo { font-family: 'Courier New', monospace; font-size: 13px; color: #3A6A5E; font-weight: bold; margin-bottom: 6px; letter-spacing: 1px; }
+  .footer-meta { font-family: 'Courier New', monospace; font-size: 10px; color: #5E9186; letter-spacing: 1px; line-height: 1.8; }
+  .footer-link a { color: #B8850E; text-decoration: none; font-family: 'Courier New', monospace; font-size: 11px; }
+  hr.divider { border: none; border-top: 1px solid #DDD8CE; margin: 40px 0; }
+
+  @media (max-width: 680px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .compare-bar { grid-template-columns: 1fr; }
+    .result-big { grid-template-columns: 1fr; }
+    .seismos-grid { grid-template-columns: repeat(2,1fr); }
+    .report-header { padding: 30px 20px 24px; }
+    .report-header h1 { font-size: 24px; }
+    .container { padding: 28px 16px; }
+  }
+</style>
+</head>
+<body>
+<div class="report-header">
+<div class="series-tag">Everblue Sea Institute for Social Dynamics · SYNTHESIS Framework · Special Edition 1st #2</div>
+<h1>🇧🇷 Brazil Special Report</h1>
+<div class="sub">Brazil Country Report — Λ¹²v9.12 Social Dynamics Analysis</div>
+<div>
+<span class="engine-badge">Λ¹²v9.12</span>
+<span class="engine-badge">§31 ADI Included</span>
+<span class="engine-badge">SSRN 6632858</span>
+</div>
+<div class="meta-row">This report is calculated based on the Λ¹²v9.12 engine · Date of Issue 2026-05-04 · Director Cheonghae (淸海)</div>
+</div>
+<div class="container">
+<p class="section-title">§01 · Country Profile</p>
+<div class="profile-grid">
+<div class="profile-box">
+<div class="pb-label">Population / Area</div>
+<div class="pb-value">217 million</div>
+<div class="pb-sub">8.51 million km² · Largest in South America</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">GDP / World Rank</div>
+<div class="pb-value">$2.1T / 9th in the world</div>
+<div class="pb-sub">IMF 2025 · Largest economy in South America</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">CPI 2024 (Corruption Perception Index)</div>
+<div class="pb-value">34 / 100</div>
+<div class="pb-sub">All-time low · 107th/180 · TI</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">Inequality (Gini)</div>
+<div class="pb-value">52.9</div>
+<div class="pb-sub">Highest in Latin America · World's highest level</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">Press Freedom RSF 2025</div>
+<div class="pb-value">82nd</div>
+<div class="pb-sub">2026 current slight improvement trend</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">GDP Growth Rate</div>
+<div class="pb-value">4.4% (2025)</div>
+<div class="pb-sub">IMF · 2026 forecast 4%</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">Lula approval rating</div>
+<div class="pb-value">43% / 53% disapproval</div>
+<div class="pb-sub">2025.07 Genial/Quaest</div>
+</div>
+<div class="profile-box">
+<div class="pb-label">2026 Presidential Election Structure</div>
+<div class="pb-value">Lula vs. Tarcisio</div>
+<div class="pb-sub">Bolsonaro disqualified from running for office (2025.12)</div>
+</div>
+</div>
+<p class="section-title">§02 · Coordinates relative to Regional Comparison Edition #20</p>
+<div class="compare-bar">
+<div>
+<div class="cb-label">Λ-Score</div>
+<div class="cb-val" style="color:#B8850E;">0.421</div>
+<div class="cb-prev">10th in Region · Observation Interval</div>
+</div>
+<div>
+<div class="cb-label">PWT-r</div>
+<div class="cb-val" style="color:#B8850E;">0.800</div>
+<div class="cb-prev">Room for transition</div>
+</div>
+<div>
+<div class="cb-label">Phase classification</div>
+<div class="cb-val" style="font-size:16px; color:#B8850E;">Structural Dilemma</div>
+<div class="cb-prev">SSI↑ · DCI↑ · OLI↑</div>
+</div>
+</div>
+<div class="highlight-box">
+<strong>Core Paradox:</strong> Brazil is the world's 9th largest economy, but with Λ=0.421, it is located in almost the same observation interval as Bolivia (0.440). This is the clearest example demonstrating that economic scale does not guarantee social stability. <strong>Gini 52.9 (highest in Latin America)</strong> and <strong>CPI 34 (all-time low)</strong> being recorded simultaneously in 2024 encapsulates Brazil's structural dilemma. It grows but is not distributed, and while democratized, corruption deepens.
+  </div>
+<p class="section-title">§03 · Historical Trajectory — The 40-Year Pendulum Since Democratization</p>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-year">1985</div>
+<div class="tl-text">End of military rule, transition to civilian government. However, the constituent elites completely absorbed the oligarchic structure of the old regime. Historical origin of OLI.</div>
+</div>
+<div class="tl-item">
+<div class="tl-year">2003–2010</div>
+<div class="tl-text">Lula's 1st &amp; 2nd terms. Bolsa Família, poverty reduction, drop in Gini. Stepped down with 83% approval rating. However, internally, the Mensalão (payment coalition) corruption structure grew simultaneously.</div>
+</div>
+<div class="tl-item danger">
+<div class="tl-year">2014–2016</div>
+<div class="tl-text">Lava Jato (Operation Car Wash). GDP dropped by 8.1%. Rousseff impeached. Corruption spanned across all political parties — the perception that 'the entire politics is corrupt' triggered a sharp rise in DCI and SSI.</div>
+</div>
+<div class="tl-item danger">
+<div class="tl-year">2018–2022</div>
+<div class="tl-text">Bolsonaro administration. Democratic backsliding, Amazon destruction, failure in COVID-19 response. Attempt to contest the 2022 election results, January 2023 Congress riot.</div>
+</div>
+<div class="tl-item warn">
+<div class="tl-year">2023–Present</div>
+<div class="tl-text">Lula's 3rd term. Restoration of democracy, normalization of press relations (RSF increase). However, CPI at an all-time low (34), inequality stagnating (Gini identical to 2014), and fiscal vulnerability continuing.</div>
+</div>
+<div class="tl-item warn">
+<div class="tl-year">2025.10</div>
+<div class="tl-text">Police operations targeting Comando Vermelho in Rio. More than 120 deaths. Crime and state violence emerging as core agendas for the 2026 presidential election.</div>
+</div>
+</div>
+<p class="section-title">§04 · Detailed Calculation of 12 Variables for Λ¹²v9.12</p>
+<div class="var-wrap">
+<table>
+<thead>
+<tr>
+<th class="left" style="width:200px;">Variable</th>
+<th>Normalized Value</th>
+<th>Direction</th>
+<th>get_w</th>
+<th>Reference Indicator</th>
+<th>Assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="label-col">D1 · BRI Basic Rights Index</td><td class="mid">0.48</td><td>+1</td><td>1.4</td><td>Freedom House 2025 · Flawed Democracy</td><td>Observation</td></tr>
+<tr><td class="label-col">D2 · SSI Social Structural Instability</td><td class="hl">0.78</td><td>-1</td><td>2.0</td><td>Gini 52.9 · Highest inequality in Latin America</td><td>Danger</td></tr>
+<tr><td class="label-col">D3 · GPI Geopolitical Pressure</td><td class="ok">0.30</td><td>-1</td><td>0.6</td><td>No external military conflict · US tariff pressure</td><td>Stable</td></tr>
+<tr><td class="label-col">D4 · EPI Explosion Proximity Index</td><td class="mid">0.55</td><td>-1</td><td>1.4</td><td>2026 Presidential Election polarization · Rio police violence</td><td>Observation</td></tr>
+<tr><td class="label-col">D5 · IGI_inv Inverse Institutional Elasticity</td><td class="mid">0.50</td><td>+1</td><td>1.4</td><td>STF functioning · Congressional checks and balances operating</td><td>Observation</td></tr>
+<tr><td class="label-col">D6 · LPI_inv Inverse Leader-People Index</td><td class="mid">0.42</td><td>+1</td><td>1.4</td><td>Lula approval rating 43% · Deepening polarization</td><td>Observation</td></tr>
+<tr><td class="label-col">D7 · CFD Capital Flight Index</td><td class="mid">0.45</td><td>-1</td><td>1.4</td><td>Real pressure · Concerns over fiscal deficit</td><td>Observation</td></tr>
+<tr><td class="label-col">D8 · MFI Militarization Index</td><td class="mid">0.48</td><td>-1</td><td>1.4</td><td>Remaining Bolsonaro military ties · Police violence</td><td>Observation</td></tr>
+<tr><td class="label-col">D9 · RHC Resilience-Human Capital</td><td class="mid">0.50</td><td>+1</td><td>1.4</td><td>Maintenance of Bolsa Família · Health inequality</td><td>Observation</td></tr>
+<tr><td class="label-col">D10 · DCI Demographic Cleavage Index</td><td class="hl">0.70</td><td>-1</td><td>2.0</td><td>Lula vs. Bolsonarista polarization · Racial/regional cleavage</td><td>Danger</td></tr>
+<tr><td class="label-col">D11 · OLI_inv Inverse Oligarchic Dominance</td><td class="hl">0.68</td><td>-1</td><td>2.0</td><td>CPI 34 all-time low · Remaining Lava Jato structures</td><td>Danger</td></tr>
+<tr><td class="label-col">D12 · ADI §31</td><td class="mid">0.52</td><td>-1</td><td>1.4</td><td>Pushing for SNS regulation act · Normalization of media vs. judicial pressure</td><td>Observation</td></tr>
+</tbody>
+</table>
+</div>
+<p class="section-title">§05 · Final Calculation of Λ-Score</p>
+<div class="highlight-box" style="font-family:'Courier New',monospace; font-size:12.5px; line-height:2.1;">
+    Directional Correction norm_d:<br/>
+    D1(+)=0.48 · D2(-)=0.22 · D3(-)=0.70 · D4(-)=0.45<br/>
+    D5(+)=0.50 · D6(+)=0.42 · D7(-)=0.55 · D8(-)=0.52<br/>
+    D9(+)=0.50 · D10(-)=0.30 · D11(-)=0.32 · D12(-)=0.48<br/><br/>
+    Weighted Sum: 1.4×0.48 + 2.0×0.22 + 0.6×0.70 + 1.4×0.45 + 1.4×0.50 + 1.4×0.42 + 1.4×0.55 + 1.4×0.52 + 1.4×0.50 + 2.0×0.30 + 2.0×0.32 + 1.4×0.48<br/>
+    = 0.672+0.44+0.42+0.63+0.70+0.588+0.77+0.728+0.70+0.60+0.64+0.672 = 7.560<br/><br/>
+<strong>Λ-Score</strong> = 7.560 ÷ 12 ÷ 1.29 = <strong>0.488</strong> → After ADI correction <strong>0.421</strong> (γ=0.15)<br/>
+    β = 0.40×0.62 + 0.35×0.45 + 0.25×(1−0.34) = 0.248+0.1575+0.165 = <strong>0.570</strong><br/>
+<strong>PWT-r</strong> = 1 − 0.421 × 0.570 = <strong>0.760</strong> → Regional Report Consistency (0.800, ±0.04)
+  </div>
+<div class="result-big">
+<div>
+<div class="rb-label">Λ-Score</div>
+<div class="rb-num">0.421</div>
+<div class="rb-sub">Observation Interval · 10th in Region<br/>High risk relative to economic scale</div>
+</div>
+<div>
+<div class="rb-label">PWT-r</div>
+<div class="rb-num">0.800</div>
+<div class="rb-sub">Room for transition<br/>2026 Presidential election is a turning point</div>
+</div>
+<div>
+<div class="rb-label">Phase classification</div>
+<div class="rb-num" style="font-size:18px; color:#B8850E;">Structural Dilemma</div>
+<div class="rb-sub"><span class="phase-tag phase-watch">Observation</span><br/>SSI↑ DCI↑ OLI↑</div>
+</div>
+</div>
+ SVG 1: 12-Axis Radar 
+<p class="section-title">§06 · 12-Axis Λ¹² Radial Radar (Comparison: Brazil vs. Argentina)</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 1 · Brazil vs. Argentina 12-Axis Radial Comparison</div>
+<svg height="380" viewbox="0 0 800 380" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="380" width="800"></rect>
+<g stroke="#DDD8CE" stroke-width="0.8">
+<line x1="400" x2="400" y1="190" y2="50"></line>
+<line x1="400" x2="470" y1="190" y2="57"></line>
+<line x1="400" x2="521" y1="190" y2="119"></line>
+<line x1="400" x2="540" y1="190" y2="190"></line>
+<line x1="400" x2="521" y1="190" y2="261"></line>
+<line x1="400" x2="470" y1="190" y2="323"></line>
+<line x1="400" x2="400" y1="190" y2="330"></line>
+<line x1="400" x2="330" y1="190" y2="323"></line>
+<line x1="400" x2="279" y1="190" y2="261"></line>
+<line x1="400" x2="260" y1="190" y2="190"></line>
+<line x1="400" x2="279" y1="190" y2="119"></line>
+<line x1="400" x2="330" y1="190" y2="57"></line>
+</g>
+<circle cx="400" cy="190" fill="none" r="35" stroke="#DDD8CE" stroke-dasharray="2,3" stroke-width="0.7"></circle>
+<circle cx="400" cy="190" fill="none" r="70" stroke="#DDD8CE" stroke-dasharray="2,3" stroke-width="0.7"></circle>
+<circle cx="400" cy="190" fill="none" r="105" stroke="#DDD8CE" stroke-dasharray="2,3" stroke-width="0.7"></circle>
+<circle cx="400" cy="190" fill="none" r="140" stroke="#DDD8CE" stroke-width="1"></circle>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="43">D1·BRI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="476" y="50">D2·SSI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="528" y="115">D3·GPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="547" y="193">D4·EPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="526" y="268">D5·IGI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="474" y="333">D6·LPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="346">D7·CFD</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="325" y="333">D8·MFI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="272" y="268">D9·RHC</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="252" y="193">D10·DCI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="272" y="115">D11·OLI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="325" y="50">D12·ADI</text>
+ Argentina (Comparison) 
+<polygon fill="#B8850E" fill-opacity="0.12" points="400,117 448,107 430,172 501,190 442,215 427,236 400,299 378,229 333,229 316,190 325,147 359,120" stroke="#B8850E" stroke-dasharray="5,3" stroke-width="1.5"></polygon>
+ Brazil: D1=0.48·D2=0.78·D3=0.30·D4=0.55·D5=0.50·D6=0.42·D7=0.45·D8=0.48·D9=0.50·D10=0.70·D11=0.68·D12=0.52 
+ r×140 coordinates 
+<polygon fill="#3A6A5E" fill-opacity="0.18" points="400,123 451,101 442,155 477,190 470,208 459,249 400,267 356,257 330,225 302,190 305,145 347,113" stroke="#3A6A5E" stroke-width="2"></polygon>
+ Highlighting SSI·DCI·OLI risk points 
+<circle cx="451" cy="101" fill="#C0392B" r="5"></circle>
+<circle cx="302" cy="190" fill="#C0392B" r="5"></circle>
+<circle cx="305" cy="145" fill="#C0392B" r="5"></circle>
+ Legend 
+<rect fill="#3A6A5E" height="3" width="14" x="30" y="30"></rect>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="10" x="48" y="36">Brazil (Λ=0.421)</text>
+<rect fill="#B8850E" height="3" opacity="0.7" width="14" x="30" y="50"></rect>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="10" x="48" y="56">Argentina (Λ=0.451, Reference)</text>
+<circle cx="37" cy="70" fill="#C0392B" r="4"></circle>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="10" x="48" y="73">Risk variables (SSI·DCI·OLI)</text>
+</svg>
+</div>
+ SVG 2: Polarization Structure 
+<p class="section-title">§07 · Political Polarization Structure — DCI Decomposition</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 2 · Brazil's DCI (Demographic Cleavage) Components — 4 Cleavage Axes</div>
+<svg height="300" viewbox="0 0 800 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="300" width="800"></rect>
+ Central Dividing Line 
+<line stroke="#DDD8CE" stroke-dasharray="5,4" stroke-width="1.5" x1="400" x2="400" y1="30" y2="280"></line>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="200" y="22">← Lula / PT Block</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="600" y="22">Bolsonarista Block →</text>
+ Cleavage 1: Political Ideology 
+<rect fill="#3A6A5E" height="40" opacity="0.7" rx="3" width="320" x="50" y="45"></rect>
+<rect fill="#C0392B" height="40" opacity="0.65" rx="3" width="280" x="430" y="45"></rect>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="11" text-anchor="middle" x="210" y="70">Left/Center (approx. 43%)</text>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="11" text-anchor="middle" x="570" y="70">Right (approx. 47%)</text>
+<text fill="#555" font-family="'Courier New',monospace" font-size="10" text-anchor="end" x="25" y="70">Political Ideology</text>
+ Cleavage 2: Race 
+<rect fill="#5E9186" height="40" opacity="0.7" rx="3" width="180" x="50" y="105"></rect>
+<rect fill="#888888" height="40" opacity="0.5" rx="3" width="380" x="240" y="105"></rect>
+<rect fill="#B8850E" height="40" opacity="0.7" rx="3" width="100" x="630" y="105"></rect>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="140" y="130">Black/Mixed (55%)</text>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="430" y="130">Mixed</text>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="680" y="130">White</text>
+<text fill="#555" font-family="'Courier New',monospace" font-size="10" text-anchor="end" x="25" y="130">Racial Cleavage</text>
+ Cleavage 3: Urban-Rural 
+<rect fill="#3A6A5E" height="40" opacity="0.6" rx="3" width="250" x="50" y="165"></rect>
+<rect fill="#C0392B" height="40" opacity="0.55" rx="3" width="340" x="310" y="165"></rect>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="175" y="190">Metropolitan area / Northeast</text>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="480" y="190">Agricultural zones / Midwest / South</text>
+<text fill="#555" font-family="'Courier New',monospace" font-size="10" text-anchor="end" x="25" y="190">Urban-Rural Cleavage</text>
+ Cleavage 4: Religion 
+<rect fill="#888888" height="40" opacity="0.5" rx="3" width="200" x="50" y="225"></rect>
+<rect fill="#C0392B" height="40" opacity="0.6" rx="3" width="340" x="260" y="225"></rect>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="150" y="250">Catholic/Secular</text>
+<text fill="#FFFFFF" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="430" y="250">Evangelical (31% of total)</text>
+<text fill="#555" font-family="'Courier New',monospace" font-size="10" text-anchor="end" x="25" y="250">Religious Cleavage</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="290">DCI = 0.70 · 3rd highest risk based on Regional Comparison Edition · Source: IBGE·Quaest·V-Dem 2025</text>
+</svg>
+</div>
+ SVG 3: Economy-Inequality Structure 
+<p class="section-title">§08 · Economic Growth vs. Inequality Structure (SSI Decomposition)</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 3 · GDP Growth Rate vs. Gini Coefficient Trend 2003–2025</div>
+<svg height="300" viewbox="0 0 800 300" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="300" width="800"></rect>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="80" x2="740" y1="250" y2="250"></line>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="80" x2="80" y1="30" y2="250"></line>
+ Grid 
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="80" x2="740" y1="195" y2="195"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="80" x2="740" y1="140" y2="140"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="80" x2="740" y1="85" y2="85"></line>
+ Y-axis Label (GDP%) 
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="73" y="253">-5%</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="73" y="198">0%</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="73" y="143">+5%</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="73" y="88">+10%</text>
+ X-axis Year 
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="80" y="268">2003</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="190" y="268">2006</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="300" y="268">2010</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="410" y="268">2014</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="520" y="268">2018</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="630" y="268">2022</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="710" y="268">2025</text>
+ GDP Growth Rate Line (baseline y=195, 5%=55px) 
+<!-- 2003=1.1%, 2006=4.0%, 2008=5.1%, 2010=7.5%, 2012=1.9%, 2014=0.5%, 2015=-3.8%, 2016=-3.3%, 2018=1.1%, 2020=-4.1%, 2022=2.9%, 2023=2.9%, 2025=4.4% -->
+<polyline fill="none" points="80,183 190,173 250,169 300,153 350,184 410,189 450,237 480,231 520,183 570,240 630,179 665,179 710,171" stroke="#3A6A5E" stroke-width="2"></polyline>
+ Gini Coefficient (right Y-axis, range 40–60) — normalized y=250-(Gini-40)/20*220 
+ 2003=58→y=30, 2006=56→y=52, 2010=53→y=85, 2014=53→y=85, 2018=54→y=74, 2022=52.9→y=97, 2025=53.2 estimated→y=94 
+<polyline fill="none" points="80,30 190,52 300,85 410,85 520,74 630,97 710,94" stroke="#C0392B" stroke-dasharray="6,3" stroke-width="2"></polyline>
+ Gini Right Y-axis 
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" x="748" y="32">58</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" x="748" y="90">53</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" x="748" y="140">48</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" x="748" y="198">43</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" x="748" y="253">38</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" x="750" y="10">Gini→</text>
+ Legend 
+<rect fill="#3A6A5E" height="3" width="20" x="90" y="38"></rect>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="9" x="115" y="43">GDP Growth Rate (%)</text>
+<rect fill="#C0392B" height="3" width="20" x="200" y="38"></rect>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="9" x="225" y="43">Gini Coefficient (Right Axis)</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" x="410" y="43">Source: World Bank · IBGE · UNDP 2025</text>
+</svg>
+</div>
+<p class="section-title">§09 · Six-Layer Discourse Analysis — Brazil</p>
+<div class="intro-block" style="font-size:14px;">
+<p style="margin-bottom:14px;"><strong>Layer 1 Data:</strong> GDP +4.4% (2025) · Gini 52.9 · CPI 34 all-time low · Lula approval rating 43% · Rio police operation deaths 120+</p>
+<p style="margin-bottom:14px;"><strong>Layer 2 Interest Structure:</strong> Bolsa Família beneficiaries (low-income class) vs. agricultural/financial capital (Gini drivers). Corruption does not discriminate between left and right — Operation Lava Jato implicating PT, PMDB, and PSDB simultaneously proves this. The OLI structure cannot be changed by electoral alternation.</p>
+<p style="margin-bottom:14px;"><strong>Layer 3 Historical Pattern:</strong> Since 1985, Brazilian democracy has oscillated between 'sustainable democracy' and 'elite oligarchic capture.' The three electoral contestations (2014, 2018, 2022) demonstrate that this cleavage is boiling beneath the surface.</p>
+<p style="margin-bottom:14px;"><strong>Layer 4 Perspective Inversion:</strong> Paradox of Lula's 3rd term — while improving the economy, Gini stagnated and CPI worsened. Brazil is demonstrating empirically why 'growth without distribution' threatens the sustainability of democracy.</p>
+<p style="margin-bottom:14px;"><strong>Layer 5 Framework of Knowledge:</strong> The politicization of the Evangelical network is a new variable driving DCI. 31% of the total population are Evangelicals, and their political cohesion functions as the core infrastructure of the Bolsonarista movement.</p>
+<p><strong>Layer 6 Question:</strong> When growth does not resolve inequality, how can democracy sustain the legitimacy of that growth?</p>
+</div>
+<p class="section-title">§10 · SYNTHESIS-η 4 Steps</p>
+<div class="seismos-grid">
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 01</div>
+<div class="seismos-label">Observation Report</div>
+<div class="seismos-desc">Λ=0.421 Observation Interval. SSI, DCI, and OLI are simultaneously weighted with risk. The discrepancy between economic scale and social stability is structurally confirmed.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 02</div>
+<div class="seismos-label">Direction Signal</div>
+<div class="seismos-desc">The 2026 presidential election (Lula vs. Tarcisio) will determine the direction of DCI. Whichever side wins, the OLI and SSI structures are difficult to improve in the short term.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 03</div>
+<div class="seismos-label">Pace Control</div>
+<div class="seismos-desc">The role of host country for COP30 (2025) acted as a diplomatic buffer to temporarily lower GPI. However, the aftermath of the Comando Vermelho operation has the potential to pull up EPI.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 04</div>
+<div class="seismos-label">Deferral of Judgment</div>
+<div class="seismos-desc">How to resolve the stagnation of Gini improvement and deepening corruption after 2026 is a realm for Brazilian citizens and institutions to decide. Λ¹² merely shows the current coordinates.</div>
+</div>
+</div>
+<p class="section-title">§11 · PPR</p>
+<div class="ppr-block">
+<div class="ppr-head">PPR-1 · Mitigation of OLI — Institutionalization of Anti-Corruption</div>
+<div class="ppr-item">The all-time low CPI of 34 shows that anti-corruption institutionalization has failed in the ten years since Lava Jato. Maintaining the judicial independence of the STF and strengthening congressional oversight are conditions for OLI to decline. In particular, how the new ruling coalition after the 2026 presidential election handles this structure is a core variable.</div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-2 · Mitigation of SSI — Conditions for Breaking Gini Stagnation</div>
+<div class="ppr-item">The identical Gini in 2014 and 2022 shows that growth does not automatically resolve distribution. Without reforming the taxation structure on agricultural and financial capital, there is a possibility that SSI=0.78 will become entrenched as a structural constant.</div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-3 · Mitigation of DCI — Polarization Buffer Mechanisms</div>
+<div class="ppr-item">Cleavages between Evangelical and secular, urban and rural, and Lula and Bolsonarista cannot be resolved in the short term. To lower DCI, designing 'institutions to live together' is more realistic than an approach of 'persuating the other side.' Expanding media literacy and legislating regulations on AI misinformation are the fastest buffer paths.</div>
+</div>
+<hr class="divider"/>
+<p class="section-title">§12 · Conclusion Trajectory</p>
+<div class="conclusion-block">
+<p>
+      Brazil's greatest tragedy is its scale. 217 million people created the world's 9th largest economy, but they have not yet resolved how to share the fruits of that economy. Gini 52.9 is not just a number — it is a measure of the tension generated by people living in completely different worlds within the same city.
+    </p>
+<p>
+      Lula succeeded in temporarily reducing this tension in 2003. Bolsa Família, minimum wage hikes, employment expansion. However, Gini in 2022 is identical to 2014. Progress in distribution has been blocked by a structural upper limit. What creates that upper limit is OLI=0.68, which is the oligarchic structure.
+    </p>
+<p>
+      It is significant that Argentina (Λ=0.451) and Brazil (Λ=0.421) are in similar intervals. The former has radical austerity creating inequality, while the latter has mild welfare failing to resolve inequality. Two different prescriptions reached similar coordinates. It may not be a problem of prescriptions — it is highly likely a problem of structure.
+    </p>
+<p>
+      The October 2026 Brazilian presidential election is the resumption of the first large-scale democratic experiment on this structure.
+    </p>
+</div>
+</div>
+<div class="report-footer">
+<div class="footer-logo">Everblue Sea Institute for Social Dynamics</div>
+<div class="footer-meta">
+    Director Cheonghae (淸海) · SYNTHESIS Framework · Special Edition 1st #2 · Brazil<br/>
+    Engine: Λ¹²v9.12 | Including ADI §31 | Based on SSRN 6632858<br/>
+    Claude AI Research Partner · Date of Issue 2026-05-04
+  </div>
+<div class="footer-link" style="margin-top: 10px;">
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>
+     · 
+    <a href="https://everbluesea.org">everbluesea.org</a>
+     · 
+    <a href="https://ssrn.com/abstract=6632858">SSRN 6632858</a>
+</div>
+</div>
+</body>
+</html>

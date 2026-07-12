@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>National Capacity Index — Formula and Methodology | Everblue Sea Institute for Social Dynamics</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Georgia, 'Times New Roman', serif; background-color: #F5F3EE; color: #2A2A2A; line-height: 1.75; }
+  .hdr { background-color: #5E9186; color: #FFFFFF; padding: 44px 36px 32px; border-bottom: 4px solid #B8850E; }
+  .tag { font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #C8E0DC; margin-bottom: 10px; }
+  .hdr h1 { font-size: 30px; font-weight: normal; line-height: 1.25; margin-bottom: 6px; }
+  .hdr .sub { font-size: 14px; color: #C8E0DC; }
+  .badge { display: inline-block; background-color: #B8850E; color: #FFF; font-family: 'Courier New', monospace; font-size: 10px; padding: 4px 12px; letter-spacing: 2px; margin: 14px 6px 0 0; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 36px 24px 56px; }
+  h2 { font-size: 15px; font-family: 'Courier New', monospace; letter-spacing: 3px; color: #5E9186; border-bottom: 1px solid #DDD8CE; padding-bottom: 8px; margin: 36px 0 16px; text-transform: uppercase; }
+  p { margin-bottom: 12px; font-size: 15px; }
+  .formula { background-color: #FDFCF9; border: 1px solid #DDD8CE; border-left: 4px solid #B8850E; padding: 18px 20px; margin: 16px 0; font-family: 'Courier New', monospace; font-size: 17px; color: #2A3D35; overflow-x: auto; }
+  .fdesc { font-size: 13px; color: #6B6B6B; font-family: Georgia, serif; margin-top: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13.5px; }
+  th { background-color: #2A3D35; color: #FFF; font-family: 'Courier New', monospace; font-size: 11px; letter-spacing: 2px; padding: 9px 12px; text-align: left; }
+  td { border-bottom: 1px solid #DDD8CE; padding: 9px 12px; vertical-align: top; }
+  td.sym { font-family: 'Courier New', monospace; color: #B8850E; white-space: nowrap; font-size: 14px; }
+  .cls { background-color: rgba(94,145,134,0.08); border-radius: 8px; padding: 14px 18px; font-family: 'Courier New', monospace; font-size: 13px; color: #2A3D35; margin: 12px 0; }
+  .src a { color: #5E9186; }
+  .diagram { text-align: center; margin: 20px 0; }
+  .foot { border-top: 1px solid #DDD8CE; margin-top: 44px; padding-top: 18px; text-align: center; }
+  .slogan { font-style: italic; color: #C9A24B; font-size: 13.5px; margin-bottom: 8px; }
+  .foot small { font-family: 'Courier New', monospace; font-size: 10px; color: #9A9A9A; letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="hdr">
+<div class="tag">EVERBLUE SEA · SOCIODYNAMICS · §35 SUB-ENGINE</div>
+<h1>National Capacity Index — Formula and Methodology</h1>
+<div class="sub">National Capacity Index — Formulas &amp; Methodology</div>
+<span class="badge">§35 NCI</span><span class="badge">Λ¹² Sub-Engine</span><span class="badge">Methodology Commentary</span>
+</div>
+<div class="wrap">
+<h2>01 · What is Measured</h2>
+<p>It measures the institutional capacity of a state to deliver public goods and respond to crises. It consists of four axes: administrative efficiency, rule of law, crisis response, and public finance. Fragile states are extremely vulnerable to external shocks, and the NCI provides an early warning of state collapse risks at the Λ¹² A4 (institution) level.</p>
+<h2>02 · Core Formula</h2>
+<div class="formula">NCI = w₁·Admin + w₂·Law + w₃·Crisis + w₄·Finance</div>
+<p class="fdesc">Weighted sum of the four axes. The sum of weights is 1.0 and is adjusted according to the stage of national development.</p>
+<table><tr><th>Symbol</th><th>Meaning · Explanation</th></tr><tr><td class="sym">Admin</td><td>Administrative Efficiency — WGI Government Effectiveness</td></tr><tr><td class="sym">Law</td><td>Rule of Law Index — WGI Rule of Law</td></tr><tr><td class="sym">Crisis</td><td>Crisis Response Capacity — Reciprocal of INFORM Risk Index</td></tr><tr><td class="sym">Finance</td><td>Public Fiscal Health — IMF Fiscal Monitor</td></tr><tr><td class="sym">wᵢ</td><td>Weight of Each Axis (Σwᵢ = 1.0)</td></tr></table>
+<h2>03 · Diagram — Four-Axis Capacity Profile</h2>
+<div class="diagram">
+<svg height="300" viewbox="0 0 420 300" width="420" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FDFCF9" height="300" stroke="#DDD8CE" width="420"></rect>
+<polygon fill="none" points="210,40 340,150 210,260 80,150" stroke="#DDD8CE" stroke-width="1"></polygon>
+<polygon fill="none" points="210,75 305,150 210,225 115,150" stroke="#DDD8CE" stroke-width="1"></polygon>
+<line stroke="#DDD8CE" stroke-width="1" x1="210" x2="210" y1="40" y2="260"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="80" x2="340" y1="150" y2="150"></line>
+<polygon fill="rgba(94,145,134,0.25)" points="210,60 315,150 210,210 130,150" stroke="#5E9186" stroke-width="2"></polygon>
+<polygon fill="rgba(192,57,43,0.15)" points="210,110 260,150 210,245 165,150" stroke="#C0392B" stroke-dasharray="4,3" stroke-width="2"></polygon>
+<text fill="#2A3D35" font-family="Courier New" font-size="11" x="185" y="30">Admin</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="11" x="350" y="154">Law</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="11" x="188" y="280">Crisis</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="11" x="30" y="154">Finance</text>
+<text fill="#5E9186" font-family="Courier New" font-size="10" x="248" y="80">Robust State</text>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="222" y="238">Fragile State</text>
+</svg>
+</div>
+<h2>04 · Classification System</h2>
+<div class="cls">Robust (NCI &gt; 0.7) · Moderate (0.4~0.7) · Fragile (0.2~0.4) · Collapse Risk (NCI &lt; 0.2)</div>
+<h2>05 · Data Sources</h2>
+<p class="src">World Bank WGI · INFORM Risk Index · IMF Fiscal Monitor · Fund for Peace FSI</p>
+<div class="foot">
+<div class="slogan">"With the hope that humanity's experience and countless brilliant data may come together and be reborn as a wise light like the Milky Way!"</div>
+<small>Everblue Sea Institute for Social Dynamics · Cheonghae (淸海) · everbluesea.org © 2026</small>
+</div>
+</div></body>
+</html>

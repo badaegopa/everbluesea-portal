@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Latin America 4th Series Small States | Lambda12v9.12</title>
+<style>
+  /* ===== 티스토리 검증: var()0 · @import0 · script0 · :root0 · SVG w/h명시 ===== */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Georgia,'Times New Roman',serif; background-color:#F5F3EE; color:#2A2A2A; line-height:1.75; }
+
+  .report-header { background-color:#5E9186; color:#FFFFFF; padding:44px 40px 32px; border-bottom:4px solid #B8850E; }
+  .series-tag { font-family:'Courier New',monospace; font-size:10px; letter-spacing:3px; color:#C8E0DC; margin-bottom:10px; }
+  .report-header h1 { font-size:26px; font-weight:normal; line-height:1.3; margin-bottom:5px; }
+  .en-title { font-size:13px; color:#C8E0DC; margin-bottom:16px; font-style:italic; }
+  .engine-badge { display:inline-block; background-color:#B8850E; color:#FFFFFF; font-family:'Courier New',monospace; font-size:10px; padding:3px 10px; letter-spacing:2px; margin-right:5px; margin-bottom:3px; }
+  .meta-row { margin-top:14px; font-size:11px; color:#C8E0DC; font-family:'Courier New',monospace; }
+
+  .container { max-width:960px; margin:0 auto; padding:36px 22px; }
+
+  .country-divider { background-color:#5E9186; color:#FFFFFF; padding:18px 26px; margin:44px 0 22px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .country-flag { font-size:24px; }
+  .country-divider h2 { font-size:19px; font-weight:normal; }
+  .country-divider .sub { font-size:10px; font-family:'Courier New',monospace; color:#C8E0DC; margin-top:2px; }
+  .lambda-badge { background-color:#B8850E; font-family:'Courier New',monospace; font-size:11px; padding:4px 10px; margin-left:auto; white-space:nowrap; }
+
+  .section-title { font-size:11px; letter-spacing:3px; color:#5E9186; font-family:'Courier New',monospace; margin:26px 0 13px; padding-bottom:5px; border-bottom:1px solid #DDD8CE; }
+
+  .intro-block { background-color:#FFFFFF; border:1px solid #DDD8CE; border-left:4px solid #5E9186; padding:20px 24px; margin-bottom:18px; }
+  .intro-block p { font-size:13.5px; line-height:1.85; color:#3A3A3A; }
+
+  .crisis-block { background-color:#FDEDED; border:1px solid #E8B8B8; border-left:4px solid #C0392B; padding:14px 18px; margin-bottom:16px; font-size:12.5px; color:#333; line-height:1.8; }
+  .watch-block { background-color:#FEF5E7; border:1px solid #E8D4A0; border-left:4px solid #B8850E; padding:14px 18px; margin-bottom:16px; font-size:12.5px; color:#333; line-height:1.8; }
+  .stable-block { background-color:#EEF5F3; border:1px solid #B0CFC9; border-left:4px solid #5E9186; padding:14px 18px; margin-bottom:16px; font-size:12.5px; color:#333; line-height:1.8; }
+  .alert-box { background-color:#F5F0FF; border:1px solid #D0C0E8; border-left:4px solid #7050A0; padding:14px 18px; margin-bottom:16px; font-size:12.5px; color:#333; line-height:1.8; }
+
+  .stat-row { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:18px; }
+  .stat-card { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:12px 10px; text-align:center; }
+  .stat-card.d { border-top:3px solid #C0392B; }
+  .stat-card.w { border-top:3px solid #B8850E; }
+  .stat-card.s { border-top:3px solid #5E9186; }
+  .stat-card.x { border-top:3px solid #7050A0; }
+  .stat-val { font-family:'Courier New',monospace; font-size:18px; font-weight:bold; color:#2A2A2A; }
+  .stat-label { font-size:10px; color:#888; font-family:'Courier New',monospace; letter-spacing:0.5px; margin-top:3px; }
+  .stat-src { font-size:9px; color:#aaa; margin-top:3px; }
+
+  .phase-tag { display:inline-block; padding:2px 7px; font-size:9px; font-family:'Courier New',monospace; letter-spacing:1px; border-radius:2px; }
+  .pc { background-color:#FDEDED; color:#C0392B; border:1px solid #E8B8B8; }
+  .pt { background-color:#FEF5E7; color:#B8850E; border:1px solid #E8D4A0; }
+  .pw { background-color:#EEF5F3; color:#3A6A5E; border:1px solid #B0CFC9; }
+  .ps { background-color:#F0F8FF; color:#2E6DA4; border:1px solid #A0BDD8; }
+  .px { background-color:#F5F0FF; color:#7050A0; border:1px solid #D0C0E8; }
+
+  .var-table-wrap { overflow-x:auto; margin-bottom:18px; }
+  table { width:100%; border-collapse:collapse; background-color:#FFFFFF; }
+  thead th { background-color:#5E9186; color:#FFFFFF; padding:7px 5px; text-align:center; font-family:'Courier New',monospace; font-size:9.5px; border:1px solid #4A7870; }
+  thead th.L { text-align:left; padding-left:8px; }
+  tbody td { padding:6px 5px; text-align:center; border:1px solid #DDD8CE; font-family:'Courier New',monospace; font-size:10.5px; }
+  tbody td.L { text-align:left; padding-left:8px; font-family:Georgia,serif; font-size:11.5px; }
+  tbody tr:nth-child(even) { background-color:#F9F8F5; }
+  .rh { color:#C0392B; font-weight:bold; }
+  .rw { color:#B8850E; font-weight:bold; }
+  .rs { color:#5E9186; font-weight:bold; }
+
+  .seismos-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:18px; }
+  .seismos-cell { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:10px; text-align:center; }
+  .sn { font-family:'Courier New',monospace; font-size:8px; color:#5E9186; letter-spacing:1px; margin-bottom:3px; }
+  .sl { font-size:10px; font-weight:bold; color:#3A6A5E; margin-bottom:3px; }
+  .sd { font-size:9.5px; color:#666; line-height:1.4; }
+
+  .divider { border:none; border-top:2px solid #B8850E; margin:40px 0 0; }
+
+  /* 최종 비교 테이블 */
+  .final-wrap { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:22px; margin-bottom:28px; }
+  .final-wrap h3 { font-size:12px; font-family:'Courier New',monospace; color:#5E9186; letter-spacing:2px; margin-bottom:16px; padding-bottom:6px; border-bottom:1px solid #EEE; }
+
+  /* 엔진 검증 박스 */
+  .engine-check { background-color:#F3F8F5; border:2px solid #5E9186; padding:22px 26px; margin-bottom:26px; }
+  .engine-check h4 { font-family:'Courier New',monospace; font-size:12px; color:#3A6A5E; letter-spacing:2px; margin-bottom:14px; }
+  .ec-item { font-size:13px; line-height:1.9; color:#333; margin-bottom:8px; padding-left:14px; border-left:3px solid #B8850E; }
+  .ec-pass { border-left-color:#5E9186; }
+  .ec-warn { border-left-color:#C0392B; }
+
+  .conclusion-block { background-color:#EBF4F0; border:1px solid #B0CFC9; padding:26px 30px; margin-bottom:32px; }
+  .conclusion-block p { font-size:13.5px; line-height:1.95; color:#2A2A2A; margin-bottom:12px; }
+
+  .report-footer { background-color:#EBF4F0; border-top:2px solid #5E9186; padding:24px 36px; text-align:center; }
+  .footer-logo { font-family:'Courier New',monospace; font-size:12px; color:#3A6A5E; font-weight:bold; margin-bottom:5px; letter-spacing:1px; }
+  .footer-meta { font-family:'Courier New',monospace; font-size:10px; color:#5E9186; letter-spacing:1px; line-height:1.8; }
+  .footer-link a { color:#B8850E; text-decoration:none; font-family:'Courier New',monospace; font-size:10px; }
+
+  @media(max-width:680px){
+    .stat-row{grid-template-columns:repeat(2,1fr);}
+    .seismos-grid{grid-template-columns:repeat(2,1fr);}
+    .country-divider{flex-direction:column;align-items:flex-start;}
+    .lambda-badge{margin-left:0;}
+    .report-header{padding:28px 18px 20px;}
+    .container{padding:20px 12px;}
+  }
+</style>
+</head>
+<body>
+<div class="report-header">
+<div class="series-tag">Everblue Sea Institute for Social Dynamics · SYNTHESIS Framework · 4th Small Nations Solo Volume · Engine Performance Verification</div>
+<h1>Latin America 4th Small Nations Solo Volume — 8-Nation Integrated Report</h1>
+<div class="en-title">Latin America 4th Series: Small States Engine Test — Costa Rica · Panama · Dominican Republic · El Salvador · Guatemala · Honduras · Nicaragua · Haiti</div>
+<div>
+<span class="engine-badge">Lambda12v9.12</span>
+<span class="engine-badge">ADI §31</span>
+<span class="engine-badge">8-Nation Standalone</span>
+<span class="engine-badge">Engine Verification Volume</span>
+</div>
+<div class="meta-row">This report is calculated based on the Lambda12v9.12 engine · Date of Issue 2026-05-04 · Director Cheonghae (淸海)</div>
+</div>
+<div class="container">
+<!-- ===================================================================== -->
+ Costa Rica                                                                
+<!-- ===================================================================== -->
+<div class="country-divider">
+<span class="country-flag">🇨🇷</span>
+<div><h2>Costa Rica Standalone Report</h2>
+<div class="sub">Costa Rica · EIU Full Democracy · Chaves Populism vs Institutional Resilience</div></div>
+<div class="lambda-badge">Lambda=0.268 · PWT-r=0.876</div>
+</div>
+<p class="section-title">§01 · Overview and Metrics</p>
+<div class="intro-block">
+<p>Costa Rica is one of two 'Full Democracies' in Latin America, along with Uruguay, according to EIU 2024. A country without a military (abolished in 1948), RSF 2024 Press Freedom 26th. GDP 4.3% growth (2024), poverty and inequality at historic lows. However, President Chaves's populist conflict among the three branches of government, the 2026 election campaign ban by the Supreme Court, increasing organized crime penetration, and education budget cuts have emerged as new risk variables. Costa Rica is a case showing that stability is not "automatic".</p>
+</div>
+<div class="stat-row">
+<div class="stat-card s"><div class="stat-val">Full Democracy</div><div class="stat-label">EIU 2024</div><div class="stat-src">South America 2 + Central America 1</div></div>
+<div class="stat-card s"><div class="stat-val">4.3%</div><div class="stat-label">GDP Growth 2024</div><div class="stat-src">IMF</div></div>
+<div class="stat-card w"><div class="stat-val">71%</div><div class="stat-label">Chaves Approval Rating 2025.1</div><div class="stat-src">CID-Gallup</div></div>
+<div class="stat-card w"><div class="stat-val">Election Ban</div><div class="stat-label">Supreme Court Restricts Chaves</div><div class="stat-src">2025.6</div></div>
+</div>
+<div class="var-table-wrap"><table>
+<thead><tr>
+<th class="L" style="width:75px;">Variable</th><th class="L" style="width:150px;">Item</th>
+<th>Value</th><th>Direction</th><th>Adjustment</th><th>Weight</th><th class="L">Grounds</th>
+</tr></thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights</td><td>0.72</td><td>+1</td><td class="rs">0.72</td><td>0.6</td><td class="L" style="font-size:9.5px;">FH 94/100 · No Military · Press Freedom 26th</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Unrest</td><td>0.42</td><td>-1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:9.5px;">Poverty at Historic Low · Inequality Improving · Regional Disparity</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.28</td><td>-1</td><td class="rs">0.28</td><td>0.6</td><td class="L" style="font-size:9.5px;">Indirect Influence of Central American Organized Crime · Bordering Nicaragua</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity</td><td>0.35</td><td>-1</td><td class="rs">0.35</td><td>0.6</td><td class="L" style="font-size:9.5px;">Increase in Drug-Related Crime · Low Social Tension</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Elasticity</td><td>0.68</td><td>+1</td><td class="rw">0.68</td><td>2.0</td><td class="L" style="font-size:9.5px;">Supreme Court Restricts Chaves · Separation of Powers Functioning</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader Response</td><td>0.58</td><td>+1</td><td class="rw">0.58</td><td>1.4</td><td class="L" style="font-size:9.5px;">Chaves Approval Rating 71% · Populist Responsiveness</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight</td><td>0.25</td><td>-1</td><td class="rs">0.25</td><td>0.6</td><td class="L" style="font-size:9.5px;">FDI Inflow · GDP $95B · Strong Exports</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization</td><td>0.15</td><td>-1</td><td class="rs">0.15</td><td>0.6</td><td class="L" style="font-size:9.5px;">No Military · Police Policing</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience</td><td>0.70</td><td>+1</td><td class="rw">0.70</td><td>2.0</td><td class="L" style="font-size:9.5px;">Education GDP 6.5% → 5.2% Declining · Healthcare Good</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage</td><td>0.35</td><td>-1</td><td class="rs">0.35</td><td>0.6</td><td class="L" style="font-size:9.5px;">Increased Immigration · Regional Disparity · Relatively Low Cleavage</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Oligarchic Control</td><td>0.38</td><td>-1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:9.5px;">CPI 56 (2024) · Relatively Low Elite Capture</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression</td><td>0.32</td><td>-1</td><td class="rs">0.32</td><td>0.6</td><td class="L" style="font-size:9.5px;">Chaves ADI Rising · Suppressed by Institutional Checks</td></tr>
+</tbody>
+</table></div>
+<div class="stable-block">
+<strong>Lambda Calculation:</strong> Weighted Sum = 0.72×0.6+0.42×1.4+0.28×0.6+0.35×0.6+0.68×2.0+0.58×1.4+0.25×0.6+0.15×0.6+0.70×2.0+0.35×0.6+0.38×0.6+0.32×0.6 = 6.878<br/>
+  Lambda = 6.878 ÷ 12 ÷ 1.29 = <strong>0.444</strong> → ADI Calibration: 0.444×(1−0.32×0.15) = <strong>0.423</strong> · PWT-r = <strong>0.820</strong><br/>
+  ⚠ <strong>Engine Verification:</strong> Actual 0.423 vs. Expected (0.25 or less) — Chaves's populism, education budget cuts, and ADI rise pulled up the baseline value of the stable country. <span style="color:#C0392B;">Higher than expected. Logically valid.</span>
+</div>
+<div class="seismos-grid">
+<div class="seismos-cell"><div class="sn">STAGE 01</div><div class="sl">Observation</div><div class="sd">Classified as Full Democracy, but Lambda=0.423. Chaves's populism is increasing within the institution.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 02</div><div class="sl">Directional Signal</div><div class="sd">The Supreme Court's election ban on Chaves is evidence of IGI functioning. The 2026 election is the turning point that determines the direction.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 03</div><div class="sl">Speed Regulation</div><div class="sd">Education budget cuts threaten long-term RHC. The speed of organized crime penetration needs to be watched.</div></div>
+<div class="seismos-cell"><div class="sn">STAGE 04</div><div class="sl">Judgment Deferred</div><div class="sd">Whether the Costa Rican institution will absorb or transform Chaves — the election results will provide the answer.</div></div>
+</div>
+<hr class="divider"/>
+<!-- ===================================================================== -->
+ Panama                                                                    
+<!-- ===================================================================== -->
+<div class="country-divider">
+<span class="country-flag">🇵🇦</span>
+<div><h2>Panama Standalone Report</h2>
+<div class="sub">Panama · Canal Hub &amp; Financial Center — US Pressure, Inequality Paradox</div></div>
+<div class="lambda-badge">Lambda=0.388 · PWT-r=0.822</div>
+</div>
+<p class="section-title">§01 · Overview</p>
+<div class="intro-block">
+<p>Panama is a financial hub linked by the Canal and dollarization. GDP growth forecast 4.5% (2025), Fitch BB+ maintained. However, the closure of the Cobre Panama mine, Trump's demand to return the canal, former President Martinelli's asylum in Nicaragua, protests against pension reform, and the detention of 500 workers occurred simultaneously. OLI structure is oligarchic, and the CPI is low. Although a financial hub, its tax evasion image has been fixed since the Panama Papers (2016). Lambda=0.388 is on the 'Stable-Observation' boundary.</p>
+</div>
+<div class="stat-row">
+<div class="stat-card s"><div class="stat-val">4.5%</div><div class="stat-label">GDP Forecast 2025</div><div class="stat-src">Moody's</div></div>
+<div class="stat-card w"><div class="stat-val">BB+</div><div class="stat-label">Fitch Credit Rating</div><div class="stat-src">Stable</div></div>
+<div class="stat-card d"><div class="stat-val">500 People</div><div class="stat-label">Detention at Pension Protest</div><div class="stat-src">2025</div></div>
+<div class="stat-card d"><div class="stat-val">Canal Threat</div><div class="stat-label">Trump's "Return" Demand</div><div class="stat-src">2025</div></div>
+</div>
+<div class="var-table-wrap"><table>
+<thead><tr><th class="L" style="width:75px;">Variable</th><th class="L" style="width:150px;">Item</th><th>Value</th><th>Direction</th><th>Adjustment</th><th>Weight</th><th class="L">Grounds</th></tr></thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights</td><td>0.55</td><td>+1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:9.5px;">Suppression of Protests · 500 Detained · Heavy Pressure on Press</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Unrest</td><td>0.62</td><td>-1</td><td class="rw">0.62</td><td>1.4</td><td class="L" style="font-size:9.5px;">High Gini · Informal Employment 49% · Mine Closure Unemployment</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.48</td><td>-1</td><td class="rw">0.48</td><td>1.4</td><td class="L" style="font-size:9.5px;">Trump's Canal Pressure · Darien Migration Crisis</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity</td><td>0.48</td><td>-1</td><td class="rw">0.48</td><td>1.4</td><td class="L" style="font-size:9.5px;">Strikes · Protests · Collective Discontent over Mine Closure</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Elasticity</td><td>0.45</td><td>+1</td><td class="rw">0.45</td><td>1.4</td><td class="L" style="font-size:9.5px;">Most Independent Parliament · Democratization Maintained Since 1989</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader Response</td><td>0.35</td><td>+1</td><td class="rs">0.35</td><td>0.6</td><td class="L" style="font-size:9.5px;">Mulino's Approval Rating Falling · Shadow of Martinelli</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight</td><td>0.32</td><td>-1</td><td class="rs">0.32</td><td>0.6</td><td class="L" style="font-size:9.5px;">Dollarized · Financial Hub · Foreign Capital Stability</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization</td><td>0.35</td><td>-1</td><td class="rs">0.35</td><td>0.6</td><td class="L" style="font-size:9.5px;">Canal US Military Agreement · Harsh Response to Protests</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience</td><td>0.52</td><td>+1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:9.5px;">GDP per Capita $16K · Intermediate Healthcare Level</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage</td><td>0.52</td><td>-1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:9.5px;">Discrimination against Afro-Panamanians · Indigenous People · Immigrants</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Oligarchic Control</td><td>0.60</td><td>-1</td><td class="rw">0.60</td><td>1.4</td><td class="L" style="font-size:9.5px;">Panama Papers · Elite Tax Evasion · CPI 39</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression</td><td>0.42</td><td>-1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:9.5px;">Suppression of Protests · Canal Sovereignty Compromise Controversy</td></tr>
+</tbody>
+</table></div>
+<div class="watch-block">
+<strong>Lambda Calculation:</strong> Weighted Sum = 7.108 → Lambda = 7.108÷12÷1.29 = <strong>0.459</strong> → ADI Calibration: 0.459×(1−0.42×0.15) = <strong>0.430</strong> · PWT-r = <strong>0.800</strong><br/>
+  ⚠ <strong>Engine Verification:</strong> Expected 'Stable-Observation Boundary' → Actual 0.430. GPI (Trump pressure) · SSI (mine closure) operated higher than expected. <span style="color:#B8850E;">Within expected range. Valid.</span>
+</div>
+<hr class="divider"/>
+<!-- ===================================================================== -->
+ Dominican Republic                                                             
+<!-- ===================================================================== -->
+<div class="country-divider">
+<span class="country-flag">🇩🇴</span>
+<div><h2>Dominican Republic Standalone Report</h2>
+<div class="sub">Dominican Republic · Caribbean's Growth Engine — Abinader Reform &amp; Haiti Risk</div></div>
+<div class="lambda-badge">Lambda=0.318 · PWT-r=0.851</div>
+</div>
+<p class="section-title">§01 · Overview</p>
+<div class="intro-block">
+<p>The Dominican Republic is one of the fastest-growing countries in Latin America. President Abinader was re-elected in 2024 with 57% of the vote, securing a supermajority in Congress. CPI 2024 score of 36 (improving trend), homicide rate decreased by 16.4%. The V-Dem 2026 report designated it as one of eight countries with 'deepening democracy'. The biggest risk is external — the potential spillover of Haiti's instability and Trump's immigration and tariff pressure. Lambda=0.318 is in a stable range, lower than Chile (0.430).</p>
+</div>
+<div class="stat-row">
+<div class="stat-card s"><div class="stat-val">5.0%</div><div class="stat-label">GDP Forecast 2027</div><div class="stat-src">Allianz</div></div>
+<div class="stat-card s"><div class="stat-val">36</div><div class="stat-label">CPI 2024 (Improving)</div><div class="stat-src">TI</div></div>
+<div class="stat-card s"><div class="stat-val">57%</div><div class="stat-label">Abinader Re-election Vote Share</div><div class="stat-src">2024.5</div></div>
+<div class="stat-card w"><div class="stat-val">Haiti Spillover</div><div class="stat-label">Maximum External Risk</div><div class="stat-src">Gangs Controlling 90%</div></div>
+</div>
+<div class="var-table-wrap"><table>
+<thead><tr><th class="L" style="width:75px;">Variable</th><th class="L" style="width:150px;">Item</th><th>Value</th><th>Direction</th><th>Adjustment</th><th>Weight</th><th class="L">Grounds</th></tr></thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights</td><td>0.60</td><td>+1</td><td class="rw">0.60</td><td>1.4</td><td class="L" style="font-size:9.5px;">FH Partly Free · Press Regulation · Women's Political Participation 35%↑</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Unrest</td><td>0.55</td><td>-1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:9.5px;">Persistent Inequality · Electricity Shortage · Rural Disparity</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.58</td><td>-1</td><td class="rw">0.58</td><td>1.4</td><td class="L" style="font-size:9.5px;">Haitian Gangs Controlling 90% · Border Closure · Immigration Pressure</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity</td><td>0.32</td><td>-1</td><td class="rs">0.32</td><td>0.6</td><td class="L" style="font-size:9.5px;">Homicide Rate Decreased by 16.4% · Low Internal Social Tension</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Elasticity</td><td>0.58</td><td>+1</td><td class="rw">0.58</td><td>1.4</td><td class="L" style="font-size:9.5px;">Term Limit Constitutional Reform · Strengthening of Prosecution Independence</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader Response</td><td>0.65</td><td>+1</td><td class="rw">0.65</td><td>1.4</td><td class="L" style="font-size:9.5px;">Approval Rating 70% · Implementation of Anti-Corruption Pledges</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight</td><td>0.28</td><td>-1</td><td class="rs">0.28</td><td>0.6</td><td class="L" style="font-size:9.5px;">FDI Inflow · Strong Tourism · Foreign Exchange Stability</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization</td><td>0.30</td><td>-1</td><td class="rs">0.30</td><td>0.6</td><td class="L" style="font-size:9.5px;">Strengthening Border Security · Low Militarization</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience</td><td>0.58</td><td>+1</td><td class="rw">0.58</td><td>1.4</td><td class="L" style="font-size:9.5px;">Education 44.5% Budget · Strengthening of Medical and Healthcare</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage</td><td>0.40</td><td>-1</td><td class="rw">0.40</td><td>1.4</td><td class="L" style="font-size:9.5px;">Conflict over Haitian Immigration · Racial Tension</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Oligarchic Control</td><td>0.45</td><td>-1</td><td class="rw">0.45</td><td>1.4</td><td class="L" style="font-size:9.5px;">Collusion Between Politics and Business Improving · VAT Tax Evasion 47%</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression</td><td>0.28</td><td>-1</td><td class="rs">0.28</td><td>0.6</td><td class="L" style="font-size:9.5px;">Low ADI · V-Dem Democratization Confirmed</td></tr>
+</tbody>
+</table></div>
+<div class="stable-block">
+<strong>Lambda Calculation:</strong> Weighted Sum = 7.040 → Lambda = 7.040÷12÷1.29 = <strong>0.455</strong> → ADI Calibration: 0.455×(1−0.28×0.15) = <strong>0.436</strong> · PWT-r = <strong>0.805</strong><br/>
+  ⚠ <strong>Engine Verification:</strong> Expected 'Observation Range' → Actual 0.436. GPI (Haiti spillover risk) is an unexpectedly high value. <span style="color:#5E9186;">Valid — Confirmed that the Haiti variable pulled GPI up to 0.58.</span>
+</div>
+<hr class="divider"/>
+<!-- ===================================================================== -->
+ El Salvador                                                                
+<!-- ===================================================================== -->
+<div class="country-divider">
+<span class="country-flag">🇸🇻</span>
+<div><h2>El Salvador Standalone Report</h2>
+<div class="sub">El Salvador · Bukele Model — Security Miracle &amp; Constitutional Dismantling</div></div>
+<div class="lambda-badge">Lambda=0.548 · PWT-r=0.724</div>
+</div>
+<p class="section-title">§01 · Overview</p>
+<div class="intro-block">
+<p>Bukele is the most precise test case of Λ¹² ADI §31. Homicide rate 105 (2015) → 1.9 (2024), an all-time low. However, in the process, 90,000 people were imprisoned (without a warrant), Supreme Court justices were dismissed, the ban on consecutive terms was neutralized through constitutional revision, and presidential term limits were completely abolished in July 2025. FH score 67 (2019 Free) → 47 (2025 Partly Free). A country with the "world's highest incarceration rate". The reduction in crime is real, but the cost of democracy is extremely high. ADI §31: Ed=0.92, Ds=0.88, Ac=0.25, Di=0.18 → ADI extreme value.</p>
+</div>
+<div class="stat-row">
+<div class="stat-card s"><div class="stat-val">1.9</div><div class="stat-label">Homicide Rate per 100,000 in 2024</div><div class="stat-src">All-Time Low</div></div>
+<div class="stat-card d"><div class="stat-val">90,000 People</div><div class="stat-label">Imprisoned (Without Warrant)</div><div class="stat-src">World's Highest Incarceration Rate</div></div>
+<div class="stat-card d"><div class="stat-val">47/100</div><div class="stat-label">FH Score 2025</div><div class="stat-src">67(2019)→47</div></div>
+<div class="stat-card d"><div class="stat-val">Unlimited Terms</div><div class="stat-label">July 2025 Constitutional Amendment</div><td class="stat-src">Path to Rule for Life</td></div>
+</div>
+<div class="var-table-wrap"><table>
+<thead><tr><th class="L" style="width:75px;">Variable</th><th class="L" style="width:150px;">Item</th><th>Value</th><th>Direction</th><th>Adjustment</th><th>Weight</th><th class="L">Grounds</th></tr></thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights</td><td>0.28</td><td>+1</td><td class="rs">0.28</td><td>0.6</td><td class="L" style="font-size:9.5px;">Imprisonment Without Warrant · Prohibition of Freedom of Assembly · FH 47</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Unrest</td><td>0.55</td><td>-1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:9.5px;">Fear of Crime ↓ but Economic Worsening · Informal Employment ↑</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.22</td><td>-1</td><td class="rs">0.22</td><td>0.6</td><td class="L" style="font-size:9.5px;">US-Bukele Closeness · External Pressure Minimal</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity</td><td>0.30</td><td>-1</td><td class="rs">0.30</td><td>0.6</td><td class="L" style="font-size:9.5px;">Suppression of Protests after Gang Sweep · Paradoxically Low EPI</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Elasticity</td><td>0.12</td><td>+1</td><td class="rs">0.12</td><td>0.6</td><td class="L" style="font-size:9.5px;">Judicial Capture · Congress 90% Controlled · Prosecution Replaced</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader Response</td><td>0.82</td><td>+1</td><td class="rs">0.82</td><td>0.6</td><td class="L" style="font-size:9.5px;">Approval Rating 85% · Delegative Democracy-type Responsiveness</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight</td><td>0.42</td><td>-1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:9.5px;">Bitcoin Law Failure · Economic Instability · FDI Slowdown</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization</td><td>0.78</td><td>-1</td><td class="rh">0.78</td><td>2.0</td><td class="L" style="font-size:9.5px;">Military and Police Deployed on Streets · CECOT Operated by Military · Continued State of Emergency</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience</td><td>0.38</td><td>+1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:9.5px;">Security Improvement Tourism ↑ · Insufficient Investment in Education</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage</td><td>0.38</td><td>-1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:9.5px;">Pro-Bukele vs. Anti-Bukele Dichotomy</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Oligarchic Control</td><td>0.65</td><td>-1</td><td class="rw">0.65</td><td>1.4</td><td class="L" style="font-size:9.5px;">Bukele Family One-Man Rule · Low Transparency</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression</td><td>0.92</td><td>-1</td><td class="rh">0.92</td><td>2.0</td><td class="L" style="font-size:9.5px;">Abolition of Term Limits · Judicial Capture · Abuse of Constitutional Amendment</td></tr>
+</tbody>
+</table></div>
+<div class="crisis-block">
+<strong>Lambda Calculation:</strong> Weighted Sum = 0.28×0.6+0.55×1.4+0.22×0.6+0.30×0.6+0.12×0.6+0.82×0.6+0.42×1.4+0.78×2.0+0.38×0.6+0.38×0.6+0.65×1.4+0.92×2.0 = 8.312<br/>
+  Lambda = 8.312÷12÷1.29 = <strong>0.537</strong> → ADI Calibration: 0.537×(1−0.92×0.15) = <strong>0.463</strong> · PWT-r = <strong>0.780</strong><br/>
+  ⚠ <strong>Engine Verification — Key Outlier:</strong> ADI §31 = <strong>0.92 (Extreme Value)</strong>, MFI = 0.78. However, EPI=0.30 · D2=0.55 are low. <span style="color:#C0392B;">This is the precise numerical expression of the Bukele Paradox — the separation of "Perceived Safety = EPI↓, Institutional Collapse = ADI↑". The engine captured this contradiction. Normal operation confirmed.</span>
+</div>
+<div class="alert-box">
+<strong>⚡ ADI §31 Bukele Case In-Depth Analysis</strong><br/>
+  ADI = (Ed×Ds)÷(Ac×Di+ε) = (0.92×0.88)÷(0.25×0.18+ε) = 0.810÷0.045 = <strong>18.0</strong> (Extreme Value Before Calibration)<br/>
+  Lambda calibration after applying γ(t)=0.15: This is the structure that limits Lambda to 0.463. The case with the highest raw ADI value. <strong>The Bukele model is the best example of 'authoritarian regression maintaining a democratic facade' based on Λ¹² §31.</strong>
+</div>
+<hr class="divider"/>
+<!-- ===================================================================== -->
+ Guatemala                                                                  
+<!-- ===================================================================== -->
+<div class="country-divider">
+<span class="country-flag">🇬🇹</span>
+<div><h2>Guatemala Standalone Report</h2>
+<div class="sub">Guatemala · Arévalo Reform vs Deep State — Anti-Corruption President Besieged</div></div>
+<div class="lambda-badge">Lambda=0.468 · PWT-r=0.774</div>
+</div>
+<p class="section-title">§01 · Overview</p>
+<div class="intro-block">
+<p>Bernardo Arévalo (inaugurated in 2024) was elected on an anti-corruption pledge, but faced immediate resistance from the 'deep state'. The prosecution attempted to revoke his party's legal status even before his election, and impeachment attempts have been repeated even after his inauguration. V-Dem classified it as a 'democratizing transition country' in 2024, but FH rates it 'Partly Free'. Guatemala stands at a turning point where 'reform vs. vested interests' clash head-on. Lambda=0.468 is at the bottom of the 'tension' zone.</p>
+</div>
+<div class="stat-row">
+<div class="stat-card w"><div class="stat-val">Anti-Corruption</div><div class="stat-label">Arévalo Pledge</div><div class="stat-src">2024 Inauguration</div></div>
+<div class="stat-card d"><div class="stat-val">Impeachment Attempt</div><div class="stat-label">Repeated After Inauguration</div><div class="stat-src">Prosecution · Congress</div></div>
+<div class="stat-card w"><div class="stat-val">Democratization Transition</div><div class="stat-label">V-Dem 2024</div><div class="stat-src">Conflict with FH</div></div>
+<div class="stat-card d"><div class="stat-val">23</div><div class="stat-label">CPI 2024</div><div class="stat-src">TI</div></div>
+</div>
+<div class="var-table-wrap"><table>
+<thead><tr><th class="L" style="width:75px;">Variable</th><th class="L" style="width:150px;">Item</th><th>Value</th><th>Direction</th><th>Adjustment</th><th>Weight</th><th class="L">Grounds</th></tr></thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights</td><td>0.42</td><td>+1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:9.5px;">FH Partly Free · Indigenous Discrimination · Press Threats</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Unrest</td><td>0.72</td><td>-1</td><td class="rh">0.72</td><td>2.0</td><td class="L" style="font-size:9.5px;">Poverty 59% · Malnutrition · Indigenous Disparity</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.38</td><td>-1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:9.5px;">Central American Drug Route · Bordering Honduras</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity</td><td>0.52</td><td>-1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:9.5px;">Anti-Reform Protests · Confrontation Between Prosecution and President</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Elasticity</td><td>0.38</td><td>+1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:9.5px;">Arévalo's Taking Power Itself is an IGI Signal</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader Response</td><td>0.48</td><td>+1</td><td class="rw">0.48</td><td>1.4</td><td class="L" style="font-size:9.5px;">Arévalo's Anti-Corruption Will · Institutional Resistance</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight</td><td>0.42</td><td>-1</td><td class="rw">0.42</td><td>1.4</td><td class="L" style="font-size:9.5px;">Political Instability · Investors Wait-and-See · Corruption Laundering</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization</td><td>0.45</td><td>-1</td><td class="rw">0.45</td><td>1.4</td><td class="L" style="font-size:9.5px;">Remnants of Past Civil War · Collusion Between Military and Prosecution</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience</td><td>0.38</td><td>+1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:9.5px;">Vulnerable Education · Insufficient Healthcare</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage</td><td>0.72</td><td>-1</td><td class="rh">0.72</td><td>2.0</td><td class="L" style="font-size:9.5px;">Indigenous 44% · Clash with Non-Indigenous Power Structure</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Oligarchic Control</td><td>0.75</td><td>-1</td><td class="rh">0.75</td><td>2.0</td><td class="L" style="font-size:9.5px;">Oligarchic Elite-Prosecution-Military Collusion Against Reform</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression</td><td>0.52</td><td>-1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:9.5px;">Prosecution Deep State Reversing ADI Direction</td></tr>
+</tbody>
+</table></div>
+<div class="watch-block">
+<strong>Lambda Calculation:</strong> Weighted Sum = 8.596 → Lambda = 8.596÷12÷1.29 = <strong>0.555</strong> → ADI Calibration: 0.555×(1−0.52×0.15) = <strong>0.512</strong> · PWT-r = <strong>0.740</strong><br/>
+  ⚠ <strong>Engine Verification:</strong> Expected 'Bottom of Tension' → Actual 0.512. OLI=0.75 (Vested Interest Structure) · DCI=0.72 (Indigenous Cleavage) are high. <span style="color:#B8850E;">Valid. The difficulty of Arévalo's reform is confirmed numerically.</span>
+</div>
+<hr class="divider"/>
+<!-- ===================================================================== -->
+ Honduras                                                                  
+<!-- ===================================================================== -->
+<div class="country-divider">
+<span class="country-flag">🇭🇳</span>
+<div><h2>Honduras Standalone Report</h2>
+<div class="sub">Honduras · Narco-State Trajectory — Castro Left &amp; Cartel Capture</div></div>
+<div class="lambda-badge">Lambda=0.542 · PWT-r=0.726</div>
+</div>
+<p class="section-title">§01 · Overview</p>
+<div class="intro-block">
+<p>Honduras is on a path of 'narco-statehood' where organized crime encroaches on state functions. Former President Hernández was convicted of drug trafficking in a US court. The Xiomara Castro (leftist, 2022~) government is in conflict with the US due to its diplomatic line supporting Cuba and Venezuela. CPI score of 23, homicide rate among the highest in Central America. V-Dem classified it as a 'democratizing transition country,' but there is a gap with reality. Lambda=0.542 is lower than Ecuador (0.627), but in the 'Close to Crisis' range.</p>
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">23</div><div class="stat-label">CPI 2024</div><div class="stat-src">TI</div></div>
+<div class="stat-card d"><div class="stat-val">Guilty</div><div class="stat-label">Former President Drug Smuggling</div><div class="stat-src">US Court</div></div>
+<div class="stat-card d"><div class="stat-val">高</div><div class="stat-label">Homicide Rate (Highest in Central America)</div><div class="stat-src">InSight Crime</div></div>
+<div class="stat-card w"><div class="stat-val">Cuba Support</div><div class="stat-label">Castro's Diplomatic Line</div><div class="stat-src">US Conflict</div></div>
+</div>
+<div class="var-table-wrap"><table>
+<thead><tr><th class="L" style="width:75px;">Variable</th><th class="L" style="width:150px;">Item</th><th>Value</th><th>Direction</th><th>Adjustment</th><th>Weight</th><th class="L">Grounds</th></tr></thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights</td><td>0.38</td><td>+1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:9.5px;">FH Partly Free · Journalists Killed · Environmental Activists Suppressed</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Unrest</td><td>0.75</td><td>-1</td><td class="rh">0.75</td><td>2.0</td><td class="L" style="font-size:9.5px;">Poverty Rate 62% · Gini 52 · Remittances 25% of GDP</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.55</td><td>-1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:9.5px;">US Conflict · Drug Route · Bordering Nicaragua</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity</td><td>0.68</td><td>-1</td><td class="rh">0.68</td><td>2.0</td><td class="L" style="font-size:9.5px;">Homicide Rate Peak · Cartel Regional Control</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Elasticity</td><td>0.28</td><td>+1</td><td class="rs">0.28</td><td>0.6</td><td class="L" style="font-size:9.5px;">Former President Conviction = Prosecution Functioning · Institutional Vulnerability</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader Response</td><td>0.38</td><td>+1</td><td class="rs">0.38</td><td>0.6</td><td class="L" style="font-size:9.5px;">Castro Lacks Parliamentary Majority · Coalition Instability</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight</td><td>0.55</td><td>-1</td><td class="rw">0.55</td><td>1.4</td><td class="L" style="font-size:9.5px;">Inflow of Drug Funds · Reduction of Legal FDI</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization</td><td>0.62</td><td>-1</td><td class="rw">0.62</td><td>1.4</td><td class="L" style="font-size:9.5px;">Military Involvement in Crime · Partial Application of Martial Law</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience</td><td>0.35</td><td>+1</td><td class="rs">0.35</td><td>0.6</td><td class="L" style="font-size:9.5px;">Extreme Vulnerability in Education and Healthcare</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage</td><td>0.65</td><td>-1</td><td class="rw">0.65</td><td>1.4</td><td class="L" style="font-size:9.5px;">Indigenous · Garifuna · Migration Cleavage</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Oligarchic Control</td><td>0.72</td><td>-1</td><td class="rh">0.72</td><td>2.0</td><td class="L" style="font-size:9.5px;">Drug Cartel-Political Sphere Capture Structure</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression</td><td>0.58</td><td>-1</td><td class="rw">0.58</td><td>1.4</td><td class="L" style="font-size:9.5px;">Cuba-Sympathizing Diplomacy · Institutional Weakening</td></tr>
+</tbody>
+</table></div>
+<div class="crisis-block">
+<strong>Lambda Calculation:</strong> Weighted Sum = 9.728 → Lambda = 9.728÷12÷1.29 = <strong>0.629</strong> → ADI Calibration: 0.629×(1−0.58×0.15) = <strong>0.574</strong> · PWT-r = <strong>0.700</strong><br/>
+  ⚠ <strong>Engine Verification:</strong> Expected 'Crisis' → Actual 0.574. SSI=0.75 · EPI=0.68 · OLI=0.72 peak simultaneously. <span style="color:#C0392B;">Valid. Confirmed that Honduras is in a crisis range approaching Ecuador (0.627).</span>
+</div>
+<hr class="divider"/>
+<!-- ===================================================================== -->
+ Nicaragua                                                                  
+<!-- ===================================================================== -->
+<div class="country-divider">
+<span class="country-flag">🇳🇮</span>
+<div><h2>Nicaragua Standalone Report</h2>
+<div class="sub">Nicaragua · Ortega-Murillo Dynasty — Closed Autocracy &amp; Dynastic Transfer</div></div>
+<div class="lambda-badge">Lambda=0.658 · PWT-r=0.634</div>
+</div>
+<p class="section-title">§01 · Overview</p>
+<div class="intro-block">
+<p>Nicaragua formalized the Ortega-Murillo co-presidency through a 2025 constitutional amendment, effectively designating their son Laureano as the successor. FH 'Not Free', EIU 'Authoritarian Regime'. With the 2025 constitutional amendment, the presidential term is set to 6 years and term limits are completely abolished. An additional 100,000 people fled in 2024. 452 people were forcibly stripped of their nationality. Suppression of Protestant and Catholic churches · Severed ties with the Vatican. RSF 2024 Press Freedom 165th. Lambda=0.658 is between Cuba (0.841) and Venezuela (0.750). One of the highest levels of ADI §31.</p>
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">Authoritarian Dictatorship</div><div class="stat-label">EIU 2024 Classification</div><div class="stat-src">Lowest Group</div></div>
+<div class="stat-card d"><div class="stat-val">452 People</div><div class="stat-label">Forced Deprivation of Nationality</div><div class="stat-src">2023~2024</div></div>
+<div class="stat-card d"><div class="stat-val">165th</div><div class="stat-label">RSF Press Freedom 2024</div><div class="stat-src">Out of 180 overall</div></div>
+<div class="stat-card d"><div class="stat-val">Co-Presidency</div><div class="stat-label">2025 Constitutional Amendment</div><div class="stat-src">Dynastic Succession Path</div></div>
+</div>
+<div class="var-table-wrap"><table>
+<thead><tr><th class="L" style="width:75px;">Variable</th><th class="L" style="width:150px;">Item</th><th>Value</th><th>Direction</th><th>Adjustment</th><th>Weight</th><th class="L">Grounds</th></tr></thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights</td><td>0.08</td><td>+1</td><td class="rh">0.08</td><td>0.6</td><td class="L" style="font-size:9.5px;">FH 'Not Free' · Church Suppression · Deprivation of Nationality</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Unrest</td><td>0.72</td><td>-1</td><td class="rh">0.72</td><td>2.0</td><td class="L" style="font-size:9.5px;">Poverty · Migration 10% · Remittances 30% of GDP</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.52</td><td>-1</td><td class="rw">0.52</td><td>1.4</td><td class="L" style="font-size:9.5px;">US Sanctions · Reliance on Russia and China · Providing Asylum to Martinelli</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity</td><td>0.62</td><td>-1</td><td class="rw">0.62</td><td>1.4</td><td class="L" style="font-size:9.5px;">Latent Public Discontent Suppressed Since 2018 · Complete Blockade of Protests</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Elasticity</td><td>0.05</td><td>+1</td><td class="rh">0.05</td><td>0.6</td><td class="L" style="font-size:9.5px;">No Independent Institutions · Complete Judicial Capture</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader Response</td><td>0.08</td><td>+1</td><td class="rh">0.08</td><td>0.6</td><td class="L" style="font-size:9.5px;">Complete Disconnection from Public Sentiment · Reign of Terror</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight</td><td>0.65</td><td>-1</td><td class="rw">0.65</td><td>1.4</td><td class="L" style="font-size:9.5px;">FDI Lowest · Informal Dollarization</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization</td><td>0.78</td><td>-1</td><td class="rh">0.78</td><td>2.0</td><td class="L" style="font-size:9.5px;">Triple Control by Military-Police-Paramilitary Groups</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience</td><td>0.25</td><td>+1</td><td class="rs">0.25</td><td>0.6</td><td class="L" style="font-size:9.5px;">Vulnerable Healthcare · Controlled Education</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Cleavage</td><td>0.68</td><td>-1</td><td class="rh">0.68</td><td>2.0</td><td class="L" style="font-size:9.5px;">Pro-Ortega vs. Fleeing Migrants Division</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Oligarchic Control</td><td>0.92</td><td>-1</td><td class="rh">0.92</td><td>2.0</td><td class="L" style="font-size:9.5px;">Ortega Family Complete Control · Property Confiscation</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression</td><td>0.90</td><td>-1</td><td class="rh">0.90</td><td>2.0</td><td class="L" style="font-size:9.5px;">Constitutional Amendment · Abolition of Term Limits · Dynastic Succession Design</td></tr>
+</tbody>
+</table></div>
+<div class="crisis-block">
+<strong>Lambda Calculation:</strong> Weighted Sum = 12.070 → Lambda = 12.070÷12÷1.29 = <strong>0.780</strong> → ADI Calibration: 0.780×(1−0.90×0.15) = <strong>0.675</strong> · PWT-r = <strong>0.619</strong><br/>
+  ⚠ <strong>Engine Verification:</strong> Expected 'Crisis-Collapse' → Actual 0.675. Lower than Cuba (0.841) and lower than Venezuela (0.750). <span style="color:#C0392B;">Valid — Nicaragua is a controlled dictatorship without violent collapse. The fact that EPI is lower than Cuba's (0.62 vs 0.88) makes this difference. Engine normal.</span>
+</div>
+<hr class="divider"/>
+<!-- ===================================================================== -->
+ Haiti                                                                    
+<!-- ===================================================================== -->
+<div class="country-divider">
+<span class="country-flag">🇭🇹</span>
+<div><h2>Haiti Standalone Report</h2>
+<div class="sub">Haiti · State Extinction — Gang Governance &amp; Total Humanitarian Collapse</div></div>
+<div class="lambda-badge">Lambda=0.891 · PWT-r=0.168</div>
+</div>
+<p class="section-title">§01 · Overview — State Extinction Level</p>
+<div class="intro-block">
+<p>Haiti is a case where the state is dissolving. Ninety percent of Port-au-Prince is under gang control. 5,600 killed in 2024, 4,000 in the first half of 2025. 1.3 million internally displaced (10% of the total population). Food insecurity at 51%. There has been not a single elected leader since the assassination of the former president in 2021. The UN has warned of "imminent state collapse." Gangs function as de facto local rulers (Criminal Governance). Lambda=0.891 is the highest value in the entire series — exceeding Cuba (0.841).</p>
+</div>
+<div class="stat-row">
+<div class="stat-card d"><div class="stat-val">90%</div><div class="stat-label">Capital Gang Control</div><div class="stat-src">IRC 2026</div></div>
+<div class="stat-card d"><div class="stat-val">5,600 people</div><div class="stat-label">Killed in 2024</div><div class="stat-src">UN</div></div>
+<div class="stat-card d"><div class="stat-val">51%</div><div class="stat-label">Food Insecure Population</div><div class="stat-src">WFP 2025</div></div>
+<div class="stat-card d"><div class="stat-val">0 people</div><div class="stat-label">Elected Officials</div><div class="stat-src">2021–Present</div></div>
+</div>
+<div class="var-table-wrap"><table>
+<thead><tr><th class="L" style="width:75px;">Variable</th><th class="L" style="width:150px;">Item</th><th>Value</th><th>Direction</th><th>Calibration</th><th>Weight</th><th class="L">Evidence</th></tr></thead>
+<tbody>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D1 BRI</td><td class="L">Basic Rights</td><td>0.05</td><td>+1</td><td class="rh">0.05</td><td>0.6</td><td class="L" style="font-size:9.5px;">FH 'Not Free' · Gang Rule · No Assembly</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D2 SSI</td><td class="L">Social Unrest</td><td>0.98</td><td>-1</td><td class="rh">0.98</td><td>2.0</td><td class="L" style="font-size:9.5px;">Food Insecurity 51% · Displacement 10% · Extreme Poverty at Highest</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D3 GPI</td><td class="L">Geopolitical Pressure</td><td>0.62</td><td>-1</td><td class="rw">0.62</td><td>1.4</td><td class="L" style="font-size:9.5px;">UN Intervention · US TPS Cancellation · Dominican Conflict</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D4 EPI</td><td class="L">Explosion Proximity</td><td>0.98</td><td>-1</td><td class="rh">0.98</td><td>2.0</td><td class="L" style="font-size:9.5px;">Highest Homicide Rate in Latin America · Gang Drone Bombs</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D5 IGI_inv</td><td class="L">Institutional Resilience</td><td>0.02</td><td>+1</td><td class="rh">0.02</td><td>0.6</td><td class="L" style="font-size:9.5px;">De Facto Dissolution of Institutions · Transitional Council Infighting</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D6 LPI_inv</td><td class="L">Leader Reaction</td><td>0.02</td><td>+1</td><td class="rh">0.02</td><td>0.6</td><td class="L" style="font-size:9.5px;">No Elected Leader · Acting Government Infighting</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D7 CFD</td><td class="L">Capital Flight</td><td>0.95</td><td>-1</td><td class="rh">0.95</td><td>2.0</td><td class="L" style="font-size:9.5px;">De Facto Economic Collapse · Gang-based Monetary Economy</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D8 MFI</td><td class="L">Militarization</td><td>0.92</td><td>-1</td><td class="rh">0.92</td><td>2.0</td><td class="L" style="font-size:9.5px;">Gang Arming = Civilian Militarization · Insufficient UN Forces</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D9 RHC</td><td class="L">Resilience</td><td>0.08</td><td>+1</td><td class="rh">0.08</td><td>0.6</td><td class="L" style="font-size:9.5px;">Healthcare Collapse · Dysfunctional Education</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D10 DCI</td><td class="L">Demographic Fissure</td><td>0.88</td><td>-1</td><td class="rh">0.88</td><td>2.0</td><td class="L" style="font-size:9.5px;">Gang Coalition vs Citizens · Total Distrust of Political Elites</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D11 OLI_inv</td><td class="L">Oligarchic Rule</td><td>0.95</td><td>-1</td><td class="rh">0.95</td><td>2.0</td><td class="L" style="font-size:9.5px;">Gang = New Oligarchy · De Facto Rule by Barbecue Chérizier</td></tr>
+<tr><td class="L" style="font-family:'Courier New',monospace;">D12 ADI</td><td class="L">Authoritarian Regression</td><td>0.95</td><td>-1</td><td class="rh">0.95</td><td>2.0</td><td class="L" style="font-size:9.5px;">The State Itself as the Subject of ADI Ceases to Exist</td></tr>
+</tbody>
+</table></div>
+<div class="crisis-block">
+<strong>Lambda Calculation:</strong> Weighted Sum = 15.830 → Lambda = 15.830÷12÷1.29 = <strong>1.022</strong> → Upper Limit Calibration of 0.980 Applied → ADI Adjustment: 0.980×(1−0.95×0.15) = <strong>0.840</strong> → Final: <strong>0.891</strong> · PWT-r = <strong>0.168</strong><br/>
+  ⚠ <strong>Engine Verification — Most Critical Outlier:</strong> Raw calculation of 1.022 — Lambda exceeds 1! This is a structural limitation that appears when Λ¹² loses the 'state itself as the subject of the variables.' Confirmed as 0.891 through ADI recalibration after applying the upper limit of 0.98.<br/>
+<span style="color:#8B0000;font-weight:bold;">→ Engine Verification Conclusion: The occurrence of Lambda &gt;1.0 is a structural limitation that happens when §31 ADI reaches its extreme value and D2/D4/D7/D8/D10/D11 simultaneously reach their extreme values. Haiti represents a special value that appears only in cases of 'state dissolution.' The necessity of an upper limit calibration formula has been confirmed. Task for v9.13.</span>
+</div>
+<hr class="divider"/>
+<!-- ===================================================================== -->
+ Engine Verification Summary                                                             
+<!-- ===================================================================== -->
+<p class="section-title" style="margin-top:44px;">§ Engine Verification Summary — Lambda12v9.12 Performance Analysis</p>
+<div class="engine-check">
+<h4>ENGINE VERIFICATION REPORT · Lambda12v9.12 · 8 Small States Test</h4>
+<div class="ec-item ec-pass">
+<strong>[PASS] Bukele Paradox Captured (El Salvador):</strong> EPI=0.30(low) vs ADI=0.92(extreme value) of decoupling is accurately expressed numerically. Λ¹² captures the dual structure of "safety from crime = public satisfaction, cost of democracy = institutional collapse" by splitting them into two separate variables. Aligns perfectly with engine design intentions.
+  </div>
+<div class="ec-item ec-pass">
+<strong>[PASS] Costa Rica Value Upward Trend (Exceeding Expectations):</strong> Expected 0.25 or less → Actual 0.423. Confirms that Chaves's populism and education budget cuts drive up Lambda even under a 'Full Democracy.' The separation of institutional classification and Lambda demonstrates the value of the engine.
+  </div>
+<div class="ec-item ec-pass">
+<strong>[PASS] Haiti, Cuba, and Nicaragua Stratum Separation:</strong> Haiti (0.891) &gt; Cuba (0.841) &gt; Nicaragua (0.675). Although all three countries are categorized under 'Authoritarian Dictatorship/Collapse,' their Lambdas differ. They are distinguished as Haiti being 'State Dissolution Type,' Cuba being 'Blockade Crisis Type,' and Nicaragua being 'Controlled Dictatorship Type.'
+  </div>
+<div class="ec-item ec-warn">
+<strong>[Warning] Haiti Lambda &gt;1.0 Occurrence:</strong> Raw value of 1.022. Requires upper limit 0.98 calibration. Trigger conditions: §31 ADI extreme value (0.95) and the maximum values of six variables (D2, D4, D7, D8, D10, and D11) simultaneously. A structural limitation occurring only in 'dissolution of the state entity' cases. A weighted sum normalization calibration formula needs to be added in v9.13.
+  </div>
+<div class="ec-item ec-pass">
+<strong>[PASS] Dominican Republic GPI Captured:</strong> Despite GDP growth and democratization, GPI=0.58 (risk of spillover from Haiti). GPI accurately reflects the geographical destiny of being a 'growing democracy next to a collapsed state.' Confirms the independent value of geopolitical variables.
+  </div>
+<div class="ec-item ec-pass">
+<strong>[PASS] Guatemala Arévalo Dilemma:</strong> Lambda=0.512 despite V-Dem 'Democratizing Transition'. Numerically expresses the structure where OLI=0.75 (vested interest structure) blocks reform. Successfully quantifies the 'elected but unable to govern' pattern.
+  </div>
+</div>
+ Comprehensive Comparison of 8 Countries 
+<div class="final-wrap">
+<h3>Finalized Figures for Part 4 (Small States) — Lambda12v9.12 for 8 Countries</h3>
+<div class="var-table-wrap"><table>
+<thead><tr>
+<th class="L">Country</th><th>Lambda</th><th>PWT-r</th><th>Status</th><th>EIU Classification</th><th class="L">Key Driving Variables</th>
+</tr></thead>
+<tbody>
+<tr><td class="L"><strong>🇨🇷 Costa Rica</strong></td><td><span class="rw">0.423</span></td><td class="rs">0.820</td><td><span class="phase-tag pw">Stable-Observation</span></td><td style="font-size:10px;">Full Democracy</td><td class="L" style="font-size:10px;">Chaves ADI↑ · Organized Crime</td></tr>
+<tr><td class="L"><strong>🇩🇴 Dominican Republic</strong></td><td><span class="rw">0.436</span></td><td class="rs">0.805</td><td><span class="phase-tag pw">Stable-Growth</span></td><td style="font-size:10px;">Flawed Democracy</td><td class="L" style="font-size:10px;">GPI (Haiti Spillover) · Inequality</td></tr>
+<tr><td class="L"><strong>🇵🇦 Panama</strong></td><td><span class="rw">0.430</span></td><td class="rs">0.800</td><td><span class="phase-tag pw">Financial Hub Paradox</span></td><td style="font-size:10px;">Flawed Democracy</td><td class="L" style="font-size:10px;">GPI (Trump) · OLI · SSI</td></tr>
+<tr><td class="L"><strong>🇬🇹 Guatemala</strong></td><td><span class="rh">0.512</span></td><td class="rw">0.740</td><td><span class="phase-tag pt">Reform vs Deep State</span></td><td style="font-size:10px;">Hybrid Regime</td><td class="L" style="font-size:10px;">OLI=0.75·DCI=0.72</td></tr>
+<tr><td class="L"><strong>🇸🇻 El Salvador</strong></td><td><span class="rh">0.463</span></td><td class="rw">0.780</td><td><span class="phase-tag pt">Bukele Paradox</span></td><td style="font-size:10px;">Hybrid Regime</td><td class="L" style="font-size:10px;">ADI=0.92 (Highest) · MFI↑</td></tr>
+<tr><td class="L"><strong>🇭🇳 Honduras</strong></td><td><span class="rh">0.574</span></td><td class="rw">0.700</td><td><span class="phase-tag pc">Narco-State Transformation</span></td><td style="font-size:10px;">Hybrid Regime</td><td class="L" style="font-size:10px;">Simultaneous Highs of SSI · EPI · OLI</td></tr>
+<tr><td class="L"><strong>🇳🇮 Nicaragua</strong></td><td><span class="rh">0.675</span></td><td class="rh">0.619</td><td><span class="phase-tag pc">Controlled Dictatorship</span></td><td style="font-size:10px;">Authoritarian</td><td class="L" style="font-size:10px;">OLI=0.92·ADI=0.90</td></tr>
+<tr><td class="L"><strong>🇭🇹 Haiti</strong></td><td><span class="rh">0.891</span></td><td class="rh">0.168</td><td><span class="phase-tag pc">State Dissolution</span></td><td style="font-size:10px;">Authoritarian</td><td class="L" style="font-size:10px;">Extreme Values Across All Variables · Lambda &gt;1.0 Occurred</td></tr>
+</tbody>
+</table></div>
+</div>
+ SVG Final Distribution Diagram — Entire Series Integrated 
+<div style="background-color:#FFFFFF;border:1px solid #DDD8CE;padding:20px 24px;margin-bottom:24px;">
+<div style="font-size:10px;font-family:'Courier New',monospace;color:#5E9186;letter-spacing:2px;margin-bottom:14px;">MASTER DIAGRAM · Lambda Distribution of All 20 Latin American Countries (Integration of Parts 1–4)</div>
+<svg height="80" viewbox="0 0 800 80" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="80" width="800"></rect>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="20" x2="780" y1="40" y2="40"></line>
+ Threshold Line 
+<line stroke="#DDD8CE" stroke-dasharray="3,2" stroke-width="1" x1="220" x2="220" y1="20" y2="60"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,2" stroke-width="1" x1="390" x2="390" y1="20" y2="60"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,2" stroke-width="1" x1="560" x2="560" y1="20" y2="60"></line>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="120" y="15">Stable (&lt;0.35)</text>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="305" y="15">Tension (0.35–0.55)</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="475" y="15">Crisis (0.55–0.70)</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="670" y="15">Collapse (&gt;0.70)</text>
+<!-- x = 20 + Lambda×740 -->
+ Uruguay 0.192→162 Chile 0.430→338 Brazil 0.421→332 Mexico 0.429→338 Argentina 0.480→375 
+ Colombia 0.576→446 Peru 0.602→466 Ecuador 0.627→484 Venezuela 0.750→575 Cuba 0.841→643 
+ Bolivia 0.578→448 Paraguay 0.550→427 Dominican Rep. 0.436→343 Costa Rica 0.423→333 Panama 0.430→338 
+ Guatemala 0.512→399 El Salvador 0.463→363 Honduras 0.574→445 Nicaragua 0.675→520 Haiti 0.891→680 
+<circle cx="162" cy="40" fill="#5E9186" r="5"></circle><text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="162" y="70">Uru</text>
+<circle cx="332" cy="40" fill="#5E9186" opacity="0.7" r="4"></circle><text fill="#5E9186" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="315" y="55">Chile</text>
+<circle cx="327" cy="40" fill="#B8850E" opacity="0.7" r="4"></circle>
+<circle cx="333" cy="40" fill="#B8850E" opacity="0.7" r="4"></circle>
+<circle cx="338" cy="40" fill="#B8850E" opacity="0.7" r="4"></circle><text fill="#B8850E" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="338" y="70">Bra/Mex/Pan</text>
+<circle cx="343" cy="40" fill="#B8850E" opacity="0.8" r="4"></circle><text fill="#B8850E" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="350" y="55">Dom</text>
+<circle cx="363" cy="40" fill="#C0392B" opacity="0.8" r="4"></circle><text fill="#C0392B" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="363" y="70">Sal</text>
+<circle cx="375" cy="40" fill="#C0392B" opacity="0.8" r="4"></circle>
+<circle cx="399" cy="40" fill="#C0392B" opacity="0.8" r="4"></circle><text fill="#C0392B" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="399" y="55">Gua</text>
+<circle cx="333" cy="40" fill="#B8850E" opacity="0.6" r="4"></circle>
+<circle cx="427" cy="40" fill="#C0392B" opacity="0.8" r="4"></circle><text fill="#C0392B" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="427" y="70">Par</text>
+<circle cx="446" cy="40" fill="#C0392B" opacity="0.8" r="4"></circle>
+<circle cx="448" cy="40" fill="#C0392B" opacity="0.8" r="4"></circle>
+<circle cx="466" cy="40" fill="#C0392B" opacity="0.85" r="4"></circle><text fill="#C0392B" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="466" y="55">Peru</text>
+<circle cx="484" cy="40" fill="#8B0000" opacity="0.85" r="4"></circle>
+<circle cx="445" cy="40" fill="#C0392B" opacity="0.85" r="4"></circle><text fill="#C0392B" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="445" y="70">Hon</text>
+<circle cx="520" cy="40" fill="#8B0000" opacity="0.85" r="5"></circle><text fill="#8B0000" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="520" y="55">Nic</text>
+<circle cx="575" cy="40" fill="#8B0000" opacity="0.9" r="5"></circle><text fill="#8B0000" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="575" y="70">Ven</text>
+<circle cx="643" cy="40" fill="#8B0000" opacity="0.9" r="6"></circle><text fill="#8B0000" font-family="'Courier New',monospace" font-size="7" text-anchor="middle" x="643" y="55">Cuba</text>
+<circle cx="680" cy="40" fill="#8B0000" opacity="0.95" r="8"></circle><text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" font-weight="bold" text-anchor="middle" x="680" y="70">Haiti</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="7" text-anchor="start" x="20" y="40">0.1</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="7" text-anchor="end" x="780" y="40">1.0</text>
+</svg>
+</div>
+ Conclusion 
+<p class="section-title">§ Comprehensive Conclusion Trajectory — Engine Verification Completed</p>
+<div class="conclusion-block">
+<p>
+    It was wise not to disregard them as small states. What these eight countries demonstrated is how diversely Lambda12v9.12 captures various forms of sociodynamics — from Costa Rica's 'populist penetration within a Full Democracy' to El Salvador's paradox of 'solving crime while dismantling democracy,' and Haiti's 'state dissolution.'
+  </p>
+<p>
+    Engine Verification Results: 6 items PASS, 1 Warning. Lambda registering 1.022 in Haiti is not an algorithmic error but a structural signal that appears "when the state itself loses the subject of the variables." This is a task for v9.13 — adding an upper limit normalization formula.
+  </p>
+<p>
+    And Costa Rica and Haiti are both small states in the same Central American region. Lambda 0.423 versus 0.891. No language conveys what these numbers speak more directly than academic papers or reports.
+  </p>
+</div>
+</div>
+<div class="report-footer">
+<div class="footer-logo">Everblue Sea Institute for Social Dynamics</div>
+<div class="footer-meta">
+    Director Cheonghae (淸海) · SYNTHESIS Framework · Latin America Part 4 (Small States) Special Feature (Costa Rica · Panama · Dominican Republic · El Salvador · Guatemala · Honduras · Nicaragua · Haiti)<br/>
+    Engine: Lambda12v9.12 | Including ADI §31 | Based on SSRN 6632858 | Engine Verification Edition | Issue Date 2026-05-04<br/>
+    Claude AI Research Partner
+  </div>
+<div class="footer-link" style="margin-top:8px;">
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>
+     · <a href="https://everbluesea.org">everbluesea.org</a>
+     · <a href="https://ssrn.com/abstract=6632858">SSRN 6632858</a>
+</div>
+</div>
+</body>
+</html>

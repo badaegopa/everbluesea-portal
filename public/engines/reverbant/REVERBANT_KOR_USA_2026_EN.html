@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>REVERBANT v1.0 — South Korea–US Comparative Application | Everblue Sea Institute for Social Dynamics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&family=IBM+Plex+Mono:wght@400;600&display=swap');
+:root{
+  --ink:#1a1917;--paper:#F5F3EE;--teal:#3d7f78;--teal-l:#e4f0ef;
+  --gold:#B8850E;--gold-l:#faeeda;--danger:#c0392b;--danger-l:#fdecea;
+  --border:#ddd8ce;--muted:#7a7872;--safe:#1a7a4a;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--ink);font-size:13px;line-height:1.7;}
+
+/* 커버 */
+.cover{background:var(--ink);color:var(--paper);padding:52px 60px 40px;border-bottom:4px solid var(--teal);position:relative;}
+.cover::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--gold));}
+.wp-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.3em;color:var(--teal);text-transform:uppercase;margin-bottom:18px;}
+.cover h1{font-family:'Noto Serif KR',serif;font-size:2rem;font-weight:700;line-height:1.3;margin-bottom:6px;}
+.cover h1 em{color:var(--teal);font-style:normal;}
+.cover .sub{font-size:0.88rem;color:#aaa;margin-bottom:28px;}
+.cover-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;border-top:1px solid #333;padding-top:20px;}
+.cg-item label{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.2em;color:#555;text-transform:uppercase;display:block;margin-bottom:3px;}
+.cg-item span{font-size:12px;color:#ddd;}
+
+/* 래퍼 */
+.wrap{max-width:960px;margin:0 auto;padding:44px 36px;}
+
+/* 섹션 */
+.sec{margin-bottom:48px;}
+.sec-tag{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.3em;color:var(--teal);text-transform:uppercase;margin-bottom:5px;}
+.sec h2{font-family:'Noto Serif KR',serif;font-size:1.2rem;font-weight:700;border-bottom:2px solid var(--teal);padding-bottom:7px;margin-bottom:18px;}
+.sec h3{font-size:0.9rem;font-weight:600;color:var(--gold);margin:20px 0 8px;}
+.sec p{margin-bottom:12px;color:#2a2926;}
+
+/* 두 나라 패널 */
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0;}
+.panel{background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.ph{padding:10px 14px;font-size:12px;font-weight:700;}
+.ph-k{background:var(--teal-l);color:var(--teal);}
+.ph-u{background:var(--gold-l);color:var(--gold);}
+.pb{padding:14px;}
+
+/* 게이지 */
+.g-wrap{margin-bottom:12px;}
+.g-lbl{font-size:9px;color:var(--muted);letter-spacing:0.08em;margin-bottom:3px;}
+.g-track{height:11px;background:#f0ede8;border-radius:6px;overflow:hidden;}
+.g-fill{height:100%;border-radius:6px;}
+.g-val{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;margin-top:3px;}
+
+/* 지표 행 */
+.mrow{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:0.5px solid #f5f3ee;font-size:11px;}
+.mk{color:var(--muted);}
+.mv{font-family:'IBM Plex Mono',monospace;font-weight:700;}
+.hi{color:var(--teal);}
+.lo{color:var(--danger);}
+.mid{color:var(--gold);}
+.warn-badge{background:var(--danger-l);padding:1px 6px;border-radius:3px;font-size:9px;color:var(--danger);}
+
+/* 볼츠만 */
+.btz{margin-top:10px;}
+.btz-lbl{font-size:9px;color:var(--muted);margin-bottom:5px;letter-spacing:0.06em;}
+.btz-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;}
+.btz-s{font-size:9px;font-family:'IBM Plex Mono',monospace;min-width:24px;}
+.btz-tw{flex:1;height:9px;background:#f0ede8;border-radius:4px;overflow:hidden;}
+.btz-tf{height:100%;border-radius:4px;}
+.btz-pct{font-size:9px;font-family:'IBM Plex Mono',monospace;min-width:36px;text-align:right;}
+
+/* 메모 박스 */
+.memo{border-radius:4px;padding:8px 12px;font-size:10.5px;margin-top:10px;line-height:1.6;}
+.memo-k{background:var(--teal-l);color:#1a3a37;}
+.memo-u{background:var(--gold-l);color:#4a2e00;}
+
+/* 공리표 */
+.ax-table{width:100%;border-collapse:collapse;font-size:11.5px;margin:14px 0;}
+.ax-table th{background:var(--ink);color:var(--paper);padding:7px 10px;text-align:left;font-size:10px;font-weight:500;letter-spacing:0.04em;}
+.ax-table td{padding:7px 10px;border-bottom:0.5px solid var(--border);vertical-align:top;}
+.ax-table tr:nth-child(even) td{background:#faf8f4;}
+.ax-n{font-family:'IBM Plex Mono',monospace;color:var(--teal);font-weight:700;}
+
+/* 방정식 박스 */
+.eq{background:var(--ink);border-radius:6px;padding:18px 22px;margin:14px 0;border-left:4px solid var(--gold);}
+.eq-tag{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.eq-main{font-family:'IBM Plex Mono',monospace;font-size:13px;color:#f5f3ee;letter-spacing:0.02em;line-height:2;}
+.eq-sub{margin-top:10px;border-top:1px solid #333;padding-top:8px;}
+.eq-v{font-size:10px;color:#999;font-family:'IBM Plex Mono',monospace;line-height:1.8;}
+.eq-v span{color:var(--teal);}
+
+/* 비교표 */
+.cmp-table{width:100%;border-collapse:collapse;font-size:11.5px;margin:14px 0;}
+.cmp-table th{background:var(--ink);color:var(--paper);padding:7px 12px;text-align:center;font-size:10px;font-weight:500;}
+.cmp-table td{padding:6px 12px;border-bottom:0.5px solid var(--border);text-align:center;}
+.cmp-table td:first-child{text-align:left;color:var(--muted);}
+.td-k{color:var(--teal);font-family:'IBM Plex Mono',monospace;font-weight:700;}
+.td-u{color:var(--gold);font-family:'IBM Plex Mono',monospace;font-weight:700;}
+.td-d{color:var(--danger);font-family:'IBM Plex Mono',monospace;font-size:10px;}
+
+/* C_internal 해부 */
+.cint-box{background:var(--ink);border-radius:6px;padding:18px 22px;margin:14px 0;}
+.cint-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.2em;color:var(--danger);text-transform:uppercase;margin-bottom:12px;}
+.cint-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;}
+.cint-num{min-width:22px;height:22px;border-radius:50%;background:var(--danger);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:2px;}
+.cint-text{font-size:11px;color:#ccc;line-height:1.6;}
+.cint-text strong{color:#fff;}
+
+/* 시나리오 */
+.scen{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0;}
+.scen-box{background:var(--ink);border-radius:6px;padding:16px 18px;}
+.scen-badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:9px;font-weight:700;margin-bottom:8px;}
+.sb-a{background:var(--teal);color:#fff;}
+.sb-b{background:var(--danger);color:#fff;}
+.scen-title{font-size:10.5px;font-weight:700;color:var(--gold);margin-bottom:7px;}
+.scen-row{font-size:10.5px;color:#ccc;margin-bottom:3px;line-height:1.5;}
+.scen-row strong{color:#fff;}
+
+/* 차트 */
+.chart-box{position:relative;height:230px;margin:12px 0;}
+.chart-box-sm{position:relative;height:180px;margin:10px 0;}
+
+/* 검증 */
+.vfy-row{display:flex;align-items:flex-start;gap:10px;padding:7px 12px;border-bottom:0.5px solid var(--border);font-size:11px;}
+.vfy-pass{color:var(--teal);font-weight:700;min-width:18px;}
+.vfy-name{font-family:'IBM Plex Mono',monospace;min-width:130px;color:var(--ink);}
+.vfy-desc{color:var(--muted);}
+
+/* 계층 다이어그램 */
+.layer-diag{background:var(--ink);border-radius:6px;padding:20px;margin:14px 0;}
+.lrow{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:4px;margin-bottom:4px;}
+.l-neg1{background:#1a3a1a;border-left:3px solid #4caf50;}
+.l-0{background:#1a2a3a;border-left:3px solid var(--teal);}
+.l-a2a8{background:#2a1a00;border-left:3px solid var(--gold);}
+.l-3{background:#2a1a1a;border-left:3px solid var(--danger);}
+.l-bsli{background:#1a1535;border-left:3px solid #9b59b6;margin-top:8px;}
+.ll{color:#777;font-size:9px;min-width:70px;font-family:'IBM Plex Mono',monospace;}
+.lc{color:#eee;font-size:10.5px;flex:1;}
+.ld{color:#555;font-size:9px;}
+.larrow{text-align:center;color:#333;font-size:14px;padding:2px 0;}
+
+/* 풋터 */
+.footer{text-align:center;padding:28px 20px;font-size:10px;color:var(--muted);border-top:1px solid var(--border);margin-top:8px;line-height:1.8;}
+.footer strong{color:var(--ink);}
+
+@media(max-width:700px){
+  .cover{padding:36px 24px;}
+  .wrap{padding:30px 18px;}
+  .dual,.scen,.cover-grid{grid-template-columns:1fr;}
+  .cover h1{font-size:1.4rem;}
+}
+</style>
+</head>
+<body>
+ Cover 
+<div class="cover">
+<div class="wp-tag">REVERBANT v1.0 · Applied Case Study · 2026-07-03</div>
+<h1><em>REVERBANT</em> — South Korea–US Comparative Application<br/>Dynamic Social Perturbation Response Analysis</h1>
+<p class="sub">Dynamic Social Perturbation Response Engine — Korean &amp; US Case Studies<br/>
+  C_internal Persistent Structure Analysis + 2026.11 Midterm Election Prediction</p>
+<div class="cover-grid">
+<div class="cg-item"><label>Author</label><span>Cheonghae (淸海) Giseub Kim</span></div>
+<div class="cg-item"><label>Institute</label><span>Everblue Sea Institute for Social Dynamics</span></div>
+<div class="cg-item"><label>Linked Engines</label><span>Λ¹² · BSLI v6.0 · UI</span></div>
+<div class="cg-item"><label>Verification</label><span>7/7 Axiomatic Consistency Completed</span></div>
+</div>
+</div>
+<div class="wrap">
+ 1. Overview 
+<div class="sec">
+<div class="sec-tag">§ 1</div>
+<h2>Overview — Separation of Static Measurement and Dynamic Response</h2>
+<p>Λ¹² (state social-structural state vector) and BSLI (grassroots life-pain perturbation vector) are <strong>static</strong> measurement engines. REVERBANT is the engine that describes how the states measured by these two engines <strong>dynamically respond when subjected to perturbation</strong>.</p>
+<p>Firefighting Analogy: Λ¹² and BSLI are the fire station status board (number of fire trucks and equipment conditions), while REVERBANT is the system that simulates dispatch, suppression, and total burn-out when a fire breaks out.</p>
+<div class="layer-diag">
+<div class="lrow l-bsli">
+<div class="ll">BSLI Perturbation</div>
+<div class="lc">Grassroots Pain (struggling to make a living) — Externally incident energy, isomorphic to H₂O</div>
+<div class="ld">Single-structure, multi-spectrum</div>
+</div>
+<div class="larrow">↓</div>
+<div class="lrow l-3">
+<div class="ll">Layer 3</div>
+<div class="lc">Actual implementers (low-ranking soldiers, enforcers, citizens)</div>
+<div class="ld">Final action decision</div>
+</div>
+<div class="larrow">↓ κ_L0 filter</div>
+<div class="lrow l-0">
+<div class="ll">Layer 0</div>
+<div class="lc">Culture, history, common sense — Acquired imprinting "This is not right"</div>
+<div class="ld">Varies by state and generation</div>
+</div>
+<div class="larrow">↓ λ_{-1} base</div>
+<div class="lrow l-neg1">
+<div class="ll">Layer −1</div>
+<div class="lc">Neurobiological common human foundation — Innate, mirror neurons, oxytocin</div>
+<div class="ld">Empirical proof from the 1914 Christmas Truce</div>
+</div>
+<div class="larrow">↑ Aiming point locked</div>
+<div class="lrow l-a2a8">
+<div class="ll">A2 · A8</div>
+<div class="lc">G-T Core — Institutional trust × governance, final target of all BSLI</div>
+<div class="ld">r=0.969 coupling</div>
+</div>
+</div>
+</div>
+ 2. Axioms 
+<div class="sec">
+<div class="sec-tag">§ 2</div>
+<h2>Axiomatic System A0–A11</h2>
+<table class="ax-table">
+<thead><tr><th>Axiom</th><th>Name</th><th>Content</th></tr></thead>
+<tbody>
+<tr><td class="ax-n">A0</td><td>Ontological Separation</td><td>Λ¹² = state vector (designed layer), BSLI = external perturbation (layer to be designed). Independent separation.</td></tr>
+<tr><td class="ax-n">A1</td><td>Target Invariance</td><td>Even if any dimension reaches its threshold, the final target of BSLI is always A2</td></tr>
+<tr><td class="ax-n">A2</td><td>E_A2 Dual Directionality</td><td>① BSLI absorption/recovery (↑) ② A8 over-expansion suppression (↔) — physical reality of checks and balances</td></tr>
+<tr><td class="ax-n">A3</td><td>Internal Conflict</td><td>C_internal: Occurs when A8 attacks A2. 3rd term of UI equation. Currently empirically observed in the US</td></tr>
+<tr><td class="ax-n">A4</td><td>Enforcement Channel Attribution</td><td>Structural weakening of A2 resilience when enforcement channels are fully attributed to A8</td></tr>
+<tr><td class="ax-n">A5</td><td>Layer 0 Coefficient</td><td>κ_L0: Cultural/historical internalization. Γ = 1−κ_L0. Acquired.</td></tr>
+<tr><td class="ax-n">A6</td><td>Layer −1 Constant</td><td>λ_{-1}: Neurobiological common human foundation. Innate. Automatically activated upon face-to-face contact.</td></tr>
+<tr><td class="ax-n">A7</td><td>Impedance</td><td>Γ = (λ_{-1}√(μ_c/ε_h)−Z_A8) / (λ_{-1}√(μ_c/ε_h)+Z_A8)</td></tr>
+<tr><td class="ax-n">A8</td><td>BSLI Redirection</td><td>BSLI shifts to defending A2 when A8 attacks A2. Final target is always A2.</td></tr>
+<tr><td class="ax-n">A9</td><td>Brittle Limit</td><td>E_A2 &lt; 0.20 + C_internal threshold → Rapid surge in brittle fracture probability</td></tr>
+<tr><td class="ax-n">A10</td><td>BSLI Physical Properties</td><td>BSLI ≡ Water (H₂O). Single-structure, multi-spectrum. Hydrogen bond = Layer−1</td></tr>
+<tr><td class="ax-n">A11</td><td>Anomalies of Water</td><td>4°C stability zone, supercriticality, LDL→HDL transition, diffusion paradox (suppression ↑ → diffusion ↑)</td></tr>
+</tbody>
+</table>
+</div>
+ 3. Core Equations 
+<div class="sec">
+<div class="sec-tag">§ 3</div>
+<h2>Core Equation System</h2>
+<div class="eq">
+<div class="eq-tag">Unified UI Equation</div>
+<div class="eq-main">UI(t) = η(t)·E_A2(t) − P_BSLI(t)/σ(G-T) − C_internal(t)</div>
+<div class="eq-sub">
+<div class="eq-v"><span>η</span>: Λ¹² social-structural stability · <span>E_A2</span>: institutional elasticity (0–1) · <span>σ(G-T)</span>: G-T Core scattering cross-section</div>
+<div class="eq-v"><span>C_internal</span>: A2↔A8 internal conflict energy · UI &gt; 0 = stable · UI &lt; 0 = danger</div>
+</div>
+</div>
+<div class="eq">
+<div class="eq-tag">Uprising Threshold Condition</div>
+<div class="eq-main">P_BSLI(t) &gt; E_A2 · σ(G-T) · η(t)</div>
+<div class="eq-sub"><div class="eq-v">Right-hand side = absorption capacity of institutions. Phase transition occurs when left-hand side exceeds it.</div></div>
+</div>
+<div class="eq">
+<div class="eq-tag">C_internal Dynamics (Current US Situation)</div>
+<div class="eq-main">dC_int/dt = ν·|Z_A8−Z_L0|·P_BSLI − μ·E_A2</div>
+<div class="eq-sub">
+<div class="eq-v"><span>ν</span>= recharge rate · <span>|Z_A8−Z_L0|</span>= impedance mismatch · <span>μ</span>= damping rate</div>
+<div class="eq-v">US: high ν (3 recharge mechanisms) + low μ (E_A2 = 0.34) → dC/dt &gt; 0</div>
+</div>
+</div>
+<div class="eq">
+<div class="eq-tag">Impedance / Command Reflection (Layer−1 Integration)</div>
+<div class="eq-main">Z_L0 = λ_{-1}·√(μ_c/ε_h)   ·   Γ = (Z_L0−Z_A8)/(Z_L0+Z_A8)</div>
+<div class="eq-sub">
+<div class="eq-v"><span>λ_{-1}</span>: neurobiological constant · <span>μ_c</span>: cultural transmittance · <span>ε_h</span>: historical permittivity</div>
+<div class="eq-v">Γ → 1: total reflection (refusal of orders) · Γ → 0: total transmission (execution of orders)</div>
+</div>
+</div>
+<div class="eq">
+<div class="eq-tag">Boltzmann Social Temperature</div>
+<div class="eq-main">T_social = 0.40·Ḃ⁻ + 0.35·A₂⁻¹ + 0.25·Ṗ</div>
+<div class="eq-main" style="margin-top:8px;">P(state=s) = exp(−E_s/T_social) / Z</div>
+<div class="eq-sub">
+<div class="eq-v"><span>Ḃ⁻</span>: BSLI decrease rate · <span>A₂⁻¹</span>: inverse approval rating · <span>Ṗ</span>: inflation rate</div>
+<div class="eq-v">E_WD=0 · E_SN=0.35 · E_BH=0.70</div>
+</div>
+</div>
+</div>
+ 4. Application to South Korea and the US 
+<div class="sec">
+<div class="sec-tag">§ 4</div>
+<h2>Empirical Application of REVERBANT to South Korea and the US</h2>
+<div class="dual">
+ South Korea 
+<div class="panel">
+<div class="ph ph-k">🇰🇷 South Korea KOR — Lee Jae-myung Government Year 1 (2026-07)</div>
+<div class="pb">
+<div class="g-wrap">
+<div class="g-lbl">UI Index (stability ↑)</div>
+<div class="g-track"><div class="g-fill" style="width:55%;background:var(--teal);"></div></div>
+<div class="g-val hi">UI = −0.221 → elastic recovery path</div>
+</div>
+<div class="mrow"><span class="mk">G-T Core</span><span class="mv hi">0.738</span></div>
+<div class="mrow"><span class="mk">Effective G-T Core</span><span class="mv hi">0.688</span></div>
+<div class="mrow"><span class="mk">E_A2 (approval rating 58%)</span><span class="mv hi">0.580</span></div>
+<div class="mrow"><span class="mk">C_internal</span><span class="mv hi">0.050 (low)</span></div>
+<div class="mrow"><span class="mk">T_social</span><span class="mv hi">0.087</span></div>
+<div class="mrow"><span class="mk">Γ reflection coefficient</span><span class="mv mid">0.506</span></div>
+<div class="mrow"><span class="mk">η (Λ¹²)</span><span class="mv">0.5929 (19th / 206 countries)</span></div>
+<div class="mrow"><span class="mk">BSLI</span><span class="mv mid">0.4627 (Grade C)</span></div>
+<div class="btz">
+<div class="btz-lbl">Boltzmann State Probability (T = 0.087)</div>
+<div class="btz-row"><div class="btz-s">WD</div><div class="btz-tw"><div class="btz-tf" style="width:98.2%;background:var(--teal);"></div></div><div class="btz-pct hi">98.2%</div></div>
+<div class="btz-row"><div class="btz-s">SN</div><div class="btz-tw"><div class="btz-tf" style="width:1.8%;background:var(--gold);"></div></div><div class="btz-pct mid">1.8%</div></div>
+<div class="btz-row"><div class="btz-s">BH</div><div class="btz-tw"><div class="btz-tf" style="width:0.1%;background:var(--danger);"></div></div><div class="btz-pct lo">~0%</div></div>
+</div>
+<div class="memo memo-k">✅ Dec 3 impeachment elastic recovery completed · E_A2 recovered from 0.17 → 0.58<br/>⚠ BSLI Grade C — ongoing high inflation and grassroots livelihood leaks<br/>⚠ A7 backpressure (−0.506) — η relative rank stalled</div>
+</div>
+</div>
+ United States 
+<div class="panel">
+<div class="ph ph-u">🇺🇸 United States USA — Trump 2nd Term (2026-07, D-4 months)</div>
+<div class="pb">
+<div class="g-wrap">
+<div class="g-lbl">UI Index (stability ↑)</div>
+<div class="g-track"><div class="g-fill" style="width:14%;background:var(--danger);"></div></div>
+<div class="g-val lo">UI = −0.785 ⚠ plastic deformation in progress</div>
+</div>
+<div class="mrow"><span class="mk">G-T Core (nominal)</span><span class="mv mid">0.740</span></div>
+<div class="mrow"><span class="mk">Effective G-T Core</span><span class="mv lo">0.460 (−C_int=0.28)</span></div>
+<div class="mrow"><span class="mk">E_A2 (approval rating 34%)</span><span class="mv lo">0.340</span></div>
+<div class="mrow"><span class="mk">C_internal</span><span class="mv"><span class="warn-badge">⚠ 0.280 persistent</span></span></div>
+<div class="mrow"><span class="mk">T_social</span><span class="mv mid">0.149 (rising)</span></div>
+<div class="mrow"><span class="mk">Γ reflection coefficient</span><span class="mv lo">0.095 (low)</span></div>
+<div class="mrow"><span class="mk">η (Λ¹²)</span><span class="mv">0.5826 (28th / 206 countries)</span></div>
+<div class="mrow"><span class="mk">BSLI</span><span class="mv mid">0.6998 (Grade B, falling)</span></div>
+<div class="btz">
+<div class="btz-lbl">Boltzmann State Probability (T = 0.149)</div>
+<div class="btz-row"><div class="btz-s">WD</div><div class="btz-tw"><div class="btz-tf" style="width:90.5%;background:var(--gold);"></div></div><div class="btz-pct mid">90.5%</div></div>
+<div class="btz-row"><div class="btz-s">SN</div><div class="btz-tw"><div class="btz-tf" style="width:8.6%;background:#9b59b6;"></div></div><div class="btz-pct" style="color:#6b21a8;">8.6%</div></div>
+<div class="btz-row"><div class="btz-s">BH</div><div class="btz-tw"><div class="btz-tf" style="width:0.8%;background:var(--danger);"></div></div><div class="btz-pct lo">0.8%</div></div>
+</div>
+<div class="memo memo-u">⚠ C_int = 0.28 — effective G-T Core approaching the 0.460 threshold<br/>📉 Independents: Rep 17% vs Dem 34% (2x gap)<br/>⚠ "appellate void" strategy — C_int recharge structure</div>
+</div>
+</div>
+</div>
+ Comparison Charts 
+<h3>4.1 Boltzmann State Probability Comparison</h3>
+<div class="chart-box-sm"><canvas id="cBoltz"></canvas></div>
+<h3>4.2 Core Indicator Radar</h3>
+<div class="chart-box"><canvas id="cRadar"></canvas></div>
+ Comparison Table 
+<h3>4.3 South Korea–US REVERBANT Core Indicator Comparison</h3>
+<table class="cmp-table">
+<thead><tr><th>Indicator</th><th>🇰🇷 South Korea</th><th>🇺🇸 United States</th><th>Difference</th></tr></thead>
+<tbody>
+<tr><td>G-T Core (nominal)</td><td class="td-k">0.738</td><td class="td-u">0.740</td><td class="td-d">≈ identical</td></tr>
+<tr><td>Effective G-T Core</td><td class="td-k">0.688</td><td class="td-u">0.460</td><td class="td-d">−0.228 ⚠</td></tr>
+<tr><td>E_A2 elasticity</td><td class="td-k">0.580</td><td class="td-u">0.340</td><td class="td-d">−0.240</td></tr>
+<tr><td>C_internal</td><td class="td-k">0.050</td><td class="td-u">0.280</td><td class="td-d">+0.230 ⚠</td></tr>
+<tr><td>T_social</td><td class="td-k">0.087</td><td class="td-u">0.149</td><td class="td-d">+0.062</td></tr>
+<tr><td>Γ reflection coefficient</td><td class="td-k">0.506</td><td class="td-u">0.095</td><td class="td-d">−0.411</td></tr>
+<tr><td>UI Index</td><td class="td-k">−0.221</td><td class="td-u">−0.785</td><td class="td-d">−0.564</td></tr>
+<tr><td>P(SN) transition probability</td><td class="td-k">1.8%</td><td class="td-u">8.6%</td><td class="td-d">+6.8%p</td></tr>
+<tr><td>Predicted path</td><td class="td-k">Elastic recovery maintained</td><td class="td-u">Plastic deformation → divided government</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+ 5. Anatomy of C_internal 
+<div class="sec">
+<div class="sec-tag">§ 5</div>
+<h2>Anatomy of the Persistent C_internal Structure in the US</h2>
+<p>The reason why C_internal = 0.280 in the US is not a temporary conflict but is <strong>structurally persistent</strong> is that A8 possesses three recharge mechanisms. According to a Washington Post analysis (2025.7), non-compliance, delay, and deception were confirmed in 57 out of 337 lawsuits (35%), which legal experts evaluated as a pattern "unprecedented for any administration."</p>
+<div class="cint-box">
+<div class="cint-title">Three C_internal Recharge Mechanisms</div>
+<div class="cint-row">
+<div class="cint-num">1</div>
+<div class="cint-text"><strong>"Appellate Void" Strategy</strong> — Giving up on appeals after defying court orders so that cases do not reach the Supreme Court. This prevents C_internal from being resolved and allows it to accumulate. (Lawfare, 2025-10)</div>
+</div>
+<div class="cint-row">
+<div class="cint-num">2</div>
+<div class="cint-text"><strong>Public Relations Framing</strong> — Labeling judges as "terrorist-supporting" to guide the public to ignore court orders. MAGA supporters justify C_int, causing energy to accumulate internally rather than being discharged externally.</div>
+</div>
+<div class="cint-row">
+<div class="cint-num">3</div>
+<div class="cint-text"><strong>Enforcement Channel Attribution</strong> — The US Marshals who execute court orders belong to the Department of Justice (A8). The physical enforcement of A2's resilience is structurally weakened. Brennan Center (2025): "All last resorts have limits in effectiveness."</div>
+</div>
+</div>
+<div class="eq">
+<div class="eq-tag">Current Sign Determination of dC_internal/dt</div>
+<div class="eq-main">dC/dt = ν·|Z_A8−Z_L0|·P_BSLI − μ·E_A2</div>
+<div class="eq-main" style="font-size:11px;margin-top:8px;color:#aaa;">
+      = high · 0.933 · rising − low · 0.34   →   dC/dt &gt; 0 (conflict energy continuously increasing)
+    </div>
+</div>
+<p style="font-size:12px;color:var(--muted);">Addressing Bias: The Washington Post, Protect Democracy, and the Brennan Center are Democrat-friendly sources. However, because the cited legal experts include judges appointed by both Republicans and Democrats, the general direction is reliable. Academic sources from NYU, Georgetown, and Stanford have been juxtaposed.</p>
+</div>
+ 6. Scenarios 
+<div class="sec">
+<div class="sec-tag">§ 6</div>
+<h2>November 2026 US Midterm Election Scenarios</h2>
+<p>Will the midterm election serve as a <strong>discharge channel</strong> for C_internal energy, or will it remain blocked, turning into a larger pressure cooker? REVERBANT predicts two paths.</p>
+<div class="scen">
+<div class="scen-box">
+<div class="scen-badge sb-a">Scenario A (P ≈ 62%)</div>
+<div class="scen-title">Democrats reclaim the House → C_int plummets</div>
+<div class="scen-row">C_int: 0.28 → <strong>~0.08</strong></div>
+<div class="scen-row">Effective G-T Core: 0.46 → <strong>0.66↑</strong></div>
+<div class="scen-row">UI_usa: −0.785 → <strong>turns positive</strong></div>
+<div class="scen-row">Path: <strong>stabilization of plastic deformation</strong></div>
+<div class="scen-row" style="margin-top:8px;color:#aaa;font-size:10px;">Isomorphic to South Korea's Dec 3. When the sentiment "This is wrong" penetrates Republican supporters (Layer−1 resonance), τ_{relaxation} ≈ 4 months.</div>
+</div>
+<div class="scen-box">
+<div class="scen-badge sb-b">Scenario B (P ≈ 38%)</div>
+<div class="scen-title">Republicans hold the House → C_int continues to rise</div>
+<div class="scen-row">C_int: 0.28 → <strong>0.40+</strong></div>
+<div class="scen-row">Effective G-T Core: <strong>drops below the 0.60 threshold</strong></div>
+<div class="scen-row">E_A2: <strong>additional drop</strong></div>
+<div class="scen-row">Path: <strong>plastic deformation → brittle boundary</strong></div>
+<div class="scen-row" style="margin-top:8px;color:#aaa;font-size:10px;">Structural tension persists until the 2028 presidential election. Probability of impeachment debates rises. Enforcement channel attribution remains a key constraint.</div>
+</div>
+</div>
+<h3>Key Observation Variables (until November)</h3>
+<div class="cint-box">
+<div class="cint-title">Four Key Variables</div>
+<div class="cint-row">
+<div class="cint-num" style="background:var(--gold);">1</div>
+<div class="cint-text"><strong>Independent voting intention</strong> — Ipsos (2026-06): Rep 17% vs Dem 34% (2x gap). If this gap is maintained, Scenario A is confirmed. Voter turnout is the largest variable.</div>
+</div>
+<div class="cint-row">
+<div class="cint-num" style="background:var(--gold);">2</div>
+<div class="cint-text"><strong>Iran War and Energy</strong> — Brent crude breaks $100. Prolonged war → T_social rises → Republican seat losses accelerate. Resolution → rebound.</div>
+</div>
+<div class="cint-row">
+<div class="cint-num" style="background:var(--gold);">3</div>
+<div class="cint-text"><strong>Layer−1 Resonance</strong> — Accumulation of "This is not right" sentiment among Republican supporters. Isomorphic to the ruling party defection in South Korea's Dec 3. τ_{relaxation} ≈ 4 months.</div>
+</div>
+<div class="cint-row">
+<div class="cint-num" style="background:var(--gold);">4</div>
+<div class="cint-text"><strong>Redistricting</strong> — Supreme Court (2026-04-29) Louisiana ruling → Republican advantage. A variable reinforcing the structural asymmetry of C_internal.</div>
+</div>
+</div>
+</div>
+ 7. Verification 
+<div class="sec">
+<div class="sec-tag">§ 7</div>
+<h2>Self-Verification — 7/7 Passed</h2>
+<div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A1 ↔ Uprising Condition</span><span class="vfy-desc">BSLI → A2 targeting → reflected in σ(GT)</span></div>
+<div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A3 ↔ UI Equation</span><span class="vfy-desc">C_internal included as the third term of the UI equation</span></div>
+<div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A7 ↔ A8 Axiom</span><span class="vfy-desc">Γ ↔ redirection condition consistency</span></div>
+<div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A9 ↔ South Korea Dec 3</span><span class="vfy-desc">E_A2 = 0.17 &lt; 0.20 brittle limit → empirically matches</span></div>
+<div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">A10 ↔ Van Hove</span><span class="vfy-desc">BSLI = Water (multi-spectrum) → S(q,ω) dimensional response</span></div>
+<div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">Layer−1 ↔ Γ Formula</span><span class="vfy-desc">λ_{-1} integration into Z_L0 completed. Γ = 0.684 (matches observations)</span></div>
+<div class="vfy-row"><span class="vfy-pass">✅</span><span class="vfy-name">T_social Empirical Measurement</span><span class="vfy-desc">Weighted sum of three indicators confirmed. T = 0.296, P(SN) = 21.9% (matches South Korea's Dec 3 history)</span></div>
+</div>
+ 8. Conclusion 
+<div class="sec">
+<div class="sec-tag">§ 8</div>
+<h2>Conclusion</h2>
+<p>South Korea and the United States have virtually identical G-T Cores at 0.738 vs 0.740. However, their effective G-T Cores diverge starkly at 0.688 vs 0.460. The sole factor making this difference is C_internal (internal conflict) — South Korea's 0.050 vs the US's 0.280.</p>
+<p>The US's C_internal is structurally persistent due to three recharge mechanisms: the "appellate void" strategy, public relations framing, and enforcement channel attribution. dC_int/dt &gt; 0 — the energy is increasing even now.</p>
+<p>In South Korea, C_internal was resolved within six hours during the Dec 3 incident. This was because the enforcement channels were not fully attributed to A8, and Layer−1 (common human foundation) overwhelmed Layer 0 (political loyalty). E_A2 recovered from 0.17 to 0.58, empirically demonstrated by the Lee Jae-myung government's 58% approval rating (2026-07).</p>
+<p>The November midterm election is the first test of a discharge channel for the US's C_internal. REVERBANT predicts the stabilization of plastic deformation under Scenario A (Democrats reclaim the House, P ≈ 62%) and an approach to the brittle boundary under Scenario B (Republicans hold, P ≈ 38%). The accuracy of this prediction will serve as the first real-time verification of the REVERBANT engine.</p>
+<blockquote style="border-left:3px solid var(--teal);padding:12px 18px;margin:20px 0;background:var(--teal-l);font-style:italic;font-size:12px;color:#1a3a37;">
+    "Even if the G-T Core is identical, if C_internal differs, the system proceeds down an entirely different path.<br/>
+    In the US, conflict energy is persistent and is still being recharged even now."
+    <br/><span style="font-style:normal;font-size:10px;color:var(--teal);">— REVERBANT v1.0 · 2026-07-03 · Cheonghae (淸海) Giseub Kim</span>
+</blockquote>
+</div>
+</div><!-- /wrap -->
+<div class="footer">
+<strong>Everblue Sea Institute for Social Dynamics</strong><br/>
+  Cheonghae (淸海) Giseub Kim · ORCID 0009-0004-7638-0182 · everbluesea.org<br/>
+  Connection: Λ¹² (SSRN 6632858, C-2026-031351) · BSLI (SSRN 6806478) · DURE-η (C-2026-027452)<br/>
+  Data: Λ¹² η 2024 (206 countries) · BSLI v6.0 (139 countries) · Gallup Korea, Realmeter, Ipsos, The Washington Post, Lawfare, Brennan Center<br/>
+<span style="color:var(--teal);">REVERBANT v1.0 Applied Report · 2026-07-03 · Self-Verification 7/7</span><br/><br/>
+<em style="font-size:10px;">With the hope that humanity's experience and countless brilliant data may come together and be reborn as a wise light like the Milky Way!</em>
+</div>
+<script>
+// 볼츠만 비교 차트
+new Chart(document.getElementById('cBoltz'),{
+  type:'bar',
+  data:{
+    labels:['P(WD) 안정','P(SN) 개혁','P(BH) 붕괴'],
+    datasets:[
+      {label:'🇰🇷 한국',data:[98.2,1.8,0.0],backgroundColor:'#3d7f78cc',borderColor:'#3d7f78',borderWidth:1.5,borderRadius:3},
+      {label:'🇺🇸 미국',data:[90.5,8.6,0.8],backgroundColor:'#B8850Ecc',borderColor:'#B8850E',borderWidth:1.5,borderRadius:3},
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
+    scales:{
+      y:{min:0,max:100,title:{display:true,text:'확률 (%)',font:{size:10}}},
+      x:{ticks:{font:{size:11}}}
+    }
+  }
+});
+
+// 레이더 차트
+new Chart(document.getElementById('cRadar'),{
+  type:'radar',
+  data:{
+    labels:['G-T Core','E_A2 탄성','C_int (반전)','Γ 반사','η값','BSLI','UI (반전)','T_social (반전)'],
+    datasets:[
+      {
+        label:'🇰🇷 한국',
+        data:[0.738,0.580,1-0.050,0.506,0.5929,0.4627,1-0.221,1-0.087],
+        borderColor:'#3d7f78',backgroundColor:'rgba(61,127,120,0.15)',borderWidth:2,pointRadius:4
+      },
+      {
+        label:'🇺🇸 미국',
+        data:[0.740,0.340,1-0.280,0.095,0.5826,0.6998,1-0.785,1-0.149],
+        borderColor:'#B8850E',backgroundColor:'rgba(184,133,14,0.12)',borderWidth:2,pointRadius:4
+      }
+    ]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      legend:{position:'bottom',labels:{font:{size:11},boxWidth:12}},
+      tooltip:{callbacks:{label:ctx=>`${ctx.dataset.label}: ${ctx.raw.toFixed(3)}`}}
+    },
+    scales:{r:{min:0,max:1,ticks:{stepSize:0.25,font:{size:9}},pointLabels:{font:{size:10}}}}
+  }
+});
+</script>
+</body>
+</html>
