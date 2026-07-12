@@ -5,6 +5,12 @@
   2. 그 한 편만 번역해서 _EN.html + 매니페스트 갱신.
   3. 커밋·푸시는 워크플로가 담당 (파일 생성만 이 스크립트 몫).
   4. 번역할 파일이 없으면 아무것도 안 하고 종료 (exit 0).
+v18 변경 (2026-07-13, 소장 지시):
+  - 한글/한자 잔존이 있어도 _EN.html 항상 생성 (도식·데이터 내 미번역분은 한글 그대로 출력)
+  - 잔존 차단 임계값 폐지 → 대신 전체 _EN 파일 잔존 스캔 후 수동교정 목록 출력
+    (translation/residual_report.json + 로그 말미 목록)
+  - 태그 급변(>40) 차단만 유지 — 구조 훼손 방지용
+  - 효과: 실패 파일이 pending()에 반복 잡히는 도돌이표 구조 제거 (v4 한편씩 루프 안전)
 옵션:
   --all  : 남은 것 전부 (한 편씩 순차, 각 편 후 로그 flush)
   --dry  : API 호출 없이 구조 검증만
@@ -18,6 +24,7 @@ SCAN_DIRS = [ROOT/"public/nations", ROOT/"public/engines"]
 MANIFEST  = ROOT/"public/translations.json"
 GLOSSARY  = ROOT/"translation/glossary.json"
 KO        = re.compile(r"[가-힣]")
+HANJA     = re.compile(r"[\u4e00-\u9fff]")   # 한자 (잔존 리포트용)
 SKIP      = {"script","style","code","pre"}
 API_KEY   = os.environ.get("GEMINI_API_KEY","")
 DRY       = "--dry" in sys.argv
@@ -149,11 +156,8 @@ def process(f, model, ver, gb):
     out   = str(soup)
     bt,ot = base.count("<"), out.count("<")
     ko_o  = len(KO.findall(html)); ko_l = len(KO.findall(out))
-    # 검증: 한글이 충분히 줄었는가(핵심) + 태그 급변 여부(경고만)
-    ko_ok = DRY or ko_l < max(80, int(ko_o*0.05))   # 한글 95% 이상 번역
-    if not ko_ok:
-        log(f"   [FAIL] 한글 잔존 과다 ko {ko_o}->{ko_l} — 미생성")
-        return None
+    hj_l  = len(HANJA.findall(out))
+    # v18: 잔존 차단 없음 — 태그 급변(구조 훼손)만 차단, 나머지는 항상 생성
     if abs(bt-ot) > 40:                              # 구조 심각 훼손만 차단
         log(f"   [FAIL] 태그 급변 {bt}->{ot} (>40) — 미생성")
         return None
@@ -161,7 +165,10 @@ def process(f, model, ver, gb):
         log(f"   [warn] 태그 변동 {bt}->{ot} — 번역 과정 정상 범위로 간주")
     en = f.with_name(f.stem+"_EN.html")
     en.write_text(out, encoding="utf-8")
-    log(f"   [OK] {en.name} (ko {ko_o}->{ko_l})")
+    if ko_l > 0 or hj_l > 0:
+        log(f"   [OK·잔존] {en.name} (ko {ko_o}->{ko_l}, 한자 {hj_l}) — 수동교정 목록 대상")
+    else:
+        log(f"   [OK] {en.name} (ko {ko_o}->{ko_l})")
     return en
 
 def rebuild_manifest():
@@ -171,6 +178,28 @@ def rebuild_manifest():
               for p in d.rglob("*_EN.html")]
     MANIFEST.write_text(json.dumps(sorted(ens),ensure_ascii=False,indent=1),encoding="utf-8")
     return len(ens)
+
+def residual_report():
+    """모든 _EN.html의 한글/한자 잔존 스캔 — 수동교정 목록 (이번 런 이전 생성분 포함)."""
+    rows=[]
+    for d in SCAN_DIRS:
+        for p in d.rglob("*_EN.html"):
+            t  = p.read_text(encoding="utf-8", errors="ignore")
+            ko = len(KO.findall(t)); hj = len(HANJA.findall(t))
+            if ko > 0 or hj > 0:
+                rows.append({"file": "/" + str(p.relative_to(ROOT/"public")).replace(os.sep,"/"),
+                             "ko": ko, "hanja": hj})
+    rows.sort(key=lambda r: -(r["ko"]+r["hanja"]))
+    rp = ROOT/"translation/residual_report.json"
+    rp.parent.mkdir(parents=True, exist_ok=True)
+    rp.write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
+    if rows:
+        log(f"── 수동교정 대상 {len(rows)}편 (translation/residual_report.json 저장) ──")
+        for r in rows:
+            log(f"   {r['file']}  ko {r['ko']} / 한자 {r['hanja']}")
+    else:
+        log("── 잔존 한글/한자 없음 — 수동교정 대상 0편 ──")
+    return rows
 
 def main():
     g  = json.loads(GLOSSARY.read_text(encoding="utf-8"))
@@ -200,6 +229,7 @@ def main():
             log(f"   [SKIP] {f.name} 예외로 건너뜀: {e}")
             continue
     n = rebuild_manifest()
+    residual_report()
     log(f"완료: 성공 {made}편 / 실패·스킵 {failed}편 / 매니페스트 총 {n}편 / 남은 {len(pending())}편")
 
 if __name__=="__main__":
