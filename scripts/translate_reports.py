@@ -14,9 +14,9 @@ DRY       = "--dry" in sys.argv
 MODE      = "all" if "--all" in sys.argv else "changed"
 
 CANDIDATES = [
+    ("gemini-2.0-flash",      "v1beta"),
     ("gemini-2.5-flash",      "v1beta"),
     ("gemini-2.5-flash-lite", "v1beta"),
-    ("gemini-2.5-pro",        "v1beta"),
 ]
 
 def find_model():
