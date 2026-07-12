@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Iran Λ¹² Radar — v9.11</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F5F3EE; display:flex; flex-direction:column; align-items:center; padding:24px 16px; font-family:Georgia,serif; }
+.wrap { background:#fff; border:1px solid #DDD8CE; border-radius:6px; padding:24px; text-align:center; max-width:520px; width:100%; }
+.cap { font-size:11px; color:#888; margin-top:10px; font-family:'Courier New',monospace; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<svg height="480" viewbox="0 0 480 480" width="480" xmlns="http://www.w3.org/2000/svg">
+ Background Concentric Circles 
+<circle cx="240" cy="240" fill="none" r="40" stroke="#E5E0D8" stroke-width="1"></circle>
+<circle cx="240" cy="240" fill="none" r="80" stroke="#E5E0D8" stroke-width="1"></circle>
+<circle cx="240" cy="240" fill="none" r="120" stroke="#E5E0D8" stroke-width="1"></circle>
+<circle cx="240" cy="240" fill="none" r="160" stroke="#E5E0D8" stroke-width="1"></circle>
+<circle cx="240" cy="240" fill="none" r="200" stroke="#CCC" stroke-width="1"></circle>
+ 12 Axes 
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="240" y1="240" y2="40"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="340" y1="240" y2="90"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="413" y1="240" y2="190"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="440" y1="240" y2="240"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="413" y1="240" y2="290"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="340" y1="240" y2="390"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="240" y1="240" y2="440"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="140" y1="240" y2="390"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="67" y1="240" y2="290"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="40" y1="240" y2="240"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="67" y1="240" y2="190"></line>
+<line stroke="#E5E0D8" stroke-width="0.8" x1="240" x2="140" y1="240" y2="90"></line>
+ Data Polygon 
+<polygon fill="rgba(192,57,43,0.18)" points="240,96 314,152 417,149 404,240 335,402 161,347 240,410 116,293 103,307 86,240 158,119 181,124" stroke="#C0392B" stroke-width="2"></polygon>
+ Data Point 
+<circle cx="240" cy="96" fill="#C0392B" r="4"></circle>
+<circle cx="314" cy="152" fill="#C0392B" r="4"></circle>
+<circle cx="417" cy="149" fill="#C0392B" r="4"></circle>
+<circle cx="404" cy="240" fill="#C0392B" r="4"></circle>
+<circle cx="335" cy="402" fill="#C0392B" r="4"></circle>
+<circle cx="161" cy="347" fill="#C0392B" r="4"></circle>
+<circle cx="240" cy="410" fill="#C0392B" r="4"></circle>
+<circle cx="116" cy="293" fill="#C0392B" r="4"></circle>
+<circle cx="103" cy="307" fill="#C0392B" r="4"></circle>
+<circle cx="86" cy="240" fill="#C0392B" r="4"></circle>
+<circle cx="158" cy="119" fill="#C0392B" r="4"></circle>
+<circle cx="181" cy="124" fill="#C0392B" r="4"></circle>
+ Axis Labels (direct attributes without style) 
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="middle" x="234" y="32">BRI 0.72</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="start" x="330" y="78">SSI 0.88</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="start" x="422" y="145">GPI 0.91</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="start" x="448" y="244">SR 0.82</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="start" x="390" y="420">Σ 0.93</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="end" x="130" y="368">LPI 0.79</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="middle" x="234" y="455">OIP 0.85</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="end" x="80" y="320">HCDI 0.74</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="end" x="38" y="310">AMI 0.68</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="end" x="16" y="244">NI 0.77</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="end" x="56" y="112">CFD 0.81</text>
+<text fill="#555" font-family="Courier New,monospace" font-size="10" text-anchor="end" x="138" y="72">TBI 0.665</text>
+ Center 
+<text fill="#C0392B" font-family="Courier New,monospace" font-size="13" font-weight="700" text-anchor="middle" x="240" y="228">Iran</text>
+<text fill="#888" font-family="Courier New,monospace" font-size="10" text-anchor="middle" x="240" y="244">Λ≈0.60</text>
+<text fill="#C0392B" font-family="Courier New,monospace" font-size="10" text-anchor="middle" x="240" y="258">DANGER</text>
+</svg>
+<p class="cap">Iran Λ¹² 12-Axis Radar | All-Axis Danger Zone (0.665~0.93) | v9.11 Estimate</p>
+</div>
+</body>
+</html>

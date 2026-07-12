@@ -1,5 +1,6 @@
 [
  "/engines/afro/lambda_s40_AFRO_v02_EN.html",
+ "/engines/bsli/BSLI_dashboard_v7_EN.html",
  "/engines/bsli/BSLI_paper_v6.0_2026_EN.html",
  "/engines/bsli/bsli_metro_pattern_EN.html",
  "/engines/lambda12/Lambda12_Validation_Report_v2_20260711_EN.html",
@@ -11,7 +12,10 @@
  "/engines/methodology/SCDI_methodology_EN.html",
  "/engines/reverbant/REVERBANT_KOR_USA_2026_EN.html",
  "/engines/reverbant/REVERBANT_v1.1_final_theory_EN.html",
+ "/engines/ui/KOR_report_EN.html",
  "/engines/ui/VEN_IRN_UI_comparative_20260712_EN.html",
+ "/engines/ui/uprising_tracker_EN.html",
+ "/engines/ui/world_judgment_EN.html",
  "/nations/americas/Brazil_Lambda12v912_20260504_EN.html",
  "/nations/americas/LatAm_2nd_Series_Lambda12v912_20260504_EN.html",
  "/nations/americas/LatAm_3rd_Series_Lambda12v912_20260504_EN.html",
@@ -30,5 +34,15 @@
  "/nations/europe/v9.12_bosnia_20260502_EN.html",
  "/nations/europe/v9.12_greece_20260502_EN.html",
  "/nations/europe/v9.12_hungary_20260502_EN.html",
- "/nations/europe/v9.12_uk_20260502_EN.html"
+ "/nations/europe/v9.12_uk_20260502_EN.html",
+ "/nations/middle-east/MiddleEast_Central_Lambda12v914_20260506_EN.html",
+ "/nations/middle-east/MiddleEast_East_Lambda12v914_20260506_EN.html",
+ "/nations/middle-east/MiddleEast_Regional_Lambda12v914_20260506_EN.html",
+ "/nations/middle-east/MiddleEast_West_Lambda12v914_20260506_EN.html",
+ "/nations/middle-east/iran_flow_standalone_EN.html",
+ "/nations/middle-east/iran_radar_standalone_EN.html",
+ "/nations/northeast-asia/v9.12_japan_20260502_EN.html",
+ "/nations/northeast-asia/v9.12_korea_20260502_EN.html",
+ "/nations/northeast-asia/v9.12_taiwan_20260502_EN.html",
+ "/nations/southeast-asia/v9.12_cambodia_20260502_EN.html"
 ]

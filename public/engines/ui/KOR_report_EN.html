@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Korea Sociodynamics Report — Λ¹² × BSLI × UI</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:#F5F3EE;color:#2C2C2A;padding:24px}
+.hdr{background:#2C3E50;color:#fff;border-radius:12px;padding:24px 28px;margin-bottom:20px;
+     border-bottom:3px solid #B8850E}
+.hdr h1{font-size:1.5rem;font-weight:500;margin-bottom:6px}
+.hdr .sub{color:#8AABA2;font-size:0.82rem;line-height:1.7}
+.hdr .meta{color:#B8850E;font-size:11px;margin-top:8px;font-family:monospace}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px;text-align:center}
+.stat .big{font-size:1.6rem;font-weight:500;margin-bottom:4px}
+.stat .label{font-size:11px;color:#5F5E5A;line-height:1.4}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px}
+.card{background:#fff;border:1px solid #DDD8CE;border-radius:12px;padding:18px}
+.card h2{font-size:0.9rem;font-weight:500;margin-bottom:12px;color:#2C2C2A;
+         padding-bottom:8px;border-bottom:2px solid #5E9186}
+.chart-box{position:relative;height:280px}
+.insight{background:#f0f4f3;border-left:4px solid #5E9186;padding:12px 16px;
+         font-size:13px;line-height:1.8;border-radius:0 6px 6px 0;margin-bottom:16px}
+.insight strong{color:#B8850E}
+.warn{background:#FBF6EC;border-left:4px solid #B8850E;padding:12px 16px;
+      font-size:13px;line-height:1.8;border-radius:0 6px 6px 0;margin-bottom:16px}
+.warn strong{color:#A32D2D}
+.dim-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+.dim-card{border:1px solid #DDD8CE;border-radius:8px;padding:10px;background:#fff}
+.dim-card .dk{font-size:10px;color:#5E9186;font-family:monospace;font-weight:500}
+.dim-card .dv{font-size:1.1rem;font-weight:500;margin:2px 0}
+.dim-card .dd{font-size:10px;color:#5F5E5A}
+.up{color:#0F6E56}.dn{color:#A32D2D}.ne{color:#BA7517}
+.badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;font-weight:500}
+.b-a{background:#E1F5EE;color:#0F6E56}
+.b-c{background:#FFF9C4;color:#7A5A08}
+.b-b{background:#DCEDC8;color:#33691E}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#2C3E50;color:#fff;padding:7px 10px;text-align:left}
+td{padding:6px 10px;border-bottom:1px solid #F1EFE8;font-family:monospace}
+td:first-child,td:nth-child(2){font-family:'Noto Sans KR',sans-serif}
+.section-title{font-size:1rem;font-weight:500;color:#2C3E50;margin:24px 0 12px;
+               padding-left:12px;border-left:4px solid #B8850E}
+@media(max-width:768px){.stat-row{grid-template-columns:1fr 1fr}
+  .grid2,.grid3{grid-template-columns:1fr}.dim-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="hdr">
+<h1>🇰🇷 Republic of Korea — Composite Sociodynamics Report</h1>
+<p class="sub">
+    Λ¹² 12 Dimensions × BSLI(Basic Social Life Index) × UI Uprising Index Cross-Analysis<br/>
+    Achieving the highest tier of SE among countries with colonial experience — but grassroots stratum pressure is Grade C
+  </p>
+<p class="meta">Data: lambda12_timeseries.json (2016-2024) · bsli_139_final.json (v6.9) · WHO pandemic baseline applied</p>
+</div>
+<div class="stat-row">
+<div class="stat">
+<div class="big" style="color:#B8850E">0.5929</div>
+<div class="label">η Composite Index (2024)<br/>Top tier among 216 countries</div>
+</div>
+<div class="stat">
+<div class="big" style="color:#BA7517">1.4764</div>
+<div class="label">SE = A2+A8 (2024)<br/>Highest in Asia</div>
+</div>
+<div class="stat">
+<div class="big" style="color:#A32D2D">0.4627</div>
+<div class="label">BSLI Grassroots Life Index<br/>Grade C · Top 18.0%</div>
+</div>
+<div class="stat">
+<div class="big" style="color:#534AB7">1.022</div>
+<div class="label">η-BSLI Divergence<br/>(Sound Structure · Grassroots under Pressure)</div>
+</div>
+</div>
+<div class="insight">
+<strong>Key Proposition:</strong>
+  Korea is a rare global case that achieved an SE of 1.47 after its colonial experience (1910–1945).
+  While lower than Japan (1.67) and Germany (1.82), it is similar to Taiwan (1.54),
+  and shows a significant gap compared to Asian uprising nations like Thailand (0.84) and Myanmar (0.53).
+  This SE acted as a buffer that absorbed the shock of the pandemic —
+  yet the BSLI Grade C, between structure (η) and grassroots life (BSLI), reveals a <strong>severe divergence</strong>.
+</div>
+<div class="section-title">§1. 12-Dimensional Status (2024)</div>
+<div class="dim-grid">
+<div class="dim-card">
+<div class="dk">A1 Infrastructure</div>
+<div class="dv up">0.9887</div>
+<div class="dd">+0.017 ↑ World's Top</div>
+</div>
+<div class="dim-card">
+<div class="dk">A2 Institutional Trust</div>
+<div class="dv up">0.7345</div>
+<div class="dd">+0.082 ↑ SE Core Axis</div>
+</div>
+<div class="dim-card">
+<div class="dk">A3 Social Cohesion</div>
+<div class="dv up">0.7422</div>
+<div class="dd">+0.041 ↑ Pandemic Altruism</div>
+</div>
+<div class="dim-card">
+<div class="dk">A4 Economic Capacity</div>
+<div class="dv ne">0.3745</div>
+<div class="dd">+0.004 → Stagnant</div>
+</div>
+<div class="dim-card">
+<div class="dk">A5 Knowledge Innovation</div>
+<div class="dv dn">0.7788</div>
+<div class="dd">-0.046 ↓ Caution</div>
+</div>
+<div class="dim-card">
+<div class="dk">A6 Environmental Sustainability</div>
+<div class="dv up">0.4496</div>
+<div class="dd">+0.035 ↑ Improving</div>
+</div>
+<div class="dim-card">
+<div class="dk">A7 Population Dynamics</div>
+<div class="dv dn">0.4598</div>
+<div class="dd">-0.042 ↓ Low Birth Rate Crisis</div>
+</div>
+<div class="dim-card">
+<div class="dk">A8 Governance</div>
+<div class="dv up">0.7419</div>
+<div class="dd">+0.080 ↑ SE Core Axis</div>
+</div>
+<div class="dim-card">
+<div class="dk">A9 Geopolitics</div>
+<div class="dv up">0.8538</div>
+<div class="dd">+0.105 ↑ Highest Rise</div>
+</div>
+<div class="dim-card">
+<div class="dk">A10 Cultural Identity</div>
+<div class="dv dn">0.0215</div>
+<div class="dd">-0.063 ↓ K-POP Not Reflected</div>
+</div>
+<div class="dim-card">
+<div class="dk">A11 Energy</div>
+<div class="dv dn">0.2525</div>
+<div class="dd">-0.014 ↓ Fossil Fuel Dependency</div>
+</div>
+<div class="dim-card">
+<div class="dk">A12 Mobility</div>
+<div class="dv up">0.7172</div>
+<div class="dd">+0.414 ↑ Sharp Post-Pandemic Rise</div>
+</div>
+</div>
+<div class="section-title">§2. Pandemic WHO 4-Interval Analysis</div>
+<div class="grid2">
+<div class="card">
+<h2>SE (Buffer) Trajectory — Korea Rising Despite the Pandemic</h2>
+<div class="chart-box"><canvas id="seKor"></canvas></div>
+</div>
+<div class="card">
+<h2>A12 Mobility — In Sync with Global Patterns, Yet Showing Divergence</h2>
+<div class="chart-box"><canvas id="a12Kor"></canvas></div>
+</div>
+</div>
+<div class="warn">
+<strong>Note:</strong>
+  During the pandemic compression period (2020-21), Korea's SE actually <strong>rose</strong> (1.453→1.496).
+  This is a paradoxical result of K-Quarantine's altruistic self-restraint, which actually boosted A2 (Institutional Trust) and A8 (Governance).
+  However, A12 followed the global synchronization pattern — falling in 2023–2024 after a rebound (+0.204) in 2022.
+  <strong>The 2022–2023 Jeonse price crash and interest rate hikes precisely triggered those rebound expectations.</strong>
+</div>
+<div class="section-title">§3. η × BSLI Divergence — "Sound Structure, Grassroots under Pressure"</div>
+<div class="grid2">
+<div class="card">
+<h2>η vs BSLI Comparison — Asian Countries</h2>
+<div class="chart-box"><canvas id="etaBsli"></canvas></div>
+</div>
+<div class="card">
+<h2>η Time Series (2016~2024)</h2>
+<div class="chart-box"><canvas id="etaTs"></canvas></div>
+</div>
+</div>
+<div class="insight">
+<strong>Interpretation of η-BSLI Divergence:</strong>
+  η 0.59 (Sound Structure) vs BSLI 0.46 (Grassroots Pressure Grade C) — the divergence of 1.022 is the highest in Asia.<br/>
+  A high structure (η) paired with a low grassroots life (BSLI) = the nation as a whole functions well, but its fruits
+  fail to reach the ML stratum (30th–50th income percentiles).<br/>
+  Key factors depressing BSLI: <strong>D (Elderly Poverty Rate) — highest in the world</strong> ·
+  <strong>Hs (Housing Costs, Jeonse Prices) — dozens of times higher than income</strong>
+</div>
+<div class="section-title">§4. SE Comparison Group — Korea's Position among Countries with Colonial Experience</div>
+<div class="card">
+<h2>SE (As of 2019) Comparison — Historical Buffer Depth</h2>
+<div class="chart-box" style="height:240px"><canvas id="seComp"></canvas></div>
+</div>
+<div class="section-title">§5. UI Engine Verdict — Korea's Uprising Path</div>
+<div class="grid3">
+<div class="card">
+<h2>F = m × a Verdict</h2>
+<div class="insight" style="margin:0">
+<strong>m (Hammer Mass)</strong><br/>
+      Policy Shock = Jeonse price crash, interest rate hikes, pension reform controversy<br/><br/>
+<strong>a (Material Acceleration)</strong><br/>
+      Unmeasured due to absence of BSLI time series<br/>
+      However, §8.3 direction: Hs (Jeonse) deterioration rate &gt; D (Elderly Poverty) improvement rate<br/><br/>
+<strong>SE (Anvil Strength)</strong><br/>
+      1.4764 — High. Currently absorbing F.
+    </div>
+</div>
+<div class="card">
+<h2>Path Verdict</h2>
+<div class="insight" style="margin:0">
+<strong>Current: White Dwarf Boundary</strong><br/><br/>
+      Not a Black Hole due to strong SE.<br/>
+      However, BSLI Grade C + A7 (Low Birth Rate) plummeting + A10 (Cultural Identity) dropping to the 0.02 range<br/><br/>
+      Compressed energy (pandemic altruism)<br/>
+      is not yet fully resolved.<br/><br/>
+<strong>2022–2024 Jeonse shock is<br/>triggering the compression point</strong>
+</div>
+</div>
+<div class="card">
+<h2>Intervention Window</h2>
+<div class="warn" style="margin:0">
+<strong>A7 (Population Dynamics) 0.4598</strong><br/>
+      2016: 0.50 → 2024: 0.46 — Continuous decline.<br/>
+      Low birth rate = Destroying the seeds of future SE.<br/><br/>
+<strong>A10 (Cultural Identity) 0.0215</strong><br/>
+      K-POP and Hallyu are not reflected in Λ¹².<br/>
+      Actual cultural resilience is underestimated.<br/><br/>
+<strong>BSLI Hs (Jeonse)</strong><br/>
+      Epicenter of the depletion of grassroots stratum buffers.<br/>
+      2023–2024 Jeonse fraud crisis.
+    </div>
+</div>
+</div>
+<div class="section-title">§6. Application of the Six-Layer Discourse Reasoning Method</div>
+<div class="card">
+<table>
+<thead><tr><th>Layer</th><th>Content</th><th>Application to Korea</th></tr></thead>
+<tbody>
+<tr><td>Layer 1 Fact</td><td>Measured Data</td><td>η 0.59 · SE 1.48 · BSLI 0.46 · A7↓ A10↓</td></tr>
+<tr><td>Layer 2 Analysis</td><td>Pattern Interpretation</td><td>Structure-Grassroots Divergence · Paradoxical Rise of Pandemic SE · Long-term Decline of A7</td></tr>
+<tr><td>Layer 3 History</td><td>Historical Context</td><td>Colonial experience → 1987 democratization → Successful self-generated layering of SE</td></tr>
+<tr><td>Layer 4 Comparison</td><td>Relative to other nations</td><td>SE: Positioned between Japan (1.67), Taiwan (1.54), and Thailand (0.84) · Top in Asia</td></tr>
+<tr><td>Layer 5 Present</td><td>Media and Reports</td><td>Jeonse fraud, elderly poverty, low birth rate — Three axes of downward pressure on BSLI</td></tr>
+<tr><td>Layer 6 Judgment</td><td>Layer 6 (Cheonghae (淸海))</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+<script>
+const YEARS = [2016,2017,2018,2019,2020,2021,2022,2023,2024];
+const SE = [1.3144,1.3571,1.4047,1.4526,1.4789,1.4955,1.4922,1.4768,1.4764];
+const A12 = [0.3037,0.2772,0.6075,0.5969,0.8423,0.6684,0.8722,0.7337,0.7172];
+const ETA = [0.5419,0.5508,0.5904,0.5732,0.5916,0.5915,0.6149,0.6031,0.5929];
+
+const WHO_ZONES = {2020:'팬데믹',2023:'PHEIC종료'};
+
+// SE 차트
+new Chart(document.getElementById('seKor'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[{
+    label:'SE = A2+A8',data:SE,
+    borderColor:'#0F6E56',backgroundColor:'#0F6E5618',
+    borderWidth:2.5,pointRadius:5,fill:true,tension:0.3
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false},
+      annotation:{annotations:{
+        box1:{type:'box',xMin:2019.5,xMax:2021.5,backgroundColor:'rgba(168,50,45,0.07)',
+              borderColor:'#A32D2D',borderWidth:1,label:{content:'압축구간',display:true,font:{size:10}}},
+        box2:{type:'box',xMin:2021.5,xMax:2022.5,backgroundColor:'rgba(184,133,14,0.07)',
+              borderColor:'#B8850E',borderWidth:1}
+      }}
+    },
+    scales:{x:{title:{display:true,text:'연도'}},
+      y:{min:1.2,max:1.6,title:{display:true,text:'SE (A2+A8)'}}}
+  }
+});
+
+// A12 차트
+new Chart(document.getElementById('a12Kor'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'한국 A12',data:A12,borderColor:'#5E9186',backgroundColor:'#5E918618',
+     borderWidth:2.5,pointRadius:5,fill:true,tension:0.3},
+    {label:'글로벌 평균(추정)',
+     data:[0.44,0.44,0.54,0.54,0.72,0.64,0.87,0.72,0.70],
+     borderColor:'#888',borderWidth:1.5,borderDash:[4,3],pointRadius:3,fill:false,tension:0.3}
+  ]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
+    scales:{x:{title:{display:true,text:'연도'}},
+      y:{min:0,max:1.1,title:{display:true,text:'A12 이동성'}}}
+  }
+});
+
+// η vs BSLI 비교
+new Chart(document.getElementById('etaBsli'),{
+  type:'bar',
+  data:{
+    labels:['일본','대만','한국','태국','미얀마'],
+    datasets:[
+      {label:'η 구조지수',data:[0.541,0.548,0.593,0.506,0.405],
+       backgroundColor:'#5E918688',borderColor:'#5E9186',borderWidth:1},
+      {label:'BSLI 서민지수',data:[0.502,0.476,0.463,0.055,-0.223],
+       backgroundColor:'#B8850E88',borderColor:'#B8850E',borderWidth:1}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
+    scales:{y:{min:-0.3,max:0.8,title:{display:true,text:'지수값'}}}
+  }
+});
+
+// η 시계열
+new Chart(document.getElementById('etaTs'),{
+  type:'line',
+  data:{labels:YEARS,datasets:[{
+    label:'η 한국',data:ETA,
+    borderColor:'#B8850E',backgroundColor:'#B8850E18',
+    borderWidth:2.5,pointRadius:4,fill:true,tension:0.3
+  }]},
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{title:{display:true,text:'연도'}},
+      y:{min:0.5,max:0.65,title:{display:true,text:'η'}}}
+  }
+});
+
+// SE 비교군
+new Chart(document.getElementById('seComp'),{
+  type:'bar',
+  data:{
+    labels:['독일','일본','대만','한국','태국','미얀마','베네수엘라'],
+    datasets:[{
+      label:'SE(2019)',
+      data:[1.818,1.678,1.543,1.453,0.837,0.529,0.177],
+      backgroundColor:['#0F6E56','#0F6E56','#5E9186','#B8850E','#BA7517','#A32D2D','#7B1C1C'],
+      borderWidth:0
+    }]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{y:{min:0,max:2.1,title:{display:true,text:'SE = A2+A8 (2019 기준선)'}}}
+  }
+});
+</script>
+</body>
+</html>

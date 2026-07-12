@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>UI Engine — Global Uprising Risk Assessment 2024</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans KR',sans-serif;background:#F5F3EE;color:#2C2C2A;padding:20px;font-size:14px}
+.hdr{background:#2C3E50;color:#fff;border-radius:12px;padding:20px 24px;
+      margin-bottom:16px;border-bottom:3px solid #B8850E}
+.hdr h1{font-size:1.3rem;font-weight:500;margin-bottom:4px}
+.hdr p{color:#8AABA2;font-size:12px;line-height:1.6}
+.stat-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px}
+.stat{border-radius:10px;padding:14px 8px;text-align:center;color:#fff}
+.stat .n{font-size:2.2rem;font-weight:500}
+.stat .l{font-size:11px;margin-top:3px;opacity:.9}
+.insight{background:#f0f4f3;border-left:4px solid #5E9186;padding:12px 16px;
+          font-size:13px;line-height:1.8;border-radius:0 6px 6px 0;margin-bottom:14px}
+.insight strong{color:#B8850E}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:#fff;border:1px solid #DDD8CE;border-radius:12px;padding:16px}
+.card h2{font-size:13px;font-weight:500;margin-bottom:10px;
+          border-bottom:2px solid #5E9186;padding-bottom:6px}
+.chart-wrap{position:relative;height:320px}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.leg{display:flex;align-items:center;gap:5px;font-size:12px;cursor:pointer;
+      padding:4px 10px;border-radius:4px;border:1px solid #DDD8CE;background:#fff}
+.leg:hover{background:#F1EFE8}
+.leg.off{opacity:.3}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.sec-card{background:#fff;border:1px solid #DDD8CE;border-radius:12px;
+           padding:18px;margin-bottom:14px}
+.sec-card h2{font-size:13px;font-weight:500;margin-bottom:12px;
+              border-bottom:2px solid #5E9186;padding-bottom:6px}
+.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.fbtn{padding:6px 14px;border-radius:6px;border:1px solid #DDD8CE;
+       background:#fff;font-size:12px;cursor:pointer;color:#2C2C2A;transition:.15s}
+.fbtn:hover{opacity:.85}
+/* 카드 그리드 — 3열, 여유있게 */
+.items-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.item{border:1px solid #DDD8CE;border-radius:8px;padding:14px 16px;
+       background:#fff;transition:.15s}
+.item:hover{background:#F5F3EE;border-color:#5E9186}
+.item-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.iso{font-size:13px;color:#5E9186;font-family:monospace;font-weight:700}
+.badge{font-size:10px;padding:2px 8px;border-radius:8px;color:#fff;font-weight:500}
+.nm{font-size:15px;font-weight:500;margin-bottom:5px;color:#2C2C2A}
+.vals{font-size:12px;color:#5F5E5A;font-family:monospace}
+@media(max-width:900px){
+  .grid2{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:repeat(3,1fr)}
+  .items-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .items-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="hdr">
+<h1>UI Engine — Global Uprising Risk Assessment (2024)</h1>
+<p>SE(t) = A2+A8 × BSLI 교차 판정  |  lambda12_timeseries.json × bsli_139_final.json<br/>
+  The existence of exceptions is not the failure of the engine, but the boundary of explanatory power — acknowledging the existence of diversity</p>
+</div>
+<div class="stat-row">
+<div class="stat" style="background:#A32D2D"><div class="n">17</div><div class="l">Black Hole</div></div>
+<div class="stat" style="background:#D85A30"><div class="n">25</div><div class="l">Black Hole Risk</div></div>
+<div class="stat" style="background:#534AB7"><div class="n">4</div><div class="l">Pressure Accumulation</div></div>
+<div class="stat" style="background:#BA7517"><div class="n">6</div><div class="l">White Dwarf</div></div>
+<div class="stat" style="background:#0F6E56"><div class="n">25</div><div class="l">Stable</div></div>
+<div class="stat" style="background:#888780"><div class="n">12</div><div class="l">Watch</div></div>
+</div>
+<div class="insight">
+<strong>Key Findings:</strong>
+  Of the 89 assessed countries, Black Hole + Black Hole Risk <strong>42 countries (47%)</strong>are in the risk zone.
+  The 4 countries with Pressure Accumulation (strong SE · low BSLI) are subjects of separate in-depth analysis.
+  <strong>Exceptions are not engine errors, but the existence of diversity — Bhutan and Pacific Island countries need to be classified separately due to their non-material value systems.</strong>
+</div>
+<div class="grid2">
+<div class="card">
+<h2>SE × BSLI Scatter Plot — Global Assessment Map</h2>
+<div class="legend" id="legend"></div>
+<div class="chart-wrap"><canvas id="sc"></canvas></div>
+</div>
+<div class="card">
+<h2>Distribution of Number of Countries by Path</h2>
+<div class="chart-wrap"><canvas id="bc"></canvas></div>
+</div>
+</div>
+<div class="sec-card">
+<h2>List of Countries by Path</h2>
+<div class="filter-bar" id="fb"></div>
+<div id="listArea"><div class="path-section" id="sec-블랙홀" style="display:none"><div class="items-grid"><div class="item">
+<div class="item-top">
+<span class="iso">VEN</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Venezuela</div>
+<div class="vals">SE 0.139  |  BSLI -0.267 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">YEM</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Yemen</div>
+<div class="vals">SE 0.169  |  BSLI -0.702 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">SDN</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Sudan</div>
+<div class="vals">SE 0.193  |  BSLI -0.620 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">MMR</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Myanmar</div>
+<div class="vals">SE 0.217  |  BSLI -0.223 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">BDI</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Burundi</div>
+<div class="vals">SE 0.358  |  BSLI -1.113 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">TCD</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Chad</div>
+<div class="vals">SE 0.362  |  BSLI -0.835 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">CMR</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Cameroon</div>
+<div class="vals">SE 0.472  |  BSLI -0.795 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">LBN</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Lebanon</div>
+<div class="vals">SE 0.474  |  BSLI -0.246 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">MLI</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Mali</div>
+<div class="vals">SE 0.481  |  BSLI -0.612 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">GIN</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Guinea</div>
+<div class="vals">SE 0.497  |  BSLI -0.532 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">MOZ</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Mozambique</div>
+<div class="vals">SE 0.510  |  BSLI -1.408 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">BGD</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Bangladesh</div>
+<div class="vals">SE 0.518  |  BSLI -0.622 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">NGA</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Nigeria</div>
+<div class="vals">SE 0.535  |  BSLI -0.789 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">PAK</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Pakistan</div>
+<div class="vals">SE 0.539  |  BSLI -0.460 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">GTM</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Guatemala</div>
+<div class="vals">SE 0.575  |  BSLI -0.561 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">AGO</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Angola</div>
+<div class="vals">SE 0.581  |  BSLI -0.990 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">UGA</span>
+<span class="badge" style="background:#A32D2D">Black Hole</span>
+</div>
+<div class="nm">Uganda</div>
+<div class="vals">SE 0.593  |  BSLI -1.002 (E)</div>
+</div></div></div><div class="path-section" id="sec-블랙홀위험" style="display:none"><div class="items-grid"><div class="item">
+<div class="item-top">
+<span class="iso">IRN</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Iran</div>
+<div class="vals">SE 0.445  |  BSLI -0.130 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">IRQ</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Iraq</div>
+<div class="vals">SE 0.456  |  BSLI -0.123 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">BOL</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Bolivia</div>
+<div class="vals">SE 0.578  |  BSLI -0.123 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">EGY</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Egypt</div>
+<div class="vals">SE 0.611  |  BSLI -0.265 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">MEX</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Mexico</div>
+<div class="vals">SE 0.621  |  BSLI -0.267 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">NER</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Niger</div>
+<div class="vals">SE 0.628  |  BSLI -1.029 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ETH</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Ethiopia</div>
+<div class="vals">SE 0.635  |  BSLI -0.810 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">TUR</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Turkey</div>
+<div class="vals">SE 0.686  |  BSLI -0.015 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">DZA</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Algeria</div>
+<div class="vals">SE 0.692  |  BSLI -0.186 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">BFA</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Burkina Faso</div>
+<div class="vals">SE 0.698  |  BSLI -0.946 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ECU</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Ecuador</div>
+<div class="vals">SE 0.711  |  BSLI -0.368 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">KEN</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Kenya</div>
+<div class="vals">SE 0.742  |  BSLI -0.822 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">PER</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Peru</div>
+<div class="vals">SE 0.776  |  BSLI -0.343 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ZMB</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Zambia</div>
+<div class="vals">SE 0.778  |  BSLI -1.532 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">PHL</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Philippines</div>
+<div class="vals">SE 0.786  |  BSLI -0.341 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">MWI</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Malawi</div>
+<div class="vals">SE 0.791  |  BSLI -1.141 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">TZA</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Tanzania</div>
+<div class="vals">SE 0.807  |  BSLI -0.995 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">VNM</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Vietnam</div>
+<div class="vals">SE 0.808  |  BSLI -0.035 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">MAR</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Morocco</div>
+<div class="vals">SE 0.812  |  BSLI -0.186 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">LKA</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Sri Lanka</div>
+<div class="vals">SE 0.818  |  BSLI -0.246 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">BRA</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Brazil</div>
+<div class="vals">SE 0.845  |  BSLI -0.241 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">MNG</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Mongolia</div>
+<div class="vals">SE 0.847  |  BSLI -0.060 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">CHN</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">China</div>
+<div class="vals">SE 0.851  |  BSLI -0.046 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">COL</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Colombia</div>
+<div class="vals">SE 0.857  |  BSLI -0.681 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">IDN</span>
+<span class="badge" style="background:#D85A30">Black Hole Risk</span>
+</div>
+<div class="nm">Indonesia</div>
+<div class="vals">SE 0.873  |  BSLI -0.332 (E)</div>
+</div></div></div><div class="path-section" id="sec-압력축적" style="display:none"><div class="items-grid"><div class="item">
+<div class="item-top">
+<span class="iso">BWA</span>
+<span class="badge" style="background:#534AB7">Pressure Accumulation</span>
+</div>
+<div class="nm">Botswana</div>
+<div class="vals">SE 1.201  |  BSLI -0.855 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">CRI</span>
+<span class="badge" style="background:#534AB7">Pressure Accumulation</span>
+</div>
+<div class="nm">Costa Rica</div>
+<div class="vals">SE 1.294  |  BSLI -0.255 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">CHL</span>
+<span class="badge" style="background:#534AB7">Pressure Accumulation</span>
+</div>
+<div class="nm">Chile</div>
+<div class="vals">SE 1.415  |  BSLI -0.051 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">BTN</span>
+<span class="badge" style="background:#534AB7">Pressure Accumulation</span>
+</div>
+<div class="nm">Bhutan</div>
+<div class="vals">SE 1.434  |  BSLI -0.140 (E)</div>
+</div></div></div><div class="path-section" id="sec-백색왜성" style="display:none"><div class="items-grid"><div class="item">
+<div class="item-top">
+<span class="iso">HUN</span>
+<span class="badge" style="background:#BA7517">White Dwarf</span>
+</div>
+<div class="nm">Hungary</div>
+<div class="vals">SE 1.025  |  BSLI 0.284 (D)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">GRC</span>
+<span class="badge" style="background:#BA7517">White Dwarf</span>
+</div>
+<div class="nm">Greece</div>
+<div class="vals">SE 1.147  |  BSLI 0.242 (D)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">MYS</span>
+<span class="badge" style="background:#BA7517">White Dwarf</span>
+</div>
+<div class="nm">Malaysia</div>
+<div class="vals">SE 1.156  |  BSLI 0.095 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">POL</span>
+<span class="badge" style="background:#BA7517">White Dwarf</span>
+</div>
+<div class="nm">Poland</div>
+<div class="vals">SE 1.276  |  BSLI 0.175 (D)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ISR</span>
+<span class="badge" style="background:#BA7517">White Dwarf</span>
+</div>
+<div class="nm">Israel</div>
+<div class="vals">SE 1.351  |  BSLI 0.296 (D)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">HKG</span>
+<span class="badge" style="background:#BA7517">White Dwarf</span>
+</div>
+<div class="nm">Hong Kong</div>
+<div class="vals">SE 1.492  |  BSLI 0.296 (D)</div>
+</div></div></div><div class="path-section" id="sec-안정" style="display:none"><div class="items-grid"><div class="item">
+<div class="item-top">
+<span class="iso">SVK</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Slovakia</div>
+<div class="vals">SE 1.210  |  BSLI 0.348 (C)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ITA</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Italy</div>
+<div class="vals">SE 1.302  |  BSLI 0.445 (C)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ARE</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">United Arab Emirates</div>
+<div class="vals">SE 1.304  |  BSLI 0.847 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ESP</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Spain</div>
+<div class="vals">SE 1.394  |  BSLI 0.461 (C)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">PRT</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Portugal</div>
+<div class="vals">SE 1.422  |  BSLI 0.331 (C)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">CZE</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Czechia</div>
+<div class="vals">SE 1.454  |  BSLI 0.486 (C)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">KOR</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">South Korea</div>
+<div class="vals">SE 1.476  |  BSLI 0.463 (C)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">USA</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">United States</div>
+<div class="vals">SE 1.479  |  BSLI 0.700 (B)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">FRA</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">France</div>
+<div class="vals">SE 1.512  |  BSLI 0.636 (B)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">TWN</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Taiwan</div>
+<div class="vals">SE 1.558  |  BSLI 0.476 (C)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">BEL</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Belgium</div>
+<div class="vals">SE 1.607  |  BSLI 0.739 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">AUT</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Austria</div>
+<div class="vals">SE 1.644  |  BSLI 0.774 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">JPN</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Japan</div>
+<div class="vals">SE 1.674  |  BSLI 0.502 (B)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">EST</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Estonia</div>
+<div class="vals">SE 1.690  |  BSLI 0.426 (C)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">CAN</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Canada</div>
+<div class="vals">SE 1.719  |  BSLI 0.701 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">DEU</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Germany</div>
+<div class="vals">SE 1.741  |  BSLI 0.720 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ISL</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Iceland</div>
+<div class="vals">SE 1.752  |  BSLI 0.802 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">AUS</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Australia</div>
+<div class="vals">SE 1.754  |  BSLI 0.654 (B)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">NLD</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Netherlands</div>
+<div class="vals">SE 1.799  |  BSLI 0.744 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">SWE</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Sweden</div>
+<div class="vals">SE 1.826  |  BSLI 0.688 (B)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">CHE</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Switzerland</div>
+<div class="vals">SE 1.838  |  BSLI 0.842 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">LUX</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Luxembourg</div>
+<div class="vals">SE 1.855  |  BSLI 0.899 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">NOR</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Norway</div>
+<div class="vals">SE 1.879  |  BSLI 0.925 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">FIN</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Finland</div>
+<div class="vals">SE 1.940  |  BSLI 0.712 (A)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">DNK</span>
+<span class="badge" style="background:#0F6E56">Stable</span>
+</div>
+<div class="nm">Denmark</div>
+<div class="vals">SE 1.968  |  BSLI 0.754 (A)</div>
+</div></div></div><div class="path-section" id="sec-주시" style="display:none"><div class="items-grid"><div class="item">
+<div class="item-top">
+<span class="iso">RUS</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Russia</div>
+<div class="vals">SE 0.506  |  BSLI 0.111 (D)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">BLR</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Belarus</div>
+<div class="vals">SE 0.539  |  BSLI 0.226 (D)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">UKR</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Ukraine</div>
+<div class="vals">SE 0.737  |  BSLI 0.145 (D)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">THA</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Thailand</div>
+<div class="vals">SE 0.830  |  BSLI 0.055 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">SRB</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Serbia</div>
+<div class="vals">SE 0.832  |  BSLI 0.059 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">KAZ</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Kazakhstan</div>
+<div class="vals">SE 0.854  |  BSLI 0.091 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ARG</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Argentina</div>
+<div class="vals">SE 0.929  |  BSLI -0.267 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">IND</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">India</div>
+<div class="vals">SE 0.942  |  BSLI -0.583 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">ZAF</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">South Africa</div>
+<div class="vals">SE 0.982  |  BSLI -1.398 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">SEN</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Senegal</div>
+<div class="vals">SE 0.992  |  BSLI -0.521 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">GEO</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Georgia</div>
+<div class="vals">SE 1.098  |  BSLI -0.270 (E)</div>
+</div><div class="item">
+<div class="item-top">
+<span class="iso">RWA</span>
+<span class="badge" style="background:#888780">Watch</span>
+</div>
+<div class="nm">Rwanda</div>
+<div class="vals">SE 1.101  |  BSLI -1.093 (E)</div>
+</div></div></div></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+const D = [{"iso": "VEN", "name": "Venezuela", "se": 0.1391, "bsli": -0.2665, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "YEM", "name": "Yemen", "se": 0.1685, "bsli": -0.7021, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "SDN", "name": "Sudan", "se": 0.1931, "bsli": -0.6201, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "MMR", "name": "Myanmar", "se": 0.2166, "bsli": -0.2231, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "BDI", "name": "Burundi", "se": 0.3582, "bsli": -1.1127, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "TCD", "name": "Chad", "se": 0.3621, "bsli": -0.8346, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "IRN", "name": "Iran", "se": 0.445, "bsli": -0.1301, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "IRQ", "name": "Iraq", "se": 0.4562, "bsli": -0.1227, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "CMR", "name": "Cameroon", "se": 0.4722, "bsli": -0.7954, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "LBN", "name": "Lebanon", "se": 0.474, "bsli": -0.2457, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "MLI", "name": "Mali", "se": 0.4811, "bsli": -0.6118, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "GIN", "name": "Guinea", "se": 0.4967, "bsli": -0.5316, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "RUS", "name": "Russia", "se": 0.5064, "bsli": 0.1113, "grade": "D", "path": "주시", "color": "#888780"}, {"iso": "MOZ", "name": "Mozambique", "se": 0.5105, "bsli": -1.4078, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "BGD", "name": "Bangladesh", "se": 0.518, "bsli": -0.6223, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "NGA", "name": "Nigeria", "se": 0.5351, "bsli": -0.789, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "BLR", "name": "Belarus", "se": 0.5392, "bsli": 0.2263, "grade": "D", "path": "주시", "color": "#888780"}, {"iso": "PAK", "name": "Pakistan", "se": 0.5394, "bsli": -0.4598, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "GTM", "name": "Guatemala", "se": 0.5745, "bsli": -0.5607, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "BOL", "name": "Bolivia", "se": 0.5778, "bsli": -0.1227, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "AGO", "name": "Angola", "se": 0.5805, "bsli": -0.9895, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "UGA", "name": "Uganda", "se": 0.5933, "bsli": -1.0022, "grade": "E", "path": "블랙홀", "color": "#A32D2D"}, {"iso": "EGY", "name": "Egypt", "se": 0.6107, "bsli": -0.2649, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "MEX", "name": "Mexico", "se": 0.6206, "bsli": -0.2665, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "NER", "name": "Niger", "se": 0.6277, "bsli": -1.0291, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "ETH", "name": "Ethiopia", "se": 0.6353, "bsli": -0.8096, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "TUR", "name": "Turkey", "se": 0.6865, "bsli": -0.015, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "DZA", "name": "Algeria", "se": 0.6916, "bsli": -0.1859, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "BFA", "name": "Burkina Faso", "se": 0.6982, "bsli": -0.9458, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "ECU", "name": "Ecuador", "se": 0.7107, "bsli": -0.3679, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "UKR", "name": "Ukraine", "se": 0.7369, "bsli": 0.1453, "grade": "D", "path": "주시", "color": "#888780"}, {"iso": "KEN", "name": "Kenya", "se": 0.7423, "bsli": -0.822, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "PER", "name": "Peru", "se": 0.7764, "bsli": -0.3434, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "ZMB", "name": "Zambia", "se": 0.7781, "bsli": -1.5316, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "PHL", "name": "Philippines", "se": 0.7857, "bsli": -0.3407, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "MWI", "name": "Malawi", "se": 0.7911, "bsli": -1.1408, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "TZA", "name": "Tanzania", "se": 0.807, "bsli": -0.9945, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "VNM", "name": "Vietnam", "se": 0.8076, "bsli": -0.0346, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "MAR", "name": "Morocco", "se": 0.812, "bsli": -0.1859, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "LKA", "name": "Sri Lanka", "se": 0.8184, "bsli": -0.2457, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "THA", "name": "Thailand", "se": 0.83, "bsli": 0.055, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "SRB", "name": "Serbia", "se": 0.8315, "bsli": 0.0586, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "BRA", "name": "Brazil", "se": 0.8452, "bsli": -0.2409, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "MNG", "name": "Mongolia", "se": 0.8469, "bsli": -0.0596, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "CHN", "name": "China", "se": 0.8508, "bsli": -0.0464, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "KAZ", "name": "Kazakhstan", "se": 0.854, "bsli": 0.0913, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "COL", "name": "Colombia", "se": 0.8573, "bsli": -0.6808, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "IDN", "name": "Indonesia", "se": 0.8729, "bsli": -0.3315, "grade": "E", "path": "블랙홀위험", "color": "#D85A30"}, {"iso": "ARG", "name": "Argentina", "se": 0.929, "bsli": -0.2665, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "IND", "name": "India", "se": 0.9423, "bsli": -0.5832, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "ZAF", "name": "South Africa", "se": 0.9823, "bsli": -1.3981, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "SEN", "name": "Senegal", "se": 0.9915, "bsli": -0.5209, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "HUN", "name": "Hungary", "se": 1.025, "bsli": 0.2845, "grade": "D", "path": "백색왜성", "color": "#BA7517"}, {"iso": "GEO", "name": "Georgia", "se": 1.0979, "bsli": -0.2697, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "RWA", "name": "Rwanda", "se": 1.1007, "bsli": -1.0931, "grade": "E", "path": "주시", "color": "#888780"}, {"iso": "GRC", "name": "Greece", "se": 1.147, "bsli": 0.2425, "grade": "D", "path": "백색왜성", "color": "#BA7517"}, {"iso": "MYS", "name": "Malaysia", "se": 1.1562, "bsli": 0.0948, "grade": "E", "path": "백색왜성", "color": "#BA7517"}, {"iso": "BWA", "name": "Botswana", "se": 1.2012, "bsli": -0.8549, "grade": "E", "path": "압력축적", "color": "#534AB7"}, {"iso": "SVK", "name": "Slovakia", "se": 1.2101, "bsli": 0.3478, "grade": "C", "path": "안정", "color": "#0F6E56"}, {"iso": "POL", "name": "Poland", "se": 1.2759, "bsli": 0.1755, "grade": "D", "path": "백색왜성", "color": "#BA7517"}, {"iso": "CRI", "name": "Costa Rica", "se": 1.2938, "bsli": -0.2546, "grade": "E", "path": "압력축적", "color": "#534AB7"}, {"iso": "ITA", "name": "Italy", "se": 1.3023, "bsli": 0.4452, "grade": "C", "path": "안정", "color": "#0F6E56"}, {"iso": "ARE", "name": "United Arab Emirates", "se": 1.3037, "bsli": 0.8472, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "ISR", "name": "Israel", "se": 1.3515, "bsli": 0.2964, "grade": "D", "path": "백색왜성", "color": "#BA7517"}, {"iso": "ESP", "name": "Spain", "se": 1.3941, "bsli": 0.4612, "grade": "C", "path": "안정", "color": "#0F6E56"}, {"iso": "CHL", "name": "Chile", "se": 1.4152, "bsli": -0.051, "grade": "E", "path": "압력축적", "color": "#534AB7"}, {"iso": "PRT", "name": "Portugal", "se": 1.4222, "bsli": 0.3308, "grade": "C", "path": "안정", "color": "#0F6E56"}, {"iso": "BTN", "name": "Bhutan", "se": 1.4342, "bsli": -0.1396, "grade": "E", "path": "압력축적", "color": "#534AB7"}, {"iso": "CZE", "name": "Czechia", "se": 1.4544, "bsli": 0.4856, "grade": "C", "path": "안정", "color": "#0F6E56"}, {"iso": "KOR", "name": "South Korea", "se": 1.4764, "bsli": 0.4627, "grade": "C", "path": "안정", "color": "#0F6E56"}, {"iso": "USA", "name": "United States", "se": 1.479, "bsli": 0.6998, "grade": "B", "path": "안정", "color": "#0F6E56"}, {"iso": "HKG", "name": "Hong Kong", "se": 1.4917, "bsli": 0.2964, "grade": "D", "path": "백색왜성", "color": "#BA7517"}, {"iso": "FRA", "name": "France", "se": 1.5121, "bsli": 0.6361, "grade": "B", "path": "안정", "color": "#0F6E56"}, {"iso": "TWN", "name": "Taiwan", "se": 1.5581, "bsli": 0.4757, "grade": "C", "path": "안정", "color": "#0F6E56"}, {"iso": "BEL", "name": "Belgium", "se": 1.6065, "bsli": 0.7387, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "AUT", "name": "Austria", "se": 1.6444, "bsli": 0.7738, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "JPN", "name": "Japan", "se": 1.674, "bsli": 0.502, "grade": "B", "path": "안정", "color": "#0F6E56"}, {"iso": "EST", "name": "Estonia", "se": 1.6898, "bsli": 0.4257, "grade": "C", "path": "안정", "color": "#0F6E56"}, {"iso": "CAN", "name": "Canada", "se": 1.7194, "bsli": 0.7012, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "DEU", "name": "Germany", "se": 1.7414, "bsli": 0.7202, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "ISL", "name": "Iceland", "se": 1.7518, "bsli": 0.802, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "AUS", "name": "Australia", "se": 1.7541, "bsli": 0.6538, "grade": "B", "path": "안정", "color": "#0F6E56"}, {"iso": "NLD", "name": "Netherlands", "se": 1.7994, "bsli": 0.7441, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "SWE", "name": "Sweden", "se": 1.826, "bsli": 0.6877, "grade": "B", "path": "안정", "color": "#0F6E56"}, {"iso": "CHE", "name": "Switzerland", "se": 1.8376, "bsli": 0.8422, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "LUX", "name": "Luxembourg", "se": 1.8548, "bsli": 0.8993, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "NOR", "name": "Norway", "se": 1.8789, "bsli": 0.9254, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "FIN", "name": "Finland", "se": 1.9399, "bsli": 0.7117, "grade": "A", "path": "안정", "color": "#0F6E56"}, {"iso": "DNK", "name": "Denmark", "se": 1.9678, "bsli": 0.7538, "grade": "A", "path": "안정", "color": "#0F6E56"}];
+const C = {"\ube14\ub799\ud640": "#A32D2D", "\ube14\ub799\ud640\uc704\ud5d8": "#D85A30", "\uc555\ub825\ucd95\uc801": "#534AB7", "\ubc31\uc0c9\uc65c\uc131": "#BA7517", "\uc548\uc815": "#0F6E56", "\uc8fc\uc2dc": "#888780"};
+const PATHS = ["\ube14\ub799\ud640", "\ube14\ub799\ud640\uc704\ud5d8", "\uc555\ub825\ucd95\uc801", "\ubc31\uc0c9\uc65c\uc131", "\uc548\uc815", "\uc8fc\uc2dc"];
+
+window.addEventListener('load', function() {
+
+  const sc = new Chart(document.getElementById('sc'), {
+    type:'scatter',
+    data:{datasets: PATHS.map(p => ({
+      label:p,
+      data: D.filter(d=>d.path===p).map(d=>({x:d.se,y:d.bsli,iso:d.iso,name:d.name})),
+      backgroundColor: C[p], pointRadius:8, pointHoverRadius:11
+    }))},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>[
+          ctx.raw.iso+' · '+ctx.raw.name,
+          'SE='+ctx.raw.x.toFixed(3)+'  BSLI='+ctx.raw.y.toFixed(3)
+        ]}}
+      },
+      scales:{
+        x:{min:0,max:2.2,
+            title:{display:true,text:'SE = A2+A8  (역사적 완충제 두께 →)',font:{size:12}},
+            grid:{color:'rgba(0,0,0,0.05)'}},
+        y:{min:-1.7,max:1.1,
+            title:{display:true,text:'← BSLI 낮음 | 높음 →',font:{size:12}},
+            grid:{color:'rgba(0,0,0,0.05)'}}
+      }
+    }
+  });
+
+  const leg = document.getElementById('legend');
+  let hidden = {};
+  PATHS.forEach(p => {
+    const el = document.createElement('div');
+    el.className='leg';
+    el.innerHTML='<span class="dot" style="background:'+C[p]+'"></span>'+p;
+    el.onclick = () => {
+      hidden[p] = !hidden[p];
+      el.classList.toggle('off', hidden[p]);
+      const ds = sc.data.datasets.find(d=>d.label===p);
+      if(ds){ ds.hidden=hidden[p]; sc.update(); }
+    };
+    leg.appendChild(el);
+  });
+
+  new Chart(document.getElementById('bc'), {
+    type:'bar',
+    data:{
+      labels: PATHS,
+      datasets:[{
+        data: PATHS.map(p=>D.filter(d=>d.path===p).length),
+        backgroundColor: PATHS.map(p=>C[p]),
+        borderWidth:0, borderRadius:6
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{callbacks:{label:ctx=>ctx.parsed.y+'개국'}}
+      },
+      scales:{
+        y:{title:{display:true,text:'국가 수',font:{size:12}}},
+        x:{ticks:{font:{size:12}}}
+      }
+    }
+  });
+
+  const fb = document.getElementById('fb');
+  function show(p) {
+    document.querySelectorAll('.path-section').forEach(s=>s.style.display='none');
+    if(p==='전체') PATHS.forEach(pp=>{
+      const el=document.getElementById('sec-'+pp);
+      if(el) el.style.display='block';
+    });
+    else {
+      const el=document.getElementById('sec-'+p);
+      if(el) el.style.display='block';
+    }
+    document.querySelectorAll('.fbtn').forEach(b=>b.style.outline='none');
+    const btn = fb.querySelector('[data-p="'+p+'"]');
+    if(btn) btn.style.outline='3px solid #2C3E50';
+  }
+
+  ['전체',...PATHS].forEach(p => {
+    const btn = document.createElement('button');
+    btn.className='fbtn';
+    btn.dataset.p = p;
+    const cnt = p==='전체' ? D.length : D.filter(d=>d.path===p).length;
+    btn.textContent = p+' ('+cnt+')';
+    if(p!=='전체') btn.style.cssText='background:'+C[p]+';color:#fff;border-color:transparent';
+    btn.onclick = () => show(p);
+    fb.appendChild(btn);
+  });
+
+  show('전체');
+});
+</script>
+</body>
+</html>

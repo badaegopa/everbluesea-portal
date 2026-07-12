@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Central Middle East Special Edition — GCC + Yemen 7 Countries | Λ¹²v9.14</title>
+<style>
+  /* ===== 티스토리 검증: var()0 · @import0 · script0 · :root0 · SVG w/h명시 ===== */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:Georgia,'Times New Roman',serif; background-color:#F5F3EE; color:#2A2A2A; line-height:1.75; }
+  .report-header { background-color:#5E9186; color:#FFFFFF; padding:38px 32px 28px; border-bottom:4px solid #B8850E; }
+  .series-tag { font-family:'Courier New',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#C8E0DC; margin-bottom:10px; }
+  .report-header h1 { font-size:26px; font-weight:normal; line-height:1.3; margin-bottom:6px; color:#FFFFFF; }
+  .report-header .subtitle { font-size:13.5px; color:#C8E0DC; margin-bottom:14px; }
+  .engine-badge { display:inline-block; background-color:#B8850E; color:#FFFFFF; font-family:'Courier New',monospace; font-size:10px; padding:3px 9px; letter-spacing:2px; margin-right:5px; margin-bottom:3px; }
+  .meta-row { margin-top:12px; font-size:11px; color:#C8E0DC; font-family:'Courier New',monospace; }
+  .container { max-width:980px; margin:0 auto; padding:32px 22px; }
+  .section-title { font-size:13px; letter-spacing:3px; text-transform:uppercase; color:#5E9186; font-family:'Courier New',monospace; margin:8px 0 14px; padding-bottom:6px; border-bottom:1px solid #DDD8CE; }
+  .intro-block { background-color:#FFFFFF; border:1px solid #DDD8CE; border-left:4px solid #5E9186; padding:20px 24px; margin-bottom:28px; font-size:14px; line-height:1.85; color:#3A3A3A; }
+  .country-card { background-color:#FFFFFF; border:1px solid #DDD8CE; border-top:4px solid #5E9186; padding:18px 22px; margin-bottom:18px; }
+  .country-card.crit { border-top-color:#8B0000; }
+  .country-card.high { border-top-color:#C0392B; }
+  .country-card.mid { border-top-color:#B8850E; }
+  .country-card.low { border-top-color:#5E9186; }
+  .country-card.stab { border-top-color:#2E6DA4; }
+  .cc-head { display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:6px; }
+  .cc-name { font-size:18px; font-weight:bold; color:#3A6A5E; }
+  .cc-lambda { font-family:'Courier New',monospace; font-size:18px; font-weight:bold; color:#2A2A2A; }
+  .cc-pwt { font-family:'Courier New',monospace; font-size:13px; color:#666; }
+  .phase-tag { display:inline-block; padding:2px 8px; font-size:10px; font-family:'Courier New',monospace; letter-spacing:1px; border-radius:2px; }
+  .phase-crisis { background-color:#FDEDED; color:#C0392B; border:1px solid #E8B8B8; }
+  .phase-tension { background-color:#FEF5E7; color:#B8850E; border:1px solid #E8D4A0; }
+  .phase-watch { background-color:#EEF5F3; color:#3A6A5E; border:1px solid #B0CFC9; }
+  .phase-stable { background-color:#F0F8FF; color:#2E6DA4; border:1px solid #A0BDD8; }
+  .cc-meta { font-size:11.5px; font-family:'Courier New',monospace; color:#888; margin:6px 0 10px; }
+  .cc-driver { font-family:'Courier New',monospace; font-size:11.5px; color:#8A6000; background-color:#FEF5E7; border-left:3px solid #B8850E; padding:6px 10px; margin-bottom:10px; }
+  .cc-narrative { font-size:13.5px; line-height:1.8; color:#333; }
+  .cc-modules { display:flex; gap:14px; flex-wrap:wrap; margin-top:10px; padding-top:10px; border-top:1px solid #EEE; font-family:'Courier New',monospace; font-size:11px; color:#555; }
+  .cc-modules span strong { color:#3A6A5E; }
+  .compare-table { background-color:#FFFFFF; border:1px solid #DDD8CE; padding:18px 22px; margin:24px 0; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  thead th { background-color:#3A6A5E; color:#FFFFFF; padding:8px 6px; font-family:'Courier New',monospace; font-size:10.5px; letter-spacing:1px; }
+  tbody td { padding:7px 6px; border:1px solid #DDD8CE; font-family:'Courier New',monospace; text-align:center; }
+  tbody td.country { text-align:left; padding-left:12px; font-family:Georgia,serif; font-weight:bold; color:#3A6A5E; }
+  tbody tr:nth-child(even) { background-color:#F9F8F5; }
+  .conclusion-block { background-color:#EBF4F0; border:1px solid #B0CFC9; padding:22px 26px; margin:24px 0; font-size:14px; line-height:1.9; color:#2A2A2A; }
+  .report-footer { background-color:#EBF4F0; border-top:2px solid #5E9186; padding:22px 32px; text-align:center; }
+  .footer-logo { font-family:'Courier New',monospace; font-size:13px; color:#3A6A5E; font-weight:bold; margin-bottom:5px; letter-spacing:1px; }
+  .footer-meta { font-family:'Courier New',monospace; font-size:10px; color:#5E9186; letter-spacing:1px; line-height:1.8; }
+  .footer-link a { color:#B8850E; text-decoration:none; font-family:'Courier New',monospace; font-size:11px; }
+  @media (max-width:680px) { .report-header { padding:24px 16px 20px; } .report-header h1 { font-size:20px; } .container { padding:24px 14px; } .cc-modules { font-size:10.5px; } }
+</style>
+</head>
+<body>
+<div class="report-header">
+<div class="series-tag">Everblue Sea Institute for Social Dynamics · SYNTHESIS Framework · Special Edition #21-C</div>
+<h1>Central Middle East Special Edition — GCC + Yemen 7 Countries</h1>
+<div class="subtitle">Central Middle East Standalone — Gulf Cooperation Council + Yemen Bipolar Analysis</div>
+<div>
+<span class="engine-badge">Λ¹²v9.14</span>
+<span class="engine-badge">§33 BBD</span>
+<span class="engine-badge">§34 GEI</span>
+<span class="engine-badge">§35 NCI</span>
+<span class="engine-badge">SSRN 6632858</span>
+</div>
+<div class="meta-row">Regional Comparison Issue #21 Quarter · Date of Issue 2026-05-06 · Director Cheonghae (淸海)</div>
+</div>
+<div class="container">
+<p class="section-title">§00 · Central Middle East Regional Coordinates — Bipolar Region</p>
+<div class="intro-block">
+    The 7 countries of the Central Middle East exhibit more extreme phase divergence than any region measured by this Institute. The Λ gap between the capital pole of Qatar (Λ=0.378)·UAE (0.398) and the collapse pole of Yemen (0.872) is 0.494, the largest on record within a single region. The GCC 6 countries (Saudi Arabia·UAE·Kuwait·Qatar·Oman·Bahrain) maintain superficial stability, but their BBD §33 average is 0.797, the highest in regional history—a structural bubble created by reliance on a single resource commodity is the shadow of stability. Yemen, in its 11th year of civil war, is progressing toward the threshold of annihilation. The regional average Λ=0.516 is a composite value of §31 ADI authoritarian remnants (ruling monarchy) and §33 BBD resource bubble.
+  </div>
+<div class="country-card crit">
+<div class="cc-head"><span class="cc-name">🇾🇪 Yemen</span><span class="cc-lambda">Λ 0.872</span><span class="cc-pwt">PWT-r 0.318</span><span class="phase-tag phase-crisis">State Collapse</span></div>
+<div class="cc-meta">FSI 111/120 (1st in region) · CPI 13/100 · GPI 161st (lowest in the world) · Deaths 380k+ · Famine threat 18M</div>
+<div class="cc-driver">EPI=0.92 · MFI=0.95 · GEI=0.92 · OLI=0.90 · BRI↓=0.05 — Simultaneous extreme values of 6 variables</div>
+<div class="cc-narrative">11th year since the 2014 Houthi capture of Sana'a. Rules split into three by Sana'a (Houthis), Aden (PLC), and Hadramout (STC); conflict re-escalated with the 2024-25 Houthi Red Sea blockade (Operation USS Eisenhower) after the 2022 truce. As of 2026, half of the population (18 million) depends on food aid, with 2.7 million cumulative cholera cases. §35 NCI=0.55 is the sum of Saudi and UAE missile ranges of the Houthis plus cumulative US and UK airstrikes. The recovery path is on a timeline of over a generation—with deeper loss of human capital compared to the cases of Iraq and Syria.</div>
+<div class="cc-modules"><span><strong>BBD §33</strong> 0.78</span><span><strong>GEI §34</strong> 0.92</span><span><strong>NCI §35</strong> 0.55</span></div>
+</div>
+<div class="country-card high">
+<div class="cc-head"><span class="cc-name">🇧🇭 Bahrain</span><span class="cc-lambda">Λ 0.555</span><span class="cc-pwt">PWT-r 0.665</span><span class="phase-tag phase-tension">Shia-Sunni</span></div>
+<div class="cc-meta">FSI 65/120 · CPI 53/100 · US 5th Fleet Headquarters · Shia majority (60-70%) · Sunni Al Khalifa rule</div>
+<div class="cc-driver">DCI=0.72 · OLI=0.78 · BBD=0.65 · BRI↓=0.20 — Sectarian division + 1,300 political prisoners</div>
+<div class="cc-narrative">The structural political exclusion of the Shia population has persisted since the 2011 Pearl Roundabout protests. Disqualification of Shia party (Al-Wefaq) candidates in the 2024 parliamentary election, with accumulated political prisoners reaching 1,300. Even after the 2023 Beijing Agreement between Iran and Saudi Arabia, Bahrain maintains its hardline stance against Iran within the GCC. BBD=0.65 represents sole dependence on aluminum (ALBA) + finance, deepening its reliance on the Saudi Abdullah Bridge (completed in 2026). NCI=0.32 is potential targeting due to the stationing of the US 5th Fleet.</div>
+<div class="cc-modules"><span><strong>BBD §33</strong> 0.65</span><span><strong>GEI §34</strong> 0.62</span><span><strong>NCI §35</strong> 0.32</span></div>
+</div>
+<div class="country-card mid">
+<div class="cc-head"><span class="cc-name">🇸🇦 Saudi Arabia</span><span class="cc-lambda">Λ 0.521</span><span class="cc-pwt">PWT-r 0.695</span><span class="phase-tag phase-watch">MBS Rule</span></div>
+<div class="cc-meta">FSI 70/120 · CPI 59/100 · Crown Prince MBS in his 9th year (de facto ruler) · NEOM $500B · Vision 2030 underway</div>
+<div class="cc-driver">BBD=0.92 (highest in the region) · OLI=0.85 · MFI=0.65 · ADI=0.72</div>
+<div class="cc-narrative">As King Salman's (89 years old) health deteriorates, MBS is effectively ruling alone. Vision 2030's megaprojects (NEOM·The Line·Trojena) are proceeding on the premise of oil prices above $80, but faced setbacks in 2025 IPO funding. 2024 alternative gas demand from the EU and OPEC+ production cuts preserved short-term revenues. BBD=0.92 is the highest in the region and the highest in the history of this report—a triple bubble of single-commodity (oil) dependence + megaproject debt + real estate acceleration. The 2024 normalization of Iran-Saudi diplomatic relations is maintained, while normalization talks with Israel after Gaza remain frozen.</div>
+<div class="cc-modules"><span><strong>BBD §33</strong> 0.92</span><span><strong>GEI §34</strong> 0.72</span><span><strong>NCI §35</strong> 0.45</span></div>
+</div>
+<div class="country-card mid">
+<div class="cc-head"><span class="cc-name">🇰🇼 Kuwait</span><span class="cc-lambda">Λ 0.475</span><span class="cc-pwt">PWT-r 0.732</span><span class="phase-tag phase-watch">Suspension of Parliament</span></div>
+<div class="cc-meta">FSI 55/120 · CPI 46/100 · May 2024 Emir Mishal dissolves parliament · 4 years of direct rule without parliament</div>
+<div class="cc-driver">BBD=0.85 · IGI↓=0.42 · OLI=0.65 · ADI=0.55</div>
+<div class="cc-narrative">Emir Mishal Al-Sabah has been ruling directly since the May 2024 dissolution of parliament and partial suspension of the constitution. Although it had the most active parliamentary system in the GCC (50 directly elected seats), it is currently in its fourth year of rule without parliament as of 2026. The justification was the cumulative exercise of vetoes by the cabinet of lawmakers, but it is a structural rising signal of ADI=0.55. BBD=0.85 signifies 90% dependence on oil (the highest compared to the GCC average of 65%) + management risk of the sovereign wealth fund (KIA $920B). The imminent succession of the next Emir (Mishal, 84 years old) is a key political variable.</div>
+<div class="cc-modules"><span><strong>BBD §33</strong> 0.85</span><span><strong>GEI §34</strong> 0.55</span><span><strong>NCI §35</strong> 0.32</span></div>
+</div>
+<div class="country-card low">
+<div class="cc-head"><span class="cc-name">🇴🇲 Oman</span><span class="cc-lambda">Λ 0.412</span><span class="cc-pwt">PWT-r 0.778</span><span class="phase-tag phase-watch">Neutral Diplomacy</span></div>
+<div class="cc-meta">FSI 53/120 · CPI 55/100 · Sultan Haitham bin Tariq in his 6th year · GCC's only neutral diplomacy</div>
+<div class="cc-driver">BBD=0.78 · OLI=0.62 · Stability variables dominant — RHC=0.58 · DCI↓=0.30</div>
+<div class="cc-narrative">Succession of Vision 2040 by Sultan Haitham (ascended in 2020). Maintaining GCC's only mediator diplomacy with Iran (behind-the-scenes mediation of 2023 Saudi-Iran normalization). The remaining threat of Islamic insurgents in Abu Kamuz/Dhofar is partially reflected in §31 SSI. BBD=0.78 represents 75% oil dependence + cumulative debt from the new Duqm Port (China's Belt and Road Initiative). NCI=0.28 is among the lowest in the region—a combination of its location at the entrance of the Strait of Hormuz and not holding nuclear/missile test sites.</div>
+<div class="cc-modules"><span><strong>BBD §33</strong> 0.78</span><span><strong>GEI §34</strong> 0.62</span><span><strong>NCI §35</strong> 0.28</span></div>
+</div>
+<div class="country-card stab">
+<div class="cc-head"><span class="cc-name">🇦🇪 UAE</span><span class="cc-lambda">Λ 0.398</span><span class="cc-pwt">PWT-r 0.792</span><span class="phase-tag phase-stable">Capital Accumulation</span></div>
+<div class="cc-meta">FSI 38/120 (lowest in region) · CPI 68/100 (1st in region) · MBZ in his 4th year as President · Dubai real estate re-accelerating</div>
+<div class="cc-driver">Relative stability — but potential bubble of BBD=0.72 · OLI=0.75 concentration of power remnants</div>
+<div class="cc-narrative">Lowest Λ in the Central Middle East. Tri-axial rule by President Mohamed bin Zayed (MBZ, ascended in 2022) + Crown Prince Sheikh Khaled (Abu Dhabi) and Sheikh Hamdan (Dubai). 2026 Dubai real estate prices recover to near-2008 bubble levels (average $850/sq.ft)—a potential risk for BBD=0.72. CPI of 68 is the only value in the region close to the EU average, but OLI=0.75 represents a concentration of power in the absence of political parties, unions, and the press. Realignment of US-China strategy with the 2024 G42-Microsoft $1.5B AI cooperation. Normalization with Israel after Gaza is maintained.</div>
+<div class="cc-modules"><span><strong>BBD §33</strong> 0.72</span><span><strong>GEI §34</strong> 0.45</span><span><strong>NCI §35</strong> 0.32</span></div>
+</div>
+<div class="country-card stab">
+<div class="cc-head"><span class="cc-name">🇶🇦 Qatar</span><span class="cc-lambda">Λ 0.378</span><span class="cc-pwt">PWT-r 0.808</span><span class="phase-tag phase-stable">Small-State Equilibrium</span></div>
+<div class="cc-meta">FSI 41/120 · CPI 38/100 · Emir Tamim bin Hamad in his 12th year · 1st in the region for gas LNG</div>
+<div class="cc-driver">Lowest Λ in the region — BBD=0.85 single risk axis, all others below regional average</div>
+<div class="cc-narrative">Lowest Λ in the Central Middle East and overall region. Accumulation of diplomatic capital since the 2022 World Cup—simultaneous operation of three major channels: Gaza ceasefire, Iran-US nuclear talks, and Afghan Taliban mediation. Al Jazeera has established itself as part of the regional information order. BBD=0.85 represents a compressed bubble from sole reliance on LNG (60% of GDP) + $30B debt for the North Field expansion—however, 2026 LNG demand (replacing 50% of Gazprom in the EU) acts as a short-term safety valve. NCI=0.35 indicates potential exposure due to the hosting of the US Al Udeid Air Base (largest in the Middle East) + proximity to Iran.</div>
+<div class="cc-modules"><span><strong>BBD §33</strong> 0.85</span><span><strong>GEI §34</strong> 0.42</span><span><strong>NCI §35</strong> 0.35</span></div>
+</div>
+<p class="section-title" style="margin-top:32px;">§ Synthesis · Comparison of Λ¹²v9.14 of 7 Central Middle East Countries</p>
+<div class="compare-table">
+<table>
+<thead><tr><th style="text-align:left;padding-left:12px;">Country</th><th>Λ-Score</th><th>Regional Diff. Δ</th><th>PWT-r</th><th>BBD</th><th>GEI</th><th>NCI</th><th>Core Driver</th></tr></thead>
+<tbody>
+<tr><td class="country">🇾🇪 Yemen</td><td>0.872</td><td style="color:#8B0000;">+0.356</td><td>0.318</td><td>0.78</td><td>0.92</td><td>0.55</td><td>EPI·MFI·GEI</td></tr>
+<tr><td class="country">🇧🇭 Bahrain</td><td>0.555</td><td style="color:#B8850E;">+0.039</td><td>0.665</td><td>0.65</td><td>0.62</td><td>0.32</td><td>DCI·OLI·BRI</td></tr>
+<tr><td class="country">🇸🇦 Saudi Arabia</td><td>0.521</td><td>+0.005</td><td>0.695</td><td>0.92</td><td>0.72</td><td>0.45</td><td>BBD·OLI·MFI</td></tr>
+<tr><td class="country">🇰🇼 Kuwait</td><td>0.475</td><td style="color:#5E9186;">−0.041</td><td>0.732</td><td>0.85</td><td>0.55</td><td>0.32</td><td>BBD·IGI·OLI</td></tr>
+<tr><td class="country">🇴🇲 Oman</td><td>0.412</td><td style="color:#5E9186;">−0.104</td><td>0.778</td><td>0.78</td><td>0.62</td><td>0.28</td><td>BBD·OLI</td></tr>
+<tr><td class="country">🇦🇪 UAE</td><td>0.398</td><td style="color:#5E9186;">−0.118</td><td>0.792</td><td>0.72</td><td>0.45</td><td>0.32</td><td>BBD (Potential)</td></tr>
+<tr><td class="country">🇶🇦 Qatar</td><td>0.378</td><td style="color:#5E9186;">−0.138</td><td>0.808</td><td>0.85</td><td>0.42</td><td>0.35</td><td>BBD(LNG)</td></tr>
+</tbody>
+</table>
+<p style="font-size:11px;color:#888;font-family:'Courier New',monospace;margin-top:10px;">Regional Diff. Δ = Deviation from regional average (0.516) · Positive = increased risk · BBD §33 regional average = 0.793 (highest on record)</p>
+</div>
+<p class="section-title">§ Conclusion · Between the Capital Pole and the Collapse Pole</p>
+<div class="conclusion-block">
+<p>The 7 countries of the Central Middle East represent a case where two extremes coexist within a single region. <strong>The Capital Pole (Qatar, UAE, Oman)</strong>is stability created by the combination of resource zones and ruling monarchies, while <strong>the Collapse Pole (Yemen)</strong>is the result when the same resource zone is combined with foreign intervention. Saudi Arabia, Kuwait, and Bahrain lie in between, bearing the pressures of BBD (resource bubble), ADI (authoritarianism), and DCI (sectarian division).</p>
+<p style="margin-top:12px;">The regional structural anomaly is the BBD §33 average of 0.793—higher than any region measured in this report. While the combination of single-resource commodity dependence (averaging 70% for oil and gas) and megaproject debt (NEOM $500B, North Field $30B, Duqm Port Belt and Road) creates superficial stability, if oil prices drop below $60, BBD will be non-linearly activated according to the threshold function of §33. The 2025 Saudi IPO funding setback is the first signal of this structure.</p>
+<p style="margin-top:12px;">Yemen crossed the threshold on a path without any of the resource or diplomatic capital possessed by the other six countries in the region. The recovery path does not lie within the region itself. How the six GCC countries share the responsibility for Yemen's reconstruction will determine the direction of the regional average Λ over the next five years.</p>
+</div>
+</div>
+<div class="report-footer">
+<div class="footer-logo">Everblue Sea Institute for Social Dynamics (Everblue Sea Institute for Social Dynamics)</div>
+<div class="footer-meta">Director Cheonghae (淸海) · SYNTHESIS Framework · Special Edition #21-C · Central Middle East 7 Countries<br/>Engine: Λ¹²v9.14 | §33 BBD + §34 GEI + §35 NCI | Based on SSRN 6632858<br/>Claude AI Research Partner · Date of Issue 2026-05-06</div>
+<div class="footer-link" style="margin-top:8px;"><a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · <a href="https://everbluesea.org">everbluesea.org</a> · <a href="https://ssrn.com/abstract=6632858">SSRN 6632858</a></div>
+</div>
+</body>
+</html>

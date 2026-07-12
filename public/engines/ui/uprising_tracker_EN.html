@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Λ¹² Uprising Backtracking Analysis | Everblue Sea Institute for Social Dynamics</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',sans-serif;background:#F5F3EE;color:#333}
+  .hdr{background:#2C3E50;color:#fff;padding:28px 40px}
+  .hdr h1{font-size:1.6rem;margin-bottom:6px}
+  .hdr p{color:#aaa;font-size:0.85rem;line-height:1.7}
+  .wrap{max-width:1300px;margin:0 auto;padding:28px 16px}
+  .sec{background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:24px;margin-bottom:24px}
+  .sec h2{color:#5E9186;font-size:1.15rem;border-bottom:2px solid #5E9186;padding-bottom:8px;margin-bottom:16px}
+  .insight{background:#f0f4f3;border-left:4px solid #5E9186;padding:14px 18px;
+            font-size:0.9rem;line-height:1.8;border-radius:0 4px 4px 0;margin-bottom:16px}
+  .insight strong{color:#B8850E}
+  .chart-box{position:relative;height:360px;margin:16px 0}
+  .chart-sm{position:relative;height:280px;margin:16px 0}
+  table{width:100%;border-collapse:collapse;font-size:0.83rem}
+  th{background:#2C3E50;color:#fff;padding:9px 10px;text-align:left}
+  td{padding:8px 10px;border-bottom:1px solid #eee;vertical-align:top}
+  tr:hover td{background:#f9f7f4}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:768px){.grid2{grid-template-columns:1fr}}
+  .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+  .stat{background:#f0f4f3;padding:12px 16px;border-radius:6px;text-align:center;flex:1;min-width:110px}
+  .stat .v{font-size:1.6rem;font-weight:bold;color:#5E9186}
+  .stat .l{font-size:0.72rem;color:#777;margin-top:2px}
+</style>
+</head>
+<body>
+<div class="hdr">
+<h1>🔍 Λ¹² Uprising Backtracking Analysis — Trigger Pattern Detection</h1>
+<p>Everblue Sea Institute for Social Dynamics | Cheonghae (淸海) Giseub Kim | 2026-07-02<br/>
+  Identifying antecedent collapse patterns by tracking changes in the 12 dimensions of Λ¹² two years prior to the occurrence of uprisings<br/>
+  Analysis Target: 33 countries with major popular uprisings during 2016–2024 | Data: WDI, WGI, CPI, SIPRI</p>
+</div>
+<div class="wrap">
+<div class="sec">
+<h2>📌 Key Findings — Antecedent Collapse Dimensions Prior to Uprisings</h2>
+<div class="insight">
+<strong>Research Hypothesis:</strong> Uprisings are not isolated events but occur as multiple dimensions of social structure converge toward a threshold.
+      In particular, <strong>A2 (Institutional Trust)</strong>·<strong>A8 (Governance)</strong>·<strong>A4 (Economic Capacity)</strong>, a concurrent decline in these three dimensions
+      appears as a key precursor signal of uprisings. The younger generation (social entropy) releases collective energy when this structural space narrows.
+    </div>
+<div class="stat-row">
+<div class="stat"><div class="v">33</div><div class="l">Analyzed Uprising Countries</div></div>
+<div class="stat"><div class="v">7</div><div class="l">Successful Regime Change</div></div>
+<div class="stat"><div class="v">12</div><div class="l">Countries with Decreased η Prior to Uprisings</div></div>
+<div class="stat"><div class="v">A2</div><div class="l">Most Frequent Antecedent Collapse Dimensions</div></div>
+</div>
+</div>
+<div class="grid2">
+<div class="sec">
+<h2>Fig 1. 2 Years Prior to Uprising — Frequency of Decline by Dimension</h2>
+<div class="chart-sm"><canvas id="c_freq"></canvas></div>
+</div>
+<div class="sec">
+<h2>Fig 2. Change in η by Country (2 Years Prior to Uprising → Uprising Year)</h2>
+<div class="chart-sm"><canvas id="c_eta"></canvas></div>
+</div>
+</div>
+<div class="sec">
+<h2>📋 Details on Uprising Countries — Dimension Decline Patterns by Region</h2>
+<table>
+<thead><tr>
+<th>ISO3</th><th>Country</th><th>Uprising Year</th><th>Primary Cause</th>
+<th>Change in η</th><th>Top 3 Antecedent Decline Dimensions</th><th>Outcome</th>
+</tr></thead>
+<tbody><tr><td colspan="8" style="background:#5E9186;color:#fff;font-weight:bold;padding:8px 12px;">◆ East Asia</td></tr>
+<tr>
+<td><strong>HKG</strong></td>
+<td>Hong Kong<br/><small style="color:#999">Hong Kong</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Political Suppression &amp; Infringement of Autonomy</td>
+<td style="text-align:center;color:#888;font-weight:bold">-0.0043</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.205</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.031</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A10 Cultural Identity -0.025</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr><td colspan="8" style="background:#6B8EC4;color:#fff;font-weight:bold;padding:8px 12px;">◆ Southeast Asia</td></tr>
+<tr>
+<td><strong>THA</strong></td>
+<td>Thailand<br/><small style="color:#999">Thailand</small></td>
+<td style="text-align:center">2020</td>
+<td style="font-size:0.8rem;color:#555">Political Suppression &amp; Royal Reform</td>
+<td style="text-align:center;color:#27ae60;font-weight:bold">+0.0336</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.089</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.041</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A4 Economic Capacity -0.014</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>MMR</strong></td>
+<td>Myanmar<br/><small style="color:#999">Myanmar</small></td>
+<td style="text-align:center">2021</td>
+<td style="font-size:0.8rem;color:#555">Military Coup</td>
+<td style="text-align:center;color:#888;font-weight:bold">-0.0044</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.274</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.062</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.052</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>IDN</strong></td>
+<td>Indonesia<br/><small style="color:#999">Indonesia</small></td>
+<td style="text-align:center">2024</td>
+<td style="font-size:0.8rem;color:#555">Fuel Prices &amp; Currency Collapse</td>
+<td style="text-align:center;color:#888;font-weight:bold">-0.0151</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.167</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.070</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.021</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#2980b9;color:#fff">In Progress</span></td>
+</tr>
+<tr><td colspan="8" style="background:#B8850E;color:#fff;font-weight:bold;padding:8px 12px;">◆ South Asia</td></tr>
+<tr>
+<td><strong>LKA</strong></td>
+<td>Sri Lanka<br/><small style="color:#999">Sri Lanka</small></td>
+<td style="text-align:center">2022</td>
+<td style="font-size:0.8rem;color:#555">Economic Collapse &amp; Fuel Shortage</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0165</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.047</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.034</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A3 Social Cohesion -0.004</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#c0392b;color:#fff">Regime Change</span></td>
+</tr>
+<tr>
+<td><strong>PAK</strong></td>
+<td>Pakistan<br/><small style="color:#999">Pakistan</small></td>
+<td style="text-align:center">2023</td>
+<td style="font-size:0.8rem;color:#555">Election Fraud &amp; Suppression</td>
+<td style="text-align:center;color:#27ae60;font-weight:bold">+0.0345</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.105</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.061</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.060</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>BGD</strong></td>
+<td>Bangladesh<br/><small style="color:#999">Bangladesh</small></td>
+<td style="text-align:center">2024</td>
+<td style="font-size:0.8rem;color:#555">Quota System &amp; Cost of Living</td>
+<td style="text-align:center;color:#c0392b;font-weight:bold">-0.0226</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.211</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.063</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.037</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#c0392b;color:#fff">Regime Change</span></td>
+</tr>
+<tr><td colspan="8" style="background:#9B6BB5;color:#fff;font-weight:bold;padding:8px 12px;">◆ Central Asia</td></tr>
+<tr>
+<td><strong>KAZ</strong></td>
+<td>Kazakhstan<br/><small style="color:#999">Kazakhstan</small></td>
+<td style="text-align:center">2022</td>
+<td style="font-size:0.8rem;color:#555">Fuel Prices &amp; Corruption</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0179</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.021</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A3 Social Cohesion -0.014</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A5 Knowledge &amp; Innovation -0.002</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr><td colspan="8" style="background:#E05C5C;color:#fff;font-weight:bold;padding:8px 12px;">◆ Middle East &amp; North Africa</td></tr>
+<tr>
+<td><strong>DZA</strong></td>
+<td>Algeria<br/><small style="color:#999">Algeria</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Corruption &amp; Political Suppression</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0138</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.102</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.054</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A5 Knowledge &amp; Innovation -0.018</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#c0392b;color:#fff">Regime Change</span></td>
+</tr>
+<tr>
+<td><strong>LBN</strong></td>
+<td>Lebanon<br/><small style="color:#999">Lebanon</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Economic Collapse &amp; Corruption</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0014</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.142</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.085</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.043</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#e67e22;color:#fff">Partial Concession</span></td>
+</tr>
+<tr>
+<td><strong>IRQ</strong></td>
+<td>Iraq<br/><small style="color:#999">Iraq</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Corruption, Unemployment &amp; Foreign Influence</td>
+<td style="text-align:center;color:#27ae60;font-weight:bold">+0.0307</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.066</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.029</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A5 Knowledge &amp; Innovation -0.003</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#c0392b;color:#fff">Regime Change</span></td>
+</tr>
+<tr>
+<td><strong>IRN</strong></td>
+<td>Iran<br/><small style="color:#999">Iran</small></td>
+<td style="text-align:center">2022</td>
+<td style="font-size:0.8rem;color:#555">Oppression of Women &amp; Police Violence</td>
+<td style="text-align:center;color:#27ae60;font-weight:bold">+0.0351</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.020</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A5 Knowledge &amp; Innovation -0.016</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.004</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr><td colspan="8" style="background:#4CAF50;color:#fff;font-weight:bold;padding:8px 12px;">◆ Sub-Saharan Africa</td></tr>
+<tr>
+<td><strong>ETH</strong></td>
+<td>Ethiopia<br/><small style="color:#999">Ethiopia</small></td>
+<td style="text-align:center">2016</td>
+<td style="font-size:0.8rem;color:#555">Land Dispute &amp; Ethnic Suppression</td>
+<td style="text-align:center;color:#888;font-weight:bold">—</td>
+<td></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>SDN</strong></td>
+<td>Sudan<br/><small style="color:#999">Sudan</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Economy &amp; Bread Prices</td>
+<td style="text-align:center;color:#27ae60;font-weight:bold">+0.0286</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.030</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.003</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.002</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#c0392b;color:#fff">Regime Change</span></td>
+</tr>
+<tr>
+<td><strong>SEN</strong></td>
+<td>Senegal<br/><small style="color:#999">Senegal</small></td>
+<td style="text-align:center">2023</td>
+<td style="font-size:0.8rem;color:#555">Electoral Suppression &amp; Political Exclusion</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0076</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.098</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.039</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A3 Social Cohesion -0.011</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#c0392b;color:#fff">Regime Change</span></td>
+</tr>
+<tr>
+<td><strong>KEN</strong></td>
+<td>Kenya<br/><small style="color:#999">Kenya</small></td>
+<td style="text-align:center">2024</td>
+<td style="font-size:0.8rem;color:#555">Tax Hike &amp; Cost of Living</td>
+<td style="text-align:center;color:#888;font-weight:bold">-0.0154</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.166</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.062</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.031</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#e67e22;color:#fff">Partial Concession</span></td>
+</tr>
+<tr>
+<td><strong>NGA</strong></td>
+<td>Nigeria<br/><small style="color:#999">Nigeria</small></td>
+<td style="text-align:center">2024</td>
+<td style="font-size:0.8rem;color:#555">Fuel Subsidy Removal &amp; Inflation</td>
+<td style="text-align:center;color:#888;font-weight:bold">-0.0149</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.165</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.062</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.015</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>UGA</strong></td>
+<td>Uganda<br/><small style="color:#999">Uganda</small></td>
+<td style="text-align:center">2024</td>
+<td style="font-size:0.8rem;color:#555">Corruption &amp; Parliamentary Privilege</td>
+<td style="text-align:center;color:#888;font-weight:bold">-0.0136</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.176</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.070</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.027</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr><td colspan="8" style="background:#00BCD4;color:#fff;font-weight:bold;padding:8px 12px;">◆ Eastern Europe &amp; Former Soviet Union</td></tr>
+<tr>
+<td><strong>BLR</strong></td>
+<td>Belarus<br/><small style="color:#999">Belarus</small></td>
+<td style="text-align:center">2020</td>
+<td style="font-size:0.8rem;color:#555">Election Fraud &amp; Dictatorship</td>
+<td style="text-align:center;color:#888;font-weight:bold">-0.0063</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.125</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.083</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.048</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>RUS</strong></td>
+<td>Russia<br/><small style="color:#999">Russia</small></td>
+<td style="text-align:center">2022</td>
+<td style="font-size:0.8rem;color:#555">Anti-War &amp; Conscription</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0136</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.047</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A5 Knowledge &amp; Innovation -0.037</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.028</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>SRB</strong></td>
+<td>Serbia<br/><small style="color:#999">Serbia</small></td>
+<td style="text-align:center">2024</td>
+<td style="font-size:0.8rem;color:#555">Corruption &amp; Historic Tragedy</td>
+<td style="text-align:center;color:#888;font-weight:bold">-0.0189</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.167</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.033</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A4 Economic Capacity -0.023</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#2980b9;color:#fff">In Progress</span></td>
+</tr>
+<tr>
+<td><strong>GEO</strong></td>
+<td>Georgia<br/><small style="color:#999">Georgia</small></td>
+<td style="text-align:center">2024</td>
+<td style="font-size:0.8rem;color:#555">EU Withdrawal &amp; Election Fraud</td>
+<td style="text-align:center;color:#c0392b;font-weight:bold">-0.0306</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.166</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.101</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.045</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#2980b9;color:#fff">In Progress</span></td>
+</tr>
+<tr><td colspan="8" style="background:#FF9800;color:#fff;font-weight:bold;padding:8px 12px;">◆ Latin America</td></tr>
+<tr>
+<td><strong>BOL</strong></td>
+<td>Bolivia<br/><small style="color:#999">Bolivia</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Election Fraud</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0195</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.084</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.057</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.033</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#c0392b;color:#fff">Regime Change</span></td>
+</tr>
+<tr>
+<td><strong>CHL</strong></td>
+<td>Chile<br/><small style="color:#999">Chile</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Inequality &amp; Neoliberalism</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0172</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.075</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.025</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A5 Knowledge &amp; Innovation -0.016</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#e67e22;color:#fff">Partial Concession</span></td>
+</tr>
+<tr>
+<td><strong>ECU</strong></td>
+<td>Ecuador<br/><small style="color:#999">Ecuador</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Fuel Subsidy Removal</td>
+<td style="text-align:center;color:#27ae60;font-weight:bold">+0.0258</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.038</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.034</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A3 Social Cohesion -0.027</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#e67e22;color:#fff">Partial Concession</span></td>
+</tr>
+<tr>
+<td><strong>VEN</strong></td>
+<td>Venezuela<br/><small style="color:#999">Venezuela</small></td>
+<td style="text-align:center">2019</td>
+<td style="font-size:0.8rem;color:#555">Economic Collapse &amp; Dictatorship</td>
+<td style="text-align:center;color:#c0392b;font-weight:bold">-0.0394</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.281</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.214</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.067</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>COL</strong></td>
+<td>Colombia<br/><small style="color:#999">Colombia</small></td>
+<td style="text-align:center">2021</td>
+<td style="font-size:0.8rem;color:#555">Tax Reform &amp; Austerity</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0049</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A3 Social Cohesion -0.068</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.039</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A11 Energy -0.010</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#e67e22;color:#fff">Partial Concession</span></td>
+</tr>
+<tr>
+<td><strong>PER</strong></td>
+<td>Peru<br/><small style="color:#999">Peru</small></td>
+<td style="text-align:center">2022</td>
+<td style="font-size:0.8rem;color:#555">Coup &amp; Massacre</td>
+<td style="text-align:center;color:#27ae60;font-weight:bold">+0.0207</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.025</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A8 Governance -0.023</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A6 Environmental Sustainability -0.007</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr>
+<td><strong>ARG</strong></td>
+<td>Argentina<br/><small style="color:#999">Argentina</small></td>
+<td style="text-align:center">2023</td>
+<td style="font-size:0.8rem;color:#555">Austerity &amp; Inflation</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0000</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.098</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.038</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A3 Social Cohesion -0.011</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#2980b9;color:#fff">In Progress</span></td>
+</tr>
+<tr>
+<td><strong>GTM</strong></td>
+<td>Guatemala<br/><small style="color:#999">Guatemala</small></td>
+<td style="text-align:center">2023</td>
+<td style="font-size:0.8rem;color:#555">Judicial Suppression &amp; Corruption</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0103</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.089</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.065</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A5 Knowledge &amp; Innovation -0.008</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#e67e22;color:#fff">Partial Concession</span></td>
+</tr>
+<tr><td colspan="8" style="background:#F06292;color:#fff;font-weight:bold;padding:8px 12px;">◆ Caribbean</td></tr>
+<tr>
+<td><strong>HTI</strong></td>
+<td>Haiti<br/><small style="color:#999">Haiti</small></td>
+<td style="text-align:center">2018</td>
+<td style="font-size:0.8rem;color:#555">Fuel Prices &amp; Corruption</td>
+<td style="text-align:center;color:#27ae60;font-weight:bold">+0.0511</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A3 Social Cohesion -0.003</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A10 Cultural Identity +0.001</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A6 Environmental Sustainability +0.003</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#8e44ad;color:#fff">Ongoing Chaos</span></td>
+</tr>
+<tr>
+<td><strong>CUB</strong></td>
+<td>Cuba<br/><small style="color:#999">Cuba</small></td>
+<td style="text-align:center">2021</td>
+<td style="font-size:0.8rem;color:#555">Food &amp; Power Shortage</td>
+<td style="text-align:center;color:#888;font-weight:bold">+0.0193</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A5 Knowledge &amp; Innovation -0.039</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A9 Geopolitics -0.033</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A4 Economic Capacity -0.022</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#7f8c8d;color:#fff">Suppression</span></td>
+</tr>
+<tr><td colspan="8" style="background:#607D8B;color:#fff;font-weight:bold;padding:8px 12px;">◆ North America</td></tr>
+<tr>
+<td><strong>MEX</strong></td>
+<td>Mexico<br/><small style="color:#999">Mexico</small></td>
+<td style="text-align:center">2024</td>
+<td style="font-size:0.8rem;color:#555">Judicial Reform</td>
+<td style="text-align:center;color:#c0392b;font-weight:bold">-0.0243</td>
+<td><span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A12 Mobility -0.174</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A7 Demographics -0.070</span> <span style="background:#fee;border:1px solid #fcc;border-radius:3px;padding:2px 5px;font-size:0.8rem;">A2 Institutional Trust -0.063</span></td>
+<td><span style="border-radius:10px;padding:3px 8px;font-size:0.75rem;background:#e67e22;color:#fff">Partial Concession</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sec">
+<h2>⚠️ Current At-Risk Countries — Similar Patterns in Progress</h2>
+<div class="insight">
+      Current countries showing trajectories similar to the precursor patterns (concurrent decline of A2, A8, and A4) of uprising countries.
+      <strong>Accuracy is scheduled to be improved by reinforcing A9 (Geopolitics) after securing GPI data.</strong>
+</div>
+<div class="chart-box"><canvas id="c_risk"></canvas></div>
+</div>
+</div>
+<script>
+// Fig 1: 차원별 하락 빈도
+new Chart(document.getElementById('c_freq'),{
+  type:'bar',
+  data:{
+    labels:["A2 \uc81c\ub3c4\uc2e0\ub8b0", "A7 \uc778\uad6c\ub3d9\ud0dc", "A9 \uc9c0\uc815\ud559", "A8 \uac70\ubc84\ub10c\uc2a4", "A11 \uc5d0\ub108\uc9c0", "A12 \uc774\ub3d9\uc131", "A5 \uc9c0\uc2dd\ud601\uc2e0", "A3 \uc0ac\ud68c\uacb0\uc18d", "A4 \uacbd\uc81c\uc5ed\ub7c9", "A10 \ubb38\ud654\uc815\uccb4", "A1 \uc778\ud504\ub77c", "A6 \ud658\uacbd\uc9c0\uc18d"],
+    datasets:[
+      {label:'하락 국가수',data:[17, 16, 15, 12, 10, 9, 3, 2, 2, 2, 1, 0],backgroundColor:'#c0392b',yAxisID:'y'},
+      {label:'평균 하락폭',data:[-0.038, -0.09, -0.098, -0.037, -0.043, -0.162, -0.036, -0.048, -0.022, -0.025, -0.056, 0],type:'line',borderColor:'#B8850E',
+        backgroundColor:'transparent',yAxisID:'y2',tension:0.3}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'top'}},
+    scales:{
+      y:{position:'left',title:{display:true,text:'봉기 전 하락 국가수'}},
+      y2:{position:'right',title:{display:true,text:'평균 하락폭'},grid:{drawOnChartArea:false}}
+    }
+  }
+});
+
+// Fig 2: η 변화
+new Chart(document.getElementById('c_eta'),{
+  type:'bar',
+  data:{
+    labels:["VEN\n\ubca0\ub124\uc218\uc5d8\ub77c", "GEO\n\uc870\uc9c0\uc544", "MEX\n\uba55\uc2dc\ucf54", "BGD\n\ubc29\uae00\ub77c\ub370\uc2dc", "SRB\n\uc138\ub974\ube44\uc544", "KEN\n\ucf00\ub0d0", "IDN\n\uc778\ub3c4\ub124\uc2dc\uc544", "NGA\n\ub098\uc774\uc9c0\ub9ac\uc544", "UGA\n\uc6b0\uac04\ub2e4", "BLR\n\ubca8\ub77c\ub8e8\uc2a4", "MMR\n\ubbf8\uc580\ub9c8", "HKG\n\ud64d\ucf69", "ARG\n\uc544\ub974\ud5e8\ud2f0\ub098", "LBN\n\ub808\ubc14\ub17c", "COL\n\ucf5c\ub86c\ube44\uc544", "SEN\n\uc138\ub124\uac08", "GTM\n\uacfc\ud14c\ub9d0\ub77c", "RUS\n\ub7ec\uc2dc\uc544", "DZA\n\uc54c\uc81c\ub9ac", "LKA\n\uc2a4\ub9ac\ub791\uce74", "CHL\n\uce60\ub808", "KAZ\n\uce74\uc790\ud750\uc2a4\ud0c4", "CUB\n\ucfe0\ubc14", "BOL\n\ubcfc\ub9ac\ube44\uc544", "PER\n\ud398\ub8e8", "ECU\n\uc5d0\ucf70\ub3c4\ub974", "SDN\n\uc218\ub2e8", "IRQ\n\uc774\ub77c\ud06c", "THA\n\ud0dc\uad6d", "PAK\n\ud30c\ud0a4\uc2a4\ud0c4", "IRN\n\uc774\ub780", "HTI\n\uc544\uc774\ud2f0"],
+    datasets:[{
+      label:'η 변화 (봉기 2년전→봉기연도)',
+      data:[-0.0394, -0.0306, -0.0243, -0.0226, -0.0189, -0.0154, -0.0151, -0.0149, -0.0136, -0.0063, -0.0044, -0.0043, 0.0, 0.0014, 0.0049, 0.0076, 0.0103, 0.0136, 0.0138, 0.0165, 0.0172, 0.0179, 0.0193, 0.0195, 0.0207, 0.0258, 0.0286, 0.0307, 0.0336, 0.0345, 0.0351, 0.0511],
+      backgroundColor:["#c0392b", "#c0392b", "#c0392b", "#c0392b", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60"],
+    }]
+  },
+  options:{
+    indexAxis:'y',responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{display:false}},
+    scales:{x:{title:{display:true,text:'η 변화량'}}}
+  }
+});
+
+// Fig 3: 현재 위험국 (2022-2024 A2+A8 동반 하락 기준)
+const RISK_DATA = [{"iso3": "VEN", "a2": 0.0123, "a8": 0.1268, "a4": 0.005, "eta": 0.3304}, {"iso3": "HTI", "a2": 0.12, "a8": 0.1329, "a4": 0.2974, "eta": 0.4096}, {"iso3": "NGA", "a2": 0.2515, "a8": 0.2836, "a4": 0.0992, "eta": 0.4376}, {"iso3": "PAK", "a2": 0.2564, "a8": 0.283, "a4": 0.1491, "eta": 0.4455}, {"iso3": "BGD", "a2": 0.2388, "a8": 0.2792, "a4": 0.2495, "eta": 0.4697}, {"iso3": "ETH", "a2": 0.3136, "a8": 0.3217, "a4": 0.0476, "eta": 0.4369}, {"iso3": "COL", "a2": 0.3837, "a8": 0.4736, "a4": 0.1248, "eta": 0.4294}, {"iso3": "PER", "a2": 0.3413, "a8": 0.4351, "a4": 0.1475, "eta": 0.4516}, {"iso3": "ARG", "a2": 0.408, "a8": 0.521, "a4": 0.1948, "eta": 0.4669}, {"iso3": "BOL", "a2": 0.2329, "a8": 0.3449, "a4": 0.151, "eta": 0.4349}, {"iso3": "ECU", "a2": 0.2931, "a8": 0.4176, "a4": 0.1548, "eta": 0.4351}, {"iso3": "IRN", "a2": 0.2063, "a8": 0.2387, "a4": 0.2425, "eta": 0.4322}, {"iso3": "IRQ", "a2": 0.21, "a8": 0.2462, "a4": 0.0508, "eta": 0.479}, {"iso3": "LBN", "a2": 0.2179, "a8": 0.2561, "a4": 0.0238, "eta": 0.4347}, {"iso3": "SDN", "a2": 0.0938, "a8": 0.0993, "a4": 0.0013, "eta": 0.3545}, {"iso3": "THA", "a2": 0.3939, "a8": 0.4361, "a4": 0.2867, "eta": 0.5064}, {"iso3": "MMR", "a2": 0.0954, "a8": 0.1212, "a4": 0.255, "eta": 0.4051}, {"iso3": "KAZ", "a2": 0.4109, "a8": 0.4431, "a4": 0.1612, "eta": 0.4882}, {"iso3": "BLR", "a2": 0.2678, "a8": 0.2714, "a4": 0.2412, "eta": 0.4607}, {"iso3": "GEO", "a2": 0.5529, "a8": 0.545, "a4": 0.1057, "eta": 0.4725}, {"iso3": "SRB", "a2": 0.4019, "a8": 0.4296, "a4": 0.1578, "eta": 0.4362}, {"iso3": "KEN", "a2": 0.3523, "a8": 0.39, "a4": 0.0822, "eta": 0.4454}, {"iso3": "SEN", "a2": 0.4623, "a8": 0.5292, "a4": 0.1568, "eta": 0.4777}, {"iso3": "UGA", "a2": 0.2833, "a8": 0.31, "a4": 0.1701, "eta": 0.4164}, {"iso3": "CHL", "a2": 0.678, "a8": 0.7372, "a4": 0.128, "eta": 0.5024}, {"iso3": "GTM", "a2": 0.2507, "a8": 0.3238, "a4": 0.16, "eta": 0.4367}, {"iso3": "CUB", "a2": 0.3883, "a8": 0.364, "a4": 0.1325, "eta": 0.3975}, {"iso3": "MEX", "a2": 0.2341, "a8": 0.3865, "a4": 0.2425, "eta": 0.4679}, {"iso3": "IDN", "a2": 0.4133, "a8": 0.4596, "a4": 0.2212, "eta": 0.4816}, {"iso3": "LKA", "a2": 0.3767, "a8": 0.4417, "a4": 0.2049, "eta": 0.4517}, {"iso3": "DZA", "a2": 0.337, "a8": 0.3546, "a4": 0.1132, "eta": 0.4244}];
+new Chart(document.getElementById('c_risk'),{
+  type:'scatter',
+  data:{
+    datasets:[{
+      label:'봉기 경험국 (2024 현황)',
+      data: RISK_DATA.map(d=>({x:d.a2, y:d.a8, label:d.iso3})),
+      backgroundColor: RISK_DATA.map(d=> d.eta < 0.35 ? '#c0392b' : d.eta < 0.5 ? '#e67e22' : '#27ae60'),
+      pointRadius:8,
+    }]
+  },
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{
+      tooltip:{callbacks:{label:ctx=>ctx.raw.label+' A2:'+ctx.raw.x.toFixed(3)+' A8:'+ctx.raw.y.toFixed(3)}},
+      legend:{display:false},
+      title:{display:true,text:'A2(제도신뢰) × A8(거버넌스) — 좌하단일수록 위험 (빨강<0.35 주황<0.5 녹색≥0.5)'}
+    },
+    scales:{
+      x:{title:{display:true,text:'A2 제도신뢰 (2024)'},min:0,max:1},
+      y:{title:{display:true,text:'A8 거버넌스 (2024)'},min:0,max:1}
+    }
+  }
+});
+</script>
+</body>
+</html>

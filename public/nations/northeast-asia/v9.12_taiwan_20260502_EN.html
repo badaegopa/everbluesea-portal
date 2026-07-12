@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Taiwan Edition — Λ¹²v9.12 | Everblue Sea Institute for Social Dynamics</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F5F3EE; color:#2C2C2C; font-family:Georgia,'Times New Roman',serif; line-height:1.75; }
+
+.header {
+  background:linear-gradient(135deg,#1B4F8A 0%,#2E6DB4 50%,#1A3A6B 100%);
+  padding:48px 40px 36px; position:relative; overflow:hidden;
+}
+.header::before {
+  content:'民'; position:absolute; right:40px; top:10px;
+  font-size:160px; color:rgba(255,255,255,0.06);
+  font-family:Georgia,serif; font-weight:bold; line-height:1;
+}
+.header-badge {
+  display:inline-block; background:rgba(255,255,255,0.18); color:#fff;
+  font-family:'Courier New',monospace; font-size:11px;
+  padding:4px 12px; border-radius:2px; letter-spacing:1.5px; margin-bottom:16px;
+}
+.header h1 { color:#fff; font-size:30px; font-weight:normal; margin-bottom:6px; }
+.header h2 { color:rgba(255,255,255,0.85); font-size:15px; font-weight:normal; letter-spacing:0.5px; }
+.header-meta { margin-top:20px; color:rgba(255,255,255,0.65); font-family:'Courier New',monospace; font-size:11px; letter-spacing:1px; }
+
+.engine-box { background:#fff; border-left:4px solid #B8850E; padding:14px 20px; margin:24px 40px; font-family:'Courier New',monospace; font-size:12px; color:#595959; }
+.engine-box strong { color:#B8850E; }
+
+.section { padding:32px 40px; border-bottom:1px solid #DDD8CE; }
+.section-title { font-size:13px; font-family:'Courier New',monospace; color:#1B4F8A; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
+.section h3 { font-size:20px; color:#1F1F1F; font-weight:normal; margin-bottom:14px; line-height:1.4; }
+.section p { font-size:14px; color:#3A3A3A; margin-bottom:10px; text-align:justify; }
+
+.minjung-box { background:#F0F5FF; border-left:4px solid #2E6DB4; padding:20px 24px; margin:14px 0; border-radius:2px; }
+.minjung-box p { font-size:14px; color:#1A2A4A; line-height:1.85; margin-bottom:8px; }
+
+.term-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+.term-item { background:#fff; border:1px solid #DDD8CE; padding:12px 14px; border-radius:2px; }
+.term-item .term-key { font-family:'Courier New',monospace; font-size:12px; color:#1B4F8A; font-weight:bold; margin-bottom:4px; }
+.term-item .term-val { font-size:12px; color:#444; }
+
+.data-table-wrap { margin:16px 0; overflow-x:auto; }
+.data-table { width:100%; border-collapse:collapse; font-size:13px; }
+.data-table th { background:#1B4F8A; color:#fff; padding:10px 14px; text-align:center; font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.5px; font-weight:normal; }
+.data-table th:first-child { text-align:left; }
+.data-table td { padding:9px 14px; border-bottom:1px solid #EEE; text-align:center; font-family:'Courier New',monospace; font-size:12px; }
+.data-table td:first-child { text-align:left; font-family:Georgia,serif; font-size:13px; color:#2C2C2C; }
+.data-table tr:nth-child(even) td { background:#F5F3EE; }
+.data-table tr:hover td { background:#EBF4FF; }
+
+.formula-box { background:#fff; border:1px solid #DDD8CE; border-top:3px solid #1B4F8A; padding:20px 24px; margin:16px 0; }
+.formula-box .formula-title { font-family:'Courier New',monospace; font-size:11px; color:#1B4F8A; letter-spacing:2px; margin-bottom:12px; }
+.formula-box .formula-eq { font-family:'Courier New',monospace; font-size:14px; color:#1F1F1F; background:#F5F3EE; padding:12px 16px; border-radius:2px; margin:8px 0; letter-spacing:0.5px; line-height:1.6; }
+.formula-box .formula-note { font-size:12px; color:#666; margin-top:8px; }
+
+.bar-chart { margin:16px 0; }
+.bar-row { display:grid; grid-template-columns:120px 1fr 100px; gap:8px; align-items:center; margin-bottom:7px; }
+.bar-country { font-size:12px; color:#444; text-align:right; }
+.bar-track { background:#EEE; border-radius:2px; height:18px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:2px; }
+.bar-val { font-family:'Courier New',monospace; font-size:11px; color:#333; }
+
+.svg-wrap { text-align:center; margin:16px 0; }
+.obs-note { background:#EEF3FF; border:1px solid #C5D5EE; border-radius:3px; padding:14px 18px; margin:14px 0; font-size:13px; color:#1A2A4A; line-height:1.7; }
+.obs-note::before { content:'◈ 관찰 신호'; display:block; font-family:'Courier New',monospace; font-size:10px; color:#1B4F8A; letter-spacing:1px; margin-bottom:6px; }
+
+.error-box { background:#FAEEDA; border-left:3px solid #B8850E; padding:12px 16px; margin:14px 0; font-size:12px; color:#633806; font-family:'Courier New',monospace; }
+
+.ppr-card { background:#fff; border:1px solid #DDD8CE; border-radius:3px; overflow:hidden; margin-bottom:14px; }
+.ppr-head { background:#1B4F8A; color:#fff; font-size:12px; font-family:'Courier New',monospace; padding:8px 14px; letter-spacing:1px; }
+.ppr-body { padding:14px; }
+.ppr-row { display:flex; justify-content:space-between; font-size:12px; padding:4px 0; border-bottom:1px solid #F0EDE8; }
+.ppr-row:last-child { border-bottom:none; }
+.ppr-key { color:#666; }
+.ppr-val { font-family:'Courier New',monospace; font-weight:bold; color:#1B4F8A; }
+
+.discourse-layer { display:grid; grid-template-columns:130px 1fr; gap:0; margin-bottom:2px; }
+.layer-num { background:#1B4F8A; color:#fff; font-family:'Courier New',monospace; font-size:11px; padding:12px 14px; display:flex; align-items:center; }
+.layer-content { background:#fff; border:1px solid #DDD8CE; border-left:none; padding:12px 18px; font-size:13px; color:#2C2C2C; line-height:1.7; }
+.layer-content strong { color:#1B4F8A; }
+
+.signal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+.signal-card { background:#fff; border:1px solid #DDD8CE; padding:14px; border-radius:2px; text-align:center; }
+.signal-card .sig-icon { font-size:24px; margin-bottom:6px; }
+.signal-card .sig-label { font-size:11px; color:#888; font-family:'Courier New',monospace; margin-bottom:4px; }
+.signal-card .sig-val { font-size:18px; font-family:'Courier New',monospace; font-weight:bold; color:#1B4F8A; }
+.signal-card .sig-note { font-size:10px; color:#666; margin-top:4px; }
+
+.paradox-box { background:#FFF8E8; border:2px solid #B8850E; border-radius:3px; padding:20px 24px; margin:14px 0; }
+.paradox-box h4 { color:#B8850E; font-size:14px; margin-bottom:10px; }
+.paradox-box p { font-size:13px; color:#3A2A10; line-height:1.75; margin-bottom:8px; }
+
+.conclusion { background:#EEF3FF; border-left:4px solid #2E6DB4; padding:24px 32px; margin:20px 40px; border-radius:2px; }
+.conclusion p { font-size:15px; line-height:1.95; color:#1F1F1F; text-align:justify; margin-bottom:12px; }
+.conclusion p:last-child { margin-bottom:0; }
+
+.series-box { background:#fff; border:1px solid #DDD8CE; margin:20px 40px; padding:20px; }
+.series-title { font-family:'Courier New',monospace; font-size:11px; color:#1B4F8A; letter-spacing:2px; margin-bottom:12px; }
+.series-item { display:flex; gap:12px; padding:6px 0; border-bottom:1px solid #F0EDE8; font-size:12px; }
+.series-item:last-child { border-bottom:none; }
+.series-num { font-family:'Courier New',monospace; color:#B8850E; min-width:40px; }
+.series-status { margin-left:auto; font-family:'Courier New',monospace; font-size:10px; padding:2px 8px; border-radius:2px; }
+.status-done { background:#E8F4F0; color:#27500A; }
+.status-plan { background:#F5F3EE; color:#888; }
+.status-now { background:#EEF3FF; color:#1B4F8A; }
+
+.footer { background:#EEF3FF; padding:28px 40px; text-align:center; border-top:1px solid #DDD8CE; }
+.footer p { font-size:12px; color:#1B4F8A; margin-bottom:4px; font-family:'Courier New',monospace; }
+.footer a { color:#2E6DB4; text-decoration:none; }
+.footer .engine-tag { margin-top:10px; font-size:10px; color:#888; letter-spacing:1px; }
+
+@media(max-width:768px){
+  .section,.engine-box,.conclusion,.series-box,.footer{margin-left:16px;margin-right:16px;padding-left:16px;padding-right:16px;}
+  .header{padding:32px 16px 24px;}
+  .term-grid,.signal-grid{grid-template-columns:1fr;}
+  .bar-row{grid-template-columns:80px 1fr 70px;}
+}
+</style>
+</head>
+<body>
+<div class="header">
+<div class="header-badge">TAIWAN STANDALONE REPORT · #24 · Λ¹²v9.12</div>
+<h1>🇹🇼 Taiwan Edition</h1>
+<h2>The Miracle of Democracy, and the Most Dangerous Island — An In-Depth Analysis of Taiwan's Sociodynamics</h2>
+<div class="header-meta">
+    Everblue Sea Institute for Social Dynamics · Everblue Sea Institute for Social Dynamics<br/>
+    This report is calculated based on the Λ¹²v9.12 engine · Date of Issue 2026.05.02
+  </div>
+</div>
+<div class="engine-box">
+<strong>ENGINE:</strong> Λ¹²v9.12 | Including ADI §31 | Based on SSRN 6632858<br/>
+<strong>Correction formula:</strong> Λ¹²_corrected = Λ¹²_raw ÷ OLI × (1−TBI×θ) × (1−ADI×γ) × exp(−k×t) | Applying OLI=0.84<br/>
+<strong>Specific variables:</strong> External threats (Chinese military pressure) interact complexly with internal variables — RHC's external component weight increased
+</div>
+<div class="section">
+<div class="section-title">Research Objectives Declaration</div>
+<h3>This report records the lives of 23.4 million Taiwanese people from an observer standpoint</h3>
+<div class="minjung-box">
+<p>The Taiwanese people live the most paradoxical lives in the world. They have built the most vibrant democracy, yet they cannot join the UN. They produce 90% of the world's semiconductors, but those semiconductors might make China's military ambitions even stronger. People who have created the greatest opportunities from the greatest threats — that is the Taiwanese people.</p>
+<p>Λ¹² reads the structure of this paradox: where internal strengths and external threats point simultaneously.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§0 · Glossary</div>
+<h3>Core Concepts of This Report</h3>
+<div class="term-grid">
+<div class="term-item"><div class="term-key">TSMC Silicon Shield</div><div class="term-val">The logic that the strategic value of Taiwan's semiconductors deters China's armed invasion. Paradoxically, it also makes China desire Taiwan even more.</div></div>
+<div class="term-item"><div class="term-key">February 28 Incident</div><div class="term-val">The massacre of the Taiwanese people by the Kuomintang (KMT) regime on February 28, 1947. Tens of thousands of deaths. Official commemoration institutionalized after democratization — a model case of TBI digestion.</div></div>
+<div class="term-item"><div class="term-key">White Terror</div><div class="term-val">Political repression by the KMT during the martial law period from 1949 to 1987. Approximately 140,000 imprisoned, 3,000 to 4,000 executed. The historical roots of Taiwan's TBI.</div></div>
+<div class="term-item"><div class="term-key">DPP-KMT Structure</div><div class="term-val">Two-party competition between the Democratic Progressive Party (DPP, pro-independence) and the Kuomintang (KMT, pro-China). Entering a triangular structure with the rise of the third party, TPP, in 2024.</div></div>
+<div class="term-item"><div class="term-key">Industrial Polarization</div><div class="term-val">High growth led by semiconductors and ICT vs stagnation in other industries. The top 10% income shares 48% of the total (2024). A structure in which GDP growth does not translate into felt economic benefits.</div></div>
+<div class="term-item"><div class="term-key">Cognitive Warfare</div><div class="term-val">China's disinformation operations targeting Taiwan. DDoS surged 3,370% ahead of the 2024 elections. Aimed at weakening trust in democracy.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅰ · Observer Standpoint</div>
+<h3>The Strongest Democracy in the Most Dangerous Place in the World</h3>
+<p>Taiwan is the island that The Economist called "the most dangerous place on Earth." At the same time, it is a top-tier liberal democratic nation in the world, with a Freedom House score of 94, RSF Press Freedom ranked 24th, and an HDI of 0.926. These two facts are not a contradiction — they are Taiwan's essence.</p>
+<p>In January 2024, Lai Ching-te (賴清德) was elected President, leading to three consecutive terms for the DPP. However, the Legislative Yuan is controlled by the KMT and TPP. Attempts were made to paralyze the Constitutional Court. Budget cuts. In 2025, KMT legislators lost all recall elections. Taiwan's democracy is dynamic, but that dynamism also creates internal friction.</p>
+<div class="signal-grid">
+<div class="signal-card">
+<div class="sig-icon">🏆</div>
+<div class="sig-label">Freedom House 2025</div>
+<div class="sig-val">94/100</div>
+<div class="sig-note">2nd in Asia-Pacific (following NZ)</div>
+</div>
+<div class="signal-card">
+<div class="sig-icon">💻</div>
+<div class="sig-label">GDP Growth 2025</div>
+<div class="sig-val">8.68%</div>
+<div class="sig-note">Top level in Asia / Beneficiary of AI semiconductors</div>
+</div>
+<div class="signal-card">
+<div class="sig-icon">⚠️</div>
+<div class="sig-label">Income Inequality</div>
+<div class="sig-val">Top 10% = 48%</div>
+<div class="sig-note">Growth does not lead to distribution</div>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅱ · State Governance Structure</div>
+<h3>Mature Democracy, But the Reality of Political Deadlock</h3>
+<p>Taiwan has repeatedly experienced peaceful transfers of power for 30 years since its first direct presidential election in 1996. Its Freedom House score has continuously risen from 87 in 2011 to 94 in 2024 — while the global freedom index declined for 19 consecutive years, Taiwan moved in the opposite direction.</p>
+<div class="ppr-card">
+<div class="ppr-head">Key Political Structures 2024–2025</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">President</span><span class="ppr-val">Lai Ching-te (DPP) Inaugurated 2024.05</span></div>
+<div class="ppr-row"><span class="ppr-key">Legislative Yuan</span><span class="ppr-val">KMT Majority + TPP Casting Vote Structure</span></div>
+<div class="ppr-row"><span class="ppr-key">Constitutional Crisis</span><span class="ppr-val">KMT and TPP revise Constitutional Court quorum, refuse judge confirmation</span></div>
+<div class="ppr-row"><span class="ppr-key">Recall Vote</span><span class="ppr-val">2025 KMT defeated in all 31 legislative seat recall votes</span></div>
+<div class="ppr-row"><span class="ppr-key">Freedom House</span><span class="ppr-val">94/100 — Continuous rise since 2011</span></div>
+</div>
+</div>
+<div class="obs-note">
+    Achilles' heel of Taiwan's democracy: ① Legislative-executive deadlock leads to defense budget cuts ② China's cognitive warfare exploits democratic processes ③ Rise of the third party TPP increases policy instability. However, the fact that all these conflicts are resolved within institutions is the practical strength of Taiwan's democracy.
+  </div>
+</div>
+<div class="section">
+<div class="section-title">Ⅲ · Basic Statistics</div>
+<h3>Key Taiwan Indicators (As of 2024–2025)</h3>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Indicators</th><th>Figures</th><th>Remarks</th><th>Source</th></tr>
+<tr><td>GDP per capita (IMF)</td><td>USD 34,430</td><td>Similar range to South Korea (36,624)</td><td>IMF 2025.04</td></tr>
+<tr><td>GDP Growth Rate 2025</td><td>8.68%</td><td>Asia's highest / AI semiconductor beneficiary</td><td>Taiwan DGBAS</td></tr>
+<tr><td>HDI</td><td>~0.926</td><td>Estimate, officially not included in UNDP</td><td>Estimate</td></tr>
+<tr><td>Unemployment Rate</td><td>~3.7%</td><td>10-year average</td><td>Focus Economics</td></tr>
+<tr><td>Top 10% Income Share</td><td>48%</td><td>Bottom 50% is 12%</td><td>World Inequality Report 2024</td></tr>
+<tr><td>Household Debt/GDP</td><td>93%</td><td>Exceeds South Korea, Japan, and the US</td><td>Taiwan Central Bank 2024</td></tr>
+<tr><td>TSMC Global Market Share</td><td>90%+ (Advanced)</td><td>Core of global AI chips</td><td>TSMC 2024</td></tr>
+<tr><td>Freedom House</td><td>94/100 (Free)</td><td>2nd in Asia-Pacific</td><td>Freedom House 2025</td></tr>
+<tr><td>RSF Press Freedom</td><td>24th/180</td><td>2nd in Asia-Pacific</td><td>RSF 2025</td></tr>
+<tr><td>CPI (Corruption Perceptions)</td><td>67/100</td><td>Northeast Asia's highest level</td><td>TI 2024</td></tr>
+</table>
+</div>
+<div class="error-box">
+    ※ Since Taiwan is not an official member of the UN and UNDP, an estimated value is used for HDI. The IMF labels it 'Taiwan Province of China', but this report analyzes based on sociodynamic entities. OLI=0.84: excellent statistical infrastructure, but some international comparisons are difficult due to external recognition constraints.
+  </div>
+</div>
+<div class="section">
+<div class="section-title">Ⅳ · Basic Coordinates · Official Box</div>
+<h3>Λ¹²v9.12 Taiwan Calculation</h3>
+<div class="formula-box">
+<div class="formula-title">ΛSCORE FORMULA — TAIWAN</div>
+<div class="formula-eq">Λ¹²_corrected = Λ¹²_raw ÷ 0.84 × (1 − 0.179 × 0.70) × (1 − 0.466 × 0.35) × exp(−k×t)</div>
+<div class="formula-eq">TBI correction term: (1 − 0.179 × 0.70) = (1 − 0.125) = 0.875 [Negligible correction effect due to low TBI]</div>
+<div class="formula-eq">ADI correction term: (1 − 0.466 × 0.35) = (1 − 0.163) = 0.837 [Transitional — Warning Zone]</div>
+<div class="formula-note">※ TBI of 0.179 is the lowest in Northeast Asia — the result of democratic digestion of February 28 Incident trauma. ADI of 0.466 indicates vulnerability in software AI autonomy despite TSMC infrastructure strength. A structure where external threats (RHC 0.637) offset internal stability.</div>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Variables</th><th>Value</th><th>Classification</th><th>Remarks</th></tr>
+<tr><td>LPI</td><td>0.82 (Estimate)</td><td>Stable</td><td>High standard of living</td></tr>
+<tr><td>HDI</td><td>~0.926</td><td>Stable</td><td>World's top tier</td></tr>
+<tr><td>GPI</td><td>~40th→0.67</td><td>Attention</td><td>Reflecting Chinese threat</td></tr>
+<tr><td>CPI</td><td>67→0.67</td><td>Stable</td><td>Northeast Asia's highest</td></tr>
+<tr><td>CFD</td><td>0.42 (Own)</td><td>Attention</td><td>Unification-independence identity conflict</td></tr>
+<tr><td>DCI</td><td>0.38 (Own)</td><td>Stable</td><td>Low generational divide</td></tr>
+<tr><td>MFI</td><td>24th→0.87</td><td>Stable</td><td>2nd in Asia-Pacific</td></tr>
+<tr><td>RHC</td><td>0.637</td><td>Attention</td><td>External pressure is the main factor</td></tr>
+<tr><td>IGI</td><td>0.12 (Own)</td><td>Stable</td><td>Low institutional oppression</td></tr>
+<tr><td>AHI</td><td>0.55 (Own)</td><td>Attention</td><td>Ongoing industrial polarization</td></tr>
+<tr><td>F_reach</td><td>0.62 (Estimate)</td><td>Attention</td><td>Food self-sufficiency challenge</td></tr>
+<tr><td>ADI</td><td>0.466</td><td>Transitional</td><td>TSMC strength↑ / LLM vulnerability</td></tr>
+</table>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅴ · Radar 2×2 Phase Quadrant</div>
+<h3>Stability × Openness — Taiwan's Position</h3>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 520 400" width="520" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="400" width="520"></rect>
+<rect fill="#EBF4F0" height="170" opacity="0.5" width="210" x="50" y="30"></rect>
+<rect fill="#FFF3CD" height="170" opacity="0.4" width="210" x="260" y="30"></rect>
+<rect fill="#FAEEDA" height="170" opacity="0.4" width="210" x="50" y="200"></rect>
+<rect fill="#FCEBEB" height="170" opacity="0.3" width="210" x="260" y="200"></rect>
+<line stroke="#555" stroke-width="1.5" x1="50" x2="470" y1="200" y2="200"></line>
+<line stroke="#555" stroke-width="1.5" x1="260" x2="260" y1="30" y2="370"></line>
+<text fill="#3A6A5E" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="18">High Openness</text>
+<text fill="#888" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="388">Low Openness</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,36,204)" x="36" y="204">Unstable</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,484,204)" x="484" y="204">Stable</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="52">Open &amp; Stable [Ideal]</text>
+<text fill="#856404" font-family="Courier New" font-size="10" text-anchor="middle" x="365" y="52">Open &amp; Unstable</text>
+<text fill="#A0522D" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="380">Closed &amp; Stable</text>
+<text fill="#791F1F" font-family="Courier New" font-size="10" text-anchor="middle" x="365" y="380">Closed &amp; Unstable</text>
+ Taiwan's Position — Q1 Open &amp; Stable (Most Ideal) 
+<circle cx="148" cy="78" fill="#EEF3FF" r="26" stroke="#1B4F8A" stroke-width="2.5"></circle>
+<text font-size="20" text-anchor="middle" x="148" y="74">🇹🇼</text>
+<text fill="#1B4F8A" font-family="Courier New" font-size="11" font-weight="bold" text-anchor="middle" x="148" y="112">Taiwan's Current</text>
+ External Threat Arrow 
+<defs>
+<marker id="redarr2" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#8B1A1A"></path>
+</marker>
+</defs>
+<line marker-end="url(#redarr2)" stroke="#8B1A1A" stroke-dasharray="4,2" stroke-width="1.5" x1="148" x2="148" y1="104" y2="165"></line>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="168" y="140">Chinese Military Pressure</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="168" y="152">Risk of migration if sustained</text>
+ Comparison Countries 
+<circle cx="188" cy="108" fill="#EBF4F0" r="14" stroke="#5E9186" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="188" y="106">🇯🇵</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" text-anchor="middle" x="188" y="132">Japan</text>
+<circle cx="350" cy="155" fill="#FFF3CD" r="14" stroke="#B8850E" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="350" y="153">🇰🇷</text>
+<text fill="#856404" font-family="Courier New" font-size="9" text-anchor="middle" x="350" y="179">South Korea</text>
+<circle cx="140" cy="312" fill="#FCEBEB" r="22" stroke="#8B1A1A" stroke-width="2"></circle>
+<text font-size="16" text-anchor="middle" x="140" y="308">🇨🇳</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" text-anchor="middle" x="140" y="342">China</text>
+<text fill="#1B4F8A" font-family="Courier New" font-size="10" x="50" y="70">※ Internal strength at highest</text>
+<text fill="#1B4F8A" font-family="Courier New" font-size="10" x="50" y="83">External pressure is sole risk</text>
+<text fill="#1B4F8A" font-family="Courier New" font-size="10" x="50" y="96">Structural threat</text>
+</svg>
+</div>
+<div class="obs-note">
+    Taiwan is the only one among the five Northeast Asian countries positioned in phase quadrant Q1 (Open &amp; Stable). However, if China's military pressure continues, there is an inherent risk of moving toward Q2 (Open &amp; Unstable). Taiwan's Achilles' heel is not internal, but external.
+  </div>
+</div>
+<div class="section">
+<div class="section-title">Ⅵ · GPI Time Series</div>
+<h3>Peace Index Trend — Shadow of External Threats</h3>
+<div class="svg-wrap">
+<svg height="220" viewbox="0 0 600 220" width="600" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#fff" height="220" width="600"></rect>
+<line stroke="#EEE" stroke-width="1" x1="70" x2="70" y1="20" y2="180"></line>
+<line stroke="#CCC" stroke-width="1.5" x1="70" x2="570" y1="180" y2="180"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="60" y2="60"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="100" y2="100"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="140" y2="140"></line>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="64">30th</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="104">50th</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="144">70th</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="112" y="198">2016</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="216" y="198">2018</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="320" y="198">2020</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="424" y="198">2022</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="528" y="198">2024/25</text>
+ Taiwan's GPI — Maintaining Stable Upper-Middle Range 
+<polyline fill="none" points="112,88 164,90 216,90 268,92 320,94 372,96 424,98 476,97 528,96" stroke="#1B4F8A" stroke-width="2.5"></polyline>
+<circle cx="528" cy="96" fill="#1B4F8A" r="4"></circle>
+<text fill="#1B4F8A" font-family="Courier New" font-size="10" x="540" y="94">Taiwan</text>
+ Indication of China's PLA Threat Increase Period 
+<rect fill="#FCEBEB" height="160" opacity="0.15" width="160" x="400" y="20"></rect>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" text-anchor="middle" x="480" y="36">Strengthening PLA military pressure</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" text-anchor="middle" x="480" y="48">(2022–Present)</text>
+<text fill="#1B4F8A" font-family="Courier New" font-size="11" text-anchor="middle" x="300" y="18">GPI Ranking Trend (lower is more peaceful)</text>
+</svg>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅶ · Key Paradox Analysis</div>
+<h3>TSMC Silicon Shield — Protective Shield or Target?</h3>
+<div class="paradox-box">
+<h4>⚖️ Structure of the Paradox</h4>
+<p><strong>Logic A (Shield Theory):</strong> "If China invades Taiwan, it destroys 90% of the world's semiconductor supply. The global economy cannot afford collapse. TSMC is the deterrent."</p>
+<p><strong>Logic B (Target Theory):</strong> "Because of TSMC's value, China wants Taiwan even more. This strategic asset actually strengthens the motivation for invasion."</p>
+<p>Wu Jieh-min of Academia Sinica: <em>"In the current scenario, TSMC's position makes China want Taiwan even more."</em></p>
+<p>Λ¹² Viewpoint: ADI 0.466 (Transitional) reflects the imbalance between semiconductor hardware strength and vulnerability in AI software autonomy. The chips made by TSMC are a strength, but the AI ecosystem operating on those chips is still externally dependent.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅷ · PPR — 5 Structural Blocks</div>
+<h3>In-Depth Analysis of Politics, Economy, Society, History, and Geopolitics</h3>
+<div class="ppr-card">
+<div class="ppr-head">PPR-1 · Political Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">System</span><span class="ppr-val">Liberal Democracy / 94/100</span></div>
+<div class="ppr-row"><span class="ppr-key">2024 Election</span><span class="ppr-val">Lai Ching-te Elected (40%) / 3rd consecutive DPP administration</span></div>
+<div class="ppr-row"><span class="ppr-key">Political Deadlock</span><span class="ppr-val">KMT and TPP seize the Legislative Yuan / Attempt to paralyze Constitutional Court</span></div>
+<div class="ppr-row"><span class="ppr-key">China's Cognitive Warfare</span><span class="ppr-val">DDoS surged 3,370% before election / Spread of deepfakes</span></div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-head">PPR-2 · Economic Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">GDP Growth</span><span class="ppr-val">8.68% in 2025 / Beneficiary of AI semiconductors</span></div>
+<div class="ppr-row"><span class="ppr-key">TSMC</span><span class="ppr-val">90%+ global market share / 8% contribution to GDP</span></div>
+<div class="ppr-row"><span class="ppr-key">Industrial Polarization</span><span class="ppr-val">ICT↑↑ / Stagnation in other industries</span></div>
+<div class="ppr-row"><span class="ppr-key">Income Inequality</span><span class="ppr-val">Top 10% = 48% / Household Debt 93% of GDP</span></div>
+<div class="ppr-row"><span class="ppr-key">Dependence on China</span><span class="ppr-val">~33% of exports to China / Undergoing gradual diversification</span></div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-head">PPR-3 · Social Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Gender Representation</span><span class="ppr-val">41.6% female in Legislative Yuan / First LGBT+ legislator</span></div>
+<div class="ppr-row"><span class="ppr-key">Indigenous Peoples</span><span class="ppr-val">16 Indigenous groups / 2% of population / Guaranteed legislative seats</span></div>
+<div class="ppr-row"><span class="ppr-key">Identity Conflict</span><span class="ppr-val">Unification-independence consciousness division / CFD 0.42</span></div>
+<div class="ppr-row"><span class="ppr-key">Housing</span><span class="ppr-val">Real estate surge / Consumptive suppression factor</span></div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-head">PPR-4 · Historical Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.179 — Lowest in Northeast Asia / Successful case of digestion</span></div>
+<div class="ppr-row"><span class="ppr-key">February 28 Incident</span><span class="ppr-val">Official commemoration institutionalized post-democratization (2.28 Memorial Day)</span></div>
+<div class="ppr-row"><span class="ppr-key">White Terror</span><span class="ppr-val">1949~87 Martial Law / Truth Reconciliation Commission in operation</span></div>
+<div class="ppr-row"><span class="ppr-key">2025 2.28</span><span class="ppr-val">President Lai's 78th-anniversary commemoration — "China's greatest threat" remark</span></div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-head">PPR-5 · Geopolitical Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">China's Military Pressure</span><span class="ppr-val">PLA regular military exercises / 22 secessionist sanction guidelines</span></div>
+<div class="ppr-row"><span class="ppr-key">United States</span><span class="ppr-val">TRA · CHIPS Act / Maintaining strategic ambiguity</span></div>
+<div class="ppr-row"><span class="ppr-key">Four Pillars of Peace</span><span class="ppr-val">President Lai's formulation of the Four Pillars of Peace action plan</span></div>
+<div class="ppr-row"><span class="ppr-key">Diplomatic Isolation</span><span class="ppr-val">Not a member of the UN / 12 official diplomatic allies (2025)</span></div>
+<div class="ppr-row"><span class="ppr-key">ADI</span><span class="ppr-val">0.466 Transitional / Hardware↑ Software↓</span></div>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">Ⅸ · Λ¹² 12-Axis Radar</div>
+<h3>12 Variables Radial — Taiwan's Structural Strengths and Vulnerabilities</h3>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 400 400" width="400" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="400" width="400"></rect>
+<circle cx="200" cy="200" fill="none" r="150" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="112" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="75" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="37" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="200" y1="200" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="275" y1="200" y2="62"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="330" y1="200" y2="118"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="350" y1="200" y2="200"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="330" y1="200" y2="282"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="275" y1="200" y2="338"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="200" y1="200" y2="350"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="125" y1="200" y2="338"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="70" y1="200" y2="282"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="50" y1="200" y2="200"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="70" y1="200" y2="118"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="125" y1="200" y2="62"></line>
+ Taiwan — Overall Strength, Vulnerable in RHC and ADI 
+<polygon fill="#1B4F8A" fill-opacity="0.20" points="
+        200,68
+        265,78
+        318,120
+        338,200
+        316,274
+        266,330
+        200,340
+        138,326
+        84,276
+        60,200
+        82,126
+        136,76
+      " stroke="#1B4F8A" stroke-width="2"></polygon>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="42">LPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="54">HDI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="108">GPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="362" y="202">CPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="294">CFD</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="350">DCI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="366">MFI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="350">RHC</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="294">IGI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="38" y="202">AHI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="108">F_reach</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="54">ADI</text>
+</svg>
+</div>
+<div class="obs-note">
+    Taiwan ranks highest in Northeast Asia across five axes: LPI, HDI, CPI, MFI, and IGI. Vulnerable zones are RHC (reflecting external pressure) and ADI (AI autonomy). Both vulnerabilities originate from external structures — China's presence and the global AI hegemony structure.
+  </div>
+</div>
+<div class="section">
+<div class="section-title">Ⅹ · Six-Layer Discourse — Reading Taiwan</div>
+<h3>Taiwan Read Through Six Layers</h3>
+<div style="margin:14px 0;">
+<div class="discourse-layer">
+<div class="layer-num">Layer 1<br/>Data</div>
+<div class="layer-content"><strong>What is visible:</strong> Freedom House 94/100, GDP growth 8.68% (2025), CPI 67. At the same time, the top 10% income shares 48%, household debt is 93% of GDP, and real estate is skyrocketing. The numbers point to two Taiwans simultaneously.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 2<br/>Interests</div>
+<div class="layer-content"><strong>Who benefits:</strong> TSMC and ICT conglomerates are beneficiaries of the AI boom. Small/medium businesses and service sector workers are victims of inflation and rising housing costs. China leverages Taiwan's economic dependence (33% of exports). The United States maintains strategic ambiguity while securing semiconductor supply chain security through TSMC.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 3<br/>Historical Patterns</div>
+<div class="layer-content"><strong>Has this happened before:</strong> The path of the February 28 Incident (1947) → White Terror → Martial Law (1949–1987) → Democratization (1996–) shows the transition from oppression to freedom. TBI of 0.179 numerically confirms that this transition has functioned practically. The only case in Northeast Asia that has institutionally digested historical trauma.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 4<br/>Perspective Reversal</div>
+<div class="layer-content"><strong>Looking at it in reverse:</strong> Taiwan's international isolation (non-membership in the UN, 12 diplomatic allies) seems like a weakness — but rather, this isolation may have strengthened internal cohesion. The paradox where external threats shaped Taiwan's identity. It might not be a coincidence that 'the most dangerous place in the world' is simultaneously 'one of the strongest democracies in the world.'</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 5<br/>Frame</div>
+<div class="layer-content"><strong>Λ¹² Phase Diagnostic:</strong> Taiwan is Q1 Stable in internal variables (TBI, IGI, MFI, CPI). However, it has an 'externally dependent vulnerable structure' where external variables (RHC external components) pressure the overall coordinates. ADI of 0.466 suggests that the imbalance between hardware strength and software vulnerability is a long-term challenge. The biggest risk is a simultaneous pressure scenario on the economy-security-politics triangle.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num" style="background:#3A6A5E;">Layer 6<br/>Suspension of Judgment</div>
+<div class="layer-content" style="background:#E8F4F0;"><strong>This layer belongs to the 23.4 million Taiwanese people.</strong> What choice they will make in the face of external threats — no framework can decide that for them.</div>
+</div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">ⅩⅠ · Margin of Error</div>
+<div class="error-box">
+    ※ Taiwan's HDI: Estimated value used due to official non-inclusion in UNDP (±0.005 error possible). GPI Rank: China's military threats may not be fully reflected in the GPI measurement methodology. ADI: Potential to over- or under-estimate the speed at which TSMC's hardware capacity translates into AI software autonomy. Economic Data: Rapid growth in 2025 includes short-term surge factors in AI semiconductor demand — sustainability requires separate review.
+  </div>
+</div>
+<div class="section">
+<div class="section-title">ⅩⅡ · Conclusion Orbit</div>
+<div class="conclusion">
+<p>Taiwan lives within a paradox designed by the world. It built the strongest democracy in the most dangerous geopolitical location in the world. It became the most unwanted target while creating the most wanted technology.</p>
+<p>TBI of 0.179 tells us — that past wounds can be digested through institutions. The proof is that the memory of February 28 has become a day personally commemorated by the President even in 2025. This is why Taiwan has the lowest TBI in Northeast Asia.</p>
+<p>Yet, there is another signal that Λ¹² reads. ADI 0.466 — a signal that the country making the chips is not yet autonomous in the ecosystem operating on top of those chips. A signal that GDP growth of 8.68% coexists with the top 10% holding 48% of the income.</p>
+<p>Taiwan's next question may not lie externally. A strong democracy becoming a democracy for everyone — that questioning is quietly beginning.</p>
+</div>
+</div>
+<div class="section">
+<div class="section-title">ⅩⅢ · Series Status</div>
+<div class="series-box">
+<div class="series-title">Northeast Asia Series — Λ¹²v9.12</div>
+<div class="series-item"><span class="series-num">#20</span><span class="series-name">Northeast Asia Regional Comparison Edition</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">#21</span><span class="series-name">South Korea Standalone Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+<div class="series-item"><span class="series-num">#22</span><span class="series-name">Japan Standalone Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+<div class="series-item"><span class="series-num">#23</span><span class="series-name">China Standalone Edition v1.0</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">#24</span><span class="series-name">Taiwan Standalone Edition v1.0 (Current Document)</span><span class="series-status status-now">Completed</span></div>
+<div class="series-item"><span class="series-num">#25</span><span class="series-name">North Korea Standalone Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+</div>
+</div>
+<div class="footer">
+<p>Everblue Sea Institute for Social Dynamics (Everblue Sea Institute for Social Dynamics)</p>
+<p>Director Cheonghae (淸海) · Claude (Anthropic) Research Partner</p>
+<p><a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · <a href="https://everbluesea.org">everbluesea.org</a> · contact@everbluesea.org</p>
+<div class="engine-tag">Engine: Λ¹²v9.12 | Including ADI §31 | Based on SSRN 6632858 | Taiwan_Λ¹²v9.12_20260502.html</div>
+</div>
+</body>
+</html>
