@@ -100,7 +100,10 @@ def call_api(model, ver, texts, gb):
            headers={"Content-Type":"application/json"}, method="POST")
     with urllib.request.urlopen(req, timeout=180) as r:
         data = json.loads(r.read())
-    raw  = data["candidates"][0]["content"]["parts"][0]["text"]
+    raw  = data["candidates"][0]["content"]["parts"][0]["text"].strip()
+    if raw.startswith("```"):
+        raw = re.sub(r"^```[a-zA-Z]*\n?", "", raw)
+        raw = re.sub(r"\n?```$", "", raw).strip()
     out  = json.loads(raw)
     if not (isinstance(out, list) and len(out) == len(texts)):
         raise ValueError(f"길이 불일치 {len(out)}!={len(texts)}")
@@ -151,8 +154,8 @@ def process(f, model, ver, gb):
     if not ko_ok:
         log(f"   [FAIL] 한글 잔존 과다 ko {ko_o}->{ko_l} — 미생성")
         return None
-    if abs(bt-ot) > 15:                              # 구조 심각 훼손만 차단
-        log(f"   [FAIL] 태그 급변 {bt}->{ot} (>15) — 미생성")
+    if abs(bt-ot) > 40:                              # 구조 심각 훼손만 차단
+        log(f"   [FAIL] 태그 급변 {bt}->{ot} (>40) — 미생성")
         return None
     if abs(bt-ot) > 2:
         log(f"   [warn] 태그 변동 {bt}->{ot} — 번역 과정 정상 범위로 간주")
@@ -184,13 +187,20 @@ def main():
         model, ver = find_model()
     targets = todo if ALL else todo[:1]
     log(f"이번 실행 처리: {len(targets)}편")
-    made=0
+    made=0; failed=0
     for f in targets:
-        if process(f, model, ver, gb):
-            made+=1
-            rebuild_manifest()   # 한 편 끝날 때마다 매니페스트 갱신
+        try:
+            if process(f, model, ver, gb):
+                made+=1
+                rebuild_manifest()
+            else:
+                failed+=1
+        except Exception as e:
+            failed+=1
+            log(f"   [SKIP] {f.name} 예외로 건너뜀: {e}")
+            continue
     n = rebuild_manifest()
-    log(f"완료: 이번 {made}편 생성 / 매니페스트 총 {n}편 / 남은 {len(pending())}편")
+    log(f"완료: 성공 {made}편 / 실패·스킵 {failed}편 / 매니페스트 총 {n}편 / 남은 {len(pending())}편")
 
 if __name__=="__main__":
     main()
