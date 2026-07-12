@@ -29,6 +29,19 @@ export const tickerItems = [
 
 export const featuredReports = [
   {
+    id: "r-004",
+    category: "UI · 봉기지수",
+    categoryEn: "UI · Uprising Index",
+    date: "2026-07-12",
+    author: "김기섭",
+    title: "압력은 왜 반발이 아닌 희망이 되었나 — 베네수엘라·이란 2026",
+    titleEn: "Why Pressure Became Hope, Not Backlash — Venezuela & Iran 2026",
+    excerpt: "참수된 국가와 학살로 버틴 국가. 희망 벡터 역전, 기대-배신 격차 G(t), 그리고 역사 표본 11건이 가리키는 외생 버팀목 체제의 세 가지 종점.",
+    excerptEn: "A decapitated state and a state that survived by massacre. Hope-vector inversion, the expectation-betrayal gap G(t), and the three historical endpoints of externally propped regimes.",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20two%20opposing%20force%20fields%20on%20warm%20cream%20beige%20background%2C%20one%20teal%20green%20vortex%20being%20held%20suspended%20by%20external%20golden%20threads%20from%20above%20while%20a%20deep%20crimson%20wave%20surges%20and%20recoils%20on%20the%20right%2C%20tension%20between%20suspension%20and%20eruption%2C%20flowing%20particle%20streams%20connecting%20the%20two%20systems%2C%20scientific%20phase%20space%20aesthetic%2C%20no%20human%20figures%20no%20faces%20no%20text&width=1200&height=600&seq=report-r004-v1-20260712&orientation=landscape",
+    tone: "dark" as const,
+  },
+  {
     id: "r-001",
     category: "REVERBANT · 글로벌 실증",
     categoryEn: "REVERBANT · Global Validation",
@@ -38,7 +51,7 @@ export const featuredReports = [
     titleEn: "What 965,913 Data Points Tell Us — How Uprisings Begin",
     excerpt: "ACLED 전역 데이터와 REVERBANT v1.1 프레임워크의 완전 통합. 공리 A0~A12가 실증하는 도화선·화약·폭발의 물리학.",
     excerptEn: "Full integration of ACLED global data with REVERBANT v1.1. Axioms A0–A12 demonstrate the physics of trigger, powder, and explosion.",
-    image: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=1200&q=80",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20data%20visualization%20of%20hundreds%20of%20thousands%20of%20luminous%20particles%20coalescing%20into%20flowing%20wave%20formations%20across%20a%20warm%20cream%20beige%20field%2C%20each%20point%20representing%20a%20data%20entry%20converging%20into%20rhythmic%20wave%20patterns%2C%20rendered%20in%20teal%20green%20and%20gold%20amber%20tones%2C%20mesmerizing%20pointillism%20meets%20data%20art%2C%20no%20human%20figures%20no%20faces%2C%20clean%20abstract%20computational%20aesthetic%20with%20depth%20and%20motion&width=1200&height=600&seq=report-r001-v2-20260706&orientation=landscape",
     tone: "dark" as const,
   },
   {
@@ -51,7 +64,7 @@ export const featuredReports = [
     titleEn: "Korea −0.221 vs USA −0.785 — Same G-T Core, Different Outcomes",
     excerpt: "명목 G-T Core는 동일한 두 나라. C_internal 하나가 만들어낸 0.564의 차이. 소방서는 같은데 왜 화재 대응이 다른가.",
     excerptEn: "Two countries sharing the same nominal G-T Core. A single C_internal variable creates a 0.564 gap. Same fire station, different response.",
-    image: "https://images.unsplash.com/photo-1495020689067-958852a7765e?w=1200&q=80",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20two%20identical%20waveform%20signatures%20splitting%20into%20dramatically%20different%20amplitudes%2C%20one%20wave%20remaining%20subtle%20and%20low%20while%20the%20other%20grows%20into%20a%20towering%20resonant%20peak%2C%20rendered%20on%20warm%20beige%20cream%20background%20with%20teal%20green%20low%20wave%20and%20gold%20amber%20high%20wave%2C%20scientific%20signal%20processing%20aesthetic%2C%20clean%20split%20comparison%20composition%2C%20no%20human%20figures%20no%20faces%20no%20text&width=1200&height=600&seq=report-r002-v2-20260706&orientation=landscape",
     tone: "light" as const,
   },
   {
@@ -64,7 +77,7 @@ export const featuredReports = [
     titleEn: "Food, Clothing, Shelter — 139-Country Suffering Index Update",
     excerpt: "기초사회생활지수 v6.9. 삼중계(衣·食·住)로 측정한 세계 서민의 실제 삶. 한국은 왜 C등급인가.",
     excerptEn: "BSLI v6.9. The real lives of ordinary people in 139 countries measured through the triple axis of Clothing, Food, Housing. Why is Korea Grade C?",
-    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20triptych%20composition%20featuring%20three%20distinct%20textural%20abstractions%20representing%20fabric%20weave%20textile%20patterns%2C%20flowing%20grain%20kernel%20formations%2C%20and%20architectural%20roof%20tile%20geometries%2C%20divided%20into%20three%20equal%20horizontal%20bands%20on%20warm%20cream%20beige%20background%2C%20rendered%20in%20muted%20teal%20green%20earth%20tones%20and%20subtle%20gold%20amber%20highlights%2C%20no%20human%20figures%20no%20faces%2C%20contemplative%20still%20life%20abstraction%20meets%20material%20science%20visualization&width=1200&height=600&seq=report-r003-v2-20260706&orientation=landscape",
     tone: "light" as const,
   },
 ];
@@ -82,7 +95,7 @@ export const mainCategories = [
     topics: ["지정학", "정치", "경제", "사회"],
     topicsEn: ["Geopolitics", "Politics", "Economy", "Society"],
     isCore: true,
-    image: "https://readdy.ai/api/search-image?query=Aerial%20drone%20photography%20of%20modern%20global%20capital%20city%20skyline%20at%20golden%20hour&width=800&height=600&seq=cat-national-01&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20topographical%20visualization%20of%20continental%20landmasses%20rendered%20as%20luminous%20data%20grid%20topology%2C%20glowing%20interconnected%20network%20nodes%20and%20flowing%20data%20streams%20mapping%20global%20connectivity%20patterns%2C%20rendered%20with%20teal%20green%20grid%20lines%20and%20gold%20amber%20data%20points%20on%20warm%20beige%20cream%20background%2C%20no%20national%20flags%20no%20political%20borders%20no%20landmarks%2C%20pure%20abstract%20cartographic%20data%20art%20aesthetic&width=800&height=600&seq=cat-national-v2-20260706&orientation=landscape",
   },
   {
     id: "cat-bsli",
@@ -96,7 +109,7 @@ export const mainCategories = [
     topics: ["의(衣)", "식(食)", "주(住)"],
     topicsEn: ["Clothing", "Food", "Housing"],
     isCore: true,
-    image: "https://readdy.ai/api/search-image?query=Street%20level%20candid%20photography%20of%20diverse%20urban%20residents%20daily%20life&width=800&height=600&seq=cat-bsli-02&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20geometric%20triptych%20composition%20representing%20three%20essential%20human%20needs%20through%20layered%20patterns%20of%20textile%20weave%20geometry%2C%20food%20grain%20circular%20mandalas%2C%20and%20architectural%20shelter%20forms%2C%20arranged%20in%20harmonious%20tripartite%20balance%20on%20warm%20cream%20beige%20background%2C%20rendered%20in%20teal%20green%20structural%20elements%20and%20gold%20amber%20accent%20details%2C%20no%20human%20figures%20no%20faces%2C%20minimalist%20Bauhaus%20meets%20social%20science%20abstraction&width=800&height=600&seq=cat-bsli-v2-20260706&orientation=landscape",
   },
   {
     id: "cat-reverbant",
@@ -124,7 +137,7 @@ export const mainCategories = [
     topics: ["민중", "제도", "촉발", "임계"],
     topicsEn: ["People", "Institution", "Trigger", "Threshold"],
     isCore: true,
-    image: "https://readdy.ai/api/search-image?query=Wide%20angle%20documentary%20photograph%20peaceful%20public%20demonstration%20historic%20city%20square&width=800&height=600&seq=cat-ui-04&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20a%20wave%20surface%20reaching%20critical%20threshold%20and%20bifurcating%20into%20chaotic%20interference%20patterns%2C%20smooth%20laminar%20flow%20transitioning%20into%20turbulent%20fracture%20at%20the%20tipping%20point%2C%20rendered%20on%20warm%20cream%20beige%20background%20with%20teal%20green%20stable%20regions%20and%20gold%20amber%20critical%20cascade%20zones%2C%20mathematical%20catastrophe%20theory%20aesthetic%2C%20no%20human%20figures%20no%20faces%20no%20protest%20imagery%2C%20pure%20abstract%20dynamical%20systems%20visualization&width=800&height=600&seq=cat-ui-v2-20260706&orientation=landscape",
   },
   {
     id: "cat-bbd",
@@ -152,7 +165,7 @@ export const mainCategories = [
     topics: ["불평등", "지니", "계층"],
     topicsEn: ["Inequality", "Gini", "Stratification"],
     isCore: false,
-    image: "https://readdy.ai/api/search-image?query=Atmospheric%20post%20industrial%20landscape%20abandoned%20factory&width=800&height=600&seq=cat-gei-06&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20sculptural%20visualization%20of%20an%20extreme%20Lorenz%20curve%20diverging%20dramatically%20from%20the%20line%20of%20perfect%20equality%2C%20rendered%20as%20a%20three%20dimensional%20tension%20surface%20being%20stretched%20apart%2C%20deep%20inequality%20gap%20visualized%20through%20spatial%20separation%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20equality%20reference%20line%20and%20gold%20amber%20inequality%20divergence%20zone%2C%20no%20human%20figures%20no%20faces%2C%20abstract%20economic%20sculpture%20meets%20mathematical%20geometry&width=800&height=600&seq=cat-gei-v2-20260706&orientation=landscape",
   },
   {
     id: "cat-nci",
@@ -166,7 +179,7 @@ export const mainCategories = [
     topics: ["국가역량", "제도", "위기"],
     topicsEn: ["State Capacity", "Institution", "Crisis"],
     isCore: false,
-    image: "https://readdy.ai/api/search-image?query=Nuclear%20power%20plant%20cooling%20towers%20storm%20clouds&width=800&height=600&seq=cat-nci-07&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20geometric%20composition%20of%20massive%20structural%20pillars%20and%20load%20bearing%20columns%20rendered%20as%20minimalist%20architectural%20forms%2C%20representing%20institutional%20strength%20and%20state%20capacity%20through%20intersecting%20vertical%20and%20horizontal%20planes%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20structural%20elements%20and%20gold%20amber%20accent%20details%2C%20no%20cooling%20towers%20no%20nuclear%20imagery%20no%20human%20figures%20no%20faces%2C%20pure%20constructivist%20architectural%20abstraction&width=800&height=600&seq=cat-nci-v2-20260706&orientation=landscape",
   },
   {
     id: "cat-scdi",
@@ -180,7 +193,7 @@ export const mainCategories = [
     topics: ["공급망", "무역", "지정학"],
     topicsEn: ["Supply Chain", "Trade", "Geopolitics"],
     isCore: false,
-    image: "https://readdy.ai/api/search-image?query=Aerial%20view%20container%20port%20terminal%20shipping&width=800&height=600&seq=cat-scdi-08&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20entangled%20network%20topology%20lines%20weaving%20through%20space%20in%20complex%20interconnected%20patterns%2C%20representing%20global%20supply%20chain%20logistics%20as%20luminous%20thread%20like%20pathways%20crossing%20and%20overlapping%20organically%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20primary%20connections%20and%20gold%20amber%20secondary%20nodes%2C%20no%20shipping%20containers%20no%20port%20imagery%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20network%20science%20visualization&width=800&height=600&seq=cat-scdi-v2-20260706&orientation=landscape",
   },
   {
     id: "cat-ppi",
@@ -194,7 +207,7 @@ export const mainCategories = [
     topics: ["권력기생", "포획", "책임"],
     topicsEn: ["Power Parasite", "Capture", "Accountability"],
     isCore: false,
-    image: "https://readdy.ai/api/search-image?query=Government%20institutional%20building%20classical%20columns%20authority&width=800&height=600&seq=cat-ppi-09&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20organic%20vine%20tendrils%20wrapping%20around%20rigid%20geometric%20structural%20forms%2C%20parasitic%20growth%20patterns%20consuming%20institutional%20architecture%20rendered%20as%20climbing%20spiral%20botanical%20forms%20versus%20geometric%20pillars%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20structural%20elements%20and%20gold%20amber%20parasitic%20vine%20formations%2C%20no%20government%20buildings%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20organic%20versus%20geometric%20tension&width=800&height=600&seq=cat-ppi-v2-20260706&orientation=landscape",
   },
   {
     id: "cat-press",
@@ -208,73 +221,84 @@ export const mainCategories = [
     topics: ["정치", "경제", "사회", "국제"],
     topicsEn: ["Politics", "Economy", "Society", "International"],
     isCore: false,
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20composition%20merging%20typographic%20letterform%20fragments%20with%20oscilloscope%20signal%20waveforms%2C%20characters%20dissolving%20into%20frequency%20patterns%20and%20wave%20signatures%2C%20rendered%20on%20warm%20cream%20beige%20background%20with%20teal%20green%20wave%20traces%20and%20gold%20amber%20typographic%20elements%2C%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20communication%20meets%20signal%20processing%20aesthetic&width=800&height=600&seq=cat-press-v2-20260706&orientation=landscape",
   },
   {
     id: "cat-axioms",
     label: "사회구조 설계공리",
     labelEn: "Social Structure Design Axioms",
-    engineKey: "axioms",
+    engineKey: "",
     engineLabel: "A0—A12",
     count: 13,
-    subFilters: [],
-    subFiltersEn: [],
+    subFilters: ["A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12"],
+    subFiltersEn: ["A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12"],
     topics: [],
     topicsEn: [],
     isCore: false,
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20constellation%20diagram%20featuring%20thirteen%20luminous%20nodes%20connected%20by%20geometric%20pathways%20forming%20a%20sacred%20geometry%20network%2C%20each%20node%20glowing%20with%20distinct%20intensity%20and%20connected%20through%20precise%20angular%20relationships%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20connection%20lines%20and%20gold%20amber%20node%20points%2C%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20axiomatic%20system%20visualization%20reminiscent%20of%20celestial%20charts&width=800&height=600&seq=cat-axioms-v2-20260706&orientation=landscape",
   },
   {
-    id: "cat-empty-2",
-    label: "준비중",
-    labelEn: "Coming Soon",
+    id: "cat-dure",
+    label: "두레에타",
+    labelEn: "DURE-η",
+    engineKey: "dure",
+    engineLabel: "DURE-η",
+    count: 1,
+    subFilters: ["전체", "울산"],
+    subFiltersEn: ["All", "Ulsan"],
+    topics: ["대기", "주거", "교통", "종합"],
+    topicsEn: ["Air", "Housing", "Transport", "Composite"],
+    isCore: false,
+    image: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80",
+  },
+  {
+    id: "cat-lci",
+    label: "지도자붕괴지수",
+    labelEn: "Leader Collapse Index",
+    engineKey: "lci",
+    engineLabel: "LCI",
+    count: 12,
+    subFilters: ["전체", "현직", "역사"],
+    subFiltersEn: ["All", "Current", "Historical"],
+    topics: ["부패(κ)", "위상(ΔΦ)", "무능(ι)"],
+    topicsEn: ["Corruption(κ)", "Phase-shift(ΔΦ)", "Incompetence(ι)"],
+    isCore: false,
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20a%20spiral%20trajectory%20reaching%20its%20apex%20and%20then%20collapsing%20downward%20into%20fragmented%20descent%2C%20golden%20spiral%20path%20peaking%20at%20maximum%20height%20before%20gravitational%20collapse%20into%20scattered%20geometric%20fragments%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20stable%20ascent%20phase%20and%20gold%20amber%20critical%20collapse%20phase%2C%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20dynamical%20systems%20visualization%20of%20rise%20and%20fall&width=800&height=600&seq=cat-lci-v2-20260706&orientation=landscape",
+  },
+  {
+    id: "cat-afro",
+    label: "아프로-람다",
+    labelEn: "AFRO-Λ",
+    engineKey: "afro",
+    engineLabel: "AFRO-Λ",
+    count: 8,
+    subFilters: ["전체", "권역별", "단독"],
+    subFiltersEn: ["All", "Regional", "Standalone"],
+    topics: ["분쟁", "자원", "지배구조", "AES"],
+    topicsEn: ["Conflict", "Resource", "Governance", "AES"],
+    isCore: false,
+    image: "https://readdy.ai/api/search-image?query=Abstract%20topographical%20contour%20line%20visualization%20suggesting%20continental%20landmass%20shapes%20through%20flowing%20elevation%20curves%20and%20organic%20terrain%20forms%2C%20rendered%20as%20pure%20contour%20art%20without%20political%20borders%20or%20satellite%20imagery%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20low%20elevation%20contours%20and%20gold%20amber%20high%20elevation%20plateaus%2C%20no%20flags%20no%20borders%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20cartographic%20art&width=800&height=600&seq=cat-afro-v2-20260706&orientation=landscape",
+  },
+  {
+    id: "cat-feedback",
+    label: "질문·피드백",
+    labelEn: "Questions & Feedback",
     engineKey: "",
-    engineLabel: "COMING SOON",
+    engineLabel: "COMMUNITY",
     count: 0,
-    subFilters: [],
-    subFiltersEn: [],
+    subFilters: ["연구 문의", "협업 제안", "데이터 요청", "일반 피드백"],
+    subFiltersEn: ["Research Inquiry", "Collaboration", "Data Request", "General Feedback"],
     topics: [],
     topicsEn: [],
     isCore: false,
-    image: "",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20two%20wave%20sources%20generating%20concentric%20ripple%20patterns%20that%20intersect%20and%20resonate%20with%20each%20other%2C%20creating%20complex%20interference%20moire%20patterns%20where%20the%20wavefronts%20meet%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20primary%20wave%20forms%20and%20gold%20amber%20secondary%20resonance%20patterns%2C%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20wave%20mechanics%20and%20communication%20metaphor&width=800&height=600&seq=cat-feedback-v2-20260706&orientation=landscape",
   },
 ];
 
 export const aboutImages = {
-  left: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=900&q=80",
-  right:
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1400&q=80",
+  left: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20layered%20geological%20data%20strata%20with%20concentric%20wave%20patterns%20radiating%20outward%20from%20a%20central%20point%2C%20rendered%20in%20warm%20beige%20cream%20background%20with%20teal%20green%20and%20gold%20amber%20wave%20interference%20patterns%2C%20mathematical%20elegance%2C%20clean%20scientific%20aesthetic%2C%20no%20human%20figures%20no%20faces%20no%20text%2C%20minimalist%20data%20art%20visualization%20style%20with%20soft%20atmospheric%20lighting&width=900&height=1200&seq=about-left-v2-20260706&orientation=portrait",
+  right: "https://readdy.ai/api/search-image?query=Abstract%20phase%20space%20visualization%20with%20flowing%20coordinate%20curves%20and%20orbital%20trajectories%20suspended%20in%20a%20luminous%20cream%20beige%20void%2C%20multiple%20intersecting%20parametric%20surfaces%20rendered%20in%20translucent%20teal%20green%20and%20warm%20gold%20amber%20tones%2C%20mathematical%20topology%20aesthetic%2C%20clean%20research%20visualization%20style%2C%20no%20human%20figures%20no%20faces%20no%20text%2C%20minimalist%20scientific%20illustration%20with%20subtle%20grid%20lines%20and%20floating%20geometric%20forms&width=1400&height=900&seq=about-right-v2-20260706&orientation=landscape",
 };
-
-export const testimonials = [
-  {
-    quote:
-      "숫자 뒤에 숨은 사회의 결을 읽어내는 방식이 남다릅니다. 정책 기획 회의에서 매번 인용하는 리포트예요.",
-    name: "정하늘",
-    role: "국책 연구원 · 사회정책실",
-    rating: 4.9,
-    avatar:
-      "https://readdy.ai/api/search-image?query=Editorial%20portrait%20photograph%20of%20professional%20Korean%20woman%20in%20her%20forties%20wearing%20cream%20turtleneck%20sweater%20with%20soft%20natural%20window%20light%2C%20muted%20warm%20background%2C%20magazine%20quality%20portrait%20photography%2C%20confident%20warm%20expression&width=200&height=200&seq=avatar-jung-01&orientation=squarish",
-  },
-  {
-    quote:
-      "차트 하나에도 방법론과 원출처가 다 명시되어 있어서 뉴스룸에서 바로 인용할 수 있습니다.",
-    name: "윤태오",
-    role: "경제 일간지 · 데이터저널리즘팀 리드",
-    rating: 5.0,
-    avatar:
-      "https://readdy.ai/api/search-image?query=Editorial%20portrait%20photograph%20of%20professional%20Korean%20man%20in%20his%20thirties%20wearing%20forest%20green%20shirt%20with%20soft%20natural%20window%20light%2C%20muted%20cream%20background%2C%20magazine%20quality%20portrait%20photography%2C%20thoughtful%20confident%20expression&width=200&height=200&seq=avatar-yoon-02&orientation=squarish",
-  },
-  {
-    quote:
-      "전략 리포트 작성 시간이 절반으로 줄었어요. 데이터 큐레이션 품질이 압도적입니다.",
-    name: "Sarah Kim",
-    role: "글로벌 컨설팅 · 리서치 매니저",
-    rating: 4.8,
-    avatar:
-      "https://readdy.ai/api/search-image?query=Editorial%20portrait%20photograph%20of%20professional%20Asian%20woman%20in%20her%20thirties%20with%20short%20hair%20wearing%20cream%20blazer%20in%20soft%20natural%20light%2C%20muted%20warm%20neutral%20background%2C%20high%20end%20magazine%20portrait%20photography%2C%20warm%20confident%20expression&width=200&height=200&seq=avatar-sarah-03&orientation=squarish",
-  },
-];
 
 export const partners = [
   "ACLED",
