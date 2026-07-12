@@ -34,13 +34,13 @@ def find_model():
              f"{model}:generateContent?key={API_KEY}")
         body=json.dumps({"contents":[{"parts":[{"text":
             "Translate to English. Input: JSON array. Output: JSON array only.\n"+test}]}],
-            "generationConfig":{"responseMimeType":"application/json","maxOutputTokens":20}
+            "generationConfig":{"maxOutputTokens":20}
         }).encode()
         req=urllib.request.Request(url,data=body,
             headers={"Content-Type":"application/json"},method="POST")
         try:
             with urllib.request.urlopen(req,timeout=20) as r:
-                json.loads(r.read())
+                r.read()  # 응답 존재 여부만 확인 (형식 무관)
             print(f"[init] 확정: {model} ({ver})")
             return model, ver
         except urllib.error.HTTPError as e:
