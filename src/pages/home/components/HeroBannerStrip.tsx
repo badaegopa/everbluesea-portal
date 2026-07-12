@@ -14,8 +14,7 @@ export default function HeroBannerStrip() {
 
   const ssrnPapers = [
     { id: "6632858", label: "Λ¹²", href: "https://ssrn.com/abstract=6632858" },
-    { id: "6806478", label: "BSLI", href: "https://ssrn.com/abstract=6806478" },
-    { id: "7033138", label: "UI", href: "https://ssrn.com/abstract=7033138" },
+    { id: "6509200", label: "BRI·SSI·GPI", href: "https://ssrn.com/abstract=6509200" },
   ];
 
   return (
@@ -82,8 +81,8 @@ export default function HeroBannerStrip() {
             </p>
             <p className="mt-1 text-xs md:text-sm" style={{ color: "#5E9186" }}>
               {isKo
-                ? "Λ¹² 사회동역학 프레임워크 · BSLI 기초사회생활지수 · UI 봉기지수 — 전문 무료 열람"
-                : "Λ¹² Sociodynamic Framework · BSLI · Uprising Index — Open Access"}
+                ? "Λ¹² 사회동역학 프레임워크 · 삼좌표 프레임워크(BRI·SSI·GPI) — 전문 무료 열람"
+                : "Λ¹² Sociodynamic Framework · Triple-Coordinate Framework (BRI·SSI·GPI) — Open Access"}
             </p>
           </div>
           <div className="flex items-center gap-2 flex-wrap">

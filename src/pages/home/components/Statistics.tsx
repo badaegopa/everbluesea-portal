@@ -27,10 +27,10 @@ export default function Statistics() {
       index: "03",
     },
     {
-      value: "3",
+      value: "2",
       unit: "",
       label: t("stat_ssrn"),
-      source: "SSRN 6632858 · 6806478 · 7033138",
+      source: "SSRN 6632858 · 6509200",
       index: "04",
     },
   ];
