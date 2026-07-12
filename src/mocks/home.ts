@@ -38,7 +38,7 @@ export const featuredReports = [
     titleEn: "Why Pressure Became Hope, Not Backlash — Venezuela & Iran 2026",
     excerpt: "참수된 국가와 학살로 버틴 국가. 희망 벡터 역전, 기대-배신 격차 G(t), 그리고 역사 표본 11건이 가리키는 외생 버팀목 체제의 세 가지 종점.",
     excerptEn: "A decapitated state and a state that survived by massacre. Hope-vector inversion, the expectation-betrayal gap G(t), and the three historical endpoints of externally propped regimes.",
-    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20two%20opposing%20force%20fields%20on%20warm%20cream%20beige%20background%2C%20one%20teal%20green%20vortex%20being%20held%20suspended%20by%20external%20golden%20threads%20from%20above%20while%20a%20deep%20crimson%20wave%20surges%20and%20recoils%20on%20the%20right%2C%20tension%20between%20suspension%20and%20eruption%2C%20flowing%20particle%20streams%20connecting%20the%20two%20systems%2C%20scientific%20phase%20space%20aesthetic%2C%20no%20human%20figures%20no%20faces%20no%20text&width=1200&height=600&seq=report-r004-v1-20260712&orientation=landscape",
+    image: "/images/reports/r-004_card.svg",
     tone: "dark" as const,
   },
   {
