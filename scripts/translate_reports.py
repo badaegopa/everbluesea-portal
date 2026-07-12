@@ -20,8 +20,9 @@ MODE      = "all" if "--all" in sys.argv else "changed"
 
 # 현재 운영 중인 모델 (2026-07 기준)
 CANDIDATES = [
-    ("gemini-2.0-flash", "v1beta"),
-    ("gemini-2.5-flash", "v1beta"),
+    ("gemini-flash-latest",   "v1beta"),
+    ("gemini-3.5-flash",      "v1beta"),
+    ("gemini-2.5-flash-lite", "v1beta"),
 ]
 
 def find_model():
@@ -146,7 +147,11 @@ def rebuild_manifest():
 def main():
     g  = json.loads(GLOSSARY.read_text(encoding="utf-8"))
     gb = "\n".join(f"- {k} → {v}" for k, v in g.items())
-    model, ver = find_model()
+    if DRY:
+        model, ver = "(dry)", "(dry)"
+        print("[init] DRY 모드 — 모델 탐색/API 호출 생략")
+    else:
+        model, ver = find_model()
     sel = targets()
     print(f"{len(sel)} file(s) queued (mode={MODE}, dry={DRY})")
     made = 0
