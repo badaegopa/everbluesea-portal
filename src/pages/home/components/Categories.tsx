@@ -5,10 +5,12 @@ import { engineDetails } from "@/mocks/engineDetails";
 import type { EngineDetail } from "@/mocks/engineDetails";
 import { mainCategories } from "@/mocks/home";
 import { engineReports } from "@/mocks/engineReports";
+import { localizedHtmlPath, useTranslationManifest } from "@/lib/localizedPath";
 
 export default function Categories() {
   const { t, i18n } = useTranslation();
   const isKo = i18n.language === "ko";
+  useTranslationManifest();
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("전체");
   const [activeTopic, setActiveTopic] = useState<string | null>(null);
@@ -193,7 +195,7 @@ export default function Categories() {
                       {filtered.map((r) => (
                         <a
                           key={r.id}
-                          href={r.htmlPath}
+                          href={localizedHtmlPath(r.htmlPath, i18n.language)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 px-4 py-3 border-b transition hover:bg-background-100/60"

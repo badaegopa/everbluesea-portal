@@ -7,8 +7,14 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    lng: 'ko',
-    fallbackLng: 'ko',
+    fallbackLng: 'en',
+    supportedLngs: ['ko', 'en'],
+    nonExplicitSupportedLngs: true,
+    load: 'languageOnly',
+    detection: {
+      order: ['localStorage', 'navigator'],
+      caches: ['localStorage'],
+    },
     debug: false,
     resources: messages,
     interpolation: {

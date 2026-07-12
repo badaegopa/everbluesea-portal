@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
+import { localizedHtmlPath, useTranslationManifest } from "@/lib/localizedPath";
 
 interface ReportMeta {
   title: string;
@@ -28,6 +29,7 @@ export default function ReportPage() {
   const { id } = useParams<{ id: string }>();
   const { i18n } = useTranslation();
   const isKo = i18n.language === "ko";
+  useTranslationManifest();
   const [report, setReport] = useState<Report | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -99,7 +101,7 @@ export default function ReportPage() {
         /* ── iframe 모드: 원본 HTML 통짜 표시 ── */
         <div className="pt-14" style={{ height: "100vh" }}>
           <iframe
-            src={report.meta.html_path}
+            src={localizedHtmlPath(report.meta.html_path, i18n.language)}
             title={isKo ? report.meta.title : report.meta.title_en}
             style={{
               width: "100%",

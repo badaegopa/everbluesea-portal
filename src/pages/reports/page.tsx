@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useState, useMemo } from "react";
 import { nationReports } from "@/mocks/nationReports";
+import { localizedHtmlPath, useTranslationManifest } from "@/lib/localizedPath";
 
 const REGIONS = ["전체", "유럽", "아메리카", "동북아시아", "기후·소멸", "중동", "동남아시아", "남아시아"];
 const SCOPES = ["전체", "단독", "권역별"];
@@ -8,6 +9,7 @@ const SCOPES = ["전체", "단독", "권역별"];
 export default function ReportsPage() {
   const { i18n } = useTranslation();
   const isKo = i18n.language === "ko";
+  useTranslationManifest();
   const [region, setRegion] = useState("전체");
   const [scope, setScope] = useState("전체");
 
@@ -86,7 +88,7 @@ export default function ReportsPage() {
           {filtered.map((r) => (
             <a
               key={r.id}
-              href={r.htmlPath}
+              href={localizedHtmlPath(r.htmlPath, i18n.language)}
               target="_blank"
               rel="noopener noreferrer"
               className="block border-b py-5 group cursor-pointer transition hover:bg-background-100/50"
