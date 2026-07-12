@@ -25,6 +25,7 @@ def find_model():
     if ov:
         print(f"[init] 지정 모델: {ov} ({ovv})")
         return ov, ovv
+    print(f"[init] API_KEY 앞4자: {API_KEY[:4] if API_KEY else '없음'}")
     print("[init] 모델 탐색 중...")
     test = json.dumps(["안녕하세요."], ensure_ascii=False)
     for model, ver in CANDIDATES:
