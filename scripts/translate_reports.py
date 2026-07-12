@@ -40,7 +40,8 @@ def find_model():
             print(f"[init] 모델 확정: {model} ({ver})")
             return model, ver
         except urllib.error.HTTPError as e:
-            print(f"  {model}/{ver} → HTTP {e.code}")
+            detail = e.read().decode()[:300] if e.fp else ""
+            print(f"  {model}/{ver} → HTTP {e.code}: {detail}")
         except Exception as e:
             print(f"  {model}/{ver} → {e}")
     raise RuntimeError("사용 가능한 모델 없음")
