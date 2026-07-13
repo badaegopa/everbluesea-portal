@@ -5,6 +5,7 @@
   2. 그 한 편만 번역해서 _EN.html + 매니페스트 갱신.
   3. 커밋·푸시는 워크플로가 담당 (파일 생성만 이 스크립트 몫).
   4. 번역할 파일이 없으면 아무것도 안 하고 종료 (exit 0).
+v19 변경 (2026-07-13): 태그 급변 기준 절대40 → max(40, 원본 태그수의 8%) 비율화.
 v18 변경 (2026-07-13, 소장 지시):
   - 한글/한자 잔존이 있어도 _EN.html 항상 생성 (도식·데이터 내 미번역분은 한글 그대로 출력)
   - 잔존 차단 임계값 폐지 → 대신 전체 _EN 파일 잔존 스캔 후 수동교정 목록 출력
@@ -157,9 +158,11 @@ def process(f, model, ver, gb):
     bt,ot = base.count("<"), out.count("<")
     ko_o  = len(KO.findall(html)); ko_l = len(KO.findall(out))
     hj_l  = len(HANJA.findall(out))
-    # v18: 잔존 차단 없음 — 태그 급변(구조 훼손)만 차단, 나머지는 항상 생성
-    if abs(bt-ot) > 40:                              # 구조 심각 훼손만 차단
-        log(f"   [FAIL] 태그 급변 {bt}->{ot} (>40) — 미생성")
+    # v19: 태그 기준을 비율화 — max(40, 원본의 8%). 대형 다청크 문서의
+    # 자연 드리프트(실측 2~6%)는 통과시키고 진짜 구조 훼손만 차단.
+    tag_limit = max(40, int(bt * 0.08))
+    if abs(bt-ot) > tag_limit:
+        log(f"   [FAIL] 태그 급변 {bt}->{ot} (>{tag_limit}) — 미생성")
         return None
     if abs(bt-ot) > 2:
         log(f"   [warn] 태그 변동 {bt}->{ot} — 번역 과정 정상 범위로 간주")

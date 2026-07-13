@@ -1,8 +1,11 @@
 export interface AxiomItem {
   id: string;
   name: string;
+  nameEn?: string;
   summary: string;
+  summaryEn?: string;
   detail: string;
+  detailEn?: string;
   formula?: string;
   isNew?: boolean;
 }
@@ -10,7 +13,8 @@ export interface AxiomItem {
 export interface FormulaItem {
   expression: string;   // 수식 (LaTeX-like 텍스트)
   description: string;  // 수식 설명
-  variables: { symbol: string; meaning: string }[];  // 기호 설명
+  descriptionEn?: string;
+  variables: { symbol: string; meaning: string; meaningEn?: string }[];  // 기호 설명
 }
 
 export interface EngineDetail {
@@ -26,12 +30,14 @@ export interface EngineDetail {
   whyBuiltEn: string;
   formulas: FormulaItem[];
   keyVariables: string[];
-  dataSources: { name: string; url: string }[];
+  dataSources: { name: string; nameEn?: string; url: string }[];
   classification: string;
   classificationEn: string;
   axioms?: AxiomItem[];
   axiomsQuote?: string;
+  axiomsQuoteEn?: string;
   axiomsQuoteBy?: string;
+  axiomsQuoteByEn?: string;
 }
 
 export const engineDetails: Record<string, EngineDetail> = {
@@ -53,21 +59,21 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "Λ¹² = Σᵢ(wᵢ · Aᵢ) + CI",
-        description: "12개 차원의 가중합에 부패지수를 외부 선행변수로 추가한 핵심 공식",
+        description: "12개 차원의 가중합에 부패지수를 외부 선행변수로 추가한 핵심 공식", descriptionEn: "Core formula: weighted sum of 12 dimensions plus the Corruption Index as an external leading variable",
         variables: [
-          { symbol: "Aᵢ", meaning: "i번째 차원 지수 (A1~A12), 각각 정규화된 0~1 스칼라" },
-          { symbol: "wᵢ", meaning: "차원별 가중치 (3단계 교차검증으로 결정)" },
-          { symbol: "CI", meaning: "Corruption Index — 외부 선행변수, Transparency International CPI 기반" },
-          { symbol: "Λ¹²", meaning: "최종 국가 사회동역학 지수 (낮을수록 안정)" },
+          { symbol: "Aᵢ", meaning: "i번째 차원 지수 (A1~A12), 각각 정규화된 0~1 스칼라", meaningEn: "i-th dimension index (A1–A12), each a normalized 0–1 scalar" },
+          { symbol: "wᵢ", meaning: "차원별 가중치 (3단계 교차검증으로 결정)", meaningEn: "Per-dimension weight (determined by three-stage cross-validation)" },
+          { symbol: "CI", meaning: "Corruption Index — 외부 선행변수, Transparency International CPI 기반", meaningEn: "Corruption Index — external leading variable, based on Transparency International CPI" },
+          { symbol: "Λ¹²", meaning: "최종 국가 사회동역학 지수 (낮을수록 안정)", meaningEn: "Final national sociodynamic index (lower = more stable)" },
         ],
       },
       {
         expression: "G-T Core = (A2 + A8) / 2",
-        description: "거버넌스(A2)와 신뢰(A8)의 평균 — 체제 안정성의 핵심축",
+        description: "거버넌스(A2)와 신뢰(A8)의 평균 — 체제 안정성의 핵심축", descriptionEn: "Mean of governance (A2) and trust (A8) — the core axis of regime stability",
         variables: [
-          { symbol: "A2", meaning: "거버넌스 지수 — WGI 6개 지표 종합" },
-          { symbol: "A8", meaning: "사회신뢰 지수 — World Values Survey 기반" },
-          { symbol: "G-T Core", meaning: "거버넌스-신뢰 핵심 지수, 임계값 −0.5 이하 시 불안정" },
+          { symbol: "A2", meaning: "거버넌스 지수 — WGI 6개 지표 종합", meaningEn: "Governance index — composite of six WGI indicators" },
+          { symbol: "A8", meaning: "사회신뢰 지수 — World Values Survey 기반", meaningEn: "Social trust index — based on the World Values Survey" },
+          { symbol: "G-T Core", meaning: "거버넌스-신뢰 핵심 지수, 임계값 −0.5 이하 시 불안정", meaningEn: "Governance–trust core index; unstable below the −0.5 threshold" },
         ],
       },
     ],
@@ -101,13 +107,13 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "BSLI = 0.40·F_ML + 0.60·H − D − Hs",
-        description: "삼중계 가중평균 — 衣·食·住 각 축의 정규화 지수 합산",
+        description: "삼중계 가중평균 — 衣·食·住 각 축의 정규화 지수 합산", descriptionEn: "Triple-gauge weighted mean — sum of normalized indices for clothing, food, and shelter",
         variables: [
-          { symbol: "衣", meaning: "의류 지수 — 의복 지출/소득 비율, 계절 적응성" },
-          { symbol: "食", meaning: "식료 지수 — 칼로리 충족률, 식품 안전성, 접근성" },
-          { symbol: "住", meaning: "주거 지수 — 주거비/소득 비율, 과밀도, 위생" },
-          { symbol: "W_x", meaning: "각 축 가중치 (국가 발전 단계별 조정)" },
-          { symbol: "BSLI", meaning: "0~1 정규화, 높을수록 고통 심화" },
+          { symbol: "衣", meaning: "의류 지수 — 의복 지출/소득 비율, 계절 적응성", meaningEn: "Clothing index — clothing spend/income ratio, seasonal adaptability" },
+          { symbol: "食", meaning: "식료 지수 — 칼로리 충족률, 식품 안전성, 접근성", meaningEn: "Food index — calorie sufficiency, food safety, accessibility" },
+          { symbol: "住", meaning: "주거 지수 — 주거비/소득 비율, 과밀도, 위생", meaningEn: "Shelter index — housing cost/income ratio, overcrowding, sanitation" },
+          { symbol: "W_x", meaning: "각 축 가중치 (국가 발전 단계별 조정)", meaningEn: "Per-axis weight (adjusted by national development stage)" },
+          { symbol: "BSLI", meaning: "0~1 정규화, 높을수록 고통 심화", meaningEn: "Normalized 0–1; higher = deeper hardship" },
         ],
       },
 
@@ -117,8 +123,8 @@ export const engineDetails: Record<string, EngineDetail> = {
       { name: "World Bank Poverty & Inequality", url: "https://pip.worldbank.org" },
       { name: "FAO Food Security Data", url: "https://fao.org/faostat" },
       { name: "OECD Better Life Index", url: "https://oecdbetterlifeindex.org" },
-      { name: "KOSIS 인구주택총조사", url: "https://kosis.kr" },
-      { name: "국토교통부 실거래가 API", url: "https://data.go.kr" },
+      { name: "KOSIS 인구주택총조사", nameEn: "KOSIS Population and Housing Census", url: "https://kosis.kr" },
+      { name: "국토교통부 실거래가 API", nameEn: "MOLIT Real Transaction Price API", url: "https://data.go.kr" },
     ],
     classification: "A(0.0~0.2) · B(0.2~0.4) · C(0.4~0.6) · D(0.6~0.8) · E(0.8+) · 한국 C(0.463)",
     classificationEn: "A(0.0–0.2) · B(0.2–0.4) · C(0.4–0.6) · D(0.6–0.8) · E(0.8+) · Korea C(0.463)",
@@ -142,33 +148,33 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "UI(t) = η·E_A2 − P_BSLI/σ(GT) − C_internal",
-        description: "봉기지수 핵심 방정식 — 사회 압력과 내부 응집력의 균형",
+        description: "봉기지수 핵심 방정식 — 사회 압력과 내부 응집력의 균형", descriptionEn: "Core Uprising Index equation — balance of social pressure and internal cohesion",
         variables: [
-          { symbol: "η", meaning: "사회구조 안정성 계수 (Λ¹² A2 기반)" },
-          { symbol: "E_A2", meaning: "거버넌스 탄성 지수" },
-          { symbol: "P_BSLI", meaning: "BSLI 기반 사회 압력 벡터" },
-          { symbol: "σ(GT)", meaning: "G-T Core 표준편차 — 시스템 변동성" },
-          { symbol: "C_internal", meaning: "내부 응집력 계수 (사회적 자본)" },
-          { symbol: "UI(t)", meaning: "시간 t에서의 봉기지수, 음수일수록 위험" },
+          { symbol: "η", meaning: "사회구조 안정성 계수 (Λ¹² A2 기반)", meaningEn: "Social-structure stability coefficient (based on Λ¹² A2)" },
+          { symbol: "E_A2", meaning: "거버넌스 탄성 지수", meaningEn: "Governance elasticity index" },
+          { symbol: "P_BSLI", meaning: "BSLI 기반 사회 압력 벡터", meaningEn: "BSLI-based social pressure vector" },
+          { symbol: "σ(GT)", meaning: "G-T Core 표준편차 — 시스템 변동성", meaningEn: "G-T Core standard deviation — system volatility" },
+          { symbol: "C_internal", meaning: "내부 응집력 계수 (사회적 자본)", meaningEn: "Internal cohesion coefficient (social capital)" },
+          { symbol: "UI(t)", meaning: "시간 t에서의 봉기지수, 음수일수록 위험", meaningEn: "Uprising Index at time t; more negative = higher risk" },
         ],
       },
       {
         expression: "T_trigger = δ_{L-1} / [P_BSLI · (1 − E_A2)]",
-        description: "도화선 임계 시간 — 섭동이 폭발로 전환되는 예측 시점",
+        description: "도화선 임계 시간 — 섭동이 폭발로 전환되는 예측 시점", descriptionEn: "Fuse threshold time — predicted point at which perturbation converts to explosion",
         variables: [
-          { symbol: "δ_{L-1}", meaning: "선행 레이어 임피던스 불일치량" },
-          { symbol: "P_BSLI", meaning: "누적 사회 압력" },
-          { symbol: "E_A2", meaning: "탄성 계수 (1에 가까울수록 회복력 강함)" },
-          { symbol: "T_trigger", meaning: "예측 임계 도달 시간 (단위: 월)" },
+          { symbol: "δ_{L-1}", meaning: "선행 레이어 임피던스 불일치량", meaningEn: "Impedance mismatch of the preceding layer" },
+          { symbol: "P_BSLI", meaning: "누적 사회 압력", meaningEn: "Accumulated social pressure" },
+          { symbol: "E_A2", meaning: "탄성 계수 (1에 가까울수록 회복력 강함)", meaningEn: "Elasticity coefficient (closer to 1 = stronger resilience)" },
+          { symbol: "T_trigger", meaning: "예측 임계 도달 시간 (단위: 월)", meaningEn: "Predicted time to threshold (unit: months)" },
         ],
       },
       {
         expression: "Γ = (Z_L0 − Z_A8) / (Z_L0 + Z_A8)",
-        description: "반사 계수 — 충격 에너지가 사회에 흡수되지 못하고 반사되는 비율",
+        description: "반사 계수 — 충격 에너지가 사회에 흡수되지 못하고 반사되는 비율", descriptionEn: "Reflection coefficient — the share of shock energy reflected rather than absorbed by society",
         variables: [
-          { symbol: "Z_L0", meaning: "충격 임피던스 (외부 압력 강도)" },
-          { symbol: "Z_A8", meaning: "사회 임피던스 (신뢰·응집력 기반 저항)" },
-          { symbol: "Γ", meaning: "반사 계수, 1에 가까울수록 사회 충격 흡수 불가" },
+          { symbol: "Z_L0", meaning: "충격 임피던스 (외부 압력 강도)", meaningEn: "Shock impedance (intensity of external pressure)" },
+          { symbol: "Z_A8", meaning: "사회 임피던스 (신뢰·응집력 기반 저항)", meaningEn: "Social impedance (resistance based on trust and cohesion)" },
+          { symbol: "Γ", meaning: "반사 계수, 1에 가까울수록 사회 충격 흡수 불가", meaningEn: "Reflection coefficient; closer to 1 = society cannot absorb the shock" },
         ],
       },
     ],
@@ -201,21 +207,21 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "UI(t) = η·E_A2 − P_BSLI/σ(GT) − C_internal",
-        description: "봉기지수 핵심 방정식 (REVERBANT UI 방정식과 동일 기반)",
+        description: "봉기지수 핵심 방정식 (REVERBANT UI 방정식과 동일 기반)", descriptionEn: "Core Uprising Index equation (same basis as the REVERBANT UI equation)",
         variables: [
-          { symbol: "UI > 0", meaning: "안정 구간 — 사회 응집력이 압력을 초과" },
-          { symbol: "UI = 0", meaning: "임계점 — 미세 충격에도 전환 가능" },
-          { symbol: "UI < 0", meaning: "위험 구간 — 봉기 조건 형성" },
-          { symbol: "C_internal", meaning: "내부 응집력, 한국 0.72 / 미국 0.28" },
+          { symbol: "UI > 0", meaning: "안정 구간 — 사회 응집력이 압력을 초과", meaningEn: "Stable zone — social cohesion exceeds pressure" },
+          { symbol: "UI = 0", meaning: "임계점 — 미세 충격에도 전환 가능", meaningEn: "Critical point — even a minor shock can flip the state" },
+          { symbol: "UI < 0", meaning: "위험 구간 — 봉기 조건 형성", meaningEn: "Danger zone — uprising conditions forming" },
+          { symbol: "C_internal", meaning: "내부 응집력, 한국 0.72 / 미국 0.28", meaningEn: "Internal cohesion; South Korea 0.72 / US 0.28" },
         ],
       },
       {
         expression: "E_WD=0 / E_SN=0.35 / E_BH=0.70",
-        description: "탄성 단계 분류 — 사회가 충격을 흡수하는 능력의 3단계",
+        description: "탄성 단계 분류 — 사회가 충격을 흡수하는 능력의 3단계", descriptionEn: "Elasticity stage classification — three levels of a society's shock-absorbing capacity",
         variables: [
-          { symbol: "E_WD = 0", meaning: "완전 비탄성 — 충격 직접 전달, 즉각 폭발" },
-          { symbol: "E_SN = 0.35", meaning: "반탄성 — 충격 35% 흡수, 지연 반응" },
-          { symbol: "E_BH = 0.70", meaning: "고탄성 — 충격 70% 흡수, 회복 가능" },
+          { symbol: "E_WD = 0", meaning: "완전 비탄성 — 충격 직접 전달, 즉각 폭발", meaningEn: "Fully inelastic — shock transmitted directly, immediate explosion" },
+          { symbol: "E_SN = 0.35", meaning: "반탄성 — 충격 35% 흡수, 지연 반응", meaningEn: "Semi-elastic — 35% of shock absorbed, delayed response" },
+          { symbol: "E_BH = 0.70", meaning: "고탄성 — 충격 70% 흡수, 회복 가능", meaningEn: "Highly elastic — 70% of shock absorbed, recovery possible" },
         ],
       },
     ],
@@ -245,21 +251,21 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "BBD = (P_t − MA_n) / σ_n > θ_c",
-        description: "현재 가격이 이동평균 대비 임계 표준편차를 초과할 때 버블 신호 발생",
+        description: "현재 가격이 이동평균 대비 임계 표준편차를 초과할 때 버블 신호 발생", descriptionEn: "Bubble signal fires when the current price exceeds the moving average by a threshold number of standard deviations",
         variables: [
-          { symbol: "P_t", meaning: "t 시점 자산 가격" },
-          { symbol: "MA_n", meaning: "n기간 이동평균" },
-          { symbol: "σ_n", meaning: "n기간 가격 표준편차" },
-          { symbol: "θ_c", meaning: "임계 배수 (통상 2.0~2.5σ)" },
-          { symbol: "BBD > 1", meaning: "버블 구간 진입 신호" },
+          { symbol: "P_t", meaning: "t 시점 자산 가격", meaningEn: "Asset price at time t" },
+          { symbol: "MA_n", meaning: "n기간 이동평균", meaningEn: "n-period moving average" },
+          { symbol: "σ_n", meaning: "n기간 가격 표준편차", meaningEn: "n-period price standard deviation" },
+          { symbol: "θ_c", meaning: "임계 배수 (통상 2.0~2.5σ)", meaningEn: "Threshold multiplier (typically 2.0–2.5σ)" },
+          { symbol: "BBD > 1", meaning: "버블 구간 진입 신호", meaningEn: "Signal of entry into bubble territory" },
         ],
       },
     ],
     keyVariables: ["버블 임계값 θ_c", "이동평균 MA_n", "σ 표준편차", "붕괴 주기"],
     dataSources: [
       { name: "Yahoo Finance API", url: "https://finance.yahoo.com" },
-      { name: "KRX 한국거래소", url: "https://data.krx.co.kr" },
-      { name: "BIS 국제결제은행", url: "https://www.bis.org/statistics" },
+      { name: "KRX 한국거래소", nameEn: "KRX Korea Exchange", url: "https://data.krx.co.kr" },
+      { name: "BIS 국제결제은행", nameEn: "BIS Bank for International Settlements", url: "https://www.bis.org/statistics" },
       { name: "FRED Federal Reserve", url: "https://fred.stlouisfed.org" },
     ],
     classification: "정상(Normal) / 과열(Overheated) / 버블(Bubble) / 붕괴(Burst)",
@@ -280,13 +286,13 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "G = 1 − Σᵢ(Xᵢ − Xᵢ₋₁)(Yᵢ + Yᵢ₋₁)",
-        description: "로렌츠 곡선 기반 지니계수 — 완전평등(0)에서 완전불평등(1)까지",
+        description: "로렌츠 곡선 기반 지니계수 — 완전평등(0)에서 완전불평등(1)까지", descriptionEn: "Lorenz-curve-based Gini coefficient — from perfect equality (0) to perfect inequality (1)",
         variables: [
-          { symbol: "Xᵢ", meaning: "누적 인구 비율 (i번째 분위)" },
-          { symbol: "Yᵢ", meaning: "누적 소득 비율" },
-          { symbol: "G = 0", meaning: "완전 평등" },
-          { symbol: "G = 1", meaning: "완전 불평등" },
-          { symbol: "G > 0.4", meaning: "사회 불안정 임계 구간" },
+          { symbol: "Xᵢ", meaning: "누적 인구 비율 (i번째 분위)", meaningEn: "Cumulative population share (i-th quantile)" },
+          { symbol: "Yᵢ", meaning: "누적 소득 비율", meaningEn: "Cumulative income share" },
+          { symbol: "G = 0", meaning: "완전 평등", meaningEn: "Perfect equality" },
+          { symbol: "G = 1", meaning: "완전 불평등", meaningEn: "Perfect inequality" },
+          { symbol: "G > 0.4", meaning: "사회 불안정 임계 구간", meaningEn: "Critical zone of social instability" },
         ],
       },
     ],
@@ -295,7 +301,7 @@ export const engineDetails: Record<string, EngineDetail> = {
       { name: "World Bank Poverty & Inequality", url: "https://pip.worldbank.org" },
       { name: "OECD Income Distribution", url: "https://stats.oecd.org" },
       { name: "LIS Cross-National Data", url: "https://www.lisdatacenter.org" },
-      { name: "통계청 가계금융복지조사", url: "https://kosis.kr" },
+      { name: "통계청 가계금융복지조사", nameEn: "Statistics Korea Household Finance Survey", url: "https://kosis.kr" },
     ],
     classification: "평등(G<0.3) / 보통(0.3~0.4) / 불평등(0.4~0.5) / 극단(G>0.5)",
     classificationEn: "Equal(G<0.3) / Moderate(0.3–0.4) / Unequal(0.4–0.5) / Extreme(G>0.5)",
@@ -315,13 +321,13 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "NCI = w₁·Admin + w₂·Law + w₃·Crisis + w₄·Finance",
-        description: "행정·법치·위기대응·재정 4개 축의 가중합",
+        description: "행정·법치·위기대응·재정 4개 축의 가중합", descriptionEn: "Weighted sum of four axes: administration, rule of law, crisis response, and public finance",
         variables: [
-          { symbol: "Admin", meaning: "행정 효율성 — WGI Government Effectiveness" },
-          { symbol: "Law", meaning: "법치 지수 — WGI Rule of Law" },
-          { symbol: "Crisis", meaning: "위기대응 역량 — INFORM Risk Index 역수" },
-          { symbol: "Finance", meaning: "공공재정 건전성 — IMF Fiscal Monitor" },
-          { symbol: "wᵢ", meaning: "각 축 가중치 (합산 1.0)" },
+          { symbol: "Admin", meaning: "행정 효율성 — WGI Government Effectiveness", meaningEn: "Administrative efficiency — WGI Government Effectiveness" },
+          { symbol: "Law", meaning: "법치 지수 — WGI Rule of Law", meaningEn: "Rule-of-law index — WGI Rule of Law" },
+          { symbol: "Crisis", meaning: "위기대응 역량 — INFORM Risk Index 역수", meaningEn: "Crisis-response capacity — inverse of the INFORM Risk Index" },
+          { symbol: "Finance", meaning: "공공재정 건전성 — IMF Fiscal Monitor", meaningEn: "Public-finance soundness — IMF Fiscal Monitor" },
+          { symbol: "wᵢ", meaning: "각 축 가중치 (합산 1.0)", meaningEn: "Per-axis weight (summing to 1.0)" },
         ],
       },
     ],
@@ -350,19 +356,19 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "SCDI = Σⱼ(Dⱼ · Wⱼ · Vⱼ) / N",
-        description: "품목별 교란 강도·가중치·변동성의 가중평균",
+        description: "품목별 교란 강도·가중치·변동성의 가중평균", descriptionEn: "Weighted mean of per-item disruption intensity, weight, and volatility",
         variables: [
-          { symbol: "Dⱼ", meaning: "j 품목 교란 강도 (정상 대비 납기 지연 비율)" },
-          { symbol: "Wⱼ", meaning: "j 품목의 경제 가중치 (GDP 투입산출표 기반)" },
-          { symbol: "Vⱼ", meaning: "j 품목 가격 변동성 (30일 σ)" },
-          { symbol: "N", meaning: "추적 품목 수" },
-          { symbol: "SCDI > 0.6", meaning: "공급망 위기 임계값" },
+          { symbol: "Dⱼ", meaning: "j 품목 교란 강도 (정상 대비 납기 지연 비율)", meaningEn: "Disruption intensity of item j (delivery delay ratio vs. normal)" },
+          { symbol: "Wⱼ", meaning: "j 품목의 경제 가중치 (GDP 투입산출표 기반)", meaningEn: "Economic weight of item j (based on GDP input–output tables)" },
+          { symbol: "Vⱼ", meaning: "j 품목 가격 변동성 (30일 σ)", meaningEn: "Price volatility of item j (30-day σ)" },
+          { symbol: "N", meaning: "추적 품목 수", meaningEn: "Number of tracked items" },
+          { symbol: "SCDI > 0.6", meaning: "공급망 위기 임계값", meaningEn: "Supply-chain crisis threshold" },
         ],
       },
     ],
     keyVariables: ["납기지연 Dⱼ", "경제가중치 Wⱼ", "가격변동성 Vⱼ", "지정학 리스크"],
     dataSources: [
-      { name: "뉴욕 연준 GSCPI", url: "https://www.newyorkfed.org/research/policy/gscpi" },
+      { name: "뉴욕 연준 GSCPI", nameEn: "New York Fed GSCPI", url: "https://www.newyorkfed.org/research/policy/gscpi" },
       { name: "Freightos Baltic Index", url: "https://www.freightos.com/freight-resources/fbi" },
       { name: "World Bank Commodity Prices", url: "https://www.worldbank.org/en/research/commodity-markets" },
       { name: "OECD Trade in Value Added", url: "https://stats.oecd.org/tiva" },
@@ -385,22 +391,22 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "PPI = α·Capture + β·Circulation + γ·Corruption + δ·Media",
-        description: "규제포획·엘리트순환·부패·언론통제 4축 가중합",
+        description: "규제포획·엘리트순환·부패·언론통제 4축 가중합", descriptionEn: "Weighted sum of four axes: regulatory capture, elite circulation, corruption, and media control",
         variables: [
-          { symbol: "Capture", meaning: "규제 포획 강도 — 회전문 인사 비율, 로비 지출" },
-          { symbol: "Circulation", meaning: "엘리트 순환 단절 — 상위 1% 세습 비율" },
-          { symbol: "Corruption", meaning: "부패 고착화 — CPI 역수 + 기소율 역수" },
-          { symbol: "Media", meaning: "언론 통제 — RSF 언론자유지수 역수" },
-          { symbol: "PPI > 0.7", meaning: "제도 포획 완성 — 봉기 임계 근접" },
+          { symbol: "Capture", meaning: "규제 포획 강도 — 회전문 인사 비율, 로비 지출", meaningEn: "Regulatory-capture intensity — revolving-door ratio, lobbying spend" },
+          { symbol: "Circulation", meaning: "엘리트 순환 단절 — 상위 1% 세습 비율", meaningEn: "Broken elite circulation — top-1% inheritance ratio" },
+          { symbol: "Corruption", meaning: "부패 고착화 — CPI 역수 + 기소율 역수", meaningEn: "Entrenched corruption — inverse CPI + inverse prosecution rate" },
+          { symbol: "Media", meaning: "언론 통제 — RSF 언론자유지수 역수", meaningEn: "Media control — inverse of the RSF Press Freedom Index" },
+          { symbol: "PPI > 0.7", meaning: "제도 포획 완성 — 봉기 임계 근접", meaningEn: "Institutional capture complete — near uprising threshold" },
         ],
       },
     ],
     keyVariables: ["규제포획 Capture", "엘리트순환 Circulation", "부패 CPI", "언론자유 RSF"],
     dataSources: [
       { name: "Transparency International CPI", url: "https://transparency.org" },
-      { name: "RSF 언론자유지수", url: "https://rsf.org/en/index" },
+      { name: "RSF 언론자유지수", nameEn: "RSF Press Freedom Index", url: "https://rsf.org/en/index" },
       { name: "V-Dem Electoral Democracy", url: "https://v-dem.net" },
-      { name: "OpenSecrets 로비 데이터", url: "https://www.opensecrets.org" },
+      { name: "OpenSecrets 로비 데이터", nameEn: "OpenSecrets Lobbying Data", url: "https://www.opensecrets.org" },
     ],
     classification: "투명(PPI<0.3) / 주의(0.3~0.5) / 포획(0.5~0.7) / 기생완성(PPI>0.7)",
     classificationEn: "Transparent(<0.3) / Caution(0.3–0.5) / Captured(0.5–0.7) / Full Parasite(>0.7)",
@@ -420,45 +426,45 @@ export const engineDetails: Record<string, EngineDetail> = {
     formulas: [
       {
         expression: "UI(t) = η·E_A2 − P_BSLI/σ(G-T) − C_internal",
-        description: "봉기지수 통합 방정식 — 제도 탄성, 서민 압력, 내부 충돌의 결합",
+        description: "봉기지수 통합 방정식 — 제도 탄성, 서민 압력, 내부 충돌의 결합", descriptionEn: "Integrated Uprising Index equation — combining institutional elasticity, grassroots pressure, and internal conflict",
         variables: [
-          { symbol: "η·E_A2", meaning: "제도신뢰(A2)의 탄성 복원 항" },
-          { symbol: "P_BSLI/σ", meaning: "서민 섭동 압력을 G-T Core 강성으로 나눈 값" },
-          { symbol: "C_internal", meaning: "A8이 A2를 공격하는 내부 충돌 (A3)" },
+          { symbol: "η·E_A2", meaning: "제도신뢰(A2)의 탄성 복원 항", meaningEn: "Elastic restoring term of institutional trust (A2)" },
+          { symbol: "P_BSLI/σ", meaning: "서민 섭동 압력을 G-T Core 강성으로 나눈 값", meaningEn: "Grassroots perturbation pressure divided by G-T Core stiffness" },
+          { symbol: "C_internal", meaning: "A8이 A2를 공격하는 내부 충돌 (A3)", meaningEn: "Internal conflict where A8 attacks A2 (A3)" },
         ],
       },
       {
         expression: "T_trigger = δ₋₁ / [P_BSLI · (1 − E_A2)]",
-        description: "도화선 함수(A12) — 폭발 규모는 P_BSLI×(1−E_A2)로 결정",
+        description: "도화선 함수(A12) — 폭발 규모는 P_BSLI×(1−E_A2)로 결정", descriptionEn: "Fuse function (A12) — explosion magnitude determined by P_BSLI×(1−E_A2)",
         variables: [
-          { symbol: "δ₋₁", meaning: "사건의 Layer −1 활성화 강도 (0~1)" },
-          { symbol: "T_trigger ↓", meaning: "도화선 효과 강함 — 작은 사건으로 폭발" },
+          { symbol: "δ₋₁", meaning: "사건의 Layer −1 활성화 강도 (0~1)", meaningEn: "Layer −1 activation intensity of the event (0–1)" },
+          { symbol: "T_trigger ↓", meaning: "도화선 효과 강함 — 작은 사건으로 폭발", meaningEn: "Strong fuse effect — a small event triggers explosion" },
         ],
       },
     ],
     keyVariables: ["A0~A12 (13공리)", "G-T Core", "Layer −1", "T_trigger"],
     dataSources: [
-      { name: "SSRN — UI 엔진 논문", url: "https://ssrn.com/abstract=7033138" },
+      { name: "SSRN — UI 엔진 논문", nameEn: "SSRN — UI Engine Paper", url: "https://ssrn.com/abstract=7033138" },
       { name: "ACLED Conflict Data", url: "https://acleddata.com" },
     ],
     classification: "탄성복원 · 소성변형 · 취성파괴 — 3가지 사회 반응 유형",
     classificationEn: "Elastic Recovery · Plastic Deformation · Brittle Fracture",
-    axiomsQuote: "도화선은 항상 가장 이타적인 것에 반하는 단 하나의 사건이다. 화약의 양은 P_BSLI가 결정하고, 폭발 경로는 E_A2가 결정하고, 도화선에 불을 붙이는 것은 항상 Layer −1이다.",
-    axiomsQuoteBy: "청해(淸海) 김기섭 · REVERBANT v1.1 · 2026-07-03",
+    axiomsQuote: "도화선은 항상 가장 이타적인 것에 반하는 단 하나의 사건이다. 화약의 양은 P_BSLI가 결정하고, 폭발 경로는 E_A2가 결정하고, 도화선에 불을 붙이는 것은 항상 Layer −1이다.", axiomsQuoteEn: "The fuse is always a single event that violates what is most altruistic. The amount of gunpowder is set by P_BSLI, the explosion path by E_A2, and it is always Layer −1 that lights the fuse.",
+    axiomsQuoteBy: "청해(淸海) 김기섭 · REVERBANT v1.1 · 2026-07-03", axiomsQuoteByEn: "Cheonghae (淸海) Giseub Kim · REVERBANT v1.1 · 2026-07-03",
     axioms: [
-      { id: "A0", name: "존재론적 분리", summary: "국가 상태벡터와 서민 섭동벡터는 독립이다", detail: "Λ¹²는 국가 사회구조의 거시 상태벡터(설계층), BSLI는 서민 생활 고통의 외부 섭동벡터(피설계층)다. 두 층위는 서로 독립적으로 존재한다." },
-      { id: "A1", name: "조준 불변성", summary: "어떤 차원이 흔들려도 최종 조준점은 A2다", detail: "12차원 중 어떤 차원이 임계에 도달하더라도, BSLI 섭동의 최종 조준점은 항상 제도신뢰(A2)로 수렴한다." },
-      { id: "A2", name: "E_A2 이중 방향", summary: "제도 탄성은 위·옆 두 방향으로 작동한다", detail: "① 아래로부터 오는 BSLI 섭동을 흡수·복원한다(수직↑). ② 거버넌스(A8)의 과팽창을 억제·복원한다(수평↔). 이 이중 방향성이 견제균형의 물리적 실체다." },
-      { id: "A3", name: "내부 충돌", summary: "A8이 A2를 공격할 때 내부 충돌이 발생한다", detail: "C_internal은 거버넌스(A8)가 제도신뢰(A2)를 공격할 때 발생하는 내부 충돌항이다. UI 방정식의 제3항으로 편입된다.", formula: "C_internal(A2, A8, t)" },
-      { id: "A4", name: "집행 채널 귀속", summary: "집행이 A8에 완전 귀속되면 복원력이 약화된다", detail: "집행 채널이 거버넌스(A8)에 완전히 귀속되면 제도신뢰(A2)의 복원력이 구조적으로 약화된다. (한국: 군 명령 거부 → 복원 성공 / 미국: 연방보안관 A8 소속 → 복원력 약화)" },
-      { id: "A5", name: "Layer 0 계수", summary: "문화·역사 내재화가 명령 반사를 결정한다", detail: "κ_L0는 Layer 0의 문화·역사 내재화 정도(후천적)다. 명령 반사 계수 Γ_execution = 1 − κ_L0.", formula: "Γ_execution = 1 − κ_L0" },
-      { id: "A6", name: "Layer −1 상수", summary: "인류 공통의 신경생물학적 기반은 선천적이다", detail: "λ₋₁은 신경생물학적 인류 공통 기반(선천적)이다. 거울뉴런과 옥시토신 시스템으로, 대면 접촉 시 자동 활성화된다. (1차대전 크리스마스 휴전 실증)" },
-      { id: "A7", name: "임피던스", summary: "명령 반사율은 임피던스 불일치로 결정된다", detail: "명령 반사 계수는 Layer 0와 A8의 임피던스 불일치로 결정된다. (한국 12·3: Γ≈0.8~0.9 / 미얀마 2021: Γ≈0.1)", formula: "Γ = (λ₋₁√(μ_c/ε_h) − Z_A8) / (λ₋₁√(μ_c/ε_h) + Z_A8)" },
-      { id: "A8", name: "BSLI 방향 전환", summary: "공격받으면 서민은 제도 방어로 전환한다", detail: "A8이 A2를 공격할 때, BSLI는 A2 방어로 방향을 전환한다. 최종 조준점은 A8이 아니라 항상 A2다." },
-      { id: "A9", name: "취성 한계치", summary: "지지율 20% 이하에서 취성파괴가 급증한다", detail: "E_A2 < 0.20에서 C_internal이 개시되면 취성파괴 확률이 급증한다. (한국 12·3: E_A2=0.17)", formula: "E_A2 < 0.20 + C_internal 임계" },
-      { id: "A10", name: "BSLI 물성", summary: "서민 고통은 물(H₂O)처럼 상태가 변한다", detail: "BSLI ≡ 물(H₂O). 고체=혁명·봉기, 액체=불만·민원·선거, 기체=침묵·이민·저출산, 초임계=임계 직전. 수소결합 = Layer −1." },
-      { id: "A11", name: "물의 변칙", summary: "억압할수록 섭동은 빠르게 퍼진다", detail: "4℃ 최대밀도=안정 구간, 초임계=겉으론 조용하나 내부 압력 최대, LDL→HDL=분산 불만이 응집 분노로, 확산역설=억압할수록 섭동이 빠르게 확산." },
-      { id: "A12", name: "도화선 불변성", summary: "봉기는 언제나 이타적인 것에 반하는 단 하나의 사건에서 시작된다", detail: "봉기의 도화선은 항상 ① 단순·구체적인 단 하나의 사건, ② 이념·계층·세대를 초월하는 Layer −1 발화, ③ \"이것은 옳지 않다\"는 공명. 폭발 규모는 P_BSLI×(1−E_A2)가 결정한다. (이란·방글라데시·한국·미국 4사례 실증)", formula: "폭발 규모 = P_BSLI × (1 − E_A2)", isNew: true },
+      { id: "A0", name: "존재론적 분리", nameEn: "Ontological Separation", summary: "국가 상태벡터와 서민 섭동벡터는 독립이다", summaryEn: "The state vector of the nation and the grassroots perturbation vector are independent", detail: "Λ¹²는 국가 사회구조의 거시 상태벡터(설계층), BSLI는 서민 생활 고통의 외부 섭동벡터(피설계층)다. 두 층위는 서로 독립적으로 존재한다.", detailEn: "Λ¹² is the macro state vector of the national social structure (design layer); BSLI is the external perturbation vector of grassroots hardship (designed-upon layer). The two strata exist independently." },
+      { id: "A1", name: "조준 불변성", nameEn: "Target Invariance", summary: "어떤 차원이 흔들려도 최종 조준점은 A2다", summaryEn: "Whichever dimension shakes, the final target is always A2", detail: "12차원 중 어떤 차원이 임계에 도달하더라도, BSLI 섭동의 최종 조준점은 항상 제도신뢰(A2)로 수렴한다.", detailEn: "Whichever of the 12 dimensions reaches its threshold, the final target of BSLI perturbation always converges on institutional trust (A2)." },
+      { id: "A2", name: "E_A2 이중 방향", nameEn: "E_A2 Dual Direction", summary: "제도 탄성은 위·옆 두 방향으로 작동한다", summaryEn: "Institutional elasticity works in two directions — upward and sideways", detail: "① 아래로부터 오는 BSLI 섭동을 흡수·복원한다(수직↑). ② 거버넌스(A8)의 과팽창을 억제·복원한다(수평↔). 이 이중 방향성이 견제균형의 물리적 실체다.", detailEn: "① Absorbs and restores BSLI perturbation from below (vertical ↑). ② Restrains and restores over-expansion of governance A8 (horizontal ↔). This dual directionality is the physical substance of checks and balances." },
+      { id: "A3", name: "내부 충돌", nameEn: "Internal Conflict", summary: "A8이 A2를 공격할 때 내부 충돌이 발생한다", summaryEn: "Internal conflict arises when A8 attacks A2", detail: "C_internal은 거버넌스(A8)가 제도신뢰(A2)를 공격할 때 발생하는 내부 충돌항이다. UI 방정식의 제3항으로 편입된다.", detailEn: "C_internal is the internal-conflict term arising when governance (A8) attacks institutional trust (A2). It enters the UI equation as its third term.", formula: "C_internal(A2, A8, t)" },
+      { id: "A4", name: "집행 채널 귀속", nameEn: "Enforcement Channel Ownership", summary: "집행이 A8에 완전 귀속되면 복원력이 약화된다", summaryEn: "When enforcement is fully owned by A8, resilience weakens", detail: "집행 채널이 거버넌스(A8)에 완전히 귀속되면 제도신뢰(A2)의 복원력이 구조적으로 약화된다. (한국: 군 명령 거부 → 복원 성공 / 미국: 연방보안관 A8 소속 → 복원력 약화)", detailEn: "When the enforcement channel is fully owned by governance (A8), the resilience of institutional trust (A2) is structurally weakened. (South Korea: military refused orders → restoration succeeded / US: federal marshals belong to A8 → resilience weakened)" },
+      { id: "A5", name: "Layer 0 계수", nameEn: "Layer 0 Coefficient", summary: "문화·역사 내재화가 명령 반사를 결정한다", summaryEn: "Cultural-historical internalization determines order reflection", detail: "κ_L0는 Layer 0의 문화·역사 내재화 정도(후천적)다. 명령 반사 계수 Γ_execution = 1 − κ_L0.", detailEn: "κ_L0 is the degree of cultural-historical internalization of Layer 0 (acquired). Order-reflection coefficient Γ_execution = 1 − κ_L0.", formula: "Γ_execution = 1 − κ_L0" },
+      { id: "A6", name: "Layer −1 상수", nameEn: "Layer −1 Constant", summary: "인류 공통의 신경생물학적 기반은 선천적이다", summaryEn: "Humanity's shared neurobiological base is innate", detail: "λ₋₁은 신경생물학적 인류 공통 기반(선천적)이다. 거울뉴런과 옥시토신 시스템으로, 대면 접촉 시 자동 활성화된다. (1차대전 크리스마스 휴전 실증)", detailEn: "λ₋₁ is humanity's shared neurobiological base (innate). Grounded in mirror neurons and the oxytocin system, it activates automatically in face-to-face contact. (Evidenced by the WWI Christmas Truce)" },
+      { id: "A7", name: "임피던스", nameEn: "Impedance", summary: "명령 반사율은 임피던스 불일치로 결정된다", summaryEn: "The order-reflection rate is determined by impedance mismatch", detail: "명령 반사 계수는 Layer 0와 A8의 임피던스 불일치로 결정된다. (한국 12·3: Γ≈0.8~0.9 / 미얀마 2021: Γ≈0.1)", detailEn: "The order-reflection coefficient is determined by the impedance mismatch between Layer 0 and A8. (South Korea 12·3: Γ≈0.8–0.9 / Myanmar 2021: Γ≈0.1)", formula: "Γ = (λ₋₁√(μ_c/ε_h) − Z_A8) / (λ₋₁√(μ_c/ε_h) + Z_A8)" },
+      { id: "A8", name: "BSLI 방향 전환", nameEn: "BSLI Redirection", summary: "공격받으면 서민은 제도 방어로 전환한다", summaryEn: "Under attack, the grassroots pivot to defending the institution", detail: "A8이 A2를 공격할 때, BSLI는 A2 방어로 방향을 전환한다. 최종 조준점은 A8이 아니라 항상 A2다.", detailEn: "When A8 attacks A2, BSLI pivots to defending A2. The final target is always A2, not A8." },
+      { id: "A9", name: "취성 한계치", nameEn: "Brittleness Threshold", summary: "지지율 20% 이하에서 취성파괴가 급증한다", summaryEn: "Below 20% approval, brittle fracture surges", detail: "E_A2 < 0.20에서 C_internal이 개시되면 취성파괴 확률이 급증한다. (한국 12·3: E_A2=0.17)", detailEn: "If C_internal begins while E_A2 < 0.20, the probability of brittle fracture surges. (South Korea 12·3: E_A2=0.17)", formula: "E_A2 < 0.20 + C_internal 임계" },
+      { id: "A10", name: "BSLI 물성", nameEn: "BSLI Material Properties", summary: "서민 고통은 물(H₂O)처럼 상태가 변한다", summaryEn: "Grassroots hardship changes state like water (H₂O)", detail: "BSLI ≡ 물(H₂O). 고체=혁명·봉기, 액체=불만·민원·선거, 기체=침묵·이민·저출산, 초임계=임계 직전. 수소결합 = Layer −1.", detailEn: "BSLI ≡ water (H₂O). Solid = revolution/uprising; liquid = grievances, petitions, elections; gas = silence, emigration, low birth rate; supercritical = just before threshold. Hydrogen bonding = Layer −1." },
+      { id: "A11", name: "물의 변칙", nameEn: "Anomalies of Water", summary: "억압할수록 섭동은 빠르게 퍼진다", summaryEn: "The more it is suppressed, the faster perturbation spreads", detail: "4℃ 최대밀도=안정 구간, 초임계=겉으론 조용하나 내부 압력 최대, LDL→HDL=분산 불만이 응집 분노로, 확산역설=억압할수록 섭동이 빠르게 확산.", detailEn: "Maximum density at 4℃ = stable zone; supercritical = outwardly quiet but internal pressure at maximum; LDL→HDL = dispersed grievance condenses into anger; diffusion paradox = the more it is suppressed, the faster perturbation spreads." },
+      { id: "A12", name: "도화선 불변성", nameEn: "Fuse Invariance", summary: "봉기는 언제나 이타적인 것에 반하는 단 하나의 사건에서 시작된다", summaryEn: "An uprising always begins with a single event that violates the altruistic", detail: "봉기의 도화선은 항상 ① 단순·구체적인 단 하나의 사건, ② 이념·계층·세대를 초월하는 Layer −1 발화, ③ \"이것은 옳지 않다\"는 공명. 폭발 규모는 P_BSLI×(1−E_A2)가 결정한다. (이란·방글라데시·한국·미국 4사례 실증)", detailEn: "The fuse of an uprising is always ① a single, simple, concrete event, ② a Layer −1 ignition transcending ideology, class, and generation, ③ the resonance that \"this is not right.\" Explosion magnitude is determined by P_BSLI×(1−E_A2). (Evidenced in four cases: Iran, Bangladesh, South Korea, US)", formula: "폭발 규모 = P_BSLI × (1 − E_A2)", isNew: true },
     ],
   },
 };

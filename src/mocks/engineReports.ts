@@ -16,8 +16,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-bsli": [
     {
       id: "bsli-paper-v6-ko",
-      title: "BSLI 기초사회생활지수 논문 v6.0 — 139개국 서민 고통 측정",
-      region: "글로벌",
+      title: "BSLI 기초사회생활지수 논문 v6.0 — 139개국 서민 고통 측정", titleEn: "BSLI Basic Social Life Index Paper v6.0 — Measuring Grassroots Hardship in 139 States",
+      region: "글로벌", regionEn: "Global",
       scope: "권역별",
       engine: "BSLI v6.0",
       date: "2026-06-01",
@@ -34,8 +34,8 @@ export const engineReports: Record<string, NationReport[]> = {
     },
     {
       id: "bsli-dashboard-v7",
-      title: "BSLI 대시보드 v7 — 국가별 衣食住 삼중계 시각화",
-      region: "글로벌",
+      title: "BSLI 대시보드 v7 — 국가별 衣食住 삼중계 시각화", titleEn: "BSLI Dashboard v7 — Food·Clothing·Shelter Triple-Gauge Visualization by State",
+      region: "글로벌", regionEn: "Global",
       scope: "권역별",
       engine: "BSLI v7",
       date: "2026-06-20",
@@ -43,8 +43,8 @@ export const engineReports: Record<string, NationReport[]> = {
     },
     {
       id: "bsli-metro-pattern",
-      title: "BSLI 대도시 패턴 분석 — 메트로 지역 생활지수 구조",
-      region: "글로벌",
+      title: "BSLI 대도시 패턴 분석 — 메트로 지역 생활지수 구조", titleEn: "BSLI Metropolitan Pattern Analysis — Living-Index Structure of Metro Regions",
+      region: "글로벌", regionEn: "Global",
       scope: "단독",
       engine: "BSLI",
       date: "2026-05-20",
@@ -56,8 +56,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-reverbant": [
     {
       id: "reverbant-v11-theory",
-      title: "REVERBANT v1.1 — 동적 섭동 반응 엔진 이론 정본 (공리 A0~A12)",
-      region: "이론",
+      title: "REVERBANT v1.1 — 동적 섭동 반응 엔진 이론 정본 (공리 A0~A12)", titleEn: "REVERBANT v1.1 — Dynamic Perturbation Response Engine, Canonical Theory (Axioms A0–A12)",
+      region: "이론", regionEn: "Theory",
       scope: "단독",
       engine: "REVERBANT v1.1",
       date: "2026-07-03",
@@ -65,8 +65,8 @@ export const engineReports: Record<string, NationReport[]> = {
     },
     {
       id: "reverbant-kor-usa",
-      title: "REVERBANT 한미 실증 비교 — 같은 G-T Core, 다른 결말",
-      region: "한미",
+      title: "REVERBANT 한미 실증 비교 — 같은 G-T Core, 다른 결말", titleEn: "REVERBANT Korea–US Empirical Comparison — Same G-T Core, Different Endings",
+      region: "한미", regionEn: "Korea–US",
       scope: "권역별",
       engine: "REVERBANT v1.1",
       date: "2026-07-03",
@@ -78,8 +78,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-ui": [
     {
       id: "ui-ven-irn-2026",
-      title: "외생 개입과 민중 동역학 — 베네수엘라·이란 2026 비교 정밀진단",
-      region: "아메리카·중동",
+      title: "외생 개입과 민중 동역학 — 베네수엘라·이란 2026 비교 정밀진단", titleEn: "Exogenous Intervention and Grassroots Dynamics — Venezuela·Iran 2026 Comparative Diagnosis",
+      region: "아메리카·중동", regionEn: "Americas·Middle East",
       scope: "권역별",
       engine: "UI · Λ¹² v9.8",
       date: "2026-07-12",
@@ -87,8 +87,8 @@ export const engineReports: Record<string, NationReport[]> = {
     },
     {
       id: "ui-uprising-tracker",
-      title: "봉기 트래커 — 글로벌 봉기지수 실시간 추적",
-      region: "글로벌",
+      title: "봉기 트래커 — 글로벌 봉기지수 실시간 추적", titleEn: "Uprising Tracker — Real-Time Global Uprising Index Tracking",
+      region: "글로벌", regionEn: "Global",
       scope: "권역별",
       engine: "UI",
       date: "2026-06-25",
@@ -96,8 +96,8 @@ export const engineReports: Record<string, NationReport[]> = {
     },
     {
       id: "ui-world-judgment",
-      title: "세계 봉기지수 판정 — 89개국 위험 평가",
-      region: "글로벌",
+      title: "세계 봉기지수 판정 — 89개국 위험 평가", titleEn: "Global Uprising Index Assessment — Risk Evaluation of 89 States",
+      region: "글로벌", regionEn: "Global",
       scope: "권역별",
       engine: "UI",
       date: "2026-06-25",
@@ -105,8 +105,8 @@ export const engineReports: Record<string, NationReport[]> = {
     },
     {
       id: "ui-kor-report",
-      title: "한국 봉기지수 보고서 — UI −0.221 판독",
-      region: "동북아시아",
+      title: "한국 봉기지수 보고서 — UI −0.221 판독", titleEn: "South Korea Uprising Index Report — Reading UI −0.221",
+      region: "동북아시아", regionEn: "Northeast Asia",
       scope: "단독",
       engine: "UI",
       date: "2026-06-25",
@@ -118,8 +118,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-bbd": [
     {
       id: "bbd-methodology",
-      title: "버블붕괴탐지기 §33 — 공식과 방법론 해설",
-      region: "방법론",
+      title: "버블붕괴탐지기 §33 — 공식과 방법론 해설", titleEn: "Bubble Burst Detector §33 — Formulas and Methodology",
+      region: "방법론", regionEn: "Methodology",
       scope: "단독",
       engine: "§33 BBD",
       date: "2026-07-07",
@@ -131,8 +131,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-gei": [
     {
       id: "gei-methodology",
-      title: "지니경제불평등지수 §34 — 공식과 방법론 해설 (로렌츠 곡선)",
-      region: "방법론",
+      title: "지니경제불평등지수 §34 — 공식과 방법론 해설 (로렌츠 곡선)", titleEn: "Gini Economic Inequality Index §34 — Formulas and Methodology (Lorenz Curve)",
+      region: "방법론", regionEn: "Methodology",
       scope: "단독",
       engine: "§34 GEI",
       date: "2026-07-07",
@@ -144,8 +144,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-nci": [
     {
       id: "nci-methodology",
-      title: "국가역량지수 §35 — 공식과 방법론 해설 (4축 역량)",
-      region: "방법론",
+      title: "국가역량지수 §35 — 공식과 방법론 해설 (4축 역량)", titleEn: "National Capacity Index §35 — Formulas and Methodology (4-Axis Capacity)",
+      region: "방법론", regionEn: "Methodology",
       scope: "단독",
       engine: "§35 NCI",
       date: "2026-07-07",
@@ -157,8 +157,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-scdi": [
     {
       id: "scdi-methodology",
-      title: "공급망교란지수 §36 — 공식과 방법론 해설 (교란 전파 경로)",
-      region: "방법론",
+      title: "공급망교란지수 §36 — 공식과 방법론 해설 (교란 전파 경로)", titleEn: "Supply Chain Disruption Index §36 — Formulas and Methodology (Disruption Propagation Paths)",
+      region: "방법론", regionEn: "Methodology",
       scope: "단독",
       engine: "§36 SCDI",
       date: "2026-07-07",
@@ -170,8 +170,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-ppi": [
     {
       id: "ppi-methodology",
-      title: "권력기생지수 §37 — 공식과 방법론 해설 (PPI + LRI-P*)",
-      region: "방법론",
+      title: "권력기생지수 §37 — 공식과 방법론 해설 (PPI + LRI-P*)", titleEn: "Power Parasite Index §37 — Formulas and Methodology (PPI + LRI-P*)",
+      region: "방법론", regionEn: "Methodology",
       scope: "단독",
       engine: "§37 PPI",
       date: "2026-07-07",
@@ -186,8 +186,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-dure": [
     {
       id: "dure-eta-v8-ulsan",
-      title: "두레에타 v8.4 — 울산 사회구조 진단 대시보드 (실시간)",
-      region: "울산",
+      title: "두레에타 v8.4 — 울산 사회구조 진단 대시보드 (실시간)", titleEn: "DURE-η v8.4 — Ulsan Social Structure Diagnostic Dashboard (Real-Time)",
+      region: "울산", regionEn: "Ulsan",
       scope: "단독",
       engine: "DURE-η v8.4",
       date: "2026-05-31",
@@ -199,8 +199,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-lci": [
     {
       id: "lci-methodology",
-      title: "지도자붕괴지수 LCI — 공식과 방법론 해설 (κ·ΔΦ·ι 3축)",
-      region: "방법론",
+      title: "지도자붕괴지수 LCI — 공식과 방법론 해설 (κ·ΔΦ·ι 3축)", titleEn: "Leader Collapse Index (LCI) — Formulas and Methodology (κ·ΔΦ·ι 3-Axis)",
+      region: "방법론", regionEn: "Methodology",
       scope: "단독",
       engine: "LCI",
       date: "2026-07-07",
@@ -212,8 +212,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-afro": [
     {
       id: "afro-lambda-s40-v02",
-      title: "AFRO-Λ §40 — 아프리카 지역분석 서브엔진 설계 (부르키나파소 AES 검증)",
-      region: "아프리카",
+      title: "AFRO-Λ §40 — 아프리카 지역분석 서브엔진 설계 (부르키나파소 AES 검증)", titleEn: "AFRO-Λ §40 — Africa Regional Analysis Sub-Engine Design (Burkina Faso AES Validation)",
+      region: "아프리카", regionEn: "Africa",
       scope: "권역별",
       engine: "AFRO-Λ v0.2",
       date: "2026-06-27",
@@ -225,8 +225,8 @@ export const engineReports: Record<string, NationReport[]> = {
   "cat-axioms": [
     {
       id: "axioms-reverbant-v11",
-      title: "사회구조 설계공리 A0~A12 원문 — REVERBANT v1.1 이론 정본",
-      region: "공리",
+      title: "사회구조 설계공리 A0~A12 원문 — REVERBANT v1.1 이론 정본", titleEn: "Social Structure Design Axioms A0–A12, Original Text — REVERBANT v1.1 Canonical Theory",
+      region: "공리", regionEn: "Axioms",
       scope: "단독",
       engine: "REVERBANT v1.1",
       date: "2026-07-03",

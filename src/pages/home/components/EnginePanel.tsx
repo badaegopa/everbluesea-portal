@@ -140,7 +140,7 @@ export default function EnginePanel({ engine, onClose }: EnginePanelProps) {
                     {/* 공식 설명 */}
                     <div className="px-5 py-3 bg-background-50">
                       <p className="text-xs text-foreground-600 leading-relaxed mb-3">
-                        {f.description}
+                        {isKo ? f.description : (f.descriptionEn || f.description)}
                       </p>
                       {/* 기호 설명표 */}
                       <div className="space-y-1.5">
@@ -156,7 +156,7 @@ export default function EnginePanel({ engine, onClose }: EnginePanelProps) {
                               {v.symbol}
                             </span>
                             <span className="text-xs text-foreground-600 leading-relaxed">
-                              {v.meaning}
+                              {isKo ? v.meaning : (v.meaningEn || v.meaning)}
                             </span>
                           </div>
                         ))}
@@ -183,9 +183,9 @@ export default function EnginePanel({ engine, onClose }: EnginePanelProps) {
                 </div>
                 {engine.axiomsQuote && (
                   <div className="mt-5 px-5 py-4 rounded-xl" style={{ backgroundColor: engine.accent + "0D", borderLeft: `3px solid ${engine.accent}` }}>
-                    <p className="text-sm italic leading-relaxed text-foreground-800">"{engine.axiomsQuote}"</p>
+                    <p className="text-sm italic leading-relaxed text-foreground-800">"{isKo ? engine.axiomsQuote : (engine.axiomsQuoteEn || engine.axiomsQuote)}"</p>
                     {engine.axiomsQuoteBy && (
-                      <p className="mt-2 text-xs font-mono" style={{ color: engine.accent }}>— {engine.axiomsQuoteBy}</p>
+                      <p className="mt-2 text-xs font-mono" style={{ color: engine.accent }}>— {isKo ? engine.axiomsQuoteBy : (engine.axiomsQuoteByEn || engine.axiomsQuoteBy)}</p>
                     )}
                   </div>
                 )}
@@ -213,7 +213,7 @@ export default function EnginePanel({ engine, onClose }: EnginePanelProps) {
                   >
                     <i className="ri-database-2-line text-xs flex-shrink-0" style={{ color: engine.accent }} />
                     <span className="text-sm text-foreground-700 group-hover:text-foreground-950 transition flex-1">
-                      {src.name}
+                      {isKo ? src.name : (src.nameEn || src.name)}
                     </span>
                     <i className="ri-external-link-line text-xs text-foreground-400" />
                   </a>
@@ -270,19 +270,21 @@ export default function EnginePanel({ engine, onClose }: EnginePanelProps) {
 
 function AxiomRow({ ax, accent }: { ax: AxiomItem; accent: string }) {
   const [open, setOpen] = useState(false);
+  const { i18n } = useTranslation();
+  const isKo = i18n.language === "ko";
   return (
     <div onClick={() => setOpen((v) => !v)} className="rounded-lg border cursor-pointer transition" style={{ borderColor: open ? accent + "50" : accent + "20", backgroundColor: open ? accent + "0D" : ax.isNew ? accent + "08" : "transparent" }}>
       <div className="flex items-start gap-3 px-4 py-3">
         <span className="font-mono text-[11px] font-bold px-2 py-0.5 rounded flex-shrink-0 mt-0.5" style={{ backgroundColor: accent + "15", color: accent }}>{ax.id}</span>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-sm font-semibold text-foreground-900">{ax.name}</span>
-            {ax.isNew && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded text-white" style={{ backgroundColor: accent }}>신규</span>}
+            <span className="text-sm font-semibold text-foreground-900">{isKo ? ax.name : (ax.nameEn || ax.name)}</span>
+            {ax.isNew && <span className="text-[9px] font-bold px-1.5 py-0.5 rounded text-white" style={{ backgroundColor: accent }}>{isKo ? "신규" : "NEW"}</span>}
           </div>
-          <p className="text-xs text-foreground-600 leading-relaxed mt-1">{ax.summary}</p>
+          <p className="text-xs text-foreground-600 leading-relaxed mt-1">{isKo ? ax.summary : (ax.summaryEn || ax.summary)}</p>
           {open && (
             <div className="mt-3 pt-3 border-t" style={{ borderColor: accent + "20" }}>
-              <p className="text-xs text-foreground-800 leading-relaxed">{ax.detail}</p>
+              <p className="text-xs text-foreground-800 leading-relaxed">{isKo ? ax.detail : (ax.detailEn || ax.detail)}</p>
               {ax.formula && <div className="mt-2.5 px-3 py-2 rounded font-mono text-[11px] overflow-x-auto" style={{ backgroundColor: accent + "10", color: accent }}>{ax.formula}</div>}
             </div>
           )}

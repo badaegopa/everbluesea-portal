@@ -102,7 +102,7 @@ export default function Categories() {
                           className="px-3 py-1 rounded-full text-xs font-bold tracking-wide transition cursor-pointer"
                           style={{ backgroundColor: "rgba(255,255,255,0.25)", color: "#ffffff", backdropFilter: "blur(4px)" }}
                         >
-                          엔진 설명
+                          {isKo ? "엔진 설명" : "Engine Guide"}
                         </button>
                       )}
                       <span className="text-xs font-mono text-white/80 bg-white/15 px-2 py-0.5 rounded-full whitespace-nowrap">
@@ -202,11 +202,11 @@ export default function Categories() {
                           style={{ borderColor: "rgba(61,107,98,0.08)" }}
                         >
                           <span className="text-sm leading-snug" style={{ color: "#1E3A2F" }}>
-                            {r.title}
+                            {isKo ? r.title : (r.titleEn || r.title)}
                           </span>
                           <span className="flex items-center gap-2 flex-shrink-0 font-mono text-[10px]" style={{ color: "#5E9186" }}>
-                            <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(94,145,134,0.10)" }}>{r.region}</span>
-                            <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(184,133,14,0.10)", color: "#B8850E" }}>{r.scope}</span>
+                            <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(94,145,134,0.10)" }}>{isKo ? r.region : (r.regionEn || r.region)}</span>
+                            <span className="px-2 py-0.5 rounded-full" style={{ backgroundColor: "rgba(184,133,14,0.10)", color: "#B8850E" }}>{isKo ? r.scope : (r.scope === "단독" ? "Standalone" : r.scope === "권역별" ? "Regional" : r.scope)}</span>
                             <span>{r.date}</span>
                           </span>
                         </a>
