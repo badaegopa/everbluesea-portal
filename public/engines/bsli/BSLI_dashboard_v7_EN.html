@@ -491,130 +491,130 @@ input.nn-slider::-webkit-slider-thumb{
    출력범위: [−0.40, +0.60]
 ══════════════════════════════════════════ */
 const COUNTRIES = [
-  // 유럽
-  {id:'de', name:'독일',    flag:'🇩🇪', region:'europe',
+  // Europe
+  {id:'de', name:'Germany',    flag:'🇩🇪', region:'europe',
    f:0.82, h:0.78, d:0.32, hs:0.18,
    mlRatio:20.0, whr:24, gapType:'—',
    years:[0.4,0.4,0.39,0.39,0.38,0.38,0.37,0.37,0.36,0.35,0.35,0.34,0.34,0.33,0.33,0.32,0.32,0.31,0.31,0.31,0.31,0.31,0.31,0.31,0.31]},
-  {id:'fr', name:'프랑스',  flag:'🇫🇷', region:'europe',
+  {id:'fr', name:'France',  flag:'🇫🇷', region:'europe',
    f:0.68, h:0.52, d:0.58, hs:0.38,
    mlRatio:20.0, whr:27, gapType:'TYPE C',
    years:[0.3,0.29,0.28,0.27,0.26,0.25,0.24,0.23,0.22,0.21,0.2,0.2,0.19,0.18,0.17,0.17,0.16,0.15,0.14,0.13,0.13,0.12,0.12,0.12,0.12]},
-  {id:'gb', name:'영국',    flag:'🇬🇧', region:'europe',
+  {id:'gb', name:'United Kingdom',    flag:'🇬🇧', region:'europe',
    f:0.62, h:0.44, d:0.72, hs:0.42,
    mlRatio:20.0, whr:20, gapType:'TYPE A',
    years:[0.32,0.31,0.29,0.28,0.27,0.25,0.24,0.22,0.2,0.19,0.18,0.17,0.16,0.15,0.14,0.14,0.13,0.12,0.11,0.11,0.1,0.1,0.09,0.09,0.09]},
-  {id:'es', name:'스페인',  flag:'🇪🇸', region:'europe',
+  {id:'es', name:'Spain',  flag:'🇪🇸', region:'europe',
    f:0.60, h:0.40, d:0.54, hs:0.36,
    mlRatio:20.0, whr:36, gapType:'TYPE A+C',
    years:[0.28,0.26,0.24,0.22,0.2,0.18,0.17,0.15,0.14,0.13,0.12,0.11,0.1,0.1,0.09,0.09,0.08,0.08,0.08,0.07,0.07,0.07,0.07,0.07,0.07]},
-  {id:'nl', name:'네덜란드',flag:'🇳🇱', region:'europe',
+  {id:'nl', name:'Netherlands',flag:'🇳🇱', region:'europe',
    f:0.72, h:0.46, d:0.88, hs:0.32,
    mlRatio:20.0, whr:6, gapType:'TYPE A',
    years:[0.26,0.25,0.23,0.22,0.2,0.19,0.17,0.16,0.15,0.14,0.13,0.13,0.12,0.12,0.11,0.11,0.11,0.1,0.1,0.1,0.1,0.1,0.1,0.1,0.1]},
-  {id:'pt', name:'포르투갈',flag:'🇵🇹', region:'europe',
+  {id:'pt', name:'Portugal',flag:'🇵🇹', region:'europe',
    f:0.54, h:0.36, d:0.62, hs:0.44,
    mlRatio:20.0, whr:55, gapType:'TYPE A',
    years:[0.18,0.17,0.15,0.14,0.12,0.11,0.1,0.09,0.08,0.07,0.07,0.06,0.06,0.05,0.05,0.05,0.05,0.04,0.04,0.04,0.04,0.04,0.04,0.04,0.04]},
-  {id:'pl', name:'폴란드',  flag:'🇵🇱', region:'europe',
+  {id:'pl', name:'Poland',  flag:'🇵🇱', region:'europe',
    f:0.70, h:0.62, d:0.28, hs:0.22,
-   mlRatio:20.0, whr:31, gapType:'혼합형',
+   mlRatio:20.0, whr:31, gapType:'Mixed',
    years:[0.3,0.3,0.29,0.29,0.28,0.28,0.27,0.26,0.25,0.24,0.24,0.23,0.23,0.22,0.21,0.21,0.2,0.2,0.2,0.19,0.19,0.19,0.19,0.19,0.19]},
-  {id:'gr', name:'그리스',  flag:'🇬🇷', region:'europe',
+  {id:'gr', name:'Greece',  flag:'🇬🇷', region:'europe',
    f:0.48, h:0.34, d:0.54, hs:0.38,
    mlRatio:20.0, whr:59, gapType:'TYPE A',
    years:[0.18,0.16,0.15,0.13,0.11,0.09,0.08,0.06,0.05,0.04,0.03,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02]},
-  // 북유럽
-  {id:'fi', name:'핀란드',  flag:'🇫🇮', region:'europe',
+  // 북Europe
+  {id:'fi', name:'Finland',  flag:'🇫🇮', region:'europe',
    f:0.88, h:0.84, d:0.38, hs:0.14,
    mlRatio:20.0, whr:1, gapType:'—',
    years:[0.5,0.49,0.48,0.47,0.46,0.45,0.44,0.43,0.42,0.41,0.4,0.4,0.39,0.39,0.38,0.38,0.37,0.37,0.36,0.36,0.36,0.36,0.36,0.36,0.36]},
-  {id:'dk', name:'덴마크',  flag:'🇩🇰', region:'europe',
+  {id:'dk', name:'Denmark',  flag:'🇩🇰', region:'europe',
    f:0.86, h:0.74, d:0.72, hs:0.18,
-   mlRatio:20.0, whr:2, gapType:'혼합형',
+   mlRatio:20.0, whr:2, gapType:'Mixed',
    years:[0.38,0.37,0.36,0.35,0.34,0.34,0.33,0.32,0.31,0.3,0.3,0.29,0.28,0.28,0.27,0.27,0.26,0.26,0.25,0.25,0.24,0.24,0.24,0.24,0.24]},
-  {id:'se', name:'스웨덴',  flag:'🇸🇪', region:'europe',
+  {id:'se', name:'Sweden',  flag:'🇸🇪', region:'europe',
    f:0.84, h:0.70, d:0.62, hs:0.20,
-   mlRatio:20.0, whr:4, gapType:'혼합형',
+   mlRatio:20.0, whr:4, gapType:'Mixed',
    years:[0.36,0.35,0.34,0.33,0.32,0.31,0.3,0.3,0.29,0.28,0.27,0.27,0.26,0.25,0.25,0.24,0.24,0.23,0.23,0.22,0.22,0.22,0.21,0.21,0.21]},
-  // 동아시아
-  {id:'kr', name:'대한민국',flag:'🇰🇷', region:'asia',
+  // 동Asia
+  {id:'kr', name:'South Korea',flag:'🇰🇷', region:'asia',
    f:0.58, h:0.24, d:0.92, hs:0.86,
    mlRatio:20.0, whr:52, gapType:'TYPE A+B',
    years:[0.02,0.0,-0.03,-0.06,-0.09,-0.11,-0.13,-0.15,-0.17,-0.18,-0.19,-0.2,-0.21,-0.22,-0.24,-0.25,-0.26,-0.27,-0.28,-0.29,-0.3,-0.3,-0.3,-0.31,-0.31]},
-  {id:'jp', name:'일본',    flag:'🇯🇵', region:'asia',
+  {id:'jp', name:'Japan',    flag:'🇯🇵', region:'asia',
    f:0.62, h:0.48, d:0.52, hs:0.54,
    mlRatio:20.0, whr:51, gapType:'TYPE B',
    years:[0.18,0.17,0.16,0.15,0.14,0.13,0.12,0.11,0.1,0.09,0.09,0.08,0.08,0.07,0.07,0.06,0.06,0.05,0.05,0.05,0.04,0.04,0.04,0.04,0.04]},
-  {id:'cn', name:'중국',    flag:'🇨🇳', region:'asia',
+  {id:'cn', name:'China',    flag:'🇨🇳', region:'asia',
    f:0.52, h:0.42, d:0.44, hs:0.62,
    mlRatio:20.0, whr:60, gapType:'TYPE D',
    years:[0.22,0.21,0.19,0.18,0.17,0.16,0.15,0.14,0.13,0.12,0.11,0.1,0.09,0.09,0.08,0.08,0.07,0.07,0.06,0.06,0.06,0.05,0.05,0.05,0.05]},
-  {id:'tw', name:'대만',    flag:'🇹🇼', region:'asia',
+  {id:'tw', name:'Taiwan',    flag:'🇹🇼', region:'asia',
    f:0.66, h:0.40, d:0.68, hs:0.48,
    mlRatio:20.0, whr:31, gapType:'TYPE A',
    years:[0.24,0.22,0.21,0.2,0.18,0.17,0.16,0.15,0.14,0.13,0.12,0.12,0.11,0.11,0.1,0.1,0.1,0.09,0.09,0.09,0.08,0.08,0.08,0.08,0.08]},
   // 북미·오세아니아
-  {id:'us', name:'미국',    flag:'🇺🇸', region:'americas',
+  {id:'us', name:'United States',    flag:'🇺🇸', region:'americas',
    f:0.60, h:0.38, d:0.68, hs:0.62,
    mlRatio:20.0, whr:23, gapType:'TYPE A',
    years:[0.22,0.2,0.18,0.16,0.14,0.12,0.1,0.08,0.06,0.04,0.02,0.01,0.0,-0.01,-0.02,-0.02,-0.02,-0.03,-0.03,-0.04,-0.04,-0.04,-0.05,-0.05,-0.05]},
-  {id:'ca', name:'캐나다',  flag:'🇨🇦', region:'americas',
+  {id:'ca', name:'Canada',  flag:'🇨🇦', region:'americas',
    f:0.64, h:0.36, d:0.82, hs:0.52,
    mlRatio:20.0, whr:15, gapType:'TYPE A',
    years:[0.24,0.22,0.2,0.18,0.17,0.15,0.14,0.12,0.11,0.1,0.09,0.08,0.07,0.07,0.06,0.06,0.05,0.05,0.04,0.04,0.03,0.03,0.03,0.03,0.03]},
-  {id:'au', name:'호주',    flag:'🇦🇺', region:'americas',
+  {id:'au', name:'Australia',    flag:'🇦🇺', region:'americas',
    f:0.70, h:0.30, d:0.86, hs:0.48,
    mlRatio:20.0, whr:10, gapType:'TYPE A',
    years:[0.26,0.24,0.22,0.2,0.18,0.16,0.14,0.12,0.1,0.09,0.08,0.07,0.06,0.05,0.04,0.04,0.03,0.03,0.02,0.02,0.01,0.01,0.01,0.01,0.01]},
   // 중남미
-  {id:'bo', name:'볼리비아',flag:'🇧🇴', region:'americas',
+  {id:'bo', name:'Bolivia',flag:'🇧🇴', region:'americas',
    f:0.18, h:0.22, d:0.32, hs:0.78,
    mlRatio:20.0, whr:null, gapType:'TYPE E',
    years:[-0.05,-0.07,-0.1,-0.13,-0.15,-0.17,-0.19,-0.21,-0.23,-0.25,-0.26,-0.27,-0.28,-0.29,-0.3,-0.31,-0.32,-0.33,-0.33,-0.34,-0.34,-0.35,-0.35,-0.36,-0.36]},
-  {id:'ar', name:'아르헨티나',flag:'🇦🇷', region:'americas',
+  {id:'ar', name:'Argentina',flag:'🇦🇷', region:'americas',
    f:0.28, h:0.32, d:0.14, hs:0.64,
    mlRatio:20.0, whr:52, gapType:'TYPE C+D',
    years:[0.02,-0.01,-0.04,-0.07,-0.09,-0.11,-0.13,-0.15,-0.17,-0.18,-0.19,-0.2,-0.21,-0.22,-0.23,-0.24,-0.25,-0.26,-0.26,-0.27,-0.27,-0.28,-0.28,-0.28,-0.28]},
-  {id:'br', name:'브라질',  flag:'🇧🇷', region:'americas',
+  {id:'br', name:'Brazil',  flag:'🇧🇷', region:'americas',
    f:0.40, h:0.38, d:0.34, hs:0.52,
    mlRatio:20.0, whr:44, gapType:'TYPE C',
    years:[0.1,0.08,0.06,0.04,0.02,0.01,0.0,-0.01,-0.01,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02,-0.02]},
-  {id:'cl', name:'칠레',    flag:'🇨🇱', region:'americas',
+  {id:'cl', name:'Chile',    flag:'🇨🇱', region:'americas',
    f:0.48, h:0.42, d:0.42, hs:0.46,
-   mlRatio:20.0, whr:43, gapType:'혼합형',
+   mlRatio:20.0, whr:43, gapType:'Mixed',
    years:[0.16,0.14,0.13,0.11,0.1,0.09,0.08,0.07,0.06,0.06,0.05,0.05,0.05,0.04,0.04,0.04,0.04,0.04,0.03,0.03,0.03,0.03,0.03,0.03,0.03]},
-  // 중동·남아시아
-  {id:'tr', name:'튀르키예',flag:'🇹🇷', region:'asia',
+  // 중동·남Asia
+  {id:'tr', name:'Turkiye',flag:'🇹🇷', region:'asia',
    f:0.30, h:0.28, d:0.22, hs:0.72,
    mlRatio:20.0, whr:98, gapType:'TYPE D',
    years:[0.08,0.06,0.04,0.02,0.0,-0.02,-0.04,-0.06,-0.08,-0.1,-0.11,-0.12,-0.13,-0.14,-0.15,-0.16,-0.17,-0.17,-0.18,-0.19,-0.19,-0.2,-0.2,-0.21,-0.21]},
-  {id:'in', name:'인도',    flag:'🇮🇳', region:'asia',
+  {id:'in', name:'India',    flag:'🇮🇳', region:'asia',
    f:0.38, h:0.34, d:0.24, hs:0.58,
    mlRatio:20.0, whr:118, gapType:'TYPE E',
    years:[0.06,0.05,0.04,0.03,0.02,0.01,0.0,-0.01,-0.01,-0.02,-0.02,-0.02,-0.02,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03,-0.03]},
-  {id:'eg', name:'이집트',  flag:'🇪🇬', region:'asia',
+  {id:'eg', name:'Egypt',  flag:'🇪🇬', region:'asia',
    f:0.26, h:0.30, d:0.18, hs:0.68,
    mlRatio:20.0, whr:130, gapType:'TYPE D',
    years:[-0.04,-0.06,-0.07,-0.08,-0.09,-0.1,-0.11,-0.12,-0.12,-0.13,-0.13,-0.14,-0.14,-0.14,-0.15,-0.15,-0.16,-0.16,-0.16,-0.17,-0.17,-0.17,-0.18,-0.18,-0.18]},
-  {id:'pk', name:'파키스탄',flag:'🇵🇰', region:'asia',
+  {id:'pk', name:'Pakistan',flag:'🇵🇰', region:'asia',
    f:0.20, h:0.24, d:0.16, hs:0.74,
    mlRatio:20.0, whr:108, gapType:'TYPE D+E',
    years:[-0.1,-0.11,-0.12,-0.13,-0.14,-0.15,-0.15,-0.16,-0.16,-0.17,-0.17,-0.18,-0.18,-0.19,-0.19,-0.2,-0.2,-0.21,-0.21,-0.22,-0.22,-0.23,-0.23,-0.24,-0.24]},
   // 아프리카
-  {id:'za', name:'남아공',  flag:'🇿🇦', region:'africa',
+  {id:'za', name:'South Africa',  flag:'🇿🇦', region:'africa',
    f:0.28, h:0.26, d:0.36, hs:0.76,
    mlRatio:20.0, whr:84, gapType:'TYPE E',
    years:[-0.04,-0.05,-0.06,-0.07,-0.07,-0.08,-0.08,-0.09,-0.09,-0.1,-0.1,-0.11,-0.11,-0.11,-0.12,-0.12,-0.13,-0.13,-0.14,-0.14,-0.14,-0.15,-0.15,-0.15,-0.15]},
-  {id:'ng', name:'나이지리아',flag:'🇳🇬', region:'africa',
+  {id:'ng', name:'Nigeria',flag:'🇳🇬', region:'africa',
    f:0.12, h:0.16, d:0.10, hs:0.82,
    mlRatio:20.0, whr:null, gapType:'TYPE E',
    years:[-0.18,-0.19,-0.2,-0.21,-0.22,-0.23,-0.24,-0.24,-0.25,-0.26,-0.26,-0.27,-0.27,-0.28,-0.28,-0.28,-0.29,-0.29,-0.3,-0.3,-0.31,-0.31,-0.32,-0.32,-0.32]},
-  {id:'et', name:'에티오피아',flag:'🇪🇹', region:'africa',
+  {id:'et', name:'Ethiopia',flag:'🇪🇹', region:'africa',
    f:0.06, h:0.08, d:0.06, hs:0.86,
    mlRatio:20.0, whr:null, gapType:'TYPE E',
    years:[-0.24,-0.25,-0.26,-0.27,-0.28,-0.29,-0.3,-0.3,-0.31,-0.32,-0.32,-0.33,-0.34,-0.34,-0.35,-0.35,-0.36,-0.36,-0.37,-0.37,-0.38,-0.38,-0.39,-0.39,-0.4]},
-  {id:'ke', name:'케냐',    flag:'🇰🇪', region:'africa',
+  {id:'ke', name:'Kenya',    flag:'🇰🇪', region:'africa',
    f:0.16, h:0.20, d:0.12, hs:0.80,
    mlRatio:20.0, whr:null, gapType:'TYPE E',
    years:[-0.12,-0.13,-0.14,-0.15,-0.16,-0.17,-0.18,-0.18,-0.19,-0.2,-0.2,-0.21,-0.21,-0.22,-0.22,-0.23,-0.23,-0.24,-0.24,-0.25,-0.25,-0.26,-0.26,-0.26,-0.26]},
@@ -625,10 +625,10 @@ const LAST  = 24; // 25년치 0~24
 
 /* 변수 슬라이더 설정 */
 const SL_VARS = [
-  {id:'f',  name:'F_ML*', desc:'식품안정성 정규화값 (높을수록 안정)', color:'#3D7A6E', plus:true},
-  {id:'h',  name:'H*',    desc:'주거안정성 정규화값 (높을수록 안정)', color:'#4A6E9B', plus:true},
-  {id:'d',  name:'D*',    desc:'부채보정 정규화값 (높을수록 위험)', color:'#A32D2D', plus:false},
-  {id:'hs', name:'Hs*',   desc:'주거그림자 정규화값 (높을수록 위험)', color:'#BA7517', plus:false},
+  {id:'f',  name:'F_ML*', desc:'Food Stability Normalized Value (higher means more stable)', color:'#3D7A6E', plus:true},
+  {id:'h',  name:'H*',    desc:'Housing Stability Normalized Value (higher means more stable)', color:'#4A6E9B', plus:true},
+  {id:'d',  name:'D*',    desc:'Debt-Adjusted Normalized Value (higher means riskier)', color:'#A32D2D', plus:false},
+  {id:'hs', name:'Hs*',   desc:'Housing Shadow Normalized Value (higher means riskier)', color:'#BA7517', plus:false},
 ];
 
 
@@ -639,111 +639,111 @@ const SL_VARS = [
 const VAR_CONTEXT = {
   kr: {
     f: {
-      summary: '식품 구매 압박: 중간 수준',
-      detail: '한국 ML층의 식품 구매력은 OECD 평균 수준이나, 2022년 이후 식품 물가상승률(10%↑)이 임금 상승률을 지속 초과. 편의점·초저가 식품 의존도 증가. 결식 아동 급증은 F_ML 하락 선행지표.',
-      stat: '식품 물가 상승률 9.7% vs 임금 상승률 3.2% (2023)',
+      summary: 'Food Purchase Pressure: Moderate Level',
+      detail: 'Korea ML stratum food purchasing power is at the OECD average, but food inflation (10% up) has consistently exceeded wage growth since 2022. Reliance on convenience stores and ultra cheap food is rising. Surge in underfed children is a leading indicator of F_ML decline.',
+      stat: 'Food inflation 9.7% vs wage growth 3.2% (2023)',
       level: 'warn'
     },
     h: {
-      summary: '주거 안정성: 심각한 붕괴 수준',
-      detail: 'PIR(주택가격/소득비율) 145로 세계 최고권. ML층의 수도권 자가 진입은 사실상 불가능. 전세→월세 전환 가속으로 임차 부담 폭증. 청년층 주거 포기가 N포세대의 핵심 동인.',
-      stat: '수도권 PIR 145 · 전세 비중 4년간 30%→20% 급락',
+      summary: 'Housing Stability: Severe collapse level',
+      detail: 'PIR (Price to Income Ratio) at 145, among the highest in the world. Entry into homeownership in metropolitan area is virtually impossible for ML stratum. Rapid shift from Jeonse to monthly rent causes rent burden to skyrocket. Youth housing abandonment is a key driver of the N-po generation.',
+      stat: 'Metropolitan PIR 145 - Jeonse share plummeted 30% to 20% over 4 years',
       level: 'danger'
     },
     d: {
-      summary: '부채 구조: 세계 최고 위험 수준',
-      detail: '가계부채/GDP 102%로 세계 상위권. ML층은 전세대출·생활자금 대출이 중첩. DSR 규제 강화로 신규 대출 차단되자 2금융권·카드론으로 이동. 자영업 폐업자 부채 연쇄 부실 위험.',
-      stat: '가계부채 GDP 102% · 자영업 폐업 연 100만명 돌파(2024)',
+      summary: 'Debt Structure: Globally highest risk level',
+      detail: 'Household debt to GDP at 102%, among the highest in the world. ML stratum experiences overlapping Jeonse and living expense loans. Stricter DSR regulations block new loans, pushing people to secondary lenders and card loans. Risk of chain defaults on debt from closed self employed businesses.',
+      stat: 'Household debt to GDP 102% - Annual self-employed closures exceed 1M (2024)',
       level: 'danger'
     },
     hs: {
-      summary: '주거 그림자 리스크: 전세 시한폭탄',
-      detail: '세계 유일 전세 제도로 인한 고유 리스크. 깡통전세·역전세로 ML층 순자산 전액 소멸 사례 속출. 비공식 주거(고시원·반지하·옥탑방) 거주 비율 지속 증가. 강제이주 리스크 가시화.',
-      stat: '전세 사기 피해 3만건 이상(2023~2024) · 고시원 거주 37만명',
+      summary: 'Housing Shadow Risk: Jeonse time bomb',
+      detail: 'Unique risk from the world only Jeonse system. Cases of total loss of ML stratum net assets due to tin can Jeonse and reverse Jeonse are frequent. Ratio of informal housing (Goshiwon, semi-basements, rooftop rooms) steadily increases. Forced eviction risk becomes visible.',
+      stat: 'Jeonse fraud cases over 30,000 (2023-2024) - Gosiwon residents 370,000',
       level: 'danger'
     }
   },
   us: {
     f: {
-      summary: '식품 구매 압박: 양극화 심화',
-      detail: '국가 평균 식품 접근성은 양호하나 ML층 내부 격차 극심. 푸드 뱅크 이용자 역대 최고(4,200만명). 식품 인플레이션과 실질임금 정체로 식품 불안정(food insecurity) 급증. 패스트푸드 의존 구조 고착.',
-      stat: '푸드뱅크 이용자 4,200만명 · 식품 불안정 가구 비율 12.8%',
+      summary: 'Food Purchasing Pressure: Deepening polarization',
+      detail: 'National average food accessibility is good but gaps within the ML stratum are extreme. Food bank users at an all-time high (42 million). Food insecurity surges due to food inflation and real wage stagnation. Dependency on fast food is entrenched.',
+      stat: 'Food bank users 42M - Food-insecure household rate 12.8%',
       level: 'warn'
     },
     h: {
-      summary: '주거 안정성: 기관 투자자의 시장 잠식',
-      detail: '블랙록·인비테이션홈즈 등 기관 투자자의 단독주택 대량 매입으로 ML층 진입 차단. 임대료 2020년 대비 30% 이상 상승. 모기지 금리 7%대 고착으로 신규 자가 취득 불가. 홈리스 80만명 역대 최고.',
-      stat: '기관 투자자 단독주택 보유 비율 28% · 임대료 YoY +8.2%',
+      summary: 'Housing Stability: Institutional investors encroaching market',
+      detail: 'Institutional investors like BlackRock and Invitation Homes mass purchasing single family homes blocks ML stratum entry. Rents rose over 30% compared to 2020. Mortgage rates stuck in 7% range prevent new home ownership. Homeless at record high of 800,000.',
+      stat: 'Institutional single-family home ownership 28% - Rent YoY +8.2%',
       level: 'danger'
     },
     d: {
-      summary: '부채 구조: 의료비 파산 구조',
-      detail: '미국 고유 의료비 파산 구조가 ML층 부채를 증폭. 신용카드 부채 1조 달러 돌파. 학자금 대출 잔액 1.7조 달러로 ML층 자산 형성 원천 차단. 금리 인상으로 변동금리 부채 이자 부담 폭증.',
-      stat: '신용카드 부채 1.1조달러 · 의료비 파산 연 53만건',
+      summary: 'Debt Structure: Medical bankruptcy structure',
+      detail: 'Unique US medical bankruptcy structure amplifies ML stratum debt. Credit card debt exceeds 1 trillion dollars. Student loan balance at 1.7 trillion dollars blocks ML stratum asset building. Rate hikes trigger explosion in interest burden for variable rate debt.',
+      stat: 'Credit Card Debt 1.1T USD - 530K Medical Bankruptcies Annually',
       level: 'warn'
     },
     hs: {
-      summary: '주거 그림자: 홈리스·노상 생활 가시화',
-      detail: '공식 홈리스 82만명이나 실질은 200만명 추정. 차량 생활자·친인척 임시 거주 포함 시 주거 불안정 인구 급증. 기후변화로 서부 산불·동부 홍수 지역 ML층 강제이주 반복.',
-      stat: '홈리스 82만명(역대 최고) · 주거 불안정 인구 추정 200만+',
+      summary: 'Housing Shadow: Homelessness and street life becoming visible',
+      detail: 'Official homeless count is 820,000, but real figure is estimated at 2 million. Housing insecure population surges when including vehicular dwellers and temporary stays with relatives. Climate change triggers repeated forced displacement of ML stratum in western wildfire and eastern flood zones.',
+      stat: 'Homeless 820,000 (all-time high) - Estimated housing-insecure population 2M+',
       level: 'warn'
     }
   },
   de: {
     f: {
-      summary: '식품 구매 압박: 안정적',
-      detail: '강력한 사회 안전망과 식품 바우처 시스템으로 ML층 식품 압박이 OECD 최저권. 소매 유통 경쟁으로 필수 식품 가격 상대적으로 안정. 다만 2022년 에너지 위기 이후 식품 물가 단기 급등 경험.',
-      stat: '식품 불안정 가구 비율 3.2%(EU 최저권) · 식품 바우처 수혜 ML층 비율 18%',
+      summary: 'Food Purchase Pressure: Stable',
+      detail: 'Strong social safety net and food voucher system keep ML stratum food pressure among the lowest in the OECD. Retail competition keeps essential food prices relatively stable. However, experienced a short term spike in food prices after the 2022 energy crisis.',
+      stat: 'Food-insecure household rate 3.2% (lowest in EU) - ML stratum food voucher recipients 18%',
       level: 'ok'
     },
     h: {
-      summary: '주거 안정성: 양호하나 대도시 압박',
-      detail: '전통적 임차 문화와 임차인 보호법으로 주거 안정성 높음. 그러나 베를린·뮌헨·함부르크 등 대도시는 PIR 급등. 동서독 격차도 지속. ML층의 대도시 진입 비용 상승 중.',
-      stat: 'PIR 전국 110 · 뮌헨 PIR 18로 급등 · 임차인 보호법 강력 유지',
+      summary: 'Housing Stability: Good but major city pressure',
+      detail: 'High housing stability thanks to traditional renting culture and tenant protection laws. However, PIR is skyrocketing in major cities like Berlin, Munich, and Hamburg. East West gap persists. Cost of entry into major cities for ML stratum is rising.',
+      stat: 'National PIR 110 - Munich PIR spiked to 18 - Tenant protection laws strongly maintained',
       level: 'ok'
     },
     d: {
-      summary: '부채 구조: 보수적 금융문화로 안정',
-      detail: '독일 가계의 전통적 부채 기피 문화로 가계부채/GDP 56%로 EU 최저권. 저축률 세계 최고 수준. ML층도 과도한 레버리지 없이 주거 접근. 다만 고령화로 연금 부담 증가.',
-      stat: '가계부채/GDP 56%(EU 최저권) · 가계 저축률 11.1%',
+      summary: 'Debt Structure: Stable due to conservative financial culture',
+      detail: 'German households traditional debt-averse culture keeps household debt to GDP at 56%, among the lowest in the EU. Savings rate is among the highest in the world. ML stratum accesses housing without excessive leverage. However, pension burdens rise due to aging population.',
+      stat: 'Household debt/GDP 56% (lowest in EU) - Household savings rate 11.1%',
       level: 'ok'
     },
     hs: {
-      summary: '주거 그림자: 비공식 주거 최소화',
-      detail: '사회 주택(Sozialwohnung) 공급으로 비공식 주거 비율 EU 최저. 강제이주 법적 보호 강력. 이민자 주거 통합 프로그램으로 슬럼화 차단. 다만 신규 이민 급증으로 사회 주택 부족 논란.',
-      stat: '비공식 주거 비율 0.8% · 사회 주택 재고 150만호',
+      summary: 'Housing Shadow: Minimized informal housing',
+      detail: 'Social housing (Sozialwohnung) supply keeps informal housing rate at EU lowest. Strong legal protection against forced eviction. Immigrant housing integration programs prevent slum formation. However, rapid rise in new immigration sparks social housing shortage debate.',
+      stat: 'Informal housing rate 0.8% - Social housing stock 1.5M units',
       level: 'ok'
     }
   },
   fi: {
-    f: {summary:'식품 구매 압박: EU 최저 수준',detail:'북유럽 복지 시스템의 식품 지원이 ML층까지 실질 도달. 공공 급식·식품 바우처·사회 서비스가 완충. 물가 상승 시에도 최저임금 연동 조정으로 구매력 보호.',stat:'식품 불안정 가구 비율 2.1% · 공공 식품 지원 ML층 도달률 92%',level:'ok'},
-    h: {summary:'주거 안정성: 공공임대로 완충',detail:'Hitas 프로그램 등 공공임대 주택 비율 높아 ML층 주거 안정. 헬싱키도 PIR 105로 비교적 안정. 임차 규제와 주택 지원으로 주거 압박 최소화.',stat:'PIR 105 · 공공임대 비율 17% · 주거 지원 수혜 ML층 41%',level:'ok'},
-    d: {summary:'부채 구조: 관리 가능 수준',detail:'높은 복지 지출로 ML층의 긴급 차입 필요성 낮음. 가계부채/GDP 72%로 관리 가능 수준. 교육·의료 무상 제공으로 부채 유발 요인 구조적 차단.',stat:'가계부채/GDP 72% · 교육·의료 공공 부담률 78%',level:'ok'},
-    hs: {summary:'주거 그림자: 최소화',detail:'비공식 주거 사실상 부재. 강제이주 제로에 가까움. Housing First 정책으로 홈리스 세계 최저 수준.',stat:'홈리스 인구 4,341명(인구 대비 세계 최저권)',level:'ok'}
+    f: {summary:'Food Purchasing Pressure: EU lowest level',detail:'Food support from the Nordic welfare system effectively reaches the ML stratum. Public catering, food vouchers, and social services act as buffers. Purchasing power is protected via minimum wage indexing even during inflation.',stat:'Food-insecure household rate 2.1% - Public food assistance ML stratum coverage 92%',level:'ok'},
+    h: {summary:'Housing Stability: Buffered by public housing',detail:'High ratio of public housing like Hitas program secures ML stratum housing stability. Helsinki is also relatively stable with a PIR of 105. Rent regulations and housing support minimize housing pressure.',stat:'PIR 105 - Public rental rate 17% - Housing support recipient ML stratum 41%',level:'ok'},
+    d: {summary:'Debt Structure: Manageable level',detail:'High welfare spending reduces the need for emergency borrowing among ML stratum. Household debt to GDP manageable at 72%. Free education and healthcare structurally block debt-inducing factors.',stat:'Household debt/GDP 72% - Public share of education and healthcare 78%',level:'ok'},
+    hs: {summary:'Housing Shadow: Minimized',detail:'Informal housing virtually nonexistent. Forced displacement close to zero. Homelessness at world lowest level thanks to Housing First policy.',stat:'Homeless Population 4341 (Lowest globally relative to population)',level:'ok'}
   },
   bo: {
-    f: {summary:'식품 구매 압박: 붕괴 직전',detail:'토지담보법·달러 부족·연료 대기로 식품 유통망 마비. 달러 암시장 형성으로 수입 식품 가격 2배 이상 폭등. 농촌 봉쇄로 도시 식품 공급 차단. 2026년 TC=3 발동의 직접 원인.',stat:'달러 공식환율 vs 암시장 환율 괴리 40%+ · 연료 대기 4~6시간',level:'danger'},
-    h: {summary:'주거 안정성: 비공식 주거 대다수',detail:'공식 주거 통계 대비 실제 ML층 주거 상황 극도로 취약. 산간 지역 전통 공동체 주거가 유일한 완충. 도시 이주민의 슬럼 집중. 강제이주 가속.',stat:'도시 슬럼 거주 비율 41% · 비공식 주거 비율 38%',level:'danger'},
-    d: {summary:'부채 구조: 공식 금융 접근 차단',detail:'ML층의 제도권 금융 접근 거의 불가. 비공식 고리대 의존. 정부 외채 누적으로 공공 서비스 붕괴. IMF 긴축 조건 이행 압박이 ML층 직격.',stat:'가계부채/GDP 38%(공식) · 비공식 고리대 실효금리 60%+',level:'warn'},
-    hs: {summary:'주거 그림자: 공동체 붕괴 임박',detail:'전통 공동체(아이유)가 유일한 주거 안전망이었으나 도시화·정치 갈등으로 해체 가속. 도로 봉쇄로 강제이주 다수 발생. TC=3 임계 상태.',stat:'공동체 완충 붕괴 지역 67개 도로 봉쇄(2026) · TC=3 확인',level:'danger'}
+    f: {summary:'Food Purchasing Pressure: On the verge of collapse',detail:'Food distribution network paralyzed by land mortgage laws, dollar shortages, and fuel queues. Black market for dollars doubles imported food prices. Rural blockades cut off urban food supply. Direct cause of TC=3 activation in 2026.',stat:'Official USD vs black market rate gap 40%+ - Fuel wait time 4-6 hours',level:'danger'},
+    h: {summary:'Housing Stability: Majority informal housing',detail:'Actual housing conditions of ML stratum are extremely vulnerable compared to official housing statistics. Traditional community housing in mountainous areas is the only buffer. Concentration of urban migrants in slums. Forced displacement accelerates.',stat:'Urban slum residency rate 41% - Informal housing rate 38%',level:'danger'},
+    d: {summary:'Debt Structure: Blocked access to official finance',detail:'ML stratum has virtually no access to institutional finance. Reliance on informal loan sharks. Collapse of public services due to accumulated government foreign debt. Pressure to implement IMF austerity conditions directly hits the ML stratum.',stat:'Household debt/GDP 38% (official) - Informal loan shark effective rate 60%+',level:'warn'},
+    hs: {summary:'Housing Shadow: Imminent community collapse',detail:'Traditional community (Ayllu) was the only housing safety net, but dismantling accelerates due to urbanization and political conflict. Numerous forced displacements occur due to road blockades. TC=3 threshold state.',stat:'Road blockades in 67 community buffer collapse areas (2026) - TC=3 confirmed',level:'danger'}
   },
   jp: {
-    f: {summary:'식품 구매 압박: 잠복 위험',detail:'슈퍼에서의 식품 접근성은 표면상 양호하나 실질임금 감소로 ML층의 실질 구매력 지속 하락. 1인 가구 증가로 대용량 식품 구매 불리. 편의점 도시락 의존도 세계 최고.',stat:'실질임금 24개월 연속 감소(2022~2024) · 식품 불안정 1인 가구 비율 19%',level:'warn'},
-    h: {summary:'주거 안정성: 소멸형 포기',detail:'도쿄 PIR 108로 높으나, ML층이 주거 자체를 포기하는 소멸형 적응. 결혼·출산 포기로 주거 수요 자체 감소. 빈집 900만호와 주거 압박의 역설적 공존.',stat:'PIR 108 · 빈집 900만호 · 1인 가구 비율 38%',level:'warn'},
-    d: {summary:'부채 구조: 학자금·생활자금 누적',detail:'정부 부채는 세계 최고이나 가계부채는 상대적 관리. ML층은 학자금 대출과 소비자 금융 부채 중첩. 저금리 시대 종료로 변동금리 부채 이자 부담 급등 중.',stat:'가계부채/GDP 68% · 학자금 대출 잔액 증가 추세',level:'warn'},
-    hs: {summary:'주거 그림자: 무연사회 고독사',detail:'공식 통계에 안 잡히는 고독사·고립 주거가 핵심 리스크. 넷카페 난민(인터넷카페 장기 거주)이 비공식 주거의 일본형 변종. 사회적 연결망 붕괴가 Hs의 실질 내용.',stat:'고독사 연 6.8만명 추정 · 넷카페 난민 15,000명(도쿄)',level:'warn'}
+    f: {summary:'Food Purchase Pressure: Latent Risk',detail:'Supermarket food accessibility is superficially good, but real purchasing power of ML stratum steadily declines due to falling real wages. Rise of single person households makes bulk food purchase disadvantageous. Reliance on convenience store bento boxes is the highest in the world.',stat:'Real wages declined for 24 consecutive months (2022-2024) - Food-insecure single-person households 19%',level:'warn'},
+    h: {summary:'Housing Stability: Depletion Abandonment',detail:'Tokyo PIR is high at 108, but ML stratum shows an extinctive adaptation, abandoning housing altogether. Housing demand itself decreases due to abandonment of marriage and childbirth. Paradoxical coexistence of 9 million vacant homes and housing pressure.',stat:'PIR 108 - Vacant homes 9M units - Single-person household rate 38%',level:'warn'},
+    d: {summary:'Debt Structure: Accumulated student and living funds',detail:'Government debt is the highest in the world, but household debt is relatively managed. ML stratum faces overlapping student loans and consumer finance debt. Ending of low interest era triggers surge in interest burden for variable rate debt.',stat:'Household debt/GDP 68% - Rising student loan balance trend',level:'warn'},
+    hs: {summary:'Housing Shadow: Solitary deaths in disconnected society',detail:'Solitary deaths and isolated housing not captured in official stats are key risks. Net cafe refugees (long-term internet cafe residents) are a Japanese variant of informal housing. Breakdown of social networks is the actual substance of Hs.',stat:'Estimated 68,000 solitary deaths annually - Net cafe refugees 15,000 (Tokyo)',level:'warn'}
   },
   fr: {
-    f: {summary:'식품 구매 압박: 경보 수준',detail:'식품 물가 급등(2022~2023 +14%)으로 ML층 구매 압박 가시화. 프랑스 특유의 푸드뱅크(Restos du Coeur) 이용자 역대 최고. 2018 황조끼 운동의 직접 원인 중 하나.',stat:'2023 식품 물가 +14% · 푸드뱅크 이용자 150만명(역대 최고)',level:'warn'},
-    h: {summary:'주거 안정성: 파리 투기 집중',detail:'파리 PIR 120으로 ML층 도시 진입 차단. 에어비앤비 법인화로 장기 임대 물량 급감. 지방은 상대적 안정. 임차인 보호법은 강하나 공급 부족 구조적.',stat:'파리 PIR 120 · 에어비앤비 등록 단기임대 65,000호',level:'warn'},
-    d: {summary:'부채 구조: 소비 부채 의존',detail:'가계부채/GDP 67%로 EU 중간. ML층은 소비자 신용 의존도 높음. 연금 개혁 갈등이 복지 불확실성 증폭. 저축률 하락 중.',stat:'가계부채/GDP 67% · ML층 소비자 신용 연체율 4.2%',level:'warn'},
-    hs: {summary:'주거 그림자: 시위로 가스 밸브',detail:'TYPE C 저항 일상화 덕분에 누적 압박이 주기적으로 방출. 2018 황조끼·2023 연금 시위가 BSLI 폭발 차단. 비공식 주거는 이민자 집중 지역에 한정.',stat:'2023 연금 시위 참가자 380만명 · 비공식 주거 이민자 밀집 지역 집중',level:'warn'}
+    f: {summary:'Food Purchase Pressure: Alert Level',detail:'Spike in food prices (2022-2023 +14%) makes ML stratum purchasing pressure visible. Users of France unique food bank (Restos du Coeur) hit record high. One of the direct causes of the 2018 Yellow Vests movement.',stat:'2023 food inflation +14% - Food bank users 1.5M (all-time high)',level:'warn'},
+    h: {summary:'Housing Stability: Speculative concentration in Paris',detail:'Paris PIR at 120 blocks ML stratum urban entry. Airbnb incorporation causes sharp drop in long term rental supply. Provinces are relatively stable. Tenant protection laws are strong but supply shortage is structural.',stat:'Paris PIR 120 - Airbnb-registered short-term rentals 65,000 units',level:'warn'},
+    d: {summary:'Debt Structure: Reliance on Consumer Debt',detail:'Household debt to GDP at 67%, middle of the EU. ML stratum is highly dependent on consumer credit. Pension reform conflict amplifies welfare uncertainty. Savings rate is falling.',stat:'Household debt/GDP 67% - ML stratum consumer credit delinquency rate 4.2%',level:'warn'},
+    hs: {summary:'Housing Shadow: Protest gas valve',detail:'Cumulative pressure is periodically released thanks to normalized TYPE C resistance. 2018 Yellow Vests and 2023 pension protests prevented BSLI explosion. Informal housing is limited to immigrant concentrated areas.',stat:'2023 pension protest participants 3.8M - Concentrated in high-density informal housing immigrant areas',level:'warn'}
   },
   cn: {
-    f: {summary:'식품 구매 압박: 농촌-도시 이중구조',detail:'농촌 대비 도시 식품 접근성 양호하나 ML층 이중구조 심각. 도시 이주 노동자(농민공)의 식품 불안정 구조적. 돼지고기 가격 폭등 사이클이 ML층 직격. 공식 통계 신뢰도 한계.',stat:'농민공 2.9억명 · 식품 물가 변동성 OECD 최고권',level:'warn'},
-    h: {summary:'주거 안정성: 부동산 버블 붕괴 진행',detail:'헝다·비구이위안 등 대형 부동산 개발사 파산으로 미완공 주택 수백만채 발생. ML층의 선분양 보증금 소멸 위험. 도시 PIR 165로 세계 최고권. 귀환 농민공 주거 해결 미흡.',stat:'미완공 주택 330만채 · 3선도시 PIR 165 · 헝다 파산 규모 3,000억달러',level:'danger'},
-    d: {summary:'부채 구조: 지방정부 부채 전가',detail:'중앙정부 통계와 달리 지방정부·도시투자공사(LGFV) 숨겨진 부채가 ML층 공공 서비스 축소로 전가. 가계 공식 부채는 낮으나 비공식 P2P·부동산 투자 손실 급증.',stat:'지방정부 숨겨진 부채 추정 $8~10조 · P2P 사기 피해 수천만명',level:'warn'},
-    hs: {summary:'주거 그림자: 선분양 사기·강제이주',detail:'미완공 아파트 계약자의 집단 모기지 거부(断贷潮) 사태. 재개발·신도시 조성 강제이주 수천만명. 농민공의 비공식 주거(城中村) 철거 가속.',stat:'断贷潮 참여 가구 30만+(2022) · 도시화 강제이주 연 수백만명',level:'danger'}
+    f: {summary:'Food Purchasing Pressure: Rural-urban dual structure',detail:'Food accessibility in cities is better than in rural areas, but the dual structure within the ML stratum is severe. Food insecurity among urban migrant workers is structural. Pork price spikes directly hit the ML stratum. Limits to official statistics reliability.',stat:'Migrant Workers 290M - Food Price Volatility OECD Highest',level:'warn'},
+    h: {summary:'Housing Stability: Real estate bubble collapse in progress',detail:'Bankruptcy of large developers like Evergrande and Country Garden leaves millions of unfinished homes. Risk of loss of presale deposits for ML stratum. Urban PIR at 165, among the highest in the world. Housing solutions for returning migrant workers remain insufficient.',stat:'Unfinished housing 3.3M units - Tier-3 city PIR 165 - Evergrande bankruptcy scale 300B USD',level:'danger'},
+    d: {summary:'Debt Structure: Local government debt shifting',detail:'Unlike central government statistics, hidden debts of local governments and LGFVs transfer to the reduction of public services for the ML stratum. Official household debt is low, but informal P2P and real estate investment losses are surging.',stat:'Estimated local government hidden debt 8-10T USD - Tens of millions of P2P fraud victims',level:'warn'},
+    hs: {summary:'Housing Shadow: Pre-sale fraud and forced eviction',detail:'Collective mortgage boycott by buyers of unfinished apartments. Tens of millions displaced by redevelopment and new town construction. Demolition of informal housing (urban villages) for migrant workers accelerates.',stat:'Mortgage boycott households 300,000+ (2022) - Forced urban relocation of millions annually',level:'danger'}
   },
 };
 
@@ -767,10 +767,10 @@ function getVarContext(countryId, varId){
 
 // Min-Max 범위 (30개국 기준)
 const NN_RANGE = {
-  foodGap:  {min:-5,  max:15,  unit:'%p', label:'식품물가-임금 갭'},
-  pir:      {min:30,  max:180, unit:'배',  label:'PIR(주택가격/소득비율)'},
-  debtGdp:  {min:4,   max:125, unit:'%',  label:'가계부채/GDP'},
-  informal: {min:0,   max:55,  unit:'%',  label:'비공식주거율'},
+  foodGap:  {min:-5,  max:15,  unit:'%p', label:'Food Price-Wage Gap'},
+  pir:      {min:30,  max:180, unit:'Times',  label:'PIR (Price to Income Ratio)'},
+  debtGdp:  {min:4,   max:125, unit:'%',  label:'Household Debt/GDP'},
+  informal: {min:0,   max:55,  unit:'%',  label:'Informal Housing Rate'},
 };
 
 // 정규화 함수
@@ -823,30 +823,30 @@ const NN_HINTS = {
   foodGap: {
     improve: (cur,target,country)=>{
       const diff=(cur-target).toFixed(1);
-      return `식품물가-임금 갭 ${diff}%p 축소 → 최저임금 연동 인상 또는 식품 물가 안정 정책 필요. 실질 구매력 직접 개선.`;
+      return `Food price-wage gap narrowed by ${diff}%p -> Need minimum wage indexing or food price stabilization policy. Directly improves real purchasing power.`;
     },
-    worsen: (cur,target)=>`갭 확대 → ML층 식품 구매 압박 가중. 엥겔계수 상승 선행.`
+    worsen: (cur,target)=>`Widening gap -> Increased food purchase pressure on ML stratum. Precedes Engel coefficient rise.`
   },
   pir: {
     improve: (cur,target)=>{
       const diff=Math.round(cur-target);
-      return `PIR ${diff}배 감소 → 주택 공급 확대 또는 수요 억제 필요. 공공임대 ${Math.round(diff*0.8)}만호 공급 상당.`;
+      return `PIR decreased by ${diff}x -> Need to expand housing supply or curb demand. Equivalent to supplying ${Math.round(diff*0.8)}0k public housing units.`;
     },
-    worsen: ()=>`PIR 상승 → ML층 자가 진입 불가 가속. 임차 부담 전가.`
+    worsen: ()=>`PIR rise -> Accelerated exclusion of ML stratum from homeownership. Transfer of rental burden.`
   },
   debtGdp: {
     improve: (cur,target)=>{
       const diff=Math.round(cur-target);
-      return `부채/GDP ${diff}%p 감축 → DSR 강화·전세대출 한도 축소 조합 필요. 단기 소비 위축 감수해야 달성 가능.`;
+      return `Debt to GDP reduced by ${diff}%p -> Need combination of stronger DSR and reduced Jeonse loan limits. Achievable only by accepting short term consumption contraction.`;
     },
-    worsen: ()=>`부채 증가 → 단기 생활수준 착시. 임계 도달 시 급락 위험.`
+    worsen: ()=>`Debt increase -> Short-term standard of living illusion. Risk of sharp decline upon reaching threshold.`
   },
   informal: {
     improve: (cur,target)=>{
       const diff=(cur-target).toFixed(1);
-      return `비공식주거율 ${diff}%p 감소 → 공공임대 공급·강제이주 보상 강화 필요. Housing First 정책 효과 직접 반영.`;
+      return `Informal housing rate decreased by ${diff}%p -> Need public housing supply and stronger compensation for forced eviction. Directly reflects the impact of Housing First policy.`;
     },
-    worsen: ()=>`비공식주거 증가 → Hs* 상승·BSLI 추가 하락. 사회 안전망 붕괴 신호.`
+    worsen: ()=>`Increase in informal housing -> Hs* rise, additional BSLI decline. Signal of social safety net collapse.`
   },
 };
 
@@ -855,36 +855,36 @@ let nnVals = {foodGap:6.5, pir:145, debtGdp:102, informal:8};
 
 /* Gap Session 설명 */
 const GAP_INFO = {
-  '—':       {desc:'구조적 압박이 안전 범위 내에 있으며 별도 흡수 메커니즘이 필요하지 않은 상태.', trigger:'특이 트리거 없음'},
-  'TYPE A':  {desc:'가계부채로 소비·주거를 유지하며 체감 생활수준을 구조 압박보다 높게 유지. 부채 한계 도달 시 갭 급격히 붕괴.', trigger:'금리 급등 / 자산 가격 급락'},
-  'TYPE B':  {desc:'분노와 압박을 삶의 축소(결혼·출산·소비 포기)로 흡수. 사회 불안 비가시화, 인구 구조로 표출.', trigger:'인구 절벽 가속 / 소비 기반 붕괴'},
-  'TYPE C':  {desc:'시위·파업이 제도화되어 압박의 가스 밸브로 기능. 표출 채널이 열려 있어 급성 폭발보다 만성화.', trigger:'표출 채널 차단 시 급성 전환'},
-  'TYPE D':  {desc:'정치 통제·민족주의가 압박 표출 억제. 표면 안정 유지되나 BSLI 고위험 구간에서 압박 누적.', trigger:'정치 통제 이완 + 경제 충격 동시'},
-  'TYPE E':  {desc:'전통 공동체·비공식 경제가 시장 실패 보완. 완충 한계 도달 시 TC=3 급성 전환.', trigger:'공동체 완충 한계 + 외부 충격'},
-  'TYPE A+B':{desc:'부채 연명(A) + 포기 소멸(B) 동시 작동. 세계 유일 복합 패턴. 폭발 없이 소멸하는 고위험 구조.', trigger:'부채 한계 + 인구 절벽 동시 가속'},
-  'TYPE A+C':{desc:'부채 연명(A) + 저항 일상화(C) 복합. 부채로 버티면서 주기적 시위가 발생하는 구조.', trigger:'금리 급등 + 표출 채널 차단 동시'},
-  'TYPE C+D':{desc:'저항 일상화(C) + 권위 억압(D) 복합. 시위가 발생하지만 정치 억압으로 구조 변화 미흡.', trigger:'억압 강화 + 경제 충격'},
-  'TYPE D+E':{desc:'권위 억압(D) + 공동체 완충(E) 복합. 극도로 취약한 이중 구조.', trigger:'정치 통제 이완 + 공동체 붕괴'},
-  '혼합형':  {desc:'복수 유형의 요소가 혼재하며 상황에 따라 다른 메커니즘이 우세해지는 구조.', trigger:'외부 충격 성격에 따라 상이'},
+  '—':       {desc:'Structural pressure is within safe range and no separate absorption mechanism is required.', trigger:'No Specific Trigger'},
+  'TYPE A':  {desc:'Maintaining consumption and housing through household debt, keeping perceived living standards higher than structural pressure. Gap collapses sharply when debt limit is reached.', trigger:'Interest rate surge / Asset price plunge'},
+  'TYPE B':  {desc:'Absorbing anger and pressure through downsized lives (giving up marriage, childbirth, and consumption). Social instability remains invisible, manifesting instead in demographic structure.', trigger:'Demographic cliff acceleration / Consumption base collapse'},
+  'TYPE C':  {desc:'Protests and strikes are institutionalized, functioning as a pressure release valve. Expression channels are open, leading to chronicity rather than acute explosion.', trigger:'Acute transition when expression channels are blocked'},
+  'TYPE D':  {desc:'Political control and nationalism suppress pressure. Surface stability is maintained but pressure accumulates in high-risk BSLI zone.', trigger:'Simultaneous political control relaxation and economic shock'},
+  'TYPE E':  {desc:'Traditional communities and informal economy offset market failure. Acute transition to TC=3 upon reaching buffer limit.', trigger:'Community buffer limit + External shock'},
+  'TYPE A+B':{desc:'Debt extension (A) + abandonment-extinction (B) working simultaneously. World unique complex pattern. High risk structure that fades away without explosion.', trigger:'Simultaneous debt limit and demographic cliff acceleration'},
+  'TYPE A+C':{desc:'Debt-sustained survival (A) + routine resistance (C) complex. Structure where periodic protests occur while relying on debt.', trigger:'Simultaneous interest rate surge and expression channel blockage'},
+  'TYPE C+D':{desc:'Routine resistance (C) + authoritarian suppression (D) complex. Protests occur but structural change is insufficient due to political suppression.', trigger:'Increased Suppression and Economic Shock'},
+  'TYPE D+E':{desc:'Authoritarian suppression (D) + community buffer (E) complex. Extremely vulnerable dual structure.', trigger:'Relaxed political control + Community collapse'},
+  'Mixed':  {desc:'Structure where multiple elements coexist and different mechanisms dominate depending on situation.', trigger:'Varies by nature of external shock'},
 };
 
 /* ── 지표 탭 ── */
 const INDS = [
-  {id:'bsli', label:'BSLI(ML)', desc:'기초사회생활지수 종합'},
-  {id:'f',    label:'F_ML*',   desc:'식품안정성 정규화값'},
-  {id:'h',    label:'H*',      desc:'주거안정성 정규화값'},
-  {id:'d',    label:'D*',      desc:'부채보정 정규화값'},
-  {id:'hs',   label:'Hs*',     desc:'주거그림자 정규화값'},
+  {id:'bsli', label:'BSLI(ML)', desc:'Basic Social Life Index Summary'},
+  {id:'f',    label:'F_ML*',   desc:'Normalized Food Stability Value'},
+  {id:'h',    label:'H*',      desc:'Normalized Housing Stability Value'},
+  {id:'d',    label:'D*',      desc:'Normalized Debt Correction Value'},
+  {id:'hs',   label:'Hs*',     desc:'Normalized Housing Shadow Value'},
 ];
 let curInd = INDS[0];
 
 /* ── 그룹 ── */
 const GROUPS = {
-  all:     {label:'전체 30국', ids: COUNTRIES.map(c=>c.id)},
-  europe:  {label:'유럽',      ids: COUNTRIES.filter(c=>c.region==='europe').map(c=>c.id)},
-  asia:    {label:'아시아',    ids: COUNTRIES.filter(c=>c.region==='asia').map(c=>c.id)},
-  americas:{label:'미주',      ids: COUNTRIES.filter(c=>c.region==='americas').map(c=>c.id)},
-  risk:    {label:'고위험국',  ids: COUNTRIES.filter(c=>c.years[9]<-0.10).map(c=>c.id)},
+  all:     {label:'Total 30 Countries', ids: COUNTRIES.map(c=>c.id)},
+  europe:  {label:'Europe',      ids: COUNTRIES.filter(c=>c.region==='europe').map(c=>c.id)},
+  asia:    {label:'Asia',    ids: COUNTRIES.filter(c=>c.region==='asia').map(c=>c.id)},
+  americas:{label:'Americas',      ids: COUNTRIES.filter(c=>c.region==='americas').map(c=>c.id)},
+  risk:    {label:'High-Risk Countries',  ids: COUNTRIES.filter(c=>c.years[9]<-0.10).map(c=>c.id)},
 };
 let curGroup = 'all';
 
@@ -897,18 +897,18 @@ function calcBSLI(f,h,d,hs){
   return 0.25*f + 0.35*h - 0.25*d - 0.15*hs;
 }
 function bsliGrade(v){
-  if(v>=0.40) return {label:'안전 Stable',    cls:'grade-safe',    color:'#085041'};
-  if(v>=0.20) return {label:'관리 Managed',   cls:'grade-managed', color:'#0C447C'};
-  if(v>=0.00) return {label:'경보 Alert',     cls:'grade-alert',   color:'#633806'};
-  if(v>=-0.20)return {label:'위험 Critical',  cls:'grade-critical',color:'#791F1F'};
-  return              {label:'고위험 High Risk',cls:'grade-highrisk',color:'#5A0A0A'};
+  if(v>=0.40) return {label:'Stable',    cls:'grade-safe',    color:'#085041'};
+  if(v>=0.20) return {label:'Managed',   cls:'grade-managed', color:'#0C447C'};
+  if(v>=0.00) return {label:'Alert',     cls:'grade-alert',   color:'#633806'};
+  if(v>=-0.20)return {label:'Critical',  cls:'grade-critical',color:'#791F1F'};
+  return              {label:'High Risk',cls:'grade-highrisk',color:'#5A0A0A'};
 }
 function kappaPhase(d,hs){
   const s=d+hs;
-  if(s>=1.6) return '2.5 (임계전이)';
-  if(s>=1.2) return '1.7 (위험)';
-  if(s>=0.8) return '1.3 (경보)';
-  return '1.0 (정상)';
+  if(s>=1.6) return '2.5 (Critical Transition)';
+  if(s>=1.2) return '1.7 (Risk)';
+  if(s>=0.8) return '1.3 (Alert)';
+  return '1.0 (Normal)';
 }
 
 /* ══════════════════════════════════════════
@@ -1054,7 +1054,7 @@ function rcOnSlider(v){
 }
 function rcTogglePlay(){
   rcPlaying=!rcPlaying;
-  document.getElementById('play-btn').textContent=rcPlaying?'⏸ 일시정지':'▶ 재생';
+  document.getElementById('play-btn').textContent=rcPlaying?'⏸ Pause':'▶ Play';
   if(rcPlaying){
     if(rcT>=LAST) rcT=0;
     rcLastTs=null;
@@ -1076,7 +1076,7 @@ function rcLoop(ts){
   rcDraw(rcT);
   if(rcT>=LAST){
     rcPlaying=false;
-    document.getElementById('play-btn').textContent='▶ 재생';
+    document.getElementById('play-btn').textContent='▶ Play';
     return;
   }
   rcRaf=requestAnimationFrame(rcLoop);
@@ -1139,13 +1139,13 @@ function buildNN(){
 
   const VARS = [
     {key:'foodGap', color:'#3D7A6E', normKey:'f',
-     simKey:'f',  label:'식품물가-임금 갭', affect:'F_ML*'},
+     simKey:'f',  label:'Food Price-Wage Gap', affect:'F_ML*'},
     {key:'pir',    color:'#4A6E9B', normKey:'h',
-     simKey:'h',  label:'PIR (주택가격/소득비율)', affect:'H*'},
+     simKey:'h',  label:'PIR (Price to Income Ratio)', affect:'H*'},
     {key:'debtGdp',color:'#A32D2D', normKey:'d',
-     simKey:'d',  label:'가계부채/GDP', affect:'D*'},
+     simKey:'d',  label:'Household Debt/GDP', affect:'D*'},
     {key:'informal',color:'#BA7517',normKey:'hs',
-     simKey:'hs', label:'비공식주거율', affect:'Hs*'},
+     simKey:'hs', label:'Informal Housing Rate', affect:'Hs*'},
   ];
 
   // 출력층 HTML
@@ -1304,7 +1304,7 @@ function showHint(key, raw){
   const diff = isNeg
     ? (orig-raw).toFixed(key==='pir'?0:1)
     : (raw-orig).toFixed(key==='pir'?0:1);
-  const arrow = improved ? '📉 개선' : '📈 악화';
+  const arrow = improved ? '📉 Improvement' : '📈 Deterioration';
   hintEl.innerHTML=`<div class="nn-hint" style="color:${col};background:${bg};border-color:${col};">
     <strong>${arrow} ${Math.abs(diff)}${r.unit}</strong> — ${txt}
   </div>`;
@@ -1329,7 +1329,7 @@ function renderResult(){
   const score=calcBSLI(f,h,d,hs);
   const grade=bsliGrade(score);
   const kappa=kappaPhase(d,hs);
-  const gapInfo=GAP_INFO[selCountry.gapType]||GAP_INFO['혼합형'];
+  const gapInfo=GAP_INFO[selCountry.gapType]||GAP_INFO['Mixed'];
 
   document.getElementById('result-content').innerHTML=`
     <div class="bsli-score-box">
@@ -1347,7 +1347,7 @@ function renderResult(){
         </div>
         <div style="font-size:10px;color:var(--muted);line-height:2;">
           <div>ML_ratio: <strong>${selCountry.mlRatio}%</strong></div>
-          <div>WHR 순위: <strong>${selCountry.whr||'순위밖'}</strong></div>
+          <div>WHR 순위: <strong>${selCountry.whr||'Unranked'}</strong></div>
           <div>κ-phase: <strong id="r-kappa" style="color:var(--amber)">${kappa}</strong></div>
         </div>
       </div>

@@ -397,16 +397,16 @@ new Chart(document.getElementById('c_freq'),{
   data:{
     labels:["A2 \uc81c\ub3c4\uc2e0\ub8b0", "A7 \uc778\uad6c\ub3d9\ud0dc", "A9 \uc9c0\uc815\ud559", "A8 \uac70\ubc84\ub10c\uc2a4", "A11 \uc5d0\ub108\uc9c0", "A12 \uc774\ub3d9\uc131", "A5 \uc9c0\uc2dd\ud601\uc2e0", "A3 \uc0ac\ud68c\uacb0\uc18d", "A4 \uacbd\uc81c\uc5ed\ub7c9", "A10 \ubb38\ud654\uc815\uccb4", "A1 \uc778\ud504\ub77c", "A6 \ud658\uacbd\uc9c0\uc18d"],
     datasets:[
-      {label:'하락 국가수',data:[17, 16, 15, 12, 10, 9, 3, 2, 2, 2, 1, 0],backgroundColor:'#c0392b',yAxisID:'y'},
-      {label:'평균 하락폭',data:[-0.038, -0.09, -0.098, -0.037, -0.043, -0.162, -0.036, -0.048, -0.022, -0.025, -0.056, 0],type:'line',borderColor:'#B8850E',
+      {label:'Number of Declining Countries',data:[17, 16, 15, 12, 10, 9, 3, 2, 2, 2, 1, 0],backgroundColor:'#c0392b',yAxisID:'y'},
+      {label:'Average Decline',data:[-0.038, -0.09, -0.098, -0.037, -0.043, -0.162, -0.036, -0.048, -0.022, -0.025, -0.056, 0],type:'line',borderColor:'#B8850E',
         backgroundColor:'transparent',yAxisID:'y2',tension:0.3}
     ]
   },
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{position:'top'}},
     scales:{
-      y:{position:'left',title:{display:true,text:'봉기 전 하락 국가수'}},
-      y2:{position:'right',title:{display:true,text:'평균 하락폭'},grid:{drawOnChartArea:false}}
+      y:{position:'left',title:{display:true,text:'Number of Declining Countries Before Uprising'}},
+      y2:{position:'right',title:{display:true,text:'Average Decline'},grid:{drawOnChartArea:false}}
     }
   }
 });
@@ -417,7 +417,7 @@ new Chart(document.getElementById('c_eta'),{
   data:{
     labels:["VEN\n\ubca0\ub124\uc218\uc5d8\ub77c", "GEO\n\uc870\uc9c0\uc544", "MEX\n\uba55\uc2dc\ucf54", "BGD\n\ubc29\uae00\ub77c\ub370\uc2dc", "SRB\n\uc138\ub974\ube44\uc544", "KEN\n\ucf00\ub0d0", "IDN\n\uc778\ub3c4\ub124\uc2dc\uc544", "NGA\n\ub098\uc774\uc9c0\ub9ac\uc544", "UGA\n\uc6b0\uac04\ub2e4", "BLR\n\ubca8\ub77c\ub8e8\uc2a4", "MMR\n\ubbf8\uc580\ub9c8", "HKG\n\ud64d\ucf69", "ARG\n\uc544\ub974\ud5e8\ud2f0\ub098", "LBN\n\ub808\ubc14\ub17c", "COL\n\ucf5c\ub86c\ube44\uc544", "SEN\n\uc138\ub124\uac08", "GTM\n\uacfc\ud14c\ub9d0\ub77c", "RUS\n\ub7ec\uc2dc\uc544", "DZA\n\uc54c\uc81c\ub9ac", "LKA\n\uc2a4\ub9ac\ub791\uce74", "CHL\n\uce60\ub808", "KAZ\n\uce74\uc790\ud750\uc2a4\ud0c4", "CUB\n\ucfe0\ubc14", "BOL\n\ubcfc\ub9ac\ube44\uc544", "PER\n\ud398\ub8e8", "ECU\n\uc5d0\ucf70\ub3c4\ub974", "SDN\n\uc218\ub2e8", "IRQ\n\uc774\ub77c\ud06c", "THA\n\ud0dc\uad6d", "PAK\n\ud30c\ud0a4\uc2a4\ud0c4", "IRN\n\uc774\ub780", "HTI\n\uc544\uc774\ud2f0"],
     datasets:[{
-      label:'η 변화 (봉기 2년전→봉기연도)',
+      label:'η Change (2 Years Before Uprising → Uprising Year)',
       data:[-0.0394, -0.0306, -0.0243, -0.0226, -0.0189, -0.0154, -0.0151, -0.0149, -0.0136, -0.0063, -0.0044, -0.0043, 0.0, 0.0014, 0.0049, 0.0076, 0.0103, 0.0136, 0.0138, 0.0165, 0.0172, 0.0179, 0.0193, 0.0195, 0.0207, 0.0258, 0.0286, 0.0307, 0.0336, 0.0345, 0.0351, 0.0511],
       backgroundColor:["#c0392b", "#c0392b", "#c0392b", "#c0392b", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60", "#27ae60"],
     }]
@@ -425,7 +425,7 @@ new Chart(document.getElementById('c_eta'),{
   options:{
     indexAxis:'y',responsive:true,maintainAspectRatio:false,
     plugins:{legend:{display:false}},
-    scales:{x:{title:{display:true,text:'η 변화량'}}}
+    scales:{x:{title:{display:true,text:'η Change'}}}
   }
 });
 
@@ -435,7 +435,7 @@ new Chart(document.getElementById('c_risk'),{
   type:'scatter',
   data:{
     datasets:[{
-      label:'봉기 경험국 (2024 현황)',
+      label:'Countries with Uprising Experience (2024 Status)',
       data: RISK_DATA.map(d=>({x:d.a2, y:d.a8, label:d.iso3})),
       backgroundColor: RISK_DATA.map(d=> d.eta < 0.35 ? '#c0392b' : d.eta < 0.5 ? '#e67e22' : '#27ae60'),
       pointRadius:8,
@@ -449,8 +449,8 @@ new Chart(document.getElementById('c_risk'),{
       title:{display:true,text:'A2(제도신뢰) × A8(거버넌스) — 좌하단일수록 위험 (빨강<0.35 주황<0.5 녹색≥0.5)'}
     },
     scales:{
-      x:{title:{display:true,text:'A2 제도신뢰 (2024)'},min:0,max:1},
-      y:{title:{display:true,text:'A8 거버넌스 (2024)'},min:0,max:1}
+      x:{title:{display:true,text:'A2 Institutional Trust (2024)'},min:0,max:1},
+      y:{title:{display:true,text:'A8 Governance (2024)'},min:0,max:1}
     }
   }
 });

@@ -250,7 +250,7 @@ const SE = [1.3144,1.3571,1.4047,1.4526,1.4789,1.4955,1.4922,1.4768,1.4764];
 const A12 = [0.3037,0.2772,0.6075,0.5969,0.8423,0.6684,0.8722,0.7337,0.7172];
 const ETA = [0.5419,0.5508,0.5904,0.5732,0.5916,0.5915,0.6149,0.6031,0.5929];
 
-const WHO_ZONES = {2020:'팬데믹',2023:'PHEIC종료'};
+const WHO_ZONES = {2020:'Pandemic',2023:'End of PHEIC'};
 
 // SE 차트
 new Chart(document.getElementById('seKor'),{
@@ -264,12 +264,12 @@ new Chart(document.getElementById('seKor'),{
     plugins:{legend:{display:false},
       annotation:{annotations:{
         box1:{type:'box',xMin:2019.5,xMax:2021.5,backgroundColor:'rgba(168,50,45,0.07)',
-              borderColor:'#A32D2D',borderWidth:1,label:{content:'압축구간',display:true,font:{size:10}}},
+              borderColor:'#A32D2D',borderWidth:1,label:{content:'Compression Interval',display:true,font:{size:10}}},
         box2:{type:'box',xMin:2021.5,xMax:2022.5,backgroundColor:'rgba(184,133,14,0.07)',
               borderColor:'#B8850E',borderWidth:1}
       }}
     },
-    scales:{x:{title:{display:true,text:'연도'}},
+    scales:{x:{title:{display:true,text:'Year'}},
       y:{min:1.2,max:1.6,title:{display:true,text:'SE (A2+A8)'}}}
   }
 });
@@ -278,16 +278,16 @@ new Chart(document.getElementById('seKor'),{
 new Chart(document.getElementById('a12Kor'),{
   type:'line',
   data:{labels:YEARS,datasets:[
-    {label:'한국 A12',data:A12,borderColor:'#5E9186',backgroundColor:'#5E918618',
+    {label:'Korea A12',data:A12,borderColor:'#5E9186',backgroundColor:'#5E918618',
      borderWidth:2.5,pointRadius:5,fill:true,tension:0.3},
-    {label:'글로벌 평균(추정)',
+    {label:'Global Average (Estimated)',
      data:[0.44,0.44,0.54,0.54,0.72,0.64,0.87,0.72,0.70],
      borderColor:'#888',borderWidth:1.5,borderDash:[4,3],pointRadius:3,fill:false,tension:0.3}
   ]},
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
-    scales:{x:{title:{display:true,text:'연도'}},
-      y:{min:0,max:1.1,title:{display:true,text:'A12 이동성'}}}
+    scales:{x:{title:{display:true,text:'Year'}},
+      y:{min:0,max:1.1,title:{display:true,text:'A12 Mobility'}}}
   }
 });
 
@@ -295,17 +295,17 @@ new Chart(document.getElementById('a12Kor'),{
 new Chart(document.getElementById('etaBsli'),{
   type:'bar',
   data:{
-    labels:['일본','대만','한국','태국','미얀마'],
+    labels:['Japan','Taiwan','Korea','Thailand','Myanmar'],
     datasets:[
-      {label:'η 구조지수',data:[0.541,0.548,0.593,0.506,0.405],
+      {label:'η Structural Index',data:[0.541,0.548,0.593,0.506,0.405],
        backgroundColor:'#5E918688',borderColor:'#5E9186',borderWidth:1},
-      {label:'BSLI 서민지수',data:[0.502,0.476,0.463,0.055,-0.223],
+      {label:'BSLI Grassroots Index',data:[0.502,0.476,0.463,0.055,-0.223],
        backgroundColor:'#B8850E88',borderColor:'#B8850E',borderWidth:1}
     ]
   },
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
-    scales:{y:{min:-0.3,max:0.8,title:{display:true,text:'지수값'}}}
+    scales:{y:{min:-0.3,max:0.8,title:{display:true,text:'Index Value'}}}
   }
 });
 
@@ -313,13 +313,13 @@ new Chart(document.getElementById('etaBsli'),{
 new Chart(document.getElementById('etaTs'),{
   type:'line',
   data:{labels:YEARS,datasets:[{
-    label:'η 한국',data:ETA,
+    label:'η Korea',data:ETA,
     borderColor:'#B8850E',backgroundColor:'#B8850E18',
     borderWidth:2.5,pointRadius:4,fill:true,tension:0.3
   }]},
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{display:false}},
-    scales:{x:{title:{display:true,text:'연도'}},
+    scales:{x:{title:{display:true,text:'Year'}},
       y:{min:0.5,max:0.65,title:{display:true,text:'η'}}}
   }
 });
@@ -328,7 +328,7 @@ new Chart(document.getElementById('etaTs'),{
 new Chart(document.getElementById('seComp'),{
   type:'bar',
   data:{
-    labels:['독일','일본','대만','한국','태국','미얀마','베네수엘라'],
+    labels:['Germany','Japan','Taiwan','Korea','Thailand','Myanmar','Venezuela'],
     datasets:[{
       label:'SE(2019)',
       data:[1.818,1.678,1.543,1.453,0.837,0.529,0.177],
@@ -338,7 +338,7 @@ new Chart(document.getElementById('seComp'),{
   },
   options:{responsive:true,maintainAspectRatio:false,
     plugins:{legend:{display:false}},
-    scales:{y:{min:0,max:2.1,title:{display:true,text:'SE = A2+A8 (2019 기준선)'}}}
+    scales:{y:{min:0,max:2.1,title:{display:true,text:'SE = A2+A8 (2019 Baseline)'}}}
   }
 });
 </script>

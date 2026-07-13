@@ -123,23 +123,23 @@
 /* ── Λ¹² 12변수 메타: 표시명·아이콘·축·단위포맷 ──────────────────
    raw_values(JSON)에서 값을 읽어 표시. S1은 출산율+고령 복합, A1은 risk만.   */
 const VARS = [
-  {key:'P1', name:'민중분노지수',   ico:'😠', code:'사회통합', fmt:(r)=>fnum(r.P1,1)+' <small>/10 만족</small>'},
-  {key:'P2', name:'집단행동지수',   ico:'✊', code:'노사분규', fmt:(r)=>fnum(r.P2,0)+' <small>건</small>'},
-  {key:'A1', name:'엘리트결속지수', ico:'🏛️', code:'법안처리', fmt:(r,a1)=>fnum(a1,2)+' <small>처리율</small>'},
-  {key:'A2', name:'제도신뢰지수',   ico:'⚖️', code:'범죄발생', fmt:(r)=>fnum(r.A2,0)+' <small>건/분기</small>'},
-  {key:'E1', name:'경제불평등지수', ico:'💰', code:'순자산지니',fmt:(r)=>fnum(r.E1,3)+' <small>지니</small>'},
-  {key:'E2', name:'청년실업지수',   ico:'👔', code:'15-29세', fmt:(r)=>fnum(r.E2,1)+' <small>%</small>'},
-  {key:'S1', name:'인구구조압력',   ico:'👥', code:'출산·고령',fmt:(r)=>fnum(r.S1_tfr,3)+' <small>TFR · 고령 '+fnum(r.S1_aged,1)+'%</small>'},
-  {key:'S2', name:'정보통제지수',   ico:'📡', code:'인터넷',  fmt:(r)=>fnum(r.S2,1)+' <small>% 이용</small>'},
-  {key:'G1', name:'지정학리스크',   ico:'🛡️', code:'국방예산', fmt:(r)=>fnum(r.G1/10000,1)+' <small>조원</small>'},
-  {key:'G2', name:'외부충격지수',   ico:'🌐', code:'수출증가율',fmt:(r)=>(r.G2>=0?'+':'')+fnum(r.G2,2)+' <small>% YoY</small>'},
-  {key:'C1', name:'공공서비스접근', ico:'🏥', code:'의사수',  fmt:(r)=>fnum(r.C1,1)+' <small>명/천명</small>'},
-  {key:'C2', name:'환경사회압력',   ico:'🌫️', code:'PM2.5',  fmt:(r)=>fnum(r.C2,1)+' <small>㎍/㎥</small>'},
+  {key:'P1', name:'Popular Anger Index',   ico:'😠', code:'Social Integration', fmt:(r)=>fnum(r.P1,1)+' <small>/10 만족</small>'},
+  {key:'P2', name:'Collective Action Index',   ico:'✊', code:'Labor Disputes', fmt:(r)=>fnum(r.P2,0)+' <small>건</small>'},
+  {key:'A1', name:'Elite Cohesion Index', ico:'🏛️', code:'Legislative Processing', fmt:(r,a1)=>fnum(a1,2)+' <small>처리율</small>'},
+  {key:'A2', name:'Institutional Trust Index',   ico:'⚖️', code:'Crime Occurrence', fmt:(r)=>fnum(r.A2,0)+' <small>건/분기</small>'},
+  {key:'E1', name:'Economic Inequality Index', ico:'💰', code:'Net Asset Gini',fmt:(r)=>fnum(r.E1,3)+' <small>지니</small>'},
+  {key:'E2', name:'Youth Unemployment Index',   ico:'👔', code:'Ages 15-29', fmt:(r)=>fnum(r.E2,1)+' <small>%</small>'},
+  {key:'S1', name:'Demographic Pressure',   ico:'👥', code:'Fertility and Aging',fmt:(r)=>fnum(r.S1_tfr,3)+' <small>TFR · 고령 '+fnum(r.S1_aged,1)+'%</small>'},
+  {key:'S2', name:'Information Control Index',   ico:'📡', code:'Internet',  fmt:(r)=>fnum(r.S2,1)+' <small>% 이용</small>'},
+  {key:'G1', name:'Geopolitical Risk',   ico:'🛡️', code:'Defense Budget', fmt:(r)=>fnum(r.G1/10000,1)+' <small>조원</small>'},
+  {key:'G2', name:'External Shock Index',   ico:'🌐', code:'Export Growth Rate',fmt:(r)=>(r.G2>=0?'+':'')+fnum(r.G2,2)+' <small>% YoY</small>'},
+  {key:'C1', name:'Public Service Access', ico:'🏥', code:'Number of Doctors',  fmt:(r)=>fnum(r.C1,1)+' <small>명/천명</small>'},
+  {key:'C2', name:'Environmental Social Pressure',   ico:'🌫️', code:'PM2.5',  fmt:(r)=>fnum(r.C2,1)+' <small>㎍/㎥</small>'},
 ];
 
 /* fetch 실패(file:// 등) 대비 fallback — data/national.json 2026-05-24 스냅샷 */
 const FALLBACK = {
-  _updated:'2026-05-24 (스냅샷)', _verified:'전국 objL1 코드 전수 메타 검증 2026-05-24',
+  _updated:'2026-05-24 (Snapshot)', _verified:'National objL1 Code Full Meta Validation 2026-05-24',
   eta:{ eta:0.547, data_quality:'100%',
     raw_values:{P1:6.6,P2:123,A2:373083,E1:0.625,E2:6.1,S1_tfr:0.748,S1_aged:21.2,
                 S2:95,G1:594244,C1:3.3,G2:3.76,C2:15.92},
@@ -160,14 +160,14 @@ function render(d){
   const judge = document.getElementById('eta-judge');
   const fill  = document.getElementById('eta-gauge-fill');
   let col, lab;
-  if(eta>=0.55){col='#7ED9C0';lab='🟢 안정';}
-  else if(eta>=0.50){col='#F0D080';lab='🟡 주목';}
-  else {col='#E89A9A';lab='🔴 위험';}
+  if(eta>=0.55){col='#7ED9C0';lab='🟢 Stable';}
+  else if(eta>=0.50){col='#F0D080';lab='🟡 Caution';}
+  else {col='#E89A9A';lab='🔴 Danger';}
   judge.textContent = lab;
   fill.style.width = Math.round((eta||0)*100)+'%';
   fill.style.background = col;
   document.getElementById('eta-note').textContent =
-    '데이터 품질 '+(E.data_quality||'—')+' · 12/12 변수 실측 · η↑=양호';
+    'Data Quality '+(E.data_quality||'—')+' · 12/12 variables measured · η↑=good';
 
   /* 카드 — 위험도 내림차순 */
   const rows = VARS.map(v=>({v, r: (v.key==='A1'?a1:risk[v.key])}))
@@ -188,7 +188,7 @@ function render(d){
   }).join('');
 
   document.getElementById('status').textContent =
-    '갱신: '+(d._updated||'—')+' · '+(d._verified||'');
+    'Update: '+(d._updated||'—')+' · '+(d._verified||'');
 }
 
 fetch('../data/national.json',{cache:'no-store'})

@@ -465,17 +465,17 @@ body{font-family:'Noto Sans KR',sans-serif;background:var(--paper);color:var(--i
 new Chart(document.getElementById('cBoltz'),{
   type:'bar',
   data:{
-    labels:['P(WD) 안정','P(SN) 개혁','P(BH) 붕괴'],
+    labels:['P(WD) Stability','P(SN) Reform','P(BH) Collapse'],
     datasets:[
-      {label:'🇰🇷 한국',data:[98.2,1.8,0.0],backgroundColor:'#3d7f78cc',borderColor:'#3d7f78',borderWidth:1.5,borderRadius:3},
-      {label:'🇺🇸 미국',data:[90.5,8.6,0.8],backgroundColor:'#B8850Ecc',borderColor:'#B8850E',borderWidth:1.5,borderRadius:3},
+      {label:'🇰🇷 South Korea',data:[98.2,1.8,0.0],backgroundColor:'#3d7f78cc',borderColor:'#3d7f78',borderWidth:1.5,borderRadius:3},
+      {label:'🇺🇸 USA',data:[90.5,8.6,0.8],backgroundColor:'#B8850Ecc',borderColor:'#B8850E',borderWidth:1.5,borderRadius:3},
     ]
   },
   options:{
     responsive:true,maintainAspectRatio:false,
     plugins:{legend:{position:'top',labels:{font:{size:11},boxWidth:12}}},
     scales:{
-      y:{min:0,max:100,title:{display:true,text:'확률 (%)',font:{size:10}}},
+      y:{min:0,max:100,title:{display:true,text:'Probability (%)',font:{size:10}}},
       x:{ticks:{font:{size:11}}}
     }
   }
@@ -485,15 +485,15 @@ new Chart(document.getElementById('cBoltz'),{
 new Chart(document.getElementById('cRadar'),{
   type:'radar',
   data:{
-    labels:['G-T Core','E_A2 탄성','C_int (반전)','Γ 반사','η값','BSLI','UI (반전)','T_social (반전)'],
+    labels:['G-T Core','E_A2 Elasticity','C_int (Inverted)','Γ Reflection','η Value','BSLI','UI (Inverted)','T_social (Inverted)'],
     datasets:[
       {
-        label:'🇰🇷 한국',
+        label:'🇰🇷 South Korea',
         data:[0.738,0.580,1-0.050,0.506,0.5929,0.4627,1-0.221,1-0.087],
         borderColor:'#3d7f78',backgroundColor:'rgba(61,127,120,0.15)',borderWidth:2,pointRadius:4
       },
       {
-        label:'🇺🇸 미국',
+        label:'🇺🇸 USA',
         data:[0.740,0.340,1-0.280,0.095,0.5826,0.6998,1-0.785,1-0.149],
         borderColor:'#B8850E',backgroundColor:'rgba(184,133,14,0.12)',borderWidth:2,pointRadius:4
       }
