@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>China Edition — Λ¹²v9.12 | Everblue Sea Institute for Social Dynamics</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#F5F3EE; color:#2C2C2C; font-family:Georgia,'Times New Roman',serif; line-height:1.75; }
+
+.header {
+  background:linear-gradient(135deg,#7B3F3F 0%,#A0522D 50%,#8B1A1A 100%);
+  padding:48px 40px 36px; position:relative; overflow:hidden;
+}
+.header::before {
+  content:'中'; position:absolute; right:40px; top:10px;
+  font-size:160px; color:rgba(255,255,255,0.06);
+  font-family:Georgia,serif; font-weight:bold; line-height:1;
+}
+.header-badge {
+  display:inline-block; background:rgba(255,255,255,0.18); color:#fff;
+  font-family:'Courier New',monospace; font-size:11px;
+  padding:4px 12px; border-radius:2px; letter-spacing:1.5px; margin-bottom:16px;
+}
+.header h1 { color:#fff; font-size:30px; font-weight:normal; margin-bottom:6px; }
+.header h2 { color:rgba(255,255,255,0.85); font-size:15px; font-weight:normal; letter-spacing:0.5px; }
+.header-meta { margin-top:20px; color:rgba(255,255,255,0.65); font-family:'Courier New',monospace; font-size:11px; letter-spacing:1px; }
+
+.engine-box {
+  background:#fff; border-left:4px solid #B8850E;
+  padding:14px 20px; margin:24px 40px;
+  font-family:'Courier New',monospace; font-size:12px; color:#595959;
+}
+.engine-box strong { color:#B8850E; }
+
+.section { padding:32px 40px; border-bottom:1px solid #DDD8CE; }
+.section-title {
+  font-size:13px; font-family:'Courier New',monospace; color:#8B1A1A;
+  letter-spacing:2px; text-transform:uppercase; margin-bottom:16px;
+}
+.section h3 { font-size:20px; color:#1F1F1F; font-weight:normal; margin-bottom:14px; line-height:1.4; }
+.section p { font-size:14px; color:#3A3A3A; margin-bottom:10px; text-align:justify; }
+
+/* 민중 시선 */
+.minjung-box {
+  background:#fff8f0; border-left:4px solid #A0522D;
+  padding:20px 24px; margin:14px 0; border-radius:2px;
+}
+.minjung-box p { font-size:14px; color:#3A2010; line-height:1.85; margin-bottom:8px; }
+.minjung-box p:last-child { margin-bottom:0; }
+
+/* 용어 해설 */
+.term-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:14px 0; }
+.term-item {
+  background:#fff; border:1px solid #DDD8CE;
+  padding:12px 14px; border-radius:2px;
+}
+.term-item .term-key { font-family:'Courier New',monospace; font-size:12px; color:#8B1A1A; font-weight:bold; margin-bottom:4px; }
+.term-item .term-val { font-size:12px; color:#444; }
+
+/* 데이터 테이블 */
+.data-table-wrap { margin:16px 0; overflow-x:auto; }
+.data-table { width:100%; border-collapse:collapse; font-size:13px; }
+.data-table th {
+  background:#8B1A1A; color:#fff; padding:10px 14px;
+  text-align:center; font-family:'Courier New',monospace;
+  font-size:11px; letter-spacing:0.5px; font-weight:normal;
+}
+.data-table th:first-child { text-align:left; }
+.data-table td { padding:9px 14px; border-bottom:1px solid #EEE; text-align:center; font-family:'Courier New',monospace; font-size:12px; }
+.data-table td:first-child { text-align:left; font-family:Georgia,serif; font-size:13px; color:#2C2C2C; }
+.data-table tr:nth-child(even) td { background:#F5F3EE; }
+.data-table tr:hover td { background:#FAEEDA; }
+
+/* 공식 박스 */
+.formula-box {
+  background:#fff; border:1px solid #DDD8CE; border-top:3px solid #8B1A1A;
+  padding:20px 24px; margin:16px 0;
+}
+.formula-box .formula-title { font-family:'Courier New',monospace; font-size:11px; color:#8B1A1A; letter-spacing:2px; margin-bottom:12px; }
+.formula-box .formula-eq {
+  font-family:'Courier New',monospace; font-size:14px; color:#1F1F1F;
+  background:#F5F3EE; padding:12px 16px; border-radius:2px; margin:8px 0;
+  letter-spacing:0.5px; line-height:1.6;
+}
+.formula-box .formula-note { font-size:12px; color:#666; margin-top:8px; }
+
+/* 바 차트 */
+.bar-chart { margin:16px 0; }
+.bar-row { display:grid; grid-template-columns:120px 1fr 80px; gap:8px; align-items:center; margin-bottom:7px; }
+.bar-country { font-size:12px; color:#444; text-align:right; }
+.bar-track { background:#EEE; border-radius:2px; height:18px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:2px; }
+.bar-val { font-family:'Courier New',monospace; font-size:11px; color:#333; }
+
+/* SVG wrap */
+.svg-wrap { text-align:center; margin:16px 0; }
+.svg-wrap svg { max-width:100%; }
+
+/* 관찰 신호 */
+.obs-note {
+  background:#F3F0E8; border:1px solid #DDD8CE; border-radius:3px;
+  padding:14px 18px; margin:14px 0; font-size:13px; color:#3A2A1A; line-height:1.7;
+}
+.obs-note::before {
+  content:'◈ 관찰 신호'; display:block;
+  font-family:'Courier New',monospace; font-size:10px;
+  color:#8B1A1A; letter-spacing:1px; margin-bottom:6px;
+}
+
+/* 오차 박스 */
+.error-box {
+  background:#FAEEDA; border-left:3px solid #B8850E;
+  padding:12px 16px; margin:14px 0;
+  font-size:12px; color:#633806; font-family:'Courier New',monospace;
+}
+
+/* PPR 카드 */
+.ppr-card { background:#fff; border:1px solid #DDD8CE; border-radius:3px; overflow:hidden; margin-bottom:14px; }
+.ppr-head { background:#8B1A1A; color:#fff; font-size:12px; font-family:'Courier New',monospace; padding:8px 14px; letter-spacing:1px; }
+.ppr-body { padding:14px; }
+.ppr-row { display:flex; justify-content:space-between; font-size:12px; padding:4px 0; border-bottom:1px solid #F0EDE8; }
+.ppr-row:last-child { border-bottom:none; }
+.ppr-key { color:#666; }
+.ppr-val { font-family:'Courier New',monospace; font-weight:bold; color:#8B1A1A; }
+
+/* 담론육층 */
+.discourse-layer { display:grid; grid-template-columns:130px 1fr; gap:0; margin-bottom:2px; }
+.layer-num { background:#8B1A1A; color:#fff; font-family:'Courier New',monospace; font-size:11px; padding:12px 14px; display:flex; align-items:center; }
+.layer-content { background:#fff; border:1px solid #DDD8CE; border-left:none; padding:12px 18px; font-size:13px; color:#2C2C2C; line-height:1.7; }
+.layer-content strong { color:#8B1A1A; }
+
+/* 위상 진단 */
+.phase-diag {
+  background:#fff; border:2px solid #8B1A1A; border-radius:3px;
+  padding:20px 24px; margin:14px 0;
+}
+.phase-diag h4 { color:#8B1A1A; font-size:15px; margin-bottom:12px; }
+.phase-diag p { font-size:13px; color:#2C2C2C; line-height:1.75; margin-bottom:8px; }
+
+/* 결론 궤도 */
+.conclusion {
+  background:#F8F0E8; border-left:4px solid #A0522D;
+  padding:24px 32px; margin:20px 40px; border-radius:2px;
+}
+.conclusion p { font-size:15px; line-height:1.95; color:#1F1F1F; text-align:justify; margin-bottom:12px; }
+.conclusion p:last-child { margin-bottom:0; }
+
+/* 시리즈 박스 */
+.series-box { background:#fff; border:1px solid #DDD8CE; margin:20px 40px; padding:20px; }
+.series-title { font-family:'Courier New',monospace; font-size:11px; color:#8B1A1A; letter-spacing:2px; margin-bottom:12px; }
+.series-item { display:flex; gap:12px; padding:6px 0; border-bottom:1px solid #F0EDE8; font-size:12px; }
+.series-item:last-child { border-bottom:none; }
+.series-num { font-family:'Courier New',monospace; color:#B8850E; min-width:40px; }
+.series-status { margin-left:auto; font-family:'Courier New',monospace; font-size:10px; padding:2px 8px; border-radius:2px; }
+.status-done { background:#E8F4F0; color:#27500A; }
+.status-wip { background:#FFF3CD; color:#856404; }
+.status-plan { background:#F5F3EE; color:#888; }
+.status-now { background:#FCEBEB; color:#791F1F; }
+
+/* 인용 */
+.quote { border-left:3px solid #B8850E; padding:10px 16px; margin:14px 0; font-style:italic; color:#4A3A1A; font-size:14px; background:#FFFBF5; }
+
+/* 신호 배지 */
+.signal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+.signal-card { background:#fff; border:1px solid #DDD8CE; padding:14px; border-radius:2px; text-align:center; }
+.signal-card .sig-icon { font-size:24px; margin-bottom:6px; }
+.signal-card .sig-label { font-size:11px; color:#888; font-family:'Courier New',monospace; margin-bottom:4px; }
+.signal-card .sig-val { font-size:18px; font-family:'Courier New',monospace; font-weight:bold; color:#8B1A1A; }
+.signal-card .sig-note { font-size:10px; color:#666; margin-top:4px; }
+
+/* 한반도 블록 */
+.korea-block { background:#EEF6F3; border:1px solid #C5DDD5; padding:20px 24px; margin:14px 0; border-radius:3px; }
+.korea-block h4 { color:#3A6A5E; font-size:14px; margin-bottom:10px; font-weight:bold; }
+.korea-block p { font-size:13px; color:#2C2C2C; line-height:1.75; }
+
+/* 푸터 */
+.footer { background:#EBF4F0; padding:28px 40px; text-align:center; border-top:1px solid #DDD8CE; }
+.footer p { font-size:12px; color:#3A6A5E; margin-bottom:4px; font-family:'Courier New',monospace; }
+.footer a { color:#5E9186; text-decoration:none; }
+.footer .engine-tag { margin-top:10px; font-size:10px; color:#888; letter-spacing:1px; }
+
+/* 반응형 */
+@media(max-width:768px){
+  .section,.engine-box,.conclusion,.series-box,.footer{margin-left:16px;margin-right:16px;padding-left:16px;padding-right:16px;}
+  .header{padding:32px 16px 24px;}
+  .term-grid,.signal-grid{grid-template-columns:1fr;}
+  .bar-row{grid-template-columns:80px 1fr 60px;}
+}
+</style>
+</head>
+<body>
+ ─── Header ─── 
+<div class="header">
+<div class="header-badge">CHINA STANDALONE REPORT · #23 · Λ¹²v9.12</div>
+<h1>🇨🇳 China Edition</h1>
+<h2>Suppressed Memories and Expanding Power — In-depth Analysis of Chinese Sociodynamics</h2>
+<div class="header-meta">
+    Everblue Sea Institute for Social Dynamics · Everblue Sea Institute for Social Dynamics<br/>
+    This report is calculated based on the Λ¹²v9.12 engine · Publication Date 2026.05.02
+  </div>
+</div>
+ ─── Engine Box ─── 
+<div class="engine-box">
+<strong>ENGINE:</strong> Λ¹²v9.12 | Includes ADI §31 | Based on SSRN 6632858<br/>
+<strong>Correction Formula:</strong> Λ¹²_corrected = Λ¹²_raw ÷ OLI × (1−TBI×θ) × (1−ADI×γ) × exp(−k×t) | OLI=0.51 applied<br/>
+<strong>Data Bias Warning:</strong> Applied Chinese official statistics OLI 0.51 correction — Actual growth rate Rhodium estimate 2.4~2.8% vs Official 4.8~5.0%
+</div>
+ ─── Research Objective ─── 
+<div class="section">
+<div class="section-title">Declaration of Research Objective</div>
+<h3>This report records the reality of 1.4 billion Chinese people from an observer standpoint.</h3>
+<div class="minjung-box">
+<p>Tangping (躺平·lying flat) youth in Shanghai, middle class who lost their homes due to the collapse of Evergrande (恒大), Uyghurs in Xinjiang, the last Democrats in Hong Kong, Tibetan lamas — they all live within the same border. However, the China they experience is a completely different country.</p>
+<p>The Λ¹² framework attempts to capture this difference in numbers. Neither the narrative of the Chinese Communist Party nor Western criticism — but to hear what the structure says. The judgment is up to the reader.</p>
+</div>
+</div>
+ ─── Glossary ─── 
+<div class="section">
+<div class="section-title">§0 · Glossary</div>
+<h3>Key concepts used in this report</h3>
+<div class="term-grid">
+<div class="term-item"><div class="term-key">TBI (Trauma Big Bang Index)</div><div class="term-val">Historical Shock (H) × Cultural Unassimilation (C) × Narrative Non-integration (N). Structural risk signal when threshold θ=0.70 is exceeded.</div></div>
+<div class="term-item"><div class="term-key">Σ_rep (Suppressive Disconnection)</div><div class="term-val">A structure in which the leadership diverts targets or suppresses public dissatisfaction so that it cannot be directed inward.</div></div>
+<div class="term-item"><div class="term-key">ADI (AI Dependency Index)</div><div class="term-val">The ratio of external AI platform dependency and data sovereignty loss rate divided by self AI capability and infrastructure. The lower it is, the more independent the AI state.</div></div>
+<div class="term-item"><div class="term-key">OLI (Origin-Legacy Calibration)</div><div class="term-val">Composite calibration coefficient for statistical reliability, institutional maturity, and data accessibility. China OLI=0.51 applied.</div></div>
+<div class="term-item"><div class="term-key">탕핑 (躺平)</div><div class="term-val">Lying flat. A phenomenon of collective resignation and withdrawal of Chinese youth resisting excessive competition and labor exploitation. Σ_aph signal.</div></div>
+<div class="term-item"><div class="term-key">DCI (Generational Fault-line Index)</div><div class="term-val">Fault-line of values and system perception between the generation that experienced growth (parents) vs the generation that experienced stagnation (children). Second derivative of irreversible fracture.</div></div>
+</div>
+</div>
+ ─── Observer Standpoint ─── 
+<div class="section">
+<div class="section-title">Ⅰ · Observer Standpoint</div>
+<h3>Two Chinas, One Border</h3>
+<p>Currently, China is living two realities at the same time. One is <strong>the world's second-largest economy, an AI-independent state, and a global manufacturing hub</strong>as China. The other is <strong>youth unemployment at 16–46% (estimated), real estate crisis, suppression of ethnic minorities, and monopoly of historical narrative</strong>structured as China.</p>
+<p>These two realities are not a contradiction. They grow from the same root. While the development model chosen by capital produces external outcomes, its cost has been charged to the people, nature, and history. The Λ¹² framework seeks to read that bill.</p>
+<div class="signal-grid">
+<div class="signal-card">
+<div class="sig-icon">⚠️</div>
+<div class="sig-label">TBI Approaching Threshold</div>
+<div class="sig-val">0.612</div>
+<div class="sig-note">Approaching threshold θ=0.70</div>
+</div>
+<div class="signal-card">
+<div class="sig-icon">🔒</div>
+<div class="sig-label">ADI — Paradoxical Strength</div>
+<div class="sig-val">0.013</div>
+<div class="sig-note">AI Sovereign (Closed-base)</div>
+</div>
+<div class="signal-card">
+<div class="sig-icon">📉</div>
+<div class="sig-label">Youth Unemployment Rate (Official)</div>
+<div class="sig-val">16.5%</div>
+<div class="sig-note">Independent Estimate up to 46.5%</div>
+</div>
+</div>
+</div>
+ ─── State Governance Structure ─── 
+<div class="section">
+<div class="section-title">Ⅱ · State Governance Structure</div>
+<h3>Chinese Communist Party — Operating Principles of a One-Party System</h3>
+<p>While China's official governance structure places the National People's Congress (NPC) as the supreme organ of power, practical power is concentrated in the 7 members of the Politburo Standing Committee of the Chinese Communist Party (CCP). General Secretary Xi Jinping abolished the presidential term limits through a constitutional amendment in 2018, establishing a de facto lifelong ruling structure.</p>
+<div class="ppr-card">
+<div class="ppr-head">3-Tier Power Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Layer 1 — The Party (黨)</span><span class="ppr-val">7 CCP Politburo Standing Committee Members / Practical Supreme Power</span></div>
+<div class="ppr-row"><span class="ppr-key">Layer 2 — The Military (軍)</span><span class="ppr-val">People's Liberation Army (PLA) / The Party's Army (Not State's Army)</span></div>
+<div class="ppr-row"><span class="ppr-key">Layer 3 — The State (國)</span><span class="ppr-val">NPC·State Council / Organs Executing Party Decisions</span></div>
+</div>
+</div>
+<p>With a freedom score of 9/100 based on Freedom House 2025, it ranks among the lowest in the world. The RSF Press Freedom Index at 178th (2025) reflects that China is the country with the highest number of detained journalists in the world. The 2025 HRW Annual Report records that the Xi Jinping regime has further strengthened the enforcement of ideological uniformity.</p>
+<div class="obs-note">
+    Key Governance Signals 2024~2026: Continuation of international sanctions related to Xinjiang Uyghur forced labor, dissolution of Hong Kong's last democratic party (2025.06), suspicious death of a high-ranking Tibetan Lama (2025.03), promotion of legislation for ethnic minority policies through constitutional amendment. Xi Jinping's visits to Tibet and Xinjiang in August and September — demonstrating "strong control."
+  </div>
+</div>
+ ─── Basic Statistics ─── 
+<div class="section">
+<div class="section-title">Ⅲ · Basic Statistics</div>
+<h3>China Core Indicators (Based on 2024~2025)</h3>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Indicator</th><th>Official Figure</th><th>OLI-Calibrated Estimate</th><th>Source</th></tr>
+<tr><td>GDP Growth Rate 2024</td><td>4.8~5.0%</td><td>2.4~2.8% (Rhodium)</td><td>NBS / Rhodium Group</td></tr>
+<tr><td>Youth Unemployment Rate (Ages 16~24)</td><td>16.5% (2025.03)</td><td>Up to 46.5% Independent Estimate</td><td>NBS / Independent Researchers</td></tr>
+<tr><td>GDP per capita</td><td>USD 13,400</td><td>PPP basis USD 23,400</td><td>World Bank 2024</td></tr>
+<tr><td>HDI</td><td>0.788 (75th)</td><td>UNDP 2025</td><td>UNDP</td></tr>
+<tr><td>CPI (Corruption Perceptions)</td><td>42/100</td><td>OLI-Calibrated Real ~35</td><td>Transparency International 2024</td></tr>
+<tr><td>GPI (Peace Index)</td><td>88th/163</td><td>Worsening Militarization Domain</td><td>IEP 2025</td></tr>
+<tr><td>Real Estate Development Investment</td><td>-9.9% YoY (Q1 2025)</td><td>—</td><td>NBS Q1 2025</td></tr>
+<tr><td>Local Government Debt/GDP</td><td>38% (On-budget, 2025.10)</td><td>Including LGFV ~84%</td><td>World Bank / IMF</td></tr>
+<tr><td>Freedom House</td><td>9/100 (Not Free)</td><td>—</td><td>Freedom House 2025</td></tr>
+<tr><td>RSF Press Freedom</td><td>178th/180</td><td>—</td><td>RSF 2025</td></tr>
+</table>
+</div>
+<div class="error-box">
+    ※ Rationale for OLI=0.51 application: Potential political interference in China's NBS statistics (suspension of youth unemployment statistics in 2023, recurring structure of pre-achieving GDP targets), restricted data access in Xinjiang and Tibet, impossibility of independent auditing. Figures from multiple independent organizations such as Rhodium Group are co-listed.
+  </div>
+</div>
+ ─── Basic Coordinates · Formulas ─── 
+<div class="section">
+<div class="section-title">Ⅳ · Basic Coordinates · Formulas Box</div>
+<h3>Λ¹²v9.12 China Output Variables</h3>
+<div class="formula-box">
+<div class="formula-title">ΛSCORE FORMULA — CHINA</div>
+<div class="formula-eq">Λ¹²_corrected = Λ¹²_raw ÷ 0.51 × (1 − 0.612 × 0.70) × (1 − 0.013 × 0.35) × exp(−k×t)</div>
+<div class="formula-eq">TBI Correction Term: (1 − 0.612 × 0.70) = (1 − 0.429) = 0.571</div>
+<div class="formula-eq">ADI Correction Term: (1 − 0.013 × 0.35) = (1 − 0.005) ≈ 0.995 [Minimal calibration due to ADI strength]</div>
+<div class="formula-note">※ As TBI approaches the threshold (0.70), the calibrated Λ-Score drops sharply. Paradoxically, ADI acts as a strength without calibration — however, the interpretation must include the fact that this strength is a product of a closed system.</div>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Variable</th><th>Value</th><th>Classification</th><th>Direction (DIRECTION)</th></tr>
+<tr><td>LPI (Level of Living)</td><td>0.52 (Estimated)</td><td>Attention</td><td>+1 (Risk Direction)</td></tr>
+<tr><td>HDI</td><td>0.788</td><td>Medium</td><td>-1</td></tr>
+<tr><td>GPI</td><td>88th→0.46</td><td>Danger</td><td>+1</td></tr>
+<tr><td>CPI</td><td>42→0.42</td><td>Attention</td><td>+1</td></tr>
+<tr><td>CFD (Cultural Fault-line)</td><td>0.78 (Self)</td><td>Danger</td><td>+1</td></tr>
+<tr><td>DCI (Generational Fault-line)</td><td>0.72 (Self)</td><td>Danger</td><td>+1</td></tr>
+<tr><td>MFI (Media Freedom Index)</td><td>178th→0.08</td><td>Danger</td><td>-1</td></tr>
+<tr><td>RHC (Historical Conflict)</td><td>0.849</td><td>Danger</td><td>+1</td></tr>
+<tr><td>IGI (Institutional Repression)</td><td>0.88 (Self)</td><td>Danger</td><td>-1</td></tr>
+<tr><td>AHI (Capital-Labor)</td><td>0.61 (Estimated)</td><td>Attention</td><td>+1</td></tr>
+<tr><td>F_reach (Food)</td><td>0.58 (Estimated)</td><td>Attention</td><td>-1</td></tr>
+<tr><td>ADI (AI Dependency)</td><td>0.013</td><td>Sovereign</td><td>-1</td></tr>
+</table>
+</div>
+</div>
+ ─── Radar 2×2 ─── 
+<div class="section">
+<div class="section-title">Ⅴ · Radar 2×2 — Phase Quadrants</div>
+<h3>Stability × Openness Phase Coordinates — China's Position</h3>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 520 400" width="520" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="400" width="520"></rect>
+ Quadrants 
+<rect fill="#EBF4F0" height="170" opacity="0.4" width="210" x="50" y="30"></rect>
+<rect fill="#FFF3CD" height="170" opacity="0.4" width="210" x="260" y="30"></rect>
+<rect fill="#FAEEDA" height="170" opacity="0.5" width="210" x="50" y="200"></rect>
+<rect fill="#FCEBEB" height="170" opacity="0.4" width="210" x="260" y="200"></rect>
+ Axis 
+<line stroke="#555" stroke-width="1.5" x1="50" x2="470" y1="200" y2="200"></line>
+<line stroke="#555" stroke-width="1.5" x1="260" x2="260" y1="30" y2="370"></line>
+ Labels 
+<text fill="#3A6A5E" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="18">High Openness</text>
+<text fill="#888" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="388">Low Openness</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,36,204)" x="36" y="204">Unstable</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,484,204)" x="484" y="204">Stable</text>
+ Quadrant Labels 
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="52">Open·Stable</text>
+<text fill="#856404" font-family="Courier New" font-size="10" text-anchor="middle" x="365" y="52">Open·Unstable</text>
+<text fill="#A0522D" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="380">Closed·Suppressive Stable</text>
+<text fill="#791F1F" font-family="Courier New" font-size="10" text-anchor="middle" x="365" y="380">Closed·Unstable</text>
+ China's Position — Q3 Closed·Suppressive Stable 
+<circle cx="140" cy="310" fill="#FCEBEB" r="28" stroke="#8B1A1A" stroke-width="2.5"></circle>
+<text font-size="22" text-anchor="middle" x="140" y="306">🇨🇳</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="11" font-weight="bold" text-anchor="middle" x="140" y="346">China Present</text>
+ Eastbound Arrow — When TBI Approaching Threshold 
+<defs>
+<marker id="redarr" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#8B1A1A"></path>
+</marker>
+</defs>
+<line marker-end="url(#redarr)" stroke="#8B1A1A" stroke-dasharray="4,2" stroke-width="1.5" x1="168" x2="230" y1="310" y2="310"></line>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="240" y="308">At TBI Threshold</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="240" y="320">Direction of Movement</text>
+ Comparison Countries 
+<circle cx="155" cy="80" fill="#E8F4F0" r="14" stroke="#5E9186" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="155" y="78">🇹🇼</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" text-anchor="middle" x="155" y="104">Taiwan</text>
+<circle cx="190" cy="110" fill="#EBF4F0" r="14" stroke="#5E9186" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="190" y="108">🇯🇵</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" text-anchor="middle" x="190" y="134">Japan</text>
+<circle cx="350" cy="155" fill="#FFF3CD" r="14" stroke="#B8850E" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="350" y="153">🇰🇷</text>
+<text fill="#856404" font-family="Courier New" font-size="9" text-anchor="middle" x="350" y="179">Korea</text>
+ Explanatory Text 
+<text fill="#8B1A1A" font-family="Courier New" font-size="10" x="50" y="260">※ Stable due to maintaining a closed system</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="10" x="50" y="273">However, TBI pressure is accumulating</text>
+</svg>
+</div>
+<div class="obs-note">
+    China is currently located in the 'closed·suppressive stability (Q3)' quadrant. This is not the stability of an open democracy, but control-based stability. If TBI 0.612 reaches the threshold (0.70), the possibility of moving to Q4 (closed·unstable) is structurally inherent. The trigger for this movement is highly likely to be the simultaneous arrival of the economic crisis (real estate·youth unemployment) and the generational fault-line threshold.
+  </div>
+</div>
+ ─── GPI Time Series ─── 
+<div class="section">
+<div class="section-title">Ⅵ · GPI Time Series — Peace Index Trend</div>
+<h3>China Peace Index Direction (2015~2025)</h3>
+<div class="svg-wrap">
+<svg height="220" viewbox="0 0 600 220" width="600" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#fff" height="220" width="600"></rect>
+ Grid 
+<line stroke="#EEE" stroke-width="1" x1="70" x2="70" y1="20" y2="180"></line>
+<line stroke="#CCC" stroke-width="1.5" x1="70" x2="570" y1="180" y2="180"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="60" y2="60"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="100" y2="100"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="140" y2="140"></line>
+ Y-Axis 
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="64">60th</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="104">80th</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="144">100th</text>
+ X-Axis 
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="112" y="198">2015</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="204" y="198">2017</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="296" y="198">2019</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="388" y="198">2021</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="480" y="198">2023</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="middle" x="560" y="198">2025</text>
+ China's GPI Declining Trend (Rank Increase = Worsening) 
+<polyline fill="none" points="112,90 158,92 204,96 250,98 296,102 342,108 388,114 434,118 480,128 520,138 560,148" stroke="#8B1A1A" stroke-width="2.5"></polyline>
+ Data Points 
+<circle cx="112" cy="90" fill="#8B1A1A" r="4"></circle>
+<circle cx="296" cy="102" fill="#8B1A1A" r="4"></circle>
+<circle cx="480" cy="128" fill="#8B1A1A" r="4"></circle>
+<circle cx="560" cy="148" fill="#8B1A1A" r="4"></circle>
+ Major Events Marked 
+<line stroke="#B8850E" stroke-dasharray="3,2" stroke-width="0.8" x1="388" x2="388" y1="20" y2="180"></line>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="390" y="35">COVID-19</text>
+<line stroke="#A0522D" stroke-dasharray="3,2" stroke-width="0.8" x1="342" x2="342" y1="20" y2="180"></line>
+<text fill="#A0522D" font-family="Courier New" font-size="9" x="344" y="35">Hong Kong NSL</text>
+ Direction Labels 
+<text fill="#8B1A1A" font-family="Courier New" font-size="10" x="570" y="146">88th</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="11" text-anchor="middle" x="300" y="18">GPI rank declining trend (rank ↑ = peace worsening)</text>
+</svg>
+</div>
+</div>
+ ─── Logistic Bifurcation ─── 
+<div class="section">
+<div class="section-title">Ⅶ · Logistic Bifurcation — Threshold Analysis</div>
+<h3>China System Transition Threshold Scenarios</h3>
+<div class="svg-wrap">
+<svg height="260" viewbox="0 0 600 260" width="600" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#fff" height="260" width="600"></rect>
+ Axis 
+<line stroke="#CCC" stroke-width="1.5" x1="60" x2="60" y1="20" y2="220"></line>
+<line stroke="#CCC" stroke-width="1.5" x1="60" x2="560" y1="220" y2="220"></line>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" x="310" y="250">Time (Accumulation of economic and political pressure)</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,30,120)" x="30" y="120">Social Stability</text>
+ Threshold Line 
+<line stroke="#8B1A1A" stroke-dasharray="4,3" stroke-width="1" x1="310" x2="310" y1="20" y2="220"></line>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="315" y="35">TBI Threshold θ=0.70</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="315" y="47">Estimated Arrival Time</text>
+ Current Position Indication 
+<line stroke="#B8850E" stroke-dasharray="3,2" stroke-width="1" x1="240" x2="240" y1="20" y2="220"></line>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="200" y="35">Current</text>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="193" y="47">TBI=0.612</text>
+ Stable Path (Upper) 
+<path d="M60,120 Q150,115 240,112 Q270,111 310,100 Q360,80 420,70 Q480,62 560,58" fill="none" stroke="#5E9186" stroke-dasharray="5,3" stroke-width="2"></path>
+<text fill="#5E9186" font-family="Courier New" font-size="9" x="540" y="52">Reform Path</text>
+ Current Path (Middle) 
+<path d="M60,120 Q150,118 240,112 Q275,108 310,105 Q330,105 340,118 Q360,138 420,152 Q480,162 560,168" fill="none" stroke="#B8850E" stroke-width="2.5"></path>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="540" y="162">Current Trajectory</text>
+ Crisis Path (Lower) 
+<path d="M60,120 Q150,118 240,112 Q275,108 310,105 Q320,104 340,160 Q370,195 420,200 Q480,205 560,208" fill="none" stroke="#8B1A1A" stroke-dasharray="5,3" stroke-width="2"></path>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="540" y="202">Crisis Path</text>
+ Current Position Point 
+<circle cx="240" cy="112" fill="#B8850E" r="6"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="10" font-weight="bold" x="248" y="115">Current</text>
+ Legend 
+<line stroke="#5E9186" stroke-dasharray="5,3" stroke-width="2" x1="70" x2="100" y1="240" y2="240"></line>
+<text fill="#5E9186" font-family="Courier New" font-size="9" x="104" y="243">Structural Reform + Distribution</text>
+<line stroke="#B8850E" stroke-width="2.5" x1="200" x2="230" y1="240" y2="240"></line>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="234" y="243">Current Trajectory</text>
+<line stroke="#8B1A1A" stroke-dasharray="5,3" stroke-width="2" x1="330" x2="360" y1="240" y2="240"></line>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="364" y="243">Economic Shock + Youth Backlash</text>
+</svg>
+</div>
+<div class="obs-note">
+    The current trajectory (orange) maintains superficial stability until just before reaching the TBI threshold, but shows a possibility of rapid path transition at the bifurcation point. Trigger conditions: ① additional loss of middle-class assets due to prolonged real estate crisis, ② youth unemployment official figure exceeding 20%, ③ simultaneous arrival of DCI (generational fault-line) threshold. The moment these three conditions overlap is the structural bifurcation point.
+  </div>
+</div>
+ ─── PPR 5 Blocks ─── 
+<div class="section">
+<div class="section-title">Ⅷ · PPR — 5 Structural Blocks</div>
+<h3>In-depth Analysis of Politics, Economy, Society, History, and Geopolitics</h3>
+<div class="ppr-card">
+<div class="ppr-head">PPR-1 · Political Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">System</span><span class="ppr-val">One-Party Authoritarianism / Xi Jinping's Lifelong Ruling</span></div>
+<div class="ppr-row"><span class="ppr-key">Freedom House</span><span class="ppr-val">9/100 (Not Free)</span></div>
+<div class="ppr-row"><span class="ppr-key">Key Signals</span><span class="ppr-val">Strengthening Enforcement of Ideological Uniformity (HRW 2026)</span></div>
+<div class="ppr-row"><span class="ppr-key">IGI Self-calculated</span><span class="ppr-val">0.88 / Institutional Repression Extremely High</span></div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-head">PPR-2 · Economic Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Official GDP Growth</span><span class="ppr-val">5.0% (2024) / OLI-Calibrated 2.4~2.8%</span></div>
+<div class="ppr-row"><span class="ppr-key">Youth Unemployment</span><span class="ppr-val">Official 16.5% / Independent Estimate up to 46.5%</span></div>
+<div class="ppr-row"><span class="ppr-key">Real Estate</span><span class="ppr-val">Development Investment -9.9% YoY (Q1 2025)</span></div>
+<div class="ppr-row"><span class="ppr-key">Local Government Debt</span><span class="ppr-val">On-budget 38% GDP / Including LGFV ~84%</span></div>
+<div class="ppr-row"><span class="ppr-key">US-China Tariffs</span><span class="ppr-val">Trump imposing 145% / Exports to US -29% YoY</span></div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-head">PPR-3 · Social Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Tangping Phenomenon</span><span class="ppr-val">Σ_aph Signal — System-abandoning Withdrawal of Youth</span></div>
+<div class="ppr-row"><span class="ppr-key">Xinjiang·Uyghur</span><span class="ppr-val">Forced labor, cultural erasure, and digital surveillance system</span></div>
+<div class="ppr-row"><span class="ppr-key">Hong Kong</span><span class="ppr-val">Freedom Score 40/100 (Imminent 'Not Free') / Dissolution of Democratic Party</span></div>
+<div class="ppr-row"><span class="ppr-key">DCI</span><span class="ppr-val">0.72 — Deepening fault-line between the growth generation vs the stagnation generation</span></div>
+<div class="ppr-row"><span class="ppr-key">Population</span><span class="ppr-val">Decrease after peaking in 2021 / Expected -100 million in 2050</span></div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-head">PPR-4 · Historical Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.612 (Approaching threshold θ=0.70)</span></div>
+<div class="ppr-row"><span class="ppr-key">Unassimilated Trauma</span><span class="ppr-val">Nanjing Massacre, Cultural Revolution, Tiananmen — Monopoly of Party Narratives</span></div>
+<div class="ppr-row"><span class="ppr-key">N (Narrative Non-integration)</span><span class="ppr-val">0.85 — Structure preventing civilian re-interpretation</span></div>
+<div class="ppr-row"><span class="ppr-key">RHC</span><span class="ppr-val">0.849 — Internal (Uyghur·Tibet) + External (Korea·Japan·Taiwan) Composite</span></div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-head">PPR-5 · Geopolitical Structure</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Taiwan Strait</span><span class="ppr-val">Use of force for unification cannot be ruled out — Continued militarization</span></div>
+<div class="ppr-row"><span class="ppr-key">South China Sea</span><span class="ppr-val">Militarization of artificial islands completed / Collisions with Philippines and Vietnam</span></div>
+<div class="ppr-row"><span class="ppr-key">US-China Trade War</span><span class="ppr-val">Tariffs 145% vs 125% / Semiconductor export control</span></div>
+<div class="ppr-row"><span class="ppr-key">Belt and Road Initiative</span><span class="ppr-val">Expanding sphere of influence in Africa, Central Asia, and Southeast Asia</span></div>
+<div class="ppr-row"><span class="ppr-key">ADI</span><span class="ppr-val">0.013 Sovereign — Baidu, Huawei, DeepSeek proprietary systems</span></div>
+</div>
+</div>
+</div>
+ ─── 12-Axis Radar ─── 
+<div class="section">
+<div class="section-title">Ⅸ · Λ¹² 12-Axis Radar Coordinates</div>
+<h3>Radial Chart of 12 Variables — China vs Northeast Asia Average</h3>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 400 400" width="400" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="400" width="400"></rect>
+ 4 Background Circles 
+<circle cx="200" cy="200" fill="none" r="150" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="112" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="75" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="200" cy="200" fill="none" r="37" stroke="#DDD8CE" stroke-width="0.5"></circle>
+ 12-Axis Lines 
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="200" y1="200" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="275" y1="200" y2="62"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="330" y1="200" y2="118"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="350" y1="200" y2="200"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="330" y1="200" y2="282"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="275" y1="200" y2="338"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="200" y1="200" y2="350"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="125" y1="200" y2="338"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="70" y1="200" y2="282"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="50" y1="200" y2="200"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="70" y1="200" y2="118"></line>
+<line stroke="#EEE" stroke-width="0.7" x1="200" x2="125" y1="200" y2="62"></line>
+ China Data (0 to 1 on each axis, higher in risk direction) 
+<!-- LPI=0.52, HDI_inv=0.21, GPI=0.46, CPI_inv=0.58, CFD=0.78, DCI=0.72, MFI_inv=0.92, RHC=0.85, IGI_inv=0.88, AHI=0.61, Freach_inv=0.42, ADI=0.013 -->
+<polygon fill="#8B1A1A" fill-opacity="0.22" points="
+        200,122
+        254,107
+        300,140
+        311,200
+        289,259
+        259,309
+        200,317
+        143,309
+        91,264
+        73,200
+        89,148
+        135,107
+      " stroke="#8B1A1A" stroke-width="2"></polygon>
+ Northeast Asia Average Comparison (Dotted Line) 
+<polygon fill="none" opacity="0.5" points="
+        200,110
+        268,98
+        316,132
+        330,200
+        308,268
+        268,322
+        200,330
+        132,322
+        92,268
+        70,200
+        84,132
+        132,98
+      " stroke="#5E9186" stroke-dasharray="4,3" stroke-width="1.5"></polygon>
+ Axis Labels 
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="42">LPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="54">HDI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="108">GPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="362" y="202">CPI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="294">CFD</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="350">DCI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="366">MFI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="350">RHC</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="294">IGI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="38" y="202">AHI</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="108">F_reach</text>
+<text fill="#444" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="54">ADI</text>
+ Legend 
+<rect fill="#8B1A1A" fill-opacity="0.4" height="8" stroke="#8B1A1A" stroke-width="1" width="12" x="240" y="370"></rect>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" x="256" y="378">China</text>
+<line stroke="#5E9186" stroke-dasharray="4,3" stroke-width="1.5" x1="295" x2="312" y1="374" y2="374"></line>
+<text fill="#5E9186" font-family="Courier New" font-size="9" x="316" y="378">Northeast Asia Average</text>
+</svg>
+</div>
+<div class="obs-note">
+    China's radar is significantly higher than the Northeast Asian average (risk direction) on the four axes of MFI (media freedom), IGI (institutional repression), RHC (historical conflict), and CFD (cultural fault-line). ADI is the only one interpreted as a 'strength' with a minimal value, but this is a paradoxical result created by the closed system.
+  </div>
+</div>
+ ─── Six-Layer Discourse ─── 
+<div class="section">
+<div class="section-title">Ⅹ · Six-Layer Discourse — Reading China</div>
+<h3>China's Present Read Through 6 Layers</h3>
+<div style="margin:14px 0;">
+<div class="discourse-layer">
+<div class="layer-num">Layer 1<br/>Data</div>
+<div class="layer-content"><strong>What is visible:</strong> GDP official 5% growth vs independent estimate of 2.4~2.8%. Youth unemployment official 16.5% vs independent estimate of up to 46.5%. Real estate development investment -9.9%. Local government debt soaring relative to GDP. Press freedom 178th. Freedom House 9/100.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 2<br/>Interests</div>
+<div class="layer-content"><strong>Who benefits from this structure:</strong> The Chinese Communist Party has used economic performance as a core resource for its regime legitimacy. As growth slows, mobilizing nationalism through Taiwan, Xinjiang, and the South China Sea becomes politically useful. The costs of the real estate crisis are passed on to middle-class households, while state-owned enterprises are protected.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 3<br/>Historical Patterns</div>
+<div class="layer-content"><strong>Has this occurred before:</strong> The collapse pattern of successive Chinese dynasties was a cycle of growth → accumulation of internal contradictions → natural disaster/economic crisis → rebellion → dynastic change. Tiananmen (1989) occurred at a time of awakening consciousness ten years after economic opening. The current real estate crisis and youth unemployment are forming structurally similar pressures. However, unlike in 1989, the digital surveillance system of 2025 structurally suppresses the possibility of organization.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 4<br/>Perspective Reversal</div>
+<div class="layer-content"><strong>Looking at it from the opposite side:</strong> ADI 0.013 (an independent AI state) is a paradox. This strength is not an innovation created by freedom, but isolation created by closure. Baidu grew because Google was absent, and DeepSeek was born in the process of responding to Nvidia export controls. Tangping (躺平) is not a defeat — it can be a quiet resistance rejecting the rules of an unreasonable game.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 5<br/>Frame</div>
+<div class="layer-content"><strong>Λ¹² Phase Diagnostic:</strong> China is currently located in the 'False Stability' zone. TBI 0.612 is 63km before the threshold (0.70). DCI 0.72 suggests that the generational fault-line has already crossed the threshold. The paradoxical strength of ADI increases the capacity to absorb external shocks but weakens the momentum for internal reform. The point where the triple pressures of local government debt + real estate + youth unemployment reach their thresholds simultaneously is the structural bifurcation point.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num" style="background:#3A6A5E;">Layer 6<br/>Suspension of Judgment</div>
+<div class="layer-content" style="background:#E8F4F0;"><strong>This layer belongs to the readers, citizens, and the parliament.</strong> In which direction the lives of 1.4 billion people should move within this structure is something Λ¹² cannot answer. Seeing the structure pointed out by the figures, and what comes next, is for each society to decide.</div>
+</div>
+</div>
+</div>
+ ─── Margin of Error ─── 
+<div class="section">
+<div class="section-title">ⅩⅠ · Margin of Error · Data Limitations</div>
+<h3>Specifying Confidence Intervals and Data Bias</h3>
+<div class="error-box">
+    Rationale for OLI=0.51 application: ① suspension of youth unemployment statistics in 2023 followed by resumption, ② repetitive pattern of pre-achieving GDP targets (continually pointed out by Rhodium Group), ③ impossibility of independent auditing in Xinjiang and Tibet, ④ limited financial transparency of private enterprises. Actual economic figures have the potential to be calibrated downward by -30% to -50% compared to official announcements.
+  </div>
+<div class="obs-note">
+    Self-calculated variables (TBI·RHC·DCI·CFD·IGI·ADI) are estimates based on public data. In particular, figures related to North Korea, Xinjiang, and Tibet may have high deviations due to restricted access. All figures are indicators for understanding directionality and should not be interpreted as absolute values.
+  </div>
+</div>
+ ─── Korean Peninsula Connection ─── 
+<div class="section">
+<div class="section-title">ⅩⅡ · Korean Peninsula and Northeast Asia Connection Analysis</div>
+<h3>Spillover Effects of China's Structural Changes on Northeast Asia</h3>
+<div class="korea-block">
+<h4>Northeast Asian Transmission Paths of Structural Risks Originating from China</h4>
+<p>If China's real estate crisis is prolonged, South Korea's and Taiwan's export dependencies on China (South Korea approx. 25%, Taiwan approx. 40%) will take a direct hit. If China's DCI generational fault-line crosses the threshold, the political motivation to divert internal pressure into Taiwan Strait tensions will be strengthened. The ADI strength (AI and semiconductor independence) will act in a direction that further restricts the South Korean semiconductor industry's access to the Chinese market in the long run.</p>
+</div>
+</div>
+ ─── Concluding Trajectory ─── 
+<div class="section">
+<div class="section-title">ⅩⅢ · Concluding Trajectory</div>
+<div class="conclusion">
+<p>China is currently a country where two types of forces are running in the same direction. One is an inward force — suppression, surveillance, and narrative monopoly. The other is an outward force — AI independence, military expansion, and the broadening of economic spheres of influence.</p>
+<p>The reason these two forces can run in the same direction is that the inside is completely locked. However, within the locked space, pressure continues to accumulate. Tiananmen took 10 years. Tangping did not even take 10 years. The next generation might not even choose to 'tangping'.</p>
+<p>What does TBI 0.612 tell us? Erasing memories does not make the trauma disappear. Monopolizing narratives does not change history. The repressed does not disappear; it returns in a different form.</p>
+<p>However, when and in what form it will return — that is a question this report cannot answer. Because that is up to the 1.4 billion.</p>
+</div>
+</div>
+ ─── Series Box ─── 
+<div class="section">
+<div class="section-title">ⅩⅣ · Series Status</div>
+<div class="series-box">
+<div class="series-title">Northeast Asia Series — Λ¹²v9.12</div>
+<div class="series-item"><span class="series-num">#20</span><span class="series-name">Northeast Asia Regional Comparison</span><span class="series-status status-done">Complete</span></div>
+<div class="series-item"><span class="series-num">#21</span><span class="series-name">Korea Standalone Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+<div class="series-item"><span class="series-num">#22</span><span class="series-name">Japan Standalone Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+<div class="series-item"><span class="series-num">#23</span><span class="series-name">China Standalone Edition v1.0 (Current Document)</span><span class="series-status status-now">Complete</span></div>
+<div class="series-item"><span class="series-num">#24</span><span class="series-name">Taiwan Standalone Edition v1.0</span><span class="series-status status-plan">Scheduled</span></div>
+<div class="series-item"><span class="series-num">#25</span><span class="series-name">North Korea Standalone Edition v1.0 (Separate Frame)</span><span class="series-status status-plan">Scheduled</span></div>
+</div>
+</div>
+ ─── Footer ─── 
+<div class="footer">
+<p>Everblue Sea Institute for Social Dynamics (Everblue Sea Institute for Social Dynamics)</p>
+<p>Director Cheonghae (淸海) · Claude (Anthropic) Research Partner</p>
+<p><a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · <a href="https://everbluesea.org">everbluesea.org</a> · contact@everbluesea.org</p>
+<div class="engine-tag">Engine: Λ¹²v9.12 | Includes ADI §31 | Based on SSRN 6632858 | China_Λ¹²v9.12_20260502.html</div>
+</div>
+</body>
+</html>

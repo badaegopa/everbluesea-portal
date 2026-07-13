@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>North Korea Standalone Report — Λ¹²v9.12 | Everblue Sea Institute for Social Dynamics</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#1A1A1A; color:#E0E0E0; font-family:Georgia,'Times New Roman',serif; line-height:1.75; }
+.header { background:linear-gradient(135deg,#0A0A0A 0%,#1A0A0A 50%,#0A0A0A 100%); padding:48px 40px 36px; position:relative; overflow:hidden; border-bottom:2px solid #333; }
+.header::before { content:'閉'; position:absolute; right:40px; top:10px; font-size:160px; color:rgba(255,255,255,0.04); font-family:Georgia,serif; font-weight:bold; line-height:1; }
+.header-badge { display:inline-block; background:rgba(255,255,255,0.10); color:#CCC; font-family:'Courier New',monospace; font-size:11px; padding:4px 12px; border-radius:2px; letter-spacing:1.5px; margin-bottom:16px; border:1px solid #444; }
+.header h1 { color:#E0E0E0; font-size:30px; font-weight:normal; margin-bottom:6px; }
+.header h2 { color:rgba(220,220,220,0.75); font-size:15px; font-weight:normal; letter-spacing:0.5px; }
+.header-meta { margin-top:20px; color:rgba(200,200,200,0.55); font-family:'Courier New',monospace; font-size:11px; letter-spacing:1px; }
+.engine-box { background:#222; border-left:4px solid #B8850E; padding:14px 20px; margin:24px 40px; font-family:'Courier New',monospace; font-size:12px; color:#AAA; }
+.engine-box strong { color:#B8850E; }
+.section { padding:32px 40px; border-bottom:1px solid #333; }
+.section-title { font-size:13px; font-family:'Courier New',monospace; color:#888; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; }
+.section h3 { font-size:20px; color:#E0E0E0; font-weight:normal; margin-bottom:14px; line-height:1.4; }
+.section p { font-size:14px; color:#C0C0C0; margin-bottom:10px; text-align:justify; }
+.warning-box { background:#1A1010; border:2px solid #8B1A1A; padding:20px 24px; margin:14px 0; border-radius:2px; }
+.warning-box .warning-title { font-family:'Courier New',monospace; font-size:12px; color:#C0392B; letter-spacing:2px; margin-bottom:12px; }
+.warning-box p { font-size:14px; color:#C0A0A0; line-height:1.85; margin-bottom:8px; }
+.data-table-wrap { margin:16px 0; overflow-x:auto; }
+.data-table { width:100%; border-collapse:collapse; font-size:13px; }
+.data-table th { background:#2A1A1A; color:#CCC; padding:10px 14px; text-align:center; font-family:'Courier New',monospace; font-size:11px; letter-spacing:0.5px; font-weight:normal; border-bottom:1px solid #444; }
+.data-table th:first-child { text-align:left; }
+.data-table td { padding:9px 14px; border-bottom:1px solid #333; text-align:center; font-family:'Courier New',monospace; font-size:12px; color:#BBB; }
+.data-table td:first-child { text-align:left; font-family:Georgia,serif; font-size:13px; color:#DDD; }
+.data-table tr:nth-child(even) td { background:#1E1E1E; }
+.formula-box { background:#1A1A1A; border:1px solid #444; border-top:3px solid #8B1A1A; padding:20px 24px; margin:16px 0; }
+.formula-box .formula-title { font-family:'Courier New',monospace; font-size:11px; color:#888; letter-spacing:2px; margin-bottom:12px; }
+.formula-box .formula-eq { font-family:'Courier New',monospace; font-size:13px; color:#DDD; background:#111; padding:12px 16px; border-radius:2px; margin:8px 0; letter-spacing:0.5px; line-height:1.6; border-left:3px solid #555; }
+.formula-box .formula-note { font-size:12px; color:#777; margin-top:8px; }
+.obs-note { background:#1A1A2A; border:1px solid #333366; border-radius:3px; padding:14px 18px; margin:14px 0; font-size:13px; color:#BBBBDD; line-height:1.7; }
+.obs-note::before { content:'◈ 관찰 신호 (추정치 기반)'; display:block; font-family:'Courier New',monospace; font-size:10px; color:#6666AA; letter-spacing:1px; margin-bottom:6px; }
+.error-box { background:#1A1500; border-left:3px solid #B8850E; padding:12px 16px; margin:14px 0; font-size:12px; color:#C0A060; font-family:'Courier New',monospace; }
+.ppr-card { background:#222; border:1px solid #444; border-radius:3px; overflow:hidden; margin-bottom:14px; }
+.ppr-head { background:#2A1A1A; color:#CCC; font-size:12px; font-family:'Courier New',monospace; padding:8px 14px; letter-spacing:1px; border-bottom:1px solid #444; }
+.ppr-body { padding:14px; }
+.ppr-row { display:flex; justify-content:space-between; font-size:12px; padding:4px 0; border-bottom:1px solid #333; }
+.ppr-row:last-child { border-bottom:none; }
+.ppr-key { color:#777; }
+.ppr-val { font-family:'Courier New',monospace; font-weight:bold; color:#CC6666; }
+.discourse-layer { display:grid; grid-template-columns:130px 1fr; gap:0; margin-bottom:2px; }
+.layer-num { background:#2A1A1A; color:#AAA; font-family:'Courier New',monospace; font-size:11px; padding:12px 14px; display:flex; align-items:center; border:1px solid #444; border-right:none; }
+.layer-content { background:#1E1E1E; border:1px solid #444; padding:12px 18px; font-size:13px; color:#C0C0C0; line-height:1.7; }
+.layer-content strong { color:#CC9966; }
+.signal-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:14px 0; }
+.signal-card { background:#222; border:1px solid #444; padding:14px; border-radius:2px; text-align:center; }
+.signal-card .sig-icon { font-size:24px; margin-bottom:6px; }
+.signal-card .sig-label { font-size:11px; color:#777; font-family:'Courier New',monospace; margin-bottom:4px; }
+.signal-card .sig-val { font-size:18px; font-family:'Courier New',monospace; font-weight:bold; color:#CC4444; }
+.signal-card .sig-note { font-size:10px; color:#666; margin-top:4px; }
+.frame-box { background:#0A0A1A; border:2px solid #444488; padding:20px 24px; margin:14px 0; border-radius:2px; }
+.frame-box h4 { color:#8888CC; font-size:14px; margin-bottom:12px; font-family:'Courier New',monospace; letter-spacing:1px; }
+.frame-box p { font-size:13px; color:#AAAACC; line-height:1.75; margin-bottom:8px; }
+.svg-wrap { text-align:center; margin:16px 0; }
+.conclusion { background:#111; border-left:4px solid #555; padding:24px 32px; margin:20px 40px; border-radius:2px; }
+.conclusion p { font-size:15px; line-height:1.95; color:#D0D0D0; text-align:justify; margin-bottom:12px; }
+.conclusion p:last-child { margin-bottom:0; }
+.series-box { background:#1E1E1E; border:1px solid #444; margin:20px 40px; padding:20px; }
+.series-title { font-family:'Courier New',monospace; font-size:11px; color:#777; letter-spacing:2px; margin-bottom:12px; }
+.series-item { display:flex; gap:12px; padding:6px 0; border-bottom:1px solid #333; font-size:12px; }
+.series-item:last-child { border-bottom:none; }
+.series-num { font-family:'Courier New',monospace; color:#B8850E; min-width:40px; }
+.series-name { color:#BBB; }
+.series-status { margin-left:auto; font-family:'Courier New',monospace; font-size:10px; padding:2px 8px; border-radius:2px; }
+.status-done { background:#1A2A1A; color:#4A8A4A; }
+.status-now { background:#2A1A1A; color:#CC6666; }
+.footer { background:#111; padding:28px 40px; text-align:center; border-top:1px solid #333; }
+.footer p { font-size:12px; color:#666; margin-bottom:4px; font-family:'Courier New',monospace; }
+.footer a { color:#888; text-decoration:none; }
+.footer .engine-tag { margin-top:10px; font-size:10px; color:#555; letter-spacing:1px; }
+@media(max-width:768px){ .section,.engine-box,.conclusion,.series-box,.footer{margin-left:16px;margin-right:16px;padding-left:16px;padding-right:16px;} .header{padding:32px 16px 24px;} .signal-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+ ─── Header ─── 
+<div class="header">
+<div class="header-badge">NORTH KOREA STANDALONE REPORT · #25 · Λ¹²v9.12 · Separate Frame</div>
+<h1>🇰🇵 North Korea Standalone Report</h1>
+<h2>An Incomparable Existence — Reading the Democratic People's Republic of Korea from Outside the Standard Λ¹²</h2>
+<div class="header-meta">Everblue Sea Institute for Social Dynamics · Based on Λ¹²v9.12 Engine · Date of Issue 2026.05.02</div>
+</div>
+<div class="engine-box">
+<strong>ENGINE:</strong> Λ¹²v9.12 | Separate Frame Applied | OLI=0.18 (Data Reliability Minimal)<br/>
+<strong>Warning:</strong> All figures in this report are external estimates. They may differ from reality by ±30-50% or more. Use only for identifying trends.<br/>
+<strong>Data Sources:</strong> Combination of UN, SIPRI, HRW, Freedom House, FAO/WFP, and North Korean Defector Testimonies
+</div>
+ ─── Research Objectives ─── 
+<div class="section">
+<div class="section-title">Research Objectives — Special Declaration</div>
+<h3>Why Analyze an Incomparable Existence?</h3>
+<div class="warning-box">
+<div class="warning-title">⚠ Specifying Frame Limitations</div>
+<p>North Korea is a case that reveals the application limits of the standard Λ¹² comparison framework. TBI 0.857, ADI 1.000, Freedom House 3/100 — these figures lie in the realm of indistinguishability, not comparison.</p>
+<p>This report does not reduce the lives of the 26 million North Korean people to numbers. Figures are merely direction indicators pointing to the structure. The reality of the people living inside that structure lies beyond numbers.</p>
+</div>
+</div>
+ ─── Key Indicator Badges ─── 
+<div class="section">
+<div class="section-title">§0 · Key Indicators</div>
+<div class="signal-grid">
+<div class="signal-card"><div class="sig-icon">🔒</div><div class="sig-label">Freedom House 2025</div><div class="sig-val">3/100</div><div class="sig-note">Lowest Tier in the World</div></div>
+<div class="signal-card"><div class="sig-icon">📰</div><div class="sig-label">RSF Press Freedom 2025</div><div class="sig-val">179th</div><div class="sig-note">Media = State Propaganda Tool</div></div>
+<div class="signal-card"><div class="sig-icon">⚠️</div><div class="sig-label">TBI (Trauma Index)</div><div class="sig-val">0.857</div><div class="sig-note">Significantly Exceeds Threshold (0.70)</div></div>
+<div class="signal-card"><div class="sig-icon">🌐</div><div class="sig-label">ADI (AI Dependency)</div><div class="sig-val">1.000</div><div class="sig-note">Complete Isolation = Exclusion from AI Civilization</div></div>
+<div class="signal-card"><div class="sig-icon">🍚</div><div class="sig-label">Food-Insecure Population</div><div class="sig-val">42%</div><div class="sig-note">FAO/WFP 2024</div></div>
+<div class="signal-card"><div class="sig-icon">🔬</div><div class="sig-label">OLI Data Reliability</div><div class="sig-val">0.18</div><div class="sig-note">Lowest in Northeast Asia / Based on Estimates</div></div>
+</div>
+</div>
+ ─── Power Structure 3-Layer 4-Orbit SVG ─── 
+<div class="section">
+<div class="section-title">Ⅰ · Power Structure — 4-Orbit SVG</div>
+<h3>Leader-Party-Military-State 4-Orbit Concentric Structure</h3>
+<div class="svg-wrap">
+<svg height="480" viewbox="0 0 480 480" width="480" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#111" height="480" width="480"></rect>
+ 4 Background Concentric Circles 
+<circle cx="240" cy="240" fill="none" r="200" stroke="#2A1A1A" stroke-width="1"></circle>
+<circle cx="240" cy="240" fill="none" r="155" stroke="#2A1A1A" stroke-width="1"></circle>
+<circle cx="240" cy="240" fill="none" r="108" stroke="#2A1A1A" stroke-width="1"></circle>
+<circle cx="240" cy="240" fill="none" r="60" stroke="#2A1A1A" stroke-width="1"></circle>
+ Orbit 4 — Exterior: People / Songbun System 
+<circle cx="240" cy="240" fill="#1A0808" r="200" stroke="#4A1A1A" stroke-width="2"></circle>
+<text fill="#884444" font-family="Courier New" font-size="11" text-anchor="middle" x="240" y="60">Orbit 4 — People · Songbun System</text>
+ Songbun Classification Labels 
+<text fill="#663333" font-family="Courier New" font-size="10" text-anchor="middle" x="240" y="90">Core (28%) | Wavering (45%) | Hostile (27%)</text>
+ Orbit 3 — State Organs 
+<circle cx="240" cy="240" fill="#1A0A0A" r="155" stroke="#552222" stroke-width="2"></circle>
+<text fill="#AA5555" font-family="Courier New" font-size="11" text-anchor="middle" x="240" y="102">Orbit 3 — Supreme People's Assembly · Cabinet</text>
+ Orbit 2 — Military + Party 
+<circle cx="240" cy="240" fill="#220A0A" r="108" stroke="#772222" stroke-width="2"></circle>
+<text fill="#CC6666" font-family="Courier New" font-size="11" text-anchor="middle" x="240" y="148">Orbit 2 — Workers' Party of Korea · People's Army</text>
+ Orbit 1 — Supreme Leader 
+<circle cx="240" cy="240" fill="#3A0808" r="60" stroke="#AA2222" stroke-width="3"></circle>
+<text fill="#FFAAAA" font-family="Courier New" font-size="15" font-weight="bold" text-anchor="middle" x="240" y="233">Supreme Leader</text>
+<text fill="#CC8888" font-family="Courier New" font-size="10" text-anchor="middle" x="240" y="252">Kim Jong Un</text>
+ Radial Lines (4 Directions) 
+<line stroke="#441A1A" stroke-dasharray="4,3" stroke-width="0.8" x1="240" x2="240" y1="60" y2="180"></line>
+<line stroke="#441A1A" stroke-dasharray="4,3" stroke-width="0.8" x1="420" x2="348" y1="240" y2="240"></line>
+<line stroke="#441A1A" stroke-dasharray="4,3" stroke-width="0.8" x1="240" x2="240" y1="420" y2="300"></line>
+<line stroke="#441A1A" stroke-dasharray="4,3" stroke-width="0.8" x1="60" x2="132" y1="240" y2="240"></line>
+ External Satellites: China · Russia 
+<circle cx="440" cy="100" fill="#111" r="22" stroke="#445555" stroke-width="1.5"></circle>
+<text font-size="16" text-anchor="middle" x="440" y="97">🇨🇳</text>
+<text fill="#446655" font-family="Courier New" font-size="9" text-anchor="middle" x="440" y="128">China</text>
+<text fill="#446655" font-family="Courier New" font-size="9" text-anchor="middle" x="440" y="140">Economy 90%+</text>
+<line stroke="#335544" stroke-dasharray="4,3" stroke-width="1" x1="418" x2="400" y1="110" y2="175"></line>
+<circle cx="440" cy="380" fill="#111" r="22" stroke="#554444" stroke-width="1.5"></circle>
+<text font-size="16" text-anchor="middle" x="440" y="377">🇷🇺</text>
+<text fill="#665544" font-family="Courier New" font-size="9" text-anchor="middle" x="440" y="408">Russia</text>
+<text fill="#665544" font-family="Courier New" font-size="9" text-anchor="middle" x="440" y="420">Military Cooperation</text>
+<line stroke="#554433" stroke-dasharray="4,3" stroke-width="1" x1="418" x2="400" y1="370" y2="310"></line>
+ US Blockade Indicator 
+<circle cx="45" cy="240" fill="#111" r="18" stroke="#336633" stroke-width="1"></circle>
+<text font-size="13" text-anchor="middle" x="45" y="236">🇺🇸</text>
+<text fill="#336633" font-family="Courier New" font-size="9" text-anchor="middle" x="45" y="265">Sanctions</text>
+ Blockade Line 
+<line stroke="#336633" stroke-dasharray="3,2" stroke-width="0.8" x1="63" x2="40" y1="240" y2="240"></line>
+ Nuclear Icon 
+<text fill="#AA4444" font-family="Courier New" font-size="11" text-anchor="middle" x="240" y="420">☢ Estimated 40–50 Nuclear Warheads (SIPRI)</text>
+<text fill="#774444" font-family="Courier New" font-size="10" text-anchor="middle" x="240" y="438">The Last Bastion of Regime Survival</text>
+ Title 
+<text fill="#888" font-family="Courier New" font-size="12" text-anchor="middle" x="240" y="18">North Korea's 4-Orbit Power Structure — Λ¹²v9.12</text>
+</svg>
+</div>
+<div class="obs-note">All four orbits converge toward the Leader. Unlike other democratic states where the four orbits operate under checks and balances, North Korea's four orbits have a unidirectional command transmission structure. The state organs, military, and party all function as tools to execute the Leader's will.</div>
+</div>
+ ─── Phase Quadrant ─── 
+<div class="section">
+<div class="section-title">Ⅱ · Phase Quadrant — North Korea's Position</div>
+<h3>Stability × Openness Coordinates — Outside the Framework</h3>
+<div class="svg-wrap">
+<svg height="400" viewbox="0 0 520 400" width="520" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#111" height="400" width="520"></rect>
+ Quadrant 
+<rect fill="#1A2A1A" height="170" opacity="0.5" width="210" x="50" y="30"></rect>
+<rect fill="#2A2A10" height="170" opacity="0.4" width="210" x="260" y="30"></rect>
+<rect fill="#2A1A10" height="170" opacity="0.4" width="210" x="50" y="200"></rect>
+<rect fill="#2A1010" height="170" opacity="0.5" width="210" x="260" y="200"></rect>
+ Axis 
+<line stroke="#444" stroke-width="1.5" x1="50" x2="470" y1="200" y2="200"></line>
+<line stroke="#444" stroke-width="1.5" x1="260" x2="260" y1="30" y2="370"></line>
+ Label 
+<text fill="#5A8A5A" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="18">High Openness</text>
+<text fill="#666" font-family="Courier New" font-size="11" text-anchor="middle" x="260" y="390">Low Openness</text>
+<text fill="#666" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,36,204)" x="36" y="204">Instability</text>
+<text fill="#5A8A5A" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,484,204)" x="484" y="204">Stability</text>
+<text fill="#4A7A4A" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="52">Open &amp; Stable</text>
+<text fill="#6A6A30" font-family="Courier New" font-size="10" text-anchor="middle" x="365" y="52">Open &amp; Unstable</text>
+<text fill="#6A4A30" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="380">Closed &amp; Stable (Surface)</text>
+<text fill="#7A3030" font-family="Courier New" font-size="10" text-anchor="middle" x="365" y="380">Closed &amp; Unstable</text>
+ North Korea — Q3 Extremum (Closed &amp; Surface Stability) 
+<circle cx="80" cy="360" fill="#2A0808" r="26" stroke="#AA2222" stroke-width="2.5"></circle>
+<text font-size="20" text-anchor="middle" x="80" y="356">🇰🇵</text>
+<text fill="#AA4444" font-family="Courier New" font-size="10" font-weight="bold" text-anchor="middle" x="80" y="394">North Korea</text>
+ Outside the Framework Indicator 
+<rect fill="none" height="76" stroke="#AA2222" stroke-dasharray="3,2" stroke-width="1" width="76" x="52" y="202"></rect>
+<text fill="#884444" font-family="Courier New" font-size="8" text-anchor="middle" x="88" y="292">Framework</text>
+<text fill="#884444" font-family="Courier New" font-size="8" text-anchor="middle" x="88" y="302">Extreme Zone</text>
+ Comparison Countries 
+<circle cx="148" cy="80" fill="#0A1A2A" r="14" stroke="#336688" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="148" y="78">🇹🇼</text>
+<text fill="#446688" font-family="Courier New" font-size="9" text-anchor="middle" x="148" y="104">Taiwan (94)</text>
+<circle cx="188" cy="108" fill="#0A1A1A" r="14" stroke="#447755" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="188" y="106">🇯🇵</text>
+<text fill="#447755" font-family="Courier New" font-size="9" text-anchor="middle" x="188" y="132">Japan (96)</text>
+<circle cx="345" cy="148" fill="#0A1A10" r="14" stroke="#447755" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="345" y="146">🇰🇷</text>
+<text fill="#447755" font-family="Courier New" font-size="9" text-anchor="middle" x="345" y="172">South Korea (81)</text>
+<circle cx="140" cy="305" fill="#2A0808" r="20" stroke="#884444" stroke-width="2"></circle>
+<text font-size="14" text-anchor="middle" x="140" y="301">🇨🇳</text>
+<text fill="#884444" font-family="Courier New" font-size="9" text-anchor="middle" x="140" y="330">China (9)</text>
+ Freedom House Score Label 
+<text fill="#555" font-family="Courier New" font-size="9" text-anchor="end" x="470" y="395">Parentheses = Freedom House Score</text>
+</svg>
+</div>
+<div class="obs-note">North Korea is located at the extreme end of the coordinates (bottom-left). While even China (9 points) is within the comparison range, North Korea (3 points) is plotted separately even in the extreme zone of the framework. 'Surface stability' is because the suppression and surveillance systems block any possibility of self-organization at the source — this is not stability, but blockade.</div>
+</div>
+ ─── 12-Axis Radar ─── 
+<div class="section">
+<div class="section-title">Ⅲ · Λ¹² 12-Axis Radar — North Korea vs. Northeast Asian Average</div>
+<h3>12-Axis Radial in Extreme Zone</h3>
+<div class="svg-wrap">
+<svg height="420" viewbox="0 0 400 420" width="400" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#111" height="420" width="400"></rect>
+ Background Circles 
+<circle cx="200" cy="210" fill="none" r="150" stroke="#333" stroke-width="0.5"></circle>
+<circle cx="200" cy="210" fill="none" r="112" stroke="#333" stroke-width="0.5"></circle>
+<circle cx="200" cy="210" fill="none" r="75" stroke="#333" stroke-width="0.5"></circle>
+<circle cx="200" cy="210" fill="none" r="37" stroke="#333" stroke-width="0.5"></circle>
+ 12 Axes 
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="200" y1="210" y2="60"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="275" y1="210" y2="72"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="330" y1="210" y2="128"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="350" y1="210" y2="210"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="330" y1="210" y2="292"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="275" y1="210" y2="348"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="200" y1="210" y2="360"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="125" y1="210" y2="348"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="70" y1="210" y2="292"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="50" y1="210" y2="210"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="70" y1="210" y2="128"></line>
+<line stroke="#2A2A2A" stroke-width="0.7" x1="200" x2="125" y1="210" y2="72"></line>
+ North Korea — Most Variables at Extremes. LPI Minimal, TBI/RHC/IGI Maximal 
+ LPI minimal -&gt; inward, GPI maximal -&gt; outward, CPI minimal -&gt; inward, MFI maximal -&gt; outward, RHC maximal, IGI maximal, ADI = 1.0 
+<polygon fill="#8B1A1A" fill-opacity="0.35" points="
+        200,197
+        243,82
+        318,130
+        340,210
+        318,286
+        265,346
+        200,360
+        125,346
+        62,284
+        54,210
+        72,130
+        127,73
+      " stroke="#CC2222" stroke-width="2"></polygon>
+ Northeast Asian Average Comparison 
+<polygon fill="none" opacity="0.6" points="
+        200,115
+        262,104
+        308,138
+        322,210
+        304,274
+        264,318
+        200,328
+        136,318
+        96,274
+        78,210
+        92,138
+        136,104
+      " stroke="#446655" stroke-dasharray="4,3" stroke-width="1.5"></polygon>
+ Axis Labels 
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="52">LPI</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="64">HDI (Estimated)</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="118">GPI</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="362" y="212">CPI</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="344" y="304">CFD</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="286" y="360">DCI</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="200" y="376">MFI</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="360">RHC</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="304">IGI</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="38" y="212">AHI</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="56" y="118">F_reach</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="114" y="64">ADI</text>
+ Legend 
+<rect fill="#8B1A1A" fill-opacity="0.5" height="8" stroke="#CC2222" stroke-width="1" width="10" x="240" y="390"></rect>
+<text fill="#AA4444" font-family="Courier New" font-size="9" x="254" y="398">North Korea (Estimated)</text>
+<line stroke="#446655" stroke-dasharray="4,3" stroke-width="1.5" x1="310" x2="328" y1="394" y2="394"></line>
+<text fill="#446655" font-family="Courier New" font-size="9" x="332" y="398">Northeast Asian Average</text>
+</svg>
+</div>
+<div class="obs-note">North Korea's radar is located at the outer extremes of the Northeast Asian average on four axes: MFI, RHC, IGI, and ADI (reverse). In contrast, LPI (standard of living) and AHI (capital-labor) record minimal values. This asymmetry is the core of North Korea's structure: the suppression index is maximized, while the living index is minimized.</div>
+</div>
+ ─── GPI Time Series ─── 
+<div class="section">
+<div class="section-title">Ⅳ · GPI Time Series — Peace Index Trend</div>
+<h3>North Korea Peace Index Trend vs. Northeast Asia (2016~2025)</h3>
+<div class="svg-wrap">
+<svg height="230" viewbox="0 0 600 230" width="600" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#111" height="230" width="600"></rect>
+ Grid 
+<line stroke="#333" stroke-width="1" x1="70" x2="70" y1="20" y2="190"></line>
+<line stroke="#444" stroke-width="1.5" x1="70" x2="570" y1="190" y2="190"></line>
+<line stroke="#2A2A2A" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="60" y2="60"></line>
+<line stroke="#2A2A2A" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="100" y2="100"></line>
+<line stroke="#2A2A2A" stroke-dasharray="3,3" stroke-width="0.5" x1="70" x2="570" y1="140" y2="140"></line>
+ Y-Axis Labels 
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="64">10th</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="104">90th</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="144">150th</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="end" x="62" y="184">163rd</text>
+ X-Axis 
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="112" y="208">2016</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="210" y="208">2018</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="308" y="208">2020</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="406" y="208">2022</text>
+<text fill="#666" font-family="Courier New" font-size="9" text-anchor="middle" x="504" y="208">2024/25</text>
+ North Korea — Fixed at Bottom 
+<polyline fill="none" points="112,176 162,178 210,178 258,180 308,180 356,182 406,183 456,183 504,184" stroke="#CC2222" stroke-width="2.5"></polyline>
+<circle cx="504" cy="184" fill="#CC2222" r="4"></circle>
+<text fill="#CC2222" font-family="Courier New" font-size="9" x="518" y="182">North Korea (~153rd)</text>
+ South Korea 
+<polyline fill="none" points="112,106 162,108 210,108 258,109 308,111 356,113 406,114 456,117 504,122" stroke="#446655" stroke-dasharray="5,3" stroke-width="1.5"></polyline>
+<text fill="#446655" font-family="Courier New" font-size="9" x="518" y="120">South Korea</text>
+ Japan 
+<polyline fill="none" points="112,68 162,70 210,71 258,73 308,74 356,76 406,78 456,79 504,79" stroke="#665544" stroke-dasharray="5,3" stroke-width="1.5"></polyline>
+<text fill="#665544" font-family="Courier New" font-size="9" x="518" y="77">Japan</text>
+ China 
+<polyline fill="none" points="112,120 162,122 210,124 258,126 308,128 356,132 406,136 456,140 504,146" stroke="#664444" stroke-dasharray="5,3" stroke-width="1.5"></polyline>
+<text fill="#664444" font-family="Courier New" font-size="9" x="518" y="144">China</text>
+<text fill="#666" font-family="Courier New" font-size="11" text-anchor="middle" x="300" y="15">GPI Ranking Trend (↑ = Peace Deterioration)</text>
+</svg>
+</div>
+</div>
+ ─── Logistic Bifurcation ─── 
+<div class="section">
+<div class="section-title">Ⅴ · Logistic Bifurcation — Regime Threshold Analysis</div>
+<h3>3 Paths of North Korean Regime Sustainability</h3>
+<div class="svg-wrap">
+<svg height="270" viewbox="0 0 600 270" width="600" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#111" height="270" width="600"></rect>
+ Axis 
+<line stroke="#444" stroke-width="1.5" x1="60" x2="60" y1="20" y2="230"></line>
+<line stroke="#444" stroke-width="1.5" x1="60" x2="560" y1="230" y2="230"></line>
+<text fill="#666" font-family="Courier New" font-size="10" text-anchor="middle" x="310" y="258">Time (Accumulation of Internal Pressure + External Shock)</text>
+<text fill="#666" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,30,125)" x="30" y="125">Regime Stability</text>
+ Current Position 
+<line stroke="#B8850E" stroke-dasharray="4,3" stroke-width="1" x1="220" x2="220" y1="20" y2="230"></line>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="222" y="35">Current</text>
+ Threshold Line 
+<line stroke="#AA2222" stroke-dasharray="4,3" stroke-width="1" x1="350" x2="350" y1="20" y2="230"></line>
+<text fill="#AA2222" font-family="Courier New" font-size="9" x="352" y="35">Threshold</text>
+ Path A: Status Quo (Orange, Most Likely) 
+<path d="M60,120 Q160,118 220,115 Q280,112 350,110 Q420,108 490,108 Q530,108 560,108" fill="none" stroke="#B8850E" stroke-width="2.5"></path>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="540" y="104">Status Quo</text>
+ Path B: Gradual Reform (Green, Low Probability) 
+<path d="M60,120 Q160,118 220,115 Q280,112 350,105 Q420,90 490,75 Q530,66 560,62" fill="none" stroke="#446655" stroke-dasharray="5,3" stroke-width="2"></path>
+<text fill="#446655" font-family="Courier New" font-size="9" x="540" y="58">Reform Path</text>
+ Path C: Sudden Collapse (Red, Unclear Probability) 
+<path d="M60,120 Q160,118 220,115 Q280,112 350,110 Q360,110 380,160 Q410,200 450,215 Q500,225 560,228" fill="none" stroke="#CC2222" stroke-dasharray="5,3" stroke-width="2"></path>
+<text fill="#CC2222" font-family="Courier New" font-size="9" x="540" y="222">Sudden Collapse</text>
+ Current Position Dot 
+<circle cx="220" cy="115" fill="#B8850E" r="6"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="9" font-weight="bold" x="226" y="112">Current</text>
+ Legend 
+<line stroke="#B8850E" stroke-width="2.5" x1="70" x2="100" y1="250" y2="250"></line>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="104" y="253">Status Quo (Most Likely)</text>
+<line stroke="#446655" stroke-dasharray="5,3" stroke-width="2" x1="250" x2="280" y1="250" y2="250"></line>
+<text fill="#446655" font-family="Courier New" font-size="9" x="284" y="253">Reform Path (Low)</text>
+<line stroke="#CC2222" stroke-dasharray="5,3" stroke-width="2" x1="400" x2="430" y1="250" y2="250"></line>
+<text fill="#CC2222" font-family="Courier New" font-size="9" x="434" y="253">Sudden Collapse (Unclear)</text>
+</svg>
+</div>
+<div class="obs-note">
+    In theory, North Korea has already significantly exceeded (0.857) the TBI threshold (0.70). However, the reasons why the regime persists — digital surveillance, the Songbun system, nuclear deterrence, and Chinese support block the possibility of self-organization at the source. It is a structural exception where collapse does not occur even after crossing the threshold. The trigger for sudden-change scenarios is estimated to be linked to China's policy shift or internal elite division.
+  </div>
+</div>
+ ─── TBI Composition Decomposition ─── 
+<div class="section">
+<div class="section-title">Ⅵ · TBI Decomposition — Trauma Big Bang Index</div>
+<h3>TBI=0.857 — What Makes This Figure?</h3>
+<div class="svg-wrap">
+<svg height="180" viewbox="0 0 600 180" width="600" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#111" height="180" width="600"></rect>
+ TBI = H × C × N Bars 
+ H (Historical Shock) 
+<text fill="#888" font-family="Courier New" font-size="11" x="20" y="40">H Historical Shock</text>
+<rect fill="#2A1A1A" height="22" rx="2" width="448" x="120" y="25"></rect>
+<rect fill="#CC2222" height="22" rx="2" width="426" x="120" y="25"></rect>
+<text fill="#CC4444" font-family="Courier New" font-size="10" x="556" y="41">0.95</text>
+<text fill="#FFB0B0" font-family="Courier New" font-size="9" x="124" y="41">Colonization (0.95), War (0.90), Famine (0.95) Complex</text>
+ C (Cultural Undigestion) 
+<text fill="#888" font-family="Courier New" font-size="11" x="20" y="85">C Undigested</text>
+<rect fill="#2A1A1A" height="22" rx="2" width="448" x="120" y="70"></rect>
+<rect fill="#AA2222" height="22" rx="2" width="404" x="120" y="70"></rect>
+<text fill="#CC4444" font-family="Courier New" font-size="10" x="534" y="86">0.90</text>
+<text fill="#FFB0B0" font-family="Courier New" font-size="9" x="124" y="86">Enforced Single Narrative / Blocking External Information / Non-reinterpretable</text>
+ N (Narrative Unintegration) 
+<text fill="#888" font-family="Courier New" font-size="11" x="20" y="130">N Narrative Integration</text>
+<rect fill="#2A1A1A" height="22" rx="2" width="448" x="120" y="115"></rect>
+<rect fill="#881A1A" height="22" rx="2" width="426" x="120" y="115"></rect>
+<text fill="#CC4444" font-family="Courier New" font-size="10" x="556" y="131">0.95</text>
+<text fill="#FFB0B0" font-family="Courier New" font-size="9" x="124" y="131">Complete Impossibility of Private Reinterpretation / Only Regime Narratives Allowed</text>
+ TBI Result 
+<text fill="#CC4444" font-family="Courier New" font-size="11" font-weight="bold" x="20" y="168">TBI = H × C × N = 0.95 × 0.90 × 0.95 ≈ 0.857</text>
+<text fill="#884444" font-family="Courier New" font-size="10" x="400" y="168">θ(threshold)=0.70 → Excess +0.157</text>
+</svg>
+</div>
+<div class="obs-note">The reason North Korea's TBI is qualitatively different from other countries: while other countries' TBI is a result of undigested past shocks, North Korea's TBI is a structure where the regime actively produces trauma in real-time and uses it as a ruling resource. The logic that as long as the "threat of US imperialist aggression" persists, one must obey the Leader — this is the appropriation of trauma.</div>
+</div>
+ ─── Basic Statistics Table ─── 
+<div class="section">
+<div class="section-title">Ⅶ · Estimated Basic Statistics</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Indicator</th><th>Estimated Figure</th><th>Reliability</th><th>Source</th></tr>
+<tr><td>Population</td><td>Approx. 26 million</td><td>Medium</td><td>UN DESA 2024</td></tr>
+<tr><td>GDP per capita</td><td>Estimated at ~1,800 USD</td><td>Low</td><td>CIA Factbook Estimate</td></tr>
+<tr><td>Freedom House</td><td>3/100</td><td>High</td><td>Freedom House 2025</td></tr>
+<tr><td>RSF MFI</td><td>179th/180</td><td>High</td><td>RSF 2025</td></tr>
+<tr><td>CPI (Corruption)</td><td>15/100</td><td>Medium</td><td>TI 2024</td></tr>
+<tr><td>Nuclear Warhead Possession</td><td>Estimated 40~50 warheads</td><td>Low</td><td>SIPRI 2024</td></tr>
+<tr><td>Political Prison Camps</td><td>Estimated 80,000–120,000 people</td><td>Low</td><td>UN Report on Human Rights in North Korea 2024</td></tr>
+<tr><td>Food-Insecure Population</td><td>42%</td><td>Medium</td><td>FAO/WFP 2024</td></tr>
+<tr><td>OLI (Data Reliability)</td><td>0.18</td><td>—</td><td>Λ¹²v9.12 Internal Calculation</td></tr>
+</table>
+</div>
+<div class="error-box">※ Overall data OLI=0.18 applied. No official statistics. Combination of satellite analysis, North Korean defector testimonies, and indirect estimates from international organizations. May differ from actual values by ±30–50% or more. While the direction (toward adversity) is reliable, the absolute values are for reference only.</div>
+</div>
+ ─── Λ¹² Formula ─── 
+<div class="section">
+<div class="section-title">Ⅷ · Λ¹² Variables — Separate Frame</div>
+<div class="formula-box">
+<div class="formula-title">ΛSCORE — NORTH KOREA (Separate Frame)</div>
+<div class="formula-eq">Standard Λ¹² Uncalculable — Fails to meet reliability threshold after calibrating with OLI=0.18 minimal</div>
+<div class="formula-eq">TBI=0.857 → TBI Correction Term = (1 − 0.857 × 0.70) = (1 − 0.600) = 0.400</div>
+<div class="formula-eq">ADI=1.000 → ADI Correction Term = (1 − 1.000 × 0.35) = 0.650</div>
+<div class="formula-eq">Composite Calibration: raw ÷ 0.18 × 0.400 × 0.650 → Exceeds confidence interval in most variables</div>
+<div class="formula-note">※ This calculation confirms that North Korea is outside the standard comparison framework. Structural interpretation is more important than numbers.</div>
+</div>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr><th>Variable</th><th>Estimated Value</th><th>Reliability</th><th>Remarks</th></tr>
+<tr><td>LPI</td><td>~0.08 (Minimal)</td><td>Low</td><td>Food Insecurity 42% / Partial Collapse of Rationing System</td></tr>
+<tr><td>GPI</td><td>153rd / Lowest Tier</td><td>High</td><td>Nuclear Armament and Militarization Structure</td></tr>
+<tr><td>CPI</td><td>15/100</td><td>Medium</td><td>Structuralization of Party Elite Corruption</td></tr>
+<tr><td>MFI</td><td>179th</td><td>High</td><td>Media = State Propaganda Tool</td></tr>
+<tr><td>IGI</td><td>~0.98 (Extremely High)</td><td>Medium</td><td>Songbun System / Political Prison Camps</td></tr>
+<tr><td>TBI</td><td>0.857</td><td>Medium</td><td>Colonization + War + Famine + Prison Camp Complex</td></tr>
+<tr><td>RHC</td><td>0.899</td><td>Medium</td><td>Internal Class Conflict + External Hostility Structure</td></tr>
+<tr><td>ADI</td><td>1.000 (Upper Limit)</td><td>Medium</td><td>Complete Blockade of AI / Paradoxical 'Sovereignty'</td></tr>
+</table>
+</div>
+</div>
+ ─── PPR Blocks ─── 
+<div class="section">
+<div class="section-title">Ⅸ · PPR — 5 Structural Blocks</div>
+<div class="ppr-card"><div class="ppr-head">PPR-1 · Politics &amp; Regime</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">October 2024 Constitutional Amendment</span><span class="ppr-val">Specifying South Korea as a 'Hostile State' / Declaration of Abandoning Unification</span></div>
+<div class="ppr-row"><span class="ppr-key">Inter-Korean Infrastructure</span><span class="ppr-val">Physical Demolition of Railways, Roads, and Symbols</span></div>
+<div class="ppr-row"><span class="ppr-key">Power Structure</span><span class="ppr-val">Leader-Party-Military-State 4-Orbit / Unidirectional Command</span></div>
+<div class="ppr-row"><span class="ppr-key">Songbun System</span><span class="ppr-val">Core (28%) / Wavering (45%) / Hostile (27%)</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-2 · Nuclear &amp; Military</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">January 2025 Missile</span><span class="ppr-val">Launch of Hwasong-16B IRBM / Hwanghae Province</span></div>
+<div class="ppr-row"><span class="ppr-key">Nuclear Doctrine</span><span class="ppr-val">Legislation of Preemptive Nuclear Use / Means of Regime Security</span></div>
+<div class="ppr-row"><span class="ppr-key">Cooperation with Russia</span><span class="ppr-val">Reports of Providing Munitions and Troops for the War in Ukraine</span></div>
+<div class="ppr-row"><span class="ppr-key">Conventional Warfare</span><span class="ppr-val">341 Fighter Jets / 12th Largest in Asia</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-3 · People's Lives</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Food</span><span class="ppr-val">42% of Population Food-Insecure / FAO·WFP 2024</span></div>
+<div class="ppr-row"><span class="ppr-key">Political Prisoners</span><span class="ppr-val">Camps Estimated at 80,000–120,000 People / UN</span></div>
+<div class="ppr-row"><span class="ppr-key">Smartphones</span><span class="ppr-val">Intranet Only / Reinforced State Monitoring</span></div>
+<div class="ppr-row"><span class="ppr-key">Crack Signals</span><span class="ppr-val">Increased Distribution of External Videos -&gt; Responded with Tightened Crackdowns</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-4 · History</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">TBI Composition</span><span class="ppr-val">Japanese Colonization (H=0.95) + Korean War + Famine</span></div>
+<div class="ppr-row"><span class="ppr-key">Trauma Appropriation</span><span class="ppr-val">Regime Uses Trauma as a Ruling Resource</span></div>
+<div class="ppr-row"><span class="ppr-key">N=0.95</span><span class="ppr-val">Maximal Narrative Unintegration / Complete Impossibility of Private Reinterpretation</span></div>
+</div></div>
+<div class="ppr-card"><div class="ppr-head">PPR-5 · Geopolitics</div><div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">China</span><span class="ppr-val">Largest Supporter / 90%+ Economic Dependency</span></div>
+<div class="ppr-row"><span class="ppr-key">Russia</span><span class="ppr-val">Deepening Military Cooperation in 2024–25 / Ukraine War</span></div>
+<div class="ppr-row"><span class="ppr-key">United States</span><span class="ppr-val">Sustained Sanctions / Disconnected Diplomatic Channels</span></div>
+<div class="ppr-row"><span class="ppr-key">ADI Paradox</span><span class="ppr-val">Complete Isolation = Maximal Data Sovereignty / AI Exclusion</span></div>
+</div></div>
+</div>
+ ─── Frame Limits ─── 
+<div class="section">
+<div class="section-title">Ⅹ · Special Frame — Incomparability</div>
+<div class="frame-box">
+<h4>◈ Why is North Korea Outside the Standard Framework?</h4>
+<p><strong>① Lack of Data:</strong> OLI of 0.18 is not due to a lack of numbers, but because the existing numbers cannot be trusted. There is no official data, and the uncertainty of estimates is too high.</p>
+<p><strong>② Saturation of Variables:</strong> TBI 0.857, ADI 1.000, IGI extremely high — these values are in a saturated state where comparison is meaningless. It is not a ranking where China (Freedom House 9) is bad and North Korea (3) is worse; North Korea belongs to a completely different category.</p>
+<p><strong>③ Structural Appropriation of Trauma:</strong> While other countries' TBI is a result of undigested past shocks, North Korea's TBI is ongoing in real-time. A structure where the regime produces trauma and uses it as a ruling resource — this is qualitatively different from other nations.</p>
+</div>
+</div>
+ ─── Six-Layer Discourse ─── 
+<div class="section">
+<div class="section-title">ⅩⅠ · Six-Layer Discourse — Reading North Korea</div>
+<div style="margin:14px 0;">
+<div class="discourse-layer"><div class="layer-num">Layer 1<br/>Data</div><div class="layer-content"><strong>What is visible:</strong> Freedom House 3/100. RSF 179th. Food Insecurity 42%. Political Prison Camps 80,000–120,000. 40–50 Nuclear Warheads. These numbers are fragments captured within the limits of external observation. The actual reality could be better or worse than this.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 2<br/>Interests</div><div class="layer-content"><strong>Who benefits:</strong> The Kim regime has its survival guaranteed through nuclear weapons. The party elite inherits privileges through the Songbun system. China maintains North Korea as a buffer state to keep US forces south of the Amnok River. Russia utilizes North Korean military supplies in the Ukraine war.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 3<br/>Historical Patterns</div><div class="layer-content"><strong>Has this happened before:</strong> Colonial Rule → Division → War → Famine (hundreds of thousands of deaths during the Arduous March) → Nuclear Development. The structure where damage and isolation serve as resources for regime legitimacy has persisted for 70 years. "We must unite because there is an external enemy" — the recurring structure of this narrative.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 4<br/>Perspective Inversion</div><div class="layer-content"><strong>Looking at it from the opposite side:</strong> The expansion of the smartphone market could be a signal of regime cracks. As the influx of external information increases, the possibility of cracks in the single narrative grows. But simultaneously, state monitoring becomes more sophisticated — a North Korean dilemma where technology brings both liberation and control.</div></div>
+<div class="discourse-layer"><div class="layer-num">Layer 5<br/>Framework</div><div class="layer-content"><strong>Λ¹² Structural Diagnosis:</strong> North Korea has exceeded the thresholds for all three variables: TBI, Σ_rep, and IGI. Theoretically, it has crossed the structural collapse threshold, yet the regime persists — because digital surveillance and the Songbun system block any possibility of self-organization at the source. A structural exception where collapse does not occur even after crossing the threshold.</div></div>
+<div class="discourse-layer"><div class="layer-num" style="background:#333;">Layer 6<br/>Suspension of Judgment</div><div class="layer-content" style="background:#1A1A1A; color:#BBB;"><strong>This layer belongs to the 26 million North Korean people.</strong> External observers cannot judge on their behalf. However, as to how long this structure can persist — this report cannot answer that question.</div></div>
+</div>
+</div>
+ ─── Conclusion ─── 
+<div class="section">
+<div class="section-title">ⅩⅡ · Conclusion Orbit</div>
+<div class="conclusion">
+<p>North Korea is the darkest page in this report series. The figures say — TBI 0.857, Freedom House 3, ADI 1.000. Yet, what these figures truly speak of is not numbers.</p>
+<p>26 million people are living inside it. Blocked from information about the outside world, they live within a reality defined by a single narrative. While the possibility of cracks is gradually growing with the spread of smartphones, surveillance is also becoming more sophisticated at the same time.</p>
+<p>Just as forcing a comparison of the incomparable is violence, claiming to know what is unknowable is also violence. This report ends by acknowledging that limitation.</p>
+</div>
+</div>
+ ─── Series ─── 
+<div class="section">
+<div class="series-box">
+<div class="series-title">Northeast Asia Series — Λ¹²v9.12 Fully Completed</div>
+<div class="series-item"><span class="series-num">#20</span><span class="series-name">Northeast Asian Regional Comparison</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">#21</span><span class="series-name">South Korea Standalone Report</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">#22</span><span class="series-name">Japan Standalone Report</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">#23</span><span class="series-name">China Standalone Report</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">#24</span><span class="series-name">Taiwan Standalone Report</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">#25</span><span class="series-name">North Korea Standalone Report v1.1 (Separate Frame · Diagram Added)</span><span class="series-status status-now">Completed</span></div>
+</div>
+</div>
+<div class="footer">
+<p>Everblue Sea Institute for Social Dynamics</p>
+<p>Director Cheonghae (淸海) · Claude (Anthropic) Research Partner</p>
+<p><a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · <a href="https://everbluesea.org">everbluesea.org</a> · contact@everbluesea.org</p>
+<div class="engine-tag">Engine: Λ¹²v9.12 | Separate Frame | OLI=0.18 | Based on SSRN 6632858 | NorthKorea_Λ¹²v9.12_20260502.html</div>
+</div>
+</body>
+</html>

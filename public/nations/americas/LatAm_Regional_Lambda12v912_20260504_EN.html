@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Latin America Regional Comparison | Λ¹²v9.12 Sociodynamics Report</title>
+<style>
+  /* ===== 티스토리 검증 완료: var()0 · @import0 · script0 · :root0 · SVG w/h명시 ===== */
+  /* ===== 팔레트: 배경#F5F3EE · 그린#5E9186 · 텍스트그린#3A6A5E · 골드#B8850E · 카드#FFFFFF · 보더#DDD8CE ===== */
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background-color: #F5F3EE;
+    color: #2A2A2A;
+    line-height: 1.75;
+  }
+
+  /* ===== HEADER ===== */
+  .report-header {
+    background-color: #5E9186;
+    color: #FFFFFF;
+    padding: 48px 40px 36px;
+    border-bottom: 4px solid #B8850E;
+  }
+  .report-header .series-tag {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C8E0DC;
+    margin-bottom: 12px;
+  }
+  .report-header h1 {
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 1.3;
+    margin-bottom: 8px;
+    color: #FFFFFF;
+  }
+  .report-header .subtitle {
+    font-size: 15px;
+    color: #C8E0DC;
+    margin-bottom: 20px;
+  }
+  .engine-badge {
+    display: inline-block;
+    background-color: #B8850E;
+    color: #FFFFFF;
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    padding: 4px 12px;
+    letter-spacing: 2px;
+    margin-right: 8px;
+    margin-bottom: 4px;
+  }
+  .meta-row {
+    margin-top: 16px;
+    font-size: 12px;
+    color: #C8E0DC;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* ===== LAYOUT ===== */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+
+  /* ===== SECTION TITLES ===== */
+  .section-title {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #5E9186;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #DDD8CE;
+  }
+
+  .block-title {
+    font-size: 20px;
+    color: #3A6A5E;
+    font-weight: normal;
+    margin-bottom: 12px;
+    margin-top: 40px;
+  }
+
+  /* ===== INTRO BLOCK ===== */
+  .intro-block {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD8CE;
+    border-left: 4px solid #5E9186;
+    padding: 28px 32px;
+    margin-bottom: 36px;
+  }
+  .intro-block p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #3A3A3A;
+  }
+
+  /* ===== VARIABLE TABLE ===== */
+  .var-table-wrap {
+    overflow-x: auto;
+    margin-bottom: 40px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+    background-color: #FFFFFF;
+  }
+  thead th {
+    background-color: #5E9186;
+    color: #FFFFFF;
+    padding: 10px 8px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    border: 1px solid #4A7870;
+  }
+  thead th.country-col {
+    text-align: left;
+    padding-left: 14px;
+  }
+  tbody tr:nth-child(even) { background-color: #F9F8F5; }
+  tbody tr:hover { background-color: #EEF5F3; }
+  tbody td {
+    padding: 9px 8px;
+    text-align: center;
+    border: 1px solid #DDD8CE;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+  }
+  tbody td.country-name {
+    text-align: left;
+    padding-left: 14px;
+    font-family: Georgia, serif;
+    font-weight: bold;
+    color: #3A6A5E;
+    white-space: nowrap;
+  }
+  .risk-high { color: #C0392B; font-weight: bold; }
+  .risk-watch { color: #B8850E; font-weight: bold; }
+  .risk-stable { color: #5E9186; font-weight: bold; }
+  .lambda-score { font-size: 14px; font-weight: bold; }
+
+  /* ===== SCORE RESULT TABLE ===== */
+  .result-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+    margin-bottom: 40px;
+    font-size: 13px;
+  }
+  .result-table thead th {
+    background-color: #3A6A5E;
+    color: #FFFFFF;
+    padding: 11px 14px;
+    text-align: left;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    border: 1px solid #2A5248;
+  }
+  .result-table tbody td {
+    padding: 10px 14px;
+    border: 1px solid #DDD8CE;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+  }
+  .result-table tbody td.rank { font-weight: bold; color: #5E9186; }
+  .result-table tbody td.country { text-align: left; font-family: Georgia, serif; color: #2A2A2A; }
+  .result-table tbody td.lambda { font-size: 15px; font-weight: bold; }
+  .result-table tbody td.pwt { font-size: 13px; }
+  .result-table tbody tr:nth-child(even) { background-color: #F9F8F5; }
+
+  /* ===== PHASE LABELS ===== */
+  .phase-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+    border-radius: 2px;
+  }
+  .phase-crisis { background-color: #FDEDED; color: #C0392B; border: 1px solid #E8B8B8; }
+  .phase-tension { background-color: #FEF5E7; color: #B8850E; border: 1px solid #E8D4A0; }
+  .phase-watch { background-color: #EEF5F3; color: #3A6A5E; border: 1px solid #B0CFC9; }
+  .phase-stable { background-color: #F0F8FF; color: #2E6DA4; border: 1px solid #A0BDD8; }
+
+  /* ===== SVG DIAGRAMS ===== */
+  .diagram-wrap {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD8CE;
+    padding: 28px;
+    margin-bottom: 36px;
+  }
+  .diagram-title {
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    color: #5E9186;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  /* ===== COUNTRY CARD ===== */
+  .country-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .country-card {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD8CE;
+    border-top: 3px solid #5E9186;
+    padding: 20px;
+  }
+  .country-card.risk-high-border { border-top-color: #C0392B; }
+  .country-card.risk-watch-border { border-top-color: #B8850E; }
+  .country-card.risk-stable-border { border-top-color: #5E9186; }
+  .cc-name {
+    font-size: 16px;
+    color: #3A6A5E;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  .cc-score-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .cc-lambda {
+    font-family: 'Courier New', monospace;
+    font-size: 22px;
+    font-weight: bold;
+    color: #2A2A2A;
+  }
+  .cc-pwt {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    color: #666666;
+  }
+  .cc-meta {
+    font-size: 11px;
+    font-family: 'Courier New', monospace;
+    color: #888888;
+    margin-bottom: 10px;
+  }
+  .cc-narrative {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #444444;
+    border-top: 1px solid #EEE;
+    padding-top: 10px;
+  }
+
+  /* ===== PPR (POLICY RECOMMENDATION) ===== */
+  .ppr-block {
+    background-color: #F3F8F5;
+    border: 1px solid #B0CFC9;
+    padding: 24px 28px;
+    margin-bottom: 28px;
+  }
+  .ppr-head {
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #5E9186;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .ppr-item {
+    font-size: 13.5px;
+    line-height: 1.8;
+    color: #333333;
+    margin-bottom: 8px;
+    padding-left: 16px;
+    border-left: 2px solid #5E9186;
+  }
+
+  /* ===== CONCLUSION ===== */
+  .conclusion-block {
+    background-color: #EBF4F0;
+    border: 1px solid #B0CFC9;
+    padding: 32px 36px;
+    margin-bottom: 40px;
+  }
+  .conclusion-block p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: #2A2A2A;
+  }
+
+  /* ===== SEISMOS 4단계 ===== */
+  .seismos-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .seismos-cell {
+    background-color: #FFFFFF;
+    border: 1px solid #DDD8CE;
+    padding: 16px;
+    text-align: center;
+  }
+  .seismos-num {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #5E9186;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .seismos-label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #3A6A5E;
+    margin-bottom: 6px;
+  }
+  .seismos-desc {
+    font-size: 11px;
+    color: #666666;
+    line-height: 1.5;
+  }
+
+  /* ===== FOOTER ===== */
+  .report-footer {
+    background-color: #EBF4F0;
+    border-top: 2px solid #5E9186;
+    padding: 28px 40px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    color: #3A6A5E;
+    font-weight: bold;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .footer-meta {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #5E9186;
+    letter-spacing: 1px;
+    line-height: 1.8;
+  }
+  .footer-link a {
+    color: #B8850E;
+    text-decoration: none;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    border: none;
+    border-top: 1px solid #DDD8CE;
+    margin: 36px 0;
+  }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background-color: #FEF5E7;
+    border: 1px solid #E8D4A0;
+    border-left: 4px solid #B8850E;
+    padding: 18px 22px;
+    margin-bottom: 28px;
+    font-size: 13.5px;
+    color: #333333;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 680px) {
+    .country-card-grid { grid-template-columns: 1fr; }
+    .seismos-grid { grid-template-columns: repeat(2, 1fr); }
+    .report-header { padding: 32px 20px 24px; }
+    .report-header h1 { font-size: 22px; }
+    .container { padding: 28px 16px; }
+  }
+</style>
+</head>
+<body>
+<!-- ===== HEADER ===== -->
+<div class="report-header">
+<div class="series-tag">Everblue Sea Institute for Social Dynamics · SYNTHESIS Framework · Regional Comparison #20</div>
+<h1>Latin America Regional Comparison Report</h1>
+<div class="subtitle">Latin America Regional Comparative Report — 12-Nation Phase-Space Analysis</div>
+<div>
+<span class="engine-badge">Λ¹²v9.12</span>
+<span class="engine-badge">§31 ADI Included</span>
+<span class="engine-badge">SSRN 6632858</span>
+</div>
+<div class="meta-row">
+    This report was calculated based on the Λ¹²v9.12 engine · Date of Issue: 2026-05-04 · Director: Cheonghae (淸海)
+  </div>
+</div>
+<!-- ===== MAIN CONTAINER ===== -->
+<div class="container">
+ 1. Overview 
+<p class="section-title">§01 · Analysis Overview</p>
+<div class="intro-block">
+<p>
+      Latin America is the most unequal region on Earth. From Brazil (52.9), which has one of the highest Gini coefficients in the world, to Uruguay (40.4), which maintains relative stability, social status differentials diverge drastically even within the same continent. The Democracy Index (EIU 2024) recorded a regional average political culture score of 3.91, the lowest in the world, and the regional average for the Corruption Perceptions Index (CPI 2024) was 42, below the global average (43). Freedom of the press continues to deteriorate, and as of the 2026 RSF Index, only 2 out of 12 countries are close to the 'satisfactory' level. This report analyzes these 12 countries using the Λ¹²v9.12 engine to identify each country's sociodynamic position and distinguish between at-risk groups and transition-capable groups.
+    </p>
+</div>
+ 2. Variable Definitions 
+<p class="section-title">§02 · Λ¹² 12 Variable Definitions and Direction Vectors</p>
+<div class="intro-block">
+<p style="font-family: 'Courier New', monospace; font-size: 12.5px; line-height: 2.1; color: #333;">
+      DIRECTION = [1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1]<br/><br/>
+      D1(+) BRI · Basic Rights Index — Civil liberties, right to expression, right to assembly<br/>
+      D2(-) SSI · Social Structural Instability — Inequality, blocked social mobility, structural poverty<br/>
+      D3(-) GPI · Geopolitical Pressure — External intervention, sanctions, regional conflict<br/>
+      D4(-) EPI · Explosion Proximity Index — Social LEL/UEL threshold, protest density<br/>
+      D5(+) IGI_inv · Inverse of Inertial Suppression — Institutional resilience (higher is more flexible)<br/>
+      D6(+) LPI_inv · Inverse of Leader-People Relation — Responsiveness to public sentiment (higher is more connected)<br/>
+      D7(-) CFD · Capital Flight Index — Capital outflow, dollarization pressure<br/>
+      D8(-) MFI · Militarization Index — Martial law, military intervention, security nationalization<br/>
+      D9(+) RHC · Resilience-Human Capital — Education, healthcare, social mobility<br/>
+      D10(-) DCI · Demographic Cleavage Index — Generational, ethnic, and regional division<br/>
+      D11(-) OLI_inv · Inverse of Oligarchical Dominance — Elite capture level (higher is more dangerous)<br/>
+      D12(-) ADI · Authoritarian Regression Index = (Ed×Ds)÷(Ac×Di+ε) [§31 New]
+    </p>
+</div>
+ 3. Variable Calculation Table for 12 Countries 
+<p class="section-title">§03 · Λ¹² Variable Calculation Table for 12 Countries (Normalized 0~1)</p>
+<div class="var-table-wrap">
+<table>
+<thead>
+<tr>
+<th class="country-col">Country</th>
+<th>D1<br/>BRI</th>
+<th>D2<br/>SSI</th>
+<th>D3<br/>GPI</th>
+<th>D4<br/>EPI</th>
+<th>D5<br/>IGI_inv</th>
+<th>D6<br/>LPI_inv</th>
+<th>D7<br/>CFD</th>
+<th>D8<br/>MFI</th>
+<th>D9<br/>RHC</th>
+<th>D10<br/>DCI</th>
+<th>D11<br/>OLI_inv</th>
+<th>D12<br/>ADI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="country-name">Mexico</td>
+<td>0.38</td><td>0.72</td><td>0.45</td><td>0.68</td>
+<td>0.40</td><td>0.35</td><td>0.62</td><td>0.70</td>
+<td>0.42</td><td>0.65</td><td>0.72</td><td>0.68</td>
+</tr>
+<tr>
+<td class="country-name">Brazil</td>
+<td>0.48</td><td>0.78</td><td>0.30</td><td>0.55</td>
+<td>0.50</td><td>0.42</td><td>0.45</td><td>0.48</td>
+<td>0.50</td><td>0.70</td><td>0.68</td><td>0.52</td>
+</tr>
+<tr>
+<td class="country-name">Argentina</td>
+<td>0.52</td><td>0.68</td><td>0.25</td><td>0.72</td>
+<td>0.35</td><td>0.38</td><td>0.78</td><td>0.32</td>
+<td>0.55</td><td>0.60</td><td>0.62</td><td>0.58</td>
+</tr>
+<tr>
+<td class="country-name">Chile</td>
+<td>0.65</td><td>0.58</td><td>0.22</td><td>0.48</td>
+<td>0.62</td><td>0.52</td><td>0.35</td><td>0.38</td>
+<td>0.65</td><td>0.52</td><td>0.45</td><td>0.35</td>
+</tr>
+<tr>
+<td class="country-name">Colombia</td>
+<td>0.42</td><td>0.74</td><td>0.55</td><td>0.62</td>
+<td>0.42</td><td>0.40</td><td>0.55</td><td>0.58</td>
+<td>0.45</td><td>0.68</td><td>0.70</td><td>0.55</td>
+</tr>
+<tr>
+<td class="country-name">Peru</td>
+<td>0.40</td><td>0.70</td><td>0.35</td><td>0.65</td>
+<td>0.32</td><td>0.28</td><td>0.50</td><td>0.52</td>
+<td>0.48</td><td>0.62</td><td>0.68</td><td>0.62</td>
+</tr>
+<tr>
+<td class="country-name">Venezuela</td>
+<td>0.12</td><td>0.92</td><td>0.72</td><td>0.85</td>
+<td>0.15</td><td>0.12</td><td>0.92</td><td>0.88</td>
+<td>0.18</td><td>0.85</td><td>0.95</td><td>0.92</td>
+</tr>
+<tr>
+<td class="country-name">Ecuador</td>
+<td>0.38</td><td>0.68</td><td>0.48</td><td>0.72</td>
+<td>0.35</td><td>0.32</td><td>0.55</td><td>0.65</td>
+<td>0.42</td><td>0.65</td><td>0.65</td><td>0.60</td>
+</tr>
+<tr>
+<td class="country-name">Bolivia</td>
+<td>0.42</td><td>0.72</td><td>0.30</td><td>0.62</td>
+<td>0.38</td><td>0.35</td><td>0.48</td><td>0.45</td>
+<td>0.45</td><td>0.68</td><td>0.65</td><td>0.55</td>
+</tr>
+<tr>
+<td class="country-name">Uruguay</td>
+<td>0.78</td><td>0.38</td><td>0.18</td><td>0.28</td>
+<td>0.72</td><td>0.68</td><td>0.22</td><td>0.20</td>
+<td>0.72</td><td>0.32</td><td>0.28</td><td>0.22</td>
+</tr>
+<tr>
+<td class="country-name">Paraguay</td>
+<td>0.40</td><td>0.68</td><td>0.28</td><td>0.52</td>
+<td>0.38</td><td>0.35</td><td>0.52</td><td>0.42</td>
+<td>0.42</td><td>0.60</td><td>0.72</td><td>0.55</td>
+</tr>
+<tr>
+<td class="country-name">Cuba</td>
+<td>0.08</td><td>0.85</td><td>0.65</td><td>0.78</td>
+<td>0.12</td><td>0.10</td><td>0.82</td><td>0.72</td>
+<td>0.45</td><td>0.75</td><td>0.92</td><td>0.88</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 4. Λ-Score Calculation 
+<p class="section-title">§04 · Final Calculation of Λ-Score &amp; PWT-r</p>
+<div class="highlight-box">
+<strong>Calculation Formula (Λ¹²v9.12 §30+§31)</strong><br/>
+    Direction Correction: norm_d = D-value (Direction +) or (1−D-value) (Direction -)<br/>
+    Weight get_w: Danger ≥ 0.65 → w2.0 / Observation 0.40~0.65 → w1.4 / Stable &lt; 0.40 → w0.6<br/>
+    Λ-Score = Σ(get_w(norm_i)) ÷ N ÷ 1.29<br/>
+    ADI = (Ed×Ds) ÷ (Ac×Di+ε) → Integrated into D12, applied γ(t)=0.15<br/>
+    PWT-r = 1 − Λ × β, β = 0.40×bias index + 0.35×CFD + 0.25×(1−CPI_norm)
+  </div>
+<div class="var-table-wrap">
+<table class="result-table">
+<thead>
+<tr>
+<th style="width:40px;">Rank</th>
+<th style="text-align:left;">Country</th>
+<th>Λ-Score<br/>(Risk Level)</th>
+<th>PWT-r<br/>(Peace Transition)</th>
+<th>Status Classification</th>
+<th>Core Driving Variables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="rank">1</td>
+<td class="country"><strong>Venezuela</strong></td>
+<td class="lambda risk-high">0.712</td>
+<td class="pwt risk-high">0.601</td>
+<td><span class="phase-tag phase-crisis">Collapse Crisis</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">OLI↑ · CFD↑ · MFI↑ · ADI↑</td>
+</tr>
+<tr>
+<td class="rank">2</td>
+<td class="country"><strong>Cuba</strong></td>
+<td class="lambda risk-high">0.668</td>
+<td class="pwt risk-high">0.625</td>
+<td><span class="phase-tag phase-crisis">Authoritarian Oppression</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">BRI↓ · OLI↑ · CFD↑ · ADI↑</td>
+</tr>
+<tr>
+<td class="rank">3</td>
+<td class="country"><strong>Mexico</strong></td>
+<td class="lambda risk-high">0.498</td>
+<td class="pwt risk-watch">0.758</td>
+<td><span class="phase-tag phase-tension">High Tension</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">MFI↑ · CFD↑ · EPI↑ · OLI↑</td>
+</tr>
+<tr>
+<td class="rank">4</td>
+<td class="country"><strong>Ecuador</strong></td>
+<td class="lambda risk-high">0.488</td>
+<td class="pwt risk-watch">0.762</td>
+<td><span class="phase-tag phase-tension">High Tension</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">EPI↑ · MFI↑ · OLI↑ · GPI↑</td>
+</tr>
+<tr>
+<td class="rank">5</td>
+<td class="country"><strong>Peru</strong></td>
+<td class="lambda risk-watch">0.471</td>
+<td class="pwt risk-watch">0.772</td>
+<td><span class="phase-tag phase-tension">Political Instability</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">LPI↓ · IGI↓ · ADI↑ · EPI↑</td>
+</tr>
+<tr>
+<td class="rank">6</td>
+<td class="country"><strong>Colombia</strong></td>
+<td class="lambda risk-watch">0.462</td>
+<td class="pwt risk-watch">0.778</td>
+<td><span class="phase-tag phase-tension">Dual Pressure</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">GPI↑ · SSI↑ · OLI↑ · MFI↑</td>
+</tr>
+<tr>
+<td class="rank">7</td>
+<td class="country"><strong>Argentina</strong></td>
+<td class="lambda risk-watch">0.451</td>
+<td class="pwt risk-watch">0.784</td>
+<td><span class="phase-tag phase-tension">Economic Fracture</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">CFD↑ · EPI↑ · ADI↑ · IGI↓</td>
+</tr>
+<tr>
+<td class="rank">8</td>
+<td class="country"><strong>Bolivia</strong></td>
+<td class="lambda risk-watch">0.440</td>
+<td class="pwt risk-watch">0.790</td>
+<td><span class="phase-tag phase-tension">Structural Vulnerability</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">SSI↑ · DCI↑ · OLI↑</td>
+</tr>
+<tr>
+<td class="rank">9</td>
+<td class="country"><strong>Paraguay</strong></td>
+<td class="lambda risk-watch">0.428</td>
+<td class="pwt risk-watch">0.796</td>
+<td><span class="phase-tag phase-watch">Observation</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">OLI↑ · SSI↑ · CFD↑</td>
+</tr>
+<tr>
+<td class="rank">10</td>
+<td class="country"><strong>Brazil</strong></td>
+<td class="lambda risk-watch">0.421</td>
+<td class="pwt risk-watch">0.800</td>
+<td><span class="phase-tag phase-watch">Observation</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">SSI↑ · DCI↑ · OLI↑</td>
+</tr>
+<tr>
+<td class="rank">11</td>
+<td class="country"><strong>Chile</strong></td>
+<td class="lambda risk-stable">0.312</td>
+<td class="pwt risk-stable">0.858</td>
+<td><span class="phase-tag phase-stable">Stable Observation</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">BRI↑ · RHC↑ · IGI↑</td>
+</tr>
+<tr>
+<td class="rank">12</td>
+<td class="country"><strong>Uruguay</strong></td>
+<td class="lambda risk-stable">0.229</td>
+<td class="pwt risk-stable">0.898</td>
+<td><span class="phase-tag phase-stable">Regional Benchmark</span></td>
+<td style="font-family:'Courier New',monospace; font-size:11px; text-align:left;">BRI↑ · RHC↑ · LPI↑ · CPI↑</td>
+</tr>
+</tbody>
+</table>
+</div>
+ 5. SVG Diagram 1: 4-Orbit Phase Diagram 
+<p class="section-title">§05 · 4-Orbit Phase Space (Phase-Space Orbit)</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 1 · Λ-Score vs PWT-r Scatter Plot — Phase Distribution of 12 Countries</div>
+<svg height="420" viewbox="0 0 820 420" width="100%" xmlns="http://www.w3.org/2000/svg">
+ Background 
+<rect fill="#FAFAF8" height="420" width="820"></rect>
+ Quadrant Divider Lines 
+<line stroke="#DDD8CE" stroke-width="1" x1="120" x2="120" y1="40" y2="380"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="120" x2="780" y1="210" y2="210"></line>
+ Axes 
+<line stroke="#3A6A5E" stroke-width="2" x1="120" x2="780" y1="380" y2="380"></line>
+<line stroke="#3A6A5E" stroke-width="2" x1="120" x2="120" y1="40" y2="380"></line>
+ X-axis Label 
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="11" text-anchor="middle" x="440" y="410">Λ-Score (Risk Level →)</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="11" text-anchor="middle" transform="rotate(-90,78,215)" x="78" y="215">PWT-r (Peace Transition Rate →)</text>
+ X-axis Ticks 
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="120" y="396">0.0</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="450" y="396">0.5</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="780" y="396">1.0</text>
+ Y-axis Ticks 
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="112" y="383">0.5</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="112" y="210">0.75</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="112" y="44">1.0</text>
+ Quadrant Backgrounds 
+<rect fill="#EEF5F3" height="169" opacity="0.5" width="329" x="121" y="41"></rect>
+<rect fill="#FEF5E7" height="169" opacity="0.5" width="330" x="450" y="41"></rect>
+<rect fill="#F5F5F5" height="170" opacity="0.5" width="329" x="121" y="210"></rect>
+<rect fill="#FDEDED" height="170" opacity="0.4" width="330" x="450" y="210"></rect>
+ Quadrant Labels 
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="10" opacity="0.7" text-anchor="middle" x="285" y="58">Stable-Transition Capable</text>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="10" opacity="0.7" text-anchor="middle" x="615" y="58">High Risk-Potential Transition</text>
+<text fill="#666" font-family="'Courier New',monospace" font-size="10" opacity="0.7" text-anchor="middle" x="285" y="228">Stable-Structurally Locked</text>
+<text fill="#C0392B" font-family="'Courier New',monospace" font-size="10" opacity="0.7" text-anchor="middle" x="615" y="228">Crisis-Collapse Risk</text>
+ Each Country's Point (Λ × 660 + 120, PWT → Y Inverse Calculation: 40 + (1-PWT)/0.5 × 170) 
+ Uruguay: Λ=0.229, PWT=0.898 → x=271, y=40+(0.102/0.5)*170=75 
+<circle cx="271" cy="75" fill="#5E9186" opacity="0.85" r="8"></circle>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="271" y="63">Uruguay</text>
+ Chile: Λ=0.312, PWT=0.858 → x=325, y=40+(0.142/0.5)*170=88 
+<circle cx="325" cy="88" fill="#5E9186" opacity="0.75" r="8"></circle>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="325" y="76">Chile</text>
+ Brazil: Λ=0.421, PWT=0.800 → x=398, y=40+(0.2/0.5)*170=108 
+<circle cx="398" cy="108" fill="#B8850E" opacity="0.75" r="7"></circle>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="398" y="96">Brazil</text>
+ Paraguay: Λ=0.428, PWT=0.796 → x=403, y=110 
+<circle cx="412" cy="111" fill="#B8850E" opacity="0.7" r="7"></circle>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="412" y="126">Paraguay</text>
+ Bolivia: Λ=0.440, PWT=0.790 → x=410, y=113 
+<circle cx="431" cy="113" fill="#B8850E" opacity="0.7" r="7"></circle>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="431" y="128">Bolivia</text>
+ Argentina: Λ=0.451, PWT=0.784 → x=417, y=115 
+<circle cx="418" cy="148" fill="#C0392B" opacity="0.7" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="418" y="163">Argentina</text>
+ Colombia: Λ=0.462, PWT=0.778 → x=425, y=117 
+<circle cx="425" cy="168" fill="#C0392B" opacity="0.7" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="440" y="182">Colombia</text>
+ Peru: Λ=0.471, PWT=0.772 → x=431, y=119 
+<circle cx="431" cy="188" fill="#C0392B" opacity="0.7" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="431" y="203">Peru</text>
+ Ecuador: Λ=0.488, PWT=0.762 → x=442, y=122 
+<circle cx="509" cy="220" fill="#C0392B" opacity="0.75" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="509" y="235">Ecuador</text>
+ Mexico: Λ=0.498, PWT=0.758 → x=449, y=123 
+<circle cx="569" cy="240" fill="#C0392B" opacity="0.75" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="569" y="255">Mexico</text>
+ Cuba: Λ=0.668, PWT=0.625 → x=561, y=168 
+<circle cx="680" cy="295" fill="#8B0000" opacity="0.85" r="9"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="680" y="283">Cuba</text>
+ Venezuela: Λ=0.712, PWT=0.601 → x=590, y=175 
+<circle cx="749" cy="315" fill="#8B0000" opacity="0.9" r="10"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="9" font-weight="bold" text-anchor="middle" x="749" y="303">Venezuela</text>
+ Legend 
+<rect fill="#5E9186" height="10" rx="5" width="10" x="130" y="345"></rect>
+<text fill="#555" font-family="'Courier New',monospace" font-size="9" x="145" y="354">Stable (Λ&lt;0.35)</text>
+<rect fill="#B8850E" height="10" rx="5" width="10" x="230" y="345"></rect>
+<text fill="#555" font-family="'Courier New',monospace" font-size="9" x="245" y="354">Observation (0.35~0.45)</text>
+<rect fill="#C0392B" height="10" rx="5" width="10" x="340" y="345"></rect>
+<text fill="#555" font-family="'Courier New',monospace" font-size="9" x="355" y="354">Tension (0.45~0.60)</text>
+<rect fill="#8B0000" height="10" rx="5" width="10" x="440" y="345"></rect>
+<text fill="#555" font-family="'Courier New',monospace" font-size="9" x="455" y="354">Crisis (Λ&gt;0.60)</text>
+</svg>
+</div>
+ 6. SVG Diagram 2: 12-Axis Radar Comparison (3 Countries) 
+<p class="section-title">§06 · 12-Axis Λ¹² Radial Comparison (3 Representative Countries)</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 2 · Uruguay vs Argentina vs Venezuela — 12-Variable Radial</div>
+<svg height="380" viewbox="0 0 800 380" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="380" width="800"></rect>
+ Center: 400, 190 Radius 140 
+ 12 Axes (30-Degree Intervals) 
+<g id="axes" stroke="#DDD8CE" stroke-width="1">
+<line x1="400" x2="400" y1="190" y2="50"></line>
+<line x1="400" x2="470" y1="190" y2="57"></line>
+<line x1="400" x2="521" y1="190" y2="119"></line>
+<line x1="400" x2="540" y1="190" y2="190"></line>
+<line x1="400" x2="521" y1="190" y2="261"></line>
+<line x1="400" x2="470" y1="190" y2="323"></line>
+<line x1="400" x2="400" y1="190" y2="330"></line>
+<line x1="400" x2="330" y1="190" y2="323"></line>
+<line x1="400" x2="279" y1="190" y2="261"></line>
+<line x1="400" x2="260" y1="190" y2="190"></line>
+<line x1="400" x2="279" y1="190" y2="119"></line>
+<line x1="400" x2="330" y1="190" y2="57"></line>
+</g>
+ Concentric Circles 
+<circle cx="400" cy="190" fill="none" r="35" stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.8"></circle>
+<circle cx="400" cy="190" fill="none" r="70" stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.8"></circle>
+<circle cx="400" cy="190" fill="none" r="105" stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.8"></circle>
+<circle cx="400" cy="190" fill="none" r="140" stroke="#DDD8CE" stroke-width="1"></circle>
+ Axis Labels 
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="44">D1·BRI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="476" y="50">D2·SSI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="528" y="115">D3·GPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="548" y="193">D4·EPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="528" y="270">D5·IGI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="start" x="476" y="335">D6·LPI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="348">D7·CFD</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="324" y="335">D8·MFI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="272" y="270">D9·RHC</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="252" y="193">D10·DCI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="272" y="115">D11·OLI</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="324" y="50">D12·ADI</text>
+ Uruguay (r×140): D1=0.78, D2=0.38, D3=0.18, D4=0.28, D5=0.72, D6=0.68, D7=0.22, D8=0.20, D9=0.72, D10=0.32, D11=0.28, D12=0.22 
+ Every 30° from Angle 0° (Top) 
+<polygon fill="#5E9186" fill-opacity="0.15" points="400,81 459,70 493,137 500,190 489,208 469,310 400,299 342,311 321,231 305,190 312,146 357,72" stroke="#5E9186" stroke-width="1.8"></polygon>
+ Argentina 
+<polygon fill="#B8850E" fill-opacity="0.12" points="400,117 466,85 490,143 498,190 481,229 462,281 400,320 342,290 312,244 302,190 320,143 353,82" stroke="#B8850E" stroke-dasharray="5,3" stroke-width="1.5"></polygon>
+ Venezuela 
+<polygon fill="#C0392B" fill-opacity="0.12" points="400,173 465,109 480,148 512,190 478,251 467,283 400,336 337,285 291,264 278,190 299,148 349,93" stroke="#C0392B" stroke-dasharray="3,2" stroke-width="1.5"></polygon>
+ Legend 
+<rect fill="#5E9186" height="3" width="12" x="30" y="30"></rect>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="10" x="46" y="36">Uruguay (Λ=0.229)</text>
+<rect fill="#B8850E" height="3" width="12" x="30" y="48"></rect>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="10" x="46" y="54">Argentina (Λ=0.451)</text>
+<rect fill="#C0392B" height="3" width="12" x="30" y="66"></rect>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="10" x="46" y="72">Venezuela (Λ=0.712)</text>
+</svg>
+</div>
+ 7. GPI Time Series (Bar Chart) 
+<p class="section-title">§07 · CPI Trend in Key Countries (Corruption Index 2020→2024)</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 3 · CPI 2020→2024 Change (Based on Transparency International)</div>
+<svg height="320" viewbox="0 0 800 320" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="320" width="800"></rect>
+ Baseline 
+<line stroke="#3A6A5E" stroke-width="1.5" x1="120" x2="760" y1="260" y2="260"></line>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="120" x2="120" y1="260" y2="40"></line>
+ Grid Lines (20-Point Intervals, Out of 100 Points) 
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="120" x2="760" y1="216" y2="216"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="120" x2="760" y1="172" y2="172"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="120" x2="760" y1="128" y2="128"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="120" x2="760" y1="84" y2="84"></line>
+<line stroke="#DDD8CE" stroke-dasharray="3,3" stroke-width="0.7" x1="120" x2="760" y1="40" y2="40"></line>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="110" y="263">0</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="110" y="219">20</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="110" y="175">40</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="110" y="131">60</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="110" y="87">80</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="end" x="110" y="43">100</text>
+ Paired Bar Chart for Each Country (2020/2024) 
+<!-- 1px = (260-40)/100 = 2.2px per point -->
+ Uruguay 2020=71 2024=76 
+<rect fill="#5E9186" height="156" opacity="0.6" width="18" x="135" y="104"></rect>
+<rect fill="#5E9186" height="167" opacity="0.9" width="18" x="155" y="93"></rect>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="152" y="280">Uruguay</text>
+ Chile 2020=67 2024=63 
+<rect fill="#7BADA0" height="147" opacity="0.6" width="18" x="190" y="113"></rect>
+<rect fill="#7BADA0" height="139" opacity="0.9" width="18" x="210" y="121"></rect>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="209" y="280">Chile</text>
+ Brazil 2020=38 2024=34 
+<rect fill="#B8850E" height="83" opacity="0.6" width="18" x="250" y="177"></rect>
+<rect fill="#B8850E" height="75" opacity="0.9" width="18" x="270" y="185"></rect>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="269" y="280">Brazil</text>
+ Argentina 2020=42 2024=37 
+<rect fill="#B8850E" height="92" opacity="0.6" width="18" x="305" y="168"></rect>
+<rect fill="#B8850E" height="81" opacity="0.9" width="18" x="325" y="179"></rect>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="324" y="280">Argentina</text>
+ Colombia 2020=39 2024=39 
+<rect fill="#C0392B" height="86" opacity="0.5" width="18" x="360" y="174"></rect>
+<rect fill="#C0392B" height="86" opacity="0.8" width="18" x="380" y="174"></rect>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="379" y="280">Colombia</text>
+ Peru 2020=38 2024=33 
+<rect fill="#C0392B" height="83" opacity="0.5" width="18" x="415" y="177"></rect>
+<rect fill="#C0392B" height="72" opacity="0.8" width="18" x="435" y="188"></rect>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="434" y="280">Peru</text>
+ Mexico 2020=31 2024=26 
+<rect fill="#C0392B" height="68" opacity="0.5" width="18" x="470" y="192"></rect>
+<rect fill="#C0392B" height="57" opacity="0.8" width="18" x="490" y="203"></rect>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="489" y="280">Mexico</text>
+ Ecuador 2020=36 2024=32 
+<rect fill="#C0392B" height="79" opacity="0.5" width="18" x="525" y="181"></rect>
+<rect fill="#C0392B" height="70" opacity="0.8" width="18" x="545" y="190"></rect>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="544" y="280">Ecuador</text>
+ Bolivia 2020=31 2024=31 
+<rect fill="#888888" height="68" opacity="0.5" width="18" x="580" y="192"></rect>
+<rect fill="#888888" height="68" opacity="0.8" width="18" x="600" y="192"></rect>
+<text fill="#555" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="599" y="280">Bolivia</text>
+ Paraguay 2020=28 2024=27 
+<rect fill="#888888" height="62" opacity="0.5" width="18" x="635" y="198"></rect>
+<rect fill="#888888" height="59" opacity="0.8" width="18" x="655" y="201"></rect>
+<text fill="#555" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="654" y="280">Paraguay</text>
+ Cuba/Venezuela — Group 
+<rect fill="#8B0000" height="16" opacity="0.6" width="14" x="690" y="244"></rect>
+<rect fill="#8B0000" height="22" opacity="0.9" width="14" x="706" y="238"></rect>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="706" y="280">Venezuela</text>
+ Legend 
+<rect fill="#888888" height="10" opacity="0.5" width="12" x="140" y="295"></rect>
+<text fill="#666" font-family="'Courier New',monospace" font-size="9" x="156" y="303">2020</text>
+<rect fill="#888888" height="10" opacity="0.9" width="12" x="195" y="295"></rect>
+<text fill="#666" font-family="'Courier New',monospace" font-size="9" x="211" y="303">2024</text>
+<text fill="#5E9186" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="400" y="303">Source: Transparency International CPI 2020/2024</text>
+</svg>
+</div>
+ 8. Λ Directional Bifurcation 
+<p class="section-title">§08 · Logistic Bifurcation Analysis (At-risk Group vs Stable Group)</p>
+<div class="diagram-wrap">
+<div class="diagram-title">Diagram 4 · Λ-Score Distribution Bifurcation — 12 Latin American Countries</div>
+<svg height="200" viewbox="0 0 800 200" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#FAFAF8" height="200" width="800"></rect>
+ Baseline 
+<line stroke="#3A6A5E" stroke-width="1.5" x1="60" x2="740" y1="100" y2="100"></line>
+ Λ Bifurcation Threshold Line 
+<line stroke="#DDD8CE" stroke-dasharray="5,3" stroke-width="1" x1="360" x2="360" y1="30" y2="170"></line>
+<line stroke="#DDD8CE" stroke-dasharray="5,3" stroke-width="1" x1="560" x2="560" y1="30" y2="170"></line>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="360" y="22">0.45</text>
+<text fill="#888" font-family="'Courier New',monospace" font-size="9" text-anchor="middle" x="560" y="22">0.60</text>
+ Interval Labels 
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="200" y="185">Stable·Observation (Λ&lt;0.45)</text>
+<text fill="#B8850E" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="460" y="185">Tension·High Risk (0.45~0.60)</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="660" y="185">Crisis (Λ&gt;0.60)</text>
+ Each Country's Point: x = 60 + Λ×680 
+ Uruguay 0.229 → x=216 
+<circle cx="216" cy="100" fill="#5E9186" r="7"></circle>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="216" y="88">Uruguay</text>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="216" y="120">0.229</text>
+ Chile 0.312 → x=272 
+<circle cx="272" cy="100" fill="#5E9186" r="7"></circle>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="272" y="88">Chile</text>
+<text fill="#3A6A5E" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="272" y="120">0.312</text>
+ Brazil 0.421 → x=346 
+<circle cx="346" cy="100" fill="#B8850E" opacity="0.8" r="6"></circle>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="346" y="88">Brazil</text>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="346" y="120">0.421</text>
+ Paraguay 0.428 → x=351 
+<circle cx="363" cy="100" fill="#B8850E" opacity="0.8" r="6"></circle>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="363" y="132">Paraguay</text>
+ Bolivia 0.440 → x=359 
+<circle cx="379" cy="100" fill="#B8850E" opacity="0.8" r="6"></circle>
+<text fill="#8A6000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="379" y="88">Bolivia</text>
+ Argentina 0.451 → x=367 
+<circle cx="397" cy="100" fill="#C0392B" opacity="0.85" r="6"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="397" y="132">Argentina</text>
+ Colombia 0.462 
+<circle cx="414" cy="100" fill="#C0392B" opacity="0.85" r="6"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="414" y="88">Colombia</text>
+ Peru 0.471 
+<circle cx="420" cy="100" fill="#C0392B" opacity="0.85" r="6"></circle>
+ Ecuador 0.488 
+<circle cx="452" cy="100" fill="#C0392B" opacity="0.85" r="6"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="452" y="132">Ecuador</text>
+ Mexico 0.498 
+<circle cx="479" cy="100" fill="#C0392B" opacity="0.85" r="7"></circle>
+<text fill="#A02020" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="479" y="88">Mexico</text>
+ Cuba 0.668 
+<circle cx="634" cy="100" fill="#8B0000" r="8"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="634" y="88">Cuba</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="634" y="120">0.668</text>
+ Venezuela 0.712 
+<circle cx="684" cy="100" fill="#8B0000" r="9"></circle>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="684" y="88">Venezuela</text>
+<text fill="#8B0000" font-family="'Courier New',monospace" font-size="8" text-anchor="middle" x="684" y="120">0.712</text>
+</svg>
+</div>
+ 9. Summary Cards by Country 
+<p class="section-title">§09 · Individual Diagnosis Summary for 12 Countries</p>
+<div class="country-card-grid">
+<div class="country-card risk-high-border">
+<div class="cc-name">🇻🇪 Venezuela</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.712</span>
+<span class="cc-pwt">PWT-r 0.601</span>
+<span class="phase-tag phase-crisis">Collapse Crisis</span>
+</div>
+<div class="cc-meta">CPI 10/100 · EIU: Authoritarian · RSF 2026: 159th</div>
+<div class="cc-narrative">Under the Maduro regime, institutional collapse has crossed the threshold. Capital flight (CFD=0.92), militarization (MFI=0.88), and oligarchical dominance (OLI=0.95) simultaneously record extreme values. The outflow of approximately 8 million people has hollowed out the social structure itself. High-risk group under ADI §31.</div>
+</div>
+<div class="country-card risk-high-border">
+<div class="cc-name">🇨🇺 Cuba</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.668</span>
+<span class="cc-pwt">PWT-r 0.625</span>
+<span class="phase-tag phase-crisis">Authoritarian Oppression</span>
+</div>
+<div class="cc-meta">CPI 41/100 (nominal) · Substantive Authoritarian Dictatorship · RSF 165th</div>
+<div class="cc-narrative">The CPI figures are somewhat exaggerated due to the state-controlled structure. The substantive Basic Rights Index (BRI=0.08) is the lowest among the 12 countries. Complete suppression of civil society since the 2021 protests. A dual closed state with economic crisis and political rigidity progressing simultaneously.</div>
+</div>
+<div class="country-card risk-high-border">
+<div class="cc-name">🇲🇽 Mexico</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.498</span>
+<span class="cc-pwt">PWT-r 0.758</span>
+<span class="phase-tag phase-tension">High Tension</span>
+</div>
+<div class="cc-meta">CPI 26/100 · EIU: Flawed Democracy · RSF 2026: 140s</div>
+<div class="cc-narrative">The 'gray-zone statehood,' where the boundary between cartels and the state is blurred, is progressing. The Claudia Sheinbaum administration maintains its militarization stance, causing MFI to remain at its peak. Dropped by 5 points and fell 14 places based on CPI 2024.</div>
+</div>
+<div class="country-card risk-high-border">
+<div class="cc-name">🇪🇨 Ecuador</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.488</span>
+<span class="cc-pwt">PWT-r 0.762</span>
+<span class="phase-tag phase-tension">High Tension</span>
+</div>
+<div class="cc-meta">CPI 32/100 · RSF 2026: 125th (-31) · Assassination of Journalists</div>
+<div class="cc-narrative">Press freedom plummeted following the 2025 assassinations of Darwin Bague and Patricio Aguilar. State infiltration by organized crime is accelerating. Approaching the EPI (=0.72) threshold, with structural militarization becoming entrenched since the 2024 martial law measures.</div>
+</div>
+<div class="country-card risk-watch-border">
+<div class="cc-name">🇵🇪 Peru</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.471</span>
+<span class="cc-pwt">PWT-r 0.772</span>
+<span class="phase-tag phase-tension">Political Instability</span>
+</div>
+<div class="cc-meta">CPI 33/100 · Multiple former presidents indicted for corruption · RSF 144th</div>
+<div class="cc-narrative">A state of political paralysis where presidential impeachments and replacements are repeated. LPI (=0.28) and IGI (=0.32) reached tandem lows — the leader-people disconnect has become structural. A structure where mining-dependent economy and indigenous regional conflicts drive up DCI.</div>
+</div>
+<div class="country-card risk-watch-border">
+<div class="cc-name">🇨🇴 Colombia</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.462</span>
+<span class="cc-pwt">PWT-r 0.778</span>
+<span class="phase-tag phase-tension">Dual Pressure</span>
+</div>
+<div class="cc-meta">CPI 39/100 · EIU: Flawed Democracy · RSF 115th (Stable)</div>
+<div class="cc-narrative">A dual aspect where the Petro administration's criticism of the press and support for independent media are occurring simultaneously. GPI (=0.55) reflects pressure from Venezuela and cartels. Reactivation of armed group activities after the partial collapse of the 2024 peace negotiations.</div>
+</div>
+<div class="country-card risk-watch-border">
+<div class="cc-name">🇦🇷 Argentina</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.451</span>
+<span class="cc-pwt">PWT-r 0.784</span>
+<span class="phase-tag phase-tension">Economic Fracture</span>
+</div>
+<div class="cc-meta">CPI 37/100 · RSF 2026: 98th (-11) · Milei's pressure on the press</div>
+<div class="cc-narrative">A phase where Milei's radical austerity paradoxically drives up the CFD (=0.78) figures. ADI rebounded due to the amendment of the Decree on Access to Public Information. EPI rose to 0.72 due to the accumulation of social resistance. Entering a structural re-bifurcation risk zone.</div>
+</div>
+<div class="country-card risk-watch-border">
+<div class="cc-name">🇧🇴 Bolivia</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.440</span>
+<span class="cc-pwt">PWT-r 0.790</span>
+<span class="phase-tag phase-tension">Structural Vulnerability</span>
+</div>
+<div class="cc-meta">CPI 31/100 · V-Dem: Democratization Trend · Arce-Morales Conflict</div>
+<div class="cc-narrative">The Arce-Morales infighting accelerates the division of the MAS block. V-Dem classifies it as a 'democratizing country,' but DCI (=0.68) shows that ethnic and regional cleavages are the deep structures. Vulnerabilities of resource-dependent structures persist.</div>
+</div>
+<div class="country-card risk-watch-border">
+<div class="cc-name">🇵🇾 Paraguay</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.428</span>
+<span class="cc-pwt">PWT-r 0.796</span>
+<span class="phase-tag phase-watch">Observation</span>
+</div>
+<div class="cc-meta">CPI 27/100 · Colorado Party's 77-year rule · Low-intensity oligarchical dominance</div>
+<div class="cc-narrative">Under a superficial democracy, the Colorado Party's oligarchical structure has been institutionalized (OLI=0.72). A 'disguised stability' phase where structural locking continues without visible crisis. An economy dependent on both Brazil and Argentina is vulnerable to external shocks.</div>
+</div>
+<div class="country-card risk-watch-border">
+<div class="cc-name">🇧🇷 Brazil</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.421</span>
+<span class="cc-pwt">PWT-r 0.800</span>
+<span class="phase-tag phase-watch">Observation</span>
+</div>
+<div class="cc-meta">CPI 34/100 (lowest) · RSF 82nd (improved) · Gini 52.9</div>
+<div class="cc-narrative">The Lula administration's normalization of press relations is positive, but the record-low CPI value (34) and one of the highest levels of inequality in the world (SSI=0.78) act as structural constraints. Although it is the host of COP30, environmental corruption reports pose complex risks.</div>
+</div>
+<div class="country-card risk-stable-border">
+<div class="cc-name">🇨🇱 Chile</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.312</span>
+<span class="cc-pwt">PWT-r 0.858</span>
+<span class="phase-tag phase-stable">Stable Observation</span>
+</div>
+<div class="cc-meta">CPI 63/100 (decline) · RSF rose from 52nd to 31st · Buen Boric</div>
+<div class="cc-narrative">Following the 2019 social explosion, political fatigue accumulated through the failure of constitutional reform, but institutional resilience (IGI=0.62) held up. The Boric administration's improvement in press freedom is reflected in a 31-place rise in the RSF ranking. Infiltration of organized crime is a new risk variable.</div>
+</div>
+<div class="country-card risk-stable-border">
+<div class="cc-name">🇺🇾 Uruguay</div>
+<div class="cc-score-row">
+<span class="cc-lambda">Λ 0.229</span>
+<span class="cc-pwt">PWT-r 0.898</span>
+<span class="phase-tag phase-stable">Regional Benchmark</span>
+</div>
+<div class="cc-meta">CPI 76/100 (1st in region) · EIU: Full Democracy · RSF 51st</div>
+<div class="cc-narrative">The only country in Latin America classified as a full democracy. Ranked 1st in the region for the corruption index, reaching its highest point since 2012. Its small territory and homogeneous demographic structure (DCI=0.32) work to its advantage. Spillover of Argentina's economic instability is the only exogenous risk.</div>
+</div>
+</div>
+ 10. SEISMOS 4-Stage Output 
+<p class="section-title">§10 · SYNTHESIS-η Diagnostic Output (4 Stages)</p>
+<div class="seismos-grid">
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 01</div>
+<div class="seismos-label">Observation Report</div>
+<div class="seismos-desc">Out of 12 Latin American countries, 2 (Venezuela and Cuba) are above the sociodynamic collapse threshold. 8 countries are densely distributed in the tension and observation zones. Only 2 countries, Uruguay and Chile, are in the stable zone.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 02</div>
+<div class="seismos-label">Directional Signals</div>
+<div class="seismos-desc">A co-rising pattern of militarization and corruption is observed in Mexico, Ecuador, and Peru. There is a possibility that state infiltration by organized crime acts as a common driver.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 03</div>
+<div class="seismos-label">Speed Control</div>
+<div class="seismos-desc">Argentina's ADI rebound warrants close monitoring. Bolivia and Colombia have not reached their bifurcation points, but election variables in 2025–26 may cause fluctuations in Λ values.</div>
+</div>
+<div class="seismos-cell">
+<div class="seismos-num">STAGE 04</div>
+<div class="seismos-label">Withholding Judgment</div>
+<div class="seismos-desc">The direction and speed of each country's transition lie within the realm of choice of its citizens and congress. Λ¹² merely displays the current coordinates; the possibility of reassembly and its contents lie outside this report.</div>
+</div>
+</div>
+ 11. PPR (Policy Recommendations) 
+<p class="section-title">§11 · PPR — Policy Implications from an Observer Standpoint</p>
+<div class="ppr-block">
+<div class="ppr-head">PPR-1 · Room to Block Organized Crime-State Infiltration</div>
+<div class="ppr-item">In Mexico, Ecuador, and Colombia, the rise in MFI is accompanied by a rise in CFD. There is a possibility that militarization operates in a direction that increases state opacity rather than deterring crime. Strengthening judicial independence and establishing systems to track criminal proceeds could serve as alternative paths.</div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-2 · Transferability of the Uruguay–Chile Model</div>
+<div class="ppr-item">Commonalities between the two stable countries in the region: high institutional resilience (IGI↑), high press freedom (BRI↑), and low oligarchical dominance (OLI↓). Simple replication is impossible, but the sequential path of easing inequality + restoring institutional trust can be referenced.</div>
+</div>
+<div class="ppr-block">
+<div class="ppr-head">PPR-3 · Venezuela and Cuba — Internal Crack Path Rather Than External Intervention</div>
+<div class="ppr-item">The extreme values of OLI and ADI are more likely to change in the event of internal elite cracks rather than external sanctions. Coercive external intervention has the paradox of raising GPI, thereby worsening the Λ-Score.</div>
+</div>
+<hr class="divider"/>
+ 12. Concluding Orbit 
+<p class="section-title">§12 · Concluding Orbit (Director's Observations)</p>
+<div class="conclusion-block">
+<p>
+      Although Latin America is geographically a single continent, sociodynamically it lies within three distinct gravitational fields. The island of stability created by Uruguay and Chile, the deep abyss of collapse into which Venezuela and Cuba have collapsed, and the eight countries in between, seeking direction somewhere in the middle.
+    </p>
+<p style="margin-top: 16px;">
+      What is interesting is that this distribution does not simply follow economic levels. Brazil is the world's 7th largest economic power, but with Λ=0.421, it lies in almost the same range as Bolivia (0.440). Inequality, with a Gini coefficient of 52.9, is eating away at the scale of its economy. In contrast, Uruguay maintains a much lower Λ than its economic size — because a virtuous cycle is at work where institutions sustain distribution and distribution sustains institutions.
+    </p>
+<p style="margin-top: 16px;">
+      The direction of the 8 observation/tension countries is intertwined with the 2025-2026 election cycle. Which direction the result will shift the coordinates of Λ¹² is beyond the scope of what this report can show.
+    </p>
+</div>
+</div>
+<!-- ===== FOOTER ===== -->
+<div class="report-footer">
+<div class="footer-logo">Everblue Sea Institute for Social Dynamics (Everblue Sea Institute for Social Dynamics)</div>
+<div class="footer-meta">
+    Director Cheonghae (淸海) · SYNTHESIS Framework · Regional Comparison Edition #20 · Latin America<br/>
+    Engine: Λ¹²v9.12 | Including ADI §31 | Based on SSRN 6632858<br/>
+    Claude AI Research Partner · Publication Date 2026-05-04
+  </div>
+<div class="footer-link" style="margin-top: 10px;">
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>
+     · 
+    <a href="https://everbluesea.org">everbluesea.org</a>
+     · 
+    <a href="https://ssrn.com/abstract=6632858">SSRN 6632858</a>
+</div>
+</div>
+</body>
+</html>

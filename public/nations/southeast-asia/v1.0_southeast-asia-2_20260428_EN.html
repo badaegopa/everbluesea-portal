@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Λ¹² Southeast Asia Comparison II — Philippines, Cambodia, Thailand</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;family=Bebas+Neue&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#F5F3EE; --card:#FFFFFF; --border:#DDD8CE;
+  --green:#5E9186; --green-text:#3A6A5E;
+  --gold:#B8850E; --gold-light:#F0C040;
+  --hero-from:#7BADA0; --hero-to:#5E9186;
+  --text:#2A2A2A; --muted:#666; --cream:#FFFDF8;
+
+  /* 국가 색상 */
+  --ph:#0038A8;   /* 필리핀 — 파랑 */
+  --kh:#032EA1;   /* 캄보디아 — 남색 (쉽게 구분: 진청) */
+  --kh:#8B1A1A;   /* 캄보디아 — 암적 */
+  --th:#A51931;   /* 태국 — 진홍 */
+
+  /* 변수 라벨 */
+  --tbi-bg:#FCEBEB; --tbi-c:#791F1F;
+  --sr-bg:#E1F5EE;  --sr-c:#085041;
+  --oli-bg:#E6F1FB; --oli-c:#0C447C;
+  --lpi-bg:#FAEEDA; --lpi-c:#633806;
+  --sig-bg:#EEEDFE; --sig-c:#3C3489;
+  --ppr-bg:#EAF3DE; --ppr-c:#27500A;
+  --cfd-bg:#FAECE7; --cfd-c:#712B13;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);font-family:'Noto Sans KR',sans-serif;color:var(--text);font-size:13px;line-height:1.75;}
+
+/* ─── 히어로 ─── */
+.hero{background:linear-gradient(135deg,var(--hero-from),var(--hero-to));color:#fff;padding:52px 40px 40px;text-align:center;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;opacity:.75;margin-bottom:14px;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:.06em;line-height:1.1;margin-bottom:10px;}
+.hero-sub{font-size:13px;opacity:.85;line-height:1.7;}
+.hero-meta{margin-top:18px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;}
+
+/* ─── 특별 경고 박스 (태국용) ─── */
+.alert-box{margin:20px 24px;background:#FFF8E1;border:2px solid #F9A825;border-radius:10px;padding:16px 20px;}
+.alert-title{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#E65100;letter-spacing:.05em;margin-bottom:8px;}
+.alert-text{font-size:12px;color:#444;line-height:1.8;}
+
+/* ─── 선언 ─── */
+.declaration{background:var(--cream);border-left:4px solid var(--green);margin:28px 24px;padding:18px 22px;border-radius:0 8px 8px 0;}
+.declaration-title{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green-text);letter-spacing:.05em;margin-bottom:8px;}
+.declaration p{font-size:12.5px;color:#444;line-height:1.8;}
+
+/* ─── 민중 시선 ─── */
+.peoples-view{margin:0 24px 24px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px 22px;}
+.peoples-view-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--gold);letter-spacing:.06em;margin-bottom:12px;}
+.pv-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.pv-card{background:var(--bg);border-radius:8px;padding:12px 14px;border-top:3px solid;}
+.pv-card.ph{border-color:var(--ph);}
+.pv-card.kh{border-color:#8B1A1A;}
+.pv-card.th{border-color:var(--th);}
+.pv-flag{font-size:22px;margin-bottom:4px;}
+.pv-name{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.05em;margin-bottom:6px;}
+.pv-name.ph{color:var(--ph);}
+.pv-name.kh{color:#8B1A1A;}
+.pv-name.th{color:var(--th);}
+.pv-quote{font-size:11.5px;color:#555;line-height:1.7;font-style:italic;}
+
+/* ─── 섹션 타이틀 ─── */
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.07em;color:var(--green-text);border-bottom:2px solid var(--green);margin:28px 24px 14px;padding-bottom:8px;}
+
+/* ─── 3열 그리드 카드 ─── */
+.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:0 24px 24px;}
+
+/* ─── §0 용어 ─── */
+.term-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 24px 24px;}
+.term-box{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px 14px;}
+.term-name{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:var(--green-text);margin-bottom:4px;}
+.term-def{font-size:11px;color:#555;line-height:1.6;}
+.term-ref{font-size:9.5px;color:#999;margin-top:4px;font-family:'JetBrains Mono',monospace;}
+
+/* ─── 관찰자 시선 이론 박스 ─── */
+.obs-theory{margin:0 24px 14px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 20px;}
+.obs-theory-head{font-family:'Bebas Neue',sans-serif;font-size:13px;color:var(--gold);letter-spacing:.05em;margin-bottom:10px;}
+.obs-theory-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;font-size:11.5px;}
+.obs-theory-item{background:var(--bg);border-radius:6px;padding:8px 12px;}
+
+/* ─── 국가 헤더 카드 ─── */
+.obs-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.obs-header{padding:12px 16px;color:#fff;}
+.obs-header.ph{background:var(--ph);}
+.obs-header.kh{background:#8B1A1A;}
+.obs-header.th{background:var(--th);}
+.obs-country{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.05em;}
+.obs-eng{font-size:10px;opacity:.8;font-family:'JetBrains Mono',monospace;}
+.obs-body{padding:14px 16px;}
+.obs-row{display:flex;justify-content:space-between;margin-bottom:7px;font-size:11.5px;border-bottom:1px dashed #eee;padding-bottom:5px;}
+.obs-row:last-child{border:none;margin-bottom:0;}
+.obs-label{color:#777;}
+.obs-value{font-weight:700;font-family:'JetBrains Mono',monospace;font-size:11px;}
+.obs-value.ph{color:var(--ph);}
+.obs-value.kh{color:#8B1A1A;}
+.obs-value.th{color:var(--th);}
+
+/* ─── 통치구조 ─── */
+.gov-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.gov-title{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;margin-bottom:8px;}
+.gov-title.ph{color:var(--ph);}
+.gov-title.kh{color:#8B1A1A;}
+.gov-title.th{color:var(--th);}
+.gov-item{font-size:11.5px;color:#444;margin-bottom:5px;line-height:1.6;}
+
+/* ─── 통계 테이블 ─── */
+.stats-table{width:calc(100% - 48px);margin:0 24px 24px;border-collapse:collapse;font-size:11.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.stats-table th{background:var(--green-text);color:#fff;padding:9px 14px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;text-align:center;}
+.stats-table td{padding:8px 14px;border-bottom:1px solid #f0ede7;text-align:center;color:#444;}
+.stats-table tr:last-child td{border:none;}
+.stats-table tr:hover td{background:#fafaf7;}
+.stats-table .label{text-align:left;font-weight:500;color:var(--green-text);}
+.val-ph{color:var(--ph);font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-kh{color:#8B1A1A;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-th{color:var(--th);font-weight:700;font-family:'JetBrains Mono',monospace;}
+
+/* ─── 좌표 카드 ─── */
+.coord-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.coord-head{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.05em;margin-bottom:10px;}
+.coord-head.ph{color:var(--ph);}
+.coord-head.kh{color:#8B1A1A;}
+.coord-head.th{color:var(--th);}
+.coord-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.coord-label{font-size:10.5px;}
+.coord-bar-wrap{flex:1;height:6px;background:#eee;border-radius:3px;margin:0 10px;}
+.coord-bar{height:6px;border-radius:3px;}
+.coord-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;min-width:36px;text-align:right;}
+
+/* ─── 공식 박스 ─── */
+.formula-box{margin:0 24px 24px;background:linear-gradient(135deg,#f0ede7,#e8e4dc);border:1px solid var(--border);border-radius:10px;padding:16px 20px;}
+.formula-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--green-text);letter-spacing:.06em;margin-bottom:10px;}
+.formula-eq{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green-text);background:#fff;display:inline-block;padding:6px 14px;border-radius:6px;margin-bottom:8px;}
+.formula-note{font-size:11px;color:#666;line-height:1.7;}
+
+/* ─── 레이더·GPI 래퍼 ─── */
+.radar-wrap,.gpi-wrap,.phase-wrap{margin:0 24px 24px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;}
+.radar-title,.gpi-title,.phase-title{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green-text);letter-spacing:.06em;margin-bottom:4px;text-align:center;}
+.gpi-sub,.phase-sub{font-size:10.5px;color:#888;text-align:center;margin-bottom:14px;font-family:'JetBrains Mono',monospace;}
+.radar-legend{display:flex;justify-content:center;gap:24px;margin-top:12px;flex-wrap:wrap;}
+.radar-legend-item{display:flex;align-items:center;gap:6px;font-size:11px;}
+.radar-dot{width:10px;height:10px;border-radius:50%;}
+
+/* ─── PPR ─── */
+.ppr-block{margin:0 24px 18px;}
+.ppr-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.ppr-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.ppr-card-head{padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;}
+.ppr-card-head.ph{background:var(--ph);}
+.ppr-card-head.kh{background:#8B1A1A;}
+.ppr-card-head.th{background:var(--th);}
+.ppr-card-body{padding:10px 14px;font-size:11.5px;color:#444;line-height:1.75;}
+.ppr-stack-label{font-size:9.5px;font-family:'JetBrains Mono',monospace;background:var(--bg);color:var(--muted);display:inline-block;padding:1px 6px;border-radius:3px;margin-bottom:3px;}
+.ppr-stack-row{margin-bottom:4px;}
+
+/* ─── 담론육층 ─── */
+.layer-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.layer-card-head{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.04em;margin-bottom:10px;}
+.layer-card-head.ph{color:var(--ph);}
+.layer-card-head.kh{color:#8B1A1A;}
+.layer-card-head.th{color:var(--th);}
+.layer-row{display:flex;gap:8px;margin-bottom:7px;font-size:11px;line-height:1.6;}
+.layer-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;min-width:16px;color:var(--gold);}
+.layer-text{color:#555;}
+
+/* ─── 오차 범위 ─── */
+.err-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px;}
+.err-head{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;margin-bottom:8px;}
+.err-head.ph{color:var(--ph);}
+.err-head.kh{color:#8B1A1A;}
+.err-head.th{color:var(--th);}
+.err-item{font-size:11px;color:#555;line-height:1.65;margin-bottom:4px;}
+
+/* ─── 한반도 ─── */
+.kr-box{margin:0 24px 24px;background:linear-gradient(135deg,#eef6f4,#e4f0ed);border:1px solid #c5ddd9;border-radius:10px;padding:18px 22px;}
+.kr-title{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--green-text);letter-spacing:.06em;margin-bottom:10px;}
+.kr-text{font-size:12px;color:#444;line-height:1.85;}
+
+/* ─── 태국 특집 박스 ─── */
+.thailand-special{margin:0 24px 24px;background:linear-gradient(135deg,#fff8f8,#ffe8e8);border:2px solid #A51931;border-radius:12px;padding:20px 24px;}
+.ts-title{font-family:'Bebas Neue',sans-serif;font-size:20px;color:#A51931;letter-spacing:.06em;margin-bottom:12px;}
+.ts-text{font-size:12px;color:#444;line-height:1.9;}
+.ts-stat{display:inline-block;background:#A51931;color:#fff;font-family:'JetBrains Mono',monospace;font-size:10.5px;padding:2px 8px;border-radius:4px;margin:2px 3px;}
+
+/* ─── 결론·시리즈·푸터 ─── */
+.conclusion{margin:0 24px 24px;background:linear-gradient(135deg,var(--hero-from),var(--hero-to));color:#fff;border-radius:12px;padding:24px 26px;}
+.conclusion-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.07em;margin-bottom:14px;}
+.conclusion-text{font-size:12.5px;line-height:1.9;opacity:.93;}
+.series-box{margin:0 24px 24px;border:2px solid var(--green);border-radius:10px;padding:14px 18px;}
+.series-title{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--green-text);letter-spacing:.06em;margin-bottom:8px;}
+.series-list{display:flex;flex-wrap:wrap;gap:8px;}
+.series-item{font-size:11px;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:3px 10px;color:var(--muted);}
+.series-item.done{background:var(--green);color:#fff;border-color:var(--green);}
+.series-item.current{background:var(--gold);color:#fff;border-color:var(--gold);}
+.footer{background:var(--green-text);color:rgba(255,255,255,.8);text-align:center;padding:22px;font-size:11px;line-height:1.9;}
+.footer a{color:var(--gold-light);text-decoration:none;}
+
+/* ─── 태그 ─── */
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;}
+.tag-tbi{background:var(--tbi-bg);color:var(--tbi-c);}
+.tag-sr{background:var(--sr-bg);color:var(--sr-c);}
+.tag-oli{background:var(--oli-bg);color:var(--oli-c);}
+.tag-lpi{background:var(--lpi-bg);color:var(--lpi-c);}
+.tag-sig{background:var(--sig-bg);color:var(--sig-c);}
+.tag-ppr{background:var(--ppr-bg);color:var(--ppr-c);}
+.tag-cfd{background:var(--cfd-bg);color:var(--cfd-c);}
+.freach-s{color:#2E7D32;font-weight:700;}
+.freach-i{color:#1565C0;font-weight:700;}
+.freach-d{color:#AD1457;font-weight:700;}
+
+.note{font-size:10.5px;color:#888;font-style:italic;margin:0 24px 16px;}
+.mb16{margin-bottom:16px;}
+.highlight-box{background:rgba(165,25,49,.07);border-left:3px solid var(--th);padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:10px;font-size:11.5px;color:#444;line-height:1.75;}
+</style>
+</head>
+<body>
+ ══ Hero ══ 
+<div class="hero">
+<div class="hero-eyebrow">Everblue Sea Institute for Social Dynamics · Λ¹² Country Comparison Series II</div>
+<div class="hero-title">Southeast Asia Comparison II</div>
+<div class="hero-sub">Philippines · Cambodia · Thailand<br/>Why Is Thailand Stagnating? — Three Different Traps</div>
+<div class="hero-meta">
+<span class="hero-badge">Λ¹² v9.10 Engine</span>
+<span class="hero-badge">F_reach Applied</span>
+<span class="hero-badge">Based on GPI 2025</span>
+<span class="hero-badge">CPI 2025 · IMF WEO 2025</span>
+<span class="hero-badge">SSRN 6509200</span>
+<span class="hero-badge">2026-04-28</span>
+</div>
+</div>
+ ══ Thailand Warning Box ══ 
+<div class="alert-box">
+<div class="alert-title">⚠ Thailand Singularity — Why We Write This Volume</div>
+<div class="alert-text">
+<strong>Thailand is standing still.</strong> 10-year average GDP growth rate of 1.9% — less than half of the ASEAN average of 4.9%.
+    Growth rate of 2.2% in 2025, BOT forecast of 1.5% in 2026. The worst structural stagnation since the 1997 Asian financial crisis.
+    CPI score of 33 (116th) — lowest in 19 years. Household debt at 86.8% of GDP. 12 coups, 31 prime ministers, and more than 20 constitutions.
+    Two prime ministers replaced in 2025 alone (judicial and parliamentary coups). Early general election scheduled for 2026.
+    How does Λ¹² read this structure?
+  </div>
+</div>
+ ══ Statement of Research Purpose ══ 
+<div class="declaration">
+<div class="declaration-title">Statement of Research Purpose</div>
+<p>
+    This comparative edition analyzes the Philippines, Cambodia, and Thailand using the Λ¹² framework. These three countries are experiencing 'traps' in different ways.
+    The Philippines has the return of the Marcos dynasty, Cambodia has the Hun (Sen → Manet) hereditary power, and Thailand has a triangle of fixation consisting of a coup culture and a royal-military alliance.
+    Structure speaks more than surface indicators — reading that is the purpose of this edition.
+  </p>
+</div>
+ ══ Grassroots Standpoint ══ 
+<div class="peoples-view">
+<div class="peoples-view-title">Grassroots Perspective — A Window through Three Youths</div>
+<div class="pv-grid">
+<div class="pv-card ph">
+<div class="pv-flag">🇵🇭</div>
+<div class="pv-name ph">A youth on the outskirts of Manila</div>
+<div class="pv-quote">
+        "My father spoke of people who disappeared during the Marcos era.
+        But now Marcos is president again. Has history returned, or
+        have we forgotten? Every time there's a flood, we ask where the budget went."
+      </div>
+</div>
+<div class="pv-card kh">
+<div class="pv-flag">🇰🇭</div>
+<div class="pv-name kh">A youth in Phnom Penh</div>
+<div class="pv-quote">
+        "Hun Sen ruled for 40 years, and now his son does. The son received the country built by his father.
+        There are elections, but the results are predictable.
+        Due to the border conflict with Thailand, my brother who went to work has returned — along with his job."
+      </div>
+</div>
+<div class="pv-card th">
+<div class="pv-flag">🇹🇭</div>
+<div class="pv-name th">A youth in Bangkok</div>
+<div class="pv-quote">
+        "If you criticize the royal family, you get up to 15 years in prison. The prime minister changes every year.
+        The newspapers write that Vietnam is catching up to us.
+        Our parents say, 'It used to be good back then.' I don't know that 'back then.'"
+      </div>
+</div>
+</div>
+</div>
+ ══ §0 Terminology Guide ══ 
+<div class="sec-title">§0  Key Terminology Guide</div>
+<div class="term-grid">
+<div class="term-box">
+<div class="term-name">BRI — Rebellion Risk Index</div>
+<div class="term-def">Rebellion Risk Index. The potential for the explosion of public discontent. 0–10 scale. Higher means greater system instability.</div>
+<div class="term-ref">Goldstone(2001) · Gurr(1970)</div>
+</div>
+<div class="term-box">
+<div class="term-name">SR — Social Resistance Index</div>
+<div class="term-def">SR leading-decline reverse causality: Suppression → SR decline = fake stability. Contains the risk of rapid explosion upon shock.</div>
+<div class="term-ref">Λ¹² §3 Reverse Causality Hypothesis</div>
+</div>
+<div class="term-box">
+<div class="term-name">Σ — Phase Singularity</div>
+<div class="term-def">Leader-public disconnect. Σ≥0.70 = threshold risk zone. Surges under hereditary and military rule.</div>
+<div class="term-ref">Λ¹² §5 SR-Σ Quadrant</div>
+</div>
+<div class="term-box">
+<div class="term-name">TBI — Trauma Big Bang Index</div>
+<div class="term-def">The imprint left on the legitimacy of the current system by historical shocks (massacres, colonization, dictatorship). TBI=H×C×N.</div>
+<div class="term-ref">Λ¹² §27 Non-Euclidean Expansion</div>
+</div>
+<div class="term-box">
+<div class="term-name">OLI — Observability Limit</div>
+<div class="term-def">Data confidence interval. Lower OLI indicates higher potential for divergence between actual values and official statistics.</div>
+<div class="term-ref">Λ¹² §24 · Goodhart Warning</div>
+</div>
+<div class="term-box">
+<div class="term-name">F_reach — Food Reachability</div>
+<div class="term-def">F_reach=(S×I×D)^⅓. Geometric mean of self-sufficiency, import stability, and distribution reach. v9.10 universal variable.</div>
+<div class="term-ref">FAO·Sen·UNDP Geometric Mean Genealogy</div>
+</div>
+<div class="term-box">
+<div class="term-name">CFD — Cultural Diversity Index</div>
+<div class="term-def">Measurement of cohesion-conflict tension in multi-ethnic and multi-religious societies. Includes the Philippine Muslim-Christian fault line.</div>
+<div class="term-ref">Λ¹² §9 CFD</div>
+</div>
+<div class="term-box">
+<div class="term-name">LPI_net — Net Leadership Index</div>
+<div class="term-def">Real capacity - image management cost. Negative value = packaging cost exceeds actual capability.</div>
+<div class="term-ref">Λ¹² §8 LPI</div>
+</div>
+<div class="term-box">
+<div class="term-name">SSI — Social Stability Index</div>
+<div class="term-def">Institutional shock absorption capacity. Rule of law, economic resilience, and social integration. Thailand: Paradox of structure vs. stability.</div>
+<div class="term-ref">Acemoglu &amp; Robinson(2012)</div>
+</div>
+</div>
+ ══ Ⅰ Observer Standpoint ══ 
+<div class="sec-title">Ⅰ  Observer Standpoint — Theoretical Self-Positioning (§1-B)</div>
+<div class="obs-theory">
+<div class="obs-theory-head">Classical Sociology Genealogy Matching</div>
+<div class="obs-theory-grid">
+<div class="obs-theory-item">
+<div style="font-weight:700;color:var(--ph);margin-bottom:4px;">🇵🇭 Philippines</div>
+<div style="color:#555;line-height:1.7;font-size:11.5px;">
+        Pareto-Mosca's <em>Circulating Elite</em> theory is an almost perfect example. It shows that the cycle of Marcos → Aquino → Estrada → Arroyo → Duterte → Marcos Jr. is a 'reshuffling of elites' rather than a 'replacement of elites.' Weber's Patrimonialism: politics operating as a tool for the distribution of private resources.
+      </div>
+</div>
+<div class="obs-theory-item">
+<div style="font-weight:700;color:#8B1A1A;margin-bottom:4px;">🇰🇭 Cambodia</div>
+<div style="color:#555;line-height:1.7;font-size:11.5px;">
+        A mixture of Weberian traditional authority + Gramscian hegemony. The Hun family's father-to-son succession shares the same structure as Weber's hereditary patrimony. The Killing Fields trauma made Gramsci's 'hegemony without consent' possible — those who have experienced the absolute worst tend to conform to current authority. TBI at its highest level.
+      </div>
+</div>
+<div class="obs-theory-item">
+<div style="font-weight:700;color:var(--th);margin-bottom:4px;">🇹🇭 Thailand</div>
+<div style="color:#555;line-height:1.7;font-size:11.5px;">
+        Unique structure: Weber's traditional authority (royalty) + rational-legal authority (constitution) + charismatic authority (military leaders), all three <em>clash</em> and coexist. The war over who is the source of legitimacy is the essence of political instability. Mosca's Elite Theory: a four-way ruling alliance of military-royalty-business-judiciary.
+      </div>
+</div>
+</div>
+</div>
+<p class="note">※ §1-C: No theory completely explains these three countries. Theories are lenses, not answers.</p>
+ ══ Ⅱ State Governance Structure ══ 
+<div class="sec-title">Ⅱ  State Governance Structure</div>
+<div class="three-grid">
+<div class="gov-card">
+<div class="gov-title ph">🇵🇭 Philippines — Presidential Republic</div>
+<div class="gov-item"><strong>System:</strong> Presidential unicameral republic</div>
+<div class="gov-item"><strong>Current President:</strong> Ferdinand Marcos Jr. (2022~)</div>
+<div class="gov-item"><strong>Historical Context:</strong> Son of Ferdinand Marcos Sr. (1972–1986 martial law), the dictator</div>
+<div class="gov-item"><strong>Political Issues:</strong> 2025 flood budget corruption scandal. Duterte-Marcos coalition fissure</div>
+<div class="gov-item"><strong>Geopolitics:</strong> South China Sea dispute — tightrope walk between Chinese pressure and strengthening the US military alliance</div>
+<div class="gov-item"><strong>Structure:</strong> Archipelago of 7,641 islands. Persistent conflict over Muslim autonomy in Mindanao</div>
+</div>
+<div class="gov-card">
+<div class="gov-title kh">🇰🇭 Cambodia — De Facto One-Party Monarchy</div>
+<div class="gov-item"><strong>System:</strong> Constitutional monarchy in form / De facto one-party rule (Hun dynasty)</div>
+<div class="gov-item"><strong>Current Prime Minister:</strong> Hun Manet (2023~, son of Hun Sen)</div>
+<div class="gov-item"><strong>Hun Sen:</strong> Prime Minister 1985–2023 (38 years) → President of the Senate and International Advisor</div>
+<div class="gov-item"><strong>2025 Dispute with Thailand:</strong> Armed border conflict → mass return of Cambodian workers (sharp drop in remittances, which make up 5.5% of GDP)</div>
+<div class="gov-item"><strong>Killing Fields:</strong> 1975–79 Pol Pot massacres (25–33% of the population died) — TBI at the highest level</div>
+<div class="gov-item"><strong>Structure:</strong> International issue of online scam centers. Heavily dependent on Chinese FDI</div>
+</div>
+<div class="gov-card">
+<div class="gov-title th">🇹🇭 Thailand — Coup Republic</div>
+<div class="gov-item"><strong>System:</strong> Constitutional monarchy / Structure of repeated military coups</div>
+<div class="gov-item"><strong>Coups:</strong> 12 successful coups since 1932 · 31 prime ministers · 21 constitutions</div>
+<div class="gov-item"><strong>2025 Crisis:</strong> Two prime ministers replaced (Srettha ousted by court, Paetongtarn resigned) → Early general election in 2026</div>
+<div class="gov-item"><strong>Royal Family:</strong> King Maha Vajiralongkorn. Lèse-majesté law (Criminal Code Section 112) carries up to 15 years in prison</div>
+<div class="gov-item"><strong>Conflict with Cambodia:</strong> May 2025 border armed conflict → bilateral relations at their worst</div>
+<div class="gov-item"><strong>Structure:</strong> The four-way alliance of military, royalty, judiciary, and business repeatedly subverts democracy</div>
+</div>
+</div>
+ ══ Ⅲ Basic Statistics ══ 
+<div class="sec-title">Ⅲ  Basic Statistics (2024–2025 Standard)</div>
+<table class="stats-table">
+<thead>
+<tr>
+<th class="label" style="text-align:left;">Indicators</th>
+<th>🇵🇭 Philippines</th>
+<th>🇰🇭 Cambodia</th>
+<th>🇹🇭 Thailand</th>
+<th>Sources·Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="label">Population</td>
+<td class="val-ph">117 million</td>
+<td class="val-kh">17 million</td>
+<td class="val-th">71 million</td>
+<td>UN 2024</td>
+</tr>
+<tr>
+<td class="label">GDP (Nominal)</td>
+<td class="val-ph">$468 billion</td>
+<td class="val-kh">$45 billion</td>
+<td class="val-th">$548 billion</td>
+<td>WB 2024</td>
+</tr>
+<tr>
+<td class="label">GDP per Capita (PPP)</td>
+<td class="val-ph">$10,700</td>
+<td class="val-kh">$6,600</td>
+<td class="val-th">$22,800</td>
+<td>IMF 2024</td>
+</tr>
+<tr>
+<td class="label">GDP Growth Rate (2025E)</td>
+<td class="val-ph">+5.1%</td>
+<td class="val-kh">+4.9%</td>
+<td class="val-th" style="background:#fff0f0;">+2.2% ⚠</td>
+<td>IMF·ADB 2025; Thailand's worst structural stagnation in 30 years</td>
+</tr>
+<tr>
+<td class="label">10-Year Average GDP Growth Rate</td>
+<td class="val-ph">~5.5%</td>
+<td class="val-kh">~5.9%</td>
+<td class="val-th" style="background:#fff0f0;">~1.9% ⚠</td>
+<td>The Diplomat 2025; ASEAN average 4.9%</td>
+</tr>
+<tr>
+<td class="label">HDI (2024)</td>
+<td class="val-ph">0.710</td>
+<td class="val-kh">0.601</td>
+<td class="val-th">0.803</td>
+<td>UNDP HDR 2025</td>
+</tr>
+<tr>
+<td class="label">CPI 2025 (TI)</td>
+<td class="val-ph">32 / 114th</td>
+<td class="val-kh">21 / 158th</td>
+<td class="val-th" style="background:#fff0f0;">33 / 116th ⚠</td>
+<td>TI 2026.02; Thailand's lowest in 19 years, structural decline</td>
+</tr>
+<tr>
+<td class="label">GPI 2025 (IEP)</td>
+<td class="val-ph">2.018 / 88th</td>
+<td class="val-kh">2.019 / 87th</td>
+<td class="val-th">2.017 / 86th</td>
+<td>IEP 2025; Surprisingly close three countries</td>
+</tr>
+<tr>
+<td class="label">Household Debt / GDP</td>
+<td class="val-ph">~12%</td>
+<td class="val-kh">High NPL</td>
+<td class="val-th" style="background:#fff0f0;">86.8% ⚠</td>
+<td>BOT 2025; Thailand highest level in ASEAN</td>
+</tr>
+<tr>
+<td class="label">Poverty Rate (National Standard)</td>
+<td class="val-ph">15.5% (2023)</td>
+<td class="val-kh">~17%</td>
+<td class="val-th">~6.3%</td>
+<td>WB·National statistics</td>
+</tr>
+<tr>
+<td class="label">Press Freedom (RSF 2025)</td>
+<td class="val-ph">134th</td>
+<td class="val-kh">161th</td>
+<td class="val-th">128th</td>
+<td>RSF 2025</td>
+</tr>
+</tbody>
+</table>
+ ══ Ⅳ Basic Coordinates ══ 
+<div class="sec-title">Ⅳ  Λ¹² Basic Coordinates — Proxy Estimation</div>
+<div class="three-grid">
+ Philippines 
+<div class="coord-card">
+<div class="coord-head ph">🇵🇭 Philippines</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-tbi">TBI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:65%;background:var(--tbi-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--tbi-c);">0.65</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sr">SR</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:48%;background:var(--sr-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--sr-c);">0.48</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sig">Σ</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:55%;background:var(--sig-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--sig-c);">0.55</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-oli">OLI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:56%;background:var(--oli-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--oli-c);">0.56</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-lpi">LPI_net</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:40%;background:var(--lpi-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--lpi-c);">−0.05</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-cfd">CFD</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:65%;background:var(--cfd-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--cfd-c);">0.65</span>
+</div>
+<div style="margin-top:8px;font-size:10px;color:#888;">BRI: 4.2 · SSI: 4.8 · GPI: 2.018</div>
+</div>
+ Cambodia 
+<div class="coord-card">
+<div class="coord-head kh">🇰🇭 Cambodia</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-tbi">TBI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:88%;background:var(--tbi-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--tbi-c);">0.88</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sr">SR</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:18%;background:var(--sr-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--sr-c);">0.18</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sig">Σ</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:72%;background:var(--sig-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--sig-c);">0.72 ⚠</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-oli">OLI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:38%;background:var(--oli-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--oli-c);">0.38</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-lpi">LPI_net</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:28%;background:var(--lpi-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--lpi-c);">−0.18</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-cfd">CFD</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:28%;background:var(--cfd-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--cfd-c);">0.28</span>
+</div>
+<div style="margin-top:8px;font-size:10px;color:#888;">BRI: 3.2 · SSI: 3.5 · GPI: 2.019</div>
+</div>
+ Thailand 
+<div class="coord-card" style="border:2px solid var(--th);">
+<div class="coord-head th">🇹🇭 Thailand ⚠ Structural Fixation</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-tbi">TBI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:52%;background:var(--tbi-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--tbi-c);">0.52</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sr">SR</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:45%;background:var(--sr-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--sr-c);">0.45</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sig">Σ</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:68%;background:var(--sig-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--sig-c);">0.68 ⚠</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-oli">OLI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:60%;background:var(--oli-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--oli-c);">0.60</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-lpi">LPI_net</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:22%;background:var(--lpi-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--lpi-c);">−0.22</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-cfd">CFD</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:42%;background:var(--cfd-c);opacity:.7;"></div></div>
+<span class="coord-num" style="color:var(--cfd-c);">0.42</span>
+</div>
+<div style="margin-top:8px;font-size:10px;color:#888;">BRI: 4.8 · SSI: 4.2 · GPI: 2.017</div>
+<div style="margin-top:6px;font-size:9.5px;color:#A51931;font-family:'JetBrains Mono',monospace;">
+      ★ LPI_net −0.22 — Lowest among the three countries: Prime minister replacement costs overwhelm real governance
+    </div>
+</div>
+</div>
+<div class="formula-box">
+<div class="formula-title">Λ¹² Calibration Formula + Thailand-Specific Interpretation</div>
+<div class="formula-eq">Λ¹²_corrected = Λ¹²_raw ÷ OLI × (1 − TBI×θ) × exp(−k×t)</div>
+<div class="formula-note">
+    OLI: Philippines 0.56 · Cambodia 0.38 · Thailand 0.60. Equivalence condition (±0.10) not met — prioritization of directional reading.<br/>
+<strong>Thailand Special Note:</strong> Simultaneous existence of high HDI (0.803) and low CPI (33) · LPI_net (−0.22) — "stagnated elite within a developed nation" structure. Σ 0.68 is close to the 0.70 threshold. k (reconciliation coefficient) ≈ 0 — coup culture merely blocks pressure without resolving conflict. exp(−k×t) → 1 : accumulation of trauma without digestion.
+  </div>
+</div>
+ ══ Ⅴ Radar SVG ══ 
+<div class="sec-title">Ⅴ  Λ¹² 12-Index Radar — Three-Country Overlay</div>
+<div class="radar-wrap">
+<div class="radar-title">Λ¹² 12-Index Radar (Philippines, Cambodia, Thailand)</div>
+<div style="display:flex;justify-content:center;">
+<svg height="420" viewbox="0 0 520 420" width="520" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(260,210)">
+ Concentric Circles 
+<circle fill="none" r="40" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" r="80" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" r="120" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" r="160" stroke="#DDD8CE" stroke-width="1"></circle>
+ Axes 
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="0" y1="0" y2="-160"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="80" y1="0" y2="-139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="139" y1="0" y2="-80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="160" y1="0" y2="0"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="139" y1="0" y2="80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="80" y1="0" y2="139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="0" y1="0" y2="160"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-80" y1="0" y2="139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-139" y1="0" y2="80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-160" y1="0" y2="0"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-139" y1="0" y2="-80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-80" y1="0" y2="-139"></line>
+ Ticks 
+<text fill="#aaa" font-family="JetBrains Mono" font-size="8" x="5" y="-42">0.25</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="8" x="5" y="-82">0.5</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="8" x="5" y="-122">0.75</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="8" x="5" y="-162">1.0</text>
+ Labels 
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="0" y="-172">BRI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="88" y="-150">SSI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="150" y="-86">SR</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="168" y="4">GPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="150" y="92">TBI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="88" y="155">Σ</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="0" y="178">OLI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-92" y="155">LPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-154" y="92">CFD</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-172" y="4">HDI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-154" y="-86">CPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-92" y="-150">F_reach</text>
+ Philippines: BRI4.2→0.42  SSI4.8→0.48  SR0.48  GPI(inv)0.58  TBI0.65  Σ0.55  OLI0.56  LPI0.45  CFD(inv)0.35  HDI0.71  CPI0.32  Freach0.60 
+<polygon fill="#0038A8" fill-opacity="0.15" points="
+          0,-67
+          68,-59
+          115,-57
+          93,0
+          161,116
+          88,64
+          0,90
+          -51,70
+          -47,41
+          -114,0
+          -82,-40
+          -67,-82
+        " stroke="#0038A8" stroke-opacity="0.8" stroke-width="2"></polygon>
+ Cambodia: BRI3.2→0.32  SSI3.5→0.35  SR0.18  GPI(inv)0.58  TBI0.88  Σ0.72  OLI0.38  LPI0.22  CFD(inv)0.72  HDI0.60  CPI0.21  Freach0.52 
+<polygon fill="#8B1A1A" fill-opacity="0.15" points="
+          0,-51
+          50,-36
+          43,-21
+          93,0
+          218,157
+          115,84
+          0,61
+          -25,34
+          -97,71
+          -96,0
+          -54,-26
+          -46,-56
+        " stroke="#8B1A1A" stroke-opacity="0.8" stroke-width="2"></polygon>
+ Thailand: BRI4.8→0.48  SSI4.2→0.42  SR0.45  GPI(inv)0.58  TBI0.52  Σ0.68  OLI0.60  LPI0.38  CFD(inv)0.58  HDI0.80  CPI0.33  Freach0.72 
+<polygon fill="#A51931" fill-opacity="0.15" points="
+          0,-77
+          60,-43
+          108,-53
+          93,0
+          129,93
+          109,80
+          0,96
+          -43,59
+          -78,57
+          -128,0
+          -85,-41
+          -63,-81
+        " stroke="#A51931" stroke-dasharray="6,3" stroke-opacity="0.8" stroke-width="2.5"></polygon>
+<circle cx="0" cy="0" fill="#5E9186" r="3"></circle>
+</g>
+</svg>
+</div>
+<div class="radar-legend">
+<div class="radar-legend-item"><div class="radar-dot" style="background:#0038A8;"></div><span>🇵🇭 Philippines</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#8B1A1A;"></div><span>🇰🇭 Cambodia</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#A51931;border:1px dashed #A51931;"></div><span>🇹🇭 Thailand (dotted line = structural fixation)</span></div>
+</div>
+<div style="margin-top:12px;font-size:10.5px;color:#888;text-align:center;line-height:1.7;">
+    ※ Cambodia's TBI·Σ protrusion — Killing Fields trauma + hereditary disconnect. Thailand's high HDI + low CPI·LPI = "wealthy stagnation" structure.
+  </div>
+</div>
+ ══ Ⅵ GPI Trends ══ 
+<div class="sec-title">Ⅵ  GPI Peace Index Trends (2019–2025)</div>
+<div class="gpi-wrap">
+<div class="gpi-title">GPI Trends — Three countries moving at nearly the same score</div>
+<div class="gpi-sub">Lower is more peaceful · All three countries concentrated in the GPI 2.0–2.1 range · IEP 2025</div>
+<svg height="240" viewbox="0 0 640 240" width="100%" xmlns="http://www.w3.org/2000/svg">
+ Grid 
+<line stroke="#DDD8CE" stroke-width="1.5" x1="70" x2="70" y1="20" y2="200"></line>
+<line stroke="#DDD8CE" stroke-dasharray="4,4" stroke-width="1" x1="70" x2="620" y1="20" y2="20"></line>
+<line stroke="#DDD8CE" stroke-dasharray="4,4" stroke-width="1" x1="70" x2="620" y1="73" y2="73"></line>
+<line stroke="#DDD8CE" stroke-dasharray="4,4" stroke-width="1" x1="70" x2="620" y1="127" y2="127"></line>
+<line stroke="#DDD8CE" stroke-dasharray="4,4" stroke-width="1" x1="70" x2="620" y1="180" y2="180"></line>
+<line stroke="#DDD8CE" stroke-width="1.5" x1="70" x2="620" y1="200" y2="200"></line>
+ Y-Labels 
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="62" y="24">1.7</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="62" y="77">1.9</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="62" y="131">2.1</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="62" y="184">2.3</text>
+ X-Labels 
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="80" y="216">2019</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="172" y="216">2020</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="264" y="216">2021</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="356" y="216">2022</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="448" y="216">2023</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="540" y="216">2024</text>
+<text fill="#888" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="620" y="216">2025</text>
+ Transformation: y = 200 - (gpi-1.7)/0.6*180 
+ Philippines: 2.00,1.99,2.04,2.04,2.02,2.02,2.02 
+<polyline fill="none" points="80,90 172,87 264,102 356,102 448,96 540,96 620,96" stroke="#0038A8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></polyline>
+<circle cx="80" cy="90" fill="#0038A8" r="4"></circle>
+<circle cx="172" cy="87" fill="#0038A8" r="4"></circle>
+<circle cx="264" cy="102" fill="#0038A8" r="4"></circle>
+<circle cx="356" cy="102" fill="#0038A8" r="4"></circle>
+<circle cx="448" cy="96" fill="#0038A8" r="4"></circle>
+<circle cx="540" cy="96" fill="#0038A8" r="4"></circle>
+<circle cx="620" cy="96" fill="#0038A8" r="4"></circle>
+<text fill="#0038A8" font-size="9" font-weight="700" x="628" y="100">🇵🇭</text>
+ Cambodia: 2.08,2.10,2.08,2.10,2.12,2.11,2.02 
+<polyline fill="none" points="80,114 172,120 264,114 356,120 448,126 540,123 620,96" stroke="#8B1A1A" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></polyline>
+<circle cx="80" cy="114" fill="#8B1A1A" r="4"></circle>
+<circle cx="172" cy="120" fill="#8B1A1A" r="4"></circle>
+<circle cx="264" cy="114" fill="#8B1A1A" r="4"></circle>
+<circle cx="356" cy="120" fill="#8B1A1A" r="4"></circle>
+<circle cx="448" cy="126" fill="#8B1A1A" r="4"></circle>
+<circle cx="540" cy="123" fill="#8B1A1A" r="4"></circle>
+<circle cx="620" cy="96" fill="#8B1A1A" r="4"></circle>
+<text dy="12" fill="#8B1A1A" font-size="9" font-weight="700" x="628" y="100">🇰🇭</text>
+ Thailand: 1.98,2.00,2.00,2.01,2.01,2.02,2.02 
+<polyline fill="none" points="80,84 172,90 264,90 356,93 448,93 540,96 620,96" stroke="#A51931" stroke-dasharray="7,4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></polyline>
+<circle cx="80" cy="84" fill="#A51931" r="4"></circle>
+<circle cx="172" cy="90" fill="#A51931" r="4"></circle>
+<circle cx="264" cy="90" fill="#A51931" r="4"></circle>
+<circle cx="356" cy="93" fill="#A51931" r="4"></circle>
+<circle cx="448" cy="93" fill="#A51931" r="4"></circle>
+<circle cx="540" cy="96" fill="#A51931" r="4"></circle>
+<circle cx="620" cy="96" fill="#A51931" r="4"></circle>
+<text fill="#A51931" font-size="9" font-weight="700" x="628" y="82">🇹🇭</text>
+ Annotation 
+<text fill="#888" font-size="8.5" text-anchor="middle" x="620" y="52">Three countries in the 2.0–2.1 range</text>
+<text fill="#888" font-size="8.5" text-anchor="middle" x="620" y="62">Dense convergence</text>
+</svg>
+<div style="font-size:10.5px;color:#888;margin-top:8px;text-align:center;">
+    ★ Interesting Observation: The GPI of the three countries converges to the 2.017–2.019 range (2025). Despite large differences in all other indicators, the peace indices are similar — "same level of risk for different reasons"
+  </div>
+</div>
+ ══ Thailand Special Analysis ══ 
+<div class="sec-title">⚠  Thailand Special — Why is it stagnating?</div>
+<div class="thailand-special">
+<div class="ts-title">Thailand's Stagnation: Anatomy of structural fixation</div>
+<div class="ts-text">
+<strong>Question: Why is Thailand stagnating?</strong><br/><br/>
+
+    Thailand is on the threshold of a developed country with its HDI <span class="ts-stat">0.803</span>. Its GDP per capita is <span class="ts-stat">$22,800</span>, ranking among the top in Southeast Asia.
+    Yet, its 10-year average GDP growth rate is <span class="ts-stat">1.9%</span> — which is only 40% of the ASEAN average.
+    Its growth rate in 2025 is <span class="ts-stat">2.2%</span>, and the forecast for 2026 is <span class="ts-stat">1.5%</span>. Forecasts suggest that Vietnam will overtake Thailand before 2030.<br/><br/>
+<strong>① Coup Culture — Repeated blocking without conflict resolution</strong><br/>
+    12 coups, 31 prime ministers, and 21 constitutions since 1932. The most recent coup was in 2014.
+    In 2025, Prime Minister Srettha Thavisin was ousted by the Constitutional Court for 'ethical violations,' and Paetongtarn Shinawatra (Thaksin's daughter) resigned in August.
+    Λ¹² Interpretation: Coups structuralize the reconciliation coefficient (k) ≈ 0. Conflicts remain unresolved, blocking pressure → accumulating trauma → maintaining TBI at 0.52. SR of 0.45 is the result of exhaustion, not suppression.<br/><br/>
+<strong>② Royal-Military-Judicial-Business Four-way Alliance — The structural upper limit of democracy</strong><br/>
+    The structure where democratic election results are invalidated by the judiciary and the military repeats.
+    A structure where the elected prime minister is ousted and the first-place party in the election cannot take power.
+    Σ is <span class="ts-stat">0.68</span> — just below the leader-public disconnect threshold (0.70).
+    LPI_net is <span class="ts-stat">−0.22</span> — showing that prime minister replacement costs exceed actual governance capacity.<br/><br/>
+<strong>③ Middle-Income Trap — Stagnation without innovation</strong><br/>
+    Household debt is <span class="ts-stat">86.8%</span> of GDP — the highest in ASEAN. Household credit growth rate in 2025 was <span class="ts-stat">−0.6%</span> (the first negative growth since 2008).
+    Stagnation in the automotive industry (11% of GDP) — Japanese joint venture factories threatened by Chinese EVs.
+    Net factory decrease of 53 per month (2023–2024). FDI attraction ranking plummeted to 5th in ASEAN (from 2nd in 2010).<br/><br/>
+<strong>④ Demography Trap</strong><br/>
+    Total fertility rate of <span class="ts-stat">1.2</span> — the lowest in Southeast Asia. Rapid aging exerts additional pressure on growth potential.<br/><br/>
+<strong>Λ¹² Diagnosis:</strong> Thailand is not a country that has entered the Q3 quadrant (SR↑·Σ↑). Rather, it is <em>Q2 Long-term Fixation</em> archetype — SR is unable to erupt (helplessness rather than suppression), Σ is maintained just below the threshold, and the structure cycles without evolving. The Thai expression 'vicious cycle (wongjorn ubart)' itself shows that this structure has already been culturally internalized.
+  </div>
+</div>
+<!-- ══ PPR-5 ══ -->
+ Ⅶ Politics 
+<div class="sec-title">Ⅶ  PPR-1 Politics (Political)</div>
+<div class="ppr-block">
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head ph">🇵🇭 Philippines</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">Marcos Jr. inaugurated in 2022. Coalition with Duterte's daughter (Sara) as Vice President → break up in 2024. Controversy over Duterte's ICC arrest. First election of the Mindanao Legislative Assembly postponed to 2026.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row"><span class="tag tag-sig">Σ 0.55</span> — medium disconnect. CPI 32 (114th): 2025 re-explosion of flood budget corruption scandal. LPI_net −0.05: gap between Marcos's image and substantive reform.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Marcos-Duterte split is a variable in the 2025 mid-term elections. Hereditary dynastic political structure remains intact. BRI 4.2 — electoral politics acting as a safety valve.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head kh">🇰🇭 Cambodia</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">Prime Minister Hun Manet (son of Hun Sen) inaugurated in 2023. Hun Sen retains real power as Senate President. Continued ban on opposition party CNRP. De facto one-party system.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row"><span class="tag tag-sig">Σ 0.72</span> ⚠ Threshold exceeded — hereditary structure + absence of opposition = structuralized disconnect. SR 0.18: conformity inertia since the Killing Fields. Highest TBI of 0.88.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Σ threshold exceeded → Q4 quadrant (SR↓·Σ↑): the most dangerous silent structure. Potential for rapid SR surge upon shocks (disputes with Thailand, economic slowdown).</div>
+</div>
+</div>
+<div class="ppr-card" style="border:1px solid var(--th);">
+<div class="ppr-card-head th">🇹🇭 Thailand</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">Two prime ministers replaced in 2025 (Srettha ousted by court, Paetongtarn resigned). Early general election scheduled for 2026. Ongoing coup concerns. Expansion of the application of Criminal Code Section 112 (lèse-majesté).</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row"><span class="tag tag-sig">Σ 0.68</span> ⚠ Right before the threshold. Lowest LPI_net of −0.22: prime minister cycle costs devour the entire governance. CPI 33 (116th) at 19-year low — structural decline.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Q2 long-term fixation structure: Military-royal alliance invalidates election results → fixed upper limit of democracy → collapse of economic confidence → pressure on growth potential. Vicious cycle structuralized.</div>
+</div>
+</div>
+</div>
+</div>
+ Ⅷ Economy 
+<div class="sec-title">Ⅷ  PPR-2 Economy (Economic)</div>
+<div class="ppr-block">
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head ph">🇵🇭 Philippines</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">GDP growth of 5.1% (2025). Dual engines of BPO (Business Process Outsourcing) and OFW (Overseas Foreign Workers) remittances. Enactment of the CREATE MORE Act (expansion of foreign investment) in 2024.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">GDP per capita $10,700 — low relative to potential. Poverty rate 15.5%. Logistics limitations of 7,641 islands. Climate risk: more than 20 typhoons per year. US tariff 19% export pressure.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Gap between domestic market potential of 120 million population vs lack of basic infrastructure. Reliance on OFW remittances (GDP ~9%) suppresses domestic manufacturing development incentives — a variation of the Philippine Dutch Disease.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head kh">🇰🇭 Cambodia</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">GDP growth 4.9% (2025, ADB downgraded). Rapid increase in garment exports (+22.2% in H1). Maximum dependence on Chinese FDI. Risk of international sanctions on the scam industry.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">Mass return of Cambodian workers due to conflict with Thailand → remittances plummeting -60% in Q4 2025. Rising household NPL. GDP per capita $6,600. US tariff 19% hit on garments.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Vulnerable structure where economy-diplomacy-security is linked to a single variable (relations with Thailand). China dependence undermines diplomatic autonomy. Liquidation of the scam industry is a precondition.</div>
+</div>
+</div>
+<div class="ppr-card" style="border:1px solid var(--th);">
+<div class="ppr-card-head th">🇹🇭 Thailand</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">GDP 2.2% (2025) · 1.5% (2026 BOT forecast). Net monthly decrease of 53 factories (2023–24). Contraction of the automotive industry. FDI plummeted to 5th in ASEAN.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">Household debt 86.8% of GDP — highest in ASEAN. Household credit growth -0.6% (first negative since 2008). CPI loss 2% of GDP (corruption). Vietnam projected to overtake GDP by 2030. GDP per capita $22,800 — high but stagnant growth.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Typical middle-income trap: political turmoil just before reaching high income suppresses innovation, investment, and productivity. A structure where politics has become the ceiling of the economy — quantified by Λ¹² LPI_net -0.22.</div>
+</div>
+</div>
+</div>
+</div>
+ Ⅸ Social + F_reach 
+<div class="sec-title">Ⅸ  PPR-3 Social + F_reach</div>
+<div class="ppr-block">
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head ph">🇵🇭 Philippines</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">F_reach Diagnosis</div>
+<div class="ppr-stack-row">
+          F_reach ≈ (0.48×0.62×0.71)^⅓ ≈ <strong>0.60</strong> ⭐⭐☆☆<br/>
+<span class="freach-s">S Self-Sufficiency 0.48</span>: Net rice importer. Agricultural instability due to recurring typhoons.<br/>
+<span class="freach-i">I Import Stability 0.62</span>: Appropriate diversification, dependence on the Strait of Malacca.<br/>
+<span class="freach-d">D Distribution 0.71</span>: OFW remittances support household food access.
+        </div>
+<div class="ppr-stack-label" style="margin-top:8px;">Social Indicators</div>
+<div class="ppr-stack-row">HDI 0.710. Poverty rate 15.5%. Climate vulnerability — recurring typhoons and floods. CFD 0.65: Islamic (Mindanao)-Christian (Luzon/Visayas) religious fault line. Continuation of the Mindanao Peace Agreement implementation.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Cause of F_reach vulnerability: Lack of S self-sufficiency is key. S drops further with each climate shock. Flood budget corruption → directly linked to hit on D distribution.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head kh">🇰🇭 Cambodia</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">F_reach Diagnosis</div>
+<div class="ppr-stack-row">
+          F_reach ≈ (0.65×0.52×0.42)^⅓ ≈ <strong>0.52</strong> ⭐☆☆☆<br/>
+<span class="freach-s">S Self-Sufficiency 0.65</span>: Rice exporter. Reliance on Mekong River fisheries.<br/>
+<span class="freach-i">I Import Stability 0.52</span>: Route instability spiked due to conflict with Thailand.<br/>
+<span class="freach-d">D Distribution 0.42</span>: Serious rural-urban gap. Unfinished social infrastructure after the Killing Fields.
+        </div>
+<div class="ppr-stack-label" style="margin-top:8px;">Social Indicators</div>
+<div class="ppr-stack-row">HDI 0.601 — lower tier of Southeast Asia. GDP per capita $6,600. Trauma of the Killing Fields generation → TBI 0.88. Mass return of migrant workers from Thailand → unemployment pressure.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Lowest F_reach among the three countries. D deficiency is the most severe: 30 years of rural social infrastructure reconstruction remains unfinished. The conflict with Thailand directly worsens I (import stability) — a composite crisis.</div>
+</div>
+</div>
+<div class="ppr-card" style="border:1px solid var(--th);">
+<div class="ppr-card-head th">🇹🇭 Thailand</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">F_reach Diagnosis</div>
+<div class="ppr-stack-row">
+          F_reach ≈ (0.78×0.72×0.65)^⅓ ≈ <strong>0.72</strong> ⭐⭐⭐☆<br/>
+<span class="freach-s">S Self-Sufficiency 0.78</span>: Major exporter of rice, shrimp, rubber, and sugar.<br/>
+<span class="freach-i">I Import Stability 0.72</span>: Good diversification, stable foreign exchange reserves.<br/>
+<span class="freach-d">D Distribution 0.65</span>: Concentration in Bangkok, exclusion of rural areas (Isan and the North).
+        </div>
+<div class="ppr-stack-label" style="margin-top:8px;">Social Indicators</div>
+<div class="ppr-stack-row">HDI 0.803. Fertility rate 1.2 — lowest in Southeast Asia. Household debt of 86.8% compounds the vulnerability of the grassroots stratum to food price shocks. Urban-rural gap: Bangkok vs. Isan region income 4:1.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">F_reach is relatively good. However, household debt overload + political instability put indirect pressure on D distribution. Depopulation + aging pose a long-term threat to F_reach S.</div>
+</div>
+</div>
+</div>
+</div>
+ Ⅹ Environmental 
+<div class="sec-title">Ⅹ  PPR-4 Environmental</div>
+<div class="ppr-block">
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head ph">🇵🇭 Philippines</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">More than 20 typhoons per year — one of the most climate-vulnerable countries in the world. 2025 flood budget corruption: climate funds diverted into political funds.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">Sea-level rise threat: coastal areas of Palawan, Cebu, and Davao. Ongoing environmental conflicts in mining (nickel and copper). 'Food shortage' included in WEF's top 5 risks. IMF: climate shocks are a downside risk to growth.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">A structure where climate shocks repeatedly damage F_reach S. Flood budget corruption directly reduces adaptation capacity. A double vicious cycle of climate and corruption.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head kh">🇰🇭 Cambodia</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">Downstream Mekong nation — changes in water volume and sediment due to upstream dam construction in China and Laos. Decline in Tonle Sap Lake fishery resources. Ongoing deforestation.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">No control over the Mekong River — absence of water resource sovereignty. Agriculture (21.5% of GDP) is climate-vulnerable. Negligent environmental management around areas concentrated with the scam industry. ADB: classified as high climate risk.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">The paradox of a food powerhouse without control over Mekong River water resources — simultaneous threat to F_reach I (import stability) + S (self-sufficiency). Environmental crisis cannot be resolved without a geopolitical solution.</div>
+</div>
+</div>
+<div class="ppr-card" style="border:1px solid var(--th);">
+<div class="ppr-card-head th">🇹🇭 Thailand</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">Participation in upstream Mekong management — joint commission with Laos and Cambodia. Recurring polarization of drought and flood. Bangkok land subsidence (1–3 cm per year).</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">Rice and sugarcane agriculture are climate-vulnerable. Overfishing in the Gulf of Thailand and the Andaman Sea. Entry of Chinese EVs pressures Japanese joint venture factories to transition to electrification. Declaration of carbon neutrality by 2065.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">A structure where political instability delays environmental transition (EV and carbon neutrality). Dilemma coexists: Chinese EV imports threatening domestic manufacturing vs. eco-friendly transition.</div>
+</div>
+</div>
+</div>
+</div>
+ Ⅺ Governance 
+<div class="sec-title">Ⅺ  PPR-5 Governance</div>
+<div class="ppr-block">
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head ph">🇵🇭 Philippines</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">Marcos Jr.'s anti-corruption slogans vs. the 2025 flood budget scandal. Possibility of Duterte's ICC arrest. Maharlika Investment Fund begins investment in 2025.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">LPI_net −0.05: Marcos's image investment slightly exceeds actual reforms. CPI 32 (114th): corruption structure preserved. Dynastic politics — resource distribution structure centered on provincial oligarchs across 7,641 islands.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">There is potential for governance improvement, but the dynastic and regionalist structure sets a ceiling. As long as flood scandals recur, there is a risk of LPI_net turning negative.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head kh">🇰🇭 Cambodia</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">Hun Manet administration's declaration of 'sweeping out the scam industry' — closure of 200 scam centers. Attempt to improve international image. However, no change in the actual governance structure.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">LPI_net −0.18: image management costs exceed actual capacity. CPI 21 (158th) — lower-most tier in Southeast Asia. OLI 0.38 — limited observability. Feedback loop inoperable due to the ban on opposition parties.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">Dynastic power + absence of opposition + low OLI = strongest application of Goodhart's law. Decline in CPI is the limit of anti-corruption indicator management. Exceeding Σ 0.72 is a structural reflection of governance.</div>
+</div>
+</div>
+<div class="ppr-card" style="border:1px solid var(--th);">
+<div class="ppr-card-head th">🇹🇭 Thailand</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div class="ppr-stack-row">2025 CPI 33 (116th) — lowest in 19 years. Anti-corruption organization (ACT) estimates corruption loss at 2% of GDP (50 billion Baht annually in public procurement corruption). 2 prime minister changes.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Phenomenon</div>
+<div class="ppr-stack-row">LPI_net −0.22 — lowest among the three countries. Prime minister rotation collapses policy continuity. The military-royalist-judicial-business quadrilateral alliance blocks democratic correction. Nomura: warns of credit rating downgrade.</div>
+<div class="ppr-stack-label" style="margin-top:8px;">Result</div>
+<div class="ppr-stack-row">"Solving corruption could enable 4% GDP growth" (Federation of Thai Industries) — politics is the ceiling of the economy. Growth recovery is impossible without governance reform. The 2026 general election will be a turning point or a branch of repetition.</div>
+</div>
+</div>
+</div>
+</div>
+ ══ ⅩII Six-Layer Discourse ══ 
+<div class="sec-title">ⅩII  Six-Layer Discourse — 3-Country Parallel</div>
+<div class="three-grid">
+<div class="layer-card">
+<div class="layer-card-head ph">🇵🇭 Philippines</div>
+<div class="layer-row"><span class="layer-num">①</span><span class="layer-text"><strong>Data:</strong> CPI 32 · GPI 2.018 · growth 5.1% · poverty 15.5%</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span class="layer-text"><strong>Structure:</strong> Island presidential system + dynastic elite circulation + OFW economy.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span class="layer-text"><strong>Pattern:</strong> Marcos → ousted → returned. Elections replace but the structure reproduces.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span class="layer-text"><strong>Perspective:</strong> External: growing democracy. Internal: recurring corrupt budgets with every flood.</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span class="layer-text"><strong>Frame:</strong> "Does electoral democracy guarantee structural change?" — the oldest question.</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span class="layer-text" style="color:var(--gold);"><strong>Judgment:</strong> The structure that blocks a misstep here is the elite network. That network survives even after elections.</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head kh">🇰🇭 Cambodia</div>
+<div class="layer-row"><span class="layer-num">①</span><span class="layer-text"><strong>Data:</strong> CPI 21·GPI 2.019·TBI 0.88·Σ 0.72⚠</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span class="layer-text"><strong>Structure:</strong> Dynastic single party + accumulated Killing Fields trauma + dependence on Chinese capital.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span class="layer-text"><strong>Pattern:</strong> Worst (Killing Fields) experience → conformity to current authority → conformity structures Σ.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span class="layer-text"><strong>Perspective:</strong> External: developing growth economy. Internal: "It is better than what our parents' generation went through."</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span class="layer-text"><strong>Frame:</strong> The worst trauma becomes the legitimacy of the current authority — a structure where history has become a hostage of politics.</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span class="layer-text" style="color:var(--gold);"><strong>Judgment:</strong> In a society with a TBI of 0.88, the hand of the past is holding the present. How do we release that hand?</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head th">🇹🇭 Thailand</div>
+<div class="layer-row"><span class="layer-num">①</span><span class="layer-text"><strong>Data:</strong> CPI 33 · GDP growth 1.9% (10 years) · household debt 86.8%</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span class="layer-text"><strong>Structure:</strong> The military-royalist-judicial-business quadrilateral alliance sets the upper limit of democracy.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span class="layer-text"><strong>Pattern:</strong> Election → election of discontented forces → judicial/military intervention → ouster → election repetition. 'Vicious cycle (wongjorn ubart)'.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span class="layer-text"><strong>Perspective:</strong> External: the country that was once Southeast Asia's second-largest economy. Internal: "The old days were good" — but there were coups in the old days too.</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span class="layer-text"><strong>Frame:</strong> "Military for stability" vs "Democracy for growth" — these two frames have been colliding for 45 years.</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span class="layer-text" style="color:var(--gold);"><strong>Judgment:</strong> The halt is not an accident. It is a structurally designed speed limit. Who is the designer and why?</span></div>
+</div>
+</div>
+ ══ ⅩⅢ Phase Space ══ 
+<div class="sec-title">ⅩⅢ  Phase Space — SR-Σ Quadrant (6-Country Comparison)</div>
+<div class="phase-wrap">
+<div class="phase-title">SR-Σ Phase Quadrant — Integrated Deployment of 6 Southeast Asian Countries</div>
+<div class="phase-sub">Part 1 (Malaysia, Indonesia, Vietnam) + Part 2 (Philippines, Cambodia, Thailand) Integrated Visualization</div>
+<svg height="360" viewbox="0 0 600 360" width="100%" xmlns="http://www.w3.org/2000/svg">
+ Quadrant Background 
+<rect fill="#E8F5E9" height="155" opacity="0.45" rx="4" width="240" x="40" y="20"></rect>
+<rect fill="#FFF3E0" height="155" opacity="0.45" rx="4" width="280" x="280" y="20"></rect>
+<rect fill="#E3F2FD" height="165" opacity="0.45" rx="4" width="240" x="40" y="175"></rect>
+<rect fill="#FCE4EC" height="165" opacity="0.45" rx="4" width="280" x="280" y="175"></rect>
+ Label 
+<text fill="#2E7D32" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="160" y="40">Q1: Healthy Resistance</text>
+<text fill="#E65100" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="420" y="40">Q2: Pseudo-Stability Risk</text>
+<text fill="#1565C0" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="160" y="192">Q3: Open Conflict</text>
+<text fill="#880E4F" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="420" y="192">Q4: Regime Crisis</text>
+ Axis 
+<line stroke="#999" stroke-width="1.5" x1="40" x2="40" y1="20" y2="340"></line>
+<line stroke="#999" stroke-width="1.5" x1="40" x2="560" y1="340" y2="340"></line>
+<line stroke="#999" stroke-dasharray="5,3" stroke-width="1" x1="280" x2="280" y1="20" y2="340"></line>
+<line stroke="#999" stroke-dasharray="5,3" stroke-width="1" x1="40" x2="560" y1="175" y2="175"></line>
+ Σ=0.70 Threshold Line 
+<line opacity="0.7" stroke="#E53935" stroke-dasharray="8,4" stroke-width="1.5" x1="40" x2="560" y1="107" y2="107"></line>
+<text fill="#E53935" font-family="JetBrains Mono" font-size="7.5" x="564" y="111">Σ=0.70</text>
+<text fill="#E53935" font-family="JetBrains Mono" font-size="7.5" x="564" y="120">Threshold</text>
+ Axis Label 
+<text fill="#666" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="30" y="24">Σ1.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="30" y="175">Σ0.5</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="30" y="340">Σ0.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" x="40" y="354">SR0.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="280" y="354">SR0.5</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" x="555" y="354">SR1.0</text>
+ Coordinate Calculation: x=40+SR×520, y=340-Σ×320 
+ Part 1 Countries 
+ Malaysia SR0.38 Σ0.42 → x=238,y=206 
+<circle cx="238" cy="206" fill="#005496" fill-opacity="0.2" r="14" stroke="#005496" stroke-width="1.5"></circle>
+<text cx="238" font-size="11" text-anchor="middle" y="209">🇲🇾</text>
+<text fill="#005496" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" x="238" y="200">MY.38/.42</text>
+ Indonesia SR0.52 Σ0.58 → x=310,y=154 
+<circle cx="310" cy="154" fill="#CC0001" fill-opacity="0.2" r="16" stroke="#CC0001" stroke-width="1.5"></circle>
+<text cx="310" font-size="12" text-anchor="middle" y="158">🇮🇩</text>
+<text fill="#CC0001" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" x="310" y="148">ID.52/.58</text>
+ Vietnam SR0.28 Σ0.63 → x=186,y=138 
+<circle cx="186" cy="138" fill="#E87722" fill-opacity="0.2" r="14" stroke="#E87722" stroke-width="1.5"></circle>
+<text cx="186" font-size="11" text-anchor="middle" y="142">🇻🇳</text>
+<text fill="#E87722" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" x="186" y="132">VN.28/.63</text>
+ Part 2 Countries 
+ Philippines SR0.48 Σ0.55 → x=290,y=164 
+<circle cx="290" cy="164" fill="#0038A8" fill-opacity="0.2" r="15" stroke="#0038A8" stroke-width="1.5"></circle>
+<text cx="290" font-size="12" text-anchor="middle" y="168">🇵🇭</text>
+<text fill="#0038A8" font-family="JetBrains Mono" font-size="7.5" text-anchor="middle" x="290" y="184">PH.48/.55</text>
+ Cambodia SR0.18 Σ0.72 → x=134,y=110 
+<circle cx="134" cy="110" fill="#8B1A1A" fill-opacity="0.2" r="14" stroke="#8B1A1A" stroke-width="2"></circle>
+<text cx="134" font-size="11" text-anchor="middle" y="114">🇰🇭</text>
+<text fill="#8B1A1A" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="134" y="104">KH.18/.72⚠</text>
+ Thailand SR0.45 Σ0.68 → x=274,y=122 
+<circle cx="274" cy="122" fill="#A51931" fill-opacity="0.2" r="16" stroke="#A51931" stroke-dasharray="5,3" stroke-width="2"></circle>
+<text cx="274" font-size="12" text-anchor="middle" y="126">🇹🇭</text>
+<text fill="#A51931" font-family="JetBrains Mono" font-size="7.5" font-weight="700" text-anchor="middle" x="274" y="116">TH.45/.68⚠</text>
+ Threshold Warning Arrow (Cambodia, Thailand) 
+<path d="M134,97 L134,82" marker-end="url(#arr2)" stroke="#E53935" stroke-width="1.5"></path>
+<path d="M274,109 L274,82" marker-end="url(#arr2)" stroke="#E53935" stroke-width="1.5"></path>
+<defs><marker id="arr2" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#E53935"></path></marker></defs>
+ Legend 
+<text dy="16" fill="#555" font-family="JetBrains Mono" font-size="8" x="40" y="354">★ Cambodia (Σ0.72) exceeds threshold · Thailand (Σ0.68) is on the verge of threshold — the two major sources of risk in Southeast Asia</text>
+</svg>
+</div>
+ ══ ⅩⅣ Margin of Error ══ 
+<div class="sec-title">ⅩⅣ  Margin of Error — §1-C Quantified Boundary</div>
+<div class="three-grid">
+<div class="err-card">
+<div class="err-head ph">🇵🇭 Philippines</div>
+<div class="err-item">· OLI 0.56 — limitations of island-dispersed statistics. Data gaps in Mindanao conflict areas.</div>
+<div class="err-item">· OFW remittance statistics accuracy is good, but informal channels are unrecorded.</div>
+<div class="err-item">· Application of Goodhart's Law: CPI increase may be due to image management rather than anti-corruption campaigns.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.10</div>
+</div>
+<div class="err-card">
+<div class="err-head kh">🇰🇭 Cambodia</div>
+<div class="err-item">· OLI 0.38 — lowest level of independent verification due to ban on opposition parties + media control.</div>
+<div class="err-item">· Informal economy 48% — maximum gap between official GDP statistics and actual size.</div>
+<div class="err-item">· TBI 0.88 is an estimate of intergenerational transmission structure — including areas that cannot be directly measured.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.18 (maximum uncertainty)</div>
+</div>
+<div class="err-card">
+<div class="err-head th">🇹🇭 Thailand</div>
+<div class="err-item">· OLI 0.60 — relatively good. However, access to royal family-related statistics is restricted.</div>
+<div class="err-item">· Non-disclosure of military budget and royal asset sizes — contains estimation errors for structural indicators.</div>
+<div class="err-item">· Potential underestimation of GDP due to uncounted informal economy (tourism/agriculture cash transactions).</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.09 (highest numerical reliability among the three countries)</div>
+</div>
+</div>
+<p class="note">※ OLI equivalence condition (±0.10) not met — direct numerical comparison should be read focusing on structures, patterns, and directions. Compliance with the Λ¹² §24 principle.</p>
+ ══ ⅩⅤ Korean Peninsula ══ 
+<div class="sec-title">ⅩⅤ  The Three Countries Viewed from the Korean Peninsula</div>
+<div class="kr-box">
+<div class="kr-title">Korean Peninsula Perspective</div>
+<div class="kr-text">
+    The Philippines resembles somewhere in Korea's 1980s. Dynastic elites, military intervention, and a structure where elections fail to change the structure. What changed that structure in Korea was the June Democratic Struggle of 1987 — that transition did not come from the outside.
+    <br/><br/>
+    Cambodia experienced what Korea did not. A society with a TBI of 0.88 — Korea does not possess a historical trauma of the scale of the Killing Fields. However, the way Gwangju (1980) acts as a detonator of the 3rd layer of history in Korea's Six-Layer Discourse is being activated on a much larger scale by the Cambodian Killing Fields.
+    <br/><br/>
+    Thailand is the most direct lesson. <strong>When there is no democracy, the economy halts.</strong> Korea's rapid growth in the 1980s and 1990s came along with democratization pressure — Yushin temporarily accelerated the economy but destroyed sustainability. Thailand's halt is the counterproof of Korea not taking that path.
+    <br/><br/>
+<strong>Supply Chain:</strong> All three countries are production bases for Korean companies. When the Cambodia-Thailand conflict shakes regional supply chains, Korean companies are also on that vibration.
+  </div>
+</div>
+ ══ Conclusion Orbit ══ 
+<div class="sec-title">Conclusion Orbit — Grammars of Halting</div>
+<div class="conclusion">
+<div class="conclusion-title">Three Halts, Different Reasons</div>
+<div class="conclusion-text">
+    The Philippines changes through elections but returns to the structure.<br/>
+    In Cambodia, the worst memory protects the current authority.<br/>
+    In Thailand, the structure has designed a speed limit.<br/>
+<br/>
+    All three countries are not standing still — they have growth rates and GDP.<br/>
+    Yet, in their own ways, <em>they are walking in place</em>.<br/>
+    that the reason they cannot move at the pace other countries are walking<br/>
+    lies outside the economy, as pointed to by the Λ¹² coordinates.<br/>
+<br/>
+    What that exterior is, and whether it can be changed,<br/>
+    is a 6th-layer question that the observer cannot answer.
+  </div>
+</div>
+ ══ Series Box ══ 
+<div class="series-box">
+<div class="series-title">Everblue Sea Λ¹² Country Series</div>
+<div class="series-list">
+<span class="series-item done">#9 USA v2.0</span>
+<span class="series-item done">#10 Botswana v1.1</span>
+<span class="series-item done">#11 Southeast Asia Comparison I (Malaysia, Indonesia, Vietnam)</span>
+<span class="series-item current">#12 Southeast Asia Comparison II (Philippines, Cambodia, Thailand) v1.0</span>
+<span class="series-item">UK Edition (Upcoming)</span>
+<span class="series-item">Korea Edition (Upcoming)</span>
+</div>
+</div>
+ ══ Footer ══ 
+<div class="footer">
+<strong>Everblue Sea Institute for Social Dynamics</strong>  ·  Everblue Sea Institute for Social Dynamics<br/>
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>  · 
+  SSRN Abstract ID 6509200  · 
+  Slogan: Beyond Analysis, to Reassembly / Not analysis, but synthesis.<br/>
+<br/>
+<span style="font-size:10px;opacity:.6;">
+    Λ¹² v9.10 Engine · Data: GPI 2025(IEP) · CPI 2025(TI) · IMF WEO Oct.2025 · ADB ADO Sep.2025 · The Diplomat Dec.2025 · Bangkok Post · WSWS<br/>
+    Thailand CPI Data: Nation Thailand (2026.02) · The Diplomat (2025.12) · Federation of Thai Industries (FTI) 2026.02<br/>
+    Cambodia Data: AMRO 2025.08 · ADB 2025.09 · IMF Art.IV 2025.11 · FocusEconomics<br/>
+    All Proxy estimates are researcher estimates based on public data. OLI equivalence not met — directional reading recommended.<br/>
+    Cheonghae (淸海) © 2026 · Unauthorized reproduction prohibited
+  </span>
+</div>
+</body>
+</html>

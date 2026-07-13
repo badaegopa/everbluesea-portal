@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Northeast Asia Regional Comparison — Λ¹²v9.12 | Everblue Sea Institute for Social Dynamics</title>
+<style>
+/* ─── 디자인 v2.2 파스텔 팔레트 ─── */
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: #F5F3EE;
+  color: #2C2C2C;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.75;
+}
+
+/* ─── 헤더 ─── */
+.header {
+  background: linear-gradient(135deg, #7BADA0 0%, #5E9186 100%);
+  padding: 48px 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.header::before {
+  content: 'Λ¹²';
+  position: absolute;
+  right: 40px;
+  top: 20px;
+  font-size: 120px;
+  color: rgba(255,255,255,0.08);
+  font-family: Georgia, serif;
+  font-weight: bold;
+  line-height: 1;
+}
+.header-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 2px;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+.header h1 {
+  color: #fff;
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+.header h2 {
+  color: rgba(255,255,255,0.85);
+  font-size: 15px;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+}
+.header-meta {
+  margin-top: 20px;
+  color: rgba(255,255,255,0.70);
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/* ─── 엔진 박스 ─── */
+.engine-box {
+  background: #fff;
+  border-left: 4px solid #B8850E;
+  padding: 14px 20px;
+  margin: 24px 40px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #595959;
+}
+.engine-box strong { color: #B8850E; }
+
+/* ─── 섹션 ─── */
+.section {
+  padding: 32px 40px;
+  border-bottom: 1px solid #DDD8CE;
+}
+.section-title {
+  font-size: 13px;
+  font-family: 'Courier New', monospace;
+  color: #5E9186;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.section h3 {
+  font-size: 20px;
+  color: #1F1F1F;
+  font-weight: normal;
+  margin-bottom: 14px;
+  line-height: 1.4;
+}
+.section p {
+  font-size: 14px;
+  color: #3A3A3A;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+/* ─── 국가 카드 그리드 ─── */
+.country-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 20px 40px;
+}
+.country-card {
+  background: #fff;
+  border: 1px solid #DDD8CE;
+  border-radius: 4px;
+  padding: 18px 14px;
+  text-align: center;
+}
+.country-card .flag { font-size: 28px; margin-bottom: 8px; }
+.country-card .name { font-size: 13px; font-weight: bold; color: #3A6A5E; margin-bottom: 4px; }
+.country-card .name-en { font-size: 10px; color: #888; font-family: 'Courier New', monospace; margin-bottom: 12px; }
+.country-card .lambda-score {
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 4px;
+}
+.country-card .score-label { font-size: 10px; color: #888; margin-bottom: 8px; }
+.country-card .risk-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
+}
+
+/* 위험 등급 색상 */
+.risk-low { background: #E8F4F0; color: #27500A; }
+.risk-mid { background: #FFF3CD; color: #856404; }
+.risk-high { background: #FCEBEB; color: #791F1F; }
+.risk-critical { background: #8B1A1A; color: #fff; }
+
+.score-green { color: #27500A; }
+.score-yellow { color: #856404; }
+.score-orange { color: #B8850E; }
+.score-red { color: #791F1F; }
+.score-dark { color: #4A0000; }
+
+/* ─── 데이터 테이블 ─── */
+.data-table-wrap { margin: 20px 40px; overflow-x: auto; }
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.data-table th {
+  background: #5E9186;
+  color: #fff;
+  padding: 10px 14px;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  font-weight: normal;
+}
+.data-table th:first-child { text-align: left; }
+.data-table td {
+  padding: 9px 14px;
+  border-bottom: 1px solid #EEE;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+.data-table td:first-child {
+  text-align: left;
+  font-family: Georgia, serif;
+  font-size: 13px;
+  color: #2C2C2C;
+  font-weight: bold;
+}
+.data-table tr:nth-child(even) td { background: #F5F3EE; }
+.data-table tr:hover td { background: #EBF4F0; }
+
+/* ─── SVG 레이더 ─── */
+.radar-wrap {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin: 20px 40px;
+}
+.radar-item { text-align: center; }
+.radar-item svg { width: 100%; max-width: 160px; }
+.radar-label {
+  font-size: 12px;
+  font-weight: bold;
+  color: #3A6A5E;
+  margin-top: 6px;
+}
+
+/* ─── 4궤도 SVG ─── */
+.orbit-wrap { text-align: center; margin: 20px 40px; }
+.orbit-wrap svg { max-width: 680px; width: 100%; }
+
+/* ─── PPR 블록 ─── */
+.ppr-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 16px 40px;
+}
+.ppr-card {
+  background: #fff;
+  border: 1px solid #DDD8CE;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.ppr-head {
+  background: #5E9186;
+  color: #fff;
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  padding: 6px 10px;
+  letter-spacing: 1px;
+}
+.ppr-body { padding: 10px; }
+.ppr-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  padding: 3px 0;
+  border-bottom: 1px solid #F0EDE8;
+}
+.ppr-row:last-child { border-bottom: none; }
+.ppr-key { color: #666; }
+.ppr-val { font-family: 'Courier New', monospace; font-weight: bold; color: #3A6A5E; }
+
+/* ─── 담론육층 ─── */
+.discourse-wrap { margin: 20px 40px; }
+.discourse-layer {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 0;
+  margin-bottom: 2px;
+}
+.layer-num {
+  background: #5E9186;
+  color: #fff;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+}
+.layer-content {
+  background: #fff;
+  border: 1px solid #DDD8CE;
+  border-left: none;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #2C2C2C;
+}
+.layer-content strong { color: #3A6A5E; }
+
+/* ─── 위상 사분면 ─── */
+.phase-wrap { text-align: center; margin: 20px 40px; }
+.phase-wrap svg { max-width: 560px; width: 100%; }
+
+/* ─── 결론궤도 ─── */
+.conclusion {
+  background: #E8F4F0;
+  border-left: 4px solid #5E9186;
+  padding: 24px 32px;
+  margin: 20px 40px;
+}
+.conclusion p {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #1F1F1F;
+  text-align: justify;
+}
+
+/* ─── 시리즈 박스 ─── */
+.series-box {
+  background: #fff;
+  border: 1px solid #DDD8CE;
+  margin: 20px 40px;
+  padding: 20px;
+}
+.series-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #5E9186;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.series-item {
+  display: flex;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #F0EDE8;
+  font-size: 12px;
+}
+.series-item:last-child { border-bottom: none; }
+.series-num { font-family: 'Courier New', monospace; color: #B8850E; min-width: 40px; }
+.series-name { color: #2C2C2C; }
+.series-status {
+  margin-left: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+.status-done { background: #E8F4F0; color: #27500A; }
+.status-wip { background: #FFF3CD; color: #856404; }
+.status-plan { background: #F5F3EE; color: #888; }
+
+/* ─── 푸터 ─── */
+.footer {
+  background: #EBF4F0;
+  padding: 28px 40px;
+  text-align: center;
+  border-top: 1px solid #DDD8CE;
+}
+.footer p {
+  font-size: 12px;
+  color: #3A6A5E;
+  margin-bottom: 4px;
+  font-family: 'Courier New', monospace;
+}
+.footer a { color: #5E9186; text-decoration: none; }
+.footer .engine-tag {
+  margin-top: 10px;
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 1px;
+}
+
+/* ─── 바 차트 ─── */
+.bar-chart { margin: 16px 0; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 60px;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.bar-country { font-size: 11px; color: #555; text-align: right; }
+.bar-track { background: #EEE; border-radius: 2px; height: 16px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 2px; transition: width 0.3s; }
+.bar-val { font-family: 'Courier New', monospace; font-size: 11px; color: #333; }
+
+/* ─── 관찰자 노트 ─── */
+.obs-note {
+  background: #F3F8F5;
+  border: 1px solid #C5DDD5;
+  border-radius: 3px;
+  padding: 14px 18px;
+  margin: 14px 0;
+  font-size: 13px;
+  color: #2C4A3E;
+  line-height: 1.7;
+}
+.obs-note::before {
+  content: '◈ 관찰 신호';
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  color: #5E9186;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+/* ─── 오차 범위 ─── */
+.error-box {
+  background: #FAEEDA;
+  border-left: 3px solid #B8850E;
+  padding: 12px 16px;
+  margin: 14px 0;
+  font-size: 12px;
+  color: #633806;
+  font-family: 'Courier New', monospace;
+}
+
+/* ─── 한반도 블록 ─── */
+.korea-block {
+  background: #EEF6F3;
+  border: 1px solid #C5DDD5;
+  padding: 20px 24px;
+  margin: 14px 0;
+  border-radius: 3px;
+}
+.korea-block h4 {
+  color: #3A6A5E;
+  font-size: 14px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* 인용 */
+.quote {
+  border-left: 3px solid #B8850E;
+  padding: 10px 16px;
+  margin: 14px 0;
+  font-style: italic;
+  color: #4A3A1A;
+  font-size: 14px;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .country-grid { grid-template-columns: repeat(2, 1fr); }
+  .radar-wrap { grid-template-columns: repeat(2, 1fr); }
+  .ppr-grid { grid-template-columns: repeat(2, 1fr); }
+  .section, .engine-box, .data-table-wrap, .country-grid,
+  .radar-wrap, .orbit-wrap, .ppr-grid, .discourse-wrap,
+  .phase-wrap, .conclusion, .series-box, .footer {
+    margin-left: 16px; margin-right: 16px;
+    padding-left: 16px; padding-right: 16px;
+  }
+  .header { padding: 32px 16px 24px; }
+}
+</style>
+</head>
+<body>
+ ─── Header ─── 
+<div class="header">
+<div class="header-badge">NORTHEAST ASIA COMPARATIVE REPORT · #20</div>
+<h1>Northeast Asia Regional Comparison</h1>
+<h2>Korea · North Korea · Japan · China · Taiwan — Comparative Analysis of sociodynamics in 5 Countries</h2>
+<div class="header-meta">
+    Everblue Sea Institute for Social Dynamics · Everblue Sea Institute for Social Dynamics<br/>
+    This report was calculated based on the Λ¹²v9.12 engine · Date of Issue: 2026.05.02
+  </div>
+</div>
+ ─── Engine Box ─── 
+<div class="engine-box">
+<strong>ENGINE:</strong> Λ¹²v9.12 | Including ADI §31 | Based on SSRN 6632858<br/>
+<strong>Correction Formula:</strong> Λ¹²_corrected = Λ¹²_raw ÷ OLI × (1−TBI×θ) × (1−ADI×γ) × exp(−k×t)<br/>
+<strong>Applied Variables:</strong> 12-axis + ADI correction · OLI correction · TBI correction · applying direction correction DIRECTION vector
+</div>
+ ─── Research Purpose ─── 
+<div class="section">
+<div class="section-title">Declaration of Research Purpose</div>
+<h3>This report is an attempt to capture the reality of the people in five Northeast Asian countries through numbers</h3>
+<p>The Λ¹² framework is a navigation tool. It does not force a destination. It only shows where we are now. Northeast Asia is currently one of the most closely watched regions in the international community. The division of the Korean Peninsula, tensions in the Taiwan Strait, the rise of China, discussions of Japan's rearmament—amidst all these changes, we record where the lives of the people and the social structure are headed from an observer standpoint.</p>
+<p>The judgment is up to the reader. This report is a topographical map for that judgment.</p>
+</div>
+ ─── Observer Standpoint ─── 
+<div class="section">
+<div class="section-title">Ⅰ · Observer Standpoint</div>
+<h3>The Powder Keg of the World, and the Intersection of Opportunity</h3>
+<p>Northeast Asia accounts for approximately 25% of the world's GDP, yet it remains a high-risk region where unresolved historical trauma, nuclear threats, and hegemony competitions overlap. The wounds left by Japan's imperialist colonial rule (1895–1945) still define the diplomatic landscape of this region, and the division structure of the Korean War in 1950 has not been resolved for over 70 years.</p>
+<p>At the same time, this region is a global hub for semiconductors, AI, manufacturing, and finance. The structure in which the four axes—South Korea's semiconductors, Taiwan's foundries, Japan's materials and components, and China's manufacturing scale—are interdependently connected creates a dual reality where conflict and cooperation operate simultaneously.</p>
+<div class="obs-note">
+    Major Events in the Region (2024–2026): Declaration of martial law and dismissal of the President in South Korea (2024.12–2025.04), election of Lai Ching-te in the Taiwanese presidential election (2024.01), continued slowdown of China's economic growth, North Korea explicitly defining South Korea as a 'hostile state' in its constitution (2024.10), Japan formalizing its defense budget goal of 2% of GDP.
+  </div>
+</div>
+ ─── Basic Statistics ─── 
+<div class="section">
+<div class="section-title">Ⅱ · Basic Statistics</div>
+<h3>Basic Indicators of 5 Countries</h3>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr>
+<th>Country</th>
+<th>Population (10k)</th>
+<th>GDP per capita (USD)</th>
+<th>HDI</th>
+<th>System</th>
+<th>OLI</th>
+</tr>
+<tr><td>🇰🇷 South Korea</td><td>5,180</td><td>36,024</td><td>0.929</td><td>Liberal Democracy</td><td>0.82</td></tr>
+<tr><td>🇯🇵 Japan</td><td>12,400</td><td>34,500</td><td>0.920</td><td>Liberal Democracy</td><td>0.88</td></tr>
+<tr><td>🇨🇳 China</td><td>140,000</td><td>13,400</td><td>0.788</td><td>Authoritarian One-Party System</td><td>0.51</td></tr>
+<tr><td>🇹🇼 Taiwan</td><td>2,340</td><td>35,188</td><td>~0.926</td><td>Liberal Democracy</td><td>0.84</td></tr>
+<tr><td>🇰🇵 North Korea</td><td>2,600</td><td>~1,800 (Estimated)</td><td>Unestimable</td><td>Totalitarian Hereditary</td><td>0.18</td></tr>
+</table>
+</div>
+</div>
+ ─── Λ¹² Core Variables ─── 
+<div class="section">
+<div class="section-title">Ⅲ · Λ¹² Basic Coordinates — Collected Variables</div>
+<h3>Collection Results of Key Variables for 12 Axes</h3>
+<div class="data-table-wrap">
+<table class="data-table">
+<tr>
+<th>Variable</th><th>Description</th>
+<th>🇰🇷 South Korea</th><th>🇯🇵 Japan</th><th>🇨🇳 China</th><th>🇹🇼 Taiwan</th><th>🇰🇵 North Korea</th>
+</tr>
+<tr><td>CPI 2024</td><td>Corruption Perception (0→100 Clean)</td><td>64</td><td>71</td><td>~42</td><td>67</td><td>15</td></tr>
+<tr><td>Freedom House</td><td>Freedom Index (0→100)</td><td>81</td><td>96</td><td>9</td><td>94</td><td>3</td></tr>
+<tr><td>RSF MFI 2025</td><td>Press Freedom Ranking</td><td>47th</td><td>62nd</td><td>178th</td><td>24th</td><td>179th</td></tr>
+<tr><td>GPI 2025</td><td>Peace Index Ranking</td><td>~55th</td><td>12th</td><td>88th</td><td>~40th</td><td>Lowest Tier</td></tr>
+<tr><td>TBI (Self-calculated)</td><td>Trauma Big Bang Index</td><td>0.280</td><td>0.368</td><td>0.612</td><td>0.179</td><td>0.857</td></tr>
+<tr><td>RHC (Self-calculated)</td><td>Historical and Religious Conflicts</td><td>0.647</td><td>0.553</td><td>0.849</td><td>0.637</td><td>0.899</td></tr>
+<tr><td>ADI (Self-calculated)</td><td>AI Dependency Index</td><td>0.416</td><td>0.308</td><td>0.013</td><td>0.466</td><td>1.000</td></tr>
+<tr><td>OLI (Self-calculated)</td><td>Origin/Legacy Correction</td><td>0.82</td><td>0.88</td><td>0.51</td><td>0.84</td><td>0.18</td></tr>
+</table>
+</div>
+<div class="error-box">
+    ※ Margin of Error: Based on estimated values for all variables in North Korea (applying OLI 0.18, actual value deviation of ±30% possible). Applying OLI 0.51 correction for official China CPI and GDP statistics. Taiwan's HDI uses estimated values as it is not officially included by the UNDP. GPI rankings are based on the 2025 edition, but include estimates due to unconfirmed detailed scores for some countries.
+  </div>
+</div>
+ ─── Self-calculated Variables ─── 
+<div class="section">
+<div class="section-title">Ⅳ · Details of Self-calculated Variables</div>
+<h3>TBI · RHC · ADI · OLI — Calculation Basis</h3>
+ TBI Bar Chart 
+<p style="font-size:13px; font-weight:bold; color:#3A6A5E; margin:16px 0 8px;">TBI (Trauma Big Bang Index) — threshold θ = 0.70</p>
+<div class="bar-chart">
+<div class="bar-row"><div class="bar-country">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:28%; background:#5E9186;"></div></div><div class="bar-val">0.280 🟡</div></div>
+<div class="bar-row"><div class="bar-country">Japan</div><div class="bar-track"><div class="bar-fill" style="width:36.8%; background:#B8850E;"></div></div><div class="bar-val">0.368 🟠</div></div>
+<div class="bar-row"><div class="bar-country">China</div><div class="bar-track"><div class="bar-fill" style="width:61.2%; background:#C0392B;"></div></div><div class="bar-val">0.612 🔴</div></div>
+<div class="bar-row"><div class="bar-country">Taiwan</div><div class="bar-track"><div class="bar-fill" style="width:17.9%; background:#27AE60;"></div></div><div class="bar-val">0.179 🟢</div></div>
+<div class="bar-row"><div class="bar-country">North Korea</div><div class="bar-track"><div class="bar-fill" style="width:85.7%; background:#8B1A1A;"></div></div><div class="bar-val">0.857 🔴🔴</div></div>
+</div>
+ RHC Bar Chart 
+<p style="font-size:13px; font-weight:bold; color:#3A6A5E; margin:16px 0 8px;">RHC (Historical/Religious Conflict Index)</p>
+<div class="bar-chart">
+<div class="bar-row"><div class="bar-country">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:64.7%; background:#B8850E;"></div></div><div class="bar-val">0.647</div></div>
+<div class="bar-row"><div class="bar-country">Japan</div><div class="bar-track"><div class="bar-fill" style="width:55.3%; background:#5E9186;"></div></div><div class="bar-val">0.553</div></div>
+<div class="bar-row"><div class="bar-country">China</div><div class="bar-track"><div class="bar-fill" style="width:84.9%; background:#C0392B;"></div></div><div class="bar-val">0.849</div></div>
+<div class="bar-row"><div class="bar-country">Taiwan</div><div class="bar-track"><div class="bar-fill" style="width:63.7%; background:#B8850E;"></div></div><div class="bar-val">0.637</div></div>
+<div class="bar-row"><div class="bar-country">North Korea</div><div class="bar-track"><div class="bar-fill" style="width:89.9%; background:#8B1A1A;"></div></div><div class="bar-val">0.899</div></div>
+</div>
+ ADI Bar Chart 
+<p style="font-size:13px; font-weight:bold; color:#3A6A5E; margin:16px 0 8px;">ADI (AI Dependency Index) — Sovereign(0~0.20) / Capable(~0.40) / Transitional(~0.60) / Colonised(1.00)</p>
+<div class="bar-chart">
+<div class="bar-row"><div class="bar-country">South Korea</div><div class="bar-track"><div class="bar-fill" style="width:41.6%; background:#B8850E;"></div></div><div class="bar-val">0.416 Transitional</div></div>
+<div class="bar-row"><div class="bar-country">Japan</div><div class="bar-track"><div class="bar-fill" style="width:30.8%; background:#5E9186;"></div></div><div class="bar-val">0.308 Capable</div></div>
+<div class="bar-row"><div class="bar-country">China</div><div class="bar-track"><div class="bar-fill" style="width:1.3%; background:#27AE60;"></div></div><div class="bar-val">0.013 Sovereign</div></div>
+<div class="bar-row"><div class="bar-country">Taiwan</div><div class="bar-track"><div class="bar-fill" style="width:46.6%; background:#B8850E;"></div></div><div class="bar-val">0.466 Transitional</div></div>
+<div class="bar-row"><div class="bar-country">North Korea</div><div class="bar-track"><div class="bar-fill" style="width:100%; background:#8B1A1A;"></div></div><div class="bar-val">1.000 Colonised</div></div>
+</div>
+</div>
+ ─── 4-Orbit SVG ─── 
+<div class="section">
+<div class="section-title">Ⅴ · 4-Orbit Phase Structure</div>
+<h3>5 Northeast Asian Countries — Phase Orbit of sociodynamics</h3>
+<div class="orbit-wrap">
+<svg height="400" viewbox="0 0 680 400" width="680" xmlns="http://www.w3.org/2000/svg">
+ Background 
+<rect fill="#F5F3EE" height="400" width="680"></rect>
+ 4-Orbit Circles 
+<circle cx="340" cy="200" fill="none" r="170" stroke="#DDD8CE" stroke-dasharray="4,4" stroke-width="1"></circle>
+<circle cx="340" cy="200" fill="none" r="120" stroke="#C5DDD5" stroke-dasharray="4,4" stroke-width="1.5"></circle>
+<circle cx="340" cy="200" fill="none" r="70" stroke="#5E9186" stroke-dasharray="4,4" stroke-width="1.5"></circle>
+<circle cx="340" cy="200" fill="none" r="28" stroke="#3A6A5E" stroke-width="2"></circle>
+ Center 
+<circle cx="340" cy="200" fill="#3A6A5E" r="6"></circle>
+<text fill="#fff" font-family="Courier New" font-size="7" text-anchor="middle" x="340" y="203">Λ</text>
+ Orbit Labels 
+<text fill="#888" font-family="Courier New" font-size="10" x="514" y="197">Stable Orbit</text>
+<text fill="#5E9186" font-family="Courier New" font-size="10" x="464" y="197">Observation Orbit</text>
+<text fill="#B8850E" font-family="Courier New" font-size="10" x="413" y="197">Warning Orbit</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="10" x="370" y="197">Danger</text>
+ Taiwan — Near Stable Orbit (Low TBI, High CPI) 
+<circle cx="270" cy="85" fill="#E8F4F0" r="22" stroke="#5E9186" stroke-width="2"></circle>
+<text fill="#3A6A5E" font-size="14" text-anchor="middle" x="270" y="82">🇹🇼</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" text-anchor="middle" x="270" y="96">Taiwan</text>
+ Japan — Observation Orbit (Medium TBI, Good GPI) 
+<circle cx="160" cy="155" fill="#EBF4F0" r="22" stroke="#5E9186" stroke-width="2"></circle>
+<text fill="#3A6A5E" font-size="14" text-anchor="middle" x="160" y="152">🇯🇵</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" text-anchor="middle" x="160" y="166">Japan</text>
+ South Korea — Observation Orbit (Σ rises after martial law) 
+<circle cx="185" cy="290" fill="#FFF3E0" r="22" stroke="#B8850E" stroke-width="2"></circle>
+<text fill="#856404" font-size="14" text-anchor="middle" x="185" y="287">🇰🇷</text>
+<text fill="#856404" font-family="Courier New" font-size="9" text-anchor="middle" x="185" y="301">South Korea</text>
+ China — Warning Orbit (TBI close to threshold, high RHC) 
+<circle cx="460" cy="295" fill="#FCEBEB" r="26" stroke="#C0392B" stroke-width="2.5"></circle>
+<text fill="#791F1F" font-size="16" text-anchor="middle" x="460" y="291">🇨🇳</text>
+<text fill="#791F1F" font-family="Courier New" font-size="9" text-anchor="middle" x="460" y="309">China</text>
+ North Korea — Danger Orbit (All variables extreme) 
+<circle cx="360" cy="270" fill="#8B1A1A" r="20" stroke="#4A0000" stroke-width="2"></circle>
+<text fill="#fff" font-size="13" text-anchor="middle" x="360" y="267">🇰🇵</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" text-anchor="middle" x="360" y="295">North Korea</text>
+ Legend 
+<rect fill="#E8F4F0" height="10" stroke="#5E9186" stroke-width="1.5" width="10" x="24" y="340"></rect>
+<text fill="#555" font-family="Courier New" font-size="10" x="38" y="349">Stable</text>
+<rect fill="#EBF4F0" height="10" stroke="#5E9186" stroke-width="1.5" width="10" x="80" y="340"></rect>
+<text fill="#555" font-family="Courier New" font-size="10" x="94" y="349">Observation</text>
+<rect fill="#FFF3E0" height="10" stroke="#B8850E" stroke-width="1.5" width="10" x="136" y="340"></rect>
+<text fill="#555" font-family="Courier New" font-size="10" x="150" y="349">Warning</text>
+<rect fill="#FCEBEB" height="10" stroke="#C0392B" stroke-width="1.5" width="10" x="196" y="340"></rect>
+<text fill="#555" font-family="Courier New" font-size="10" x="210" y="349">Danger</text>
+<rect fill="#8B1A1A" height="10" width="10" x="256" y="340"></rect>
+<text fill="#555" font-family="Courier New" font-size="10" x="270" y="349">threshold</text>
+</svg>
+</div>
+<div class="obs-note">
+    Although Taiwan is closest to the stable orbit, external pressure in the Taiwan Strait (RHC 0.637) acts as a risk variable for orbit deviation. China is approaching the threshold (0.70) with a TBI of 0.612, and signals of internal contradiction accumulation have been captured. North Korea has extreme values for all variables, requiring independent analysis outside the comparison framework.
+  </div>
+</div>
+ ─── Radar 2×2 Phase Quadrants ─── 
+<div class="section">
+<div class="section-title">Ⅵ · Radar 2×2 — Phase Quadrant</div>
+<h3>Stability × Openness Phase Coordinates</h3>
+<div class="phase-wrap">
+<svg height="420" viewbox="0 0 560 420" width="560" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="420" width="560"></rect>
+ Quadrant Background 
+<rect fill="#EBF4F0" height="180" opacity="0.5" width="220" x="60" y="30"></rect>
+<rect fill="#FFF3CD" height="180" opacity="0.5" width="220" x="280" y="30"></rect>
+<rect fill="#F3F8F5" height="180" opacity="0.5" width="220" x="60" y="210"></rect>
+<rect fill="#FCEBEB" height="180" opacity="0.5" width="220" x="280" y="210"></rect>
+ Axis 
+<line stroke="#3A6A5E" stroke-width="1.5" x1="60" x2="500" y1="210" y2="210"></line>
+<line stroke="#3A6A5E" stroke-width="1.5" x1="280" x2="280" y1="30" y2="390"></line>
+ Axis Labels 
+<text fill="#3A6A5E" font-family="Courier New" font-size="11" text-anchor="middle" x="280" y="18">High Openness</text>
+<text fill="#888" font-family="Courier New" font-size="11" text-anchor="middle" x="280" y="408">Low Openness</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,48,214)" x="48" y="214">Instability</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" transform="rotate(-90,512,214)" x="512" y="214">Stability</text>
+ Quadrant Labels 
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" x="170" y="55">Open/Stable [Ideal Type]</text>
+<text fill="#856404" font-family="Courier New" font-size="10" text-anchor="middle" x="390" y="55">Open/Unstable [Transition Period]</text>
+<text fill="#595959" font-family="Courier New" font-size="10" text-anchor="middle" x="170" y="395">Closed/Stable [Suppressive Type]</text>
+<text fill="#791F1F" font-family="Courier New" font-size="10" text-anchor="middle" x="390" y="395">Closed/Unstable [Danger]</text>
+ Taiwan Q1 Open/Stable 
+<circle cx="155" cy="80" fill="#E8F4F0" r="18" stroke="#5E9186" stroke-width="2"></circle>
+<text font-size="14" text-anchor="middle" x="155" y="77">🇹🇼</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" x="155" y="108">Taiwan</text>
+ Japan Q1 Open/Stable 
+<circle cx="210" cy="110" fill="#EBF4F0" r="18" stroke="#5E9186" stroke-width="2"></circle>
+<text font-size="14" text-anchor="middle" x="210" y="107">🇯🇵</text>
+<text fill="#3A6A5E" font-family="Courier New" font-size="10" text-anchor="middle" x="210" y="138">Japan</text>
+ South Korea Q2 Open/Unstable (Post-Martial Law) 
+<circle cx="370" cy="150" fill="#FFF3CD" r="18" stroke="#B8850E" stroke-width="2"></circle>
+<text font-size="14" text-anchor="middle" x="370" y="147">🇰🇷</text>
+<text fill="#856404" font-family="Courier New" font-size="10" text-anchor="middle" x="370" y="178">South Korea</text>
+ China Q3 Closed/Suppressive Stability 
+<circle cx="165" cy="330" fill="#FCEBEB" r="22" stroke="#C0392B" stroke-width="2.5"></circle>
+<text font-size="16" text-anchor="middle" x="165" y="326">🇨🇳</text>
+<text fill="#791F1F" font-family="Courier New" font-size="10" text-anchor="middle" x="165" y="360">China</text>
+ North Korea Q4 Closed/Unstable 
+<circle cx="390" cy="340" fill="#8B1A1A" r="18" stroke="#4A0000" stroke-width="2"></circle>
+<text fill="#fff" font-size="13" text-anchor="middle" x="390" y="337">🇰🇵</text>
+<text fill="#8B1A1A" font-family="Courier New" font-size="10" text-anchor="middle" x="390" y="368">North Korea</text>
+ South Korea Movement Arrow 
+<defs>
+<marker id="arr" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3">
+<path d="M0,0 L6,3 L0,6 Z" fill="#B8850E"></path>
+</marker>
+</defs>
+<line marker-end="url(#arr)" stroke="#B8850E" stroke-dasharray="3,2" stroke-width="1" x1="355" x2="325" y1="158" y2="175"></line>
+<text fill="#B8850E" font-family="Courier New" font-size="9" x="310" y="188">Post-Martial Law Shift</text>
+</svg>
+</div>
+</div>
+ ─── GPI Time Series ─── 
+<div class="section">
+<div class="section-title">Ⅶ · GPI Time Series — Peace Index Trend</div>
+<h3>Peace Index Direction of 5 Northeast Asian Countries (2020–2025)</h3>
+<div style="margin:16px 0;">
+<svg height="260" viewbox="0 0 640 260" width="640" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#fff" height="260" width="640"></rect>
+ Grid 
+<line stroke="#EEE" stroke-width="1" x1="80" x2="80" y1="20" y2="210"></line>
+<line stroke="#DDD" stroke-width="1.5" x1="80" x2="600" y1="210" y2="210"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="80" x2="600" y1="60" y2="60"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="80" x2="600" y1="110" y2="110"></line>
+<line stroke="#EEE" stroke-dasharray="3,3" stroke-width="0.5" x1="80" x2="600" y1="160" y2="160"></line>
+ X-Axis Labels 
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" x="120" y="228">2020</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" x="224" y="228">2021</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" x="328" y="228">2022</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" x="432" y="228">2023</text>
+<text fill="#888" font-family="Courier New" font-size="10" text-anchor="middle" x="536" y="228">2024/25</text>
+ Y-Axis Labels (Rank, lower is better) 
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="72" y="64">10th</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="72" y="114">50th</text>
+<text fill="#888" font-family="Courier New" font-size="9" text-anchor="end" x="72" y="164">100th</text>
+ Japan — Stable Top-tier (12th) 
+<polyline fill="none" points="120,72 224,70 328,68 432,66 536,64" stroke="#5E9186" stroke-width="2.5"></polyline>
+<text fill="#5E9186" font-family="Courier New" font-size="10" x="548" y="62">Japan</text>
+ Taiwan — Upper-middle Stable 
+<polyline fill="none" points="120,105 224,103 328,100 432,98 536,96" stroke="#27AE60" stroke-width="2"></polyline>
+<text fill="#27AE60" font-family="Courier New" font-size="10" x="548" y="94">Taiwan</text>
+ South Korea — Middle, Slight Decline 
+<polyline fill="none" points="120,118 224,120 328,122 432,124 536,128" stroke="#B8850E" stroke-width="2"></polyline>
+<text fill="#B8850E" font-family="Courier New" font-size="10" x="548" y="126">South Korea</text>
+ China — Declining Trend 
+<polyline fill="none" points="120,148 224,152 328,156 432,162 536,166" stroke="#C0392B" stroke-width="2"></polyline>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="548" y="164">China</text>
+ North Korea — Persistent Bottom 
+<polyline fill="none" points="120,195 224,196 328,197 432,198 536,200" stroke="#8B1A1A" stroke-dasharray="4,2" stroke-width="2"></polyline>
+<text fill="#8B1A1A" font-family="Courier New" font-size="10" x="548" y="198">North Korea</text>
+ Title 
+<text fill="#3A6A5E" font-family="Courier New" font-size="11" text-anchor="middle" x="340" y="15">GPI Rank Trend (lower is more peaceful)</text>
+</svg>
+</div>
+<div class="obs-note">
+    Japan is the only country in Northeast Asia to stably maintain a high GPI ranking (12th), but the rise in its militarization index due to increased defense spending (2% of GDP target) may affect its ranking in the future. South Korea is expected to experience a further decline in the 2025–2026 GPI following the martial law incident in December 2024.
+  </div>
+</div>
+ ─── PPR 5 Blocks ─── 
+<div class="section">
+<div class="section-title">Ⅷ · PPR — Comparison of 5 Structural Blocks</div>
+<h3>Summary of Political, Economic, Social, Historical, and Geopolitical Structures</h3>
+<div class="ppr-grid">
+ South Korea 
+<div class="ppr-card">
+<div class="ppr-head">🇰🇷 South Korea</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Politics</span><span class="ppr-val">Democracy</span></div>
+<div class="ppr-row"><span class="ppr-key">Economy</span><span class="ppr-val">Export-driven</span></div>
+<div class="ppr-row"><span class="ppr-key">Σ Signal</span><span class="ppr-val" style="color:#B8850E;">Σ_rep↑</span></div>
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.280🟡</span></div>
+<div class="ppr-row"><span class="ppr-key">ADI</span><span class="ppr-val">Transitional</span></div>
+<div class="ppr-row"><span class="ppr-key">Risk</span><span class="ppr-val" style="color:#B8850E;">Medium</span></div>
+</div>
+</div>
+ Japan 
+<div class="ppr-card">
+<div class="ppr-head">🇯🇵 Japan</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Politics</span><span class="ppr-val">LDP Dominance</span></div>
+<div class="ppr-row"><span class="ppr-key">Economy</span><span class="ppr-val">Weak Yen/Deflation</span></div>
+<div class="ppr-row"><span class="ppr-key">Σ Signal</span><span class="ppr-val" style="color:#5E9186;">Σ_aph↑</span></div>
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.368🟠</span></div>
+<div class="ppr-row"><span class="ppr-key">ADI</span><span class="ppr-val">Capable</span></div>
+<div class="ppr-row"><span class="ppr-key">Risk</span><span class="ppr-val" style="color:#5E9186;">Low</span></div>
+</div>
+</div>
+ China 
+<div class="ppr-card">
+<div class="ppr-head">🇨🇳 China</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Politics</span><span class="ppr-val">One-party Authoritarian</span></div>
+<div class="ppr-row"><span class="ppr-key">Economy</span><span class="ppr-val">Slowing Growth</span></div>
+<div class="ppr-row"><span class="ppr-key">Σ Signal</span><span class="ppr-val" style="color:#C0392B;">Σ_rep↑↑</span></div>
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.612🔴</span></div>
+<div class="ppr-row"><span class="ppr-key">ADI</span><span class="ppr-val">Sovereign</span></div>
+<div class="ppr-row"><span class="ppr-key">Risk</span><span class="ppr-val" style="color:#C0392B;">High</span></div>
+</div>
+</div>
+ Taiwan 
+<div class="ppr-card">
+<div class="ppr-head">🇹🇼 Taiwan</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Politics</span><span class="ppr-val">DPP Administration</span></div>
+<div class="ppr-row"><span class="ppr-key">Economy</span><span class="ppr-val">Semiconductor Hub</span></div>
+<div class="ppr-row"><span class="ppr-key">Σ Signal</span><span class="ppr-val" style="color:#5E9186;">Σ Stable</span></div>
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.179🟢</span></div>
+<div class="ppr-row"><span class="ppr-key">ADI</span><span class="ppr-val">Transitional</span></div>
+<div class="ppr-row"><span class="ppr-key">Risk</span><span class="ppr-val" style="color:#B8850E;">External↑</span></div>
+</div>
+</div>
+ North Korea 
+<div class="ppr-card">
+<div class="ppr-head">🇰🇵 North Korea</div>
+<div class="ppr-body">
+<div class="ppr-row"><span class="ppr-key">Politics</span><span class="ppr-val">Totalitarianism</span></div>
+<div class="ppr-row"><span class="ppr-key">Economy</span><span class="ppr-val">Isolation/Sanctions</span></div>
+<div class="ppr-row"><span class="ppr-key">Σ Signal</span><span class="ppr-val" style="color:#8B1A1A;">Σ_rep MAX</span></div>
+<div class="ppr-row"><span class="ppr-key">TBI</span><span class="ppr-val">0.857🔴🔴</span></div>
+<div class="ppr-row"><span class="ppr-key">ADI</span><span class="ppr-val">Colonised</span></div>
+<div class="ppr-row"><span class="ppr-key">Risk</span><span class="ppr-val" style="color:#8B1A1A;">threshold</span></div>
+</div>
+</div>
+</div>
+</div>
+ ─── Λ¹² 12-Axis Radar ─── 
+<div class="section">
+<div class="section-title">Ⅸ · Λ¹² 12-Axis Radar — Comparative Coordinates</div>
+<h3>Radial Comparison of 12 Variables Across 5 Countries</h3>
+<div class="radar-wrap">
+ South Korea Radar 
+<div class="radar-item">
+<svg height="160" viewbox="0 0 160 160" width="160" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="160" width="160"></rect>
+ Background Circles 
+<circle cx="80" cy="80" fill="none" r="60" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="45" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="30" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="15" stroke="#DDD8CE" stroke-width="0.5"></circle>
+ 12 Axis Lines 
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="20"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="28"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="140" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="140"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="20" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="28"></line>
+ South Korea Data Polygon (Normalized 0–1 for Each Variable) 
+<!-- LPI=0.72, HDI=0.929→0.85, GPI=0.55, EPI=0.55, CPI=0.64, CFD=0.50, DCI=0.55, MFI=0.52, RHC=0.35, IGI=0.78, AHI=0.60, Freach=0.65 -->
+<polygon fill="#5E9186" fill-opacity="0.25" points="
+          80,37
+          104,42
+          118,59
+          122,80
+          111,101
+          97,122
+          80,116
+          59,120
+          46,107
+          37,80
+          46,59
+          58,42
+        " stroke="#5E9186" stroke-width="1.5"></polygon>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" text-anchor="middle" x="80" y="158">South Korea</text>
+</svg>
+<div class="radar-label">🇰🇷 South Korea</div>
+</div>
+ Japan Radar 
+<div class="radar-item">
+<svg height="160" viewbox="0 0 160 160" width="160" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="160" width="160"></rect>
+<circle cx="80" cy="80" fill="none" r="60" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="45" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="30" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="15" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="20"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="28"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="140" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="140"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="20" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="28"></line>
+ Japan — Overall Stable, Undigested RHC Weakness 
+<polygon fill="#3A6A5E" fill-opacity="0.25" points="
+          80,30
+          108,38
+          124,56
+          130,80
+          122,104
+          106,124
+          80,128
+          56,122
+          44,104
+          34,80
+          46,56
+          56,38
+        " stroke="#3A6A5E" stroke-width="1.5"></polygon>
+<text fill="#3A6A5E" font-family="Courier New" font-size="9" text-anchor="middle" x="80" y="158">Japan</text>
+</svg>
+<div class="radar-label">🇯🇵 Japan</div>
+</div>
+ China Radar 
+<div class="radar-item">
+<svg height="160" viewbox="0 0 160 160" width="160" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="160" width="160"></rect>
+<circle cx="80" cy="80" fill="none" r="60" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="45" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="30" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="15" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="20"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="28"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="140" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="140"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="20" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="28"></line>
+ China — Economy↑ IGI↓ MFI↓ TBI↑ 
+<polygon fill="#C0392B" fill-opacity="0.20" points="
+          80,44
+          100,36
+          116,52
+          126,80
+          118,108
+          100,126
+          80,130
+          60,124
+          42,104
+          30,80
+          38,50
+          56,32
+        " stroke="#C0392B" stroke-width="1.5"></polygon>
+<text fill="#C0392B" font-family="Courier New" font-size="9" text-anchor="middle" x="80" y="158">China</text>
+</svg>
+<div class="radar-label">🇨🇳 China</div>
+</div>
+ Taiwan Radar 
+<div class="radar-item">
+<svg height="160" viewbox="0 0 160 160" width="160" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="160" width="160"></rect>
+<circle cx="80" cy="80" fill="none" r="60" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="45" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="30" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="15" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="20"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="28"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="140" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="140"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="20" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="28"></line>
+ Taiwan — Overall Good, Vulnerable to External Threats 
+<polygon fill="#27AE60" fill-opacity="0.20" points="
+          80,28
+          110,36
+          126,54
+          132,80
+          124,106
+          108,126
+          80,130
+          54,124
+          38,104
+          30,80
+          42,54
+          56,34
+        " stroke="#27AE60" stroke-width="1.5"></polygon>
+<text fill="#27AE60" font-family="Courier New" font-size="9" text-anchor="middle" x="80" y="158">Taiwan</text>
+</svg>
+<div class="radar-label">🇹🇼 Taiwan</div>
+</div>
+ North Korea Radar 
+<div class="radar-item">
+<svg height="160" viewbox="0 0 160 160" width="160" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#F5F3EE" height="160" width="160"></rect>
+<circle cx="80" cy="80" fill="none" r="60" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="45" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="30" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<circle cx="80" cy="80" fill="none" r="15" stroke="#DDD8CE" stroke-width="0.5"></circle>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="20"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="28"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="140" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="130" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="110" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="80" y1="80" y2="140"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="132"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="110"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="20" y1="80" y2="80"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="30" y1="80" y2="50"></line>
+<line stroke="#EEE" stroke-width="0.5" x1="80" x2="50" y1="80" y2="28"></line>
+ North Korea — Overall Minimal Values, Partially High Military 
+<polygon fill="#8B1A1A" fill-opacity="0.50" points="
+          80,72
+          84,70
+          90,74
+          92,80
+          90,86
+          84,90
+          80,92
+          76,90
+          70,86
+          68,80
+          70,72
+          76,70
+        " stroke="#8B1A1A" stroke-width="1.5"></polygon>
+<text fill="#8B1A1A" font-family="Courier New" font-size="9" text-anchor="middle" x="80" y="158">North Korea</text>
+</svg>
+<div class="radar-label">🇰🇵 North Korea</div>
+</div>
+</div>
+<div class="obs-note">
+    The minimal area of the North Korea radar is not due to a lack of data, but because the actual indicator values are at the absolute bottom across all axes. By applying the OLI 0.18 correction, we specify the confidence interval of the estimates.
+  </div>
+</div>
+ ─── Six-Layer Discourse ─── 
+<div class="section">
+<div class="section-title">Ⅹ · Six-Layer Discourse — Reading Northeast Asia</div>
+<h3>Reading Northeast Asia Through Six Layers</h3>
+<div class="discourse-wrap">
+<div class="discourse-layer">
+<div class="layer-num">Layer 1<br/>Data</div>
+<div class="layer-content"><strong>What is visible:</strong> Taiwan and Japan are in the upper ranks of the freedom index, while China and North Korea are in the lowest. South Korea's freedom index declined due to the 2024 martial law incident. GDP is in a similar range for South Korea, Japan, and Taiwan ($32k–$36k), while China is at $13k and North Korea is estimated at $1,800.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 2<br/>Interests</div>
+<div class="layer-content"><strong>Who benefits from this structure:</strong> South Korea, Japan, and Taiwan have interdependent semiconductor supply chains. China utilizes tensions in the Taiwan Strait for domestic consolidation. The North Korean regime employs nuclear threats as a means of regime survival. The United States utilizes the Northeast Asian military base network as a tool to maintain hegemony.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 3<br/>Historical Patterns</div>
+<div class="layer-content"><strong>Has this happened before:</strong> The trauma structure created by Japanese imperialism (1895–1945) remains a fuse in South Korea-China-Japan diplomacy today. The division structure of the Korean War (1950–53) remains unresolved. The historical suppression of the Chinese Cultural Revolution (1966–76) is the root of the current Party's monopoly on narrative. Taiwan's democratization following the February 28 Incident (1947) is a model case of digesting trauma.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 4<br/>Perspective Inversion</div>
+<div class="layer-content"><strong>Looking at it in reverse:</strong> Paradoxically, China's ADI of 0.013 (AI sovereign state) is a product of its closed surveillance system. North Korea's extreme isolation is a kind of 'complete data sovereignty'. The failure of martial law in South Korea could be evidence of civil society's resilience rather than the vulnerability of democracy.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num">Layer 5<br/>Framework</div>
+<div class="layer-content"><strong>Λ¹² Diagnostic:</strong> In Northeast Asia, undigested TBI (Japan 0.368, China 0.612) and fixed RHC are the roots of structural risks. In terms of ADI, only China is Sovereign, while the other four countries are Transitional or below. The common vulnerability of the entire region is the intersection of a lack of AI autonomy and unresolved historical trauma.</div>
+</div>
+<div class="discourse-layer">
+<div class="layer-num" style="background:#3A6A5E;">Layer 6<br/>Suspension of Judgment</div>
+<div class="layer-content" style="background:#E8F4F0;"><strong>This layer belongs to the readers, citizens, and parliament.</strong> How to interpret the direction indicated by the numbers and what choices to make is decided by the members of each society. Λ¹² is a navigation tool. It does not force a destination.</div>
+</div>
+</div>
+</div>
+ ─── Korean Peninsula Block ─── 
+<div class="section">
+<div class="section-title">Ⅺ · Special Analysis of the Korean Peninsula</div>
+<h3>Division Structure and Security Dynamics of Northeast Asia</h3>
+<div class="korea-block">
+<h4>🇰🇷 South Korea — Democratic Resilience and Internal Rifts</h4>
+<p style="font-size:13px;">President Yoon Suk Yeol's declaration of martial law on December 3, 2024, was the first such event in 37 years since democratization in 1987. Although the immediate resolution for lifting by 190 members of the National Assembly and the unanimous dismissal by the Constitutional Court (2025.04) demonstrated institutional resilience, the Σ_rep (suppressive elite-people disconnect) index is showing short-term upward signals. Despite strengths in semiconductor infrastructure, the ADI Transitional range (0.416) suggests that weak proprietary LLM capability remains a structural challenge.</p>
+</div>
+<div class="korea-block">
+<h4>🇰🇵 North Korea — An Existence Outside the Comparative Framework</h4>
+<p style="font-size:13px;">In its 2024 constitution, North Korea explicitly defined South Korea as a 'hostile state' and physically demolished the inter-Korean railway and road infrastructure. Its TBI of 0.857 is significantly above the threshold (0.70), which signifies that the structure in which the regime appropriates trauma as a governing resource has become highly entrenched. Since all variables show extreme values, there are limitations in applying the standard Λ¹² comparative framework, and a separate analytical framework will be applied in the standalone volume.</p>
+</div>
+</div>
+ ─── Conclusion Orbit ─── 
+<div class="section">
+<div class="section-title">ⅩⅡ · Conclusion Orbit</div>
+<div class="conclusion">
+<p>Northeast Asia is currently a place where two timelines overlap and flow. One is the future timeline rushing toward semiconductors and AI, and the other is the past timeline that stopped in 1945 and has not yet ended.</p>
+<p style="margin-top:12px;">The numbers speak. Taiwan's TBI of 0.179 shows that democratization can digest trauma, and China's TBI of 0.612 indicates that suppressed history is building up pressure within the structure. Japan's RHC of 0.553 records that undigested historical conflicts lie dormant beneath the surface peace.</p>
+<p style="margin-top:12px;">North Korea is outside of all these coordinates. The numbers for North Korea conversely speak to how violent it is to attempt to compare the incomparable.</p>
+<p style="margin-top:12px;">The most important question in this region lies beyond the numbers. How much longer will the past timeline hold back the future timeline? That question is up to the people living here.</p>
+</div>
+</div>
+ ─── Series Box ─── 
+<div class="section">
+<div class="section-title">ⅩⅢ · Series Status</div>
+<div class="series-box">
+<div class="series-title">Northeast Asia Series — Λ¹²v9.12</div>
+<div class="series-item"><span class="series-num">#20</span><span class="series-name">Northeast Asia Regional Comparison Edition (Current Document)</span><span class="series-status status-done">Completed</span></div>
+<div class="series-item"><span class="series-num">#21</span><span class="series-name">South Korea Standalone Edition v1.0</span><span class="series-status status-plan">Planned</span></div>
+<div class="series-item"><span class="series-num">#22</span><span class="series-name">Japan Standalone Edition v1.0</span><span class="series-status status-plan">Planned</span></div>
+<div class="series-item"><span class="series-num">#23</span><span class="series-name">China Standalone Edition v1.0</span><span class="series-status status-plan">Planned</span></div>
+<div class="series-item"><span class="series-num">#24</span><span class="series-name">Taiwan Standalone Edition v1.0</span><span class="series-status status-plan">Planned</span></div>
+<div class="series-item"><span class="series-num">#25</span><span class="series-name">North Korea Standalone Edition v1.0 (Separate Framework)</span><span class="series-status status-plan">Planned</span></div>
+</div>
+</div>
+ ─── Footer ─── 
+<div class="footer">
+<p>Everblue Sea Institute for Social Dynamics (Everblue Sea Institute for Social Dynamics)</p>
+<p>Director Cheonghae (淸海) · Claude (Anthropic) Research Partner</p>
+<p><a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a> · <a href="https://everbluesea.org">everbluesea.org</a> · contact@everbluesea.org</p>
+<div class="engine-tag">Engine: Λ¹²v9.12 | Including ADI §31 | Based on SSRN 6632858 | Northeast Asia_Λ¹²v9.12_20260502.html</div>
+</div>
+</body>
+</html>

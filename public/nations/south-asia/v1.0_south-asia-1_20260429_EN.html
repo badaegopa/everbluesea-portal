@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Λ¹² South Asia Comparison Part I — Sri Lanka·Bhutan·Bangladesh</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;family=Bebas+Neue&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#F5F3EE;font-family:'Noto Sans KR',sans-serif;color:#2A2A2A;font-size:13px;line-height:1.75;}
+
+/* ─── 팔레트 v2.2 파스텔 ─── */
+.bg{background:#F5F3EE;}
+.green{color:#5E9186;}
+.green-text{color:#3A6A5E;}
+.gold{color:#B8850E;}
+
+/* 국가 색상 */
+.lk-c{color:#8B1A1A;}
+.bt-c{color:#D4861A;}
+.bd-c{color:#1A6B3A;}
+
+/* 변수 태그 */
+.tag{display:inline-block;padding:1px 7px;border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;}
+.tag-tbi{background:#FCEBEB;color:#791F1F;}
+.tag-sr{background:#E1F5EE;color:#085041;}
+.tag-oli{background:#E6F1FB;color:#0C447C;}
+.tag-lpi{background:#FAEEDA;color:#633806;}
+.tag-sig{background:#EEEDFE;color:#3C3489;}
+.tag-ppr{background:#EAF3DE;color:#27500A;}
+.tag-cfd{background:#FAECE7;color:#712B13;}
+.tag-new{background:#E1F5EE;color:#085041;}
+.tag-warn{background:#FCEBEB;color:#791F1F;}
+
+/* ─── 히어로 ─── */
+.hero{background:linear-gradient(135deg,#7BADA0,#5E9186);color:#fff;padding:52px 40px 40px;text-align:center;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.12em;opacity:.75;margin-bottom:14px;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:42px;letter-spacing:.06em;line-height:1.1;margin-bottom:10px;}
+.hero-sub{font-size:13px;opacity:.85;line-height:1.7;}
+.hero-meta{margin-top:18px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.hero-badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:4px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;}
+
+/* ─── Λ-Score 헤드라인 배지 ─── */
+.score-banner{display:flex;gap:12px;margin:20px 24px;flex-wrap:wrap;}
+.score-card{flex:1;min-width:160px;background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px 16px;text-align:center;border-top:3px solid;}
+.score-card.lk{border-top-color:#8B1A1A;}
+.score-card.bt{border-top-color:#D4861A;}
+.score-card.bd{border-top-color:#1A6B3A;}
+.score-flag{font-size:24px;margin-bottom:4px;}
+.score-country{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:.05em;margin-bottom:6px;}
+.score-lambda{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;margin-bottom:2px;}
+.score-lambda.lk{color:#8B1A1A;}
+.score-lambda.bt{color:#D4861A;}
+.score-lambda.bd{color:#1A6B3A;}
+.score-zone{font-size:11px;font-family:'JetBrains Mono',monospace;padding:2px 10px;border-radius:4px;display:inline-block;margin-bottom:4px;}
+.zone-watch{background:#FFF3E0;color:#E65100;}
+.zone-danger{background:#FCEBEB;color:#791F1F;}
+.zone-stable{background:#E8F5E9;color:#1B5E20;}
+.score-pwt{font-size:10.5px;color:#888;font-family:'JetBrains Mono',monospace;}
+
+/* ─── 선언 ─── */
+.declaration{background:#FFFDF8;border-left:4px solid #5E9186;margin:0 24px 24px;padding:18px 22px;border-radius:0 8px 8px 0;}
+.declaration-title{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#3A6A5E;letter-spacing:.05em;margin-bottom:8px;}
+.declaration p{font-size:12.5px;color:#444;line-height:1.8;}
+
+/* ─── 민중 시선 ─── */
+.peoples-view{margin:0 24px 24px;background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:20px 22px;}
+.pv-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#B8850E;letter-spacing:.06em;margin-bottom:12px;}
+.pv-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+.pv-card{background:#F5F3EE;border-radius:8px;padding:12px 14px;border-top:3px solid;}
+.pv-card.lk{border-color:#8B1A1A;}
+.pv-card.bt{border-color:#D4861A;}
+.pv-card.bd{border-color:#1A6B3A;}
+.pv-flag{font-size:22px;margin-bottom:4px;}
+.pv-name{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.05em;margin-bottom:6px;}
+.pv-quote{font-size:11.5px;color:#555;line-height:1.7;font-style:italic;}
+
+/* ─── 섹션 ─── */
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.07em;color:#3A6A5E;border-bottom:2px solid #5E9186;margin:28px 24px 14px;padding-bottom:8px;}
+
+/* ─── 3열 그리드 ─── */
+.three-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:0 24px 24px;}
+
+/* ─── 용어 해설 ─── */
+.term-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0 24px 24px;}
+.term-box{background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:12px 14px;}
+.term-name{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:11px;color:#3A6A5E;margin-bottom:4px;}
+.term-def{font-size:11px;color:#555;line-height:1.6;}
+.term-ref{font-size:9.5px;color:#999;margin-top:4px;font-family:'JetBrains Mono',monospace;}
+
+/* ─── 역사 타임라인 ─── */
+.hist-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px 16px;}
+.hist-title{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;margin-bottom:10px;}
+.hist-title.lk{color:#8B1A1A;}
+.hist-title.bt{color:#D4861A;}
+.hist-title.bd{color:#1A6B3A;}
+.hist-item{display:flex;gap:10px;margin-bottom:8px;font-size:11.5px;}
+.hist-year{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;min-width:44px;color:#B8850E;}
+.hist-text{color:#444;line-height:1.6;}
+
+/* ─── 통계 테이블 ─── */
+.stats-table{width:calc(100% - 48px);margin:0 24px 24px;border-collapse:collapse;font-size:11.5px;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.stats-table th{background:#3A6A5E;color:#fff;padding:9px 14px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;text-align:center;}
+.stats-table td{padding:8px 14px;border-bottom:1px solid #f0ede7;text-align:center;color:#444;}
+.stats-table tr:last-child td{border:none;}
+.stats-table .label{text-align:left;font-weight:500;color:#3A6A5E;}
+.val-lk{color:#8B1A1A;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-bt{color:#D4861A;font-weight:700;font-family:'JetBrains Mono',monospace;}
+.val-bd{color:#1A6B3A;font-weight:700;font-family:'JetBrains Mono',monospace;}
+
+/* ─── 좌표 카드 ─── */
+.coord-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px 16px;}
+.coord-head{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.05em;margin-bottom:10px;}
+.coord-head.lk{color:#8B1A1A;}
+.coord-head.bt{color:#D4861A;}
+.coord-head.bd{color:#1A6B3A;}
+.coord-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.coord-label{font-size:10.5px;}
+.coord-bar-wrap{flex:1;height:6px;background:#eee;border-radius:3px;margin:0 10px;}
+.coord-bar{height:6px;border-radius:3px;}
+.coord-num{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;min-width:36px;text-align:right;}
+
+/* ─── 공식 박스 ─── */
+.formula-box{margin:0 24px 24px;background:linear-gradient(135deg,#f0ede7,#e8e4dc);border:1px solid #DDD8CE;border-radius:10px;padding:16px 20px;}
+.formula-title{font-family:'Bebas Neue',sans-serif;font-size:15px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:10px;}
+.formula-eq{font-family:'JetBrains Mono',monospace;font-size:13px;color:#3A6A5E;background:#fff;display:inline-block;padding:6px 14px;border-radius:6px;margin-bottom:8px;}
+.formula-note{font-size:11px;color:#666;line-height:1.7;}
+
+/* ─── 레이더·GPI 래퍼 ─── */
+.radar-wrap,.gpi-wrap,.phase-wrap{margin:0 24px 24px;background:#fff;border:1px solid #DDD8CE;border-radius:12px;padding:20px;}
+.radar-title,.gpi-title{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:4px;text-align:center;}
+.radar-legend{display:flex;justify-content:center;gap:24px;margin-top:12px;flex-wrap:wrap;}
+.radar-legend-item{display:flex;align-items:center;gap:6px;font-size:11px;}
+.radar-dot{width:10px;height:10px;border-radius:50%;}
+
+/* ─── PPR ─── */
+.ppr-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:0 24px 18px;}
+.ppr-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;overflow:hidden;}
+.ppr-card-head{padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;}
+.ppr-card-head.lk{background:#8B1A1A;}
+.ppr-card-head.bt{background:#D4861A;}
+.ppr-card-head.bd{background:#1A6B3A;}
+.ppr-card-body{padding:10px 14px;font-size:11.5px;color:#444;line-height:1.75;}
+.ppr-stack-label{font-size:9.5px;font-family:'JetBrains Mono',monospace;background:#F5F3EE;color:#666;display:inline-block;padding:1px 6px;border-radius:3px;margin-bottom:3px;}
+
+/* ─── 담론육층 ─── */
+.layer-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px 16px;}
+.layer-card-head{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.04em;margin-bottom:10px;}
+.layer-card-head.lk{color:#8B1A1A;}
+.layer-card-head.bt{color:#D4861A;}
+.layer-card-head.bd{color:#1A6B3A;}
+.layer-row{display:flex;gap:8px;margin-bottom:7px;font-size:11px;line-height:1.6;}
+.layer-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10px;min-width:16px;color:#B8850E;}
+.layer-text{color:#555;}
+
+/* ─── 오차·한반도·결론 ─── */
+.err-card{background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:12px 14px;}
+.err-head{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:10.5px;margin-bottom:8px;}
+.err-head.lk{color:#8B1A1A;}
+.err-head.bt{color:#D4861A;}
+.err-head.bd{color:#1A6B3A;}
+.err-item{font-size:11px;color:#555;line-height:1.65;margin-bottom:4px;}
+.kr-box{margin:0 24px 24px;background:linear-gradient(135deg,#eef6f4,#e4f0ed);border:1px solid #c5ddd9;border-radius:10px;padding:18px 22px;}
+.kr-title{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:10px;}
+.kr-text{font-size:12px;color:#444;line-height:1.85;}
+.conclusion{margin:0 24px 24px;background:linear-gradient(135deg,#7BADA0,#5E9186);color:#fff;border-radius:12px;padding:24px 26px;}
+.conclusion-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.07em;margin-bottom:14px;}
+.conclusion-text{font-size:12.5px;line-height:1.9;opacity:.93;}
+.series-box{margin:0 24px 24px;border:2px solid #5E9186;border-radius:10px;padding:14px 18px;}
+.series-title{font-family:'Bebas Neue',sans-serif;font-size:14px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:8px;}
+.series-list{display:flex;flex-wrap:wrap;gap:8px;}
+.series-item{font-size:11px;background:#F5F3EE;border:1px solid #DDD8CE;border-radius:6px;padding:3px 10px;color:#666;}
+.series-item.done{background:#5E9186;color:#fff;border-color:#5E9186;}
+.series-item.current{background:#B8850E;color:#fff;border-color:#B8850E;}
+.footer{background:#3A6A5E;color:rgba(255,255,255,.8);text-align:center;padding:22px;font-size:11px;line-height:1.9;}
+.footer a{color:#F0C040;text-decoration:none;}
+.note{font-size:10.5px;color:#888;font-style:italic;margin:0 24px 16px;}
+.freach-s{color:#2E7D32;font-weight:700;}
+.freach-i{color:#1565C0;font-weight:700;}
+.freach-d{color:#AD1457;font-weight:700;}
+
+/* ─── 특집 박스 ─── */
+.special-box{margin:0 24px 24px;border-radius:12px;padding:20px 24px;}
+.special-box.lk{background:linear-gradient(135deg,#fff4f4,#ffe8e8);border:2px solid #8B1A1A;}
+.special-box.bt{background:linear-gradient(135deg,#fff8ef,#ffebd0);border:2px solid #D4861A;}
+.special-box.bd{background:linear-gradient(135deg,#f0fff4,#e0f5e9);border:2px solid #1A6B3A;}
+.special-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.06em;margin-bottom:12px;}
+.special-title.lk{color:#8B1A1A;}
+.special-title.bt{color:#D4861A;}
+.special-title.bd{color:#1A6B3A;}
+.special-text{font-size:12px;color:#444;line-height:1.9;}
+.stat-badge{display:inline-block;padding:2px 8px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:#fff;margin:2px 3px;}
+.stat-lk{background:#8B1A1A;}
+.stat-bt{background:#D4861A;}
+.stat-bd{background:#1A6B3A;}
+
+/* ─── GNH 비교 박스 ─── */
+.gnh-box{margin:0 24px 24px;background:linear-gradient(135deg,#fffbef,#fff5d0);border:2px solid #D4861A;border-radius:12px;padding:20px 24px;}
+.gnh-title{font-family:'Bebas Neue',sans-serif;font-size:18px;color:#D4861A;letter-spacing:.06em;margin-bottom:12px;}
+.gnh-text{font-size:12px;color:#444;line-height:1.9;}
+.gnh-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;}
+.gnh-card{background:#fff;border:1px solid #DDD8CE;border-radius:8px;padding:12px 14px;}
+.gnh-card-title{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:#D4861A;margin-bottom:6px;}
+.gnh-card-body{font-size:11.5px;color:#555;line-height:1.7;}
+
+/* ─── 위상공간 ─── */
+.phase-title{font-family:'Bebas Neue',sans-serif;font-size:16px;color:#3A6A5E;letter-spacing:.06em;margin-bottom:4px;text-align:center;}
+.phase-sub{font-size:10.5px;color:#888;text-align:center;margin-bottom:14px;font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+ ══ Hero ══ 
+<div class="hero">
+<div class="hero-eyebrow">Everblue Sea Institute for Social Dynamics · Λ¹² Country Comparison Series III</div>
+<div class="hero-title">South Asia Comparison Part I</div>
+<div class="hero-sub">Sri Lanka · Bhutan · Bangladesh<br/>Bankruptcy·Happiness·Revolution — What Three Extremes Show</div>
+<div class="hero-meta">
+<span class="hero-badge">Λ¹² v9.11 Engine</span>
+<span class="hero-badge">Direction-Adjusted Independent Axis Confirmed Edition</span>
+<span class="hero-badge">F_reach Applied</span>
+<span class="hero-badge">First Application of Λ-Score Formula</span>
+<span class="hero-badge">SSRN 6509200</span>
+<span class="hero-badge">2026-04-29</span>
+</div>
+</div>
+ ══ Λ-Score Headline Badge ══ 
+<div class="score-banner">
+<div class="score-card lk">
+<div class="score-flag">🇱🇰</div>
+<div class="score-country lk-c">Sri Lanka</div>
+<div class="score-lambda lk">0.298</div>
+<div><span class="score-zone zone-watch">Watch</span></div>
+<div class="score-pwt">PWT-r 0.834 · β 0.557</div>
+</div>
+<div class="score-card bt">
+<div class="score-flag">🇧🇹</div>
+<div class="score-country bt-c">Bhutan</div>
+<div class="score-lambda bt">0.182</div>
+<div><span class="score-zone zone-stable">Stable</span></div>
+<div class="score-pwt">PWT-r 0.955 · β 0.248</div>
+</div>
+<div class="score-card bd">
+<div class="score-flag">🇧🇩</div>
+<div class="score-country bd-c">Bangladesh</div>
+<div class="score-lambda bd">0.396</div>
+<div><span class="score-zone zone-danger">Danger</span></div>
+<div class="score-pwt">PWT-r 0.728 · β 0.688</div>
+</div>
+</div>
+ ══ Research Purpose Declaration ══ 
+<div class="declaration">
+<div class="declaration-title">Research Purpose Declaration</div>
+<p>
+    Sri Lanka is recovering after experiencing a systemic shock in 2022 with national bankruptcy and the occupation of the presidential palace.
+    Bhutan is the only country that operates GNH (Gross National Happiness) as its national philosophy — how does Λ¹² based on universal data read a happiness index country?
+    Bangladesh ended a 15-year dictatorship in 2024 with the world's first Gen Z revolution, but has fallen into a deeper crisis after the revolution.
+    The three countries test the core hypothesis of Λ¹² in different ways.
+    Λ¹² does not pronounce conclusions. It leaves the way of seeing in the public square.
+  </p>
+</div>
+ ══ People's Perspective ══ 
+<div class="peoples-view">
+<div class="pv-title">The Eyes of the Masses — A Window Through the Eyes of Three Youth</div>
+<div class="pv-grid">
+<div class="pv-card lk">
+<div class="pv-flag">🇱🇰</div>
+<div class="pv-name lk-c">Youth of Colombo</div>
+<div class="pv-quote">
+        "In 2022, we entered the presidential palace.
+        We swam in the pool and the president fled.
+        Was that the end? No — the debt is still there,
+        and prices are still high. But we learned that we can change things."
+      </div>
+</div>
+<div class="pv-card bt">
+<div class="pv-flag">🇧🇹</div>
+<div class="pv-name bt-c">Youth of Thimphu</div>
+<div class="pv-quote">
+        "In a country that is said to have a high happiness index, our friends are
+        leaving for Australia and Canada. GNH doesn't feed us.
+        We respect the royal family, but there are no jobs.
+        What is happiness — statistics or life?"
+      </div>
+</div>
+<div class="pv-card bd">
+<div class="pv-flag">🇧🇩</div>
+<div class="pv-name bd-c">Youth of Dhaka</div>
+<div class="pv-quote">
+        "We had a revolution. My friend was shot.
+        Hasina left — but the Yunus government is
+        no different. Violence has increased further.
+        Was the revolution the beginning or the end?"
+      </div>
+</div>
+</div>
+</div>
+ ══ §0 Glossary ══ 
+<div class="sec-title">§0  Core Glossary</div>
+<div class="term-grid">
+<div class="term-box">
+<div class="term-name">SR Reverse-Causality Hypothesis (§3)</div>
+<div class="term-def">A preceding decline in SR is a reverse-causality signal of collapse. Low SR != safety. Sri Lanka is an empirical case of this hypothesis in 2022.</div>
+<div class="term-ref">Λ¹² §3 · Sri Lanka 2022</div>
+</div>
+<div class="term-box">
+<div class="term-name">TBI — Trauma Big Bang</div>
+<div class="term-def">Traces left by historical shocks on current systemic legitimacy. Bangladesh: Double shock of 1971 Independence War + 2024 Revolution.</div>
+<div class="term-ref">Λ¹² §27 TBI=H×C×N</div>
+</div>
+<div class="term-box">
+<div class="term-name">OLI — Observability Limit</div>
+<div class="term-def">Data confidence range. Bhutan operates its own GNH statistical system — potential divergence from universal OLI standards.</div>
+<div class="term-ref">Λ¹² §24 · Goodhart</div>
+</div>
+<div class="term-box">
+<div class="term-name">Λ-Score (Newly Established §30)</div>
+<div class="term-def">Direction-adjusted weighted sum of independent axes. Λ=Σ(get_w(norm_i))/N/1.29. Applied to headlines starting this volume.</div>
+<div class="term-ref">Λ¹² §30 v9.11 2026-04-29</div>
+</div>
+<div class="term-box">
+<div class="term-name">PWT-r — Priming Water Reach Rate</div>
+<div class="term-def">PWT-r=1−Λ×β. β=Composite of polarization, CFD, and corruption. The rate at which the leader's virtue reaches the masses.</div>
+<div class="term-ref">Λ¹² §30 PWT Axiom §26</div>
+</div>
+<div class="term-box">
+<div class="term-name">F_reach — Food Accessibility</div>
+<div class="term-def">F_reach=(S×I×D)^⅓. Self-sufficiency, import stability, distribution reach. Bangladesh: S strength, D deficiency structure.</div>
+<div class="term-ref">Λ¹² §13-B v9.10</div>
+</div>
+</div>
+ ══ Ⅰ Theoretical Self-Positioning ══ 
+<div class="sec-title">Ⅰ  Observer Standpoint — Theoretical Self-Positioning (§1-B)</div>
+<div style="margin:0 24px 14px;background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:16px 20px;">
+<div style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:#B8850E;letter-spacing:.05em;margin-bottom:10px;">Classical Sociology Lineage Matching</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;font-size:11.5px;">
+<div style="background:#F5F3EE;border-radius:6px;padding:8px 12px;">
+<div style="font-weight:700;color:#8B1A1A;margin-bottom:4px;">🇱🇰 Sri Lanka</div>
+<div style="color:#555;line-height:1.7;">Gurr's <em>Relative Deprivation</em> theory textbook case. The 2022 crisis is the trajectory predicted by Goldstone's state vulnerability model. Goffman's Impression Management: Gotabaya's fictitious image of stability was maintained until just before the collapse. The subsequent recovery of trust by the Dissenayake government is a process of reconstructing Weberian legal-rational authority.</div>
+</div>
+<div style="background:#F5F3EE;border-radius:6px;padding:8px 12px;">
+<div style="font-weight:700;color:#D4861A;margin-bottom:4px;">🇧🇹 Bhutan</div>
+<div style="color:#555;line-height:1.7;">Combination of Weber's traditional authority (royal family) + Durkheim's mechanical solidarity (Buddhist community). GNH is an example of policy-making based on Durkheim's collective consciousness (conscience collective). However, Marx's perspective: criticisms exist that the happiness discourse can become an ideology that conceals economic inequality.</div>
+</div>
+<div style="background:#F5F3EE;border-radius:6px;padding:8px 12px;">
+<div style="font-weight:700;color:#1A6B3A;margin-bottom:4px;">🇧🇩 Bangladesh</div>
+<div style="color:#555;line-height:1.7;">The 2024 revolution = Real-time empirical demonstration of Gurr's SR reverse-causality hypothesis. Suppression → falling SR → threshold → explosion. Post-revolution Pareto's circulation of elites: Hasina was expelled, but the structure remains. Gramsci: A revolution is not complete unless it changes the hegemony.</div>
+</div>
+</div>
+</div>
+<p class="note">§1-C: No single theory completely covers all three countries. Theory is a starting point, not a conclusion.</p>
+ ══ Ⅱ Governance Structure ══ 
+<div class="sec-title">Ⅱ  State Governance Structure + Colonial/Independence History</div>
+<div class="three-grid">
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px 16px;">
+<div class="hist-title lk">🇱🇰 Sri Lanka — Constitutional Democratic Republic</div>
+<div class="hist-item"><span class="hist-year">~1948</span><span class="hist-text">British colony (Ceylon). Independent on 1948.02.04. Started as a dominion within the Commonwealth.</span></div>
+<div class="hist-item"><span class="hist-year">1983~09</span><span class="hist-text">26 years of Tamil Civil War (LTTE vs Government). End of civil war in 2009. Core of TBI.</span></div>
+<div class="hist-item"><span class="hist-year">2022</span><span class="hist-text">Declaration of national bankruptcy + occupation of the presidential palace. Gotabaya fled abroad. IMF EFF $2.9 billion initiated.</span></div>
+<div class="hist-item"><span class="hist-year">2024~</span><span class="hist-text">Dissanayake (NPP) inaugurated as President. Left-wing coalition. Passed IMF 3rd review. Debt restructuring 98% completed.</span></div>
+<div style="margin-top:8px;font-size:11px;color:#555;"><strong>Current System:</strong> Presidential republic. Current President: Anura Kumara Dissanayake (2024~)</div>
+<div style="font-size:11px;color:#555;"><strong>Key Tensions:</strong> Memory of debt + sustainability of recovery path + incomplete reconciliation with ethnic minorities</div>
+</div>
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px 16px;">
+<div class="hist-title bt">🇧🇹 Bhutan — Constitutional Monarchy Kingdom</div>
+<div class="hist-item"><span class="hist-year">~1907</span><span class="hist-text">Unification of the Kingdom. British protectorate (foreign affairs delegated only). No experience of complete colonization.</span></div>
+<div class="hist-item"><span class="hist-year">1949</span><span class="hist-text">Friendship treaty with India. Initiated a structure of practical dependence on India for foreign affairs and security.</span></div>
+<div class="hist-item"><span class="hist-year">1990s</span><span class="hist-text">Expulsion of 100,000 Lhotshampas (Nepalese Bhutanese) — Human rights issues behind GNH.</span></div>
+<div class="hist-item"><span class="hist-year">2008</span><span class="hist-text">Constitution enacted + first general election. Constitutionalization of GNH. Transition to a constitutional monarchy.</span></div>
+<div class="hist-item"><span class="hist-year">2023~</span><span class="hist-text">Surge in youth emigration (Australia, Canada). Population decline crisis. Border negotiations with China.</span></div>
+<div style="margin-top:8px;font-size:11px;color:#555;"><strong>Current System:</strong> Constitutional monarchy. Current King: Jigme Khesar Namgyel Wangchuck (2006~)</div>
+<div style="font-size:11px;color:#555;"><strong>Key Tensions:</strong> GNH philosophy vs economic reality | dependence on India vs rapprochement with China</div>
+</div>
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:10px;padding:14px 16px;">
+<div class="hist-title bd">🇧🇩 Bangladesh — People's Republic (Transitional)</div>
+<div class="hist-item"><span class="hist-year">~1947</span><span class="hist-text">British colony → India-Pakistan partition. Incorporated as East Pakistan.</span></div>
+<div class="hist-item"><span class="hist-year">1971</span><span class="hist-text">War of Independence + genocide (estimated deaths: 300,000 to 3 million). Bangladesh independence on 12.16. Highest level of TBI.</span></div>
+<div class="hist-item"><span class="hist-year">1975~90</span><span class="hist-text">Repeated military dictatorships (Ziaur Rahman, Ershad). Even after democratization, hostile two-party alternation of AL-BNP.</span></div>
+<div class="hist-item"><span class="hist-year">2009~24</span><span class="hist-text">Hasina's 15-year long-term rule. GDP growth but strengthening of authoritarianism.</span></div>
+<div class="hist-item"><span class="hist-year">2024.08</span><span class="hist-text">Gen Z Revolution — Hasina ousted. Yunus transitional government. Post-revolution surge in violence.</span></div>
+<div style="margin-top:8px;font-size:11px;color:#555;"><strong>Current System:</strong> Transitional government. Current Head: Muhammad Yunus (2024~)</div>
+<div style="font-size:11px;color:#555;"><strong>Key Tensions:</strong> Post-revolution disorder | Islamization vs Secularism | India-Bangladesh conflict</div>
+</div>
+</div>
+ ══ Ⅲ Basic Statistics ══ 
+<div class="sec-title">Ⅲ  Basic Statistics (As of 2024~2025)</div>
+<table class="stats-table">
+<thead>
+<tr>
+<th class="label" style="text-align:left;">Indicator</th>
+<th>🇱🇰 Sri Lanka</th>
+<th>🇧🇹 Bhutan</th>
+<th>🇧🇩 Bangladesh</th>
+<th>Source/Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="label">Population</td><td class="val-lk">22.3 million</td><td class="val-bt">780,000</td><td class="val-bd">176 million</td><td>UN 2024</td></tr>
+<tr><td class="label">GDP (Nominal)</td><td class="val-lk">$88.4 billion</td><td class="val-bt">$3.0 billion</td><td class="val-bd">$453 billion</td><td>WB 2024</td></tr>
+<tr><td class="label">GDP per Capita (PPP)</td><td class="val-lk">$14,500</td><td class="val-bt">$12,100</td><td class="val-bd">$9,200</td><td>IMF 2024</td></tr>
+<tr><td class="label">GDP Growth Rate (2025)</td><td class="val-lk">+5.0%</td><td class="val-bt">+5.2%</td><td class="val-bd" style="background:#fff0f0;">+2.3% ⚠</td><td>IMF/ADB; Bangladesh plummeted post-revolution</td></tr>
+<tr><td class="label">HDI (2024)</td><td class="val-lk">0.780</td><td class="val-bt">0.681</td><td class="val-bd">0.670</td><td>UNDP HDR 2025</td></tr>
+<tr><td class="label">CPI 2025 (TI)</td><td class="val-lk">36 / 105th</td><td class="val-bt">72 / 22nd ⭐</td><td class="val-bd">25 / 151st</td><td>TI 2026.02; Bhutan ranks 1st in South Asia</td></tr>
+<tr><td class="label">GPI 2025 (IEP)</td><td class="val-lk">1.849 / 62nd</td><td class="val-bt">1.527 / 17th ⭐</td><td class="val-bd">1.927 / 75th</td><td>IEP 2025</td></tr>
+<tr><td class="label">Debt/GDP</td><td class="val-lk">104.6% ⚠</td><td class="val-bt">~115%</td><td class="val-bd">35%</td><td>IMF 2024; Sri Lanka/Bhutan high debt</td></tr>
+<tr><td class="label">Inflation (2025)</td><td class="val-lk">~3%</td><td class="val-bt">~4%</td><td class="val-bd" style="background:#fff0f0;">~12% ⚠</td><td>Bangladesh food inflation 16%</td></tr>
+<tr><td class="label">Press Freedom (RSF 2025)</td><td class="val-lk">139th</td><td class="val-bt">33rd ⭐</td><td class="val-bd">149th</td><td>RSF 2025</td></tr>
+<tr><td class="label">GNH Index</td><td class="val-lk">N/A</td><td class="val-bt">0.781 (2022)</td><td class="val-bd">N/A</td><td>Bhutan-specific index — incomparable</td></tr>
+</tbody>
+</table>
+ ══ Sri Lanka Special ══ 
+<div class="sec-title">⚡  Sri Lanka Special — Living Proof of the SR Reverse-Causality Hypothesis</div>
+<div class="special-box lk">
+<div class="special-title lk">2022~2025: From Bankruptcy to Recovery — Tracking the Λ¹² Trajectory</div>
+<div class="special-text">
+<strong>Sri Lanka in 2022 is the clearest empirical demonstration of the Λ¹² §3 SR Reverse-Causality Hypothesis.</strong><br/><br/>
+    Rather than a structure where SR was lowered due to suppression like the Hasina regime — <em>the shock was greater because SR was low</em>.
+    Superficial stability was maintained for a long time, and citizens had no channel to express their grievances.
+    Inflation <span class="stat-badge stat-lk">69.8%</span>, foreign exchange reserves <span class="stat-badge stat-lk">0.3 months' worth</span>, and shortages of fuel and medicine exploded simultaneously — SR crossed the threshold in an instant.<br/><br/>
+<strong>Recovery Path (2023~2025):</strong><br/>
+    IMF EFF <span class="stat-badge stat-lk">$2.9 billion</span> initiated → inflation <span class="stat-badge stat-lk">4%</span> stabilized → foreign exchange reserves <span class="stat-badge stat-lk">$6.1 billion</span> recovered →
+    GDP growth <span class="stat-badge stat-lk">+5.0%</span>(2024) → debt restructuring 98% completed (2024).<br/><br/>
+<strong>Λ¹² Reading:</strong><br/>
+    Current Λ-Score <span class="stat-badge stat-lk">0.341</span> Watch zone. Although recovering, debt <span class="stat-badge stat-lk">GDP 104.6%</span> remains a structural vulnerability.
+    Estimating the Λ-Score before 2022 puts it above 0.50 Danger — in that state, SR surged and transitioned into a systemic shock.
+    Post-recovery poverty rate is <span class="stat-badge stat-lk">24.5%</span> — twice that of 2019. The speed at which economic recovery reaches the masses (PWT-r) is the key variable.
+  </div>
+</div>
+ ══ Bhutan GNH Special ══ 
+<div class="sec-title">🏔  Bhutan Special — Collision of GNH vs Universal Data</div>
+<div class="gnh-box">
+<div class="gnh-title">GNH 0.781 vs Λ-Score 0.198 — Where Two Indices Meet</div>
+<div class="gnh-text">
+    Bhutan is a country that achieved GNH (Gross National Happiness) of 0.781. However, looking at the universal standards of Λ¹², it is in the Stable zone at 0.198.
+    Do these two values conflict? No — rather, they complement each other.<br/><br/>
+    While GNH measures the "level of happiness achievement," Λ¹² measures "structural instability."
+    CPI 72 points (1st in South Asia)·GPI 17th·Press Freedom 33rd — Bhutan performs well even in universal indicators.
+    <strong>However, two fractures are visible.</strong>
+</div>
+<div class="gnh-grid">
+<div class="gnh-card">
+<div class="gnh-card-title">Fissure ① — Youth Emigration and Population Crisis</div>
+<div class="gnh-card-body">
+        More than 10% of the population emigrated to Australia and Canada between 2022 and 2024. Not 'Brain drain', but 'Population drain'.
+        The gap between happiness measured by GNH and the economic foundation of actual life. F_reach S (self-sufficiency) is favorable, but
+        population decline threatens the long-term food production base.
+      </div>
+</div>
+<div class="gnh-card">
+<div class="gnh-card-title">Fissure ② — Dependence on India and Rapprochement with China</div>
+<div class="gnh-card-body">
+        90% of electricity, food, and consumer goods depend on India. Vulnerable F_reach I (import stability). 2023 border negotiations with China — India reacted sensitively.
+        Controversy over whether the 'sustainability' domain of Bhutan's GNH sufficiently reflects geopolitical vulnerabilities.
+        Goodhart's Law: If the GNH index becomes a policy target, there is a risk of overestimating actual happiness.
+      </div>
+</div>
+</div>
+</div>
+ ══ Bangladesh Special ══ 
+<div class="sec-title">🔥  Bangladesh Special — Why Things Got Worse Post-Revolution</div>
+<div class="special-box bd">
+<div class="special-title bd">2024 Gen Z Revolution → 2025 Double Crisis — Λ¹² Diagnosis</div>
+<div class="special-text">
+<strong>The Bangladesh 2024 revolution is the most vivid real-time case in Λ¹² history.</strong><br/><br/>
+
+    Operation process of the SR reverse-causality structure:
+    Hasina 15 years → decline in SR due to suppression → July 2024 student protest triggered → SR crossed threshold → systemic shock → Hasina fled (2024.08.05).<br/><br/>
+<strong>Post-Revolution 2025 — Four Λ¹² Warning Signals:</strong><br/>
+    ① GDP growth <span class="stat-badge stat-bd">2.3%</span> — plummeted from 6.1% in 2023. Inflation <span class="stat-badge stat-bd">12%</span> persists.<br/>
+    ② Riot violence deaths <span class="stat-badge stat-bd">637</span>(1 year post-revolution) vs 51 deaths in 2023 — 1,250% increase.<br/>
+    ③ Youth unemployment <span class="stat-badge stat-bd">28%</span> — highest in South Asia. The revolutionary generation is unemployed.<br/>
+    ④ Ongoing attacks on ethnic minorities (Hindus). Increased pressure for Islamization.<br/><br/>
+<strong>Λ¹² Diagnosis:</strong><br/>
+    Λ-Score <span class="stat-badge stat-bd">0.428</span> Danger zone. Immediately after the revolution, Σ (leader-mass disconnect) temporarily fell,
+    but is rising again due to disappointment with the Yunus government. TBI <span class="stat-badge stat-bd">0.78</span> — double trauma from the 1971 Independence War + the 2024 revolution casualties are superimposed.
+    Question on the 6th layer of Six-Layer Discourse Reasoning Method: <em>Did the revolution change the structure, or did it just change the name?</em>
+</div>
+</div>
+ ══ Ⅳ Basic Coordinates ══ 
+<div class="sec-title">Ⅳ  Λ¹² Basic Coordinates — Direction-Adjusted Proxy Estimation</div>
+<div class="three-grid">
+ Sri Lanka 
+<div class="coord-card">
+<div class="coord-head lk">🇱🇰 Sri Lanka</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-tbi">TBI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:68%;background:#791F1F;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#791F1F;">0.68</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sr">SR</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:42%;background:#085041;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#085041;">0.42</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sig">Σ</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:45%;background:#3C3489;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#3C3489;">0.45</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-oli">OLI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:58%;background:#0C447C;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#0C447C;">0.58</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-lpi">LPI_net</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:52%;background:#633806;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#633806;">+0.08</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-cfd">CFD</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:62%;background:#712B13;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#712B13;">0.62</span>
+</div>
+<div style="margin-top:8px;font-size:10px;color:#888;">BRI: 3.5 · SSI: 5.8 · GPI: 1.849 · F_reach: 0.62</div>
+<div style="margin-top:4px;font-size:10px;color:#8B1A1A;font-family:'JetBrains Mono',monospace;">★ Empirical case of SR reverse-causality pre-2022</div>
+</div>
+ Bhutan 
+<div class="coord-card">
+<div class="coord-head bt">🇧🇹 Bhutan</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-tbi">TBI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:22%;background:#791F1F;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#791F1F;">0.22</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sr">SR</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:25%;background:#085041;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#085041;">0.25</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sig">Σ</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:30%;background:#3C3489;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#3C3489;">0.30</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-oli">OLI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:55%;background:#0C447C;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#0C447C;">0.55</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-lpi">LPI_net</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:62%;background:#633806;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#633806;">+0.18</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-cfd">CFD</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:28%;background:#712B13;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#712B13;">0.28</span>
+</div>
+<div style="margin-top:8px;font-size:10px;color:#888;">BRI: 1.8 · SSI: 7.2 · GPI: 1.527 · F_reach: 0.58</div>
+<div style="margin-top:4px;font-size:10px;color:#D4861A;font-family:'JetBrains Mono',monospace;">★ GNH philosophy = structural cause of low Σ·TBI</div>
+</div>
+ Bangladesh 
+<div class="coord-card" style="border:2px solid #1A6B3A;">
+<div class="coord-head bd">🇧🇩 Bangladesh ⚠</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-tbi">TBI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:78%;background:#791F1F;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#791F1F;">0.78</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sr">SR</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:62%;background:#085041;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#085041;">0.62</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-sig">Σ</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:65%;background:#3C3489;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#3C3489;">0.65 ⚠</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-oli">OLI</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:42%;background:#0C447C;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#0C447C;">0.42</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-lpi">LPI_net</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:25%;background:#633806;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#633806;">−0.15</span>
+</div>
+<div class="coord-item">
+<span class="coord-label"><span class="tag tag-cfd">CFD</span></span>
+<div class="coord-bar-wrap"><div class="coord-bar" style="width:72%;background:#712B13;opacity:.7;"></div></div>
+<span class="coord-num" style="color:#712B13;">0.72</span>
+</div>
+<div style="margin-top:8px;font-size:10px;color:#888;">BRI: 5.2 · SSI: 3.8 · GPI: 1.927 · F_reach: 0.64</div>
+<div style="margin-top:4px;font-size:10px;color:#1A6B3A;font-family:'JetBrains Mono',monospace;">★ Entered Σ 0.65 danger zone — post-revolution re-accumulation</div>
+</div>
+</div>
+<div class="formula-box">
+<div class="formula-title">Λ¹² v9.11 §30 — Direction-Adjusted Independent Axis Formula (Confirmed 2026-04-29)</div>
+<div class="formula-eq">Λ-Score = Σ(get_w(norm_i)) / 12 / 1.29</div>
+<div class="formula-note">
+    Eight stability-direction variables (SSI·SR·GPI·OLI·LPI·HDI·CPI·F_reach) → calculated after (1-v) inversion.<br/>
+    OLI: Sri Lanka 0.58 · Bhutan 0.55 · Bangladesh 0.42 — Equivalence condition ±0.10 not met → directional reading prioritized.<br/>
+<strong>Bangladesh OLI 0.42:</strong> Revolutionary transition period — limited reliability of official statistics. Strongest application of Goodhart's Law.
+  </div>
+</div>
+ ══ Ⅴ Radar SVG ══ 
+<div class="sec-title">Ⅴ  Λ¹² 12-Index Radar — Three-Country Overlay (Direction Adjustment Applied)</div>
+<div class="radar-wrap">
+<div class="radar-title">Λ¹² 12-Index Radar — Three South Asian Countries (Inversion Applied after Normalization)</div>
+<div style="display:flex;justify-content:center;">
+<svg height="420" viewbox="0 0 520 420" width="520" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(260,210)">
+ Zone Background Circles 
+<circle fill="#FCEBEB" fill-opacity="0.15" r="160"></circle>
+<circle fill="#FFF3E0" fill-opacity="0.2" r="104"></circle>
+<circle fill="#E8F5E9" fill-opacity="0.3" r="64"></circle>
+ Concentric Circles 
+<circle fill="none" r="40" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" r="80" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" opacity="0.6" r="104" stroke="#BA7517" stroke-dasharray="3,3" stroke-width="0.8"></circle>
+<circle fill="none" r="120" stroke="#DDD8CE" stroke-width="1"></circle>
+<circle fill="none" opacity="0.5" r="160" stroke="#E24B4A" stroke-dasharray="5,3" stroke-width="1"></circle>
+ Axes 
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="0" y1="0" y2="-160"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="80" y1="0" y2="-139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="139" y1="0" y2="-80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="160" y1="0" y2="0"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="139" y1="0" y2="80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="80" y1="0" y2="139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="0" y1="0" y2="160"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-80" y1="0" y2="139"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-139" y1="0" y2="80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-160" y1="0" y2="0"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-139" y1="0" y2="-80"></line>
+<line stroke="#DDD8CE" stroke-width="1" x1="0" x2="-80" y1="0" y2="-139"></line>
+ Grids 
+<text fill="#aaa" font-family="JetBrains Mono" font-size="8" x="5" y="-42">0.25</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="8" x="5" y="-82">0.5</text>
+<text fill="#aaa" font-family="JetBrains Mono" font-size="8" x="5" y="-122">0.75</text>
+ Zone Labels 
+<text fill="#E24B4A" font-family="JetBrains Mono" font-size="7" opacity="0.7" x="118" y="4">Danger</text>
+<text fill="#BA7517" font-family="JetBrains Mono" font-size="7" opacity="0.7" x="76" y="4">Watch</text>
+ Axis Labels 
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="0" y="-172">BRI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="88" y="-150">SSI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="150" y="-86">SR</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="168" y="4">GPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="150" y="92">TBI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="start" x="88" y="155">Σ</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="0" y="178">OLI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-92" y="155">LPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-154" y="92">CFD</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-172" y="4">HDI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-154" y="-86">CPI</text>
+<text fill="#3A6A5E" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="end" x="-92" y="-150">F_reach</text>
+
+          Direction-Adjusted Normalized Values (after applying 1-v):
+          Sri Lanka: BRI0.35,SSI0.42,SR0.58,GPI0.52,TBI0.68,Σ0.45,OLI0.42,LPI0.48,CFD0.62,HDI0.22,CPI0.64,Freach0.38
+          Bhutan:     BRI0.18,SSI0.72,SR0.75,GPI0.85,TBI0.22,Σ0.30,OLI0.45,LPI0.82,CFD0.28,HDI0.32,CPI0.28,Freach0.42
+          Bangladesh:BRI0.52,SSI0.38,SR0.62,GPI0.42,TBI0.78,Σ0.65,OLI0.58,LPI0.35,CFD0.72,HDI0.33,CPI0.75,Freach0.36
+        
+ Sri Lanka (Dark Red) 
+<polygon fill="#8B1A1A" fill-opacity="0.15" points="
+          0,-56
+          60,-43
+          139,-55
+          83,0
+          168,122
+          72,53
+          0,67
+          -54,44
+          -84,62
+          -35,0
+          -165,-56
+          -63,-71
+        " stroke="#8B1A1A" stroke-opacity="0.85" stroke-width="2"></polygon>
+ Bhutan (Gold) 
+<polygon fill="#D4861A" fill-opacity="0.15" points="
+          0,-29
+          102,-73
+          179,-68
+          136,0
+          54,40
+          48,35
+          0,72
+          -93,80
+          -38,22
+          -51,0
+          -72,-22
+          -42,-38
+        " stroke="#D4861A" stroke-opacity="0.85" stroke-width="2"></polygon>
+ Bangladesh (Green) 
+<polygon fill="#1A6B3A" fill-opacity="0.15" points="
+          0,-83
+          54,-39
+          149,-55
+          67,0
+          193,140
+          104,76
+          0,93
+          -40,32
+          -97,71
+          -53,0
+          -194,-47
+          -47,-41
+        " stroke="#1A6B3A" stroke-dasharray="7,3" stroke-opacity="0.85" stroke-width="2.5"></polygon>
+<circle cx="0" cy="0" fill="#5E9186" r="3"></circle>
+</g>
+</svg>
+</div>
+<div class="radar-legend">
+<div class="radar-legend-item"><div class="radar-dot" style="background:#8B1A1A;"></div><span>🇱🇰 Sri Lanka</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#D4861A;"></div><span>🇧🇹 Bhutan</span></div>
+<div class="radar-legend-item"><div class="radar-dot" style="background:#1A6B3A;border:1px dashed;"></div><span>🇧🇩 Bangladesh (Dotted Line=Revolutionary Transition Period)</span></div>
+</div>
+<div style="margin-top:10px;font-size:10.5px;color:#888;text-align:center;line-height:1.7;">
+    ※ Direction-adjusted v9.11 applied — 8 stability-direction variables inverted (1-v) then normalized. Higher value = dangerous direction.<br/>
+    Red dotted circle = Danger zone (0.65↑) · Orange dotted circle = Watch zone (0.40↑). Bhutan's small area = Stable structure.
+  </div>
+</div>
+<!-- ══ PPR-5 ══ -->
+ Ⅶ Political 
+<div class="sec-title">Ⅶ  PPR-1 Politics (Political)</div>
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head lk">🇱🇰 Sri Lanka</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">Dissanayake (NPP) left-wing coalition inaugurated in 2024. First-ever left-wing president. Attempting to expand welfare while maintaining the IMF reform path.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;"><span class="tag tag-sig">Σ 0.45</span> — decline in leader-mass disconnect during recovery. Increased public involvement after the 2022 shock. CPI 36 (105th) — structural corruption still remains.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Moving in Q1 direction: rising SR · falling Σ — signal of healthy resistance. Maintaining IMF reform continuity is key.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bt">🇧🇹 Bhutan</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">Constitutional monarchy. Strong trust based on King Jigme Khesar. Parliamentary system (Prime Minister Tshering Tobgay re-elected in 2024). GNH Commission reviews all policies.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;"><span class="tag tag-sig">Σ 0.30</span> — lowest among the three countries. Royal family-masses trust structure. CPI 72 (22nd) highest in South Asia. Solid foundation of political stability. LPI_net +0.18 highest.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Highest political indicators. Vulnerabilities are economic reality and youth emigration. Risk that political stability conceals economic problems.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bd">🇧🇩 Bangladesh</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">Yunus transitional government Aug 2024~. Arrest warrant for Hasina + staying in India. Election schedule unclear. Parliament remains dissolved.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;"><span class="tag tag-sig">Σ 0.65</span> ⚠ Entered danger zone. LPI_net −0.15: gap between Yunus's image and actual governance. CFD rose to 0.72 due to increased pressure for Islamization.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Revolution temporarily lowered Σ, but it is re-rising. Governance without elections → legitimacy void → Σ approaching threshold. Year 2025 is the turning point.</div>
+</div>
+</div>
+</div>
+ Ⅷ Economic 
+<div class="sec-title">Ⅷ  PPR-2 Economic (Economic)</div>
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head lk">🇱🇰 Sri Lanka</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">GDP +5.0%(2024) recovery. Passed IMF EFF $2.9 billion 3rd review. Debt restructuring 98% completed. Tourism recovery — 2025 visitors expected to hit an all-time high.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;">Debt/GDP 104.6% — structural vulnerability. Poverty rate 24.5% (double that of 2019). Colombo stock market surged 200% (2023~). Foreign exchange reserves recovered to $6.1 billion.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Recovery speed is impressive, but the PWT-r of the poor is low. Speed gap between financial recovery vs. livelihood recovery. Hormuz conflict — Colombo port benefits from diversion.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bt">🇧🇹 Bhutan</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">GDP +5.2%(2025). Three axes of hydropower, tourism, and agriculture. 90% of hydropower exported to India — single dependency structure. Goal of quadrupling GDP by 2034.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;">GDP per capita $12,100. Debt/GDP ~115% — due to hydropower investment. Labor force decrease due to 10% youth migration. India dependency makes F_reach I vulnerable.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Tension between GNH philosophy and economic reality: Happiness is measured, but there are no jobs. Youth departure is the greatest threat to long-term growth potential.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bd">🇧🇩 Bangladesh</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">GDP 2.3%(2025) — plummeted from 6.1% in 2023. Single dependency with garment exports at 84% of GDP. Inflation 12% · Food 16%.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;">Foreign exchange reserves $14.5 billion (2025.07) — plummeted from $33 billion in 2022. Youth unemployment 28%, the highest in South Asia. US 19% tariff hits garments. Remittances decreased by 11%.</div>
+<div class="ppr-stack-label">Result</div>
+<div>The revolution has made the economy worse. The strength of F_reach S (self-sufficiency) of 0.72 is offset by the deficit of D (distribution) of 0.48. The poor are paying the price of the revolution.</div>
+</div>
+</div>
+</div>
+ Ⅸ Social+F_reach 
+<div class="sec-title">Ⅸ  PPR-3 Social (Social) + F_reach</div>
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head lk">🇱🇰 Sri Lanka</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">F_reach Diagnosis</div>
+<div style="margin-bottom:8px;">
+        F_reach ≈ (0.68×0.62×0.55)^⅓ ≈ <strong>0.62</strong> ⭐⭐⭐☆<br/>
+<span class="freach-s">S Self-sufficiency 0.68</span>: Agricultural powerhouse in rice, coconuts, tea, and rubber. Temporarily hit by the 2022 fertilizer ban, then recovered.<br/>
+<span class="freach-i">I Import Stability 0.62</span>: Hormuz conflict → paradox of Colombo port benefit.<br/>
+<span class="freach-d">D Distribution 0.55</span>: Poverty rate 24.5% — imbalance in the distribution of recovery fruits.
+      </div>
+<div class="ppr-stack-label">Social Indicators</div>
+<div>HDI 0.780. Education and healthcare levels are among the highest in South Asia. Tamil-Sinhalese ethnic tension structure remains. CFD 0.62.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bt">🇧🇹 Bhutan</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">F_reach Diagnosis</div>
+<div style="margin-bottom:8px;">
+        F_reach ≈ (0.72×0.45×0.58)^⅓ ≈ <strong>0.58</strong> ⭐⭐☆☆<br/>
+<span class="freach-s">S Self-sufficiency 0.72</span>: National goal of 100% organic. Self-sufficiency in potatoes, rice, and vegetables. Strength in small-scale farming.<br/>
+<span class="freach-i">I Import Stability 0.45</span>: 90% food dependency on India — the greatest vulnerability of F_reach.<br/>
+<span class="freach-d">D Distribution 0.58</span>: Logistics in a small state are good. However, accessibility to remote mountainous areas is limited.
+      </div>
+<div class="ppr-stack-label">Social Indicators</div>
+<div>HDI 0.681. GNH 0.781 — the gap between the two indices shows the 'difference in measurement dimensions.' Youth migration threatens to reduce remittances that support D.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bd">🇧🇩 Bangladesh</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">F_reach Diagnosis</div>
+<div style="margin-bottom:8px;">
+        F_reach ≈ (0.72×0.68×0.48)^⅓ ≈ <strong>0.64</strong> ⭐⭐⭐☆<br/>
+<span class="freach-s">S Self-sufficiency 0.72</span>: 3rd largest producer of rice in the world. Powerhouse in fisheries and vegetables.<br/>
+<span class="freach-i">I Import Stability 0.68</span>: Appropriate diversification. Vulnerability in import dependency of cooking oil.<br/>
+<span class="freach-d">D Distribution 0.48</span>: 16% inflation + revolutionary chaos hit D directly. The poor are hit first.
+      </div>
+<div class="ppr-stack-label">Social Indicators</div>
+<div>HDI 0.670. Mob violence increased by 1,250%. Continuous attacks on Hindu minorities. CFD 0.72 — Islamic-Hindu / secular-Islamist fault line.</div>
+</div>
+</div>
+</div>
+ Ⅹ Environment 
+<div class="sec-title">Ⅹ  PPR-4 Environmental (Environmental)</div>
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head lk">🇱🇰 Sri Lanka</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">2021 full transition to organic farming (fertilizer import ban) → agricultural production plummeted 40% → food crisis worsened. Recovering after the 2022 policy reversal.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;">Climate vulnerability: Repeated monsoon droughts and floods. Coral reef damage. Environmental investment reduced due to foreign debt crisis. However, the share of renewable energy is increasing.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Lesson from the failed organic farming experiment: Ideology-driven environmental policy conflicts with food security. A paradoxical case of damaging F_reach S.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bt">🇧🇹 Bhutan</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">Constitutionally mandates maintaining over 60% forest cover. Carbon Negative country — absorption &gt; emissions. Core of the GNH environmental domain.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;">Glacier retreat — long-term threat to hydropower due to climate change. Himalayan ecosystem changes. Risk of glacial lake outburst floods (GLOF).</div>
+<div class="ppr-stack-label">Result</div>
+<div>The world's top environmental role model but a victim of climate change — the paradox of emitting the least carbon yet being affected first.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bd">🇧🇩 Bangladesh</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">One of the 10 countries most vulnerable to climate change. 17% of the territory threatened with inundation due to sea level rise. Cyclones and floods repeat every year.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;">2025 cyclone hit directly in November — lowest export growth. Salinity intrusion in the Mekong Delta. Bangladesh climate refugees are already at the level of millions.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Climate shocks repeatedly damage F_reach S. Simultaneous shocks of political chaos + climate crisis — composite vulnerability at its peak. Climate adaptation funds are blocked by political chaos.</div>
+</div>
+</div>
+</div>
+ Ⅺ Governance 
+<div class="sec-title">Ⅺ  PPR-5 Governance (Governance)</div>
+<div class="ppr-grid">
+<div class="ppr-card">
+<div class="ppr-card-head lk">🇱🇰 Sri Lanka</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">Prosecution of the Rajapaksa clan underway. Dissanayake government's anti-corruption pledge. CPI 36 (105th) — room for improvement.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;"><span class="tag tag-lpi">LPI_net +0.08</span>: Slightly positive — a sign of actual reform. IMF-conditional governance improvements. However, judicial independence is still weak.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Governance on a recovery path. Key variable: Whether accountability for the 2022 shock is finalized. Economic recovery without structural reform risks recurrence.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bt">🇧🇹 Bhutan</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">CPI 72 (22nd) — 1st in South Asia, world-class. The GNH governance domain functions in actual policy evaluation. Trust in royal leadership is high.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;"><span class="tag tag-lpi">LPI_net +0.18</span>: Highest among the three countries. King's direct communication structure with the public. OLI 0.55 — risk of observation bias in the GNH's own statistical system.</div>
+<div class="ppr-stack-label">Result</div>
+<div>Governance indicators outstanding. Goodhart's law applied: Need to distinguish whether GNH indexation is actual governance improvement or just indicator management. Youth departure blocks policy feedback.</div>
+</div>
+</div>
+<div class="ppr-card">
+<div class="ppr-card-head bd">🇧🇩 Bangladesh</div>
+<div class="ppr-card-body">
+<div class="ppr-stack-label">Process</div>
+<div style="margin-bottom:8px;">CPI 25 (151st) — Hasina's corrupt structures remain. Yunus government's reform declarations but lack of executive power. Non-fulfillment of the promise to repeal the Cybersecurity Act.</div>
+<div class="ppr-stack-label">Phenomenon</div>
+<div style="margin-bottom:8px;"><span class="tag tag-lpi">LPI_net −0.15</span>: Image cost &gt; actual capacity. Loss of trust due to neglect of mob violence. Military street patrols = evidence of a governance vacuum.</div>
+<div class="ppr-stack-label">Result</div>
+<div>The revolution worsened governance — this is the prediction of Pareto's circulation of elites theory. Revolution without structure only changes the name.</div>
+</div>
+</div>
+</div>
+ ══ ⅩII Six-Layer Discourse ══ 
+<div class="sec-title">ⅩII  Six-Layer Discourse — 3-Country Parallel</div>
+<div class="three-grid">
+<div class="layer-card">
+<div class="layer-card-head lk">🇱🇰 Sri Lanka</div>
+<div class="layer-row"><span class="layer-num">①</span><span class="layer-text"><strong>Data:</strong> GDP+5% · CPI 36 · Debt 104.6% · Poverty 24.5%</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span class="layer-text"><strong>Structure:</strong> Dependence on exports (tea, tourism, garments) + geopolitical buffer between China and India.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span class="layer-text"><strong>Pattern:</strong> 2001 debt crisis → 2022 default repeated. Risk of repeating growth without structural reform.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span class="layer-text"><strong>Perspective:</strong> External: Model IMF recovery case. Internal: "We pay the debt, but the rich remain the same."</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span class="layer-text"><strong>Frame:</strong> "Economic recovery success" vs "Livelihood recovery failure" — two narratives coexist.</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span class="layer-text" style="color:#B8850E;"><strong>Judgment:</strong> The people who swam in the square in 2022 — where their anger is now determines the next trajectory.</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head bt">🇧🇹 Bhutan</div>
+<div class="layer-row"><span class="layer-num">①</span><span class="layer-text"><strong>Data:</strong> GNH 0.781 · CPI 72 · GPI 17th · Youth migration 10%</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span class="layer-text"><strong>Structure:</strong> Buddhist kingdom + GNH philosophy + India-dependent economy.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span class="layer-text"><strong>Pattern:</strong> The paradox that the more happiness is measured, the more youth leave. Expulsion of ethnic Nepalis in the 1990s — GNH's selective inclusion.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span class="layer-text"><strong>Perspective:</strong> External: Model case of the kingdom of happiness. Internal: "An Australian visa is more real than the happiness index."</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span class="layer-text"><strong>Frame:</strong> "GNH is a true development model" vs "Small state illusion — cannot exist without India."</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span class="layer-text" style="color:#B8850E;"><strong>Judgment:</strong> Is happiness something that is measured, or is it something beyond measurement? Bhutan is closest to that question.</span></div>
+</div>
+<div class="layer-card">
+<div class="layer-card-head bd">🇧🇩 Bangladesh</div>
+<div class="layer-row"><span class="layer-num">①</span><span class="layer-text"><strong>Data:</strong> Λ 0.428 · GDP 2.3% · Violence 1,250%↑ · Unemployment 28%</span></div>
+<div class="layer-row"><span class="layer-num">②</span><span class="layer-text"><strong>Structure:</strong> Garment single economy + AL-BNP hostile two parties + Islamization pressure.</span></div>
+<div class="layer-row"><span class="layer-num">③</span><span class="layer-text"><strong>Pattern:</strong> 1971 independence → military dictatorship → democratization → authoritarianism → revolution. The structure repeats.</span></div>
+<div class="layer-row"><span class="layer-num">④</span><span class="layer-text"><strong>Perspective:</strong> External: World's first successful Generation Z revolution. Internal: "My friend died, but nothing has changed."</span></div>
+<div class="layer-row"><span class="layer-num">⑤</span><span class="layer-text"><strong>Frame:</strong> "Revolution is the beginning" vs "The revolution was a prelude to another dictatorship."</span></div>
+<div class="layer-row"><span class="layer-num">⑥</span><span class="layer-text" style="color:#B8850E;"><strong>Judgment:</strong> Gramsci said that if a revolution fails to change the hegemony, only the name changes. Bangladesh is currently undergoing that experiment.</span></div>
+</div>
+</div>
+ ══ ⅩⅢ Phase Space SVG ══ 
+<div class="sec-title">ⅩⅢ  Phase Space — SR-Σ Quadrant (9-Country Integration)</div>
+<div class="phase-wrap">
+<div class="phase-title">SR-Σ Phase Quadrant — 6 Southeast Asian Countries + 3 South Asian Countries</div>
+<div class="phase-sub">SR: Social Resistance Index · Σ: Phase Singularity · Σ≥0.70 = Critical Risk</div>
+<svg height="360" viewbox="0 0 620 360" width="100%" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#E8F5E9" height="155" opacity="0.4" rx="4" width="250" x="40" y="20"></rect>
+<rect fill="#FFF3E0" height="155" opacity="0.4" rx="4" width="290" x="290" y="20"></rect>
+<rect fill="#E3F2FD" height="165" opacity="0.4" rx="4" width="250" x="40" y="175"></rect>
+<rect fill="#FCE4EC" height="165" opacity="0.4" rx="4" width="290" x="290" y="175"></rect>
+<text fill="#2E7D32" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="165" y="40">Q1: Healthy Resistance</text>
+<text fill="#E65100" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="435" y="40">Q2: Pseudo-Stability</text>
+<text fill="#1565C0" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="165" y="192">Q3: Open Conflict</text>
+<text fill="#880E4F" font-family="JetBrains Mono" font-size="9" font-weight="700" text-anchor="middle" x="435" y="192">Q4: Regime Crisis</text>
+<line stroke="#999" stroke-width="1.5" x1="40" x2="40" y1="20" y2="340"></line>
+<line stroke="#999" stroke-width="1.5" x1="40" x2="580" y1="340" y2="340"></line>
+<line stroke="#999" stroke-dasharray="5,3" stroke-width="1" x1="290" x2="290" y1="20" y2="340"></line>
+<line stroke="#999" stroke-dasharray="5,3" stroke-width="1" x1="40" x2="580" y1="175" y2="175"></line>
+<line opacity="0.7" stroke="#E53935" stroke-dasharray="8,4" stroke-width="1.5" x1="40" x2="580" y1="111" y2="111"></line>
+<text fill="#E53935" font-family="JetBrains Mono" font-size="7.5" x="584" y="115">Σ=0.70</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" x="40" y="354">SR0.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" text-anchor="middle" x="290" y="354">SR0.5</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" x="575" y="354">SR1.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="30" y="24">Σ1.0</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="30" y="175">Σ0.5</text>
+<text fill="#666" font-family="JetBrains Mono" font-size="9" text-anchor="end" x="30" y="340">Σ0.0</text>
+ Coordinate Calculation: x=40+SR*540, y=340-Σ*320 
+ 6 Southeast Asian Countries (Gray Semi-Transparent) 
+<circle cx="245" cy="206" fill="#005496" fill-opacity="0.15" r="12" stroke="#005496" stroke-width="1.5"></circle>
+<text font-size="11" text-anchor="middle" x="245" y="210">🇲🇾</text>
+<circle cx="321" cy="154" fill="#CC0001" fill-opacity="0.15" r="13" stroke="#CC0001" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="321" y="158">🇮🇩</text>
+<circle cx="191" cy="138" fill="#E87722" fill-opacity="0.15" r="12" stroke="#E87722" stroke-width="1.5"></circle>
+<text font-size="11" text-anchor="middle" x="191" y="142">🇻🇳</text>
+<circle cx="299" cy="164" fill="#0038A8" fill-opacity="0.15" r="13" stroke="#0038A8" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="299" y="168">🇵🇭</text>
+<circle cx="137" cy="110" fill="#8B1A1A" fill-opacity="0.15" r="13" stroke="#8B1A1A" stroke-width="1.5"></circle>
+<text font-size="11" text-anchor="middle" x="137" y="114">🇰🇭</text>
+<circle cx="283" cy="122" fill="#A51931" fill-opacity="0.15" r="14" stroke="#A51931" stroke-dasharray="5,3" stroke-width="1.5"></circle>
+<text font-size="12" text-anchor="middle" x="283" y="126">🇹🇭</text>
+ 3 South Asian Countries (Vivid) 
+ Sri Lanka SR0.42 Σ0.45 → x=267, y=196 
+<circle cx="267" cy="196" fill="#8B1A1A" fill-opacity="0.25" r="16" stroke="#8B1A1A" stroke-width="2.5"></circle>
+<text font-size="13" text-anchor="middle" x="267" y="200">🇱🇰</text>
+<text fill="#8B1A1A" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="267" y="185">LK.42/.45</text>
+ Bhutan SR0.25 Σ0.30 → x=175, y=244 
+<circle cx="175" cy="244" fill="#D4861A" fill-opacity="0.25" r="14" stroke="#D4861A" stroke-width="2.5"></circle>
+<text font-size="12" text-anchor="middle" x="175" y="248">🇧🇹</text>
+<text fill="#D4861A" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="175" y="262">BT.25/.30</text>
+ Bangladesh SR0.62 Σ0.65 → x=375, y=132 
+<circle cx="375" cy="132" fill="#1A6B3A" fill-opacity="0.25" r="17" stroke="#1A6B3A" stroke-width="2.5"></circle>
+<text font-size="13" text-anchor="middle" x="375" y="136">🇧🇩</text>
+<text fill="#1A6B3A" font-family="JetBrains Mono" font-size="8" font-weight="700" text-anchor="middle" x="375" y="120">BD.62/.65⚠</text>
+<path d="M375,118 L375,100" marker-end="url(#arr3)" stroke="#E53935" stroke-width="1.5"></path>
+<defs><marker id="arr3" markerheight="6" markerwidth="6" orient="auto" refx="3" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#E53935"></path></marker></defs>
+<text dy="12" fill="#555" font-family="JetBrains Mono" font-size="8" x="40" y="354">★ Bangladesh Σ0.65 Threshold Approach · Bhutan Q1 Healthy Zone · Sri Lanka Q1 Recovery Path · 6 Countries Semi-Transparent=Southeast Asia</text>
+</svg>
+</div>
+ ══ ⅩⅣ Margin of Error ══ 
+<div class="sec-title">ⅩⅣ  Margin of Error — §1-C Quantification Boundary</div>
+<div class="three-grid">
+<div class="err-card">
+<div class="err-head lk">🇱🇰 Sri Lanka</div>
+<div class="err-item">· OLI 0.58 — Moderate reliability of recovery process statistics. Passed IMF review = Partial validation.</div>
+<div class="err-item">· TBI 0.68 — Civil war trauma + 2022 shock overlap. Limits of intergenerational transmission measurement.</div>
+<div class="err-item">· Sudden coordinate change before vs. after 2022 — Time-series volatility is high.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.10</div>
+</div>
+<div class="err-card">
+<div class="err-head bt">🇧🇹 Bhutan</div>
+<div class="err-item">· OLI 0.55 — GNH's own statistical system differs from the universal OLI, presenting potential bias.</div>
+<div class="err-item">· GNH 0.781 itself has become a policy target — Strongest subject of Goodhart's Law application.</div>
+<div class="err-item">· Lhotshampa expulsion statistics undisclosed — Potential underestimation of TBI.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.12 (GNH-Λ dual measurement uncertainty)</div>
+</div>
+<div class="err-card">
+<div class="err-head bd">🇧🇩 Bangladesh</div>
+<div class="err-item">· OLI 0.42 — Lowest reliability of official statistics during the revolutionary transition period.</div>
+<div class="err-item">· Violence statistics bias: Large discrepancy in figures between pro-Hasina and anti-Hasina media.</div>
+<div class="err-item">· Λ-Score 0.428 is likely upwardly biased — Shock variables immediately after the revolution are unreflected.</div>
+<div class="err-item" style="color:#B8850E;">· Confidence Interval: ±0.16 (Maximum uncertainty of the transitional period)</div>
+</div>
+</div>
+ ══ ⅩⅤ Korean Peninsula Perspective ══ 
+<div class="sec-title">ⅩⅤ  South Asia Viewed from the Korean Peninsula</div>
+<div class="kr-box">
+<div class="kr-title">Korean Peninsula Perspective</div>
+<div class="kr-text">
+    Sri Lanka 2022 is a type of shock that Korea has never experienced. A situation where fuel and medicine are cut off simultaneously due to a foreign debt default. Yet, Korea also experienced the 1997 IMF crisis — the difference being that Korea already possessed a manufacturing base. The shadow of Korea 1997–2001 is visible in Sri Lanka's recovery path.
+    <br/><br/>
+    Bhutan is the country most different from Korea. The very idea of adopting happiness as a policy target conflicts with Korea's GDP growth paradigm. However, does Korea, with one of the world's highest youth suicide rates, have the right to mock Bhutan's GNH? — Let us leave this question as a detonator on the 3rd layer (history) of the Six-Layer Discourse.
+    <br/><br/>
+    Bangladesh revolution structurally resembles Korea's 1987 June Democratic Struggle. The youth generation brought down a dictatorship. However, Korea institutionalized democracy after 1987, while Bangladesh is still on that path. What that difference is — is pointed to by PWT-r.
+    <br/><br/>
+<strong>Supply Chain:</strong> Bangladesh is a core production hub for Korean apparel brands. If political instability persists, it directly links to the logistics risks of Korean companies.
+  </div>
+</div>
+ ══ Conclusion Trajectory ══ 
+<div class="sec-title">Conclusion Trajectory — What the Three Extremes Show</div>
+<div class="conclusion">
+<div class="conclusion-title">Default, Happiness, Revolution — Answering the same question in their own grammar</div>
+<div class="conclusion-text">
+    Sri Lanka collapsed and stood back up. If there is anything learned in that process — it is that surface-level stability is not an indicator. The time when SR is low is the most dangerous.<br/>
+    Bhutan measures happiness. However, the youth leaving happiness are not measured. Things outside of numbers sometimes say much more.<br/>
+    Bangladesh had a revolution. The structure did not change its name. What is needed for a revolution to change the hegemony?<br/><br/>
+    The three countries pose the same question in their own different ways:<br/>
+<em>Does the leader's virtue reach the people? What blocks it?</em><br/><br/>
+    Λ¹² does not answer that question. It only makes that question more visible.
+  </div>
+</div>
+ ══ Series · Drive Box ══ 
+<div class="series-box">
+<div class="series-title">Everblue Sea Λ¹² Country Series</div>
+<div class="series-list">
+<span class="series-item done">#9 USA v2.0</span>
+<span class="series-item done">#10 Botswana v1.1</span>
+<span class="series-item done">#11 Southeast Asia Comparison I (Malaysia·Indonesia·Vietnam)</span>
+<span class="series-item done">#12 Southeast Asia Comparison II (Philippines·Cambodia·Thailand)</span>
+<span class="series-item current">#13 South Asia Comparison I (Sri Lanka·Bhutan·Bangladesh)</span>
+<span class="series-item">UK Edition (Planned)</span>
+<span class="series-item">India Edition (Planned)</span>
+</div>
+</div>
+ ══ Footer ══ 
+<div class="footer">
+<strong>Everblue Sea Institute for Social Dynamics</strong> · Everblue Sea Institute for Social Dynamics<br/>
+<a href="https://badaegopa.tistory.com">badaegopa.tistory.com</a>  · 
+  SSRN Abstract ID 6509200  · 
+  Slogan: Beyond Analysis, to Reassembly / Not analysis, but synthesis.<br/>
+<br/>
+<span style="font-size:10px;opacity:.6;">
+    Λ¹² v9.11 Engine · §30 First Official Application of Λ-Score and PWT-r · 2026-04-29<br/>
+    Data: GPI 2025(IEP) · CPI 2025(TI) · WB/IMF 2025 · UNDP HDR 2025 · WFP · RSF 2025<br/>
+    OLI Equivalence Unmet (0.58·0.55·0.42) — Directional and pattern reading recommended. Goodhart's Law applied to Bhutan.<br/>
+    Cheonghae (淸海) © 2026 · Unauthorized reproduction prohibited
+  </span>
+</div>
+</body>
+</html>

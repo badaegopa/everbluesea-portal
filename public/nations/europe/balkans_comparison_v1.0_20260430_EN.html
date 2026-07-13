@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Balkans Comparison v1.0 — Comparison of Serbia, Croatia, and Bosnia Λ¹²</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: #F5F3EE;
+  color: #2C2C2C;
+  font-family: Georgia, 'Batang', serif;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #7BADA0 0%, #5E9186 55%, #3A6A5E 100%);
+  padding: 50px 36px 42px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: 'Балкан';
+  position: absolute;
+  right: 24px; top: 16px;
+  font-size: 64px;
+  color: rgba(255,255,255,0.08);
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.16);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  font-family: 'Courier New', monospace;
+}
+.hero-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.hero-sub {
+  color: rgba(255,255,255,0.80);
+  font-size: 14px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-tag {
+  background: rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── CONTAINER ── */
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 22px 64px;
+}
+
+/* ── WARNING BANNER ── */
+.warn {
+  background: #FFF8E7;
+  border-left: 4px solid #B8850E;
+  padding: 14px 20px;
+  margin: 28px 0 0;
+  border-radius: 0 4px 4px 0;
+}
+.warn-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #B8850E;
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+  font-family: 'Courier New', monospace;
+}
+.warn p { font-size: 13px; color: #5C4200; line-height: 1.7; }
+
+/* ── SECTION ── */
+.sec-label {
+  display: inline-block;
+  background: #5E9186;
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-top: 44px;
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+.sec-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #2C2C2C;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #DDD8CE;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+.sec-title em { color: #5E9186; font-style: normal; }
+
+/* ── PROSE ── */
+.prose { font-size: 15px; line-height: 1.95; color: #333; margin-bottom: 14px; }
+.prose strong { color: #3A6A5E; }
+
+/* ── CARD ── */
+.card {
+  background: #fff;
+  border: 1px solid #DDD8CE;
+  border-radius: 6px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3A6A5E;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── NATION CARDS (3-col) ── */
+.ncards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 16px 0 22px;
+}
+.ncard {
+  background: #fff;
+  border: 1px solid #DDD8CE;
+  border-radius: 6px;
+  padding: 14px 14px 16px;
+  border-top: 4px solid #5E9186;
+}
+.ncard.srb { border-top-color: #B8850E; }
+.ncard.hrv { border-top-color: #5E9186; }
+.ncard.bih { border-top-color: #C0392B; }
+.ncard h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2C2C2C;
+  margin-bottom: 4px;
+}
+.ncard .nflag {
+  font-size: 10px;
+  color: #888;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.ncard .nstat {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #444;
+  font-family: 'Courier New', monospace;
+}
+.ncard .nstat b { color: #3A6A5E; }
+.ncard .nzone {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+.zone-watch  { background: #FFF8E7; color: #B8850E; }
+.zone-danger { background: #FBEBE8; color: #C0392B; }
+.zone-stable { background: #E9F4EE; color: #2A7A4F; }
+
+/* ── TABLE ── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+th {
+  background: #5E9186;
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+td { padding: 8px 12px; border-bottom: 1px solid #EEE9E2; vertical-align: top; line-height: 1.6; }
+tr:nth-child(even) td { background: #FAF8F4; }
+.danger { color: #C0392B; font-weight: 700; }
+.watch  { color: #B8850E; font-weight: 700; }
+.stable { color: #2A7A4F; font-weight: 700; }
+
+/* ── CODE / FORMULA BOX ── */
+.cbox {
+  background: #1E2227;
+  color: #E8E4DC;
+  font-family: 'Courier New', monospace;
+  font-size: 12.5px;
+  padding: 18px 22px;
+  border-radius: 4px;
+  margin: 14px 0;
+  line-height: 1.75;
+  overflow-x: auto;
+  white-space: pre;
+}
+.cg { color: #7BADA0; }
+.cy { color: #E8B84B; }
+.cr { color: #E07070; }
+.cc { color: #888; }
+
+/* ── QUOTE ── */
+.qblock {
+  border-left: 3px solid #B8850E;
+  padding: 10px 18px;
+  margin: 14px 0;
+  background: #FEFBF4;
+  font-style: italic;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.8;
+}
+.qsrc {
+  font-size: 11px;
+  color: #888;
+  margin-top: 5px;
+  font-style: normal;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── DIAGRAM WRAPPER ── */
+.diagwrap {
+  background: #fff;
+  border: 1px solid #DDD8CE;
+  border-radius: 6px;
+  padding: 22px 18px 18px;
+  margin: 16px 0;
+  text-align: center;
+}
+.diagwrap .dcap {
+  font-size: 11px;
+  color: #888;
+  margin-top: 10px;
+  font-family: 'Courier New', monospace;
+  line-height: 1.7;
+}
+.diagwrap .dlegend {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: #555;
+  justify-content: center;
+}
+.diagwrap .dlegend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.dleg-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ── DIVIDER ── */
+.div-gold {
+  text-align: center;
+  color: #B8850E;
+  font-size: 16px;
+  letter-spacing: 8px;
+  margin: 40px 0 20px;
+  opacity: 0.6;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: #3A6A5E;
+  color: rgba(255,255,255,0.80);
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 12px;
+  line-height: 2;
+  margin-top: 52px;
+}
+.footer .ft-title {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+</style>
+</head>
+<body>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-badge">ΛAMBDA¹² · Comparison #03 · Balkans</div>
+<div class="hero-title">Balkans Comparison — Same War, Different 30 Years<br/>Serbia · Croatia · Bosnia and Herzegovina</div>
+<div class="hero-sub">Western Balkans Λ¹² Comparative Audit | v9.11 | 2026-04-30</div>
+<div class="hero-tags">
+<span class="hero-tag">SRB Λ≈0.55 WATCH</span>
+<span class="hero-tag">HRV Λ≈0.32 WATCH-low</span>
+<span class="hero-tag">BIH Λ≈0.62 DANGER</span>
+<span class="hero-tag">Highest TBI in the Region</span>
+<span class="hero-tag">Dayton 30 Years</span>
+</div>
+</div>
+<div class="wrap">
+<!-- WARNING -->
+<div class="warn">
+<div class="warn-title">⚠ Comparison Notice</div>
+<p>This report is not a single-event tracking, but rather <b>the same war (1991–1995 Dissolution of Yugoslavia)</b>compares which Λ¹² coordinates the three countries that started from have reached 30 years later. The data combines Transparency International CPI 2025, UNDP HDI 2024, Freedom House, Vision of Humanity GPI, EU integration stages, and self-estimated Σ·CFD·TBI. Kosovo, Montenegro, North Macedonia, and Slovenia are covered in separate editions.</p>
+</div>
+ §0 Overview 
+<div class="sec-label">§0 · Overview</div>
+<div class="sec-title">Why View the Three Balkan Countries in the Same Table</div>
+<p class="prose">The dissolution of Yugoslavia, which began with the declarations of independence by Slovenia and Croatia on June 25, 1991, was sealed by the Dayton Peace Agreement on December 14, 1995. However, sealing was not resolving. <strong>The same war left different types of scars on the three societies,</strong>, and 30 years later, in 2026, the distribution of those scars determines the Λ¹² coordinates of the three countries.</p>
+<p class="prose">Croatia joined the EU, NATO, and the Eurozone (EU 2013, Euro 2023, Schengen 2023), while Bosnia has been trapped for 30 years in the <strong>three-ethnic veto structure created by Dayton,</strong>, and Serbia maintains its EU candidate status while wavering among Kosovo, Russia, and China. This report reads these three paths simultaneously through 12 variables.</p>
+ Three Countries Cards 
+<div class="ncards">
+<div class="ncard srb">
+<h4>Serbia / Србија</h4>
+<div class="nflag">SRB · Belgrade</div>
+<div class="nstat">
+<b>CPI:</b> 33 (2025)<br/>
+<b>HDI:</b> 0.802 (Very High)<br/>
+<b>GDP/cap:</b> ~$13,300<br/>
+<b>EU:</b> Candidate State (Stagnant)<br/>
+<b>NATO:</b> Non-member<br/>
+<b>Λ¹²:</b> 0.55
+    </div>
+<span class="nzone zone-watch">WATCH (Upper)</span>
+</div>
+<div class="ncard hrv">
+<h4>Croatia / Hrvatska</h4>
+<div class="nflag">HRV · Zagreb</div>
+<div class="nstat">
+<b>CPI:</b> 47 (2025)<br/>
+<b>HDI:</b> 0.858 (Very High)<br/>
+<b>GDP/cap:</b> ~$22,400<br/>
+<b>EU:</b> Member State (2013)<br/>
+<b>NATO:</b> Member State (2009)<br/>
+<b>Λ¹²:</b> 0.32
+    </div>
+<span class="nzone zone-stable">STABLE-WATCH</span>
+</div>
+<div class="ncard bih">
+<h4>Bosnia / Bosna i H.</h4>
+<div class="nflag">BIH · Sarajevo</div>
+<div class="nstat">
+<b>CPI:</b> 34 (2025)<br/>
+<b>HDI:</b> 0.780 (High)<br/>
+<b>GDP/cap:</b> ~$8,500<br/>
+<b>EU:</b> Candidate State (2022)<br/>
+<b>NATO:</b> MAP Stagnant<br/>
+<b>Λ¹²:</b> 0.62
+    </div>
+<span class="nzone zone-danger">DANGER</span>
+</div>
+</div>
+ §1 Diagram 1: 4-orbit 
+<div class="sec-label">§1 · Diagram ①</div>
+<div class="sec-title">4-Stage Phase Orbit — <em>Phase Orbit</em></div>
+<p class="prose">The Λ¹² phase orbit divides society into four concentric stages — Stable, Watch, Caution, and Danger. The three countries that started from the same war settled into different orbits 30 years later.</p>
+<div class="diagwrap">
+<svg height="480" viewbox="0 0 480 480" width="480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient cx="50%" cy="50%" id="orbBg" r="50%">
+<stop offset="0%" stop-color="#E9F4EE"></stop>
+<stop offset="40%" stop-color="#FAF8F4"></stop>
+<stop offset="100%" stop-color="#FBEBE8"></stop>
+</radialgradient>
+</defs>
+ Background Gradient 
+<circle cx="240" cy="240" fill="url(#orbBg)" opacity="0.55" r="210"></circle>
+ 4 Concentric Circles 
+<circle cx="240" cy="240" fill="none" r="60" stroke="#2A7A4F" stroke-dasharray="3 3" stroke-width="1.4"></circle>
+<circle cx="240" cy="240" fill="none" r="120" stroke="#5E9186" stroke-dasharray="3 3" stroke-width="1.4"></circle>
+<circle cx="240" cy="240" fill="none" r="170" stroke="#B8850E" stroke-dasharray="3 3" stroke-width="1.4"></circle>
+<circle cx="240" cy="240" fill="none" r="210" stroke="#C0392B" stroke-width="1.6"></circle>
+ Region Labels (12 o'clock) 
+<text fill="#C0392B" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="240" y="48">DANGER · Λ ≥ 0.60</text>
+<text fill="#B8850E" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="240" y="86">CAUTION · 0.45–0.60</text>
+<text fill="#5E9186" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="240" y="136">WATCH · 0.30–0.45</text>
+<text fill="#2A7A4F" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="240" y="186">STABLE · &lt; 0.30</text>
+ Center 
+<circle cx="240" cy="240" fill="#2C2C2C" r="6"></circle>
+<text fill="#666" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="240" y="262">YU 1990</text>
+ HRV (Watch-low, Λ=0.32, approx. 11 o'clock direction) 
+<line stroke="#5E9186" stroke-dasharray="2 4" stroke-width="1.2" x1="240" x2="170" y1="240" y2="135"></line>
+<circle cx="170" cy="135" fill="#5E9186" r="14" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="170" y="139">HR</text>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="10" font-weight="700" text-anchor="middle" x="170" y="115">Croatia 0.32</text>
+ SRB (Caution upper, Λ=0.55, 2 o'clock direction) 
+<line stroke="#B8850E" stroke-dasharray="2 4" stroke-width="1.2" x1="240" x2="380" y1="240" y2="155"></line>
+<circle cx="380" cy="155" fill="#B8850E" r="14" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="380" y="159">RS</text>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="10" font-weight="700" text-anchor="middle" x="380" y="138">Serbia 0.55</text>
+ BIH (Danger, Λ=0.62, 5 o'clock direction) 
+<line stroke="#C0392B" stroke-dasharray="2 4" stroke-width="1.2" x1="240" x2="375" y1="240" y2="370"></line>
+<circle cx="375" cy="370" fill="#C0392B" r="15" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="375" y="374">BA</text>
+<text fill="#A32D2D" font-family="'Courier New', monospace" font-size="10" font-weight="700" text-anchor="middle" x="375" y="395">Bosnia 0.62</text>
+ Time-series Arrow (1995 → 2026) 
+<path d="M 240 240 Q 200 200 170 135" fill="none" stroke="#5E9186" stroke-dasharray="1 3" stroke-width="0.7"></path>
+<path d="M 240 240 Q 320 200 380 155" fill="none" stroke="#B8850E" stroke-dasharray="1 3" stroke-width="0.7"></path>
+<path d="M 240 240 Q 320 320 375 370" fill="none" stroke="#C0392B" stroke-dasharray="1 3" stroke-width="0.7"></path>
+ Bottom-left Memo 
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" x="20" y="460">Origin: Yugoslavia, 1990</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="460" y="460">Snapshot: 2026.04</text>
+</svg>
+<div class="dcap">
+  Diagram ① · 4-Phase Orbit · Λ¹² v9.11<br/>
+  Croatia exited to WATCH-low; Serbia drifted to CAUTION; Bosnia anchored in DANGER.
+</div>
+</div>
+ §2 12-Axis Table 
+<div class="sec-label">§2 · 12-Axis Comparison</div>
+<div class="sec-title">Λ¹² 12 Variables — <em>Simultaneous Measurement of Three Countries</em></div>
+<div class="cbox"><span class="cc">─── Λ¹² v9.11 · Western Balkans 3 Countries (April 2026 Est.) ───</span>
+<span class="cc">Direction: Danger=1, Stable=0  |  Bold = Highest in Region</span>
+
+Variable    SRB     HRV     BIH    Key Difference
+──────────────────────────────────────────────────────
+<span class="cr">BRI</span>        0.55    0.30    0.62    BIH remittance-economy dependency, HRV Eurozone
+<span class="cr">SSI</span>        0.62    0.38    <span class="cy">0.85</span>   BIH 3-ethnic structural division
+<span class="cr">GPI</span>        0.60    0.25    0.65    HRV NATO safety net, RS separatism
+<span class="cr">SR</span>         0.45    0.30    0.55    HRV active civil society, BIH frustration
+<span class="cy">Σ</span> <span class="cy">0.72</span>   0.28    0.78   SRB one-man authoritarianism, BIH triumvirate paralysis
+<span class="cr">LPI_net</span>   0.45    0.25    0.55    HRV EU Single Market integration
+<span class="cr">OIP</span>      0.55    0.32    0.62    SRB retreat of press freedom
+<span class="cr">HCDI</span>     0.42    0.28    0.52    BIH low based on HDI
+<span class="cy">AMI</span>       0.50    0.20    0.55    HRV NATO lock-in, BIH OHR external protection
+<span class="cr">NI</span>        0.30    0.20    0.25    Common absence of nuclear weapons
+<span class="cr">CFD</span>      0.58    0.42    0.65    BIH card-ring capital flow
+<span class="cy">TBI</span>       0.68    0.52    <span class="cy">0.82</span>   BIH Srebrenica massacre remnants
+
+<span class="cc">──────────────────────────────────────────────────────</span>
+<span class="cc">Weighted Sum (Danger≥0.65: w2.0 / Watch≥0.40: w1.4 / Stable&lt;0.40: w0.6)</span>
+<span class="cy">Λ-Score :  SRB ≈ 0.55   HRV ≈ 0.32   BIH ≈ 0.62</span>
+<span class="cy">Zone    :  CAUTION       WATCH-low    DANGER</span>
+<span class="cc">PWT-r = 1 - Λ × β  (β = Alignment 0.40 + CFD 0.35 + (1-CPI) 0.25)</span>
+  β_SRB ≈ 0.62   PWT-r ≈ 0.66
+  β_HRV ≈ 0.42   PWT-r ≈ <span class="cg">0.87</span>
+  β_BIH ≈ 0.71   PWT-r ≈ 0.56
+</div>
+ §3 Diagram 2: 2x2 Phase Quadrant 
+<div class="sec-label">§3 · Diagram ②</div>
+<div class="sec-title">Phase Quadrant — <em>Σ × TBI Quadrant</em></div>
+<p class="prose">The two determining variables in the Balkans are <strong>Σ (Leader-People Disconnect)</strong> and <strong>TBI (Trauma Detonator Index)</strong>. Plotting the quadrant on two axes shows the 30-year divergence in a single sheet.</p>
+<div class="diagwrap">
+<svg height="440" viewbox="0 0 520 440" width="520" xmlns="http://www.w3.org/2000/svg">
+ Quadrant Background 
+<rect fill="#FFF8E7" height="160" opacity="0.7" width="200" x="60" y="40"></rect>
+<rect fill="#FBEBE8" height="160" opacity="0.7" width="200" x="260" y="40"></rect>
+<rect fill="#E9F4EE" height="160" opacity="0.7" width="200" x="60" y="200"></rect>
+<rect fill="#FFF8E7" height="160" opacity="0.7" width="200" x="260" y="200"></rect>
+ Quadrant Labels 
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="160" y="60">Q2 · HEALING</text>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="160" y="76">low Σ · high TBI</text>
+<text fill="#A32D2D" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="360" y="60">Q1 · BIFURCATION</text>
+<text fill="#A32D2D" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="360" y="76">high Σ · high TBI</text>
+<text fill="#2A7A4F" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="160" y="220">Q3 · STABLE</text>
+<text fill="#2A7A4F" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="160" y="236">low Σ · low TBI</text>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="360" y="220">Q4 · DRIFT</text>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="360" y="236">high Σ · low TBI</text>
+ Grids 
+<line stroke="#DDD8CE" stroke-width="0.8" x1="60" x2="460" y1="40" y2="40"></line>
+<line stroke="#888" stroke-width="1.5" x1="60" x2="460" y1="200" y2="200"></line>
+<line stroke="#DDD8CE" stroke-width="0.8" x1="60" x2="460" y1="360" y2="360"></line>
+<line stroke="#DDD8CE" stroke-width="0.8" x1="60" x2="60" y1="40" y2="360"></line>
+<line stroke="#888" stroke-width="1.5" x1="260" x2="260" y1="40" y2="360"></line>
+<line stroke="#DDD8CE" stroke-width="0.8" x1="460" x2="460" y1="40" y2="360"></line>
+ Axes 
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="12" font-weight="700" text-anchor="middle" x="260" y="395">Σ — leader/people gap →</text>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="12" font-weight="700" text-anchor="middle" transform="rotate(-90 30 200)" x="30" y="200">TBI — trauma fuse →</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" x="60" y="378">0.0</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="260" y="378">0.5</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="460" y="378">1.0</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="50" y="362">0.0</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="50" y="204">0.5</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="50" y="46">1.0</text>
+ Data Points 
+ Coordinates: x = 60 + Σ*400,  y = 360 - TBI*320 
+<!-- HRV: Σ=0.28, TBI=0.52 → x=172, y=194 -->
+<circle cx="172" cy="194" fill="#5E9186" r="14" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="172" y="198">HR</text>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="172" y="178">0.28 / 0.52</text>
+<!-- SRB: Σ=0.72, TBI=0.68 → x=348, y=142 -->
+<circle cx="348" cy="142" fill="#B8850E" r="14" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="348" y="146">RS</text>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="348" y="126">0.72 / 0.68</text>
+<!-- BIH: Σ=0.78, TBI=0.82 → x=372, y=98 -->
+<circle cx="372" cy="98" fill="#C0392B" r="15" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="372" y="102">BA</text>
+<text fill="#A32D2D" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="372" y="82">0.78 / 0.82</text>
+ Danger Contours (Diagonal) 
+<line opacity="0.5" stroke="#C0392B" stroke-dasharray="2 4" stroke-width="0.6" x1="60" x2="460" y1="360" y2="40"></line>
+<text fill="#C0392B" font-family="'Courier New', monospace" font-size="9" opacity="0.7" x="430" y="58">Σ+TBI=1.6</text>
+</svg>
+<div class="dcap">
+  Diagram ② · Σ × TBI Phase Quadrant<br/>
+  Croatia near Q3 boundary; Serbia &amp; Bosnia clustered in Q1 (BIFURCATION).
+</div>
+</div>
+ §4 Diagram 3: GPI Time-series 
+<div class="sec-label">§4 · Diagram ③</div>
+<div class="sec-title">GPI Time-series 1990–2025 — <em>Global Peace Index</em></div>
+<p class="prose">The peace index time-series shows the 30-year divergence in a single curve. Croatia stabilized rapidly after 1995, Bosnia has been stagnant since the mid-2000s, and Serbia rose again after Kosovo's declaration of independence in 2008.</p>
+<div class="diagwrap">
+<svg height="380" viewbox="0 0 600 380" width="600" xmlns="http://www.w3.org/2000/svg">
+ Grids 
+<line stroke="#EEE9E2" stroke-width="0.8" x1="60" x2="560" y1="50" y2="50"></line>
+<line stroke="#EEE9E2" stroke-width="0.8" x1="60" x2="560" y1="110" y2="110"></line>
+<line stroke="#EEE9E2" stroke-width="0.8" x1="60" x2="560" y1="170" y2="170"></line>
+<line stroke="#EEE9E2" stroke-width="0.8" x1="60" x2="560" y1="230" y2="230"></line>
+<line stroke="#888" stroke-width="1.2" x1="60" x2="560" y1="290" y2="290"></line>
+ Danger Zone 
+<rect fill="#C0392B" height="60" opacity="0.06" width="500" x="60" y="50"></rect>
+<rect fill="#B8850E" height="60" opacity="0.06" width="500" x="60" y="110"></rect>
+ Y-axis Labels 
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="50" y="54">1.0</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="50" y="114">0.8</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="50" y="174">0.6</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="50" y="234">0.4</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="end" x="50" y="294">0.2</text>
+ X-axis Labels 
+<line stroke="#888" x1="60" x2="60" y1="290" y2="296"></line>
+<line stroke="#888" x1="160" x2="160" y1="290" y2="296"></line>
+<line stroke="#888" x1="260" x2="260" y1="290" y2="296"></line>
+<line stroke="#888" x1="360" x2="360" y1="290" y2="296"></line>
+<line stroke="#888" x1="460" x2="460" y1="290" y2="296"></line>
+<line stroke="#888" x1="560" x2="560" y1="290" y2="296"></line>
+<text fill="#666" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="60" y="312">1990</text>
+<text fill="#666" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="160" y="312">1997</text>
+<text fill="#666" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="260" y="312">2004</text>
+<text fill="#666" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="360" y="312">2011</text>
+<text fill="#666" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="460" y="312">2018</text>
+<text fill="#666" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="560" y="312">2025</text>
+ Event Markers 
+<line stroke="#888" stroke-dasharray="2 3" stroke-width="0.6" x1="135" x2="135" y1="50" y2="290"></line>
+<text fill="#666" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="135" y="44">Dayton 1995</text>
+<line stroke="#888" stroke-dasharray="2 3" stroke-width="0.6" x1="320" x2="320" y1="50" y2="290"></line>
+<text fill="#666" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="320" y="44">Kosovo 2008</text>
+<line stroke="#888" stroke-dasharray="2 3" stroke-width="0.6" x1="392" x2="392" y1="50" y2="290"></line>
+<text fill="#666" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="392" y="44">HRV→EU 2013</text>
+ BIH Curve (Red) 
+<polyline fill="none" points="60,60 90,55 120,52 150,90 180,140 210,165 240,178 270,182 300,180 330,178 360,180 390,184 420,182 450,180 480,178 510,178 540,176 560,175" stroke="#C0392B" stroke-width="2.4"></polyline>
+<circle cx="560" cy="175" fill="#C0392B" r="4"></circle>
+<text fill="#C0392B" font-family="'Courier New', monospace" font-size="10" font-weight="700" x="568" y="178">BIH</text>
+ SRB Curve (Gold) 
+<polyline fill="none" points="60,68 90,62 120,75 150,110 180,148 210,168 240,182 270,195 300,205 330,195 360,190 390,188 420,190 450,193 480,195 510,196 540,194 560,194" stroke="#B8850E" stroke-width="2.4"></polyline>
+<circle cx="560" cy="194" fill="#B8850E" r="4"></circle>
+<text fill="#B8850E" font-family="'Courier New', monospace" font-size="10" font-weight="700" x="568" y="198">SRB</text>
+ HRV Curve (Green) 
+<polyline fill="none" points="60,72 90,68 120,72 150,135 180,180 210,210 240,230 270,242 300,250 330,255 360,258 390,262 420,265 450,266 480,267 510,267 540,267 560,267" stroke="#5E9186" stroke-width="2.4"></polyline>
+<circle cx="560" cy="267" fill="#5E9186" r="4"></circle>
+<text fill="#5E9186" font-family="'Courier New', monospace" font-size="10" font-weight="700" x="568" y="270">HRV</text>
+ Axes 
+<line stroke="#888" stroke-width="1.2" x1="60" x2="60" y1="50" y2="290"></line>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="310" y="345">Year (1990 → 2025)</text>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" transform="rotate(-90 20 170)" x="20" y="170">GPI ← peaceful · violent →</text>
+</svg>
+<div class="dcap">
+  Diagram ③ · GPI Time Series 1990–2025 (Vision of Humanity, est.)<br/>
+  Croatia converged below 0.30; Serbia plateau at ~0.55; Bosnia stalled near 0.65.
+</div>
+</div>
+ §5 Diagram 4: Logistic Bifurcation 
+<div class="sec-label">§5 · Diagram ④</div>
+<div class="sec-title">Logistic Bifurcation Diagram — <em>EU Integration Bifurcation</em></div>
+<p class="prose">If EU integration progress is taken as the bifurcation parameter (r), the three Balkan countries diverge from the same starting point into three attractors. Croatia is close to a stable equilibrium, Serbia to oscillation, and Bosnia to the chaotic region.</p>
+<div class="diagwrap">
+<svg height="380" viewbox="0 0 600 380" width="600" xmlns="http://www.w3.org/2000/svg">
+ Region Background 
+<rect fill="#E9F4EE" height="260" opacity="0.5" width="120" x="60" y="40"></rect>
+<rect fill="#FFF8E7" height="260" opacity="0.5" width="160" x="180" y="40"></rect>
+<rect fill="#FBEBE8" height="260" opacity="0.5" width="220" x="340" y="40"></rect>
+ Region Labels 
+<text fill="#2A7A4F" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="120" y="58">FIXED POINT</text>
+<text fill="#2A7A4F" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="120" y="74">stable equilibrium</text>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="260" y="58">PERIOD-2 OSC.</text>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="260" y="74">two attractors</text>
+<text fill="#A32D2D" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="450" y="58">CHAOS</text>
+<text fill="#A32D2D" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="450" y="74">structural lock-in</text>
+ Bifurcation Curves (Stable → Period-2 → Period-4 → Chaos) 
+ Stable Branch: Flat 
+<path d="M 60 200 Q 120 200 180 200" fill="none" stroke="#2A7A4F" stroke-width="2.4"></path>
+ 2 Branches at the First Bifurcation Point 
+<path d="M 180 200 Q 220 180 260 160 Q 300 140 340 130" fill="none" stroke="#B8850E" stroke-width="2.2"></path>
+<path d="M 180 200 Q 220 220 260 240 Q 300 260 340 270" fill="none" stroke="#B8850E" stroke-width="2.2"></path>
+ Period-4 Bifurcation 
+<path d="M 340 130 Q 360 122 380 118" fill="none" stroke="#C0392B" stroke-width="2"></path>
+<path d="M 340 130 Q 360 138 380 142" fill="none" stroke="#C0392B" stroke-width="2"></path>
+<path d="M 340 270 Q 360 262 380 258" fill="none" stroke="#C0392B" stroke-width="2"></path>
+<path d="M 340 270 Q 360 278 380 282" fill="none" stroke="#C0392B" stroke-width="2"></path>
+ Chaotic Region Points 
+<g fill="#C0392B" opacity="0.6">
+<circle cx="400" cy="105" r="1.4"></circle><circle cx="408" cy="125" r="1.4"></circle><circle cx="416" cy="148" r="1.4"></circle>
+<circle cx="424" cy="175" r="1.4"></circle><circle cx="432" cy="200" r="1.4"></circle><circle cx="440" cy="225" r="1.4"></circle>
+<circle cx="448" cy="250" r="1.4"></circle><circle cx="456" cy="275" r="1.4"></circle><circle cx="464" cy="295" r="1.4"></circle>
+<circle cx="402" cy="115" r="1.4"></circle><circle cx="410" cy="135" r="1.4"></circle><circle cx="418" cy="160" r="1.4"></circle>
+<circle cx="426" cy="188" r="1.4"></circle><circle cx="434" cy="212" r="1.4"></circle><circle cx="442" cy="238" r="1.4"></circle>
+<circle cx="450" cy="262" r="1.4"></circle><circle cx="458" cy="285" r="1.4"></circle><circle cx="466" cy="98" r="1.4"></circle>
+<circle cx="474" cy="118" r="1.4"></circle><circle cx="482" cy="145" r="1.4"></circle><circle cx="490" cy="170" r="1.4"></circle>
+<circle cx="498" cy="195" r="1.4"></circle><circle cx="506" cy="220" r="1.4"></circle><circle cx="514" cy="248" r="1.4"></circle>
+<circle cx="522" cy="270" r="1.4"></circle><circle cx="530" cy="105" r="1.4"></circle><circle cx="538" cy="240" r="1.4"></circle>
+<circle cx="546" cy="155" r="1.4"></circle><circle cx="554" cy="200" r="1.4"></circle>
+</g>
+ Bifurcation Point Markers 
+<line stroke="#888" stroke-dasharray="3 3" stroke-width="0.6" x1="180" x2="180" y1="40" y2="300"></line>
+<line stroke="#888" stroke-dasharray="3 3" stroke-width="0.6" x1="340" x2="340" y1="40" y2="300"></line>
+<text fill="#666" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="180" y="316">r₁ = 1.5</text>
+<text fill="#666" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="340" y="316">r₂ = 2.4</text>
+ Positions of the Three Countries 
+ HRV: r ≈ 1.0 (Stable Attractor) 
+<circle cx="120" cy="200" fill="#5E9186" r="11" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="700" text-anchor="middle" x="120" y="204">HR</text>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="120" y="183">EU+Eurozone</text>
+ SRB: r ≈ 1.9 (Period-2) 
+<circle cx="270" cy="160" fill="#B8850E" r="11" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="700" text-anchor="middle" x="270" y="164">RS</text>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="270" y="143">EU↔RUS oscill.</text>
+ BIH: r ≈ 2.7 (Entering Chaos) 
+<circle cx="430" cy="195" fill="#C0392B" r="11" stroke="#fff" stroke-width="2.5"></circle>
+<text fill="#fff" font-family="'Courier New', monospace" font-size="10" font-weight="700" text-anchor="middle" x="430" y="199">BA</text>
+<text fill="#A32D2D" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="430" y="178">Dayton lock</text>
+ Axes 
+<line stroke="#888" stroke-width="1.2" x1="60" x2="560" y1="300" y2="300"></line>
+<line stroke="#888" stroke-width="1.2" x1="60" x2="60" y1="40" y2="300"></line>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="310" y="345">r — integration / lock-in parameter →</text>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" transform="rotate(-90 20 170)" x="20" y="170">x — system state</text>
+</svg>
+<div class="dcap">
+  Diagram ④ · Logistic Bifurcation · x_{n+1} = r·x·(1−x)<br/>
+  Croatia: fixed point. Serbia: period-2 oscillation. Bosnia: chaotic regime.
+</div>
+</div>
+ §6 Diagram 5: 12-Axis Radial Radar 
+<div class="sec-label">§6 · Diagram ⑤</div>
+<div class="sec-title">12-Axis Λ¹² Radar — <em>Three-Country Overlap</em></div>
+<p class="prose">Simultaneous visualization of 12 variables. The larger the polygon, the more it extends into the danger zone. Croatia converges within 0.40 on almost all axes, Serbia protrudes in Σ·TBI, and Bosnia reaches the region's highest on the three axes of SSI·Σ·TBI.</p>
+<div class="diagwrap">
+<svg height="540" viewbox="0 0 520 540" width="520" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
+      .axis-label { font-size: 10px; fill: #555; font-family: 'Courier New', monospace; }
+      .radar-bg   { fill: none; stroke: #E5E0D8; stroke-width: 1; }
+      .grid-line  { stroke: #E5E0D8; stroke-width: 0.8; }
+    </style>
+</defs>
+ Background Concentric Circles 
+<circle class="radar-bg" cx="260" cy="260" r="40"></circle>
+<circle class="radar-bg" cx="260" cy="260" r="80"></circle>
+<circle class="radar-bg" cx="260" cy="260" r="120"></circle>
+<circle class="radar-bg" cx="260" cy="260" r="160"></circle>
+<circle class="radar-bg" cx="260" cy="260" r="200" stroke="#CCC"></circle>
+ 12-Axis Radial Lines 
+<line class="grid-line" x1="260" x2="260" y1="260" y2="60"></line>
+<line class="grid-line" x1="260" x2="360" y1="260" y2="110"></line>
+<line class="grid-line" x1="260" x2="433" y1="260" y2="210"></line>
+<line class="grid-line" x1="260" x2="460" y1="260" y2="260"></line>
+<line class="grid-line" x1="260" x2="433" y1="260" y2="310"></line>
+<line class="grid-line" x1="260" x2="360" y1="260" y2="410"></line>
+<line class="grid-line" x1="260" x2="260" y1="260" y2="460"></line>
+<line class="grid-line" x1="260" x2="160" y1="260" y2="410"></line>
+<line class="grid-line" x1="260" x2="87" y1="260" y2="310"></line>
+<line class="grid-line" x1="260" x2="60" y1="260" y2="260"></line>
+<line class="grid-line" x1="260" x2="87" y1="260" y2="210"></line>
+<line class="grid-line" x1="260" x2="160" y1="260" y2="110"></line>
+
+    Angle (clockwise, 12 o'clock=0°):
+    BRI 0°, SSI 30°, GPI 60°, SR 90°, Σ 120°, LPI 150°,
+    OIP 180°, HCDI 210°, AMI 240°, NI 270°, CFD 300°, TBI 330°
+    Coordinates: cx + r×sin(θ),  cy − r×cos(θ),  r = value × 200
+
+    SRB: BRI 0.55→110, SSI 0.62→124, GPI 0.60→120, SR 0.45→90,
+         Σ 0.72→144, LPI 0.45→90, OIP 0.55→110, HCDI 0.42→84,
+         AMI 0.50→100, NI 0.30→60, CFD 0.58→116, TBI 0.68→136
+
+    HRV: BRI 0.30→60, SSI 0.38→76, GPI 0.25→50, SR 0.30→60,
+         Σ 0.28→56, LPI 0.25→50, OIP 0.32→64, HCDI 0.28→56,
+         AMI 0.20→40, NI 0.20→40, CFD 0.42→84, TBI 0.52→104
+
+    BIH: BRI 0.62→124, SSI 0.85→170, GPI 0.65→130, SR 0.55→110,
+         Σ 0.78→156, LPI 0.55→110, OIP 0.62→124, HCDI 0.52→104,
+         AMI 0.55→110, NI 0.25→50, CFD 0.65→130, TBI 0.82→164
+  
+ HRV Polygon (Green, innermost) 
+<polygon fill="rgba(94,145,134,0.22)" points="
+      260,200
+      298,212
+      303,235
+      310,260
+      308,288
+      285,311
+      260,320
+      230,308
+      217,288
+      220,260
+      218,232
+      235,225
+    " stroke="#5E9186" stroke-width="2"></polygon>
+ SRB Polygon (Gold, middle) 
+<polygon fill="rgba(184,133,14,0.20)" points="
+      260,150
+      322,153
+      364,200
+      350,260
+      385,332
+      215,338
+      260,396
+      215,338
+      173,313
+      160,260
+      160,202
+      192,189
+    " stroke="#B8850E" stroke-width="2"></polygon>
+ BIH Polygon (Red, outermost) 
+<polygon fill="rgba(192,57,43,0.18)" points="
+      260,136
+      345,145
+      372,195
+      370,260
+      372,325
+      205,355
+      260,424
+      205,355
+      170,322
+      160,210
+      152,195
+      188,178
+    " stroke="#C0392B" stroke-width="2"></polygon>
+ Axis Labels 
+<text class="axis-label" text-anchor="middle" x="254" y="50">BRI</text>
+<text class="axis-label" text-anchor="start" x="370" y="98">SSI</text>
+<text class="axis-label" text-anchor="start" x="442" y="205">GPI</text>
+<text class="axis-label" text-anchor="start" x="468" y="264">SR</text>
+<text class="axis-label" text-anchor="start" x="442" y="318">Σ</text>
+<text class="axis-label" text-anchor="start" x="368" y="424">LPI</text>
+<text class="axis-label" text-anchor="middle" x="254" y="478">OIP</text>
+<text class="axis-label" text-anchor="end" x="152" y="424">HCDI</text>
+<text class="axis-label" text-anchor="end" x="78" y="320">AMI</text>
+<text class="axis-label" text-anchor="end" x="50" y="264">NI</text>
+<text class="axis-label" text-anchor="end" x="78" y="205">CFD</text>
+<text class="axis-label" text-anchor="end" x="152" y="98">TBI</text>
+ Center 
+<text fill="#444" font-family="'Courier New', monospace" font-size="11" font-weight="700" text-anchor="middle" x="260" y="258">Λ¹²</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="9" text-anchor="middle" x="260" y="272">v9.11</text>
+ Legend (Bottom) 
+<rect fill="rgba(94,145,134,0.4)" height="14" stroke="#5E9186" stroke-width="1.5" width="14" x="80" y="500"></rect>
+<text fill="#3A6A5E" font-family="'Courier New', monospace" font-size="11" x="100" y="512">HRV (Λ 0.32)</text>
+<rect fill="rgba(184,133,14,0.4)" height="14" stroke="#B8850E" stroke-width="1.5" width="14" x="200" y="500"></rect>
+<text fill="#854F0B" font-family="'Courier New', monospace" font-size="11" x="220" y="512">SRB (Λ 0.55)</text>
+<rect fill="rgba(192,57,43,0.4)" height="14" stroke="#C0392B" stroke-width="1.5" width="14" x="320" y="500"></rect>
+<text fill="#A32D2D" font-family="'Courier New', monospace" font-size="11" x="340" y="512">BIH (Λ 0.62)</text>
+</svg>
+<div class="dcap">
+  Diagram ⑤ · 12-axis Λ¹² Radar · Three nations overlaid<br/>
+  HRV converges inward; SRB extends on Σ/TBI; BIH dominates SSI/Σ/TBI.
+</div>
+</div>
+ §7 Key Comparison Table 
+<div class="sec-label">§7 · Key Comparison</div>
+<div class="sec-title">Structural Comparison Table — <em>Same War, Different 30 Years</em></div>
+<div class="card">
+<div class="card-title">▌ Comparison of 4 Determining Axes</div>
+<table>
+<tr>
+<th>Axis</th><th>Serbia</th><th>Croatia</th><th>Bosnia</th>
+</tr>
+<tr>
+<td><strong>War Legacy (TBI)</strong></td>
+<td class="watch">Both perpetrator and victim of the 1990s civil war<br/>Ongoing conflict with Kosovo</td>
+<td>Victor country narrative of the War of Independence (1991–95)<br/>Basis of state formation legitimacy</td>
+<td class="danger">Srebrenica massacre (1995)<br/>Trauma for all three ethnic groups</td>
+</tr>
+<tr>
+<td><strong>Leader-People Disconnect (Σ)</strong></td>
+<td class="watch">Vucic's one-man authoritarianism<br/>SNS mobilization + media control</td>
+<td class="stable">Parliamentary multi-party system functioning<br/>Normal functioning of government transitions</td>
+<td class="danger">Triumvirate presidency &amp; ethnic vetoes<br/>Structural decision-making paralysis</td>
+</tr>
+<tr>
+<td><strong>Capital Flows (CFD)</strong></td>
+<td class="watch">Tripartition among China, Russia, and EU<br/>BRI Belgrade Route</td>
+<td class="stable">EU Single Market &amp; Eurozone<br/>Stable tourism &amp; services</td>
+<td class="danger">Dependency on remittance economy<br/>Capital separation between RS and the Federation</td>
+</tr>
+<tr>
+<td><strong>External Guarantee (AMI)</strong></td>
+<td>Neutral diplomacy (non-NATO membership)</td>
+<td class="stable">NATO &amp; EU lock-in</td>
+<td class="watch">OHR external guardianship<br/>30 years of EUFOR stationing</td>
+</tr>
+</table>
+</div>
+ §8 Quote 
+<div class="sec-label">§8 · Observer Notes</div>
+<div class="sec-title">What Were the Determining Variables of the Divergence?</div>
+<div class="qblock">
+  "Dayton succeeded in stopping the war, but failed to build peace. Bosnia has lived in a frozen conflict for 30 years."
+  <div class="qsrc">— International Crisis Group, "Bosnia at 30" estimated quote frame (2025)</div>
+</div>
+<p class="prose">Although the three countries started from the same point, <strong>the progress speed of the EU integration path determined the divergence</strong>. Croatia pursued a consistent EU/NATO entry strategy after 1995, passing through NATO in 2009, EU in 2013, and both the Eurozone and Schengen in 2023. Serbia's EU entry stalled due to the Kosovo issue, and the vacuum was filled by Russian and Chinese influence. Bosnia is trapped in a structure where the Dayton Constitution itself conflicts with EU standards, making progress impossible without constitutional revision.</p>
+<p class="prose">That is, <strong>the external variable that determined the Λ¹² divergence is the stage of EU integration, and the internal variable is Σ (leader-people disconnect).</strong> When both variables pointed in the same direction, a stable attractor was formed (Croatia); when the two variables clashed, oscillation occurred (Serbia); and when both variables were blocked, it entered the chaotic region (Bosnia).</p>
+ §9 Open Questions 
+<div class="sec-label">§9 · Open Questions</div>
+<div class="sec-title">Post-2026 — <em>Observation Points</em></div>
+<div class="card">
+<div class="card-title">▌ 5 Observation Variables</div>
+<table>
+<tr>
+<td style="width:30%;font-weight:700;color:#3A6A5E;">1. RS Separation Attempts</td>
+<td>When Republika Srpska's attempts to establish its own military, tax authority, and constitutional court ignore the decisions of the Constitutional Court, BIH is practically divided. Λ_BIH rises above 0.65.</td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#3A6A5E;">2. Kosovo-Serbia Negotiations</td>
+<td>If the EU-mediated negotiations are settled, SRB's Σ could improve and CFD could be realigned. If they fail, Λ_SRB is at risk of breaking through 0.60.</td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#3A6A5E;">3. Croatia's Population Decline</td>
+<td>Accelerated youth outflow after joining the EU. HDI of 0.858 is maintained, but LPI_net may worsen. A signal of cracks in the stable attractor.</td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#3A6A5E;">4. 30th Anniversary of Dayton (Dec 2025)</td>
+<td>The 30th anniversary already passed on December 14, 2025. If constitutional revision attempts are frustrated, the structural freezing of BIH is officially finalized.</td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#3A6A5E;">5. External Variables in the Balkan Region</td>
+<td>The manner in which the Russia–Ukraine war ends will directly impact Serbia's Σ. Changes in the EU expansion policy will affect all three countries.</td>
+</tr>
+</table>
+</div>
+<p class="prose">Answering these five questions is outside the scope of this comparison edition. <strong>the fact that the same war created three different coordinates 30 years later</strong> is the core thesis of the Λ¹² framework — shocks are universal, but divergence is determined by local variables.</p>
+<div class="div-gold">✦ ✦ ✦</div>
+ §10 Metadata 
+<div class="sec-label">§10 · Report Info</div>
+<div class="sec-title">Metadata</div>
+<div class="cbox"><span class="cc">File Name:  balkans_comparison_v1.0_20260430.html</span>
+<span class="cc">Engine:    Λ¹² v9.11 (SSRN 6509200)</span>
+<span class="cc">Date of Preparation:  2026-04-30</span>
+<span class="cc">Target Countries:  Serbia (SRB) · Croatia (HRV) · Bosnia-Herzegovina (BIH)</span>
+<span class="cc">Sources:</span>
+<span class="cc">  - Transparency International CPI 2025</span>
+<span class="cc">  - UNDP Human Development Report 2024 (HDI)</span>
+<span class="cc">  - Vision of Humanity Global Peace Index 2025</span>
+<span class="cc">  - Freedom House Nations in Transit 2025</span>
+<span class="cc">  - World Bank WDI (GDP/cap)</span>
+<span class="cc">  - European Commission Enlargement Report 2025</span>
+<span class="cc">  - International Crisis Group Bosnia briefings</span>
+<span class="cc">  - Self-estimated: Σ, CFD, TBI, AMI, OIP</span>
+<span class="cc">Design: v2.2 Pastel · #F5F3EE / #5E9186 / #B8850E</span>
+<span class="cc">Next Comparison Trigger: May 2026 Kosovo Solo Edition · Regional Comprehensive Edition</span></div>
+</div><!-- /wrap -->
+<!-- FOOTER -->
+<div class="footer">
+<div class="ft-title">Everblue Sea Institute for Social Dynamics</div>
+  Λ¹² Western Balkans Comparative Audit · v1.0 · 2026-04-30<br/>
+  Serbia · Croatia · Bosnia-Herzegovina
+</div>
+</body>
+</html>

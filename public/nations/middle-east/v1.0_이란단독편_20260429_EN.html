@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Iran Λ¹² Solo Country Edition v1.0 — Everblue Sea Institute for Social Dynamics</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: #F5F3EE;
+  color: #2C2C2C;
+  font-family: Georgia, 'Batang', serif;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #7BADA0 0%, #5E9186 55%, #3A6A5E 100%);
+  padding: 50px 36px 42px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: 'ایران';
+  position: absolute;
+  right: 24px; top: 16px;
+  font-size: 72px;
+  color: rgba(255,255,255,0.07);
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.16);
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 16px;
+  font-family: 'Courier New', monospace;
+}
+.hero-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+.hero-sub {
+  color: rgba(255,255,255,0.80);
+  font-size: 14px;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-tag {
+  background: rgba(255,255,255,0.14);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── CONTAINER ── */
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 22px 64px;
+}
+
+/* ── WARNING BANNER ── */
+.warn {
+  background: #FFF8E7;
+  border-left: 4px solid #B8850E;
+  padding: 14px 20px;
+  margin: 28px 0 0;
+  border-radius: 0 4px 4px 0;
+}
+.warn-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #B8850E;
+  letter-spacing: 1.5px;
+  margin-bottom: 5px;
+  font-family: 'Courier New', monospace;
+}
+.warn p { font-size: 13px; color: #5C4200; line-height: 1.7; }
+
+/* ── SECTION ── */
+.sec-label {
+  display: inline-block;
+  background: #5E9186;
+  color: #fff;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 3px 10px;
+  border-radius: 2px;
+  margin-top: 44px;
+  margin-bottom: 8px;
+  font-family: 'Courier New', monospace;
+}
+.sec-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: #2C2C2C;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #DDD8CE;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+.sec-title em { color: #5E9186; font-style: normal; }
+
+/* ── PROSE ── */
+.prose { font-size: 15px; line-height: 1.95; color: #333; margin-bottom: 14px; }
+.prose strong { color: #3A6A5E; }
+
+/* ── CARD ── */
+.card {
+  background: #fff;
+  border: 1px solid #DDD8CE;
+  border-radius: 6px;
+  padding: 20px 22px;
+  margin-bottom: 14px;
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #3A6A5E;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── TABLE ── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 14px 0; }
+th {
+  background: #5E9186;
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-family: 'Courier New', monospace;
+}
+td { padding: 8px 12px; border-bottom: 1px solid #EEE9E2; vertical-align: top; line-height: 1.6; }
+tr:nth-child(even) td { background: #FAF8F4; }
+.danger { color: #C0392B; font-weight: 700; }
+.watch  { color: #B8850E; font-weight: 700; }
+.up     { color: #C0392B; }
+.down   { color: #27AE60; }
+
+/* ── CODE / FORMULA BOX ── */
+.cbox {
+  background: #1E2227;
+  color: #E8E4DC;
+  font-family: 'Courier New', monospace;
+  font-size: 12.5px;
+  padding: 18px 22px;
+  border-radius: 4px;
+  margin: 14px 0;
+  line-height: 1.75;
+  overflow-x: auto;
+  white-space: pre;
+}
+.cg { color: #7BADA0; }
+.cy { color: #E8B84B; }
+.cr { color: #E07070; }
+.cc { color: #888; }
+
+/* ── QUOTE ── */
+.qblock {
+  border-left: 3px solid #B8850E;
+  padding: 10px 18px;
+  margin: 14px 0;
+  background: #FEFBF4;
+  font-style: italic;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.8;
+}
+.qsrc {
+  font-size: 11px;
+  color: #888;
+  margin-top: 5px;
+  font-style: normal;
+  font-family: 'Courier New', monospace;
+}
+
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 24px; margin: 16px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 0; bottom: 0;
+  width: 2px;
+  background: #DDD8CE;
+}
+.tl-item {
+  position: relative;
+  margin-bottom: 16px;
+  padding-left: 10px;
+}
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -21px;
+  top: 7px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #5E9186;
+  border: 2px solid #F5F3EE;
+}
+.tl-item.red::before { background: #C0392B; }
+.tl-item.gold::before { background: #B8850E; }
+.tl-date {
+  font-size: 11px;
+  color: #888;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 3px;
+}
+.tl-text { font-size: 14px; color: #333; line-height: 1.75; }
+
+/* ── DIVIDER ── */
+.div-gold {
+  text-align: center;
+  color: #B8850E;
+  font-size: 16px;
+  letter-spacing: 8px;
+  margin: 40px 0 20px;
+  opacity: 0.6;
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: #3A6A5E;
+  color: rgba(255,255,255,0.80);
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 12px;
+  line-height: 2;
+  margin-top: 52px;
+}
+.footer a { color: #A8D5CC; text-decoration: none; }
+.footer .ft-title {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+</style>
+</head>
+<body>
+<!-- HERO -->
+<div class="hero">
+<div class="hero-badge">ΛAMBDA¹² · Solo Country Edition #19</div>
+<div class="hero-title">Iran — The Longest Fracture Since the Revolution<br/>Uprising, Massacre, War, Labor Day</div>
+<div class="hero-sub">Islamic Republic of Iran | Λ¹² v9.11 | SSRN 6509200</div>
+<div class="hero-tags">
+<span class="hero-tag">Λ-Score Estimated 0.58~0.62</span>
+<span class="hero-tag">Zone: DANGER</span>
+<span class="hero-tag">TBI Peak</span>
+<span class="hero-tag">SR Threshold</span>
+<span class="hero-tag">F_reach 0.32</span>
+<span class="hero-tag">2026-04-29</span>
+</div>
+</div>
+<div class="wrap">
+<!-- WARNING -->
+<div class="warn">
+<div class="warn-title">⚠ Data Restriction Notice</div>
+<p>Internal statistics of Iran are extremely limited due to internet shutdowns and censorship. This report has been written by cross-referencing multiple sources such as IMF, UNDP, Amnesty International, Iran International, Namuwiki progress records, CNN, and CNBC. The figures are estimates, and official Iranian government announcements show a pattern of severe underreporting.</p>
+</div>
+ §0 Overview 
+<div class="sec-label">§0 · Overview</div>
+<div class="sec-title">Where is Iran Now?</div>
+<p class="prose">The protests, which began on December 28, 2025, with economic protests by Tehran merchants, transformed into the largest uprising since the 1979 Islamic Revolution in just two weeks. The massacre carried out by the Revolutionary Guards (IRGC) over two days on January 8–9 resulted in at least 12,000 to over 36,500 deaths, a figure that is not yet finalized. Khamenei was killed in a joint US-Israeli airstrike on February 28, and a ceasefire was established on April 8, but negotiations are deadlocked. Now, Iranian workers are taking to the streets again. Labor Day on May 1 is approaching.</p>
+<p class="prose">This report dissects Iran through the Λ¹² v9.11 framework. It simultaneously reads six layers: economic destruction (BRI, LPI_net, F_reach), leader-public disconnect (Σ), accumulation and explosion of resistance resilience (SR), traumatic fuse (TBI), capital flow reversal (CFD), and the parliament's trigger-suppression tactics.</p>
+ §1 Timeline of Events 
+<div class="sec-label">§1 · Timeline of Events</div>
+<div class="sec-title">D-Day Records — <em>2025.12.28 → 2026.04.29</em></div>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-date">2025.12.28</div>
+<div class="tl-text"><strong>Uprising Begins.</strong> Merchants at Tehran's Alaeddin and Charsou bazaars protest skyrocketing exchange rates and government incompetence. Spreads to all 31 provinces nationwide within two days. Slogans shift from "economic recovery" to "regime overthrow, return of Pahlavi."</div>
+</div>
+<div class="tl-item gold">
+<div class="tl-date">2026.01.06</div>
+<div class="tl-text"><strong>Failure of Khamenei's Appeasement.</strong> Offering a $7 monthly voucher per person → Protesters' anger skyrockets instead. Due to the surging exchange rate, the value of the voucher plummets in real-time. A signal of maximizing Σ (leader-public disconnect).</div>
+</div>
+<div class="tl-item red">
+<div class="tl-date">2026.01.08~09</div>
+<div class="tl-text"><strong>The Great Massacre.</strong> Complete nationwide internet shutdown. Mobilization of IRGC, Basij, and Iraqi Shia mercenaries. Estimated deaths of 12,000 to 36,500 within 48 hours. Hospitals overwhelmed, secret burials of bodies, charging bereaved families for bullet costs. "Iran's Babi Yar" (TIME magazine).</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">2026.01.17</div>
+<div class="tl-text"><strong>Khamenei's TV Admission.</strong> "Thousands have died" — blames the US and Israel. Virtually an official acknowledgment of the massacre.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">2026.01.19</div>
+<div class="tl-text"><strong>Protests Seemingly Subsided.</strong> Over 40,000 arrested. Massive detention of medical staff and reformist politicians. Forced suppression of SR complete — but threshold accumulation begins.</div>
+</div>
+<div class="tl-item gold">
+<div class="tl-date">2026.02.28</div>
+<div class="tl-text"><strong>Joint US-Israeli Airstrike.</strong> Khamenei killed in explosion. Nuclear facilities and IRGC strongholds struck. Celebration protests erupt inside Iran — immediately suppressed with gunfire.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">2026.03~04</div>
+<div class="tl-text"><strong>War Period.</strong> Blockade of the Strait of Hormuz. Strikes on petrochemical complexes, steel mills, bridges, and railways. 1 million direct job losses, over 1 million indirect job losses. Inflation at 72% per annum (as of March). Rial exchange rate: 1 USD = 1.32 million rials.</div>
+</div>
+<div class="tl-item gold">
+<div class="tl-date">2026.04.08</div>
+<div class="tl-text"><strong>Ceasefire Established.</strong> Pakistan-mediated. Negotiations deadlocked — nuclear, missile, and Hormuz issues all unagreed. IRGC utilizes the "ceasefire as an opportunity to strengthen internal suppression." Internet shutdown exceeds 1,000 hours.</div>
+</div>
+<div class="tl-item red">
+<div class="tl-date">2026.04.21~22</div>
+<div class="tl-text"><strong>Execution of Two PMOI Members.</strong> Immediate mobilization of Zahedan and resistance units nationwide. "The response to the executions is a blazing uprising" — TBI fuse reignited.</div>
+</div>
+<div class="tl-item">
+<div class="tl-date">2026.04.22</div>
+<div class="tl-text"><strong>Protest by Workers at Safadasht Industrial Complex.</strong> Simultaneous return to the streets of power, oil, teacher, and pension workers. April salaries unpaid. Converging toward Labor Day on May 1.</div>
+</div>
+<div class="tl-item gold">
+<div class="tl-date">2026.04.27</div>
+<div class="tl-text"><strong>Parliamentary Agreement Announced.</strong> "Full support for the negotiation delegation" — attempting a discourse shift to suppress the trigger. No substantive content. SNSC internally admits "protests threaten system survival."</div>
+</div>
+<div class="tl-item red">
+<div class="tl-date">2026.05.01 (Forecast)</div>
+<div class="tl-text"><strong>Labor Day.</strong> Mobilization potential peaks. Power, oil, teacher, pension, and industrial complex workers possess organized justifications. The 1979 revolution also started with strikes.</div>
+</div>
+</div>
+ §2 Economic Layer 
+<div class="sec-label">§2 · Economic Layer</div>
+<div class="sec-title"><em>BRI · LPI_net · F_reach</em> — Collapse of Survival Line</div>
+<div class="card">
+<div class="card-title">▌ Key Economic Indicators (as of 2026.04)</div>
+<table>
+<tr>
+<th>Indicator</th><th>Pre-War</th><th>Current (April)</th><th>Direction</th>
+</tr>
+<tr>
+<td>GDP Growth Rate</td>
+<td>-0.4% (2025)</td>
+<td class="danger">-6.1% (IMF Estimate)</td>
+<td class="up">↓↓</td>
+</tr>
+<tr>
+<td>Inflation</td>
+<td>50% (2025)</td>
+<td class="danger">68.9~72% (Official March)</td>
+<td class="up">↑↑</td>
+</tr>
+<tr>
+<td>Food Inflation</td>
+<td>64% (2025.10)</td>
+<td class="danger">105% (2026.02)</td>
+<td class="up">↑↑↑</td>
+</tr>
+<tr>
+<td>Rial/USD Exchange Rate</td>
+<td>~760,000 rial</td>
+<td class="danger">1,320,000~1,600,000 rial</td>
+<td class="up">↓↓↓</td>
+</tr>
+<tr>
+<td>Direct Unemployment (War)</td>
+<td>Existing High Unemployment</td>
+<td class="danger">+1 million people (Vice Minister's announcement)</td>
+<td class="up">↑↑</td>
+</tr>
+<tr>
+<td>Indirect Unemployment Threat</td>
+<td>—</td>
+<td class="danger">50% of all jobs at risk</td>
+<td class="up">↑↑↑</td>
+</tr>
+<tr>
+<td>Additional Fall Below the Poverty Line</td>
+<td>—</td>
+<td class="danger">+4.1 million people (UNDP)</td>
+<td class="up">↑↑</td>
+</tr>
+<tr>
+<td>Internet Shutdown Days</td>
+<td>0</td>
+<td class="danger">Shut down 22 days a month (March)</td>
+<td class="up">↑</td>
+</tr>
+<tr>
+<td>Economic Loss of Internet Shutdown</td>
+<td>—</td>
+<td class="danger">$70~80M/day (Direct/Indirect)</td>
+<td class="up">↑</td>
+</tr>
+</table>
+</div>
+<div class="cbox"><span class="cc">─── F_reach Estimated Calculation (Pre-War → Current) ───</span>
+<span class="cg">F_reach = (S × I × D)^(1/3)</span>
+<span class="cc">Pre-War Estimate:</span>
+  S (Self-sufficiency) = 0.52  <span class="cc">← Sanctions, inefficient agriculture</span>
+  I (Import stability) = 0.48  <span class="cc">← Existence of sanction-bypassing routes</span>
+  D (Distribution reach) = 0.52  <span class="cc">← Subsidy system functioning</span>
+<span class="cy">F_reach (Pre-War) ≈ 0.50</span>
+<span class="cc">Current (2026.04) Estimate:</span>
+  S (Self-sufficiency) = 0.38  <span class="cr">← Strikes on agriculture and food factories</span>
+  I (Import stability) = 0.29  <span class="cr">← Strait of Hormuz blockade + naval blockade</span>
+  D (Distribution reach) = 0.31  <span class="cr">← Internet shutdowns + distribution network collapse</span>
+<span class="cr">F_reach (Current) ≈ 0.32  ← Below danger line 0.40</span>
+<span class="cc">→ 1kg of meat = 1.6 to 1.9 million Tomans. Unaffordable on minimum wage.</span>
+<span class="cc">→ Chain closures of dairy plants, textile factories, and trailer companies.</span></div>
+<div class="qblock">
+  "Inflation, unemployment, and supply shortages have created a 'miserable and complex situation.' The government cannot turn away from these problems with polite words or general statements."
+  <div class="qsrc">— Iranian conservative daily Ettelaat, 2026.04</div>
+</div>
+<p class="prose">What is noteworthy is <strong>even pro-regime media within the system have begun to acknowledge the economic crisis</strong>. This is the media-layer signal of Σ collapse. When the ruling discourse begins to crack, the system becomes most vulnerable.</p>
+ §3 Σ Collapse 
+<div class="sec-label">§3 · Σ Indicators</div>
+<div class="sec-title">Leader-Public Disconnect — <em>Reaching Extremes</em></div>
+<p class="prose">Σ is the disconnect index between the leader group and the masses. A higher value means the foundation of the system's legitimacy has collapsed. Iran's Σ is currently estimated to be the highest among all countries analyzed by Λ¹².</p>
+<div class="card">
+<div class="card-title">▌ Six Empirical Signals of Σ Collapse</div>
+<table>
+<tr><th>Signal</th><th>Content</th><th>Σ Judgment</th></tr>
+<tr>
+<td>Charging for Bullet Costs of Bodies</td>
+<td>Demanding $7,000 from bereaved families. Concealing evidence of massacre.</td>
+<td class="danger">Extreme</td>
+</tr>
+<tr>
+<td>Mobilization of Mercenaries</td>
+<td>Iraqi, Afghan, and Pakistani militias deployed to suppress citizens. "It is hard for Iranian troops to shoot Iranians."</td>
+<td class="danger">Extreme</td>
+</tr>
+<tr>
+<td>Arrest of Doctors</td>
+<td>Arrest of doctors treating protesters, forcing refusal to treat the wounded.</td>
+<td class="danger">Extreme</td>
+</tr>
+<tr>
+<td>Bereaved Families' Written Pledges</td>
+<td>Forced to sign "Do not cry, do not go outside the house for the funeral."</td>
+<td class="danger">Extreme</td>
+</tr>
+<tr>
+<td>Elites Attempting to Flee</td>
+<td>Ghalibaf's family applying for long-term French visas. Iranian elites transferring $1.5 billion in cryptocurrency overseas.</td>
+<td class="danger">Collapse Signal</td>
+</tr>
+<tr>
+<td>Execution of Soldiers Refusing Suppression</td>
+<td>Arrest and death sentence of Javid Khales, who refused to fire.</td>
+<td class="danger">Forced Loyalty</td>
+</tr>
+</table>
+</div>
+<p class="prose"><strong>Σ Paradox:</strong> As the intensity of suppression reaches extremes, the regime paradoxically spends higher costs for forced loyalty. A system maintained only by fear without voluntary support — as consistently confirmed in Λ¹² analyses — exhibits a pattern of rapid collapse after reaching the SR threshold.</p>
+ §4 SR Reverse Causality 
+<div class="sec-label">§4 · SR Reverse Causality</div>
+<div class="sec-title">Suppression of resistance resilience → Threshold → <em>Explosion Formula</em></div>
+<div class="cbox"><span class="cc">─── SR Reverse Causality Formula (Iran Application) ───</span>
+<span class="cg">SR Suppression</span> → <span class="cy">Surface Silence</span> → <span class="cr">Internal Accumulation</span> → <span class="cr">Event (TBI Fuse)</span> → <span class="cr">SR Explosion</span>
+<span class="cc">Prior Cases in Iran:</span>
+  2009 Green Movement → Suppression → 2019 Protests (321 dead)
+  2019 Protests Suppressed → Accumulation → 2022 Mahsa Amini Protests (551 dead)
+  2022 Suppression → Accumulation → 2026.01 Uprising (Estimated 36,500 dead)
+  2026.01 Massacre Suppressed → Accumulating → <span class="cr">2026.05.01 Labor Day ?</span>
+<span class="cc">The scale expands exponentially with each cycle.</span>
+<span class="cc">Suppression becomes the fuel for the next explosion.</span></div>
+<div class="qblock">
+  "16 years of Khamenei's suppression → 2026.04 Magyar 53.6% Landslide Victory" (Hungary)
+  "8 years of PiS suppression → 2023 Tusk Turnabout" (Poland)
+  "Novi Sad Station Collapse → Protests in 400 Cities" (Serbia)
+  <div class="qsrc">— SR Reverse Causality Pattern Comparison (Europe Comparison §4, 2026-04-29)</div>
+</div>
+<p class="prose">There is a reason why this formula operates more extremely in Iran than in any other country. <strong>The fuse was different for each cycle</strong> — 2009 was election fraud, 2019 was oil subsidy cuts, 2022 was the hijab crackdown, and 2026 was the exchange rate collapse. And the fuse for this May 1 is <strong>unpaid wages + mass unemployment + executions</strong>operating simultaneously.</p>
+<!-- §5 TBI -->
+<div class="sec-label">§5 · TBI</div>
+<div class="sec-title">Trauma Big Bang Index — <em>Estimated to Exceed Threshold θ = 0.7</em></div>
+<div class="cbox"><span class="cc">─── TBI Formula ───</span>
+<span class="cg">TBI = H × C × N</span> <span class="cc">(Threshold θ = 0.7)</span>
+
+  H (Historical Trauma Intensity):
+    1979 Revolution → Iran-Iraq War → 2009, 2019, 2022, 2026 Massacres
+    <span class="cr">H ≈ 0.91</span> <span class="cc">← Overlapping fear and anger due to repeated massacres</span>
+
+  C (Collective Cohesiveness):
+    All 31 provinces, simultaneous participation of merchants, workers, students, women, Kurds, and Baluchis
+    <span class="cy">C ≈ 0.83</span>
+
+  N (Normalization — Currently Shared Perception):
+    Dissemination of the discourse "This is the last time"
+    The generation that witnessed the January massacre = current street generation
+    <span class="cy">N ≈ 0.88</span>
+<span class="cr">TBI = 0.91 × 0.83 × 0.88 ≈ 0.665 → Close to θ = 0.70</span>
+<span class="cc">→ A single execution or a single strike could become a trigger exceeding θ.</span></div>
+<!-- §6 CFD -->
+<div class="sec-label">§6 · CFD</div>
+<div class="sec-title">Capital Flow Orientation — <em>The Paradox of the IRGC Economy</em></div>
+<p class="prose">The reason Iran's CFD is unique is <strong>the IRGC is the economy itself</strong>. The IRGC handles about 50% of oil exports, collects Strait of Hormuz tolls, and is directly involved in major industries such as petrochemicals, construction, and telecommunications. In this structure, CFD does not head toward the masses — capital flows from the IRGC to proxy wars in Lebanon, Iraq, and Yemen.</p>
+<div class="cbox"><span class="cc">─── Iran CFD Structure ───</span>
+
+Masses' Taxes, Oil Revenues
+      ↓
+   IRGC Internal Circulation
+      ↓
+  ┌───────────────────┐
+  │ Hezbollah Support  │  <span class="cr">← "Neither Gaza nor Lebanon, but Iran"</span>
+  │ Hamas Support      │     Economic basis of protesters' slogans
+  │ Houthi Support     │
+  │ Nuclear/Missile Program │  <span class="cr">← 150% increase in security budget</span>
+  └───────────────────┘
+      ↑
+  Masses' wage increase at 2/5 level
+  F_reach 0.32
+  Meat prices exceed minimum wage</div>
+<p class="prose">Since the war, the blockade of the Strait of Hormuz has cut off the IRGC's main source of revenue. Paradoxically, this has made the IRGC more dangerous — <strong>armed groups that have lost their economic base control their interiors more violently.</strong> April's unpaid wages and accelerated executions are in the same vein.</p>
+ §7 Anatomy of Parliamentary Agreement 
+<div class="sec-label">§7 · Trigger Suppression Tactics</div>
+<div class="sec-title">Parliamentary Agreement — <em>The Last Non-Violent Card Available</em></div>
+<p class="prose">The agreement of "full support for the negotiation delegation" announced by the Iranian Parliament on April 27 is, on the surface, a declaration of diplomatic support. However, reading it through the Λ¹² discourse layer, it is <strong>a discourse shift tactic to suppress the May 1 trigger</strong>.</p>
+<div class="card">
+<div class="card-title">▌ Deconstructing the Actual Functions of the Agreement</div>
+<table>
+<tr><th>Surface Message</th><th>Actual Function</th><th>Probability of Effectiveness</th></tr>
+<tr>
+<td>"Let's solve it through diplomacy"</td>
+<td>Shifting domestic anger into expectation of negotiations</td>
+<td class="watch">Low — slim chance of reaching an agreement</td>
+</tr>
+<tr>
+<td>"Now is not the time"</td>
+<td>Sending a signal to refrain from participating on May 1</td>
+<td class="danger">Very low — unpaid wages are a reality</td>
+</tr>
+<tr>
+<td>"The parliament supports it"</td>
+<td>Providing a legitimacy umbrella for IRGC suppression</td>
+<td class="watch">Counterproductive potential — exposing self-contradictions</td>
+</tr>
+<tr>
+<td>"The agreement is on the verge of achievement"</td>
+<td>Buying time, postponing the uprising</td>
+<td class="danger">Failure — no agreement by 5/1</td>
+</tr>
+</table>
+</div>
+<div class="qblock">
+  "Although the parliament has not received official information on the negotiations, we will not oppose them even if the outcome is unfavorable."
+  <div class="qsrc">— Mehdi Kouchakzadeh, Iranian MP (2026.04)</div>
+</div>
+<p class="prose">This is the core contradiction. <strong>"Support without even official information"</strong> — this is the language of submission, not support. The very assumption that the masses will not read this contradiction is evidence of Σ collapse. Such trust cannot remain after more than 30,000 deaths in January.</p>
+<p class="prose"><strong>Crucial Reason:</strong> For this tactic to be effective, negotiations must yield visible results before May 1. However, all three major agendas — nuclear, missile, and Hormuz — are deadlocked. The message of "wait" presented by the discourse will appear empty on the very day of May 1.</p>
+ §8 Λ¹² Coordinates 
+<div class="sec-label">§8 · Λ¹² Coordinates</div>
+<div class="sec-title">Iran Composite Index — <em>v9.11 Estimated Values</em></div>
+<div class="cbox"><span class="cc">─── Λ¹² 12 Variables (Iran Estimated, 2026.04) ───</span>
+<span class="cc">Direction: Danger=1, Stability=-1 | DIRECTION[Danger, Stability] Reversal Applied</span>
+
+Variable Estimated Direction Judgment
+────────────────────────────────────
+<span class="cr">BRI</span>        0.72 Danger Economic base collapse + external isolation
+<span class="cr">SSI</span>        0.88 Danger Maximizing social division (ethnic, religious, class)
+<span class="cr">GPI</span>        0.91 Danger War in progress — Hormuz variable
+<span class="cr">SR</span>         0.82 Danger Low due to suppression → threshold accumulation
+<span class="cy">Σ</span>          0.93 Danger Peak of leader-public disconnect
+<span class="cr">LPI_net</span>   0.79 Danger Production/distribution network hit by war
+<span class="cr">OIP-I</span>      0.85 Danger Opportunity blocking index — arrests/executions
+<span class="cr">HCDI</span>       0.74 Danger Blocked medical access, internet blockade
+<span class="cy">AMI</span>        0.68 Danger Feasibility of continuous external military intervention
+<span class="cr">NI</span>         0.77 Danger Nuclear negotiations deadlocked — uncertainty maximized
+<span class="cr">CFD</span>        0.81 Danger Capital concentration in IRGC, masses excluded
+<span class="cr">TBI</span>        0.665 Danger Close to θ=0.70 threshold
+
+<span class="cc">─────────────────────────────────────────</span>
+<span class="cc">Weighted Sum (Danger≥0.65: w2.0 / Attention 0.40~: w1.4 / Stability&lt;0.40: w0.6)</span>
+<span class="cr">Λ-Score Estimate: 0.58 ~ 0.62   Zone: DANGER (Top)</span>
+<span class="cc">※ Due to extreme limitations on internal statistics, error ±0.05</span>
+<span class="cy">PWT-r = 1 - Λ × β</span>
+  β = 0.40×(Bloc-formation Index) + 0.35×(CFD) + 0.25×(1-CPI)
+  β_Iran ≈ 0.85  <span class="cr">← Highest blocking coefficient in history</span>
+<span class="cr">PWT-r ≈ 0.47  ← Recovery resilience extremely low</span></div>
+ §9 Radar SVG 
+<div class="sec-label">§9 · Radar Diagram</div>
+<div class="sec-title">Iran 12-Axis <em>Λ¹² Radar</em></div>
+<div style="background:#fff;border:1px solid #DDD8CE;border-radius:6px;padding:24px;margin:16px 0;text-align:center;">
+<svg height="480" viewbox="0 0 480 480" width="480" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
+      .axis-label { font-size: 10px; fill: #555; font-family: 'Courier New', monospace; }
+      .radar-bg   { fill: none; stroke: #E5E0D8; stroke-width: 1; }
+      .radar-data { fill: rgba(192,57,43,0.18); stroke: #C0392B; stroke-width: 2; }
+      .radar-dot  { fill: #C0392B; }
+      .grid-line  { stroke: #E5E0D8; stroke-width: 0.8; }
+    </style>
+</defs>
+ 4 Background Concentric Circles 
+<circle class="radar-bg" cx="240" cy="240" r="40"></circle>
+<circle class="radar-bg" cx="240" cy="240" r="80"></circle>
+<circle class="radar-bg" cx="240" cy="240" r="120"></circle>
+<circle class="radar-bg" cx="240" cy="240" r="160"></circle>
+<circle class="radar-bg" cx="240" cy="240" r="200" stroke="#CCC"></circle>
+ 12-Axis Radial Lines 
+ 0° 12 o'clock 
+<line class="grid-line" x1="240" x2="240" y1="240" y2="40"></line>
+<!-- 30° -->
+<line class="grid-line" x1="240" x2="340" y1="240" y2="90"></line>
+<!-- 60° -->
+<line class="grid-line" x1="240" x2="413" y1="240" y2="190"></line>
+ 90° 3 o'clock 
+<line class="grid-line" x1="240" x2="440" y1="240" y2="240"></line>
+<!-- 120° -->
+<line class="grid-line" x1="240" x2="413" y1="240" y2="290"></line>
+<!-- 150° -->
+<line class="grid-line" x1="240" x2="340" y1="240" y2="390"></line>
+ 180° 6 o'clock 
+<line class="grid-line" x1="240" x2="240" y1="240" y2="440"></line>
+<!-- 210° -->
+<line class="grid-line" x1="240" x2="140" y1="240" y2="390"></line>
+<!-- 240° -->
+<line class="grid-line" x1="240" x2="67" y1="240" y2="290"></line>
+ 270° 9 o'clock 
+<line class="grid-line" x1="240" x2="40" y1="240" y2="240"></line>
+<!-- 300° -->
+<line class="grid-line" x1="240" x2="67" y1="240" y2="190"></line>
+<!-- 330° -->
+<line class="grid-line" x1="240" x2="140" y1="240" y2="90"></line>
+
+    Values by variable → radius r = value × 200
+    BRI=0.72→144, SSI=0.88→176, GPI=0.91→182,
+    SR=0.82→164, Σ=0.93→186, LPI=0.79→158,
+    OIP=0.85→170, HCDI=0.74→148, AMI=0.68→136,
+    NI=0.77→154, CFD=0.81→162, TBI=0.665→133
+
+    Angles: BRI 0°, SSI 30°, GPI 60°, SR 90°,
+            Σ 120°, LPI 150°, OIP 180°, HCDI 210°,
+            AMI 240°, NI 270°, CFD 300°, TBI 330°
+
+    Coordinates = (cx + r×sin(θ), cy - r×cos(θ))
+  
+<polygon class="radar-data" points="
+      240,96
+      314,152
+      417,149
+      404,240
+      335,402
+      161,347
+      240,410
+      116,293
+      103,307
+      86,240
+      158,119
+      181,124
+    "></polygon>
+ Data Points 
+<circle class="radar-dot" cx="240" cy="96" r="4"></circle>
+<circle class="radar-dot" cx="314" cy="152" r="4"></circle>
+<circle class="radar-dot" cx="417" cy="149" r="4"></circle>
+<circle class="radar-dot" cx="404" cy="240" r="4"></circle>
+<circle class="radar-dot" cx="335" cy="402" r="4"></circle>
+<circle class="radar-dot" cx="161" cy="347" r="4"></circle>
+<circle class="radar-dot" cx="240" cy="410" r="4"></circle>
+<circle class="radar-dot" cx="116" cy="293" r="4"></circle>
+<circle class="radar-dot" cx="103" cy="307" r="4"></circle>
+<circle class="radar-dot" cx="86" cy="240" r="4"></circle>
+<circle class="radar-dot" cx="158" cy="119" r="4"></circle>
+<circle class="radar-dot" cx="181" cy="124" r="4"></circle>
+ Axis Labels 
+<text class="axis-label" text-anchor="middle" x="234" y="32">BRI 0.72</text>
+<text class="axis-label" text-anchor="start" x="330" y="78">SSI 0.88</text>
+<text class="axis-label" text-anchor="start" x="422" y="145">GPI 0.91</text>
+<text class="axis-label" text-anchor="start" x="448" y="244">SR 0.82</text>
+<text class="axis-label" text-anchor="start" x="390" y="420">Σ 0.93</text>
+<text class="axis-label" text-anchor="end" x="130" y="368">LPI 0.79</text>
+<text class="axis-label" text-anchor="middle" x="234" y="455">OIP 0.85</text>
+<text class="axis-label" text-anchor="end" x="80" y="320">HCDI 0.74</text>
+<text class="axis-label" text-anchor="end" x="38" y="310">AMI 0.68</text>
+<text class="axis-label" text-anchor="end" x="16" y="244">NI 0.77</text>
+<text class="axis-label" text-anchor="end" x="56" y="112">CFD 0.81</text>
+<text class="axis-label" text-anchor="end" x="138" y="72">TBI 0.665</text>
+ Center Labels 
+<text fill="#C0392B" font-family="'Courier New', monospace" font-size="13" font-weight="700" text-anchor="middle" x="240" y="228">Iran</text>
+<text fill="#888" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="240" y="244">Λ≈0.60</text>
+<text fill="#C0392B" font-family="'Courier New', monospace" font-size="10" text-anchor="middle" x="240" y="258">DANGER</text>
+</svg>
+<p style="font-size:11px;color:#888;margin-top:8px;font-family:'Courier New',monospace;">Iran Λ¹² 12-Axis Radar | All axes in danger zone (0.665~0.93) | v9.11 Estimated</p>
+</div>
+ §10 May 1 Analysis 
+<div class="sec-label">§10 · May 1 Hypothesis</div>
+<div class="sec-title">Labor Day — <em>Fuse Condition Checklist</em></div>
+<div class="card">
+<div class="card-title">▌ May 1 Uprising Condition Diagnosis</div>
+<table>
+<tr><th>Condition</th><th>Status</th><th>Judgment</th></tr>
+<tr>
+<td>Cause for Organized Gathering</td>
+<td>Labor Day — Global Strike Tradition</td>
+<td style="color:#C0392B;font-weight:700;">✓ Met</td>
+</tr>
+<tr>
+<td>Economic Detonator</td>
+<td>Unpaid April wages / 72% annual inflation / 1 million unemployed</td>
+<td style="color:#C0392B;font-weight:700;">✓ Met</td>
+</tr>
+<tr>
+<td>TBI Detonator</td>
+<td>4/21 Execution → Nationwide resistance unit mobilization confirmed</td>
+<td style="color:#C0392B;font-weight:700;">✓ Met</td>
+</tr>
+<tr>
+<td>SR Recharge</td>
+<td>From 4/20~ Confirmation of each professional group returning to the streets</td>
+<td style="color:#C0392B;font-weight:700;">✓ Met</td>
+</tr>
+<tr>
+<td>Loss of IRGC Justification for Suppression</td>
+<td>Loss of "responding to foreign forces" justification after ceasefire</td>
+<td style="color:#C0392B;font-weight:700;">✓ Met</td>
+</tr>
+<tr>
+<td>Negotiation Achievements — Inhibitor Variable</td>
+<td>Nuclear·Hormuz deadlock. No settlement before 5/1</td>
+<td style="color:#27AE60;font-weight:700;">✗ Unmet (Favorable for Uprising)</td>
+</tr>
+<tr>
+<td>Potential for 2nd IRGC Massacre</td>
+<td>Unclear whether external mercenaries can be re-mobilized</td>
+<td style="color:#B8850E;font-weight:700;">? Uncertain</td>
+</tr>
+</table>
+</div>
+<p class="prose">The 1979 Islamic Revolution reached a decisive turning point in the oil workers' strike. The Shah regime collapsed not in front of the military, but in front of the workers who halted the economy. <strong>What the IRGC fears is not protests, but strikes.</strong> When electricity, oil, and teachers halt simultaneously, the IRGC's economic foundation also shakes.</p>
+<div class="qblock">
+  "What the regime fears is clear — protests occurring during negotiations or after ceasefire extensions could pose a real threat to the survival of the Islamic Republic regime."
+  <div class="qsrc">— SNSC internal source (Iran International, 2026.04.27)</div>
+</div>
+ §11 Σ Universality Proposition 
+<div class="sec-label">§11 · Theoretical Expansion</div>
+<div class="sec-title">Σ Universality — <em>Λ¹² v9.12 Proposition Candidates</em></div>
+<p class="prose">The exact same pattern identified in the analysis of 19 European countries is being empirically demonstrated in Iran in its most extreme form. Even if economic levels differ, histories differ, and cultures differ — <strong>When the leader is disconnected from the people, the regime reaches its threshold.</strong></p>
+<div class="cbox"><span class="cc">─── Λ¹² v9.12 Proposition Candidate ───</span>
+<span class="cy">"Σ (Leader-People Disconnection) is a universal crisis index transcending civilizations."</span>
+
+  Asia Danger Common: Σ + CPI (Low) + TBI
+  Europe Danger Common: Σ + CFD (+ regional TBI)
+  Iran             : Σ + TBI + CFD + SR (Suppression) — All at peak values
+
+  Iran is the most extreme laboratory for this proposition.
+  When the regime attempts to fill Σ with terror,
+  it instead amplifies the scale of the next explosion.
+
+<span class="cc">→ OLI Correction Required: Reliability of official Iranian statistics is extremely low</span>
+<span class="cc">   Λ¹²_corrected = Λ¹²_raw / OLI × (1-TBI×θ) × exp(-k×t)</span>
+<span class="cc">   OLI_Iran ≈ 0.35  (Lower values indicate more severe statistical manipulation)</span></div>
+ §12 Open Questions 
+<div class="sec-label">§12 · Observer Standpoint</div>
+<div class="sec-title">Diagnosis Pending — <em>The 6th Layer of Six-Layer Discourse Reasoning Method</em></div>
+<p class="prose">Λ¹² is a navigation system showing the current location. It does not force a destination. Rather than predicting what will happen in Iran, <strong>observing which forces are acting in what direction right now </strong>is the purpose of this report.</p>
+<div class="card">
+<div class="card-title">▌ Open Questions — Layer 6 Questions</div>
+<table>
+<tr>
+<td style="width:30%;font-weight:700;color:#3A6A5E;">1. Will Labor Day become the detonator?</td>
+<td>Will an organized strike that simultaneously halts electricity, oil, and teachers occur, or will it disperse into sporadic protests?</td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#3A6A5E;">2. Can the IRGC mobilize external mercenaries once again?</td>
+<td>Is the re-mobilization of Iraqi militias, which was possible in January, still feasible amid the complicated post-war/ceasefire geopolitics?</td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#3A6A5E;">3. Can a negotiation settlement suppress SR?</td>
+<td>Under a deadlock of nuclear, missile, and Hormuz issues, can any negotiation results tangible to the public be achieved before May 1?</td>
+</tr>
+<tr>
+<td style="font-weight:700;color:#3A6A5E;">4. What is the next regime?</td>
+<td>None of Pahlavi monarchy, republic, military, or IRGC moderates are certain at present. The uncertainty itself is a variable.</td>
+</tr>
+</table>
+</div>
+<p class="prose">Answering these four questions is beyond the scope of this report. The observer concludes their role by documenting the fact that giant forces are currently converging in Iran, and displaying that structure. <strong>The judgment will be made by the citizens of Iran on the streets on May 1.</strong></p>
+<div class="div-gold">✦ ✦ ✦</div>
+ §13 File Information 
+<div class="sec-label">§13 · Report Information</div>
+<div class="sec-title">Metadata</div>
+<div class="cbox"><span class="cc">File Name:  v1.0_IranSpecialEdition_20260429.html</span>
+<span class="cc">Engine:    Λ¹² v9.11 (SSRN 6509200)</span>
+<span class="cc">Date Written:  2026-04-29</span>
+<span class="cc">Sources:</span>
+<span class="cc">  - Namuwiki Progress Log (2025.12.28 ~ 2026.04.27)</span>
+<span class="cc">  - CNBC Iran economy charts (2026.04.23)</span>
+<span class="cc">  - CNN/KESQ Iran unemployment (2026.04.28)</span>
+<span class="cc">  - IMF World Economic Outlook 2026</span>
+<span class="cc">  - UNDP Iran War Damage Report</span>
+<span class="cc">  - Amnesty International Massacre Report</span>
+<span class="cc">  - Iran International Internal Documents</span>
+<span class="cc">  - WPIRAN Labor Protest Report (2026.04)</span>
+<span class="cc">  - UK House of Commons Library Briefing</span>
+<span class="cc">  - SNSC internal source (Iran International 2026.04.27)</span>
+<span class="cc">Data Limitations: Internal statistics extremely limited due to internet shutdowns and censorship</span>
+<span class="cc">             Official Iranian government figures are deemed underreported, so their weights are downgraded</span>
+<span class="cc">Next update trigger: Situation after May 1 Labor Day</span></div>
+ §14 Bifurcation Flowchart 
+<div class="sec-label">§14 · Sequential Bifurcation Flowchart</div>
+<div class="sec-title">Iran Regime Bifurcation — <em>Convergence Point of All Paths</em></div>
+<p class="prose">The flowchart below sequentially displays the bifurcation structure that Iran is currently positioned in. No conclusions are drawn — it merely observes where each path leads. The red convergence point is the direction indicated by the structure.</p>
+<div class="svg-wrap" style="padding:16px 8px;">
+<svg viewbox="0 0 760 1640" width="100%" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="ar" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></marker>
+<marker id="ar-r" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10"><path d="M2 1L8 5L2 9" fill="none" stroke="#A32D2D" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></marker>
+<marker id="ar-g" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="8" refy="5" viewbox="0 0 10 10"><path d="M2 1L8 5L2 9" fill="none" stroke="#0F6E56" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></marker>
+</defs>
+ ══ §0 Current State (Top Center) ══ 
+<rect fill="#FAEEDA" height="58" rx="8" stroke="#854F0B" stroke-width="1" width="300" x="230" y="20"></rect>
+<text fill="#633806" font-family="Georgia,serif" font-size="14" font-weight="700" text-anchor="middle" x="380" y="44">Current State — 2026.04.29</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="11" text-anchor="middle" x="380" y="63">Λ≈0.60 · TBI 0.665 · F_reach 0.32</text>
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="1" x1="380" x2="380" y1="78" y2="106"></line>
+ ══ §1 Alternatives ══ 
+<rect fill="#F1EFE8" height="44" rx="8" stroke="#888780" stroke-width="0.8" width="280" x="240" y="106"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="13" font-weight="700" text-anchor="middle" x="380" y="133">Paths Lying Before the Regime</text>
+ §1 → Left Favorable Direction ① 
+<path d="M240 128 L80 128 L80 178" fill="none" marker-end="url(#ar-g)" stroke="#0F6E56" stroke-width="1"></path>
+<text fill="#0F6E56" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="160" y="120">Favorable Direction ①</text>
+ §1 → Right Favorable Direction ② 
+<path d="M520 128 L660 128 L660 178" fill="none" marker-end="url(#ar-g)" stroke="#0F6E56" stroke-width="1"></path>
+<text fill="#0F6E56" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="590" y="120">Favorable Direction ②</text>
+ §1 → Downward Trigger 
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="1" x1="380" x2="380" y1="150" y2="178"></line>
+<text fill="#888780" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="380" y="170">Trigger Activated</text>
+ ══ Favorable Direction ① (Far Left) ══ 
+<rect fill="#E1F5EE" height="54" rx="8" stroke="#0F6E56" stroke-width="0.8" width="120" x="20" y="178"></rect>
+<text fill="#085041" font-family="Georgia,serif" font-size="11" font-weight="700" text-anchor="middle" x="80" y="200">End of War + Sanctions Relief</text>
+<text fill="#0F6E56" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="80" y="218">Economic Recovery Scenario</text>
+<line marker-end="url(#ar-r)" stroke="#A32D2D" stroke-width="0.8" x1="80" x2="80" y1="232" y2="258"></line>
+<rect fill="#FCEBEB" height="64" rx="8" stroke="#A32D2D" stroke-width="0.8" width="120" x="20" y="258"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="11" font-weight="700" text-anchor="middle" x="80" y="278">Structurally Impossible</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="80" y="295">IRGC Monopoly Maintained</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="80" y="311">10-year Reconstruction Required</text>
+<path d="M80 322 L80 366 L240 366" fill="none" marker-end="url(#ar-r)" stroke="#A32D2D" stroke-dasharray="4 3" stroke-width="0.8"></path>
+ ══ Favorable Direction ② (Far Right) ══ 
+<rect fill="#E1F5EE" height="54" rx="8" stroke="#0F6E56" stroke-width="0.8" width="140" x="600" y="178"></rect>
+<text fill="#085041" font-family="Georgia,serif" font-size="11" font-weight="700" text-anchor="middle" x="670" y="200">Political Reform</text>
+<text fill="#0F6E56" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="670" y="218">Dialogue with the Public Scenario</text>
+<line marker-end="url(#ar-r)" stroke="#A32D2D" stroke-width="0.8" x1="670" x2="670" y1="232" y2="258"></line>
+<rect fill="#FCEBEB" height="64" rx="8" stroke="#A32D2D" stroke-width="0.8" width="140" x="600" y="258"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="11" font-weight="700" text-anchor="middle" x="670" y="278">Structurally Impossible</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="670" y="295">Pezeshkian has no authority</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="670" y="311">Mojtaba is more hardline</text>
+<path d="M670 322 L670 366 L520 366" fill="none" marker-end="url(#ar-r)" stroke="#A32D2D" stroke-dasharray="4 3" stroke-width="0.8"></path>
+ ══ §2 Trigger Activated ══ 
+<rect fill="#FAEEDA" height="54" rx="8" stroke="#854F0B" stroke-width="1" width="280" x="240" y="178"></rect>
+<text fill="#633806" font-family="Georgia,serif" font-size="13" font-weight="700" text-anchor="middle" x="380" y="200">Trigger Activated</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="380" y="218">TBI Surpassed θ=0.70 · Remaining 0.035</text>
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="1" x1="380" x2="380" y1="232" y2="262"></line>
+ ══ §3 Actors ══ 
+<rect fill="#F1EFE8" height="44" rx="8" stroke="#888780" stroke-width="0.8" width="260" x="250" y="262"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="13" font-weight="700" text-anchor="middle" x="380" y="289">Ignition Actors (3 Types)</text>
+<path d="M290 306 L160 306 L160 346" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="0.8" x1="380" x2="380" y1="306" y2="346"></line>
+<path d="M470 306 L600 306 L600 346" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+ Actor A (Left) 
+<rect fill="#FAECE7" height="64" rx="8" stroke="#993C1D" stroke-width="0.8" width="140" x="90" y="346"></rect>
+<text fill="#712B13" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="160" y="368">External Infiltrator</text>
+<text fill="#993C1D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="160" y="385">Mossad·CIA·MEK</text>
+<text fill="#993C1D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="160" y="401">Triggering IRGC Emotions</text>
+ Actor B (Center) 
+<rect fill="#FAEEDA" height="64" rx="8" stroke="#854F0B" stroke-width="0.8" width="140" x="310" y="346"></rect>
+<text fill="#633806" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="380" y="368">Internal Dissenter</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="380" y="385">IRGC Defector·Reformist</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="380" y="401">Refusal to Fire·Leak of Information</text>
+ Actor C (Right) 
+<rect fill="#EEEDFE" height="64" rx="8" stroke="#534AB7" stroke-width="0.8" width="140" x="530" y="346"></rect>
+<text fill="#3C3489" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="600" y="368">Spontaneous Ignition of the Public</text>
+<text fill="#534AB7" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="600" y="385">Starvation·Execution·Unpaid wages</text>
+<text fill="#534AB7" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="600" y="401">Explosion without Organization</text>
+ 3 Actors → Convergence of Regime Response 
+<path d="M160 410 L160 450 L330 450" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="0.8" x1="380" x2="380" y1="410" y2="450"></line>
+<path d="M600 410 L600 450 L430 450" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+ ══ §4 Regime Response ══ 
+<rect fill="#F1EFE8" height="54" rx="8" stroke="#888780" stroke-width="0.8" width="280" x="240" y="450"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="13" font-weight="700" text-anchor="middle" x="380" y="472">Regime Response</text>
+<text fill="#5F5E5A" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="380" y="490">Deploying police only — stall tactics</text>
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="1" x1="380" x2="380" y1="504" y2="534"></line>
+ ══ §5 Police Deployment Limit ══ 
+<rect fill="#FAEEDA" height="64" rx="8" stroke="#854F0B" stroke-width="1" width="320" x="220" y="534"></rect>
+<text fill="#633806" font-family="Georgia,serif" font-size="13" font-weight="700" text-anchor="middle" x="380" y="556">Police Deployment Limit Reached</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="380" y="574">Physically impossible if 1 million gather · Dilemma of deploying IRGC or standing by</text>
+ ══ §5 → 3 Directions ══ 
+ Left: IRGC Re-deployment (x=90) 
+<path d="M240 566 L90 566 L90 618" fill="none" marker-end="url(#ar-r)" stroke="#A32D2D" stroke-width="1"></path>
+<text fill="#A32D2D" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="164" y="556">IRGC Re-deployment</text>
+ Right: Standby (x=650) 
+<path d="M520 566 L650 566 L650 618" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="1"></path>
+<text fill="#5F5E5A" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="586" y="556">Standing by·Avoidance</text>
+ Down: Public Choice 
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="1" x1="380" x2="380" y1="598" y2="618"></line>
+ ══ Left Column: IRGC Re-deployment (Center x=90) ══ 
+<rect fill="#FCEBEB" height="64" rx="8" stroke="#A32D2D" stroke-width="0.8" width="140" x="20" y="618"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="90" y="640">IRGC Re-deployment</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="90" y="657">Attempt of 2nd Massacre</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="90" y="673">Explosive Increase of International Pressure</text>
+<line marker-end="url(#ar-r)" stroke="#A32D2D" stroke-width="0.8" x1="90" x2="90" y1="682" y2="712"></line>
+ Fissure Status (Left Column Continued) 
+<rect fill="#FAEEDA" height="64" rx="8" stroke="#854F0B" stroke-width="0.8" width="140" x="20" y="712"></rect>
+<text fill="#633806" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="90" y="734">Whether Fissure Occurs</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="90" y="751">Continued Non-payment of Salaries?</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="90" y="767">Spreading Refusal to Fire?</text>
+ Fissure/Maintenance → Vertical Bifurcation (Left / Right) 
+<path d="M60 776 L60 820" fill="none" marker-end="url(#ar-r)" stroke="#A32D2D" stroke-width="0.8"></path>
+<text fill="#A32D2D" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="44" y="802">Fissure</text>
+<path d="M120 776 L120 820" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+<text fill="#5F5E5A" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="136" y="802">Maintenance</text>
+ Internal Collapse 
+<rect fill="#FCEBEB" height="54" rx="8" stroke="#A32D2D" stroke-width="0.8" width="76" x="16" y="820"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="11" font-weight="700" text-anchor="middle" x="54" y="841">Internal Collapse</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="54" y="858">Repetition of 1979?</text>
+ Re-suppression 
+<rect fill="#FAEEDA" height="54" rx="8" stroke="#854F0B" stroke-width="0.8" width="70" x="98" y="820"></rect>
+<text fill="#633806" font-family="Georgia,serif" font-size="11" font-weight="700" text-anchor="middle" x="133" y="841">Re-suppression</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="133" y="858">Cycle Repeated</text>
+ Internal Collapse → Uprising Convergence Dotted Line 
+<path d="M54 874 L54 960 L230 960" fill="none" marker-end="url(#ar-r)" stroke="#A32D2D" stroke-dasharray="4 3" stroke-width="0.8"></path>
+ ══ Right Column: Standing by·Avoidance (Center x=650) ══ 
+<rect fill="#F1EFE8" height="64" rx="8" stroke="#888780" stroke-width="0.8" width="160" x="580" y="618"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="660" y="640">Neglecting Protests</text>
+<text fill="#5F5E5A" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="660" y="657">Public Collapse of Control</text>
+<text fill="#5F5E5A" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="660" y="673">Loss of Regime Signal</text>
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="0.8" x1="660" x2="660" y1="682" y2="712"></line>
+<rect fill="#FCEBEB" height="54" rx="8" stroke="#A32D2D" stroke-width="0.8" width="160" x="580" y="712"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="660" y="734">Collapse of Control</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="660" y="751">Accelerated Escape of Elites</text>
+ Standby → Uprising Dotted Line 
+<path d="M660 766 L660 960 L530 960" fill="none" marker-end="url(#ar-r)" stroke="#A32D2D" stroke-dasharray="4 3" stroke-width="0.8"></path>
+ ══ Center: Public Choice (x=200~560) ══ 
+<rect fill="#F1EFE8" height="44" rx="8" stroke="#888780" stroke-width="0.8" width="340" x="210" y="618"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="13" font-weight="700" text-anchor="middle" x="380" y="645">Bifurcation Point of Public Choice</text>
+ Public → Return to Daily Life (Center Left, x=270) 
+<path d="M300 662 L270 662 L270 712" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+<text fill="#5F5E5A" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="248" y="656">Return to Daily Life?</text>
+ Public → Continued Protests (Center Right, x=490) 
+<path d="M460 662 L490 662 L490 712" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+<text fill="#5F5E5A" font-family="Georgia,serif" font-size="10" text-anchor="middle" x="512" y="656">Continued?</text>
+ Return to Daily Life Box (x=195~345, No Overlap) 
+<rect fill="#E6F1FB" height="88" rx="8" stroke="#185FA5" stroke-width="0.8" width="150" x="195" y="712"></rect>
+<text fill="#0C447C" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="270" y="733">Attempting Return to Daily Life</text>
+<text fill="#185FA5" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="270" y="751">Is there a daily life</text>
+<text fill="#185FA5" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="270" y="767">to return to?</text>
+<text fill="#185FA5" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="270" y="785">F_reach 0.32</text>
+<line marker-end="url(#ar-r)" stroke="#A32D2D" stroke-width="0.8" x1="270" x2="270" y1="800" y2="830"></line>
+ 'No' Box 
+<rect fill="#FCEBEB" height="54" rx="8" stroke="#A32D2D" stroke-width="0.8" width="150" x="195" y="830"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="270" y="851">No</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="270" y="869">Extreme Poverty Post-War</text>
+ 'No' → Uprising Dotted Line 
+<path d="M270 884 L270 960 L230 960" fill="none" marker-end="url(#ar-r)" stroke="#A32D2D" stroke-dasharray="4 3" stroke-width="0.8"></path>
+ Continued Protests Box (x=415~565, No Overlap) 
+<rect fill="#FAECE7" height="88" rx="8" stroke="#993C1D" stroke-width="0.8" width="150" x="415" y="712"></rect>
+<text fill="#712B13" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="490" y="733">Continued Protests</text>
+<text fill="#993C1D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="490" y="751">Rejection of Daily Life During War</text>
+<text fill="#993C1D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="490" y="769">Uprising is the Second Best</text>
+<text fill="#993C1D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="490" y="787">F_reach 0.32</text>
+ Continued Protests → Uprising 
+<line marker-end="url(#ar-r)" stroke="#A32D2D" stroke-width="0.8" x1="490" x2="490" y1="800" y2="960"></line>
+ ══ §8 Uprising Convergence Point ══ 
+<rect fill="#FCEBEB" height="60" rx="8" stroke="#A32D2D" stroke-width="1.5" width="420" x="170" y="960"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="14" font-weight="700" text-anchor="middle" x="380" y="984">Uprising — Highest Convergence Point</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="380" y="1004">Timing Pending · Scale Pending · Outcome Pending</text>
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="1" x1="380" x2="380" y1="1020" y2="1050"></line>
+ ══ §9 Post-Uprising ══ 
+<rect fill="#F1EFE8" height="44" rx="8" stroke="#888780" stroke-width="0.8" width="280" x="240" y="1050"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="13" font-weight="700" text-anchor="middle" x="380" y="1077">Post-Uprising Bifurcation — Pending</text>
+ 4-way Bifurcation 
+<path d="M265 1094 L110 1094 L110 1138" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+<path d="M320 1094 L270 1094 L270 1138" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+<path d="M440 1094 L490 1094 L490 1138" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+<path d="M495 1094 L650 1094 L650 1138" fill="none" marker-end="url(#ar)" stroke="#888780" stroke-width="0.8"></path>
+ Outcome A: Regime Collapse 
+<rect fill="#E1F5EE" height="64" rx="8" stroke="#0F6E56" stroke-width="0.8" width="140" x="40" y="1138"></rect>
+<text fill="#085041" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="110" y="1160">Regime Collapse</text>
+<text fill="#0F6E56" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="110" y="1177">Transitional Government</text>
+<text fill="#0F6E56" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="110" y="1193">Pahlavi? Republic?</text>
+ Outcome B: 2nd Massacre 
+<rect fill="#FCEBEB" height="64" rx="8" stroke="#A32D2D" stroke-width="0.8" width="140" x="200" y="1138"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="270" y="1160">2nd Massacre</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="270" y="1177">Cycle Repeated</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="270" y="1193">Larger Explosion</text>
+ Outcome C: Negotiation Breakthrough 
+<rect fill="#E6F1FB" height="64" rx="8" stroke="#185FA5" stroke-width="0.8" width="140" x="420" y="1138"></rect>
+<text fill="#0C447C" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="490" y="1160">Negotiation Breakthrough</text>
+<text fill="#185FA5" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="490" y="1177">Sanctions Relief</text>
+<text fill="#185FA5" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="490" y="1193">Stalling for Time</text>
+ Outcome D: Military Coup 
+<rect fill="#EEEDFE" height="64" rx="8" stroke="#534AB7" stroke-width="0.8" width="150" x="580" y="1138"></rect>
+<text fill="#3C3489" font-family="Georgia,serif" font-size="12" font-weight="700" text-anchor="middle" x="655" y="1160">Military Coup</text>
+<text fill="#534AB7" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="655" y="1177">IRGC Moderates</text>
+<text fill="#534AB7" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="655" y="1193">Internal Power Shift</text>
+ ══ Numerical Panel ══ 
+<rect fill="none" height="118" rx="8" stroke="#DDD8CE" stroke-dasharray="5 4" stroke-width="1" width="700" x="30" y="1252"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="13" font-weight="700" text-anchor="middle" x="380" y="1278">Key Figures — Current Threshold Position (2026.04.29)</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="11" x="80" y="1304">TBI 0.665 / θ=0.70 · Remaining 0.035</text>
+<text fill="#5F5E5A" font-family="'Courier New',monospace" font-size="11" x="80" y="1322">F_reach 0.32 / Below Danger Line 0.40</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="11" x="80" y="1340">PWT-r 0.47 / Λ-Score ≈ 0.60</text>
+<text fill="#A32D2D" font-family="'Courier New',monospace" font-size="11" x="410" y="1304">Unemployment +2 million / Inflation 72%</text>
+<text fill="#854F0B" font-family="'Courier New',monospace" font-size="11" x="410" y="1322">612 Executions (As of April)</text>
+<text fill="#5F5E5A" font-family="'Courier New',monospace" font-size="11" x="410" y="1340">IRGC Salaries Unpaid · SR Approaching Threshold</text>
+ Pending Signature 
+<text fill="#888780" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="380" y="1400">— Below this point, Λ¹² does not answer —</text>
+<text fill="#888780" font-family="Georgia,serif" font-size="12" text-anchor="middle" x="380" y="1420">The public decides on the streets</text>
+ Legend 
+<rect fill="#FAF8F4" height="130" rx="8" stroke="#DDD8CE" stroke-width="0.5" width="700" x="30" y="1440"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="11" font-weight="700" text-anchor="middle" x="380" y="1464">Legend</text>
+<rect fill="#E1F5EE" height="14" rx="3" stroke="#0F6E56" stroke-width="0.8" width="14" x="50" y="1478"></rect>
+<text fill="#085041" font-family="Georgia,serif" font-size="11" x="72" y="1490">Favorable Direction (Structurally Impossible)</text>
+<rect fill="#FAEEDA" height="14" rx="3" stroke="#854F0B" stroke-width="0.8" width="14" x="230" y="1478"></rect>
+<text fill="#633806" font-family="Georgia,serif" font-size="11" x="252" y="1490">Threshold·Warning Zone</text>
+<rect fill="#FCEBEB" height="14" rx="3" stroke="#A32D2D" stroke-width="0.8" width="14" x="420" y="1478"></rect>
+<text fill="#791F1F" font-family="Georgia,serif" font-size="11" x="442" y="1490">Danger·Collapse Path</text>
+<rect fill="#F1EFE8" height="14" rx="3" stroke="#888780" stroke-width="0.8" width="14" x="580" y="1478"></rect>
+<text fill="#444441" font-family="Georgia,serif" font-size="11" x="602" y="1490">Neutral Zone</text>
+<line marker-end="url(#ar-r)" stroke="#A32D2D" stroke-dasharray="4 3" stroke-width="1" x1="50" x2="80" y1="1516" y2="1516"></line>
+<text fill="#A32D2D" font-family="Georgia,serif" font-size="11" x="90" y="1520">Return of Impossible Path (Dotted Line)</text>
+<line marker-end="url(#ar)" stroke="#888780" stroke-width="1" x1="290" x2="320" y1="1516" y2="1516"></line>
+<text fill="#5F5E5A" font-family="Georgia,serif" font-size="11" x="330" y="1520">Forward Flow (Solid Line)</text>
+<text fill="#888780" font-family="'Courier New',monospace" font-size="10" text-anchor="middle" x="380" y="1558">Everblue Sea Institute for Social Dynamics · Λ¹² v9.11 · SSRN 6509200 · 2026-04-29</text>
+</svg>
+</div>
+</div>
+<!-- /wrap -->
+<!-- FOOTER -->
+<div class="footer">
+<div class="ft-title">Everblue Sea Institute for Social Dynamics</div>
+  Everblue Sea Dynamics Institute · Developer of SYNTHESIS Framework<br/>
+<a href="https://badaegopa.tistory.com" target="_blank">badaegopa.tistory.com</a>
+   ·  SSRN 6509200  ·  Λ¹² v9.11<br/>
+  Beyond analysis, to reassembly / Not analysis, but synthesis<br/>
+<br/>
+  Cheonghae (淸海) + Claude · 2026-04-29
+</div>
+</body>
+</html>
