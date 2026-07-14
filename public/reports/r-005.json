@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title": "쓰나미는 구매력 순서로 도착한다 — 러시아 경유 수출금지 2026",
+    "title_en": "The Tsunami Arrives in Order of Purchasing Power — Russia's Diesel Export Ban 2026",
+    "engine": "§36 SCDI",
+    "category": "공급망교란지수",
+    "category_en": "Supply Chain Disruption Index",
+    "scope": "권역별",
+    "scope_en": "Regional",
+    "date": "2026-07-14",
+    "author": "김기섭",
+    "tags": ["SCDI", "러시아", "경유", "공급망", "지정학", "우크라이나"],
+    "html_path": "/engines/scdi/SCDI_RussiaDiesel_v1_20260714.html",
+    "status": "published"
+  },
+  "summary_ko": "2026년 7월 8일 러시아의 경유 수출 전면금지를 §36 공급망교란지수의 틀로 판독한다. 우크라이나가 1년간 정제계통에 축적시킨 강제 진동(상반기 타격 194회, 전년 동기 11배)이 수출금지라는 통로로 세계 시장에 방출됐고, 그 에너지는 구매력 순서대로 재분배된다. 튀르키예·브라질·이집트·모로코·세네갈의 노출도-완충력 좌표, F(t)-SE(t) 정성 계측, 그리고 국가별 교란 전달률 T_sc 확장 제안 v0.1을 수록했다.",
+  "summary_en": "A reading of Russia's July 8, 2026 total diesel export ban through the §36 Supply Chain Disruption Index. The forced vibration Ukraine accumulated in Russia's refining system over a year (194 strikes in H1, eleven times the prior year) was released into world markets through the export ban, and that energy is redistributed in order of purchasing power. Includes exposure-buffer coordinates for Turkey, Brazil, Egypt, Morocco and Senegal, qualitative F(t)-SE(t) readings, and the proposed country-level disruption transmissibility extension T_sc v0.1.",
+  "body": "<h2>보고서 안내</h2><p>본 보고서 전문은 상단 뷰어에서 열람할 수 있습니다. 가진원 시계열(제0절), 전파 3층 구조, 국가별 취약도 판독, §36 SCDI 정성 판독과 T_sc 확장 제안, 재현성·출처 선언을 포함합니다.</p>"
+}

@@ -29,6 +29,19 @@ export const tickerItems = [
 
 export const featuredReports = [
   {
+    id: "r-005",
+    category: "§36 SCDI · 공급망교란지수",
+    categoryEn: "§36 SCDI · Supply Chain Disruption",
+    date: "2026-07-14",
+    author: "김기섭",
+    title: "쓰나미는 구매력 순서로 도착한다 — 러시아 경유 수출금지 2026",
+    titleEn: "The Tsunami Arrives in Order of Purchasing Power — Russia's Diesel Ban 2026",
+    excerpt: "우크라이나가 러시아 정제계통에 1년간 축적시킨 강제 진동이 수출금지라는 통로로 세계에 방출됐다. 튀르키예·브라질·이집트·세네갈 — 같은 파도, 다른 방파제. 국가별 전달률 T_sc 확장 제안 수록.",
+    excerptEn: "A year of forced vibration in Russia's refining system, released into the world through an export ban. Turkey, Brazil, Egypt, Senegal — the same wave, different seawalls. Includes the proposed country-level transmissibility extension T_sc.",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20a%20single%20powerful%20wave%20radiating%20outward%20across%20an%20interconnected%20network%20of%20nodes%20and%20shipping%20routes%2C%20wave%20amplitude%20diminishing%20differently%20at%20each%20node%20behind%20barriers%20of%20varying%20heights%2C%20rendered%20on%20warm%20cream%20beige%20background%20with%20teal%20green%20stable%20nodes%20and%20gold%20amber%20pressure%20zones%20and%20one%20deep%20red%20epicenter%2C%20fluid%20dynamics%20meets%20supply%20chain%20cartography%20aesthetic%2C%20no%20human%20figures%20no%20faces%20no%20text&width=1200&height=600&seq=report-r005-20260714&orientation=landscape",
+    tone: "light" as const,
+  },
+  {
     id: "r-004",
     category: "UI · 봉기지수",
     categoryEn: "UI · Uprising Index",
@@ -65,19 +78,6 @@ export const featuredReports = [
     excerpt: "명목 G-T Core는 동일한 두 나라. C_internal 하나가 만들어낸 0.564의 차이. 소방서는 같은데 왜 화재 대응이 다른가.",
     excerptEn: "Two countries sharing the same nominal G-T Core. A single C_internal variable creates a 0.564 gap. Same fire station, different response.",
     image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20two%20identical%20waveform%20signatures%20splitting%20into%20dramatically%20different%20amplitudes%2C%20one%20wave%20remaining%20subtle%20and%20low%20while%20the%20other%20grows%20into%20a%20towering%20resonant%20peak%2C%20rendered%20on%20warm%20beige%20cream%20background%20with%20teal%20green%20low%20wave%20and%20gold%20amber%20high%20wave%2C%20scientific%20signal%20processing%20aesthetic%2C%20clean%20split%20comparison%20composition%2C%20no%20human%20figures%20no%20faces%20no%20text&width=1200&height=600&seq=report-r002-v2-20260706&orientation=landscape",
-    tone: "light" as const,
-  },
-  {
-    id: "r-003",
-    category: "BSLI · SSRN",
-    categoryEn: "BSLI · SSRN",
-    date: "2026-07-01",
-    author: "김기섭",
-    title: "먹고 입고 자는 것 — 139개국 서민 고통 지수 업데이트",
-    titleEn: "Food, Clothing, Shelter — 139-Country Suffering Index Update",
-    excerpt: "기초사회생활지수 v6.9. 삼중계(衣·食·住)로 측정한 세계 서민의 실제 삶. 한국은 왜 C등급인가.",
-    excerptEn: "BSLI v6.9. The real lives of ordinary people in 139 countries measured through the triple axis of Clothing, Food, Housing. Why is Korea Grade C?",
-    image: "https://readdy.ai/api/search-image?query=Abstract%20triptych%20composition%20featuring%20three%20distinct%20textural%20abstractions%20representing%20fabric%20weave%20textile%20patterns%2C%20flowing%20grain%20kernel%20formations%2C%20and%20architectural%20roof%20tile%20geometries%2C%20divided%20into%20three%20equal%20horizontal%20bands%20on%20warm%20cream%20beige%20background%2C%20rendered%20in%20muted%20teal%20green%20earth%20tones%20and%20subtle%20gold%20amber%20highlights%2C%20no%20human%20figures%20no%20faces%2C%20contemplative%20still%20life%20abstraction%20meets%20material%20science%20visualization&width=1200&height=600&seq=report-r003-v2-20260706&orientation=landscape",
     tone: "light" as const,
   },
 ];
