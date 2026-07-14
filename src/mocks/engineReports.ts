@@ -156,6 +156,15 @@ export const engineReports: Record<string, NationReport[]> = {
   // §36 공급망교란지수
   "cat-scdi": [
     {
+      id: "scdi-russia-diesel-2026",
+      title: "러시아 경유 수출금지 — 공급망 교란 전파 지정학 보고서", titleEn: "Russia's Diesel Export Ban — Supply-Chain Disruption Propagation Report",
+      region: "글로벌", regionEn: "Global",
+      scope: "권역별",
+      engine: "§36 SCDI",
+      date: "2026-07-14",
+      htmlPath: "/engines/scdi/SCDI_RussiaDiesel_v1_20260714.html",
+    },
+    {
       id: "scdi-methodology",
       title: "공급망교란지수 §36 — 공식과 방법론 해설 (교란 전파 경로)", titleEn: "Supply Chain Disruption Index §36 — Formulas and Methodology (Disruption Propagation Paths)",
       region: "방법론", regionEn: "Methodology",
