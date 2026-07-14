@@ -1,0 +1,282 @@
+[
+ {
+  "file": "/nations/seismos_national_v3_EN.html",
+  "ko": 1114,
+  "hanja": 9
+ },
+ {
+  "file": "/engines/bsli/BSLI_dashboard_v7_EN.html",
+  "ko": 596,
+  "hanja": 0
+ },
+ {
+  "file": "/nations/southeast-asia/v1.0_southeast-asia-1_20260428_EN.html",
+  "ko": 153,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/southeast-asia/v1.0_southeast-asia-2_20260428_EN.html",
+  "ko": 129,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/korea_EN.html",
+  "ko": 101,
+  "hanja": 0
+ },
+ {
+  "file": "/nations/northeast-asia/v9.12_northeast-asia_20260502_EN.html",
+  "ko": 89,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/south-asia/v1.0_south-asia-1_20260429_EN.html",
+  "ko": 86,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/reverbant/REVERBANT_v1.1_final_theory_EN.html",
+  "ko": 80,
+  "hanja": 6
+ },
+ {
+  "file": "/nations/northeast-asia/v9.12_china_20260502_EN.html",
+  "ko": 70,
+  "hanja": 14
+ },
+ {
+  "file": "/nations/europe/v1.0_south-europe-1_20260429_EN.html",
+  "ko": 80,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/lambda12/Lambda12_Validation_Report_v2_20260711_EN.html",
+  "ko": 71,
+  "hanja": 6
+ },
+ {
+  "file": "/engines/bsli/BSLI_paper_v6.0_2026_EN.html",
+  "ko": 46,
+  "hanja": 31
+ },
+ {
+  "file": "/engines/reverbant/REVERBANT_KOR_USA_2026_EN.html",
+  "ko": 66,
+  "hanja": 6
+ },
+ {
+  "file": "/nations/americas/Argentina_Lambda12v912_20260504_EN.html",
+  "ko": 43,
+  "hanja": 4
+ },
+ {
+  "file": "/engines/ui/uprising_tracker_EN.html",
+  "ko": 42,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/americas/LatAm_Regional_Lambda12v912_20260504_EN.html",
+  "ko": 30,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/middle-east/MiddleEast_Regional_Lambda12v914_20260506_EN.html",
+  "ko": 26,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/americas/LatAm_2nd_Series_Lambda12v912_20260504_EN.html",
+  "ko": 25,
+  "hanja": 4
+ },
+ {
+  "file": "/engines/scdi/SCDI_RussiaDiesel_v1_20260714_EN.html",
+  "ko": 25,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/americas/LatAm_4th_SmallStates_Lambda12v912_20260504_EN.html",
+  "ko": 21,
+  "hanja": 5
+ },
+ {
+  "file": "/nations/europe/v1.0_west-europe-1_20260429_EN.html",
+  "ko": 22,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/europe/v1.0_east-europe-1_20260429_EN.html",
+  "ko": 16,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/middle-east/MiddleEast_East_Lambda12v914_20260506_EN.html",
+  "ko": 13,
+  "hanja": 4
+ },
+ {
+  "file": "/engines/ui/world_judgment_EN.html",
+  "ko": 14,
+  "hanja": 0
+ },
+ {
+  "file": "/engines/ui/KOR_report_EN.html",
+  "ko": 12,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/northeast-asia/v9.12_northkorea_20260502_EN.html",
+  "ko": 9,
+  "hanja": 3
+ },
+ {
+  "file": "/nations/americas/LatAm_3rd_Series_Lambda12v912_20260504_EN.html",
+  "ko": 8,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/middle-east/MiddleEast_Central_Lambda12v914_20260506_EN.html",
+  "ko": 8,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/middle-east/MiddleEast_West_Lambda12v914_20260506_EN.html",
+  "ko": 8,
+  "hanja": 4
+ },
+ {
+  "file": "/engines/bsli/bsli_metro_pattern_EN.html",
+  "ko": 7,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/northeast-asia/v9.12_taiwan_20260502_EN.html",
+  "ko": 4,
+  "hanja": 6
+ },
+ {
+  "file": "/nations/northeast-asia/v9.12_japan_20260502_EN.html",
+  "ko": 4,
+  "hanja": 3
+ },
+ {
+  "file": "/nations/northeast-asia/v9.12_korea_20260502_EN.html",
+  "ko": 4,
+  "hanja": 3
+ },
+ {
+  "file": "/nations/europe/v9.12_greece_20260502_EN.html",
+  "ko": 4,
+  "hanja": 3
+ },
+ {
+  "file": "/nations/europe/v9.12_bosnia_20260502_EN.html",
+  "ko": 4,
+  "hanja": 3
+ },
+ {
+  "file": "/nations/europe/v9.12_uk_20260502_EN.html",
+  "ko": 4,
+  "hanja": 3
+ },
+ {
+  "file": "/nations/europe/v9.12_hungary_20260502_EN.html",
+  "ko": 4,
+  "hanja": 3
+ },
+ {
+  "file": "/nations/southeast-asia/v9.12_cambodia_20260502_EN.html",
+  "ko": 4,
+  "hanja": 3
+ },
+ {
+  "file": "/engines/afro/lambda_s40_AFRO_v02_EN.html",
+  "ko": 0,
+  "hanja": 6
+ },
+ {
+  "file": "/engines/ui/VEN_IRN_UI_comparative_20260712_EN.html",
+  "ko": 0,
+  "hanja": 6
+ },
+ {
+  "file": "/nations/climate/ClimateExtinction_4Nations_Lambda12v913_20260504_EN.html",
+  "ko": 3,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/methodology/SCDI_methodology_EN.html",
+  "ko": 0,
+  "hanja": 5
+ },
+ {
+  "file": "/nations/americas/Mexico_Lambda12v912_20260504_EN.html",
+  "ko": 0,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/americas/Brazil_Lambda12v912_20260504_EN.html",
+  "ko": 0,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/europe/v1.0_north-europe-1_20260429_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/europe/v1.0_balkans-1_20260429_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/climate/MarshallIslands_Lambda12v913_GEI_20260504_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/climate/Kiribati_Lambda12v913_GEI_20260504_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/climate/Maldives_Lambda12v913_GEI_20260504_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/climate/Tuvalu_Lambda12v913_GEI_20260504_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/nations/middle-east/v1.0_이란단독편_20260429_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/methodology/LCI_methodology_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/methodology/NCI_methodology_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/methodology/GEI_methodology_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/methodology/BBD_methodology_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/methodology/PPI_methodology_EN.html",
+  "ko": 0,
+  "hanja": 2
+ }
+]
