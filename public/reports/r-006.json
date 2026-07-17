@@ -1,21 +1,21 @@
 {
  "meta": {
-  "title": "인도네시아 Λ¹² 국가분석보고서 — 판차실라의 균열과 백색왜성 경로",
-  "title_en": "Indonesia Λ¹² National Analysis — Cracks in Pancasila and the White Dwarf Path",
-  "engine": "Λ¹² v1.9.3",
-  "category": "국가 분석 보고서",
-  "category_en": "National Analysis",
+  "title": "인도네시아 봉기경로 진단 — T_trigger 5개 시나리오와 백색왜성 55%",
+  "title_en": "Indonesia Uprising-Path Diagnosis — Five T_trigger Scenarios and a 55% White Dwarf",
+  "engine": "UI · Λ¹² v1.9.3",
+  "category": "봉기지수",
+  "category_en": "Uprising Index",
   "scope": "단독",
   "scope_en": "Standalone",
   "date": "2026-07-17",
   "author": "김기섭",
   "tags": [
-   "Λ¹²",
-   "인도네시아",
-   "BSLI",
+   "UI",
+   "봉기지수",
    "T_trigger",
+   "인도네시아",
    "백색왜성",
-   "동남아시아"
+   "Λ¹²"
   ],
   "html_path": "/nations/southeast-asia/인도네시아_Λ12_비교분석보고서_20260717.html",
   "status": "published"

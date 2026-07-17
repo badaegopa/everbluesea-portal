@@ -30,15 +30,15 @@ export const tickerItems = [
 export const featuredReports = [
   {
     id: "r-006",
-    category: "Λ¹² · 국가 분석 보고서",
-    categoryEn: "Λ¹² · National Analysis",
+    category: "UI · 봉기지수",
+    categoryEn: "UI · Uprising Index",
     date: "2026-07-17",
     author: "김기섭",
-    title: "인도네시아 Λ¹² 국가분석보고서 — 판차실라의 균열과 백색왜성 경로",
-    titleEn: "Indonesia Λ¹² National Analysis — Cracks in Pancasila and the White Dwarf Path",
+    title: "인도네시아 봉기경로 진단 — T_trigger 5개 시나리오와 백색왜성 55%",
+    titleEn: "Indonesia Uprising-Path Diagnosis — Five T_trigger Scenarios and a 55% White Dwarf",
     excerpt: "η=0.617, 백색왜성 경로 55%. 수카르노에서 프라보워까지의 계보 위에서, 이슬람 87% 사회를 묶어온 판차실라의 균열을 12차원 테이블·BSLI 공식 전개·T_trigger 5개 시나리오로 진단한다.",
     excerptEn: "η=0.617, a 55% White Dwarf path. From Sukarno to Prabowo, a diagnosis of the cracks in Pancasila — the covenant of an 87%-Muslim society — via the 12-dimension table, full BSLI derivation, and five T_trigger scenarios.",
-    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20an%20archipelago%20of%20luminous%20nodes%20scattered%20across%20a%20calm%20sea%20surface%20connected%20by%20thin%20glowing%20threads%20forming%20a%20fragile%20lattice%2C%20one%20region%20of%20the%20lattice%20showing%20hairline%20fractures%20spreading%20softly%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20primary%20structures%20and%20gold%20amber%20accent%20nodes%2C%20no%20maps%20no%20flags%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20network%20science%20visualization&width=800&height=600&seq=idn-l12-20260717&orientation=landscape",
+    image: "https://readdy.ai/api/search-image?query=Abstract%20visualization%20of%20a%20rising%20wave%20surface%20built%20from%20thousands%20of%20fine%20luminous%20threads%20approaching%20a%20critical%20crest%2C%20subtle%20fracture%20lines%20glowing%20along%20the%20wavefront%2C%20warm%20cream%20beige%20background%20with%20teal%20green%20primary%20structures%20and%20gold%20amber%20accent%20nodes%2C%20no%20maps%20no%20flags%20no%20human%20figures%20no%20faces%2C%20pure%20abstract%20network%20science%20visualization&width=800&height=600&seq=cat-ui-idn-20260717a&orientation=landscape",
     tone: "light" as const,
   },
   {
