@@ -77,6 +77,15 @@ export const engineReports: Record<string, NationReport[]> = {
   // UI 봉기지수
   "cat-ui": [
     {
+      id: "ui-indonesia-2026",
+      title: "인도네시아 봉기경로 진단 — T_trigger 5개 시나리오와 백색왜성 55%", titleEn: "Indonesia Uprising-Path Diagnosis — Five T_trigger Scenarios and a 55% White Dwarf",
+      region: "동남아시아", regionEn: "Southeast Asia",
+      scope: "단독",
+      engine: "UI · Λ¹² v1.9.3",
+      date: "2026-07-17",
+      htmlPath: "/nations/southeast-asia/인도네시아_Λ12_비교분석보고서_20260717.html",
+    },
+    {
       id: "ui-ven-irn-2026",
       title: "외생 개입과 민중 동역학 — 베네수엘라·이란 2026 비교 정밀진단", titleEn: "Exogenous Intervention and Grassroots Dynamics — Venezuela·Iran 2026 Comparative Diagnosis",
       region: "아메리카·중동", regionEn: "Americas·Middle East",
