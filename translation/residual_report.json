@@ -5,6 +5,11 @@
   "hanja": 9
  },
  {
+  "file": "/engines/lambda12/Lambda12_BSLI_Joint_138Nations_20260718_EN.html",
+  "ko": 641,
+  "hanja": 0
+ },
+ {
   "file": "/engines/bsli/BSLI_dashboard_v7_EN.html",
   "ko": 596,
   "hanja": 0
@@ -63,11 +68,6 @@
   "file": "/engines/reverbant/REVERBANT_KOR_USA_2026_EN.html",
   "ko": 66,
   "hanja": 6
- },
- {
-  "file": "/nations/southeast-asia/인도네시아_Λ12_비교분석보고서_20260717_EN.html",
-  "ko": 59,
-  "hanja": 7
  },
  {
   "file": "/nations/americas/Argentina_Lambda12v912_20260504_EN.html",
@@ -163,6 +163,11 @@
   "file": "/nations/southeast-asia/v9.12_cambodia_20260502_EN.html",
   "ko": 4,
   "hanja": 3
+ },
+ {
+  "file": "/nations/southeast-asia/인도네시아_Λ12_비교분석보고서_20260717_EN.html",
+  "ko": 0,
+  "hanja": 7
  },
  {
   "file": "/nations/northeast-asia/v9.12_japan_20260502_EN.html",
