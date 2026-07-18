@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Λ¹²·BSLI 통합 국가분석 보고서 2026 — 늘푸른바다 사회동역학 연구소</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Noto Sans KR',sans-serif; background:#F5F3EE; color:#333; line-height:1.6; }
+  
+  .hero {
+    background:linear-gradient(135deg,#3a5f5a 0%,#5E9186 60%,#7aada6 100%);
+    color:#fff;
+    padding:48px 24px 40px;
+    text-align:center;
+  }
+  .hero-label { font-size:0.8rem; letter-spacing:3px; text-transform:uppercase; opacity:0.8; margin-bottom:8px; }
+  .hero h1 { font-size:1.9rem; font-weight:800; margin-bottom:8px; }
+  .hero-sub { font-size:0.95rem; opacity:0.9; margin-bottom:24px; }
+  .hero-meta { display:flex; gap:32px; justify-content:center; flex-wrap:wrap; }
+  .hero-stat { background:rgba(255,255,255,0.15); border-radius:8px; padding:12px 20px; }
+  .hero-stat .val { font-size:1.6rem; font-weight:800; }
+  .hero-stat .lbl { font-size:0.75rem; opacity:0.85; }
+  
+  .container { max-width:960px; margin:0 auto; padding:24px 16px; }
+  
+  .section-title {
+    font-size:1.05rem; font-weight:700; color:#3a5f5a;
+    border-left:4px solid #5E9186; padding-left:12px;
+    margin:32px 0 16px;
+  }
+  
+  .card { background:#fff; border:1px solid #DDD8CE; border-radius:10px; padding:20px; margin-bottom:20px; }
+  
+  /* quadrant summary */
+  .quad-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .quad-card { border-radius:8px; padding:16px; color:#fff; }
+  .quad-card.hh { background:#5E9186; }
+  .quad-card.hl { background:#B8850E; }
+  .quad-card.lh { background:#6c9bcb; }
+  .quad-card.ll { background:#c0392b; }
+  .quad-card .qcode { font-size:1.4rem; font-weight:800; }
+  .quad-card .qname { font-size:0.8rem; opacity:0.9; margin-bottom:6px; }
+  .quad-card .qcount { font-size:2rem; font-weight:800; }
+  .quad-card .qdesc { font-size:0.75rem; opacity:0.85; margin-top:4px; }
+  
+  /* scatter */
+  .chart-wrap { position:relative; height:500px; }
+  .axis-label { font-size:0.75rem; color:#888; text-align:center; margin-top:4px; }
+  
+  /* table */
+  .tbl-wrap { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; }
+  thead th { background:#5E9186; color:#fff; padding:8px 10px; text-align:center; position:sticky; top:0; z-index:10; }
+  thead th:first-child, thead th:nth-child(2), thead th:nth-child(3) { text-align:left; }
+  tbody tr:hover { background:#f0f7f5; }
+  tbody td { padding:6px 10px; border-bottom:1px solid #DDD8CE; vertical-align:middle; }
+  
+  .corr-box {
+    background:linear-gradient(135deg,#f0f7f5,#fff);
+    border:1px solid #5E9186;
+    border-radius:10px;
+    padding:20px;
+    display:flex; gap:24px; align-items:center; flex-wrap:wrap;
+  }
+  .corr-stat { text-align:center; }
+  .corr-stat .val { font-size:2.2rem; font-weight:800; color:#5E9186; }
+  .corr-stat .lbl { font-size:0.8rem; color:#666; }
+  .corr-desc { flex:1; min-width:200px; font-size:0.9rem; color:#555; line-height:1.8; }
+  
+  .highlight-row { background:#e8f4f0; }
+  
+  .footnote { font-size:0.75rem; color:#888; border-top:1px solid #DDD8CE; padding-top:16px; margin-top:24px; }
+  
+  .kor-spotlight, .idn-spotlight {
+    border-radius:10px; padding:16px 20px; margin-bottom:12px;
+  }
+  .kor-spotlight { background:#e8f4f0; border:1px solid #5E9186; }
+  .idn-spotlight { background:#fff8ec; border:1px solid #B8850E; }
+  .spotlight-title { font-weight:700; font-size:1rem; margin-bottom:8px; }
+  .dim-bar-wrap { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+  .dim-bar { display:flex; flex-direction:column; align-items:center; width:52px; }
+  .dim-bar .bar-container { width:100%; height:60px; background:#eee; border-radius:3px; position:relative; display:flex; align-items:flex-end; }
+  .dim-bar .bar-fill { width:100%; background:#5E9186; border-radius:3px; transition:height 0.3s; }
+  .dim-bar .bar-label { font-size:0.65rem; color:#666; margin-top:2px; }
+  .dim-bar .bar-val { font-size:0.6rem; color:#888; }
+  
+  footer { text-align:center; color:#999; font-size:0.75rem; padding:32px 16px; border-top:1px solid #DDD8CE; margin-top:32px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-label">늘푸른바다 사회동역학 연구소 · 2026.07.18</div>
+  <h1>Λ¹²·BSLI 통합 국가분석 보고서</h1>
+  <div class="hero-sub">12차원 사회역량지수(η) × 기초사회생활지수(BSLI) — 138국 전수 산출</div>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <div class="val">138</div>
+      <div class="lbl">분석 대상국</div>
+    </div>
+    <div class="hero-stat">
+      <div class="val">r = 0.7551</div>
+      <div class="lbl">Pearson 상관계수</div>
+    </div>
+    <div class="hero-stat">
+      <div class="val">η v2.0</div>
+      <div class="lbl">12차원 A1~A12 포함</div>
+    </div>
+    <div class="hero-stat">
+      <div class="val">BSLI v6.9</div>
+      <div class="lbl">衣食住 3성분</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 사분면 분류 -->
+  <div class="section-title">사분면 분류 (η 중위 0.5000 / BSLI 중위 −0.1301)</div>
+  <div class="quad-grid">
+    <div class="quad-card hh">
+      <div class="qcode">HH</div>
+      <div class="qname">η↑ · BSLI↑</div>
+      <div class="qcount">51국</div>
+      <div class="qdesc">안정번영 — 사회역량과 민생 모두 중위 이상</div>
+    </div>
+    <div class="quad-card hl">
+      <div class="qcode">HL</div>
+      <div class="qname">η↑ · BSLI↓</div>
+      <div class="qcount">18국</div>
+      <div class="qdesc">민생위기 — 제도역량은 있으나 기초생활 미달</div>
+    </div>
+    <div class="quad-card lh">
+      <div class="qcode">LH</div>
+      <div class="qname">η↓ · BSLI↑</div>
+      <div class="qcount">18국</div>
+      <div class="qdesc">민생선행 — 민생은 유지하나 체제역량 취약</div>
+    </div>
+    <div class="quad-card ll">
+      <div class="qcode">LL</div>
+      <div class="qname">η↓ · BSLI↓</div>
+      <div class="qcount">51국</div>
+      <div class="qdesc">이중취약 — 사회역량·민생 동반 위험</div>
+    </div>
+  </div>
+
+  <!-- 상관관계 -->
+  <div class="section-title">η × BSLI 상관관계 (n=138)</div>
+  <div class="corr-box">
+    <div class="corr-stat">
+      <div class="val">0.7551</div>
+      <div class="lbl">Pearson r</div>
+    </div>
+    <div class="corr-stat">
+      <div class="val">0.714</div>
+      <div class="lbl">Spearman ρ</div>
+    </div>
+    <div class="corr-stat">
+      <div class="val">p ≈ 0</div>
+      <div class="lbl">유의수준</div>
+    </div>
+    <div class="corr-desc">
+      사회역량(η)과 기초생활지수(BSLI) 사이에 강한 양의 상관관계(r=+0.7551)가 존재한다.
+      즉, 제도·사회적 역량이 높은 국가일수록 국민의 기초생활 수준도 높은 경향이 있다.
+      단, 18국(HL)의 경우 η↑·BSLI↓로 역설적 분리가 확인되어, 제도역량이 민생으로
+      전환되지 못하는 '전달 실패(delivery failure)' 구조를 나타낸다.
+    </div>
+  </div>
+
+  <!-- 산점도 -->
+  <div class="section-title">η × BSLI 산점도</div>
+  <div class="card">
+    <div class="chart-wrap">
+      <canvas id="scatterChart"></canvas>
+    </div>
+    <div class="axis-label">← η (폭발근접지수 / 사회역량) →</div>
+  </div>
+
+  <!-- KOR / IDN 스포트라이트 -->
+  <div class="section-title">주요 분석 대상 — 한국·인도네시아</div>
+  
+  <div class="kor-spotlight">
+    <div class="spotlight-title">🇰🇷 대한민국 (KOR) — HH 안정번영 #20위</div>
+    <p style="font-size:0.9rem;color:#555">η = <strong>0.5993</strong> (197국 중 23위) &nbsp;|&nbsp; BSLI = <strong>0.4627</strong> (139국 중 25위, C등급) &nbsp;|&nbsp; 경로: WD (백색왜성)</p>
+    <p style="font-size:0.85rem;color:#666;margin-top:6px">
+      η·BSLI 모두 상위권으로 사분면 HH(안정번영)에 위치. 단, A10(문화정체·미디어자유) 0.0215, A11(에너지·환경) 0.2525가 
+      극단적으로 낮아 12차원 내 불균형이 존재. 분단 구조와 에너지 수입 의존이 핵심 취약점.
+    </p>
+    <div class="dim-bar-wrap" id="kor-bars"></div>
+  </div>
+
+  <div class="idn-spotlight">
+    <div class="spotlight-title">🇮🇩 인도네시아 (IDN) — HL 민생위기 #61위</div>
+    <p style="font-size:0.9rem;color:#555">η = <strong>0.5067</strong> (197국 중 84위) &nbsp;|&nbsp; BSLI = <strong>−0.3315</strong> (139국 중 88위, E등급) &nbsp;|&nbsp; 경로: WD (백색왜성)</p>
+    <p style="font-size:0.85rem;color:#666;margin-top:6px">
+      η는 중위 상회(0.5067 > 0.5000)하나 BSLI는 중위 하회(-0.3315 &lt; -0.1301)로 HL(민생위기) 위치.
+      제도역량은 확보되어 있으나 ML층 식량(F_ML=0.064)·주거(H=0.0621) 접근성이 극히 낮고,
+      부채 압박(D=0.2483)이 가중 — 전형적 '전달 실패' 구조.
+    </p>
+    <div class="dim-bar-wrap" id="idn-bars"></div>
+  </div>
+
+  <!-- 지역별 분석 -->
+  <div class="section-title">지역별 평균 분석</div>
+  <div class="card tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:left">지역</th>
+          <th>국가 수</th>
+          <th>평균 η</th>
+          <th>평균 BSLI</th>
+          <th style="color:#a8d5c9">HH</th>
+          <th style="color:#f5c97c">HL</th>
+          <th style="color:#b3cde3">LH</th>
+          <th style="color:#e8a0a0">LL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+      <td><strong>북유럽</strong></td>
+      <td style="text-align:center">8</td>
+      <td style="text-align:center"><strong>0.6235</strong></td>
+      <td style="text-align:center"><strong>+0.6114</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">8</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">0</span></td>
+    </tr>
+<tr>
+      <td><strong>서유럽</strong></td>
+      <td style="text-align:center">12</td>
+      <td style="text-align:center"><strong>0.6053</strong></td>
+      <td style="text-align:center"><strong>+0.6419</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">12</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">0</span></td>
+    </tr>
+<tr>
+      <td><strong>북미</strong></td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center"><strong>0.5614</strong></td>
+      <td style="text-align:center"><strong>+0.3782</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">2</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">1</span></td>
+    </tr>
+<tr>
+      <td><strong>동아시아</strong></td>
+      <td style="text-align:center">4</td>
+      <td style="text-align:center"><strong>0.5607</strong></td>
+      <td style="text-align:center"><strong>+0.2147</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">4</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">0</span></td>
+    </tr>
+<tr>
+      <td><strong>오세아니아</strong></td>
+      <td style="text-align:center">8</td>
+      <td style="text-align:center"><strong>0.5474</strong></td>
+      <td style="text-align:center"><strong>-0.1303</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">3</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">4</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">1</span></td>
+    </tr>
+<tr>
+      <td><strong>남유럽·도서</strong></td>
+      <td style="text-align:center">4</td>
+      <td style="text-align:center"><strong>0.5184</strong></td>
+      <td style="text-align:center"><strong>+0.3471</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">2</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">2</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">0</span></td>
+    </tr>
+<tr>
+      <td><strong>남아시아</strong></td>
+      <td style="text-align:center">6</td>
+      <td style="text-align:center"><strong>0.5163</strong></td>
+      <td style="text-align:center"><strong>-0.3138</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">1</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">3</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">2</span></td>
+    </tr>
+<tr>
+      <td><strong>동유럽</strong></td>
+      <td style="text-align:center">16</td>
+      <td style="text-align:center"><strong>0.5092</strong></td>
+      <td style="text-align:center"><strong>+0.1938</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">7</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">9</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">0</span></td>
+    </tr>
+<tr>
+      <td><strong>동남아시아</strong></td>
+      <td style="text-align:center">8</td>
+      <td style="text-align:center"><strong>0.5048</strong></td>
+      <td style="text-align:center"><strong>-0.2172</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">3</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">3</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">2</span></td>
+    </tr>
+<tr>
+      <td><strong>서아시아·중동</strong></td>
+      <td style="text-align:center">8</td>
+      <td style="text-align:center"><strong>0.4913</strong></td>
+      <td style="text-align:center"><strong>+0.0042</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">3</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">3</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">2</span></td>
+    </tr>
+<tr>
+      <td><strong>북아프리카</strong></td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center"><strong>0.4904</strong></td>
+      <td style="text-align:center"><strong>-0.1367</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">0</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">1</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">1</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">1</span></td>
+    </tr>
+<tr>
+      <td><strong>중앙아시아</strong></td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center"><strong>0.4826</strong></td>
+      <td style="text-align:center"><strong>-0.1429</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">1</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">2</span></td>
+    </tr>
+<tr>
+      <td><strong>서아프리카</strong></td>
+      <td style="text-align:center">17</td>
+      <td style="text-align:center"><strong>0.4781</strong></td>
+      <td style="text-align:center"><strong>-0.6786</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">0</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">4</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">13</span></td>
+    </tr>
+<tr>
+      <td><strong>중남미</strong></td>
+      <td style="text-align:center">16</td>
+      <td style="text-align:center"><strong>0.4748</strong></td>
+      <td style="text-align:center"><strong>-0.2721</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">3</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">2</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">2</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">9</span></td>
+    </tr>
+<tr>
+      <td><strong>중앙아프리카</strong></td>
+      <td style="text-align:center">3</td>
+      <td style="text-align:center"><strong>0.4704</strong></td>
+      <td style="text-align:center"><strong>-0.6453</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">1</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">2</span></td>
+    </tr>
+<tr>
+      <td><strong>동아프리카</strong></td>
+      <td style="text-align:center">14</td>
+      <td style="text-align:center"><strong>0.4578</strong></td>
+      <td style="text-align:center"><strong>-0.8331</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">1</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">1</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">1</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">11</span></td>
+    </tr>
+<tr>
+      <td><strong>남아프리카</strong></td>
+      <td style="text-align:center">5</td>
+      <td style="text-align:center"><strong>0.4524</strong></td>
+      <td style="text-align:center"><strong>-1.0632</strong></td>
+      <td style="text-align:center"><span style="color:#5E9186">0</span></td>
+      <td style="text-align:center"><span style="color:#B8850E">0</span></td>
+      <td style="text-align:center"><span style="color:#6c9bcb">0</span></td>
+      <td style="text-align:center"><span style="color:#c0392b">5</span></td>
+    </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 전체 순위표 -->
+  <div class="section-title">전체 138국 순위표 (η 기준 내림차순)</div>
+  <div style="margin-bottom:10px;font-size:0.82rem;color:#888">
+    🇰🇷 한국 &nbsp; 🇮🇩 인도네시아 — 하이라이트 표시
+  </div>
+  <div class="card tbl-wrap" style="padding:0">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th style="text-align:left">ISO</th>
+          <th style="text-align:left">국가명</th>
+          <th style="text-align:left">지역</th>
+          <th>η</th>
+          <th>η순위</th>
+          <th>BSLI</th>
+          <th>BSLI순위</th>
+          <th>등급</th>
+          <th>사분면</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+      <td style="text-align:center;color:#888">1</td>
+      <td><strong>NOR</strong></td>
+      <td>Norway</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북유럽</td>
+      <td style="text-align:center"><strong>0.6819</strong></td>
+      <td style="text-align:center;color:#888">1/197</td>
+      <td style="text-align:center"><strong>+0.9254</strong></td>
+      <td style="text-align:center;color:#888">1/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">2</td>
+      <td><strong>DNK</strong></td>
+      <td>Denmark</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북유럽</td>
+      <td style="text-align:center"><strong>0.6637</strong></td>
+      <td style="text-align:center;color:#888">2/197</td>
+      <td style="text-align:center"><strong>+0.7538</strong></td>
+      <td style="text-align:center;color:#888">7/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">3</td>
+      <td><strong>ISL</strong></td>
+      <td>Iceland</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북유럽</td>
+      <td style="text-align:center"><strong>0.6603</strong></td>
+      <td style="text-align:center;color:#888">3/197</td>
+      <td style="text-align:center"><strong>+0.8020</strong></td>
+      <td style="text-align:center;color:#888">5/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">4</td>
+      <td><strong>CHE</strong></td>
+      <td>Switzerland</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.6515</strong></td>
+      <td style="text-align:center;color:#888">4/197</td>
+      <td style="text-align:center"><strong>+0.8422</strong></td>
+      <td style="text-align:center;color:#888">4/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">5</td>
+      <td><strong>FIN</strong></td>
+      <td>Finland</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북유럽</td>
+      <td style="text-align:center"><strong>0.6500</strong></td>
+      <td style="text-align:center;color:#888">5/197</td>
+      <td style="text-align:center"><strong>+0.7117</strong></td>
+      <td style="text-align:center;color:#888">11/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">6</td>
+      <td><strong>SWE</strong></td>
+      <td>Sweden</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북유럽</td>
+      <td style="text-align:center"><strong>0.6458</strong></td>
+      <td style="text-align:center;color:#888">7/197</td>
+      <td style="text-align:center"><strong>+0.6877</strong></td>
+      <td style="text-align:center;color:#888">14/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">7</td>
+      <td><strong>IRL</strong></td>
+      <td>Ireland</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.6422</strong></td>
+      <td style="text-align:center;color:#888">8/197</td>
+      <td style="text-align:center"><strong>+0.5862</strong></td>
+      <td style="text-align:center;color:#888">18/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">8</td>
+      <td><strong>FRA</strong></td>
+      <td>France</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.6400</strong></td>
+      <td style="text-align:center;color:#888">9/197</td>
+      <td style="text-align:center"><strong>+0.6361</strong></td>
+      <td style="text-align:center;color:#888">16/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">9</td>
+      <td><strong>CAN</strong></td>
+      <td>Canada</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북미</td>
+      <td style="text-align:center"><strong>0.6241</strong></td>
+      <td style="text-align:center;color:#888">12/197</td>
+      <td style="text-align:center"><strong>+0.7012</strong></td>
+      <td style="text-align:center;color:#888">12/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">10</td>
+      <td><strong>AUT</strong></td>
+      <td>Austria</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.6240</strong></td>
+      <td style="text-align:center;color:#888">13/197</td>
+      <td style="text-align:center"><strong>+0.7738</strong></td>
+      <td style="text-align:center;color:#888">6/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">11</td>
+      <td><strong>NLD</strong></td>
+      <td>Netherlands</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.6144</strong></td>
+      <td style="text-align:center;color:#888">14/197</td>
+      <td style="text-align:center"><strong>+0.7441</strong></td>
+      <td style="text-align:center;color:#888">8/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">12</td>
+      <td><strong>BTN</strong></td>
+      <td>Bhutan</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아시아</td>
+      <td style="text-align:center"><strong>0.6130</strong></td>
+      <td style="text-align:center;color:#888">15/197</td>
+      <td style="text-align:center"><strong>-0.1396</strong></td>
+      <td style="text-align:center;color:#888">73/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">13</td>
+      <td><strong>DEU</strong></td>
+      <td>Germany</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.6109</strong></td>
+      <td style="text-align:center;color:#888">16/197</td>
+      <td style="text-align:center"><strong>+0.7202</strong></td>
+      <td style="text-align:center;color:#888">10/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">14</td>
+      <td><strong>KIR</strong></td>
+      <td>Kiribati</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">오세아니아</td>
+      <td style="text-align:center"><strong>0.6085</strong></td>
+      <td style="text-align:center;color:#888">17/197</td>
+      <td style="text-align:center"><strong>-0.1944</strong></td>
+      <td style="text-align:center;color:#888">77/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">15</td>
+      <td><strong>POL</strong></td>
+      <td>Poland</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.6079</strong></td>
+      <td style="text-align:center;color:#888">18/197</td>
+      <td style="text-align:center"><strong>+0.1755</strong></td>
+      <td style="text-align:center;color:#888">39/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">16</td>
+      <td><strong>ARE</strong></td>
+      <td>United Arab Emirates</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아시아·중동</td>
+      <td style="text-align:center"><strong>0.6066</strong></td>
+      <td style="text-align:center;color:#888">19/197</td>
+      <td style="text-align:center"><strong>+0.8472</strong></td>
+      <td style="text-align:center;color:#888">3/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">17</td>
+      <td><strong>LUX</strong></td>
+      <td>Luxembourg</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.6057</strong></td>
+      <td style="text-align:center;color:#888">20/197</td>
+      <td style="text-align:center"><strong>+0.8993</strong></td>
+      <td style="text-align:center;color:#888">2/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">18</td>
+      <td><strong>BEL</strong></td>
+      <td>Belgium</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.6043</strong></td>
+      <td style="text-align:center;color:#888">21/197</td>
+      <td style="text-align:center"><strong>+0.7387</strong></td>
+      <td style="text-align:center;color:#888">9/139</td>
+      <td style="text-align:center"><span style="color:#2ecc71;font-weight:700">A</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">19</td>
+      <td><strong>AUS</strong></td>
+      <td>Australia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">오세아니아</td>
+      <td style="text-align:center"><strong>0.6040</strong></td>
+      <td style="text-align:center;color:#888">22/197</td>
+      <td style="text-align:center"><strong>+0.6538</strong></td>
+      <td style="text-align:center;color:#888">15/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr style="background:#e8f4f0;font-weight:700">
+      <td style="text-align:center;color:#888">20</td>
+      <td><strong>KOR</strong> 🇰🇷</td>
+      <td>South Korea</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아시아</td>
+      <td style="text-align:center"><strong>0.5993</strong></td>
+      <td style="text-align:center;color:#888">23/197</td>
+      <td style="text-align:center"><strong>+0.4627</strong></td>
+      <td style="text-align:center;color:#888">25/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">21</td>
+      <td><strong>GBR</strong></td>
+      <td>United Kingdom</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.5919</strong></td>
+      <td style="text-align:center;color:#888">25/197</td>
+      <td style="text-align:center"><strong>+0.5249</strong></td>
+      <td style="text-align:center;color:#888">21/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">22</td>
+      <td><strong>JPN</strong></td>
+      <td>Japan</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아시아</td>
+      <td style="text-align:center"><strong>0.5913</strong></td>
+      <td style="text-align:center;color:#888">26/197</td>
+      <td style="text-align:center"><strong>+0.5020</strong></td>
+      <td style="text-align:center;color:#888">22/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">23</td>
+      <td><strong>EST</strong></td>
+      <td>Estonia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북유럽</td>
+      <td style="text-align:center"><strong>0.5899</strong></td>
+      <td style="text-align:center;color:#888">27/197</td>
+      <td style="text-align:center"><strong>+0.4257</strong></td>
+      <td style="text-align:center;color:#888">28/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">24</td>
+      <td><strong>SVN</strong></td>
+      <td>Slovenia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.5876</strong></td>
+      <td style="text-align:center;color:#888">28/197</td>
+      <td style="text-align:center"><strong>+0.5624</strong></td>
+      <td style="text-align:center;color:#888">19/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">25</td>
+      <td><strong>CZE</strong></td>
+      <td>Czechia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.5841</strong></td>
+      <td style="text-align:center;color:#888">29/197</td>
+      <td style="text-align:center"><strong>+0.4856</strong></td>
+      <td style="text-align:center;color:#888">23/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">26</td>
+      <td><strong>FJI</strong></td>
+      <td>Fiji</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">오세아니아</td>
+      <td style="text-align:center"><strong>0.5836</strong></td>
+      <td style="text-align:center;color:#888">31/197</td>
+      <td style="text-align:center"><strong>-0.1200</strong></td>
+      <td style="text-align:center;color:#888">68/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">27</td>
+      <td><strong>XKX</strong></td>
+      <td>Kosovo</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남유럽·도서</td>
+      <td style="text-align:center"><strong>0.5817</strong></td>
+      <td style="text-align:center;color:#888">32/197</td>
+      <td style="text-align:center"><strong>+0.0036</strong></td>
+      <td style="text-align:center;color:#888">55/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">28</td>
+      <td><strong>USA</strong></td>
+      <td>United States</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북미</td>
+      <td style="text-align:center"><strong>0.5745</strong></td>
+      <td style="text-align:center;color:#888">33/197</td>
+      <td style="text-align:center"><strong>+0.6998</strong></td>
+      <td style="text-align:center;color:#888">13/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">29</td>
+      <td><strong>ISR</strong></td>
+      <td>Israel</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아시아·중동</td>
+      <td style="text-align:center"><strong>0.5741</strong></td>
+      <td style="text-align:center;color:#888">34/197</td>
+      <td style="text-align:center"><strong>+0.2964</strong></td>
+      <td style="text-align:center;color:#888">33/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">30</td>
+      <td><strong>ESP</strong></td>
+      <td>Spain</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.5686</strong></td>
+      <td style="text-align:center;color:#888">36/197</td>
+      <td style="text-align:center"><strong>+0.4612</strong></td>
+      <td style="text-align:center;color:#888">26/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">31</td>
+      <td><strong>GAB</strong></td>
+      <td>Gabon</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중앙아프리카</td>
+      <td style="text-align:center"><strong>0.5628</strong></td>
+      <td style="text-align:center;color:#888">38/197</td>
+      <td style="text-align:center"><strong>-0.1118</strong></td>
+      <td style="text-align:center;color:#888">67/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">32</td>
+      <td><strong>SVK</strong></td>
+      <td>Slovakia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.5588</strong></td>
+      <td style="text-align:center;color:#888">40/197</td>
+      <td style="text-align:center"><strong>+0.3478</strong></td>
+      <td style="text-align:center;color:#888">29/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">33</td>
+      <td><strong>LBR</strong></td>
+      <td>Liberia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.5582</strong></td>
+      <td style="text-align:center;color:#888">41/197</td>
+      <td style="text-align:center"><strong>-0.7564</strong></td>
+      <td style="text-align:center;color:#888">117/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">34</td>
+      <td><strong>URY</strong></td>
+      <td>Uruguay</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.5557</strong></td>
+      <td style="text-align:center;color:#888">43/197</td>
+      <td style="text-align:center"><strong>+0.0848</strong></td>
+      <td style="text-align:center;color:#888">48/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">35</td>
+      <td><strong>PRT</strong></td>
+      <td>Portugal</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.5551</strong></td>
+      <td style="text-align:center;color:#888">44/197</td>
+      <td style="text-align:center"><strong>+0.3308</strong></td>
+      <td style="text-align:center;color:#888">30/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">36</td>
+      <td><strong>ITA</strong></td>
+      <td>Italy</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서유럽</td>
+      <td style="text-align:center"><strong>0.5548</strong></td>
+      <td style="text-align:center;color:#888">45/197</td>
+      <td style="text-align:center"><strong>+0.4452</strong></td>
+      <td style="text-align:center;color:#888">27/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">37</td>
+      <td><strong>LTU</strong></td>
+      <td>Lithuania</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북유럽</td>
+      <td style="text-align:center"><strong>0.5535</strong></td>
+      <td style="text-align:center;color:#888">46/197</td>
+      <td style="text-align:center"><strong>+0.3172</strong></td>
+      <td style="text-align:center;color:#888">32/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">38</td>
+      <td><strong>CHN</strong></td>
+      <td>China</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아시아</td>
+      <td style="text-align:center"><strong>0.5480</strong></td>
+      <td style="text-align:center;color:#888">49/197</td>
+      <td style="text-align:center"><strong>-0.0464</strong></td>
+      <td style="text-align:center;color:#888">61/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">39</td>
+      <td><strong>HRV</strong></td>
+      <td>Croatia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.5450</strong></td>
+      <td style="text-align:center;color:#888">50/197</td>
+      <td style="text-align:center"><strong>+0.3177</strong></td>
+      <td style="text-align:center;color:#888">31/139</td>
+      <td style="text-align:center"><span style="color:#B8850E;font-weight:700">C</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">40</td>
+      <td><strong>HUN</strong></td>
+      <td>Hungary</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.5441</strong></td>
+      <td style="text-align:center;color:#888">51/197</td>
+      <td style="text-align:center"><strong>+0.2845</strong></td>
+      <td style="text-align:center;color:#888">34/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">41</td>
+      <td><strong>MYS</strong></td>
+      <td>Malaysia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동남아시아</td>
+      <td style="text-align:center"><strong>0.5433</strong></td>
+      <td style="text-align:center;color:#888">52/197</td>
+      <td style="text-align:center"><strong>+0.0948</strong></td>
+      <td style="text-align:center;color:#888">46/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">42</td>
+      <td><strong>LVA</strong></td>
+      <td>Latvia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북유럽</td>
+      <td style="text-align:center"><strong>0.5429</strong></td>
+      <td style="text-align:center;color:#888">54/197</td>
+      <td style="text-align:center"><strong>+0.2679</strong></td>
+      <td style="text-align:center;color:#888">35/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">43</td>
+      <td><strong>TON</strong></td>
+      <td>Tonga</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">오세아니아</td>
+      <td style="text-align:center"><strong>0.5343</strong></td>
+      <td style="text-align:center;color:#888">55/197</td>
+      <td style="text-align:center"><strong>-0.1347</strong></td>
+      <td style="text-align:center;color:#888">71/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">44</td>
+      <td><strong>WSM</strong></td>
+      <td>Samoa</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">오세아니아</td>
+      <td style="text-align:center"><strong>0.5324</strong></td>
+      <td style="text-align:center;color:#888">57/197</td>
+      <td style="text-align:center"><strong>-0.1833</strong></td>
+      <td style="text-align:center;color:#888">75/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">45</td>
+      <td><strong>THA</strong></td>
+      <td>Thailand</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동남아시아</td>
+      <td style="text-align:center"><strong>0.5297</strong></td>
+      <td style="text-align:center;color:#888">59/197</td>
+      <td style="text-align:center"><strong>+0.0550</strong></td>
+      <td style="text-align:center;color:#888">51/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">46</td>
+      <td><strong>SYC</strong></td>
+      <td>Seychelles</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.5292</strong></td>
+      <td style="text-align:center;color:#888">60/197</td>
+      <td style="text-align:center"><strong>+0.1781</strong></td>
+      <td style="text-align:center;color:#888">38/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">47</td>
+      <td><strong>IND</strong></td>
+      <td>India</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아시아</td>
+      <td style="text-align:center"><strong>0.5286</strong></td>
+      <td style="text-align:center;color:#888">61/197</td>
+      <td style="text-align:center"><strong>-0.5832</strong></td>
+      <td style="text-align:center;color:#888">106/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">48</td>
+      <td><strong>DOM</strong></td>
+      <td>Dominican Republic</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.5280</strong></td>
+      <td style="text-align:center;color:#888">63/197</td>
+      <td style="text-align:center"><strong>-0.0908</strong></td>
+      <td style="text-align:center;color:#888">65/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">49</td>
+      <td><strong>LAO</strong></td>
+      <td>Laos</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동남아시아</td>
+      <td style="text-align:center"><strong>0.5278</strong></td>
+      <td style="text-align:center;color:#888">64/197</td>
+      <td style="text-align:center"><strong>-0.4694</strong></td>
+      <td style="text-align:center;color:#888">97/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">50</td>
+      <td><strong>MDV</strong></td>
+      <td>Maldives</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아시아</td>
+      <td style="text-align:center"><strong>0.5270</strong></td>
+      <td style="text-align:center;color:#888">65/197</td>
+      <td style="text-align:center"><strong>+0.1677</strong></td>
+      <td style="text-align:center;color:#888">40/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">51</td>
+      <td><strong>TLS</strong></td>
+      <td>Timor</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동남아시아</td>
+      <td style="text-align:center"><strong>0.5252</strong></td>
+      <td style="text-align:center;color:#888">66/197</td>
+      <td style="text-align:center"><strong>-0.4883</strong></td>
+      <td style="text-align:center;color:#888">98/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">52</td>
+      <td><strong>GRC</strong></td>
+      <td>Greece</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남유럽·도서</td>
+      <td style="text-align:center"><strong>0.5239</strong></td>
+      <td style="text-align:center;color:#888">68/197</td>
+      <td style="text-align:center"><strong>+0.2425</strong></td>
+      <td style="text-align:center;color:#888">36/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">53</td>
+      <td><strong>MHL</strong></td>
+      <td>Marshall Islands</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">오세아니아</td>
+      <td style="text-align:center"><strong>0.5232</strong></td>
+      <td style="text-align:center;color:#888">70/197</td>
+      <td style="text-align:center"><strong>-0.0646</strong></td>
+      <td style="text-align:center;color:#888">64/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">54</td>
+      <td><strong>ROU</strong></td>
+      <td>Romania</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.5200</strong></td>
+      <td style="text-align:center;color:#888">72/197</td>
+      <td style="text-align:center"><strong>+0.1014</strong></td>
+      <td style="text-align:center;color:#888">45/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">55</td>
+      <td><strong>CHL</strong></td>
+      <td>Chile</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.5184</strong></td>
+      <td style="text-align:center;color:#888">73/197</td>
+      <td style="text-align:center"><strong>-0.0510</strong></td>
+      <td style="text-align:center;color:#888">62/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">56</td>
+      <td><strong>KAZ</strong></td>
+      <td>Kazakhstan</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중앙아시아</td>
+      <td style="text-align:center"><strong>0.5128</strong></td>
+      <td style="text-align:center;color:#888">77/197</td>
+      <td style="text-align:center"><strong>+0.0913</strong></td>
+      <td style="text-align:center;color:#888">47/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">57</td>
+      <td><strong>GIN</strong></td>
+      <td>Guinea</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.5125</strong></td>
+      <td style="text-align:center;color:#888">78/197</td>
+      <td style="text-align:center"><strong>-0.5316</strong></td>
+      <td style="text-align:center;color:#888">100/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">58</td>
+      <td><strong>LCA</strong></td>
+      <td>Saint Lucia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.5119</strong></td>
+      <td style="text-align:center;color:#888">79/197</td>
+      <td style="text-align:center"><strong>-0.4011</strong></td>
+      <td style="text-align:center;color:#888">94/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">59</td>
+      <td><strong>CRI</strong></td>
+      <td>Costa Rica</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.5116</strong></td>
+      <td style="text-align:center;color:#888">80/197</td>
+      <td style="text-align:center"><strong>-0.2546</strong></td>
+      <td style="text-align:center;color:#888">82/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">60</td>
+      <td><strong>RWA</strong></td>
+      <td>Rwanda</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.5073</strong></td>
+      <td style="text-align:center;color:#888">82/197</td>
+      <td style="text-align:center"><strong>-1.0931</strong></td>
+      <td style="text-align:center;color:#888">133/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr style="background:#fff8ec;font-weight:700">
+      <td style="text-align:center;color:#888">61</td>
+      <td><strong>IDN</strong> 🇮🇩</td>
+      <td>Indonesia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동남아시아</td>
+      <td style="text-align:center"><strong>0.5067</strong></td>
+      <td style="text-align:center;color:#888">84/197</td>
+      <td style="text-align:center"><strong>-0.3315</strong></td>
+      <td style="text-align:center;color:#888">88/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">62</td>
+      <td><strong>BGD</strong></td>
+      <td>Bangladesh</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아시아</td>
+      <td style="text-align:center"><strong>0.5058</strong></td>
+      <td style="text-align:center;color:#888">86/197</td>
+      <td style="text-align:center"><strong>-0.6223</strong></td>
+      <td style="text-align:center;color:#888">109/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">63</td>
+      <td><strong>ARM</strong></td>
+      <td>Armenia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아시아·중동</td>
+      <td style="text-align:center"><strong>0.5048</strong></td>
+      <td style="text-align:center;color:#888">87/197</td>
+      <td style="text-align:center"><strong>-0.0163</strong></td>
+      <td style="text-align:center;color:#888">59/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">64</td>
+      <td><strong>MNG</strong></td>
+      <td>Mongolia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아시아</td>
+      <td style="text-align:center"><strong>0.5040</strong></td>
+      <td style="text-align:center;color:#888">88/197</td>
+      <td style="text-align:center"><strong>-0.0596</strong></td>
+      <td style="text-align:center;color:#888">63/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">65</td>
+      <td><strong>SLE</strong></td>
+      <td>Sierra Leone</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.5032</strong></td>
+      <td style="text-align:center;color:#888">90/197</td>
+      <td style="text-align:center"><strong>-0.8084</strong></td>
+      <td style="text-align:center;color:#888">120/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">66</td>
+      <td><strong>EGY</strong></td>
+      <td>Egypt</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북아프리카</td>
+      <td style="text-align:center"><strong>0.5021</strong></td>
+      <td style="text-align:center;color:#888">92/197</td>
+      <td style="text-align:center"><strong>-0.2649</strong></td>
+      <td style="text-align:center;color:#888">83/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">67</td>
+      <td><strong>VNM</strong></td>
+      <td>Vietnam</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동남아시아</td>
+      <td style="text-align:center"><strong>0.5015</strong></td>
+      <td style="text-align:center;color:#888">93/197</td>
+      <td style="text-align:center"><strong>-0.0346</strong></td>
+      <td style="text-align:center;color:#888">60/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#5E9186;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HH 안정번영</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">68</td>
+      <td><strong>FSM</strong></td>
+      <td>Micronesia (country)</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">오세아니아</td>
+      <td style="text-align:center"><strong>0.5001</strong></td>
+      <td style="text-align:center;color:#888">96/197</td>
+      <td style="text-align:center"><strong>-0.5818</strong></td>
+      <td style="text-align:center;color:#888">105/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">69</td>
+      <td><strong>SEN</strong></td>
+      <td>Senegal</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.5000</strong></td>
+      <td style="text-align:center;color:#888">97/197</td>
+      <td style="text-align:center"><strong>-0.5209</strong></td>
+      <td style="text-align:center;color:#888">99/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#B8850E;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">HL 민생위기</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">70</td>
+      <td><strong>VUT</strong></td>
+      <td>Vanuatu</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">오세아니아</td>
+      <td style="text-align:center"><strong>0.4928</strong></td>
+      <td style="text-align:center;color:#888">100/197</td>
+      <td style="text-align:center"><strong>-0.4177</strong></td>
+      <td style="text-align:center;color:#888">95/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">71</td>
+      <td><strong>BEN</strong></td>
+      <td>Benin</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4922</strong></td>
+      <td style="text-align:center;color:#888">101/197</td>
+      <td style="text-align:center"><strong>-0.7022</strong></td>
+      <td style="text-align:center;color:#888">114/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">72</td>
+      <td><strong>MKD</strong></td>
+      <td>North Macedonia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4920</strong></td>
+      <td style="text-align:center;color:#888">102/197</td>
+      <td style="text-align:center"><strong>+0.0019</strong></td>
+      <td style="text-align:center;color:#888">56/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">73</td>
+      <td><strong>GHA</strong></td>
+      <td>Ghana</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4914</strong></td>
+      <td style="text-align:center;color:#888">103/197</td>
+      <td style="text-align:center"><strong>-0.7475</strong></td>
+      <td style="text-align:center;color:#888">116/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">74</td>
+      <td><strong>CPV</strong></td>
+      <td>Cape Verde</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4913</strong></td>
+      <td style="text-align:center;color:#888">104/197</td>
+      <td style="text-align:center"><strong>-0.3515</strong></td>
+      <td style="text-align:center;color:#888">91/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">75</td>
+      <td><strong>GEO</strong></td>
+      <td>Georgia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아시아·중동</td>
+      <td style="text-align:center"><strong>0.4909</strong></td>
+      <td style="text-align:center;color:#888">105/197</td>
+      <td style="text-align:center"><strong>-0.2697</strong></td>
+      <td style="text-align:center;color:#888">85/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">76</td>
+      <td><strong>MRT</strong></td>
+      <td>Mauritania</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4900</strong></td>
+      <td style="text-align:center;color:#888">106/197</td>
+      <td style="text-align:center"><strong>-0.3127</strong></td>
+      <td style="text-align:center;color:#888">86/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">77</td>
+      <td><strong>CYP</strong></td>
+      <td>Cyprus</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남유럽·도서</td>
+      <td style="text-align:center"><strong>0.4893</strong></td>
+      <td style="text-align:center;color:#888">107/197</td>
+      <td style="text-align:center"><strong>+0.5501</strong></td>
+      <td style="text-align:center;color:#888">20/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">78</td>
+      <td><strong>TUN</strong></td>
+      <td>Tunisia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북아프리카</td>
+      <td style="text-align:center"><strong>0.4886</strong></td>
+      <td style="text-align:center;color:#888">108/197</td>
+      <td style="text-align:center"><strong>+0.0407</strong></td>
+      <td style="text-align:center;color:#888">52/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">79</td>
+      <td><strong>ALB</strong></td>
+      <td>Albania</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4864</strong></td>
+      <td style="text-align:center;color:#888">112/197</td>
+      <td style="text-align:center"><strong>+0.1044</strong></td>
+      <td style="text-align:center;color:#888">44/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">80</td>
+      <td><strong>MEX</strong></td>
+      <td>Mexico</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북미</td>
+      <td style="text-align:center"><strong>0.4856</strong></td>
+      <td style="text-align:center;color:#888">113/197</td>
+      <td style="text-align:center"><strong>-0.2665</strong></td>
+      <td style="text-align:center;color:#888">84/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">81</td>
+      <td><strong>MDA</strong></td>
+      <td>Moldova</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4851</strong></td>
+      <td style="text-align:center;color:#888">114/197</td>
+      <td style="text-align:center"><strong>+0.1088</strong></td>
+      <td style="text-align:center;color:#888">43/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">82</td>
+      <td><strong>BLR</strong></td>
+      <td>Belarus</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4845</strong></td>
+      <td style="text-align:center;color:#888">115/197</td>
+      <td style="text-align:center"><strong>+0.2263</strong></td>
+      <td style="text-align:center;color:#888">37/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">83</td>
+      <td><strong>MUS</strong></td>
+      <td>Mauritius</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4845</strong></td>
+      <td style="text-align:center;color:#888">116/197</td>
+      <td style="text-align:center"><strong>+0.0155</strong></td>
+      <td style="text-align:center;color:#888">54/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">84</td>
+      <td><strong>PRY</strong></td>
+      <td>Paraguay</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4818</strong></td>
+      <td style="text-align:center;color:#888">118/197</td>
+      <td style="text-align:center"><strong>-0.1377</strong></td>
+      <td style="text-align:center;color:#888">72/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">85</td>
+      <td><strong>MAR</strong></td>
+      <td>Morocco</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">북아프리카</td>
+      <td style="text-align:center"><strong>0.4804</strong></td>
+      <td style="text-align:center;color:#888">120/197</td>
+      <td style="text-align:center"><strong>-0.1859</strong></td>
+      <td style="text-align:center;color:#888">76/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">86</td>
+      <td><strong>CMR</strong></td>
+      <td>Cameroon</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4800</strong></td>
+      <td style="text-align:center;color:#888">121/197</td>
+      <td style="text-align:center"><strong>-0.7954</strong></td>
+      <td style="text-align:center;color:#888">119/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">87</td>
+      <td><strong>MLT</strong></td>
+      <td>Malta</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남유럽·도서</td>
+      <td style="text-align:center"><strong>0.4787</strong></td>
+      <td style="text-align:center;color:#888">122/197</td>
+      <td style="text-align:center"><strong>+0.5923</strong></td>
+      <td style="text-align:center;color:#888">17/139</td>
+      <td style="text-align:center"><span style="color:#5E9186;font-weight:700">B</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">88</td>
+      <td><strong>MNE</strong></td>
+      <td>Montenegro</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4770</strong></td>
+      <td style="text-align:center;color:#888">124/197</td>
+      <td style="text-align:center"><strong>-0.0063</strong></td>
+      <td style="text-align:center;color:#888">57/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">89</td>
+      <td><strong>DJI</strong></td>
+      <td>Djibouti</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4756</strong></td>
+      <td style="text-align:center;color:#888">125/197</td>
+      <td style="text-align:center"><strong>-0.6517</strong></td>
+      <td style="text-align:center;color:#888">110/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">90</td>
+      <td><strong>LKA</strong></td>
+      <td>Sri Lanka</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아시아</td>
+      <td style="text-align:center"><strong>0.4727</strong></td>
+      <td style="text-align:center;color:#888">127/197</td>
+      <td style="text-align:center"><strong>-0.2457</strong></td>
+      <td style="text-align:center;color:#888">81/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">91</td>
+      <td><strong>KGZ</strong></td>
+      <td>Kyrgyzstan</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중앙아시아</td>
+      <td style="text-align:center"><strong>0.4724</strong></td>
+      <td style="text-align:center;color:#888">128/197</td>
+      <td style="text-align:center"><strong>-0.1970</strong></td>
+      <td style="text-align:center;color:#888">78/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">92</td>
+      <td><strong>PHL</strong></td>
+      <td>Philippines</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동남아시아</td>
+      <td style="text-align:center"><strong>0.4720</strong></td>
+      <td style="text-align:center;color:#888">129/197</td>
+      <td style="text-align:center"><strong>-0.3407</strong></td>
+      <td style="text-align:center;color:#888">89/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">93</td>
+      <td><strong>PER</strong></td>
+      <td>Peru</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4703</strong></td>
+      <td style="text-align:center;color:#888">131/197</td>
+      <td style="text-align:center"><strong>-0.3434</strong></td>
+      <td style="text-align:center;color:#888">90/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">94</td>
+      <td><strong>COM</strong></td>
+      <td>Comoros</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4703</strong></td>
+      <td style="text-align:center;color:#888">130/197</td>
+      <td style="text-align:center"><strong>-0.6706</strong></td>
+      <td style="text-align:center;color:#888">111/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">95</td>
+      <td><strong>BRA</strong></td>
+      <td>Brazil</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4700</strong></td>
+      <td style="text-align:center;color:#888">132/197</td>
+      <td style="text-align:center"><strong>-0.2409</strong></td>
+      <td style="text-align:center;color:#888">80/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">96</td>
+      <td><strong>BGR</strong></td>
+      <td>Bulgaria</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4692</strong></td>
+      <td style="text-align:center;color:#888">133/197</td>
+      <td style="text-align:center"><strong>+0.0754</strong></td>
+      <td style="text-align:center;color:#888">49/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">97</td>
+      <td><strong>GNB</strong></td>
+      <td>Guinea-Bissau</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4680</strong></td>
+      <td style="text-align:center;color:#888">134/197</td>
+      <td style="text-align:center"><strong>-0.7072</strong></td>
+      <td style="text-align:center;color:#888">115/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">98</td>
+      <td><strong>TZA</strong></td>
+      <td>Tanzania</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4676</strong></td>
+      <td style="text-align:center;color:#888">136/197</td>
+      <td style="text-align:center"><strong>-0.9945</strong></td>
+      <td style="text-align:center;color:#888">129/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">99</td>
+      <td><strong>BWA</strong></td>
+      <td>Botswana</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아프리카</td>
+      <td style="text-align:center"><strong>0.4659</strong></td>
+      <td style="text-align:center;color:#888">137/197</td>
+      <td style="text-align:center"><strong>-0.8549</strong></td>
+      <td style="text-align:center;color:#888">126/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">100</td>
+      <td><strong>NER</strong></td>
+      <td>Niger</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4657</strong></td>
+      <td style="text-align:center;color:#888">138/197</td>
+      <td style="text-align:center"><strong>-1.0291</strong></td>
+      <td style="text-align:center;color:#888">131/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">101</td>
+      <td><strong>TJK</strong></td>
+      <td>Tajikistan</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중앙아시아</td>
+      <td style="text-align:center"><strong>0.4625</strong></td>
+      <td style="text-align:center;color:#888">140/197</td>
+      <td style="text-align:center"><strong>-0.3229</strong></td>
+      <td style="text-align:center;color:#888">87/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">102</td>
+      <td><strong>KEN</strong></td>
+      <td>Kenya</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4608</strong></td>
+      <td style="text-align:center;color:#888">141/197</td>
+      <td style="text-align:center"><strong>-0.8220</strong></td>
+      <td style="text-align:center;color:#888">123/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">103</td>
+      <td><strong>ETH</strong></td>
+      <td>Ethiopia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4591</strong></td>
+      <td style="text-align:center;color:#888">143/197</td>
+      <td style="text-align:center"><strong>-0.8096</strong></td>
+      <td style="text-align:center;color:#888">121/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">104</td>
+      <td><strong>CIV</strong></td>
+      <td>Cote d'Ivoire</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4578</strong></td>
+      <td style="text-align:center;color:#888">144/197</td>
+      <td style="text-align:center"><strong>-0.5322</strong></td>
+      <td style="text-align:center;color:#888">101/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">105</td>
+      <td><strong>BOL</strong></td>
+      <td>Bolivia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4567</strong></td>
+      <td style="text-align:center;color:#888">146/197</td>
+      <td style="text-align:center"><strong>-0.1227</strong></td>
+      <td style="text-align:center;color:#888">69/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">106</td>
+      <td><strong>TGO</strong></td>
+      <td>Togo</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4566</strong></td>
+      <td style="text-align:center;color:#888">148/197</td>
+      <td style="text-align:center"><strong>-0.8166</strong></td>
+      <td style="text-align:center;color:#888">122/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">107</td>
+      <td><strong>GTM</strong></td>
+      <td>Guatemala</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4563</strong></td>
+      <td style="text-align:center;color:#888">149/197</td>
+      <td style="text-align:center"><strong>-0.5607</strong></td>
+      <td style="text-align:center;color:#888">102/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">108</td>
+      <td><strong>SLV</strong></td>
+      <td>El Salvador</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4549</strong></td>
+      <td style="text-align:center;color:#888">151/197</td>
+      <td style="text-align:center"><strong>-0.1060</strong></td>
+      <td style="text-align:center;color:#888">66/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">109</td>
+      <td><strong>SRB</strong></td>
+      <td>Serbia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4547</strong></td>
+      <td style="text-align:center;color:#888">152/197</td>
+      <td style="text-align:center"><strong>+0.0586</strong></td>
+      <td style="text-align:center;color:#888">50/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">110</td>
+      <td><strong>SWZ</strong></td>
+      <td>Eswatini</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아프리카</td>
+      <td style="text-align:center"><strong>0.4547</strong></td>
+      <td style="text-align:center;color:#888">153/197</td>
+      <td style="text-align:center"><strong>-1.1499</strong></td>
+      <td style="text-align:center;color:#888">136/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">111</td>
+      <td><strong>LSO</strong></td>
+      <td>Lesotho</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아프리카</td>
+      <td style="text-align:center"><strong>0.4542</strong></td>
+      <td style="text-align:center;color:#888">154/197</td>
+      <td style="text-align:center"><strong>-0.8483</strong></td>
+      <td style="text-align:center;color:#888">125/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">112</td>
+      <td><strong>NGA</strong></td>
+      <td>Nigeria</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4539</strong></td>
+      <td style="text-align:center;color:#888">155/197</td>
+      <td style="text-align:center"><strong>-0.7890</strong></td>
+      <td style="text-align:center;color:#888">118/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">113</td>
+      <td><strong>TUR</strong></td>
+      <td>Turkey</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아시아·중동</td>
+      <td style="text-align:center"><strong>0.4519</strong></td>
+      <td style="text-align:center;color:#888">157/197</td>
+      <td style="text-align:center"><strong>-0.0150</strong></td>
+      <td style="text-align:center;color:#888">58/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">114</td>
+      <td><strong>PAK</strong></td>
+      <td>Pakistan</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아시아</td>
+      <td style="text-align:center"><strong>0.4506</strong></td>
+      <td style="text-align:center;color:#888">158/197</td>
+      <td style="text-align:center"><strong>-0.4598</strong></td>
+      <td style="text-align:center;color:#888">96/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">115</td>
+      <td><strong>MWI</strong></td>
+      <td>Malawi</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4497</strong></td>
+      <td style="text-align:center;color:#888">159/197</td>
+      <td style="text-align:center"><strong>-1.1408</strong></td>
+      <td style="text-align:center;color:#888">135/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">116</td>
+      <td><strong>IRN</strong></td>
+      <td>Iran</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아시아·중동</td>
+      <td style="text-align:center"><strong>0.4487</strong></td>
+      <td style="text-align:center;color:#888">162/197</td>
+      <td style="text-align:center"><strong>-0.1301</strong></td>
+      <td style="text-align:center;color:#888">70/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">117</td>
+      <td><strong>ECU</strong></td>
+      <td>Ecuador</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4487</strong></td>
+      <td style="text-align:center;color:#888">161/197</td>
+      <td style="text-align:center"><strong>-0.3679</strong></td>
+      <td style="text-align:center;color:#888">93/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">118</td>
+      <td><strong>ZAF</strong></td>
+      <td>South Africa</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아프리카</td>
+      <td style="text-align:center"><strong>0.4448</strong></td>
+      <td style="text-align:center;color:#888">165/197</td>
+      <td style="text-align:center"><strong>-1.3981</strong></td>
+      <td style="text-align:center;color:#888">137/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">119</td>
+      <td><strong>NAM</strong></td>
+      <td>Namibia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">남아프리카</td>
+      <td style="text-align:center"><strong>0.4426</strong></td>
+      <td style="text-align:center;color:#888">166/197</td>
+      <td style="text-align:center"><strong>-1.0649</strong></td>
+      <td style="text-align:center;color:#888">132/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">120</td>
+      <td><strong>COL</strong></td>
+      <td>Colombia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4393</strong></td>
+      <td style="text-align:center;color:#888">167/197</td>
+      <td style="text-align:center"><strong>-0.6808</strong></td>
+      <td style="text-align:center;color:#888">112/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">121</td>
+      <td><strong>UGA</strong></td>
+      <td>Uganda</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4388</strong></td>
+      <td style="text-align:center;color:#888">168/197</td>
+      <td style="text-align:center"><strong>-1.0022</strong></td>
+      <td style="text-align:center;color:#888">130/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">122</td>
+      <td><strong>GMB</strong></td>
+      <td>Gambia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4387</strong></td>
+      <td style="text-align:center;color:#888">169/197</td>
+      <td style="text-align:center"><strong>-0.5783</strong></td>
+      <td style="text-align:center;color:#888">104/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">123</td>
+      <td><strong>AGO</strong></td>
+      <td>Angola</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중앙아프리카</td>
+      <td style="text-align:center"><strong>0.4381</strong></td>
+      <td style="text-align:center;color:#888">170/197</td>
+      <td style="text-align:center"><strong>-0.9895</strong></td>
+      <td style="text-align:center;color:#888">128/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">124</td>
+      <td><strong>PAN</strong></td>
+      <td>Panama</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4368</strong></td>
+      <td style="text-align:center;color:#888">171/197</td>
+      <td style="text-align:center"><strong>-0.1500</strong></td>
+      <td style="text-align:center;color:#888">74/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">125</td>
+      <td><strong>ZMB</strong></td>
+      <td>Zambia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4360</strong></td>
+      <td style="text-align:center;color:#888">172/197</td>
+      <td style="text-align:center"><strong>-1.5316</strong></td>
+      <td style="text-align:center;color:#888">139/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">126</td>
+      <td><strong>HND</strong></td>
+      <td>Honduras</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4346</strong></td>
+      <td style="text-align:center;color:#888">173/197</td>
+      <td style="text-align:center"><strong>-0.5731</strong></td>
+      <td style="text-align:center;color:#888">103/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">127</td>
+      <td><strong>RUS</strong></td>
+      <td>Russia</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4344</strong></td>
+      <td style="text-align:center;color:#888">175/197</td>
+      <td style="text-align:center"><strong>+0.1113</strong></td>
+      <td style="text-align:center;color:#888">42/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">128</td>
+      <td><strong>MLI</strong></td>
+      <td>Mali</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4344</strong></td>
+      <td style="text-align:center;color:#888">174/197</td>
+      <td style="text-align:center"><strong>-0.6118</strong></td>
+      <td style="text-align:center;color:#888">107/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">129</td>
+      <td><strong>BFA</strong></td>
+      <td>Burkina Faso</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아프리카</td>
+      <td style="text-align:center"><strong>0.4336</strong></td>
+      <td style="text-align:center;color:#888">177/197</td>
+      <td style="text-align:center"><strong>-0.9458</strong></td>
+      <td style="text-align:center;color:#888">127/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">130</td>
+      <td><strong>MMR</strong></td>
+      <td>Myanmar</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동남아시아</td>
+      <td style="text-align:center"><strong>0.4322</strong></td>
+      <td style="text-align:center;color:#888">178/197</td>
+      <td style="text-align:center"><strong>-0.2231</strong></td>
+      <td style="text-align:center;color:#888">79/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">131</td>
+      <td><strong>YEM</strong></td>
+      <td>Yemen</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아시아·중동</td>
+      <td style="text-align:center"><strong>0.4307</strong></td>
+      <td style="text-align:center;color:#888">180/197</td>
+      <td style="text-align:center"><strong>-0.7021</strong></td>
+      <td style="text-align:center;color:#888">113/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">132</td>
+      <td><strong>PSE</strong></td>
+      <td>Palestine</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">서아시아·중동</td>
+      <td style="text-align:center"><strong>0.4226</strong></td>
+      <td style="text-align:center;color:#888">181/197</td>
+      <td style="text-align:center"><strong>+0.0231</strong></td>
+      <td style="text-align:center;color:#888">53/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">133</td>
+      <td><strong>NIC</strong></td>
+      <td>Nicaragua</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중남미</td>
+      <td style="text-align:center"><strong>0.4218</strong></td>
+      <td style="text-align:center;color:#888">182/197</td>
+      <td style="text-align:center"><strong>-0.3583</strong></td>
+      <td style="text-align:center;color:#888">92/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">134</td>
+      <td><strong>SDN</strong></td>
+      <td>Sudan</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4179</strong></td>
+      <td style="text-align:center;color:#888">183/197</td>
+      <td style="text-align:center"><strong>-0.6201</strong></td>
+      <td style="text-align:center;color:#888">108/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">135</td>
+      <td><strong>UKR</strong></td>
+      <td>Ukraine</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동유럽</td>
+      <td style="text-align:center"><strong>0.4160</strong></td>
+      <td style="text-align:center;color:#888">184/197</td>
+      <td style="text-align:center"><strong>+0.1453</strong></td>
+      <td style="text-align:center;color:#888">41/139</td>
+      <td style="text-align:center"><span style="color:#e67e22;font-weight:700">D</span></td>
+      <td style="text-align:center"><span style="background:#6c9bcb;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LH 민생선행</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">136</td>
+      <td><strong>TCD</strong></td>
+      <td>Chad</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">중앙아프리카</td>
+      <td style="text-align:center"><strong>0.4104</strong></td>
+      <td style="text-align:center;color:#888">187/197</td>
+      <td style="text-align:center"><strong>-0.8346</strong></td>
+      <td style="text-align:center;color:#888">124/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">137</td>
+      <td><strong>BDI</strong></td>
+      <td>Burundi</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4080</strong></td>
+      <td style="text-align:center;color:#888">189/197</td>
+      <td style="text-align:center"><strong>-1.1127</strong></td>
+      <td style="text-align:center;color:#888">134/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+<tr>
+      <td style="text-align:center;color:#888">138</td>
+      <td><strong>MOZ</strong></td>
+      <td>Mozambique</td>
+      <td style="text-align:center;color:#888;font-size:0.8rem">동아프리카</td>
+      <td style="text-align:center"><strong>0.4041</strong></td>
+      <td style="text-align:center;color:#888">190/197</td>
+      <td style="text-align:center"><strong>-1.4078</strong></td>
+      <td style="text-align:center;color:#888">138/139</td>
+      <td style="text-align:center"><span style="color:#c0392b;font-weight:700">E</span></td>
+      <td style="text-align:center"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-size:0.75rem;font-weight:600">LL 이중취약</span></td>
+    </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footnote">
+    <p><strong>데이터 출처</strong>: Λ¹² v2.0 — WDI·WGI·CPI·SIPRI·GPI 통합 (기준연도 2023~2025) / BSLI v6.9 — FAO·WB·ILO 통합</p>
+    <p><strong>η 정규화</strong>: Min-Max, 모집단 FULL_197. 모집단이 다른 η 수치 직접 비교 금지.</p>
+    <p><strong>BSLI 공식</strong>: BSLI = 0.25·C + 0.40·F + 0.35·H (v6.9 확정)</p>
+    <p style="margin-top:6px">© 2026 늘푸른바다 사회동역학 연구소 · everbluesea.org &nbsp;|&nbsp; 수치 무단 전재 시 출처 명시 필수</p>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  생성일: 2026-07-18 &nbsp;|&nbsp; η v2.0 (12차원) × BSLI v6.9 (138국 공동집합) &nbsp;|&nbsp; 늘푸른바다 사회동역학 연구소
+</footer>
+
+<script>
+const rawData = [{"x": 0.6819, "y": 0.9254, "iso3": "NOR", "name": "Norway", "quad": "HH", "grade": "A", "rank": 1, "region": "북유럽"}, {"x": 0.6637, "y": 0.7538, "iso3": "DNK", "name": "Denmark", "quad": "HH", "grade": "A", "rank": 2, "region": "북유럽"}, {"x": 0.6603, "y": 0.802, "iso3": "ISL", "name": "Iceland", "quad": "HH", "grade": "A", "rank": 3, "region": "북유럽"}, {"x": 0.6515, "y": 0.8422, "iso3": "CHE", "name": "Switzerland", "quad": "HH", "grade": "A", "rank": 4, "region": "서유럽"}, {"x": 0.65, "y": 0.7117, "iso3": "FIN", "name": "Finland", "quad": "HH", "grade": "A", "rank": 5, "region": "북유럽"}, {"x": 0.6458, "y": 0.6877, "iso3": "SWE", "name": "Sweden", "quad": "HH", "grade": "B", "rank": 6, "region": "북유럽"}, {"x": 0.6422, "y": 0.5862, "iso3": "IRL", "name": "Ireland", "quad": "HH", "grade": "B", "rank": 7, "region": "서유럽"}, {"x": 0.64, "y": 0.6361, "iso3": "FRA", "name": "France", "quad": "HH", "grade": "B", "rank": 8, "region": "서유럽"}, {"x": 0.6241, "y": 0.7012, "iso3": "CAN", "name": "Canada", "quad": "HH", "grade": "A", "rank": 9, "region": "북미"}, {"x": 0.624, "y": 0.7738, "iso3": "AUT", "name": "Austria", "quad": "HH", "grade": "A", "rank": 10, "region": "서유럽"}, {"x": 0.6144, "y": 0.7441, "iso3": "NLD", "name": "Netherlands", "quad": "HH", "grade": "A", "rank": 11, "region": "서유럽"}, {"x": 0.613, "y": -0.1396, "iso3": "BTN", "name": "Bhutan", "quad": "HL", "grade": "E", "rank": 12, "region": "남아시아"}, {"x": 0.6109, "y": 0.7202, "iso3": "DEU", "name": "Germany", "quad": "HH", "grade": "A", "rank": 13, "region": "서유럽"}, {"x": 0.6085, "y": -0.1944, "iso3": "KIR", "name": "Kiribati", "quad": "HL", "grade": "E", "rank": 14, "region": "오세아니아"}, {"x": 0.6079, "y": 0.1755, "iso3": "POL", "name": "Poland", "quad": "HH", "grade": "D", "rank": 15, "region": "동유럽"}, {"x": 0.6066, "y": 0.8472, "iso3": "ARE", "name": "United Arab Emirates", "quad": "HH", "grade": "A", "rank": 16, "region": "서아시아·중동"}, {"x": 0.6057, "y": 0.8993, "iso3": "LUX", "name": "Luxembourg", "quad": "HH", "grade": "A", "rank": 17, "region": "서유럽"}, {"x": 0.6043, "y": 0.7387, "iso3": "BEL", "name": "Belgium", "quad": "HH", "grade": "A", "rank": 18, "region": "서유럽"}, {"x": 0.604, "y": 0.6538, "iso3": "AUS", "name": "Australia", "quad": "HH", "grade": "B", "rank": 19, "region": "오세아니아"}, {"x": 0.5993, "y": 0.4627, "iso3": "KOR", "name": "South Korea", "quad": "HH", "grade": "C", "rank": 20, "region": "동아시아"}, {"x": 0.5919, "y": 0.5249, "iso3": "GBR", "name": "United Kingdom", "quad": "HH", "grade": "B", "rank": 21, "region": "서유럽"}, {"x": 0.5913, "y": 0.502, "iso3": "JPN", "name": "Japan", "quad": "HH", "grade": "B", "rank": 22, "region": "동아시아"}, {"x": 0.5899, "y": 0.4257, "iso3": "EST", "name": "Estonia", "quad": "HH", "grade": "C", "rank": 23, "region": "북유럽"}, {"x": 0.5876, "y": 0.5624, "iso3": "SVN", "name": "Slovenia", "quad": "HH", "grade": "B", "rank": 24, "region": "동유럽"}, {"x": 0.5841, "y": 0.4856, "iso3": "CZE", "name": "Czechia", "quad": "HH", "grade": "C", "rank": 25, "region": "동유럽"}, {"x": 0.5836, "y": -0.12, "iso3": "FJI", "name": "Fiji", "quad": "HH", "grade": "E", "rank": 26, "region": "오세아니아"}, {"x": 0.5817, "y": 0.0036, "iso3": "XKX", "name": "Kosovo", "quad": "HH", "grade": "E", "rank": 27, "region": "남유럽·도서"}, {"x": 0.5745, "y": 0.6998, "iso3": "USA", "name": "United States", "quad": "HH", "grade": "B", "rank": 28, "region": "북미"}, {"x": 0.5741, "y": 0.2964, "iso3": "ISR", "name": "Israel", "quad": "HH", "grade": "D", "rank": 29, "region": "서아시아·중동"}, {"x": 0.5686, "y": 0.4612, "iso3": "ESP", "name": "Spain", "quad": "HH", "grade": "C", "rank": 30, "region": "서유럽"}, {"x": 0.5628, "y": -0.1118, "iso3": "GAB", "name": "Gabon", "quad": "HH", "grade": "E", "rank": 31, "region": "중앙아프리카"}, {"x": 0.5588, "y": 0.3478, "iso3": "SVK", "name": "Slovakia", "quad": "HH", "grade": "C", "rank": 32, "region": "동유럽"}, {"x": 0.5582, "y": -0.7564, "iso3": "LBR", "name": "Liberia", "quad": "HL", "grade": "E", "rank": 33, "region": "서아프리카"}, {"x": 0.5557, "y": 0.0848, "iso3": "URY", "name": "Uruguay", "quad": "HH", "grade": "E", "rank": 34, "region": "중남미"}, {"x": 0.5551, "y": 0.3308, "iso3": "PRT", "name": "Portugal", "quad": "HH", "grade": "C", "rank": 35, "region": "서유럽"}, {"x": 0.5548, "y": 0.4452, "iso3": "ITA", "name": "Italy", "quad": "HH", "grade": "C", "rank": 36, "region": "서유럽"}, {"x": 0.5535, "y": 0.3172, "iso3": "LTU", "name": "Lithuania", "quad": "HH", "grade": "C", "rank": 37, "region": "북유럽"}, {"x": 0.548, "y": -0.0464, "iso3": "CHN", "name": "China", "quad": "HH", "grade": "E", "rank": 38, "region": "동아시아"}, {"x": 0.545, "y": 0.3177, "iso3": "HRV", "name": "Croatia", "quad": "HH", "grade": "C", "rank": 39, "region": "동유럽"}, {"x": 0.5441, "y": 0.2845, "iso3": "HUN", "name": "Hungary", "quad": "HH", "grade": "D", "rank": 40, "region": "동유럽"}, {"x": 0.5433, "y": 0.0948, "iso3": "MYS", "name": "Malaysia", "quad": "HH", "grade": "E", "rank": 41, "region": "동남아시아"}, {"x": 0.5429, "y": 0.2679, "iso3": "LVA", "name": "Latvia", "quad": "HH", "grade": "D", "rank": 42, "region": "북유럽"}, {"x": 0.5343, "y": -0.1347, "iso3": "TON", "name": "Tonga", "quad": "HL", "grade": "E", "rank": 43, "region": "오세아니아"}, {"x": 0.5324, "y": -0.1833, "iso3": "WSM", "name": "Samoa", "quad": "HL", "grade": "E", "rank": 44, "region": "오세아니아"}, {"x": 0.5297, "y": 0.055, "iso3": "THA", "name": "Thailand", "quad": "HH", "grade": "E", "rank": 45, "region": "동남아시아"}, {"x": 0.5292, "y": 0.1781, "iso3": "SYC", "name": "Seychelles", "quad": "HH", "grade": "D", "rank": 46, "region": "동아프리카"}, {"x": 0.5286, "y": -0.5832, "iso3": "IND", "name": "India", "quad": "HL", "grade": "E", "rank": 47, "region": "남아시아"}, {"x": 0.528, "y": -0.0908, "iso3": "DOM", "name": "Dominican Republic", "quad": "HH", "grade": "E", "rank": 48, "region": "중남미"}, {"x": 0.5278, "y": -0.4694, "iso3": "LAO", "name": "Laos", "quad": "HL", "grade": "E", "rank": 49, "region": "동남아시아"}, {"x": 0.527, "y": 0.1677, "iso3": "MDV", "name": "Maldives", "quad": "HH", "grade": "D", "rank": 50, "region": "남아시아"}, {"x": 0.5252, "y": -0.4883, "iso3": "TLS", "name": "Timor", "quad": "HL", "grade": "E", "rank": 51, "region": "동남아시아"}, {"x": 0.5239, "y": 0.2425, "iso3": "GRC", "name": "Greece", "quad": "HH", "grade": "D", "rank": 52, "region": "남유럽·도서"}, {"x": 0.5232, "y": -0.0646, "iso3": "MHL", "name": "Marshall Islands", "quad": "HH", "grade": "E", "rank": 53, "region": "오세아니아"}, {"x": 0.52, "y": 0.1014, "iso3": "ROU", "name": "Romania", "quad": "HH", "grade": "D", "rank": 54, "region": "동유럽"}, {"x": 0.5184, "y": -0.051, "iso3": "CHL", "name": "Chile", "quad": "HH", "grade": "E", "rank": 55, "region": "중남미"}, {"x": 0.5128, "y": 0.0913, "iso3": "KAZ", "name": "Kazakhstan", "quad": "HH", "grade": "E", "rank": 56, "region": "중앙아시아"}, {"x": 0.5125, "y": -0.5316, "iso3": "GIN", "name": "Guinea", "quad": "HL", "grade": "E", "rank": 57, "region": "서아프리카"}, {"x": 0.5119, "y": -0.4011, "iso3": "LCA", "name": "Saint Lucia", "quad": "HL", "grade": "E", "rank": 58, "region": "중남미"}, {"x": 0.5116, "y": -0.2546, "iso3": "CRI", "name": "Costa Rica", "quad": "HL", "grade": "E", "rank": 59, "region": "중남미"}, {"x": 0.5073, "y": -1.0931, "iso3": "RWA", "name": "Rwanda", "quad": "HL", "grade": "E", "rank": 60, "region": "동아프리카"}, {"x": 0.5067, "y": -0.3315, "iso3": "IDN", "name": "Indonesia", "quad": "HL", "grade": "E", "rank": 61, "region": "동남아시아"}, {"x": 0.5058, "y": -0.6223, "iso3": "BGD", "name": "Bangladesh", "quad": "HL", "grade": "E", "rank": 62, "region": "남아시아"}, {"x": 0.5048, "y": -0.0163, "iso3": "ARM", "name": "Armenia", "quad": "HH", "grade": "E", "rank": 63, "region": "서아시아·중동"}, {"x": 0.504, "y": -0.0596, "iso3": "MNG", "name": "Mongolia", "quad": "HH", "grade": "E", "rank": 64, "region": "동아시아"}, {"x": 0.5032, "y": -0.8084, "iso3": "SLE", "name": "Sierra Leone", "quad": "HL", "grade": "E", "rank": 65, "region": "서아프리카"}, {"x": 0.5021, "y": -0.2649, "iso3": "EGY", "name": "Egypt", "quad": "HL", "grade": "E", "rank": 66, "region": "북아프리카"}, {"x": 0.5015, "y": -0.0346, "iso3": "VNM", "name": "Vietnam", "quad": "HH", "grade": "E", "rank": 67, "region": "동남아시아"}, {"x": 0.5001, "y": -0.5818, "iso3": "FSM", "name": "Micronesia (country)", "quad": "HL", "grade": "E", "rank": 68, "region": "오세아니아"}, {"x": 0.5, "y": -0.5209, "iso3": "SEN", "name": "Senegal", "quad": "HL", "grade": "E", "rank": 69, "region": "서아프리카"}, {"x": 0.4928, "y": -0.4177, "iso3": "VUT", "name": "Vanuatu", "quad": "LL", "grade": "E", "rank": 70, "region": "오세아니아"}, {"x": 0.4922, "y": -0.7022, "iso3": "BEN", "name": "Benin", "quad": "LL", "grade": "E", "rank": 71, "region": "서아프리카"}, {"x": 0.492, "y": 0.0019, "iso3": "MKD", "name": "North Macedonia", "quad": "LH", "grade": "E", "rank": 72, "region": "동유럽"}, {"x": 0.4914, "y": -0.7475, "iso3": "GHA", "name": "Ghana", "quad": "LL", "grade": "E", "rank": 73, "region": "서아프리카"}, {"x": 0.4913, "y": -0.3515, "iso3": "CPV", "name": "Cape Verde", "quad": "LL", "grade": "E", "rank": 74, "region": "서아프리카"}, {"x": 0.4909, "y": -0.2697, "iso3": "GEO", "name": "Georgia", "quad": "LL", "grade": "E", "rank": 75, "region": "서아시아·중동"}, {"x": 0.49, "y": -0.3127, "iso3": "MRT", "name": "Mauritania", "quad": "LL", "grade": "E", "rank": 76, "region": "서아프리카"}, {"x": 0.4893, "y": 0.5501, "iso3": "CYP", "name": "Cyprus", "quad": "LH", "grade": "B", "rank": 77, "region": "남유럽·도서"}, {"x": 0.4886, "y": 0.0407, "iso3": "TUN", "name": "Tunisia", "quad": "LH", "grade": "E", "rank": 78, "region": "북아프리카"}, {"x": 0.4864, "y": 0.1044, "iso3": "ALB", "name": "Albania", "quad": "LH", "grade": "D", "rank": 79, "region": "동유럽"}, {"x": 0.4856, "y": -0.2665, "iso3": "MEX", "name": "Mexico", "quad": "LL", "grade": "E", "rank": 80, "region": "북미"}, {"x": 0.4851, "y": 0.1088, "iso3": "MDA", "name": "Moldova", "quad": "LH", "grade": "D", "rank": 81, "region": "동유럽"}, {"x": 0.4845, "y": 0.2263, "iso3": "BLR", "name": "Belarus", "quad": "LH", "grade": "D", "rank": 82, "region": "동유럽"}, {"x": 0.4845, "y": 0.0155, "iso3": "MUS", "name": "Mauritius", "quad": "LH", "grade": "E", "rank": 83, "region": "동아프리카"}, {"x": 0.4818, "y": -0.1377, "iso3": "PRY", "name": "Paraguay", "quad": "LL", "grade": "E", "rank": 84, "region": "중남미"}, {"x": 0.4804, "y": -0.1859, "iso3": "MAR", "name": "Morocco", "quad": "LL", "grade": "E", "rank": 85, "region": "북아프리카"}, {"x": 0.48, "y": -0.7954, "iso3": "CMR", "name": "Cameroon", "quad": "LL", "grade": "E", "rank": 86, "region": "서아프리카"}, {"x": 0.4787, "y": 0.5923, "iso3": "MLT", "name": "Malta", "quad": "LH", "grade": "B", "rank": 87, "region": "남유럽·도서"}, {"x": 0.477, "y": -0.0063, "iso3": "MNE", "name": "Montenegro", "quad": "LH", "grade": "E", "rank": 88, "region": "동유럽"}, {"x": 0.4756, "y": -0.6517, "iso3": "DJI", "name": "Djibouti", "quad": "LL", "grade": "E", "rank": 89, "region": "동아프리카"}, {"x": 0.4727, "y": -0.2457, "iso3": "LKA", "name": "Sri Lanka", "quad": "LL", "grade": "E", "rank": 90, "region": "남아시아"}, {"x": 0.4724, "y": -0.197, "iso3": "KGZ", "name": "Kyrgyzstan", "quad": "LL", "grade": "E", "rank": 91, "region": "중앙아시아"}, {"x": 0.472, "y": -0.3407, "iso3": "PHL", "name": "Philippines", "quad": "LL", "grade": "E", "rank": 92, "region": "동남아시아"}, {"x": 0.4703, "y": -0.3434, "iso3": "PER", "name": "Peru", "quad": "LL", "grade": "E", "rank": 93, "region": "중남미"}, {"x": 0.4703, "y": -0.6706, "iso3": "COM", "name": "Comoros", "quad": "LL", "grade": "E", "rank": 94, "region": "동아프리카"}, {"x": 0.47, "y": -0.2409, "iso3": "BRA", "name": "Brazil", "quad": "LL", "grade": "E", "rank": 95, "region": "중남미"}, {"x": 0.4692, "y": 0.0754, "iso3": "BGR", "name": "Bulgaria", "quad": "LH", "grade": "E", "rank": 96, "region": "동유럽"}, {"x": 0.468, "y": -0.7072, "iso3": "GNB", "name": "Guinea-Bissau", "quad": "LL", "grade": "E", "rank": 97, "region": "서아프리카"}, {"x": 0.4676, "y": -0.9945, "iso3": "TZA", "name": "Tanzania", "quad": "LL", "grade": "E", "rank": 98, "region": "동아프리카"}, {"x": 0.4659, "y": -0.8549, "iso3": "BWA", "name": "Botswana", "quad": "LL", "grade": "E", "rank": 99, "region": "남아프리카"}, {"x": 0.4657, "y": -1.0291, "iso3": "NER", "name": "Niger", "quad": "LL", "grade": "E", "rank": 100, "region": "서아프리카"}, {"x": 0.4625, "y": -0.3229, "iso3": "TJK", "name": "Tajikistan", "quad": "LL", "grade": "E", "rank": 101, "region": "중앙아시아"}, {"x": 0.4608, "y": -0.822, "iso3": "KEN", "name": "Kenya", "quad": "LL", "grade": "E", "rank": 102, "region": "동아프리카"}, {"x": 0.4591, "y": -0.8096, "iso3": "ETH", "name": "Ethiopia", "quad": "LL", "grade": "E", "rank": 103, "region": "동아프리카"}, {"x": 0.4578, "y": -0.5322, "iso3": "CIV", "name": "Cote d'Ivoire", "quad": "LL", "grade": "E", "rank": 104, "region": "서아프리카"}, {"x": 0.4567, "y": -0.1227, "iso3": "BOL", "name": "Bolivia", "quad": "LH", "grade": "E", "rank": 105, "region": "중남미"}, {"x": 0.4566, "y": -0.8166, "iso3": "TGO", "name": "Togo", "quad": "LL", "grade": "E", "rank": 106, "region": "서아프리카"}, {"x": 0.4563, "y": -0.5607, "iso3": "GTM", "name": "Guatemala", "quad": "LL", "grade": "E", "rank": 107, "region": "중남미"}, {"x": 0.4549, "y": -0.106, "iso3": "SLV", "name": "El Salvador", "quad": "LH", "grade": "E", "rank": 108, "region": "중남미"}, {"x": 0.4547, "y": 0.0586, "iso3": "SRB", "name": "Serbia", "quad": "LH", "grade": "E", "rank": 109, "region": "동유럽"}, {"x": 0.4547, "y": -1.1499, "iso3": "SWZ", "name": "Eswatini", "quad": "LL", "grade": "E", "rank": 110, "region": "남아프리카"}, {"x": 0.4542, "y": -0.8483, "iso3": "LSO", "name": "Lesotho", "quad": "LL", "grade": "E", "rank": 111, "region": "남아프리카"}, {"x": 0.4539, "y": -0.789, "iso3": "NGA", "name": "Nigeria", "quad": "LL", "grade": "E", "rank": 112, "region": "서아프리카"}, {"x": 0.4519, "y": -0.015, "iso3": "TUR", "name": "Turkey", "quad": "LH", "grade": "E", "rank": 113, "region": "서아시아·중동"}, {"x": 0.4506, "y": -0.4598, "iso3": "PAK", "name": "Pakistan", "quad": "LL", "grade": "E", "rank": 114, "region": "남아시아"}, {"x": 0.4497, "y": -1.1408, "iso3": "MWI", "name": "Malawi", "quad": "LL", "grade": "E", "rank": 115, "region": "동아프리카"}, {"x": 0.4487, "y": -0.1301, "iso3": "IRN", "name": "Iran", "quad": "LH", "grade": "E", "rank": 116, "region": "서아시아·중동"}, {"x": 0.4487, "y": -0.3679, "iso3": "ECU", "name": "Ecuador", "quad": "LL", "grade": "E", "rank": 117, "region": "중남미"}, {"x": 0.4448, "y": -1.3981, "iso3": "ZAF", "name": "South Africa", "quad": "LL", "grade": "E", "rank": 118, "region": "남아프리카"}, {"x": 0.4426, "y": -1.0649, "iso3": "NAM", "name": "Namibia", "quad": "LL", "grade": "E", "rank": 119, "region": "남아프리카"}, {"x": 0.4393, "y": -0.6808, "iso3": "COL", "name": "Colombia", "quad": "LL", "grade": "E", "rank": 120, "region": "중남미"}, {"x": 0.4388, "y": -1.0022, "iso3": "UGA", "name": "Uganda", "quad": "LL", "grade": "E", "rank": 121, "region": "동아프리카"}, {"x": 0.4387, "y": -0.5783, "iso3": "GMB", "name": "Gambia", "quad": "LL", "grade": "E", "rank": 122, "region": "서아프리카"}, {"x": 0.4381, "y": -0.9895, "iso3": "AGO", "name": "Angola", "quad": "LL", "grade": "E", "rank": 123, "region": "중앙아프리카"}, {"x": 0.4368, "y": -0.15, "iso3": "PAN", "name": "Panama", "quad": "LL", "grade": "E", "rank": 124, "region": "중남미"}, {"x": 0.436, "y": -1.5316, "iso3": "ZMB", "name": "Zambia", "quad": "LL", "grade": "E", "rank": 125, "region": "동아프리카"}, {"x": 0.4346, "y": -0.5731, "iso3": "HND", "name": "Honduras", "quad": "LL", "grade": "E", "rank": 126, "region": "중남미"}, {"x": 0.4344, "y": 0.1113, "iso3": "RUS", "name": "Russia", "quad": "LH", "grade": "D", "rank": 127, "region": "동유럽"}, {"x": 0.4344, "y": -0.6118, "iso3": "MLI", "name": "Mali", "quad": "LL", "grade": "E", "rank": 128, "region": "서아프리카"}, {"x": 0.4336, "y": -0.9458, "iso3": "BFA", "name": "Burkina Faso", "quad": "LL", "grade": "E", "rank": 129, "region": "서아프리카"}, {"x": 0.4322, "y": -0.2231, "iso3": "MMR", "name": "Myanmar", "quad": "LL", "grade": "E", "rank": 130, "region": "동남아시아"}, {"x": 0.4307, "y": -0.7021, "iso3": "YEM", "name": "Yemen", "quad": "LL", "grade": "E", "rank": 131, "region": "서아시아·중동"}, {"x": 0.4226, "y": 0.0231, "iso3": "PSE", "name": "Palestine", "quad": "LH", "grade": "E", "rank": 132, "region": "서아시아·중동"}, {"x": 0.4218, "y": -0.3583, "iso3": "NIC", "name": "Nicaragua", "quad": "LL", "grade": "E", "rank": 133, "region": "중남미"}, {"x": 0.4179, "y": -0.6201, "iso3": "SDN", "name": "Sudan", "quad": "LL", "grade": "E", "rank": 134, "region": "동아프리카"}, {"x": 0.416, "y": 0.1453, "iso3": "UKR", "name": "Ukraine", "quad": "LH", "grade": "D", "rank": 135, "region": "동유럽"}, {"x": 0.4104, "y": -0.8346, "iso3": "TCD", "name": "Chad", "quad": "LL", "grade": "E", "rank": 136, "region": "중앙아프리카"}, {"x": 0.408, "y": -1.1127, "iso3": "BDI", "name": "Burundi", "quad": "LL", "grade": "E", "rank": 137, "region": "동아프리카"}, {"x": 0.4041, "y": -1.4078, "iso3": "MOZ", "name": "Mozambique", "quad": "LL", "grade": "E", "rank": 138, "region": "동아프리카"}];
+
+// Color mapping
+const quadColors = {
+  HH: 'rgba(94,145,134,0.75)',
+  HL: 'rgba(184,133,14,0.75)',
+  LH: 'rgba(108,155,203,0.75)',
+  LL: 'rgba(192,57,43,0.75)'
+};
+const quadBorder = {
+  HH: '#3a5f5a', HL: '#7a5a00', LH: '#3a6090', LL: '#8b1a0e'
+};
+
+const ETA_MED = 0.5000;
+const BSLI_MED = -0.1301;
+
+// Scatter chart
+const ctx = document.getElementById('scatterChart').getContext('2d');
+
+const datasets = ['HH','HL','LH','LL'].map(q => {
+  const pts = rawData.filter(d => d.quad === q);
+  return {
+    label: q + ' (' + pts.length + '국)',
+    data: pts.map(d => ({x: d.x, y: d.y, iso3: d.iso3, name: d.name})),
+    backgroundColor: pts.map(d => {
+      if (d.iso3 === 'KOR') return 'rgba(0,100,60,0.95)';
+      if (d.iso3 === 'IDN') return 'rgba(180,100,0,0.95)';
+      return quadColors[q];
+    }),
+    borderColor: quadBorder[q],
+    borderWidth: pts.map(d => (d.iso3 === 'KOR' || d.iso3 === 'IDN') ? 3 : 1),
+    pointRadius: pts.map(d => (d.iso3 === 'KOR' || d.iso3 === 'IDN') ? 9 : 5),
+    pointHoverRadius: 10
+  };
+});
+
+new Chart(ctx, {
+  type: 'scatter',
+  data: { datasets },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: { font: { size: 12 }, padding: 16 }
+      },
+      tooltip: {
+        callbacks: {
+          label: (ctx) => {
+            const pt = ctx.raw;
+            return `${pt.iso3} — η: ${pt.x.toFixed(4)} | BSLI: ${pt.y >= 0 ? '+' : ''}${pt.y.toFixed(4)}`;
+          },
+          title: (items) => items[0].raw.name || ''
+        }
+      },
+      annotation: {}
+    },
+    scales: {
+      x: {
+        title: { display: true, text: 'η (폭발근접지수 / 사회역량)' },
+        grid: { color: '#DDD8CE' },
+        ticks: { font: { size: 11 } }
+      },
+      y: {
+        title: { display: true, text: 'BSLI (기초사회생활지수)' },
+        grid: { color: '#DDD8CE' },
+        ticks: { font: { size: 11 } }
+      }
+    }
+  }
+});
+
+// Dimension bars for KOR and IDN
+const korDims = {A1:0.9887,A2:0.6703,A3:0.7422,A4:0.4623,A5:0.7788,A6:0.4496,A7:0.4598,A8:0.7543,A9:0.7268,A10:0.0215,A11:0.2525,A12:0.8847};
+const idnDims = {A1:0.851,A2:0.3265,A3:0.6997,A4:0.2827,A5:0.0433,A6:0.5872,A7:0.6627,A8:0.4774,A9:0.8395,A10:0.0346,A11:0.3904,A12:0.8855};
+
+const dimLabels = {A1:'인프라',A2:'제도신뢰',A3:'사회결속',A4:'경제역량',A5:'지식혁신',A6:'환경지속',A7:'인구동태',A8:'거버넌스',A9:'지정학',A10:'문화정체',A11:'에너지',A12:'이동성'};
+
+function renderDimBars(containerId, dims, color) {
+  const el = document.getElementById(containerId);
+  Object.entries(dims).forEach(([k, v]) => {
+    const pct = (v * 100).toFixed(0);
+    const barH = Math.max(2, v * 55);
+    el.innerHTML += `<div class="dim-bar">
+      <div class="bar-container"><div class="bar-fill" style="height:${barH}px;background:${color}"></div></div>
+      <div class="bar-label">${k}</div>
+      <div class="bar-val">${v.toFixed(2)}</div>
+    </div>`;
+  });
+}
+
+renderDimBars('kor-bars', korDims, '#5E9186');
+renderDimBars('idn-bars', idnDims, '#B8850E');
+</script>
+</body>
+</html>

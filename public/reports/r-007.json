@@ -1,0 +1,29 @@
+{
+ "meta": {
+  "title": "Λ¹²·BSLI 통합 국가분석 — 138국 전수 산출 2026",
+  "title_en": "Λ¹²·BSLI Joint National Analysis — 138 Countries Full Report 2026",
+  "engine": "Λ¹²v2.0 · BSLIv6.9",
+  "category": "국가 분석 보고서",
+  "category_en": "National Analysis",
+  "scope": "글로벌 전수",
+  "scope_en": "Global Full Coverage",
+  "date": "2026-07-18",
+  "author": "김기섭",
+  "tags": [
+   "Λ¹²",
+   "BSLI",
+   "138국",
+   "글로벌",
+   "산점도",
+   "사분면분석",
+   "HH",
+   "LL",
+   "민생위기"
+  ],
+  "html_path": "/engines/lambda12/Lambda12_BSLI_Joint_138Nations_20260718.html",
+  "status": "published"
+ },
+ "summary_ko": "12차원 사회역량지수(η v2.0)와 기초사회생활지수(BSLI v6.9)를 138개 공동집합 국가에 전수 산출했다. Pearson r=0.7551의 강한 양의 상관관계 확인. 4사분면 분류: HH 안정번영 51국 / HL 민생위기 18국 / LH 민생선행 18국 / LL 이중취약 51국. 한국 HH(η=0.5993, BSLI=0.4627), 인도네시아 HL(η=0.5067, BSLI=-0.3315) 각각 확정.",
+ "summary_en": "Full computation of the 12-dimension Societal Capacity Index (η v2.0) and Basic Social Living Index (BSLI v6.9) for 138 jointly available countries. Confirmed Pearson r=0.7551 positive correlation. Quadrant classification: HH Stable Prosperity 51 / HL Livelihood Crisis 18 / LH Livelihood-Led 18 / LL Dual Vulnerability 51. South Korea confirmed HH (η=0.5993, BSLI=0.4627); Indonesia confirmed HL (η=0.5067, BSLI=-0.3315).",
+ "body": ""
+}
