@@ -5,11 +5,6 @@
   "hanja": 9
  },
  {
-  "file": "/engines/lambda12/Lambda12_BSLI_Joint_138Nations_20260718_EN.html",
-  "ko": 641,
-  "hanja": 0
- },
- {
   "file": "/engines/bsli/BSLI_dashboard_v7_EN.html",
   "ko": 596,
   "hanja": 0
@@ -58,6 +53,11 @@
   "file": "/engines/bsli/BSLI_paper_v6.0_2026_EN.html",
   "ko": 46,
   "hanja": 31
+ },
+ {
+  "file": "/engines/axioms/늘푸른바다_엔진총서_제1권_기초정본_v1.0_20260720_EN.html",
+  "ko": 74,
+  "hanja": 3
  },
  {
   "file": "/engines/lambda12/Lambda12_Validation_Report_v2_20260711_EN.html",
