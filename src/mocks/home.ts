@@ -27,12 +27,44 @@ export const tickerItems = [
   "이란 2026 취성파괴 경보 · REVERBANT",
 ];
 
-// ★ 최신 분석 카드 관리 규칙 (2026-07-18 확정)
-// - 최대 5개, 날짜 내림차순 (최신이 맨 위)
-// - 이미지: /images/cards/r-NNN.svg (Unsplash URL 금지 — 캐시 깨짐 이력 있음)
-// - 배포 전 r-NNN.svg / r-NNN.json 두 파일 모두 public/ 에 존재 확인 필수
-// - 이 파일 수정 시 반드시 giseu 최신 파일 pull 후 작업 (다운로드 구파일 덮어쓰기 금지)
-export const featuredReports = [
+/* ══════════════════════════════════════════════════════════════════════════
+   최신 분석 카드 — 자동 정렬·자동 밀어내기 체계 (2026-07-26 도입)
+   ──────────────────────────────────────────────────────────────────────────
+   ★ 새 보고서 추가 방법: 아래 featuredReports 배열에 항목 1개 추가만 하면 끝.
+     - 위치는 아무 데나 넣어도 된다. date 기준으로 자동 정렬된다.
+     - 카드가 FEATURED_MAX(5)개를 넘으면 가장 오래된 것이 자동으로 화면에서 빠진다.
+       (배열에서 지우지 않아도 된다 — 데이터는 남고 노출만 밀려난다.
+        /reports/{id} 직접 링크는 계속 살아 있다.)
+     - pinned: true 를 붙인 항목은 날짜와 무관하게 항상 최상단에 고정된다.
+       현재 고정: r-007 (Λ¹²·BSLI 통합 국가분석) — 버전업 시 이 항목만 갱신.
+
+   ★ 배포 전 필수 확인 2가지
+     - public/images/cards/r-NNN.svg 존재 (Unsplash URL 금지 — 캐시 깨짐 이력)
+     - public/reports/r-NNN.json 존재 (없으면 카드 클릭 시 404)
+
+   ★ 이 파일 수정 시 반드시 giseu 최신본 pull 후 작업 (다운로드 구파일 덮어쓰기 금지)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/** 홈 최신분석 섹션에 동시에 노출할 카드 최대 개수 */
+export const FEATURED_MAX = 5;
+
+export type FeaturedReport = {
+  id: string;
+  category: string;
+  categoryEn?: string;
+  date: string;
+  author: string;
+  title: string;
+  titleEn?: string;
+  excerpt: string;
+  excerptEn?: string;
+  image: string;
+  tone: "light" | "dark";
+  /** true면 날짜와 무관하게 항상 최상단 고정 (버전업 전까지 유지) */
+  pinned?: boolean;
+};
+
+export const featuredReports: FeaturedReport[] = [
   {
     id: "r-007",
     category: "Λ¹²v2.0 · BSLIv6.9 · 글로벌 전수",
@@ -44,6 +76,20 @@ export const featuredReports = [
     excerpt: "η·BSLI 138국 전수 산출. Pearson r=0.7551 강한 양의 상관 확인. HH 안정번영 51국 / HL 민생위기 18국 / LH 민생선행 18국 / LL 이중취약 51국. 한국 HH·인도네시아 HL 확정.",
     excerptEn: "Full computation for 138 countries. Pearson r=0.7551 strong positive correlation confirmed. HH Stable Prosperity 51 / HL Livelihood Crisis 18 / LH Livelihood-Led 18 / LL Dual Vulnerability 51. Korea HH · Indonesia HL confirmed.",
     image: "/images/cards/r-007.svg",
+    tone: "light" as const,
+    pinned: true, // ★ 상단 고정 — 통합 국가분석 정본. 버전업 시 이 항목만 수정.
+  },
+  {
+    id: "r-008",
+    category: "UI · BSLIv7.0 · 구독판 시리즈",
+    categoryEn: "UI · BSLI v7.0 · Subscription Series",
+    date: "2026-07-26",
+    author: "김기섭",
+    title: "봉기 코호트 구독판 4부작 — 압박 좌표계 시계열 실측 (이란·볼리비아·스리랑카·6국 비교)",
+    titleEn: "Uprising Cohort Subscription Tetralogy — Pressure-Coordinate Time-Series Validation (Iran·Bolivia·Sri Lanka·6-Country Comparison)",
+    excerpt: "압박 좌표계(Pressure Coordinate System)를 12차원 행성계 도식으로 구현한 첫 구독판 묶음. Λ¹² 시계열 v2.1(2016–2024) × BSLI v7.0, 임계대 P*=0.445806 기준으로 이란 제2호·볼리비아·스리랑카 단독편과 6개국 코호트 비교편을 한 시리즈로 묶어 판독한다.",
+    excerptEn: "The first subscription bundle implementing the Pressure Coordinate System as a 12-dimension orbital diagram. Λ¹² time series v2.1 (2016–2024) × BSLI v7.0, critical band P*=0.445806 — Iran Vol.2, Bolivia and Sri Lanka standalone editions plus the 6-country cohort comparison, read as one series.",
+    image: "/images/cards/r-008.svg",
     tone: "light" as const,
   },
   {
@@ -99,6 +145,34 @@ export const featuredReports = [
     tone: "dark" as const,
   },
 ];
+
+/* ── 파생 목록 (수동 관리 불필요) ─────────────────────────────────────────── */
+
+/** date 문자열(YYYY-MM-DD) 내림차순 — 사전순 비교로 충분한 고정 포맷 */
+const byDateDesc = (a: FeaturedReport, b: FeaturedReport) =>
+  a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+
+/**
+ * 홈 최신분석 섹션이 실제로 렌더링하는 목록.
+ * 고정(pinned) 항목이 먼저, 그 아래 나머지가 날짜 내림차순.
+ * 총 FEATURED_MAX개를 넘으면 가장 오래된 항목부터 자동으로 노출에서 제외된다.
+ * (filter가 새 배열을 만들므로 sort가 원본 featuredReports를 훼손하지 않는다.)
+ */
+export const featuredReportsVisible: FeaturedReport[] = [
+  ...featuredReports.filter((r) => r.pinned).sort(byDateDesc),
+  ...featuredReports.filter((r) => !r.pinned).sort(byDateDesc),
+].slice(0, FEATURED_MAX);
+
+/** 노출 목록 중 가장 최근 날짜 (고정 항목 포함) — 섹션 헤더 스탬프용 */
+export const featuredLatestDate: string =
+  [...featuredReportsVisible].sort(byDateDesc)[0]?.date ?? "";
+
+/** 섹션 헤더 스탬프 예: "2026.07 · 05" (최신 연·월 · 노출 카드 수) */
+export const featuredStamp: string = (() => {
+  const [y, m] = featuredLatestDate.split("-");
+  const count = String(featuredReportsVisible.length).padStart(2, "0");
+  return y && m ? `${y}.${m} · ${count}` : count;
+})();
 
 export const mainCategories = [
   {

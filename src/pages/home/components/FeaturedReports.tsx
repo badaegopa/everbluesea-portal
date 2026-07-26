@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { featuredReports } from "@/mocks/home";
+import { featuredReportsVisible, featuredStamp } from "@/mocks/home";
 
 export default function FeaturedReports() {
   const { t, i18n } = useTranslation();
@@ -17,7 +17,7 @@ export default function FeaturedReports() {
         <div className="mb-12 md:mb-16">
           <div className="flex items-center gap-4 mb-10">
             <span className="font-mono text-[10px] tracking-widest uppercase text-foreground-400">
-              Latest Analysis · 2026.07 · 01
+              Latest Analysis · {featuredStamp}
             </span>
             <div className="flex-1 h-px" style={{ backgroundColor: "rgba(61,107,98,0.15)" }} />
           </div>
@@ -28,7 +28,7 @@ export default function FeaturedReports() {
 
         {/* Report list */}
         <div className="border-t border-foreground-200/40">
-          {featuredReports.map((r) => {
+          {featuredReportsVisible.map((r) => {
             const title = isKo ? r.title : (r.titleEn || r.title);
             const excerpt = isKo ? r.excerpt : (r.excerptEn || r.excerpt);
             const category = isKo ? r.category : (r.categoryEn || r.category);

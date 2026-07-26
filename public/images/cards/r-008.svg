@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#F5F3EE"/>
+
+  <!-- 타이틀 -->
+  <text x="400" y="40" font-family="Georgia,serif" font-size="18" fill="#3a5f5a" text-anchor="middle" font-weight="bold">압박 좌표계 — 봉기 코호트 구독판 4부작</text>
+  <text x="400" y="60" font-family="Courier New,monospace" font-size="11" fill="#8a8880" text-anchor="middle" letter-spacing="1">P* = 0.445806 · Λ¹² v2.1 × BSLI v7.0 · 2016→2024</text>
+
+  <!-- 임계 밴드 (P* 반경) -->
+  <circle cx="400" cy="330" r="150" fill="none" stroke="#C0392B" stroke-width="1.6" stroke-dasharray="7 5" opacity="0.75"/>
+  <text x="400" y="172" font-family="Courier New,monospace" font-size="11" fill="#C0392B" text-anchor="middle">임계 밴드 P*</text>
+
+  <!-- 내부 궤도 그리드 -->
+  <circle cx="400" cy="330" r="60" fill="none" stroke="#DDD8CE" stroke-width="1"/>
+  <circle cx="400" cy="330" r="105" fill="none" stroke="#DDD8CE" stroke-width="1"/>
+  <circle cx="400" cy="330" r="200" fill="none" stroke="#DDD8CE" stroke-width="1"/>
+
+  <!-- 중심: BSLI 태양 -->
+  <circle cx="400" cy="330" r="30" fill="#B8850E" opacity="0.16"/>
+  <circle cx="400" cy="330" r="19" fill="#B8850E" opacity="0.85"/>
+  <text x="400" y="335" font-family="Georgia,serif" font-size="12" fill="#F5F3EE" text-anchor="middle" font-weight="bold">BSLI</text>
+
+  <!-- 12차원 노드: 밴드 내(적색) A2·A5·A7·A8 / 밴드 외(녹색) -->
+  <!-- A1 -->
+  <line x1="400" y1="330" x2="400" y2="130" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="400" cy="130" r="7" fill="#5E9186" opacity="0.8"/>
+  <text x="400" y="118" font-family="Courier New,monospace" font-size="10.5" fill="#5E9186" text-anchor="middle">A1</text>
+  <!-- A2 (밴드 내) -->
+  <line x1="400" y1="330" x2="510" y2="203" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="510" cy="203" r="9" fill="#C0392B" opacity="0.85"/>
+  <text x="524" y="196" font-family="Courier New,monospace" font-size="10.5" fill="#C0392B" font-weight="bold">A2</text>
+  <!-- A3 -->
+  <line x1="400" y1="330" x2="566" y2="266" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="566" cy="266" r="6" fill="#5E9186" opacity="0.75"/>
+  <text x="580" y="262" font-family="Courier New,monospace" font-size="10.5" fill="#5E9186">A3</text>
+  <!-- A4 -->
+  <line x1="400" y1="330" x2="505" y2="330" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="505" cy="330" r="6" fill="#5E9186" opacity="0.75"/>
+  <text x="519" y="334" font-family="Courier New,monospace" font-size="10.5" fill="#5E9186">A4</text>
+  <!-- A5 (밴드 내) -->
+  <line x1="400" y1="330" x2="533" y2="407" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="533" cy="407" r="9" fill="#C0392B" opacity="0.85"/>
+  <text x="547" y="412" font-family="Courier New,monospace" font-size="10.5" fill="#C0392B" font-weight="bold">A5</text>
+  <!-- A6 -->
+  <line x1="400" y1="330" x2="452" y2="420" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="452" cy="420" r="6" fill="#5E9186" opacity="0.75"/>
+  <text x="462" y="436" font-family="Courier New,monospace" font-size="10.5" fill="#5E9186">A6</text>
+  <!-- A7 (밴드 내 · 척추) -->
+  <line x1="400" y1="330" x2="400" y2="490" stroke="#C0392B" stroke-width="1.6" opacity="0.5"/>
+  <circle cx="400" cy="490" r="10" fill="#C0392B" opacity="0.9"/>
+  <text x="400" y="512" font-family="Courier New,monospace" font-size="11" fill="#C0392B" text-anchor="middle" font-weight="bold">A7 사회자본</text>
+  <!-- A8 (밴드 내 · 척추) -->
+  <line x1="400" y1="330" x2="256" y2="437" stroke="#C0392B" stroke-width="1.6" opacity="0.5"/>
+  <circle cx="256" cy="437" r="10" fill="#C0392B" opacity="0.9"/>
+  <text x="242" y="458" font-family="Courier New,monospace" font-size="11" fill="#C0392B" text-anchor="end" font-weight="bold">A8 거버넌스</text>
+  <!-- A9 -->
+  <line x1="400" y1="330" x2="295" y2="330" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="295" cy="330" r="6" fill="#5E9186" opacity="0.75"/>
+  <text x="281" y="334" font-family="Courier New,monospace" font-size="10.5" fill="#5E9186" text-anchor="end">A9</text>
+  <!-- A10 -->
+  <line x1="400" y1="330" x2="248" y2="252" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="248" cy="252" r="6" fill="#5E9186" opacity="0.75"/>
+  <text x="234" y="246" font-family="Courier New,monospace" font-size="10.5" fill="#5E9186" text-anchor="end">A10</text>
+  <!-- A11 -->
+  <line x1="400" y1="330" x2="300" y2="190" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="300" cy="190" r="6" fill="#5E9186" opacity="0.7"/>
+  <text x="286" y="184" font-family="Courier New,monospace" font-size="10.5" fill="#5E9186" text-anchor="end">A11</text>
+  <!-- A12 -->
+  <line x1="400" y1="330" x2="470" y2="163" stroke="#DDD8CE" stroke-width="0.8"/>
+  <circle cx="470" cy="163" r="6" fill="#5E9186" opacity="0.7"/>
+  <text x="484" y="158" font-family="Courier New,monospace" font-size="10.5" fill="#5E9186">A12</text>
+
+  <!-- 시계열 궤적 (2016→2024, 바깥으로 이동) -->
+  <path d="M418 300 C470 288 500 250 510 210" fill="none" stroke="#8a5800" stroke-width="1.8" stroke-dasharray="5 4" opacity="0.7"/>
+  <path d="M406 356 C404 400 402 440 400 478" fill="none" stroke="#8a5800" stroke-width="1.8" stroke-dasharray="5 4" opacity="0.7"/>
+  <text x="600" y="330" font-family="Courier New,monospace" font-size="10.5" fill="#8a5800">궤적 = 2016→2024</text>
+
+  <!-- 경로 범례 -->
+  <rect x="42" y="500" width="14" height="10" fill="#6c9bcb" opacity="0.85"/>
+  <text x="62" y="510" font-family="Georgia,serif" font-size="12" fill="#555">WD 미방출 · BOL</text>
+  <rect x="42" y="522" width="14" height="10" fill="#C0392B" opacity="0.85"/>
+  <text x="62" y="532" font-family="Georgia,serif" font-size="12" fill="#555">SN 방출 · LKA·BGD</text>
+  <rect x="42" y="544" width="14" height="10" fill="#5b3a6e" opacity="0.85"/>
+  <text x="62" y="554" font-family="Georgia,serif" font-size="12" fill="#555">BH 전환 · IRN</text>
+  <rect x="42" y="566" width="14" height="10" fill="#5E9186" opacity="0.85"/>
+  <text x="62" y="576" font-family="Georgia,serif" font-size="12" fill="#555">대조군 · KOR (밴드 0축)</text>
+
+  <!-- 수록 편수 -->
+  <text x="758" y="510" font-family="Courier New,monospace" font-size="12" fill="#3a5f5a" text-anchor="end">수록 4편 · 비교 6국</text>
+  <text x="758" y="530" font-family="Courier New,monospace" font-size="11" fill="#8a8880" text-anchor="end">IRN · BOL · LKA · COHORT</text>
+  <text x="758" y="552" font-family="Courier New,monospace" font-size="11" fill="#8a8880" text-anchor="end">공통 척추 A7 · A8 (봉기 5국 전부)</text>
+  <text x="758" y="574" font-family="Georgia,serif" font-size="11" fill="#a9a79f" text-anchor="end">EVERBLUE SEA INSTITUTE</text>
+</svg>

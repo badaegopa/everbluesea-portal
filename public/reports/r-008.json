@@ -1,0 +1,35 @@
+{
+ "meta": {
+  "title": "봉기 코호트 구독판 4부작 — 압박 좌표계 시계열 실측 (이란·볼리비아·스리랑카·6국 비교)",
+  "title_en": "Uprising Cohort Subscription Tetralogy — Pressure-Coordinate Time-Series Validation (Iran·Bolivia·Sri Lanka·6-Country Comparison)",
+  "engine": "UI · Λ¹² 시계열 v2.1 × BSLI v7.0",
+  "category": "봉기지수 · 구독판 시리즈",
+  "category_en": "Uprising Index · Subscription Series",
+  "scope": "코호트 6국 (봉기 5 + 대조군 1)",
+  "scope_en": "Cohort of 6 (5 Uprising + 1 Control)",
+  "date": "2026-07-26",
+  "author": "김기섭",
+  "tags": [
+   "UI",
+   "봉기지수",
+   "압박 좌표계",
+   "Λ¹² 시계열 v2.1",
+   "BSLI v7.0",
+   "P*=0.445806",
+   "WD",
+   "SN",
+   "BH",
+   "이란",
+   "볼리비아",
+   "스리랑카",
+   "방글라데시",
+   "네팔",
+   "구독판"
+  ],
+  "html_path": "/engines/ui/국가보고서_구독판_시리즈허브_v1.0_20260726_1.html",
+  "status": "published"
+ },
+ "summary_ko": "봉기지수(UI)를 정태 점수에서 시계열 벡터로 옮긴 첫 구독판 4부작. Λ¹² 12차원을 BSLI 중심 행성계로 배치한 압박 좌표계(Pressure Coordinate System)로 2016→2024 궤적을 실측했다. 정본 상수 P*=0.445806(임계 밴드)·pmax=0.644275·pmin=0.006262를 4편 전체에 고정 적용. 실측 결과: 봉기 5국 전부에서 A7(사회자본)·A8(거버넌스)이 임계 밴드 내 — 비교편이 '붉은 척추'로 명명한 공통 구조. 볼리비아 BSLI −0.1227 / 밴드 4축 / ΣP 3.707 / White Dwarf 미방출, 이란 −0.1301 / 4축 / ΣP 3.541 / 2022 WD→현재 BH, 스리랑카 −0.2457 / 1축 / ΣP 3.520 / Supernova 방출, 방글라데시 −0.6223 / 3축 / ΣP 3.097 / SN, 네팔 BSLI N/A(사각지대) / 3축 / ΣP 3.106 / 발화 전 T−1 관측, 대조군 한국 +0.4627 / 밴드 0축 / ΣP 1.963. 핵심 관측은 기층 침몰(BSLI)과 구조 하중(ΣP·밴드 축 수)이 서로 상관되지 않는 별개 축이라는 점, 그리고 붕괴 경로(WD/SN/BH)가 고정 라벨이 아니라 시계열상 이동하는 상태라는 점이다. P*는 탐색적 임계값이며 표본 확장 시 재조정 대상으로 유보한다.",
+ "summary_en": "The first four-part subscription series moving the Uprising Index (UI) from static scores to time-series vectors. The Pressure Coordinate System arranges the 12 Λ¹² dimensions as an orbital system around BSLI at the center, plotting measured 2016→2024 trajectories. Canonical constants P*=0.445806 (critical band), pmax=0.644275, pmin=0.006262 are fixed identically across all four reports. Key finding: in all five uprising countries, A7 (social capital) and A8 (governance) fall inside the critical band — the shared structure the comparison volume names the \"red spine.\" Bolivia BSLI −0.1227 / 4 band-axes / ΣP 3.707 / White Dwarf (unreleased); Iran −0.1301 / 4 axes / ΣP 3.541 / 2022 WD → currently BH; Sri Lanka −0.2457 / 1 axis / ΣP 3.520 / Supernova (released); Bangladesh −0.6223 / 3 axes / ΣP 3.097 / SN; Nepal BSLI N/A (data blind spot) / 3 axes / ΣP 3.106 / pre-ignition T−1 observation; control group South Korea +0.4627 / 0 band-axes / ΣP 1.963. The central observation is that basal subsidence (BSLI) and structural load (ΣP, band-axis count) are uncorrelated, separate axes, and that collapse paths (WD/SN/BH) are not fixed labels but states that migrate over time. P* remains an exploratory threshold subject to recalibration as the sample expands. WD/SN/BH are stellar-evolution metaphors for classification, not astrophysical claims.",
+ "body": ""
+}

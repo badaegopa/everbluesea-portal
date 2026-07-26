@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>봉기 코호트 구독판 4부작 — 압박 좌표계 시계열 실측 | 늘푸른바다 사회동역학연구소</title>
+<style>
+  :root{
+    --bg:#F5F3EE; --header:#2A3D35; --green:#5E9186; --gold:#B8850E;
+    --red:#C0392B; --border:#DDD8CE; --slogan:#C9A24B; --ink:#2b2b28;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Nanum Myeongjo",serif;line-height:1.75;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px 64px;}
+
+  header.top{background:var(--header);color:#EFEDE6;padding:38px 22px 34px;}
+  header.top .inner{max-width:1080px;margin:0 auto;}
+  .kicker{font-family:"Courier New",monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#9FBDB3;margin-bottom:14px;}
+  header.top h1{margin:0 0 10px;font-size:30px;line-height:1.35;font-weight:normal;}
+  header.top h1 span{display:block;font-size:16px;color:#A9C3BA;margin-top:8px;}
+  .meta{font-family:"Courier New",monospace;font-size:12px;color:#8FAFA5;margin-top:16px;border-top:1px solid rgba(255,255,255,.14);padding-top:12px;}
+
+  h2.sec{font-size:21px;font-weight:normal;margin:52px 0 6px;padding-bottom:10px;border-bottom:2px solid var(--green);}
+  h2.sec i{font-family:"Courier New",monospace;font-style:normal;font-size:12px;letter-spacing:.14em;color:var(--green);display:block;margin-bottom:6px;}
+  p{margin:14px 0;}
+  .lead{font-size:16.5px;}
+  .note{font-size:13.5px;color:#63625c;}
+
+  /* 용어 박스 */
+  .glossary{background:#FBFAF6;border:1px solid var(--border);border-left:4px solid var(--gold);padding:18px 22px;margin:22px 0;}
+  .glossary dl{margin:0;display:grid;grid-template-columns:170px 1fr;gap:8px 16px;font-size:14px;}
+  .glossary dt{font-family:"Courier New",monospace;color:var(--gold);font-weight:bold;}
+  .glossary dd{margin:0;}
+
+  /* 카드 그리드 */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0 8px;}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}}
+  a.card{display:block;text-decoration:none;color:inherit;background:#FFFDF8;border:1px solid var(--border);border-top:3px solid var(--green);padding:20px 22px 18px;transition:.18s;}
+  a.card:hover{border-color:var(--green);box-shadow:0 4px 16px rgba(42,61,53,.10);transform:translateY(-2px);}
+  a.card.wd{border-top-color:#6c9bcb}
+  a.card.sn{border-top-color:var(--red)}
+  a.card.bh{border-top-color:#5b3a6e}
+  a.card.cmp{border-top-color:var(--gold)}
+  a.card .tag{font-family:"Courier New",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);}
+  a.card h3{margin:8px 0 4px;font-size:19px;font-weight:normal;line-height:1.4;}
+  a.card .sub{font-size:12.5px;color:#77756d;font-family:"Courier New",monospace;}
+  a.card .stats{margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);font-family:"Courier New",monospace;font-size:12.5px;color:#4a4a44;}
+  a.card .stats b{color:var(--header);}
+  a.card .desc{margin-top:12px;font-size:14px;color:#55544e;}
+  a.card .go{margin-top:14px;font-family:"Courier New",monospace;font-size:12px;color:var(--gold);}
+
+  /* 표 */
+  table{width:100%;border-collapse:collapse;margin:20px 0;font-family:"Courier New",monospace;font-size:13px;background:#FFFDF8;}
+  caption{caption-side:top;text-align:left;font-family:Georgia,serif;font-size:13.5px;color:#63625c;padding-bottom:8px;}
+  th,td{border:1px solid var(--border);padding:8px 10px;text-align:center;}
+  thead th{background:var(--header);color:#EFEDE6;font-weight:normal;letter-spacing:.04em;}
+  tbody tr:nth-child(even){background:#F7F5F0;}
+  td.name{text-align:left;font-family:Georgia,serif;}
+  .neg{color:var(--red);}
+  .pos{color:var(--green);}
+  .band{background:rgba(192,57,43,.08);font-weight:bold;}
+
+  /* 밴드 바 */
+  .bar{display:inline-block;height:9px;background:var(--green);vertical-align:middle;}
+  .bar.hi{background:var(--red);}
+
+  /* SVG 캡션 */
+  figure{margin:26px 0;background:#FFFDF8;border:1px solid var(--border);padding:18px;}
+  figcaption{font-size:13px;color:#63625c;margin-top:10px;font-family:Georgia,serif;}
+
+  /* 관찰자 결론 */
+  .synth{background:#FBFAF6;border:1px solid var(--border);border-left:4px solid var(--green);padding:8px 24px 18px;margin:26px 0;}
+  .synth h3{font-size:15px;font-family:"Courier New",monospace;letter-spacing:.1em;color:var(--green);margin:18px 0 4px;}
+  .synth p{margin:6px 0;font-size:14.5px;}
+
+  .limits{border:1px dashed var(--border);padding:16px 20px;font-size:13.5px;color:#5c5b55;background:#FBFAF6;}
+
+  footer.slogan{margin-top:56px;padding-top:22px;border-top:1px solid var(--border);text-align:center;}
+  footer.slogan p{font-style:italic;color:var(--slogan);font-size:15px;margin:0 0 10px;}
+  footer.slogan small{font-family:"Courier New",monospace;font-size:11.5px;color:#8a8880;letter-spacing:.08em;}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <div class="kicker">Everblue Sea Institute · Uprising Index · Subscription Series</div>
+    <h1>봉기 코호트 구독판 4부작 — 압박 좌표계 시계열 실측
+      <span>Uprising Cohort Subscription Tetralogy — Pressure-Coordinate Time-Series Validation</span>
+    </h1>
+    <div class="meta">
+      2026-07-26 공개 · 수록 4편 (이란 2호 · 볼리비아 · 스리랑카 · 6국 비교) ·
+      엔진: UI × Λ¹² 시계열 v2.1(2016–2024) × BSLI v7.0 ·
+      정본 상수 고정 P*=0.445806 · p<sub>max</sub>=0.644275 · p<sub>min</sub>=0.006262 ·
+      저자 淸海(김기섭) · 늘푸른바다 사회동역학연구소
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h2 class="sec"><i>§ 00 &nbsp;Overview</i>이 묶음이 무엇인가</h2>
+  <p class="lead">
+    이 4편은 봉기지수(UI)를 정태 점수에서 <strong>시계열 벡터</strong>로 옮긴 첫 구독판 묶음이다.
+    기존 국가보고서가 "지금 몇 점인가"를 답했다면, 이 묶음은 "어느 방향으로, 얼마의 속도로 움직이는가"를 답한다.
+    그 도구가 <strong>압박 좌표계(Pressure Coordinate System)</strong>다 —
+    Λ¹² 12차원을 BSLI(기층지수)를 중심에 둔 행성계 형태로 배치하고,
+    각 차원의 압박 P를 궤도 반경으로, 섭동 사슬을 각도로, 2016→2024 변화를 궤적으로 그린다.
+  </p>
+  <p>
+    핵심 판정선은 하나다. 차원별 압박 P가 <strong>임계 밴드 P* = 0.445806</strong>을 넘으면 그 차원은 "밴드 내"로 표기되고,
+    밴드 내 차원의 <em>수</em>와 <em>구성</em>이 봉기 발화 조건 및 붕괴 경로 분류의 입력이 된다.
+    이 묶음의 실측 결과에서 가장 눈에 띄는 규칙성은,
+    봉기를 겪은 5개국 <strong>전부</strong>에서 A7(사회자본)·A8(거버넌스)이 밴드 내에 들어 있었다는 점이다 —
+    비교편에서 "붉은 척추(spine)"로 명명한 구조다.
+  </p>
+
+  <div class="glossary">
+    <dl>
+      <dt>P (압박)</dt><dd>Λ¹² 각 차원의 결핍을 [0,1]로 정규화한 압박값. 클수록 그 차원이 사회 하중을 더 많이 떠받치고 있다는 뜻.</dd>
+      <dt>P* = 0.445806</dt><dd>임계 밴드 경계(탐색적 임계값). P ≥ P*인 차원을 "밴드 내"로 판정한다. 4편 전부 동일 상수를 고정 사용.</dd>
+      <dt>ΣP</dt><dd>12차원 압박의 총합 = 구조 하중의 총량. 개별 차원의 위험도가 아니라 "사회 전체가 지고 있는 무게".</dd>
+      <dt>ΔP</dt><dd>연간 압박 변화량. 부호가 방향(악화/완화), 절댓값이 활동성(속도)을 나타낸다.</dd>
+      <dt>BSLI</dt><dd>기초사회생활지수. 범위 [−2,+1], <strong>음수가 정상</strong>(0 = 기본생활선, 음수 = 그 아래로의 침몰 깊이).</dd>
+      <dt>WD / SN / BH</dt><dd>붕괴 경로 분류 — 백색왜성(억압·미방출) / 초신성(붕괴·방출 후 재편) / 블랙홀(내파·복원 구조 없음). <strong>천체물리 주장이 아니라 은유</strong>다.</dd>
+      <dt>A2 / A5 / A6 / A7 / A8</dt><dd>Λ¹² 차원 라벨 — A2 거버넌스 역량, A5 식량·주거 안보, A6 노동시장, A7 사회자본, A8 외채·재정 건전성.</dd>
+    </dl>
+  </div>
+
+  <h2 class="sec"><i>§ 01 &nbsp;Contents</i>수록 4편 — 각 편으로 들어가기</h2>
+  <p class="note">아래 카드를 누르면 해당 편 전문이 열린다. 볼리비아·스리랑카·비교편은 구독판 전체 구성(§0 용어집 → §F 데이터 투명성)을 갖춘 완본이고, 이란 2호는 좌표계 시계열 단독 판이다.</p>
+
+  <div class="cards">
+
+    <a class="card wd" href="/engines/ui/국가보고서_구독판_BOL_v2.0_20260725_1.html">
+      <div class="tag">Vol.1 · Bolivia (BOL) · White Dwarf</div>
+      <h3>늘푸른바다 국가보고서 — 볼리비아</h3>
+      <div class="sub">중남미 · 안데스 · 봉기 2019.11 · 구독판 v2.0</div>
+      <div class="stats">
+        BSLI <b class="neg">−0.1227</b> (E등급 · 69/139)<br>
+        밴드 내 <b>4 / 12</b> — A2·A5·A7·A8<br>
+        ΣP <b>3.707</b> · 경로 <b>WD 미방출</b>
+      </div>
+      <div class="desc">봉기 이후에도 밴드 내 차원 수가 줄지 않은 사례. 압박이 해소된 것이 아니라 흡수된 상태 — 이 묶음에서 "미방출"의 기준선 역할을 한다.</div>
+      <div class="go">전문 열기 →</div>
+    </a>
+
+    <a class="card bh" href="/engines/ui/국가봉기벡터보고서_IRN_2호_v2.0_20260725_2.html">
+      <div class="tag">Vol.2 · Iran (IRN) No.2 · WD → BH</div>
+      <h3>국가봉기 벡터보고서 — 이란 제2호</h3>
+      <div class="sub">중동 · 봉기 2022.09 · 압박 좌표계 시계열판</div>
+      <div class="stats">
+        BSLI <b class="neg">−0.1301</b> (E등급 · 70/139)<br>
+        밴드 내 <b>4 / 12</b> — A2·A5·A7·A8<br>
+        ΣP <b>3.541</b> · 평균 P <b>0.295</b> · 경로 <b>2022 WD → 현재 BH</b>
+      </div>
+      <div class="desc">흡수체 역할을 하던 A2·A8이 동반 낙하하는 궤적. 좌표계 도식이 2016→2024 궤적으로 경로 전환(WD→BH)을 시각적으로 드러내는 편.</div>
+      <div class="go">전문 열기 →</div>
+    </a>
+
+    <a class="card sn" href="/engines/ui/국가보고서_구독판_LKA_v2.0_20260725_1.html">
+      <div class="tag">Vol.3 · Sri Lanka (LKA) · Supernova</div>
+      <h3>늘푸른바다 국가보고서 — 스리랑카</h3>
+      <div class="sub">남아시아 · 인도양 · 봉기 2022.07 · 구독판 v2.0</div>
+      <div class="stats">
+        BSLI <b class="neg">−0.2457</b> (E등급 · 81/139)<br>
+        밴드 내 <b>1 / 12</b> — A5<br>
+        ΣP <b>3.520</b> · 경로 <b>SN 방출</b>
+      </div>
+      <div class="desc">기층 침몰은 볼리비아·이란보다 깊은데 밴드 내 차원은 1축으로 줄어든 사례. "침몰 깊이"와 "구조 하중"이 별개 축임을 보여주는 대조점.</div>
+      <div class="go">전문 열기 →</div>
+    </a>
+
+    <a class="card cmp" href="/engines/ui/국가보고서_구독판_봉기코호트비교_v1.0_20260725_1.html">
+      <div class="tag">Vol.4 · Cohort Comparison · 6 Countries</div>
+      <h3>봉기 코호트 비교편</h3>
+      <div class="sub">볼리비아·이란·스리랑카·방글라데시·네팔 vs 대조군 한국</div>
+      <div class="stats">
+        비교 6국 (봉기 5 + 대조군 1)<br>
+        미방출 WD 2 · 방출 SN 2 · BH 전환 1 · 발화 전 1<br>
+        공통 척추 <b>A7 · A8</b> — 봉기 5국 전부 밴드 내
+      </div>
+      <div class="desc">개별 편을 하나의 좌표 평면에 겹쳐 놓은 종합편. 방출/미방출 스펙트럼과 두 축 지형(침몰 × 하중)의 분리를 다룬다.</div>
+      <div class="go">전문 열기 →</div>
+    </a>
+
+  </div>
+
+  <h2 class="sec"><i>§ 02 &nbsp;Cohort Table</i>코호트 종합표 — 4편 실측값 한 장 요약</h2>
+  <table>
+    <caption>비교편 C-01의 요약. BSLI는 [−2,+1] 범위이며 음수가 정상값(기본생활선 이하 침몰 깊이). "밴드 내"는 P ≥ P*=0.445806인 차원. 네팔 BSLI는 데이터 사각지대로 산출 불가 — 0으로 대입하지 않고 N/A로 표기한다.</caption>
+    <thead>
+      <tr><th>국가</th><th>BSLI</th><th>등급·순위</th><th>밴드 내 (2024)</th><th>ΣP</th><th>봉기</th><th>경로 (정본)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">🇰🇷 한국 <small>(대조군)</small></td><td class="pos">+0.4627</td><td>C · 25</td><td>0축 [—]</td><td>1.963</td><td>—</td><td>안전 (밴드 0)</td></tr>
+      <tr><td class="name">🇧🇴 볼리비아</td><td class="neg">−0.1227</td><td>E · 69</td><td class="band">4축 [A2·A5·A7·A8]</td><td>3.707</td><td>2019.11</td><td>White Dwarf 미방출</td></tr>
+      <tr><td class="name">🇮🇷 이란</td><td class="neg">−0.1301</td><td>E · 70</td><td class="band">4축 [A2·A5·A7·A8]</td><td>3.541</td><td>2022.09</td><td>2022 WD → 현재 BH</td></tr>
+      <tr><td class="name">🇱🇰 스리랑카</td><td class="neg">−0.2457</td><td>E · 81</td><td>1축 [A5]</td><td>3.520</td><td>2022.07</td><td>Supernova 방출</td></tr>
+      <tr><td class="name">🇧🇩 방글라데시</td><td class="neg">−0.6223</td><td>E · 109</td><td class="band">3축 [A2·A7·A8]</td><td>3.097</td><td>2024.08</td><td>Supernova</td></tr>
+      <tr><td class="name">🇳🇵 네팔</td><td>N/A</td><td>사각지대</td><td class="band">3축 [A6·A7·A8]</td><td>3.106</td><td>2025.09</td><td>발화 전 (T−1 관측)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sec"><i>§ 03 &nbsp;Two Axes</i>두 축 분리 — 침몰 깊이와 구조 하중은 같은 것이 아니다</h2>
+  <p>
+    표를 세로로 읽으면 규칙이 보이지 않는다. BSLI가 가장 깊게 침몰한 나라(방글라데시 −0.6223)가 ΣP는 가장 낮고(3.097),
+    BSLI가 상대적으로 얕은 볼리비아(−0.1227)가 ΣP는 가장 높다(3.707).
+    두 지표는 서로 다른 것을 재고 있다 — BSLI는 <strong>기층이 얼마나 가라앉았나</strong>를, ΣP·밴드 축 수는
+    <strong>구조가 얼마를 떠받치고 있나</strong>를 잰다. 아래 좌표는 그 분리를 그대로 배치한 것이다.
+  </p>
+
+  <figure>
+    <svg viewBox="0 0 820 470" width="100%" height="auto" role="img" aria-label="BSLI 대 ΣP 좌표 산점도">
+      <rect width="820" height="470" fill="#FFFDF8"/>
+      <!-- 축 -->
+      <line x1="90" y1="400" x2="770" y2="400" stroke="#2A3D35" stroke-width="1.5"/>
+      <line x1="90" y1="40" x2="90" y2="400" stroke="#2A3D35" stroke-width="1.5"/>
+      <!-- 그리드 -->
+      <line x1="90" y1="310" x2="770" y2="310" stroke="#DDD8CE" stroke-dasharray="4 4"/>
+      <line x1="90" y1="220" x2="770" y2="220" stroke="#DDD8CE" stroke-dasharray="4 4"/>
+      <line x1="90" y1="130" x2="770" y2="130" stroke="#DDD8CE" stroke-dasharray="4 4"/>
+      <!-- 기본생활선 (BSLI=0) -->
+      <line x1="610" y1="40" x2="610" y2="400" stroke="#B8850E" stroke-width="1.5" stroke-dasharray="6 4"/>
+      <text x="614" y="56" font-family="Georgia,serif" font-size="12" fill="#B8850E">BSLI = 0 · 기본생활선</text>
+      <!-- y 라벨 -->
+      <text x="80" y="404" font-family="Courier New,monospace" font-size="11" fill="#77756d" text-anchor="end">1.8</text>
+      <text x="80" y="314" font-family="Courier New,monospace" font-size="11" fill="#77756d" text-anchor="end">2.4</text>
+      <text x="80" y="224" font-family="Courier New,monospace" font-size="11" fill="#77756d" text-anchor="end">3.0</text>
+      <text x="80" y="134" font-family="Courier New,monospace" font-size="11" fill="#77756d" text-anchor="end">3.6</text>
+      <text x="46" y="220" font-family="Georgia,serif" font-size="13" fill="#2A3D35" text-anchor="middle" transform="rotate(-90,46,220)">ΣP — 구조 하중 총량</text>
+      <!-- x 라벨 -->
+      <text x="110" y="424" font-family="Courier New,monospace" font-size="11" fill="#77756d">−0.7</text>
+      <text x="330" y="424" font-family="Courier New,monospace" font-size="11" fill="#77756d">−0.4</text>
+      <text x="550" y="424" font-family="Courier New,monospace" font-size="11" fill="#77756d">−0.1</text>
+      <text x="700" y="424" font-family="Courier New,monospace" font-size="11" fill="#77756d">+0.2</text>
+      <text x="430" y="450" font-family="Georgia,serif" font-size="13" fill="#2A3D35" text-anchor="middle">BSLI — 기층 침몰 깊이 (음수가 정상, 왼쪽이 더 깊음)</text>
+
+      <!-- 점: x = 90 + (BSLI+0.75)/1.35*680 ; y = 400 - (ΣP-1.8)/2.0*360 -->
+      <!-- 한국 +0.4627 / 1.963 -->
+      <circle cx="691" cy="371" r="9" fill="#5E9186" opacity=".85"/>
+      <text x="704" y="368" font-family="Georgia,serif" font-size="12.5" fill="#3d6b62">한국 (대조군)</text>
+      <text x="704" y="384" font-family="Courier New,monospace" font-size="10.5" fill="#77756d">밴드 0축</text>
+      <!-- 볼리비아 -0.1227 / 3.707 -->
+      <circle cx="405" cy="57" r="9" fill="#6c9bcb" opacity=".9"/>
+      <text x="418" y="54" font-family="Georgia,serif" font-size="12.5" fill="#3f6f9e">볼리비아 · WD</text>
+      <text x="418" y="70" font-family="Courier New,monospace" font-size="10.5" fill="#77756d">4축 · ΣP 3.707</text>
+      <!-- 이란 -0.1301 / 3.541 -->
+      <circle cx="401" cy="87" r="9" fill="#5b3a6e" opacity=".9"/>
+      <text x="414" y="102" font-family="Georgia,serif" font-size="12.5" fill="#5b3a6e">이란 · WD→BH</text>
+      <text x="414" y="118" font-family="Courier New,monospace" font-size="10.5" fill="#77756d">4축 · ΣP 3.541</text>
+      <!-- 스리랑카 -0.2457 / 3.520 -->
+      <circle cx="343" cy="90" r="9" fill="#C0392B" opacity=".9"/>
+      <text x="200" y="86" font-family="Georgia,serif" font-size="12.5" fill="#C0392B" text-anchor="end">스리랑카 · SN</text>
+      <text x="200" y="102" font-family="Courier New,monospace" font-size="10.5" fill="#77756d" text-anchor="end">1축 · ΣP 3.520</text>
+      <line x1="205" y1="88" x2="332" y2="90" stroke="#C0392B" stroke-width="1" opacity=".5"/>
+      <!-- 방글라데시 -0.6223 / 3.097 -->
+      <circle cx="154" cy="167" r="9" fill="#C0392B" opacity=".7"/>
+      <text x="167" y="164" font-family="Georgia,serif" font-size="12.5" fill="#C0392B">방글라데시 · SN</text>
+      <text x="167" y="180" font-family="Courier New,monospace" font-size="10.5" fill="#77756d">3축 · ΣP 3.097</text>
+      <!-- 네팔 BSLI N/A → 좌측 사각지대 띠로 표기 -->
+      <rect x="92" y="155" width="30" height="26" fill="#8a8880" opacity=".18"/>
+      <text x="96" y="205" font-family="Courier New,monospace" font-size="10.5" fill="#77756d">네팔 ΣP 3.106</text>
+      <text x="96" y="220" font-family="Courier New,monospace" font-size="10.5" fill="#77756d">BSLI N/A(사각지대)</text>
+      <!-- 임계 안내 -->
+      <text x="770" y="34" font-family="Courier New,monospace" font-size="10.5" fill="#77756d" text-anchor="end">P* = 0.445806 · 밴드 판정 기준 고정</text>
+    </svg>
+    <figcaption>
+      좌표 배치: 가로축 BSLI(왼쪽이 더 깊은 침몰), 세로축 ΣP(위쪽이 더 큰 구조 하중). 네팔은 BSLI 산출 불가(데이터 사각지대)이므로
+      가로 위치를 임의 대입하지 않고 회색 띠로만 표기했다. 점 색은 붕괴 경로 분류(녹색 대조군 · 파랑 WD · 자색 BH 전환 · 적색 SN)를 따른다.
+      두 축이 상관되어 있지 않다는 것이 이 그림의 요지다 — 침몰이 깊다고 하중이 크지 않고, 하중이 크다고 발화가 방출로 이어지지 않는다.
+    </figcaption>
+  </figure>
+
+  <h2 class="sec"><i>§ 04 &nbsp;Spine</i>공통 척추 — 봉기 5국 전부에서 A7·A8이 밴드 내</h2>
+  <table>
+    <caption>밴드 구성 매트릭스. ● = 해당 차원이 임계 밴드 내(P ≥ 0.445806). A7(사회자본)·A8(거버넌스)이 봉기 5국 전부에서 채워지는 열이 "붉은 척추"다. 대조군 한국은 어느 열도 채우지 않는다.</caption>
+    <thead>
+      <tr><th>국가</th><th>A2 거버넌스</th><th>A5 식량·주거</th><th>A6 노동</th><th>A7 사회자본</th><th>A8 재정</th><th>밴드 축 수</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="name">🇰🇷 한국</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>0</td></tr>
+      <tr><td class="name">🇧🇴 볼리비아</td><td class="band">●</td><td class="band">●</td><td>—</td><td class="band">●</td><td class="band">●</td><td>4</td></tr>
+      <tr><td class="name">🇮🇷 이란</td><td class="band">●</td><td class="band">●</td><td>—</td><td class="band">●</td><td class="band">●</td><td>4</td></tr>
+      <tr><td class="name">🇱🇰 스리랑카</td><td>—</td><td class="band">●</td><td>—</td><td>—</td><td>—</td><td>1</td></tr>
+      <tr><td class="name">🇧🇩 방글라데시</td><td class="band">●</td><td>—</td><td>—</td><td class="band">●</td><td class="band">●</td><td>3</td></tr>
+      <tr><td class="name">🇳🇵 네팔</td><td>—</td><td>—</td><td class="band">●</td><td class="band">●</td><td class="band">●</td><td>3</td></tr>
+    </tbody>
+  </table>
+  <p class="note">
+    주의해서 읽을 지점: 스리랑카는 2024년 시점에 A5 1축만 남아 있다. 이는 발화 당시에도 1축이었다는 뜻이 아니라,
+    2022.07 발화 이후 밴드 내 차원이 <em>줄어든</em> 결과다 — 이 묶음이 방출(SN)과 미방출(WD)을 가르는 시계열 기준으로 삼는 지표가 바로 이 감소 여부다.
+    반대로 볼리비아·이란은 발화 후에도 4축이 유지되어 미방출로 분류된다.
+  </p>
+
+  <h2 class="sec"><i>§ 05 &nbsp;Observer</i>관찰자 결론</h2>
+  <div class="synth">
+    <h3>① 관측된 것</h3>
+    <p>봉기를 겪은 5개국 전부에서 A7(사회자본)·A8(거버넌스)이 임계 밴드 내에 있었고, 대조군 한국은 12차원 중 어느 것도 밴드에 들어가지 않았다. 표본이 6개국이므로 이는 <strong>규칙성의 관측</strong>이며, 인과나 예측력의 확립이 아니다.</p>
+    <h3>② 분리되는 것</h3>
+    <p>기층 침몰(BSLI)과 구조 하중(ΣP·밴드 축 수)은 이 표본에서 같은 방향으로 움직이지 않았다. 따라서 "민생이 나쁘면 봉기한다"는 단선 명제는 이 데이터로 지지되지 않는다. 두 축을 동시에 봐야 하는 이유가 여기에 있다.</p>
+    <h3>③ 갈리는 것</h3>
+    <p>발화 이후 밴드 축 수가 줄면 방출(SN), 유지되면 미방출(WD)로 갈린다. 이란은 2022년 시점 WD 판정 이후 흡수체 역할을 하던 A2·A8이 동반 낙하하며 BH 방향으로 이동했다 — 경로 분류가 고정 라벨이 아니라 <strong>시계열상 이동하는 상태</strong>라는 점을 이 묶음이 처음 실측으로 보여준다.</p>
+    <h3>④ 유보하는 것</h3>
+    <p>P* = 0.445806은 탐색적 임계값이며, 표본 확장 시 재조정 대상이다. 네팔은 BSLI 산출 불가 구간에 있어 좌표 평면상 한 축이 비어 있다. 이 두 유보 조건 밖으로 결론을 확장하지 않는다.</p>
+  </div>
+
+  <h2 class="sec"><i>§ 06 &nbsp;Data</i>데이터 투명성 · 한계 · 출처</h2>
+  <div class="limits">
+    <p><strong>산출 기준</strong> — Λ¹² 시계열 v2.1 (관측구간 2016–2024) × BSLI v7.0. 정본 상수 P*=0.445806 · p<sub>max</sub>=0.644275 · p<sub>min</sub>=0.006262를 4편 전체에 동일 고정 적용했다.</p>
+    <p><strong>1차 출처</strong> — World Bank WDI(인구·GDP·외채·실업·도시화), World Bank WGI(거버넌스), ACLED(시위·분쟁 이벤트), FAO(식량), ILO(노동), UN Population Division(인구구조), Freedom House · Bertelsmann BTI(시민자유·제도), Transparency International CPI(부패), ND-GAIN(기후 노출).</p>
+    <p><strong>추정·대리지표</strong> — A9(엘리트 결속)·A11(지역 갈등)은 정량 소스가 없어 정성 판단이 들어간다. 각 편 §F(비교편 C-07)에 편별로 직접 수집값과 추정값을 구분 표기했다.</p>
+    <p><strong>데이터 부재</strong> — 네팔 BSLI는 구성 항목 결측으로 산출하지 않았다. 0 또는 지역 평균으로 대입하지 않고 N/A로 남겼다.</p>
+    <p><strong>은유 표기</strong> — WD/SN/BH는 항성 진화에서 차용한 <em>분류 은유</em>이며 천체물리학적 주장이 아니다. 또한 이 프레임워크는 "사회가 기계다"라는 존재론적 주장을 하지 않는다 — 진동·임피던스의 수학적 구조를 차용한 계산 은유다.</p>
+    <p><strong>저자</strong> — 淸海(김기섭) 단독. 늘푸른바다 사회동역학연구소. AI 도구는 구현 수단이며 공동저자가 아니다(ICMJE/COPE 기준).</p>
+  </div>
+
+  <footer class="slogan">
+    <p>“인류의 경험과 수 많은 훌륭한 데이터들이 모여 은하수와 같은 현명한 빛으로 거듭 나 길 염원하는 마음으로!”</p>
+    <small>EVERBLUE SEA INSTITUTE · 늘푸른바다 사회동역학연구소 · 2026-07-26</small>
+  </footer>
+
+</div>
+</body>
+</html>
