@@ -14,6 +14,17 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // BSLI 기초사회생활지수
   "cat-bsli": [
+    // ★ 상반기 정본 — cat-ui(봉기지수)에도 동일 HTML이 등록되어 있다(id: bsli-timeseries-2026h1).
+    //   두 카테고리 노출이 의도된 것이므로 중복으로 보고 지우지 말 것. id는 배열별로 달라야 한다.
+    {
+      id: "bsli-2026h1-timeseries-canon",
+      title: "BSLI 2026 상반기 정본 — 137개국 기초사회생활지수 시계열 (2016–2024)", titleEn: "BSLI 2026 H1 Canon — Basic Social Life Index Time Series, 137 Countries (2016–2024)",
+      region: "글로벌", regionEn: "Global",
+      scope: "권역별",
+      engine: "BSLI v7.0 · 시계열 v1.2",
+      date: "2026-07-26",
+      htmlPath: "/engines/bsli/BSLI_2026H1_시계열_전체_v1.2_20260726.html",
+    },
     {
       id: "bsli-paper-v6-ko",
       title: "BSLI 기초사회생활지수 논문 v6.0 — 139개국 서민 고통 측정", titleEn: "BSLI Basic Social Life Index Paper v6.0 — Measuring Grassroots Hardship in 139 States",

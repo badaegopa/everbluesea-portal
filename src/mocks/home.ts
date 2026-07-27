@@ -36,7 +36,12 @@ export const tickerItems = [
        (배열에서 지우지 않아도 된다 — 데이터는 남고 노출만 밀려난다.
         /reports/{id} 직접 링크는 계속 살아 있다.)
      - pinned: true 를 붙인 항목은 날짜와 무관하게 항상 최상단에 고정된다.
-       현재 고정: r-007 (Λ¹²·BSLI 통합 국가분석) — 버전업 시 이 항목만 갱신.
+       고정 항목이 여러 개면 그들끼리는 date 내림차순으로 정렬된다.
+       현재 고정 2개 (2026-07-27 확정 — 2026 하반기 업데이트 때까지 유지):
+         · r-007 Λ¹²·BSLI 통합 국가분석 정본 (138국 전수)
+         · r-009 BSLI 2026 상반기 시계열 정본 (137국)
+       두 정본은 하반기판이 나오면 **새 항목을 만들지 않고 이 두 항목을 갱신**한다.
+       (그래야 고정 슬롯이 늘어나 최신분석 5칸을 잠식하지 않는다.)
 
    ★ 배포 전 필수 확인 2가지
      - public/images/cards/r-NNN.svg 존재 (Unsplash URL 금지 — 캐시 깨짐 이력)
@@ -91,6 +96,7 @@ export const featuredReports: FeaturedReport[] = [
     excerptEn: "The first-half canon: food/housing pressure on the 30th–50th income percentiles across 137 countries × 2016–2024, 1,002 cells. Canon correlation r=0.976 · F_ML consistency r=0.988. Grades A/B 22 · C 10 · D 16 · E 89 — most countries remain below the basic-living line (0). Includes per-country 2016→2024 sparkline trajectories.",
     image: "/images/cards/r-009.svg",
     tone: "light" as const,
+    pinned: true, // ★ 상단 고정 — BSLI 시계열 정본. 하반기판 나오면 이 항목을 갱신(신규 추가 금지).
   },
   {
     id: "r-008",
