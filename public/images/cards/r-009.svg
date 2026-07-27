@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="BSLI 2026 H1 canonical time series card">
+  <rect x="0" y="0" width="800" height="600" fill="#F5F3EE"/>
+  <rect x="0" y="0" width="800" height="8" fill="#B8850E"/>
+  <rect x="36" y="40" width="728" height="520" fill="none" stroke="#DDD8CE" stroke-width="1.5"/>
+
+  <text x="70" y="94" font-family="Courier New, monospace" font-size="15" letter-spacing="2.5" fill="#B8850E">BSLI v7.0 · TIME SERIES v1.2</text>
+  <line x1="70" y1="108" x2="300" y2="108" stroke="#B8850E" stroke-width="1.5"/>
+
+  <text x="70" y="164" font-family="Georgia, serif" font-size="38" font-weight="bold" fill="#2A3D35">BSLI 2026 상반기 정본</text>
+  <text x="70" y="206" font-family="Georgia, serif" font-size="23" fill="#5E9186">137개국 기초사회생활지수 시계열</text>
+  <text x="70" y="238" font-family="Courier New, monospace" font-size="17" fill="#5E9186">2016 – 2024 · 1,002 cells</text>
+
+  <!-- 궤적 패널 -->
+  <rect x="70" y="266" width="660" height="150" fill="#FFFFFF" stroke="#DDD8CE" stroke-width="1"/>
+  <!-- 기본생활선 (BSLI = 0) -->
+  <line x1="90" y1="316" x2="710" y2="316" stroke="#B8850E" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="90" y="308" font-family="Courier New, monospace" font-size="12" fill="#B8850E">0 = 기본생활선</text>
+  <!-- 상위 등급 궤적 (양수 영역) -->
+  <polyline points="90,300 168,296 246,292 324,289 402,287 480,285 558,284 636,282 710,280" fill="none" stroke="#5E9186" stroke-width="2.6"/>
+  <!-- 하위 등급 궤적 (음수 영역) -->
+  <polyline points="90,340 168,346 246,352 324,362 402,378 480,372 558,380 636,388 710,396" fill="none" stroke="#C0392B" stroke-width="2.6"/>
+  <text x="640" y="274" font-family="Courier New, monospace" font-size="12" fill="#5E9186">A · B</text>
+  <text x="640" y="412" font-family="Courier New, monospace" font-size="12" fill="#C0392B">E</text>
+
+  <!-- 지표 -->
+  <text x="70" y="456" font-family="Courier New, monospace" font-size="15" fill="#2A3D35">r = 0.976  정본 대조</text>
+  <text x="290" y="456" font-family="Courier New, monospace" font-size="15" fill="#2A3D35">r = 0.988  F_ML 정합</text>
+  <text x="540" y="456" font-family="Courier New, monospace" font-size="15" fill="#2A3D35">범위 [−2, +1]</text>
+  <text x="70" y="482" font-family="Courier New, monospace" font-size="15" fill="#C0392B">등급분포  A/B 22 · C 10 · D 16 · E 89</text>
+
+  <line x1="70" y1="504" x2="730" y2="504" stroke="#DDD8CE" stroke-width="1"/>
+  <text x="70" y="528" font-family="Courier New, monospace" font-size="13" fill="#5E9186">BSLI = 0.40·F_ML + 0.60·H − D − H_s   (v7.0 4항 감산식)</text>
+  <text x="70" y="548" font-family="Georgia, serif" font-size="13" fill="#2A3D35">늘푸른바다 사회동역학연구소 · 淸海 김기섭 · 원자료 World Bank PIP</text>
+</svg>

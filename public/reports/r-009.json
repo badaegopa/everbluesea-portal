@@ -1,0 +1,19 @@
+{
+  "meta": {
+    "title": "BSLI 2026 상반기 정본 — 137개국 기초사회생활지수 시계열",
+    "title_en": "BSLI 2026 H1 Canon — Basic Social Life Index Time Series, 137 Countries",
+    "engine": "BSLI v7.0 · 시계열 v1.2",
+    "category": "기초사회생활지수 · 시계열 정본",
+    "category_en": "Basic Social Life Index · Canonical Time Series",
+    "scope": "권역별 (137개국 × 2016–2024)",
+    "scope_en": "Multi-region (137 countries × 2016–2024)",
+    "date": "2026-07-26",
+    "author": "김기섭",
+    "tags": ["BSLI", "기초사회생활지수", "시계열", "137개국", "서민층", "衣食住", "World Bank PIP", "v7.0"],
+    "html_path": "/engines/bsli/BSLI_2026H1_시계열_전체_v1.2_20260726.html",
+    "status": "published"
+  },
+  "summary_ko": "서민층(소득 30~50분위)의 衣食住 기층 압박을 측정하는 BSLI를 137개국 × 2016–2024년(1,002셀) 시계열로 구축한 2026 상반기 정본. 공식은 v7.0 4항 감산식 BSLI = 0.40·F_ML + 0.60·H − D − H_s이며, 범위는 [−2, +1](0 = 기본생활선, 음수가 정상)이다. 기존 정본 대조 상관 r=0.976, F_ML 정합 r=0.988. 등급 분포는 A/B 22개국 · C 10개국 · D 16개국 · E 89개국으로, 다수 국가가 기본생활선 아래에 머문다. 국가별 2016→2024 궤적을 스파크라인으로 함께 수록. 원자료는 World Bank PIP이며 Palma 계수는 PIP 분위에서 유도했다. 2024년은 조사 지연으로 79개국만 확보, `*` 표기는 ±2년 근접 조사 대체값이다.",
+  "summary_en": "The 2026 first-half canonical build of BSLI — which measures food/housing pressure on the lower-middle stratum (30th–50th income percentiles) — extended to a time series of 137 countries × 2016–2024 (1,002 cells). The formula is the v7.0 four-term subtraction BSLI = 0.40·F_ML + 0.60·H − D − H_s, with range [−2, +1] (0 = the basic-living line; negative values are normal). Correlation against the prior canon is r=0.976, and F_ML consistency r=0.988. Grade distribution: A/B 22, C 10, D 16, E 89 — most countries sit below the basic-living line. Per-country 2016→2024 trajectories are included as sparklines. Source data is World Bank PIP; Palma is derived from PIP quantiles. Only 79 countries have 2024 observations due to survey lag; `*` marks a substitution from a survey within ±2 years.",
+  "body": ""
+}

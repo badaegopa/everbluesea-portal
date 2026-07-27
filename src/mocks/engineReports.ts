@@ -77,6 +77,15 @@ export const engineReports: Record<string, NationReport[]> = {
   // UI 봉기지수
   "cat-ui": [
     {
+      id: "bsli-timeseries-2026h1",
+      title: "BSLI 2026 상반기 정본 — 137개국 기초사회생활지수 시계열 (2016–2024)", titleEn: "BSLI 2026 H1 Canon — Basic Social Life Index Time Series, 137 Countries (2016–2024)",
+      region: "글로벌", regionEn: "Global",
+      scope: "권역별",
+      engine: "BSLI v7.0 · 시계열 v1.2",
+      date: "2026-07-26",
+      htmlPath: "/engines/bsli/BSLI_2026H1_시계열_전체_v1.2_20260726.html",
+    },
+    {
       id: "ui-indonesia-2026",
       title: "인도네시아 봉기경로 진단 — T_trigger 5개 시나리오와 백색왜성 55%", titleEn: "Indonesia Uprising-Path Diagnosis — Five T_trigger Scenarios and a 55% White Dwarf",
       region: "동남아시아", regionEn: "Southeast Asia",

@@ -80,6 +80,19 @@ export const featuredReports: FeaturedReport[] = [
     pinned: true, // ★ 상단 고정 — 통합 국가분석 정본. 버전업 시 이 항목만 수정.
   },
   {
+    id: "r-009",
+    category: "BSLI v7.0 · 시계열 정본",
+    categoryEn: "BSLI v7.0 · Canonical Time Series",
+    date: "2026-07-26",
+    author: "김기섭",
+    title: "BSLI 2026 상반기 정본 — 137개국 기초사회생활지수 시계열 (2016–2024)",
+    titleEn: "BSLI 2026 H1 Canon — Basic Social Life Index Time Series, 137 Countries (2016–2024)",
+    excerpt: "서민층(소득 30~50분위) 衣食住 기층 압박을 137개국 × 2016–2024년, 1,002셀 시계열로 구축한 상반기 정본. 정본 대조 r=0.976 · F_ML 정합 r=0.988. 등급분포 A/B 22 · C 10 · D 16 · E 89 — 다수 국가가 기본생활선(0) 아래에 머문다. 국가별 2016→2024 궤적 스파크라인 수록.",
+    excerptEn: "The first-half canon: food/housing pressure on the 30th–50th income percentiles across 137 countries × 2016–2024, 1,002 cells. Canon correlation r=0.976 · F_ML consistency r=0.988. Grades A/B 22 · C 10 · D 16 · E 89 — most countries remain below the basic-living line (0). Includes per-country 2016→2024 sparkline trajectories.",
+    image: "/images/cards/r-009.svg",
+    tone: "light" as const,
+  },
+  {
     id: "r-008",
     category: "UI · BSLIv7.0 · 구독판 시리즈",
     categoryEn: "UI · BSLI v7.0 · Subscription Series",
