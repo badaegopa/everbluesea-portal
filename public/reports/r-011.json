@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "title": "에티오피아 봉기 벡터 재분석 — 인과좌표계 실측 · 밴드 6축과 생존동맹",
+    "title_en": "Ethiopia Uprising-Vector Reanalysis — Measured Causal Coordinate, Six-Axis Band and the Alliance for Survival",
+    "engine": "UI · Λ¹² 시계열 v2.1 × BSLI v7.0",
+    "category": "UI · 봉기지수 · 실측",
+    "category_en": "UI · Uprising Index · Measured",
+    "scope": "단독 (에티오피아)",
+    "scope_en": "Standalone (Ethiopia)",
+    "date": "2026-09-27",
+    "author": "김기섭",
+    "tags": ["UI", "봉기지수", "인과좌표계", "에티오피아", "생존동맹", "BSLI", "밴드 6축", "아프리카"],
+    "html_path": "/engines/ui/국가보고서_구독판_ETH_v2.0_20260927.html",
+    "status": "published"
+  },
+  "summary_ko": "giseu 궤적 실측으로 PART I 정량을 확정한 첫 아프리카 봉기 벡터보고서. 기저 중심 BSLI −0.8096(E등급·139국 중 121위), η 0.4591(197국 중 143위). 임계밴드(P≥0.4458) 내 6축[A1·A2·A5·A6·A7·A8]·ΣP 4.309로 봉기 4국 공통조건(A7·A8)을 충족 — 표본 봉기국 중 밴드 축·하중 최다. 단 흡수체 A8·압력원 A7의 압박이 완화(이탈) 방향이라 급락형 발화가 아니라 만성 하중형 구조다. 인과좌표계·레이더·BSLI 워터폴·P 시계열·밴드추이 6종 도식과 2026.9 7세력 생존동맹 서사를 함께 판독한다.",
+  "summary_en": "The first African uprising-vector report with PART I quantified on measured giseu trajectories. Base-center BSLI −0.8096 (grade E, 121st of 139), η 0.4591 (143rd of 197). Six axes sit inside the critical band (P≥0.4458) — [A1·A2·A5·A6·A7·A8], ΣP 4.309 — meeting the four-uprising common condition (A7·A8) and carrying the heaviest band load in the sample. Yet with absorber A8 and pressor A7 easing, the structure reads as chronic load rather than a sharp-drop ignition signature. Read alongside six diagrams (causal coordinate, radar, BSLI waterfall, pressure time series, band trend) and the September 2026 seven-force Alliance for Survival."
+}

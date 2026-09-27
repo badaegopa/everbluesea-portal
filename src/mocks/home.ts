@@ -71,6 +71,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-011",
+    category: "UI · 봉기지수 · 실측",
+    categoryEn: "UI · Uprising Index · Measured",
+    date: "2026-09-27",
+    author: "김기섭",
+    title: "에티오피아 봉기 벡터 재분석 — 인과좌표계 실측 · 밴드 6축과 생존동맹",
+    titleEn: "Ethiopia Uprising-Vector Reanalysis — Measured Causal Coordinate, Six-Axis Band and the Alliance for Survival",
+    excerpt: "giseu 궤적 실측으로 확정한 첫 아프리카 봉기 벡터보고서. 기저 중심 BSLI −0.8096(E·121위), η 0.4591(143위), 임계밴드 내 6축[A1·A2·A5·A6·A7·A8]·ΣP 4.309로 봉기 4국 공통조건 A7·A8 충족 — 표본 최다 하중. 단 흡수체 A8·압력원 A7이 완화 방향이라 급락형이 아닌 만성 하중형. 2026.9 7세력 생존동맹 결성 배경 포함.",
+    excerptEn: "The first African uprising-vector report fixed on measured giseu trajectories. Base-center BSLI −0.8096 (E, 121st), η 0.4591 (143rd), six axes in the critical band [A1·A2·A5·A6·A7·A8] with ΣP 4.309 — meeting the four-uprising common condition A7·A8, the heaviest load in the sample. Yet with absorber A8 and pressor A7 easing, it reads as chronic load, not a sharp-drop signature. Includes the September 2026 seven-force Alliance for Survival.",
+    image: "/images/cards/r-011.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-007",
     category: "Λ¹²v2.0 · BSLIv6.9 · 글로벌 전수",
     categoryEn: "Λ¹²v2.0 · BSLIv6.9 · Global Full Coverage",
@@ -122,19 +135,6 @@ export const featuredReports: FeaturedReport[] = [
     excerpt: "η=0.617, 백색왜성 경로 55%. 수카르노에서 프라보워까지의 계보 위에서, 이슬람 87% 사회를 묶어온 판차실라의 균열을 12차원 테이블·BSLI 공식 전개·T_trigger 5개 시나리오로 진단한다.",
     excerptEn: "η=0.617, a 55% White Dwarf path. From Sukarno to Prabowo, a diagnosis of the cracks in Pancasila — the covenant of an 87%-Muslim society — via the 12-dimension table, full BSLI derivation, and five T_trigger scenarios.",
     image: "/images/cards/r-006.svg",
-    tone: "light" as const,
-  },
-  {
-    id: "r-005",
-    category: "§36 SCDI · 공급망교란지수",
-    categoryEn: "§36 SCDI · Supply Chain Disruption",
-    date: "2026-07-14",
-    author: "김기섭",
-    title: "쓰나미는 구매력 순서로 도착한다 — 러시아 경유 수출금지 2026",
-    titleEn: "The Tsunami Arrives in Order of Purchasing Power — Russia's Diesel Ban 2026",
-    excerpt: "우크라이나가 러시아 정제계통에 1년간 축적시킨 강제 진동이 수출금지라는 통로로 세계에 방출됐다. 튀르키예·브라질·이집트·세네갈 — 같은 파도, 다른 방파제. 국가별 전달률 T_sc 확장 제안 수록.",
-    excerptEn: "A year of forced vibration in Russia's refining system, released through an export ban into the world. Turkey, Brazil, Egypt, Senegal — the same wave, different seawalls. Includes the proposed country-level transmissibility extension T_sc.",
-    image: "/images/cards/r-005.svg",
     tone: "light" as const,
   },
   {

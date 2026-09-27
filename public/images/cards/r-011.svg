@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#2A3D35"/>
+  <rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+  <!-- 제호 -->
+  <text x="48" y="70" font-family="'Courier New',monospace" font-size="13" fill="#C8E0DC" letter-spacing="2">늘푸른바다 · 국가봉기 벡터보고서 · 실측</text>
+  <text x="48" y="112" font-family="Georgia,serif" font-size="34" font-weight="bold" fill="#EFC97A">🇪🇹 에티오피아</text>
+  <text x="48" y="146" font-family="Georgia,serif" font-size="19" fill="#F5F3EE">다전선 원심분리와 '생존동맹'</text>
+  <text x="48" y="172" font-family="'Courier New',monospace" font-size="12" fill="#8fae9f">Ethiopia — Measured Causal Coordinate · 2026-09-27</text>
+
+  <!-- 인과좌표계 미니 모티프 -->
+  <g transform="translate(600,330)">
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#5E9186" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+    <circle cx="0" cy="0" r="46" fill="#EEE7D2" stroke="#B8850E" stroke-width="1.5"/>
+    <text x="0" y="-4" font-family="Georgia,serif" font-size="13" font-weight="bold" fill="#2A3D35" text-anchor="middle">BSLI</text>
+    <text x="0" y="14" font-family="'Courier New',monospace" font-size="12" fill="#C0392B" text-anchor="middle">−0.8096</text>
+    <!-- 6 band nodes (crimson) + 6 outer -->
+    <circle cx="0" cy="-95" r="7" fill="#C0392B"/><circle cx="82" cy="-48" r="7" fill="#C0392B"/>
+    <circle cx="95" cy="30" r="7" fill="#1a4f8a"/><circle cx="40" cy="88" r="7" fill="#C0392B"/>
+    <circle cx="-55" cy="78" r="7" fill="#1a4f8a"/><circle cx="-95" cy="0" r="7" fill="#C0392B"/>
+    <circle cx="-70" cy="-70" r="5" fill="#777"/><circle cx="70" cy="-78" r="5" fill="#777"/>
+    <circle cx="108" cy="-8" r="5" fill="#3A6A5E"/><circle cx="-40" cy="105" r="5" fill="#777"/>
+  </g>
+
+  <!-- 핵심 수치 스트립 -->
+  <g font-family="'Courier New',monospace">
+    <text x="48" y="360" font-size="14" fill="#C8E0DC">밴드 내 차원</text>
+    <text x="48" y="392" font-size="30" font-weight="bold" fill="#EFC97A">6 / 12</text>
+    <text x="48" y="416" font-size="11" fill="#8fae9f">A1·A2·A5·A6·A7·A8 · 표본 최다</text>
+
+    <text x="48" y="470" font-size="14" fill="#C8E0DC">압박 총합 ΣP</text>
+    <text x="48" y="502" font-size="30" font-weight="bold" fill="#EFC97A">4.309</text>
+    <text x="48" y="526" font-size="11" fill="#8fae9f">봉기 공통조건 A7·A8 충족</text>
+
+    <text x="300" y="360" font-size="14" fill="#C8E0DC">BSLI 등급·순위</text>
+    <text x="300" y="392" font-size="30" font-weight="bold" fill="#EFC97A">E · 121/139</text>
+    <text x="300" y="416" font-size="11" fill="#8fae9f">η 0.4591 · 143/197</text>
+
+    <text x="300" y="470" font-size="14" fill="#C8E0DC">국면</text>
+    <text x="300" y="500" font-size="20" font-weight="bold" fill="#C0392B">만성 하중형</text>
+    <text x="300" y="524" font-size="11" fill="#8fae9f">급락 아님 · 좌표계 밖 다전선 파열</text>
+  </g>
+
+  <text x="48" y="574" font-family="'Courier New',monospace" font-size="11" fill="#5E9186">저자 淸海(김기섭) · Λ¹² 시계열 v2.1 × BSLI v7.0 · giseu orbit_v34_ETH</text>
+</svg>
