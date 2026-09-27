@@ -88,6 +88,15 @@ export const engineReports: Record<string, NationReport[]> = {
   // UI 봉기지수
   "cat-ui": [
     {
+      id: "ui-ethiopia-2026",
+      title: "에티오피아 봉기 벡터 재분석 — 인과좌표계 실측 · 밴드 6축과 생존동맹", titleEn: "Ethiopia Uprising-Vector Reanalysis — Measured Causal Coordinate, Six-Axis Band and the Alliance for Survival",
+      region: "아프리카", regionEn: "Africa",
+      scope: "단독",
+      engine: "UI · Λ¹² 시계열 v2.1 × BSLI v7.0",
+      date: "2026-09-27",
+      htmlPath: "/engines/ui/국가보고서_구독판_ETH_v2.0_20260927.html",
+    },
+    {
       id: "bsli-timeseries-2026h1",
       title: "BSLI 2026 상반기 정본 — 137개국 기초사회생활지수 시계열 (2016–2024)", titleEn: "BSLI 2026 H1 Canon — Basic Social Life Index Time Series, 137 Countries (2016–2024)",
       region: "글로벌", regionEn: "Global",
