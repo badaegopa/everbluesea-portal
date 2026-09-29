@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "title": "미국 2026 중간선거 예측 — 봉기가 아니라 선거로 압력을 방전 (관찰자 확률 진단 v4.3)",
+  "title_en": "US 2026 Midterm Forecast — Discharging Pressure Through the Ballot, Not the Barricade (Observer Probabilistic Diagnosis v4.3)",
+  "engine": "REVERBANT · 관찰자 좌표계",
+  "category": "REVERBANT · 관찰자 예측",
+  "category_en": "REVERBANT · Observer Forecast",
+  "scope": "단독",
+  "scope_en": "Standalone",
+  "date": "2026-09-29",
+  "author": "김기섭",
+  "tags": [
+   "REVERBANT",
+   "미국",
+   "중간선거",
+   "관찰자",
+   "분점정부",
+   "반증조건",
+   "Λ¹²"
+  ],
+  "html_path": "/engines/reverbant/미국_2026중간선거예측_v4.3_20260929.html",
+  "status": "published"
+ },
+ "summary_ko": "성숙 민주국 미국이 봉기가 아니라 선거로 압력을 방전하는 제도의 작동. 12축 압박은 전부 생활압박축(경제·의료·제도신뢰)에 몰려 집권 공화당 역풍으로 정렬. 하원은 민주 탈환 우세(중앙 226·D+11, Cook·Sabato 220~230 정합), 상원은 공화 사수 우세(약)이나 토스업 7곳에 민주도 살아있는 꼬리 — 가장 정합적 종점은 분점정부(민주 하원·공화 상원·트럼프 유지). 승인 ~39%(50% 미만 실패군)·집계 제너릭 D+7~8. 제미나이·ChatGPT 외부 검수와 자체 적대적 감사를 반영해 수치 정합성을 교정하고, §12에 반증 조건 5항(과반 유지·의석 폭·상원 판정·승인 회복·제너릭 역전)을 명시해 '실패가 아니라 관측' 도피구를 제거. 편향 병기·확률 미표기 관찰자 원칙.",
+ "summary_en": "A mature democracy discharging pressure through the ballot rather than the barricade. All 12 axes of pressure cluster on the livelihood-pressure axes (economy, healthcare, institutional trust), aligning as a headwind against the incumbent GOP. The House favors a Democratic recapture (central 226, D+11, consistent with Cook/Sabato 220–230); the Senate favors a weak GOP hold, yet with seven toss-ups the Democrats keep a live tail — the most consistent endpoint is divided government (Democratic House, Republican Senate, Trump administration intact). Approval ~39% (below the 50% failure zone); aggregate generic ballot D+7–8. Incorporating external reviews (Gemini, ChatGPT) and an internal adversarial audit, numeric consistency was corrected and §12 now states five explicit falsification triggers (majority held, seat margin, Senate call, approval recovery, generic reversal), removing the unfalsifiable 'observation, not failure' escape hatch. Bias labeled throughout; probabilities left unpinned per the observer principle.",
+ "body": ""
+}

@@ -66,6 +66,15 @@ export const engineReports: Record<string, NationReport[]> = {
   // REVERBANT 동적 섭동 반응
   "cat-reverbant": [
     {
+      id: "reverbant-usa-midterm-2026",
+      title: "미국 2026 중간선거 예측 — 봉기가 아니라 선거로 압력을 방전 (관찰자 진단 v4.3)", titleEn: "US 2026 Midterm Forecast — Discharging Pressure Through the Ballot, Not the Barricade (Observer Diagnosis v4.3)",
+      region: "미국", regionEn: "United States",
+      scope: "단독",
+      engine: "REVERBANT · 관찰자 좌표계",
+      date: "2026-09-29",
+      htmlPath: "/engines/reverbant/미국_2026중간선거예측_v4.3_20260929.html",
+    },
+    {
       id: "reverbant-v11-theory",
       title: "REVERBANT v1.1 — 동적 섭동 반응 엔진 이론 정본 (공리 A0~A12)", titleEn: "REVERBANT v1.1 — Dynamic Perturbation Response Engine, Canonical Theory (Axioms A0–A12)",
       region: "이론", regionEn: "Theory",

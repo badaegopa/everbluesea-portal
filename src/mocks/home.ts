@@ -71,6 +71,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-012",
+    category: "REVERBANT · 관찰자 예측",
+    categoryEn: "REVERBANT · Observer Forecast",
+    date: "2026-09-29",
+    author: "김기섭",
+    title: "미국 2026 중간선거 예측 — 봉기가 아니라 선거로 압력을 방전 (관찰자 진단 v4.3)",
+    titleEn: "US 2026 Midterm Forecast — Discharging Pressure Through the Ballot, Not the Barricade (Observer Diagnosis v4.3)",
+    excerpt: "성숙 민주국이 봉기가 아니라 선거로 압력을 방전하는 제도의 작동. 12축 압박이 전부 생활압박축(경제·의료·제도신뢰)에 몰려 집권 공화당 역풍으로 정렬됐다. 하원은 민주 탈환 우세(중앙 226·D+11, Cook·Sabato 220~230 정합), 상원은 공화 사수 우세(약)이나 토스업 7곳에 민주도 살아있는 꼬리 — 가장 정합적 종점은 분점정부. 승인 ~39%(50% 미만)·집계 제너릭 D+7~8. 제미나이·ChatGPT 외부 검수와 자체 적대적 감사를 반영, §12에 반증 조건 5항을 명시해 '실패가 아니라 관측' 도피구를 제거했다.",
+    excerptEn: "A mature democracy discharging pressure through the ballot, not the barricade. All 12 axes of pressure cluster on the livelihood axes (economy, healthcare, institutional trust), aligning as a headwind against the incumbent GOP. The House favors a Democratic recapture (central 226, D+11, consistent with Cook/Sabato 220–230); the Senate favors a weak GOP hold, yet with seven toss-ups the Democrats keep a live tail — the most consistent endpoint is divided government. Approval ~39% (below 50%); aggregate generic ballot D+7–8. Reflecting external reviews (Gemini, ChatGPT) and an internal adversarial audit, §12 now states five explicit falsification triggers, removing the 'observation, not failure' escape hatch.",
+    image: "/images/cards/r-012.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-011",
     category: "UI · 봉기지수 · 실측",
     categoryEn: "UI · Uprising Index · Measured",
@@ -124,19 +137,8 @@ export const featuredReports: FeaturedReport[] = [
     image: "/images/cards/r-008.svg",
     tone: "light" as const,
   },
-  {
-    id: "r-006",
-    category: "UI · 봉기지수",
-    categoryEn: "UI · Uprising Index",
-    date: "2026-07-17",
-    author: "김기섭",
-    title: "인도네시아 봉기경로 진단 — T_trigger 5개 시나리오와 백색왜성 55%",
-    titleEn: "Indonesia Uprising-Path Diagnosis — Five T_trigger Scenarios and a 55% White Dwarf",
-    excerpt: "η=0.617, 백색왜성 경로 55%. 수카르노에서 프라보워까지의 계보 위에서, 이슬람 87% 사회를 묶어온 판차실라의 균열을 12차원 테이블·BSLI 공식 전개·T_trigger 5개 시나리오로 진단한다.",
-    excerptEn: "η=0.617, a 55% White Dwarf path. From Sukarno to Prabowo, a diagnosis of the cracks in Pancasila — the covenant of an 87%-Muslim society — via the 12-dimension table, full BSLI derivation, and five T_trigger scenarios.",
-    image: "/images/cards/r-006.svg",
-    tone: "light" as const,
-  },
+  // r-006 (인도네시아 봉기경로 진단) — 2026-09-29 청해 지시로 홈 최신분석에서만 제외.
+  //   보고서 자체는 /reports/r-006 직접 링크 + cat-ui(봉기지수) 카테고리에 그대로 유지.
   {
     id: "r-004",
     category: "UI · 봉기지수",
