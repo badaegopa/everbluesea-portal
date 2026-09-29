@@ -47,7 +47,7 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.scope }}" = "all" ]; then
             python scripts/translate_reports.py --all
           else
-            python scripts/translate_reports.py
+            python scripts/translate_reports.py --all
           fi
 
       - name: Translate diagrams (script-data pass)
