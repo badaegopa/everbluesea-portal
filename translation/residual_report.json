@@ -75,9 +75,19 @@
   "hanja": 6
  },
  {
+  "file": "/engines/ui/국가보고서_구독판_시리즈허브_v1.0_20260726_1_EN.html",
+  "ko": 67,
+  "hanja": 4
+ },
+ {
   "file": "/nations/americas/Argentina_Lambda12v912_20260504_EN.html",
   "ko": 43,
   "hanja": 4
+ },
+ {
+  "file": "/engines/bsli/주거금융화_BSLI_학술판_v6_20260930_EN.html",
+  "ko": 23,
+  "hanja": 23
  },
  {
   "file": "/engines/ui/uprising_tracker_EN.html",
@@ -155,6 +165,16 @@
   "hanja": 4
  },
  {
+  "file": "/engines/ui/국가보고서_구독판_LKA_v2.0_20260725_1_EN.html",
+  "ko": 7,
+  "hanja": 5
+ },
+ {
+  "file": "/engines/ui/국가보고서_구독판_BOL_v2.0_20260725_1_EN.html",
+  "ko": 7,
+  "hanja": 4
+ },
+ {
   "file": "/engines/bsli/bsli_metro_pattern_EN.html",
   "ko": 7,
   "hanja": 4
@@ -205,6 +225,11 @@
   "hanja": 3
  },
  {
+  "file": "/engines/ui/국가보고서_구독판_봉기코호트비교_v1.0_20260725_1_EN.html",
+  "ko": 7,
+  "hanja": 0
+ },
+ {
   "file": "/engines/reverbant/미국_2026중간선거예측_v4.3_20260929_EN.html",
   "ko": 0,
   "hanja": 7
@@ -228,6 +253,11 @@
   "file": "/nations/climate/ClimateExtinction_4Nations_Lambda12v913_20260504_EN.html",
   "ko": 3,
   "hanja": 2
+ },
+ {
+  "file": "/engines/ui/국가보고서_구독판_ETH_v2.0_20260927_EN.html",
+  "ko": 0,
+  "hanja": 5
  },
  {
   "file": "/engines/methodology/SCDI_methodology_EN.html",
@@ -276,6 +306,11 @@
  },
  {
   "file": "/nations/europe/v1.0_balkans-1_20260429_EN.html",
+  "ko": 0,
+  "hanja": 2
+ },
+ {
+  "file": "/engines/ui/국가봉기벡터보고서_IRN_2호_v2.0_20260725_2_EN.html",
   "ko": 0,
   "hanja": 2
  },
