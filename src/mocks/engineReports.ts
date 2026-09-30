@@ -14,6 +14,15 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // BSLI 기초사회생활지수
   "cat-bsli": [
+    {
+      id: "bsli-housing-financialization-2026",
+      title: "주거의 금융화와 기층사회 압박 — BSLI 住(H) 차원 국제 비교 (학술판)", titleEn: "Financialization of Housing and Grassroots Social Pressure — Cross-National Analysis of the BSLI Dwelling (H) Dimension",
+      region: "글로벌 · 住 압박", regionEn: "Global · Dwelling Pressure",
+      scope: "권역별",
+      engine: "BSLI v7.0 × Λ¹²",
+      date: "2026-09-30",
+      htmlPath: "/engines/bsli/주거금융화_BSLI_학술판_v6_20260930.html",
+    },
     // ★ 상반기 정본 — cat-ui(봉기지수)에도 동일 HTML이 등록되어 있다(id: bsli-timeseries-2026h1).
     //   두 카테고리 노출이 의도된 것이므로 중복으로 보고 지우지 말 것. id는 배열별로 달라야 한다.
     {
