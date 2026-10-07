@@ -71,6 +71,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-013",
+    category: "Λ¹² · 국가분석 총서",
+    categoryEn: "Λ¹² · National Analysis Series",
+    date: "2026-10-07",
+    author: "김기섭",
+    title: "국가분석 총서 7권 — 공리와 수식 · 권역별 국가 리포트",
+    titleEn: "National Analysis Series, 7 Volumes — Axioms and Formulas · Regional Country Reports",
+    excerpt: "국가분석 총서 7권 동시 발행. 제1권 「공리와 수식」은 Λ¹² 공리 A0~A12와 반증조건, 12차원 상태벡터, BSLI 4항식, F(t)>SE(t) 임계판정과 압박 좌표계 7공식, 시계열 판독법을 정리했다. 제2~7권은 권역별 198개국을 같은 형식으로 싣는다 — 인과루프도 v3.1 138개국(정본 생성기 무수정 출력), 2016~2024 궤적과 연간 변화량, 서사 브리핑 73개국. η×BSLI 상관 r=0.7551 재현. 판정과 예측 없이 현재 진행 방향까지만 적는다.",
+    excerptEn: "Seven volumes of the National Analysis Series published together. Volume 1, \"Axioms and Formulas\", sets out axioms A0–A12 with falsification conditions, the 12-dimension state vector, the four-term BSLI formula, the F(t)>SE(t) threshold model, the seven pressure-coordinate formulas and how to read the time series. Volumes 2–7 cover 198 countries by region in one identical format — causal loop diagrams v3.1 for 138 countries (unmodified canonical generator output), 2016–2024 trajectories with annual changes, and narrative briefings for 73 countries. η×BSLI correlation r=0.7551 reproduced. No verdicts or forecasts: each report stops at the current direction.",
+    image: "/images/cards/r-013.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-012",
     category: "REVERBANT · 관찰자 예측",
     categoryEn: "REVERBANT · Observer Forecast",
@@ -124,19 +137,8 @@ export const featuredReports: FeaturedReport[] = [
     tone: "light" as const,
     pinned: true, // ★ 상단 고정 — BSLI 시계열 정본. 하반기판 나오면 이 항목을 갱신(신규 추가 금지).
   },
-  {
-    id: "r-008",
-    category: "UI · BSLIv7.0 · 구독판 시리즈",
-    categoryEn: "UI · BSLI v7.0 · Subscription Series",
-    date: "2026-07-26",
-    author: "김기섭",
-    title: "봉기 코호트 구독판 4부작 — 압박 좌표계 시계열 실측 (이란·볼리비아·스리랑카·6국 비교)",
-    titleEn: "Uprising Cohort Subscription Tetralogy — Pressure-Coordinate Time-Series Validation (Iran·Bolivia·Sri Lanka·6-Country Comparison)",
-    excerpt: "압박 좌표계(Pressure Coordinate System)를 12차원 행성계 도식으로 구현한 첫 구독판 묶음. Λ¹² 시계열 v2.1(2016–2024) × BSLI v7.0, 임계대 P*=0.445806 기준으로 이란 제2호·볼리비아·스리랑카 단독편과 6개국 코호트 비교편을 한 시리즈로 묶어 판독한다.",
-    excerptEn: "The first subscription bundle implementing the Pressure Coordinate System as a 12-dimension orbital diagram. Λ¹² time series v2.1 (2016–2024) × BSLI v7.0, critical band P*=0.445806 — Iran Vol.2, Bolivia and Sri Lanka standalone editions plus the 6-country cohort comparison, read as one series.",
-    image: "/images/cards/r-008.svg",
-    tone: "light" as const,
-  },
+  // r-008 (봉기 코호트 구독판 4부작) — 2026-10-08 청해 지시로 홈 최신분석에서만 제외(국가분석 총서 r-013 게시에 따른 최고령 카드).
+  //   보고서 자체는 /reports/r-008 직접 링크 + 카테고리에 그대로 유지.
   // r-006 (인도네시아 봉기경로 진단) — 2026-09-29 청해 지시로 홈 최신분석에서만 제외.
   //   보고서 자체는 /reports/r-006 직접 링크 + cat-ui(봉기지수) 카테고리에 그대로 유지.
   {

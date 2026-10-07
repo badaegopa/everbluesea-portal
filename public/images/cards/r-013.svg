@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<text x="48" y="70" font-family="'Courier New',monospace" font-size="13" fill="#C8E0DC" letter-spacing="2">늘푸른바다 · Λ¹² · 국가분석 총서</text>
+<text x="48" y="112" font-family="Georgia,serif" font-size="34" font-weight="bold" fill="#EFC97A">국가분석 총서 7권</text>
+<text x="48" y="146" font-family="Georgia,serif" font-size="19" fill="#F5F3EE">공리와 수식 · 권역별 국가 리포트</text>
+<text x="48" y="172" font-family="'Courier New',monospace" font-size="12" fill="#8fae9f">National Analysis Series · 198 countries · 2026-10-07</text>
+<rect x="48" y="240.0" width="86" height="300.0" fill="#B8850E" stroke="#EFC97A" stroke-width="1"/>
+<text x="91.0" y="266.0" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#F5F3EE" text-anchor="middle">제1권</text>
+<text x="91.0" y="288.0" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">공리와</text>
+<text x="91.0" y="304.0" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">수식</text>
+<text x="91.0" y="528" font-family="'Courier New',monospace" font-size="12" fill="#EFC97A" text-anchor="middle">정의</text>
+<rect x="148" y="298.8" width="86" height="241.2" fill="#3F6B5E" stroke="#EFC97A" stroke-width="1"/>
+<text x="191.0" y="324.8" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#F5F3EE" text-anchor="middle">제2권</text>
+<text x="191.0" y="346.8" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">동아시아</text>
+<text x="191.0" y="362.8" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">동남아시아</text>
+<text x="191.0" y="378.8" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">오세아니아</text>
+<text x="191.0" y="528" font-family="'Courier New',monospace" font-size="12" fill="#EFC97A" text-anchor="middle">33개국</text>
+<rect x="248" y="372.2" width="86" height="167.8" fill="#3F6B5E" stroke="#EFC97A" stroke-width="1"/>
+<text x="291.0" y="398.2" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#F5F3EE" text-anchor="middle">제3권</text>
+<text x="291.0" y="420.2" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">남아시아</text>
+<text x="291.0" y="436.2" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">중앙아시아</text>
+<text x="291.0" y="528" font-family="'Courier New',monospace" font-size="12" fill="#EFC97A" text-anchor="middle">13개국</text>
+<rect x="348" y="335.5" width="86" height="204.5" fill="#3F6B5E" stroke="#EFC97A" stroke-width="1"/>
+<text x="391.0" y="361.5" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#F5F3EE" text-anchor="middle">제4권</text>
+<text x="391.0" y="383.5" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">중동</text>
+<text x="391.0" y="399.5" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">북아프리카</text>
+<text x="391.0" y="528" font-family="'Courier New',monospace" font-size="12" fill="#EFC97A" text-anchor="middle">23개국</text>
+<rect x="448" y="240.0" width="86" height="300.0" fill="#3F6B5E" stroke="#EFC97A" stroke-width="1"/>
+<text x="491.0" y="266.0" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#F5F3EE" text-anchor="middle">제5권</text>
+<text x="491.0" y="288.0" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">사하라 이남</text>
+<text x="491.0" y="304.0" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">아프리카</text>
+<text x="491.0" y="528" font-family="'Courier New',monospace" font-size="12" fill="#EFC97A" text-anchor="middle">49개국</text>
+<rect x="548" y="254.7" width="86" height="285.3" fill="#3F6B5E" stroke="#EFC97A" stroke-width="1"/>
+<text x="591.0" y="280.7" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#F5F3EE" text-anchor="middle">제6권</text>
+<text x="591.0" y="302.7" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">유럽</text>
+<text x="591.0" y="318.7" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">유라시아</text>
+<text x="591.0" y="528" font-family="'Courier New',monospace" font-size="12" fill="#EFC97A" text-anchor="middle">45개국</text>
+<rect x="648" y="291.4" width="86" height="248.6" fill="#3F6B5E" stroke="#EFC97A" stroke-width="1"/>
+<text x="691.0" y="317.4" font-family="Georgia,serif" font-size="15" font-weight="bold" fill="#F5F3EE" text-anchor="middle">제7권</text>
+<text x="691.0" y="339.4" font-family="sans-serif" font-size="11" fill="#E6EFEA" text-anchor="middle">미주</text>
+<text x="691.0" y="528" font-family="'Courier New',monospace" font-size="12" fill="#EFC97A" text-anchor="middle">35개국</text>
+<line x1="40" y1="540" x2="760" y2="540" stroke="#C8E0DC" stroke-width="1.5"/>
+<text x="48" y="572" font-family="'Courier New',monospace" font-size="12" fill="#8fae9f">인과루프도 138개국 · 서사 브리핑 73개국 · η×BSLI r=0.7551</text>
+</svg>

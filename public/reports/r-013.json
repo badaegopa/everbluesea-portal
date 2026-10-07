@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "title": "국가분석 총서 7권 — 공리와 수식 · 권역별 국가 리포트",
+    "title_en": "National Analysis Series, 7 Volumes — Axioms and Formulas · Regional Country Reports",
+    "engine": "Λ¹²v2 · BSLIv7.0 · UI",
+    "category": "Λ¹² · 국가분석 총서",
+    "category_en": "Λ¹² · National Analysis Series",
+    "scope": "권역별",
+    "scope_en": "Regional",
+    "date": "2026-10-07",
+    "author": "김기섭",
+    "tags": [
+      "Λ¹²",
+      "BSLI",
+      "국가분석",
+      "총서",
+      "압박좌표계",
+      "인과루프도",
+      "공리"
+    ],
+    "html_path": "/nations/book/Lambda12_CountryBook_Vol1_Axioms_20261007.html",
+    "status": "published"
+  },
+  "summary_ko": "국가분석 총서 7권 동시 발행. 제1권 「공리와 수식」은 Λ¹² 공리 A0~A12와 반증조건, 12차원 상태벡터, BSLI 4항식, F(t)>SE(t) 임계판정과 압박 좌표계 7공식, 시계열 판독법을 정리했다. 제2~7권은 권역별 198개국을 같은 형식으로 싣는다 — 인과루프도 v3.1 138개국(정본 생성기 무수정 출력), 2016~2024 궤적과 연간 변화량, 서사 브리핑 73개국. η×BSLI 상관 r=0.7551 재현. 판정과 예측 없이 현재 진행 방향까지만 적는다.",
+  "summary_en": "Seven volumes of the National Analysis Series published together. Volume 1, \"Axioms and Formulas\", sets out axioms A0–A12 with falsification conditions, the 12-dimension state vector, the four-term BSLI formula, the F(t)>SE(t) threshold model, the seven pressure-coordinate formulas and how to read the time series. Volumes 2–7 cover 198 countries by region in one identical format — causal loop diagrams v3.1 for 138 countries (unmodified canonical generator output), 2016–2024 trajectories with annual changes, and narrative briefings for 73 countries. η×BSLI correlation r=0.7551 reproduced. No verdicts or forecasts: each report stops at the current direction.",
+  "body": "<h2>국가분석 총서</h2><p>국가분석 총서 7권 동시 발행. 제1권 「공리와 수식」은 Λ¹² 공리 A0~A12와 반증조건, 12차원 상태벡터, BSLI 4항식, F(t)&gt;SE(t) 임계판정과 압박 좌표계 7공식, 시계열 판독법을 정리했다. 제2~7권은 권역별 198개국을 같은 형식으로 싣는다 — 인과루프도 v3.1 138개국(정본 생성기 무수정 출력), 2016~2024 궤적과 연간 변화량, 서사 브리핑 73개국. η×BSLI 상관 r=0.7551 재현. 판정과 예측 없이 현재 진행 방향까지만 적는다.</p><ul><li><a href=\"/nations/book/Lambda12_CountryBook_Vol1_Axioms_20261007.html\" target=\"_blank\" rel=\"noopener\">제1권 공리와 수식</a></li><li><a href=\"/nations/book/Lambda12_CountryBook_Vol2_AsiaPacific_20261007.html\" target=\"_blank\" rel=\"noopener\">제2권 동아시아·동남아시아·오세아니아</a> — 33개국</li><li><a href=\"/nations/book/Lambda12_CountryBook_Vol3_SouthCentralAsia_20261007.html\" target=\"_blank\" rel=\"noopener\">제3권 남아시아·중앙아시아</a> — 13개국</li><li><a href=\"/nations/book/Lambda12_CountryBook_Vol4_MENA_20261007.html\" target=\"_blank\" rel=\"noopener\">제4권 중동·북아프리카</a> — 23개국</li><li><a href=\"/nations/book/Lambda12_CountryBook_Vol5_SubSaharanAfrica_20261007.html\" target=\"_blank\" rel=\"noopener\">제5권 사하라 이남 아프리카</a> — 49개국</li><li><a href=\"/nations/book/Lambda12_CountryBook_Vol6_Europe_20261007.html\" target=\"_blank\" rel=\"noopener\">제6권 유럽·유라시아</a> — 45개국</li><li><a href=\"/nations/book/Lambda12_CountryBook_Vol7_Americas_20261007.html\" target=\"_blank\" rel=\"noopener\">제7권 미주</a> — 35개국</li></ul>"
+}
