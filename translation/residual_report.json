@@ -10,9 +10,39 @@
   "hanja": 9
  },
  {
+  "file": "/nations/book/Lambda12_CountryBook_Vol5_SubSaharanAfrica_20261007_EN.html",
+  "ko": 575,
+  "hanja": 68
+ },
+ {
+  "file": "/nations/book/Lambda12_CountryBook_Vol6_Europe_20261007_EN.html",
+  "ko": 537,
+  "hanja": 66
+ },
+ {
   "file": "/engines/bsli/BSLI_dashboard_v7_EN.html",
   "ko": 596,
   "hanja": 0
+ },
+ {
+  "file": "/nations/book/Lambda12_CountryBook_Vol7_Americas_20261007_EN.html",
+  "ko": 454,
+  "hanja": 36
+ },
+ {
+  "file": "/nations/book/Lambda12_CountryBook_Vol2_AsiaPacific_20261007_EN.html",
+  "ko": 426,
+  "hanja": 32
+ },
+ {
+  "file": "/nations/book/Lambda12_CountryBook_Vol4_MENA_20261007_EN.html",
+  "ko": 311,
+  "hanja": 24
+ },
+ {
+  "file": "/nations/book/Lambda12_CountryBook_Vol3_SouthCentralAsia_20261007_EN.html",
+  "ko": 268,
+  "hanja": 18
  },
  {
   "file": "/nations/southeast-asia/v1.0_southeast-asia-1_20260428_EN.html",
@@ -28,6 +58,11 @@
   "file": "/nations/korea_EN.html",
   "ko": 101,
   "hanja": 0
+ },
+ {
+  "file": "/nations/book/Lambda12_CountryBook_Vol1_Axioms_20261007_EN.html",
+  "ko": 86,
+  "hanja": 7
  },
  {
   "file": "/nations/northeast-asia/v9.12_northeast-asia_20260502_EN.html",
