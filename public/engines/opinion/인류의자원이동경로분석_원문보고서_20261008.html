@@ -40,6 +40,8 @@ blockquote{margin:14px 0;padding:6px 0 6px 16px;border-left:3px solid #B8850E;co
 .note{font-size:0.86em;color:#666;}
 /* 지층 도표 */
 .strata{overflow-x:auto;background:#fff;border:1px solid #e6e2d8;border-radius:8px;padding:14px;margin:14px 0;}
+.sub{text-align:left;}
+@media (max-width:600px){p{text-align:left;}.strata::before{content:"← 옆으로 밀어 전체 시대 보기 →";display:block;font-size:11px;color:#5E9186;margin-bottom:8px;}}
 .sgrid{display:grid;grid-template-columns:120px repeat(8,minmax(56px,1fr));column-gap:4px;row-gap:7px;min-width:640px;font-size:12px;align-items:center;}
 .sgrid .era{font-size:10.5px;color:#5E6B60;line-height:1.35;padding-bottom:6px;border-bottom:1px solid #e0dbcf;align-self:end;}
 .sgrid .name{color:#2A3D35;}
