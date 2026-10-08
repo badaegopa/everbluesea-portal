@@ -7,6 +7,7 @@ import FeaturedReports from "@/pages/home/components/FeaturedReports";
 import Categories from "@/pages/home/components/Categories";
 import Papers from "@/pages/home/components/Papers";
 import About from "@/pages/home/components/About";
+import NoticeBanner from "@/pages/home/components/NoticeBanner";
 import Footer from "@/pages/home/components/Footer";
 
 export default function Home() {
@@ -23,6 +24,8 @@ export default function Home() {
         <Papers />
         <About />
       </main>
+      {/* 공지 알림 띠 — 켜고 끄기는 NoticeBanner.tsx의 NOTICE_ENABLED */}
+      <NoticeBanner />
       <Footer />
     </div>
   );
