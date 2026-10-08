@@ -43,6 +43,9 @@ export const tickerItems = [
        두 정본은 하반기판이 나오면 **새 항목을 만들지 않고 이 두 항목을 갱신**한다.
        (그래야 고정 슬롯이 늘어나 최신분석 5칸을 잠식하지 않는다.)
 
+   ★ 오피니언 전용 칸 (2026-10-08 도입): opinion: true 항목은 분석 5칸과 별도로
+     맨 아래 1칸(FEATURED_OPINION_MAX)에 최신 칼럼 1편만 노출된다. 총 6칸 운영.
+
    ★ 배포 전 필수 확인 2가지
      - public/images/cards/r-NNN.svg 존재 (Unsplash URL 금지 — 캐시 깨짐 이력)
      - public/reports/r-NNN.json 존재 (없으면 카드 클릭 시 404)
@@ -50,8 +53,12 @@ export const tickerItems = [
    ★ 이 파일 수정 시 반드시 giseu 최신본 pull 후 작업 (다운로드 구파일 덮어쓰기 금지)
    ══════════════════════════════════════════════════════════════════════════ */
 
-/** 홈 최신분석 섹션에 동시에 노출할 카드 최대 개수 */
+/** 홈 최신분석 섹션에 동시에 노출할 분석 카드 최대 개수 (오피니언 칸 제외) */
 export const FEATURED_MAX = 5;
+
+/** 최신분석 섹션의 오피니언 전용 칸 수 — 분석 5칸 + 오피니언 1칸 = 총 6칸 (2026-10-08 청해 지시)
+ *  opinion: true 항목만 이 칸에 들어가며, 분석 5칸의 자동 밀어내기와 서로 간섭하지 않는다. */
+export const FEATURED_OPINION_MAX = 1;
 
 export type FeaturedReport = {
   id: string;
@@ -67,9 +74,25 @@ export type FeaturedReport = {
   tone: "light" | "dark";
   /** true면 날짜와 무관하게 항상 최상단 고정 (버전업 전까지 유지) */
   pinned?: boolean;
+  /** true면 오피니언 전용 칸에 노출 (분석 5칸 집계에서 제외) */
+  opinion?: boolean;
 };
 
 export const featuredReports: FeaturedReport[] = [
+  {
+    id: "r-014",
+    category: "오피니언 · 청해 칼럼",
+    categoryEn: "Opinion · Cheonghae Column",
+    date: "2026-10-08",
+    author: "청해",
+    title: "인류의 자원 이동의 역사와 석유 — 석유는 대체되지 않는다",
+    titleEn: "Humanity's History of Resource Shifts and Oil — Why Oil Is Not Being Replaced",
+    excerpt: "2026년 호르무즈 봉쇄에서 출발해 인류의 자원 대체사를 짚는다. 고래기름이 등유로 바뀌었듯 자원은 같은 범주의 더 나은 자원으로 대체되어 왔지만, 연료이자 소재인 석유는 연료 역할만 일부 내주며 소재 역할은 오히려 키우고 있다. 록펠러에서 호르무즈까지 힘은 생산만큼이나 유통 길목과 가격 결정 장소에서 나왔다. 관찰자의 정리와 필자의 규범적 판단을 분리해 싣고, 장별 재검증을 거친 원문 보고서를 함께 공개한다.",
+    excerptEn: "Starting from the 2026 closure of the Strait of Hormuz, this column traces how humanity has replaced its resources. Whale oil gave way to kerosene: resources have been replaced by better resources of the same kind. Oil, both fuel and feedstock, is ceding only part of its fuel role while its role as a material grows. From Rockefeller to Hormuz, power has come as much from distribution chokepoints and price-setting venues as from production. The observer's summary and the author's normative view are presented separately, alongside the fully re-verified source report.",
+    image: "/images/cards/r-014.svg",
+    tone: "dark" as const,
+    opinion: true, // ★ 오피니언 전용 칸 — 분석 5칸과 별도
+  },
   {
     id: "r-013",
     category: "Λ¹² · 국가분석 총서",
@@ -182,9 +205,13 @@ const byDateDesc = (a: FeaturedReport, b: FeaturedReport) =>
  * (filter가 새 배열을 만들므로 sort가 원본 featuredReports를 훼손하지 않는다.)
  */
 export const featuredReportsVisible: FeaturedReport[] = [
-  ...featuredReports.filter((r) => r.pinned).sort(byDateDesc),
-  ...featuredReports.filter((r) => !r.pinned).sort(byDateDesc),
-].slice(0, FEATURED_MAX);
+  ...[
+    ...featuredReports.filter((r) => !r.opinion && r.pinned).sort(byDateDesc),
+    ...featuredReports.filter((r) => !r.opinion && !r.pinned).sort(byDateDesc),
+  ].slice(0, FEATURED_MAX),
+  // 오피니언 전용 칸 — 분석 5칸과 별도로 맨 아래에 최신 칼럼 FEATURED_OPINION_MAX편
+  ...featuredReports.filter((r) => r.opinion).sort(byDateDesc).slice(0, FEATURED_OPINION_MAX),
+];
 
 /** 노출 목록 중 가장 최근 날짜 (고정 항목 포함) — 섹션 헤더 스탬프용 */
 export const featuredLatestDate: string =
@@ -353,18 +380,18 @@ export const mainCategories = [
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
   },
   {
-    id: "cat-empty-2",
-    label: "준비중",
-    labelEn: "Coming Soon",
+    id: "cat-opinion",
+    label: "오피니언",
+    labelEn: "Opinion",
     engineKey: "",
-    engineLabel: "COMING SOON",
+    engineLabel: "OPINION",
     count: 0,
     subFilters: [],
     subFiltersEn: [],
     topics: [],
     topicsEn: [],
     isCore: false,
-    image: "",
+    image: "/images/cards/r-014.svg",
   },
 ];
 

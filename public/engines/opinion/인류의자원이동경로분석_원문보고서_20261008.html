@@ -1,0 +1,1021 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>인류의 자원 이동 경로 분석</title>
+<style>
+:root{color-scheme:light;}
+body{font-family:Georgia,'Times New Roman',serif;background:#F5F3EE;color:#2A2A2A;line-height:1.72;max-width:940px;margin:0 auto;padding:26px;}
+h1{color:#2A3D35;font-size:1.75em;border-bottom:3px solid #B8850E;padding-bottom:8px;margin-bottom:2px;}
+h2{color:#2A3D35;font-size:1.22em;border-left:4px solid #5E9186;padding-left:10px;margin-top:36px;}
+h3{color:#2A3D35;font-size:1.02em;margin:22px 0 6px;}
+.sub{color:#5E9186;font-size:0.95em;}
+.lead{font-size:1.05em;color:#3a3a3a;background:#EEF4F2;border-radius:8px;padding:14px 18px;margin:16px 0;}
+.abstract{font-size:0.97em;color:#333;background:#F2F4F1;border:1px solid #dfe3da;border-radius:8px;padding:16px 20px;margin:16px 0;text-align:justify;line-height:1.78;}
+.abstract .kw{display:block;margin-top:10px;font-size:0.9em;color:#5E6B60;}
+.byl{color:#5E6B60;font-size:0.9em;margin-top:2px;font-style:italic;}
+p{text-align:justify;}
+ul,ol{padding-left:22px;} li{margin:4px 0;}
+.card{background:#fff;border:1px solid #e6e2d8;border-radius:8px;padding:16px;margin:16px 0;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.obs{background:#EEF4F2;border-left:4px solid #5E9186;padding:12px 16px;margin:14px 0;font-size:0.95em;}
+.crit{background:#FBEDEC;border-left:4px solid #C0392B;padding:12px 16px;margin:14px 0;font-size:0.95em;}
+.honest{background:#FEF9EE;border-left:4px solid #B8850E;padding:12px 16px;margin:14px 0;font-size:0.88em;}
+.honest ul{margin:6px 0;padding-left:18px;} .honest li{margin:4px 0;}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:12px 0;max-width:100%;}
+.tw table{margin:0;min-width:560px;}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:12px;}
+th,td{border:1px solid #e0dbcf;padding:6px 8px;text-align:left;vertical-align:top;}
+th{background:#2A3D35;color:#EFE9D8;font-size:11px;} td.c{text-align:center;}
+td:first-child{font-weight:600;color:#2A3D35;}
+b{color:#2A3D35;} .foot{color:#888;font-size:0.8em;border-top:1px solid #e6e2d8;margin-top:26px;padding-top:10px;}
+.slogan{color:#5E9186;font-size:0.86em;font-style:italic;margin-top:6px;}
+.src{font-size:0.82em;color:#666;} .src b{color:#2A3D35;}
+.refs{font-size:0.82em;color:#444;padding-left:18px;} .refs li{margin:3px 0;word-break:break-word;}
+a{color:#3F6E64;}
+blockquote{margin:14px 0;padding:6px 0 6px 16px;border-left:3px solid #B8850E;color:#3a3a3a;font-size:1.0em;}
+.toc{font-size:0.88em;background:#fff;border:1px solid #e6e2d8;border-radius:8px;padding:12px 16px;margin:16px 0;line-height:1.9;}
+.toc a{text-decoration:none;margin-right:10px;white-space:nowrap;}
+.thesis li{margin:7px 0;}
+.tag{display:inline-block;font-size:10px;line-height:1;padding:2px 5px;border-radius:3px;vertical-align:1px;margin-left:4px;border:1px solid currentColor;font-family:Arial,sans-serif;font-weight:normal;}
+.tag.v{color:#3F7A6E;} .tag.e{color:#9A6F0B;} .tag.u{color:#C0392B;} .tag.i{color:#777;}
+.note{font-size:0.86em;color:#666;}
+/* 지층 도표 */
+.strata{overflow-x:auto;background:#fff;border:1px solid #e6e2d8;border-radius:8px;padding:14px;margin:14px 0;}
+.sgrid{display:grid;grid-template-columns:120px repeat(8,minmax(56px,1fr));column-gap:4px;row-gap:7px;min-width:640px;font-size:12px;align-items:center;}
+.sgrid .era{font-size:10.5px;color:#5E6B60;line-height:1.35;padding-bottom:6px;border-bottom:1px solid #e0dbcf;align-self:end;}
+.sgrid .name{color:#2A3D35;}
+.bar{height:14px;border-radius:2px;}
+.bar.keep{background:#5E9186;} .bar.shift{background:#B8850E;} .bar.lost{background:#A8ABA6;}
+.bar.oil{background:repeating-linear-gradient(135deg,#B8850E 0 6px,#2A3D35 6px 9px);}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:#5E6B60;margin-top:12px;}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.legend i{width:18px;height:10px;border-radius:2px;display:inline-block;}
+@media (max-width:600px){body{padding:16px;} h1{font-size:1.5em;}}
+</style></head><body>
+<h1>인류의 자원 이동 경로 분석</h1>
+<p class="sub">선사 시대의 수계 이동에서 2026년 호르무즈 봉쇄까지 — 대체·통제·연합·자본의 경로로 본 자원사 — An Analysis of Humanity's Resource Pathways: Substitution, Control, Coalition and Capital</p>
+<p class="byl">청해(淸海) · 늘푸른바다 사회동역학연구소(Everblue Sea Institute for Social Dynamics) · 원문 보고서 · 2026-10-08</p>
+
+<div class="abstract"><b>초록.</b> 본 보고서는 인류가 자원을 찾아 이동하고, 새 자원으로 옛 자원을 대체하며, 대체되지 않는 자원의 흐름을 둘러싸고 통제와 연합을 형성해 온 경로를 선사 시대부터 2026년까지 추적한다. 서장은 수계를 따른 이동과 다른 인류종의 소멸에 관한 고고학·유전체 연구를 검토한다. 제1~4장은 자원 대체의 역사적 조건을 정리하고, 석유가 에너지이자 탄소 소재라는 이중성 때문에 같은 방식의 순 이동이 현재로서는 비용이 매우 큰 경로임을 보인다. 제5~8장은 점령이 아닌 흐름 통제(해상로·결제망·제재)에 관한 문헌과 그 반론(마이어딩, 비탈리스), 문명 축과 공급망 축의 국가 군집, 자원 확보 방식(정복·경쟁·통제·협력)의 비용 구조를 다룬다. 제9장은 2026년 이란 전쟁과 호르무즈 봉쇄를 사례로, 주요 산유국인 이란이 자국 산출이 아니라 다른 나라의 수출 경로를 막아 충격을 만들었다는 점과 비축 완충력이 노출도를 갈랐다는 점을 검토한다. 제10~13장은 석유의 한계가 양보다 비용과 흐름에서 먼저 나타날 가능성, 자원 위험을 나누는 장치로서 자본의 진화(여정→채굴권→지분→가격), 그리고 자본과 국가 권력·법률이 결합한 역사 사례를 정리한다. 모든 수치는 2026-10-08 네 갈래 재검증을 거쳤고, 논쟁적 주장과 확인되지 않은 주장은 본문에 표시했다. 저자의 규범적 판단은 실증 분석과 분리해 별도 절에 두었다.
+<span class="kw"><b>주제어:</b> 자원 대체, 석유의 이중성, 흐름 통제, 무기화된 상호의존, 호르무즈 해협, 국가 군집, 사회동역학, 자원 금융화, 자본과 국가</span></div>
+
+<div class="lead"><b>방법.</b> 하나의 이론으로 모든 지표를 설명하지 않는다. 지표와 사회구조마다 그에 맞는 선행연구를 골라 접목하고, 조각들의 분석 단위·시간 척도·전제가 맞물리도록 하나의 합본으로 엮는다(머튼의 중범위 이론, 실·카첸스타인의 분석적 절충주의와 같은 방식). 각 주장에는 근거 수준을 표기한다: <span class="tag v">확인</span> 1차·학술 출처로 재확인, <span class="tag e">추정</span> 근사·산술·단일 추정치, <span class="tag u">미확인</span> 원 출처를 확인하지 못함, <span class="tag i">해석</span> 저자의 해석·종합. 범위: 이 보고서는 탄소 저감 정책의 타당성을 평가하지 않으며, 현재 문명에서 자원이 차지하는 비중과 그 정치적 의미를 다룬다.</div>
+
+<div class="toc"><b>목차</b><br>
+<a href="#summary">요지</a><a href="#ch0">§0 서장</a><a href="#ch1">§1 자원으로 본 세계사</a><a href="#ch2">§2 자원의 운명</a><a href="#ch3">§3 석유의 이중성</a><a href="#ch4">§4 순 이동의 조건</a><a href="#ch5">§5 기초 자원과 통제</a><a href="#ch6">§6 연합의 두 축</a><a href="#ch7">§7 사회동역학의 틀</a><a href="#ch8">§8 확보의 네 방식</a><a href="#ch9">§9 2026 이란 전쟁</a><a href="#ch10">§10 한계와 과제</a><a href="#ch11">§11 자본의 이동 경로</a><a href="#ch12">§12 아홉 장면</a><a href="#ch13">§13 자본과 국가</a><a href="#conclusion">결론과 관찰 지표</a><a href="#epilogue">맺음말</a><a href="#normative">저자의 규범적 논의</a><a href="#evidence">부록</a><a href="#verify">검증 및 한계</a><a href="#refs">참고문헌</a></div>
+
+<h2 id="summary">요지 — 열세 개의 명제</h2>
+<ol class="thesis">
+<li><b>선사 시대.</b> 경작 이전 인류의 이동이 해안과 수계를 따랐다는 해석을 고고학·고기후 증거가 지지한다. 네안데르탈인의 소멸에는 경쟁, 혼혈, 소규모 인구의 붕괴가 각각 거론되며, 이를 '경쟁→흡수→붕괴'로 잇는 모델은 저자의 종합이다. 정복과 흡수는 유전체에 성별 비대칭의 흔적을 남긴다.</li>
+<li><b>대체의 조건.</b> 역사 속 자원 대체는 같은 범주이면서 더 나은 자원이 나타났을 때 일어났다. 그러나 옛 자원의 총사용량은 줄지 않고 누적되는 경우가 많았다.</li>
+<li><b>석유의 이중성.</b> 석유는 에너지이자 탄소 소재다. 태양광·풍력·조력·원자력은 주로 전력을 대체하며, 석유의 소재 기능을 대체하는 경로(바이오매스, CO₂+수소 합성, 재활용)는 현재 규모가 작고 비용이 크다.</li>
+<li><b>흐름 통제.</b> 비공식 제국론, 하비, 패럴·뉴먼은 기초 자원의 흐름을 해상로·결제망·제재로 쥐는 통제를 지적한다. 마이어딩과 비탈리스는 석유 전쟁과 석유 안보 논리가 과장되었다고 반론한다.</li>
+<li><b>연합의 두 축.</b> 국가 연합에는 종교·문화·역사의 문명 축과 자본·생산망의 공급망 축이 있고, 두 축이 다른 지도를 그리는 국가에서 긴장이 관찰된다.</li>
+<li><b>군집의 동역학.</b> 사회동역학의 군집 모델은 느린 누적 뒤 급격한 전이가 가능하다는 점을 보여준다. 이는 유추의 틀이며 예측이 아니다.</li>
+<li><b>확보 방식의 이동.</b> 1945년 이후 정복의 비용이 커졌다는 연구가 쌓여 있고, 확보의 중심은 흐름 통제와 협력 쪽으로 옮겨 왔다. 중국의 핵심 광물 수출통제는 통제의 중심이 여럿으로 늘어나는 징후로 읽힌다.</li>
+<li><b>2026년 호르무즈.</b> 이란은 주요 산유국이지만, 이번 충격의 크기는 이란 자국 산출이 아니라 다른 나라들의 수출 경로(호르무즈)를 막은 데서 나왔다. 비축 완충력이 국가별 노출도를 갈랐다.</li>
+<li><b>한계의 순서.</b> 석유의 한계는 매장량보다 생산 유지 비용과 유통에서 먼저 나타날 수 있다. 수요 측 절약의 효과는 녹색 역설·리바운드로 일부 상쇄될 수 있다는 연구가 있다.</li>
+<li><b>자본의 경로.</b> 자본은 자원의 위험을 나누는 장치로 진화하며 투자 대상을 여정 → 채굴권 → 기업 지분 → 가격으로 옮겨 왔다. 가격이 정해지는 장소의 규칙은 결과에 직접 영향을 미쳤다.</li>
+<li><b>아홉 장면.</b> 라우리온에서 니켈까지의 사례에서 자원 수익의 용처, 유통의 장악, 가격 장소의 규칙, 실물 병목의 우위라는 패턴이 반복된다. 이 패턴화는 저자의 종합이며, 각 사례에는 해석 논쟁이 있다.</li>
+<li><b>자본과 국가.</b> 자본은 면허·조약·법률·판결로 행동을 합법화하고 군대·조세권·정보기관과 결합한 사례가 반복된다. 인과의 방향은 사례마다 다르다.</li>
+<li><b>규범의 형성.</b> 노예무역 폐지, 주간통상법, 스탠더드 오일 해체, 콩고 개혁에서는 폭로·불매·조직·입법이 새 규범을 만들었다. 1953년 이란과 1954년 과테말라처럼 그 경로가 뒤집힌 사례도 있다. 저자의 규범적 해석은 별도 절에 둔다.</li>
+</ol>
+
+<h2 id="ch0">§0 서장 — 선사 시대의 자원과 인류종의 경쟁</h2>
+<p>경작 이전의 인류는 머물던 곳의 자원이 줄면 이동했다. 이 장은 두 가설을 검토한다. <b>가설 1:</b> 그 이동은 해안과 수계를 따랐다. <b>가설 2:</b> 다른 인류종은 자원을 둘러싼 경쟁과 접촉 속에서 쇠퇴하다 멸종했다.</p>
+
+<h3>수렵채집 시대의 자원</h3>
+<div class="tw"><table>
+<thead><tr><th>자원</th><th>내용</th><th>근거</th></tr></thead>
+<tbody>
+<tr><td>물</td><td>모든 이동과 정착의 첫 조건</td><td>아래 고수문 회랑 연구(Groucutt et al. 2021)와 부합하는 해석<span class="tag i">해석</span></td></tr>
+<tr><td>해안 자원</td><td>조개, 갑각류, 물고기, 해조류. 조간대에서 도구 없이도 거둘 수 있음</td><td>남아공 피너클 포인트, 약 16.4만(±1.2만) 년 전 조개 섭취(Marean et al., <i>Nature</i> 449:905–908, 2007). 저자들은 MIS6 빙하기의 건조·한랭 환경에 대한 대응일 가능성을 제시한다. 같은 층에서 안료(오커)와 세석기도 나왔다<span class="tag v">확인</span></td></tr>
+<tr><td>대형 사냥감</td><td>북방 고위도로 진출한 집단의 주요 자원 중 하나</td><td>시베리아 북극권에서 약 4.5만 년 전 사람이 상처를 낸 매머드 뼈(Pitulko et al., <i>Science</i> 351:260, 2016)<span class="tag v">확인</span>. 북부 경로 집단 전체의 생존 기반으로 일반화하지는 않는다</td></tr>
+<tr><td>식물·돌·불</td><td>견과, 덩이줄기, 도구 원료, 연료</td><td>수렵채집 연구의 일반 서술(Kelly, <i>The Lifeways of Hunter-Gatherers</i>, 2013)<span class="tag i">일반 서술</span></td></tr>
+</tbody></table></div>
+
+<h3>가설 1: 수계를 따른 이동</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th></tr></thead>
+<tbody>
+<tr><td>남부 해안 분산 가설<span class="tag v">확인</span><br><span style="font-weight:400">Macaulay et al. 2005; Mellars 2006</span></td><td>약 7만~5만 년 전 아라비아에서 페르시아, 인도, 동남아를 거쳐 오세아니아까지 해안을 따라 이동했다는 가설. 조간대 자원을 거두는 '해변 채집' 전략으로 설명된다. 내륙 회랑 경로를 강조하는 반론도 강하다(Groucutt et al. 2015, <i>Evol. Anthropol.</i>)</td></tr>
+<tr><td>얼랜드슨 외, '켈프 고속도로' 가설(2007)<span class="tag v">확인</span></td><td>가설 제안 논문이다(<i>J. Island &amp; Coastal Archaeology</i> 2:161–174). 약 1.6만 년 전까지 북태평양 연안의 다시마 숲 해안이 아메리카 첫 이주민에게 선형 이동 경로를 제공했을 수 있다고 본다. 프레이저강·스티킨강 하구를 내륙 통로로 본 것은 논문이 아니라 얼랜드슨의 2009년 언론 인터뷰 속 추정이다<span class="tag i">해석</span>. 강 하구 자원 이용의 실제 증거로는 캘리포니아 산타로사섬의 약 1.18만~1.11만 년 전 사례가 있다(Erlandson et al. 2019, <i>Antiquity</i>)</td></tr>
+<tr><td>마제드베베 유적(호주 북부)<span class="tag v">확인</span></td><td>Clarkson et al. 2017(<i>Nature</i> 547:306–310)은 사람의 점유 연대를 약 6.5만 년 전(65.0±5.7 ka)으로 제시한다. 이 연대에는 반론이 있어 O'Connell et al. 2018(<i>PNAS</i>)은 약 5만 년 전을 주장한다. 어느 쪽이든 바다를 건너 호주에 도착했다는 증거다</td></tr>
+<tr><td>브리즈 외, 「중동의 고수문 회랑」(2016)<span class="tag v">확인</span></td><td><i>Quaternary Science Reviews</i> 144:155–185. 약 25만~7만 년 전 지금은 사막인 아라비아 북부에 옛 강·호수·습지가 있었고, MIS6–5e와 5a에 '타북 회랑'이 형성되었다고 본다</td></tr>
+<tr><td>그로우컷 외, 「지난 40만 년간 서남아시아로의 다중 확산」(2021)<span class="tag v">확인</span></td><td><i>Nature</i> 597:376–380. 비가 많던 다섯 '녹색 시기'(약 40만, 30만, 20만, 13만~7.5만, 5.5만 년 전)마다 인류가 내륙으로 확산했다</td></tr>
+</tbody></table></div>
+<blockquote>증거는 이동이 물을 따랐다는 해석과 부합한다. 내륙이 마를 때는 해안이, 내륙이 젖을 때는 강과 호수의 회랑이 이동로가 되었다.</blockquote>
+<p>고수문 연구는 해안만이 유일한 길이 아니었음을 보여주지만, 이동이 물을 따랐다는 점에서는 가설 1을 지지한다. 물은 선사 시대의 이동 경로였고 이후 하천 문명의 기반이 되었다. 저자는 물을 다른 자원으로 대체된 적이 없는 최초의 기초 자원으로 본다<span class="tag i">해석</span>.</p>
+
+<h3>가설 2: 다른 인류종의 쇠퇴와 멸종</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>해당 방식</th></tr></thead>
+<tbody>
+<tr><td>뱅크스 외(<i>PLoS ONE</i> 3(12):e3972, 2008)<span class="tag v">확인</span></td><td>네안데르탈인과 현생인류는 비슷한 생태적 지위를 썼다. 그린란드 아간빙기 8(GI8)에 서남유럽에서 네안데르탈인의 범위가 남쪽으로 줄어든 것은 기후보다 현생인류 확산에 따른 경쟁으로 설명된다는 생태 모델링 결과</td><td>경쟁(경쟁 배제)</td></tr>
+<tr><td>하이엄 외(<i>Nature</i> 512:306–309, 2014)<span class="tag v">확인</span></td><td>유럽에서 두 종은 95% 확률 구간으로 2,600~5,400년 공존했다. 네안데르탈인은 지역마다 다른 시기에 사라졌고, 소멸 시점은 41,030~39,260 cal BP다. 연대 측정 연구로, 경쟁을 직접 검증하지는 않았다</td><td>빠른 정복보다 느린 과정과 부합</td></tr>
+<tr><td>혼혈의 흔적<span class="tag v">확인</span></td><td>네안데르탈인과의 혼혈은 비아프리카인 공통으로 대략 서아시아에서, 약 5.05만~4.35만 년 전의 장기간 단일 흐름으로 일어났다고 추정된다(Green et al. 2010; Iasi et al. 2024, <i>Science</i>; Sümer et al. 2025, <i>Nature</i>). 데니소바인과의 혼혈은 파푸아인에서 복수 계통이 확인되며 주로 월리스선 동쪽(뉴기니·월리시아)에서 일어난 것으로 보고, 동아시아에도 별도 계통이 있다(Jacobs et al. 2019, <i>Cell</i>)</td><td>흡수</td></tr>
+</tbody></table></div>
+
+<h3>정복의 유전적 흔적</h3>
+<p>지배 관계 아래의 혼혈은 성별에 따라 비대칭으로 일어나는 경우가 많다. 아버지에게서만 물려받는 Y 염색체와 어머니에게서만 물려받는 미토콘드리아 DNA를 비교하면 그 비대칭이 드러난다.</p>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>발견</th><th>의미와 단서</th></tr></thead>
+<tbody>
+<tr><td>올랄데 외(<i>Science</i> 363:1230–1234, 2019)<span class="tag v">확인</span><br><span style="font-weight:400">이베리아 8천 년 유전체사</span></td><td>고대 이베리아인 271명 분석. 기원전 2000년경까지 초원 계통 집단이 이베리아 조상 성분의 약 40%, Y 염색체의 거의 100%를 대체했다</td><td>남성 중심 이주와 부합한다. 다만 저자들은 폭력적 지배를 직접 입증하지 않았다</td></tr>
+<tr><td>저얼 외(<i>AJHG</i> 72(3):717–721, 2003)<span class="tag v">확인</span><br><span style="font-weight:400">몽골의 유전적 유산</span></td><td>16개 집단 분석. 약 1,000년 전 몽골에서 시작된 한 Y 계통을 태평양~카스피해 지역 남성의 약 8%, 세계 남성의 약 0.5%가 지닌다. 칭기즈칸의 부계 후손으로 추정</td><td>논문은 이 확산을 "새로운 형태의 사회적 선택"으로 설명한다</td></tr>
+<tr><td>라틴아메리카 혼혈 연구<span class="tag v">확인</span><br><span style="font-weight:400">Wang et al. 2008, <i>PLoS Genet</i> 4:e1000037; Bryc et al. 2010, <i>PNAS</i></span></td><td>13개 메스티소 집단에서 혼혈에 주로 유럽 남성과 원주민·아프리카 여성이 관여했다</td><td>성별 편향은 유전학적 결과다. 그 배경을 "강압을 포함한 식민 지배"로 보는 것은 역사학적 해석이다</td></tr>
+</tbody></table></div>
+
+<h3>인류종 사이에 생긴 새로운 유전적 조건</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>발견</th><th>의미</th></tr></thead>
+<tbody>
+<tr><td>페트르 외(<i>Science</i> 369:1653–1656, 2020)<span class="tag v">확인</span></td><td>네안데르탈인의 원래 Y 염색체는 약 37만~10만 년 전 사이 초기 현생인류와의 혼혈로 들어온 Y로 대체되었다. 연구진은 네안데르탈인의 작은 유효집단 크기로 유전 부하가 커져 현생인류 쪽 Y가 선택되었을 수 있다고 본다</td><td>접촉이 상대 종의 부계 계통을 바꾸었다. 연구진의 해석은 정복이 아니라 자연선택</td></tr>
+<tr><td>산카라라만 외(<i>Nature</i> 507:354–357, 2014)<span class="tag v">확인</span></td><td>현생인류 유전체에서 네안데르탈인 성분은 X 염색체에서 약 5배 적고, 고환에서 많이 발현되는 유전자 영역에서 특히 적다. 혼혈 남성의 생식력 저하를 시사한다</td><td>혼혈이 새로운 유전적 조건(잡종 남성의 생식력 저하)을 만들었을 가능성</td></tr>
+<tr><td>베선 외(<i>PLoS ONE</i> 14(11):e0225117, 2019)<span class="tag v">확인</span></td><td>근친교배, 앨리 효과(Allee effect, 개체 수가 적을수록 번식·생존이 더 어려워지는 효과), 인구의 확률적 변동만으로도 1만 년 안에 네안데르탈인이 멸종할 수 있었다. 저자들의 결론은 환경 압력이나 현생인류와의 경쟁 없이도 멸종이 가능하다는 것이다</td><td>경쟁 가설에 대한 대안 모델</td></tr>
+</tbody></table></div>
+<p>저자는 위 연구들을 다음과 같은 결합 모델로 종합한다<span class="tag i">저자 종합</span>. 이 모델은 어느 한 논문이 제시한 것이 아니며, 특히 베선 외는 경쟁 없이도 멸종이 가능하다고 보았다는 점에서 이 종합과 긴장 관계에 있다.</p>
+<ol>
+<li><b>경쟁:</b> 같은 자원을 두고 겨루며 네안데르탈인의 범위와 인구가 줄었다(뱅크스).</li>
+<li><b>흡수:</b> 접촉과 혼혈로 부계 계통이 바뀌고, 혼혈 세대의 생식력이 떨어지는 새로운 유전적 조건이 생겼다(페트르, 산카라라만).</li>
+<li><b>붕괴:</b> 줄어든 소규모 인구는 근친교배, 앨리 효과, 인구 변동을 견디지 못했다(베선).</li>
+</ol>
+<p>호모 플로레시엔시스의 골격은 약 10만~6만 년 전, 석기는 약 19만~5만 년 전으로 측정되어, 현생인류가 이 지역에 퍼질 무렵 사라진 것으로 보인다(Sutikna et al. 2016, <i>Nature</i> 532:366–369)<span class="tag v">확인</span>. 플로레스섬의 현생인류 골격은 더 늦지만, 리앙부아에서는 약 4.6만 년 전 처트 사용 급증과 화덕 흔적이 나타나 현생인류의 도착 가능성이 제기되었다(Sutikna et al. 2018, <i>J. Hum. Evol.</i> 124:52–74)<span class="tag v">확인</span>. 두 종의 직접 접촉은 여전히 입증되지 않아 열린 문제로 남긴다.</p>
+
+<h3>네 방식에 대입하면</h3>
+<div class="tw"><table>
+<thead><tr><th>방식</th><th>선사 시대의 형태</th><th>근거의 강도</th></tr></thead>
+<tbody>
+<tr><td>정복</td><td>직접 살해의 고고학 증거는 드물다. 정복은 유전체에 성별 비대칭 흔적을 남기므로 유전체 연구가 간접 탐지 도구가 된다</td><td>직접 증거 약함, 간접 탐지 가능</td></tr>
+<tr><td>경쟁</td><td>같은 먹이와 서식지를 두고 겨룸</td><td>중간(모델 연구 지지, 반대 모델 존재)</td></tr>
+<tr><td>통제</td><td>강 하구, 해안 같은 자원 밀집 지점 선점. 얼랜드슨이 인터뷰에서 쓴 '스위트 스폿' 표현에 기댄 유추</td><td>해석 수준(학술 근거 약함)</td></tr>
+<tr><td>흡수</td><td>혼혈로 유전자가 현생인류 안에 남고, 상대의 부계 계통이 바뀜</td><td>강함(유전체 연구)</td></tr>
+</tbody></table></div>
+
+<h3>본문과의 연결</h3>
+<div class="tw"><table>
+<thead><tr><th>선사 시대</th><th>역사 시대</th></tr></thead>
+<tbody>
+<tr><td>자원이 줄면 이동</td><td>자원이 부족하면 대체(목재 → 석탄)</td></tr>
+<tr><td>물을 따라 이동</td><td>하천 문명, 해상 교역로</td></tr>
+<tr><td>종 사이의 생태적 경쟁</td><td>국가 사이의 자원 경쟁</td></tr>
+<tr><td>혼혈을 통한 흡수</td><td>정복을 통한 흡수, 유전체의 성별 비대칭</td></tr>
+<tr><td>자원 밀집 지점 선점</td><td>해상 요충지 통제</td></tr>
+</tbody></table></div>
+<div class="obs"><b>관찰자 판독:</b> 수계를 따른 이동은 여러 독립 증거가 지지한다. 다른 인류종의 소멸 원인은 경쟁, 혼혈, 소규모 인구의 내적 붕괴가 각각 근거를 갖지만 학계 합의는 없다. 선사 시대와 역사 시대를 잇는 위 대응표는 구조의 유사성을 보이는 저자의 유추이며, 인과의 연속을 입증하지 않는다.</div>
+
+<h2 id="ch1">§1 자원으로 본 세계사</h2>
+<p>문명의 각 단계는 그 시대를 떠받친 핵심 자원으로 구분할 수 있다. 앞 시대의 자원이 희소해지거나 더 나은 자원이 나타날 때 문명의 형태가 바뀌었다. 다만 아래 표에서 자원과 제도 변화를 잇는 여러 설명은 학계에서 논쟁 중이며, 그 지위를 함께 적는다.</p>
+<div class="tw"><table>
+<thead><tr><th>시대</th><th>핵심 자원</th><th>문명에 남긴 것과 학설의 지위</th></tr></thead>
+<tbody>
+<tr><td>농업혁명·하천 문명<br><span style="font-weight:400">BC 1만~3000</span></td><td>물, 비옥한 흙, 곡물, 가축</td><td>관개를 위한 노동 조직이 국가와 관료제를 낳았다는 '수력 사회' 가설(비트포겔)이 있으나, 관개가 국가보다 늦은 사례가 많아 오래 비판받았다. Mayshar·Moav·Pascali(2022, <i>JPE</i>)는 국가 형성을 이끈 것이 관개가 아니라 전유 가능한 곡물 재배라고 주장하고, Bentzen 외(2017, <i>JEEA</i>)는 관개와 권위주의의 상관을 보고한다<span class="tag i">논쟁</span>. 우루크의 원설형문자(약 BC 3300~3200)는 곡물·가축·직물 등의 행정·회계 기록에서 발전했다는 것이 주류 학설이다(Schmandt-Besserat)<span class="tag v">확인</span></td></tr>
+<tr><td>청동기<br><span style="font-weight:400">BC 3300~1200</span></td><td>구리, 주석</td><td>희소한 주석을 구하는 장거리 교역망은 최초의 대규모 금속 원료 교역망 중 하나다. 장거리 교역 자체는 신석기의 흑요석·청금석 교역이 앞선다. 주석 산지는 중앙아시아설(Powell et al. 2022, <i>Sci. Adv.</i>)과 콘월설(Berger et al. 2023)이 맞선다. 후기 청동기 붕괴(BC 13세기 중후반~12세기)의 원인으로는 이주('바다 민족'), 내부 정치, 가뭄, 지진, 역병, 교역 단절이 복합적으로 거론되며 단일한 설명은 없다(Knapp &amp; Manning 2016)<span class="tag i">논쟁</span></td></tr>
+<tr><td>철기<br><span style="font-weight:400">BC 1200~</span></td><td>철광석, 목재·숯</td><td>흔한 철이 무기와 농기구를 보급했다. 한 무제 시기 BC 119~117년경 소금·철 전매가 시행되었고, BC 81년 '염철론' 논쟁이 있었다<span class="tag v">확인</span></td></tr>
+<tr><td>고전 제국·교역<br><span style="font-weight:400">BC 500~1400</span></td><td>은·금, 소금, 목재, 비단, 향신료</td><td>아테네는 BC 483/2년 라우리온 은의 수익으로 함대를 만들었다(헤로도토스 7.144)<span class="tag v">확인</span>. 실크로드와 인도양 교역이 부를 옮겼다</td></tr>
+<tr><td>대항해·첫 세계화<br><span style="font-weight:400">1450~1750</span></td><td>향신료, 아메리카 은, 설탕, 면화</td><td>포토시 은과 마닐라 갤리온 항로(1571)가 처음으로 지구 전체를 하나의 교역망으로 묶었다는 명제는 Flynn &amp; Giráldez(1995)의 학설이다. O'Rourke &amp; Williamson(2002)은 가격 수렴 기준으로 세계화가 1820년대에 시작되었다고 반론한다<span class="tag i">학설</span></td></tr>
+<tr><td>산업혁명<br><span style="font-weight:400">1750~1900</span></td><td>석탄, 철강, 구아노·초석</td><td>목재 부족(특히 런던)이 석탄 전환의 한 요인이었다는 주장(Nef 1932의 '목재 위기')이 있으나, Flinn·Hammersley 등은 목재 부족이 지역적이었다고 반박했다. Allen(2009)은 산업혁명을 고임금과 저렴한 석탄으로 설명한다<span class="tag i">논쟁</span></td></tr>
+<tr><td>석유의 세기<br><span style="font-weight:400">1900~1990</span></td><td>석유, 고무, 질소, 우라늄</td><td>내연기관, 양차대전의 연료 전쟁, 하버-보슈 암모니아 합성(1913년 BASF 오파우 공장에서 공업화, 원료는 주로 천연가스, 과거에는 석탄), 1973년 10월 OAPEC 금수<span class="tag v">확인</span></td></tr>
+<tr><td>현대<br><span style="font-weight:400">1990~</span></td><td>반도체, 배터리 광물, 희토류, 전력</td><td>가공된 자원과 공급망 자체가 지정학의 대상이 되었다</td></tr>
+</tbody></table></div>
+<p class="note">시대 구분은 관행적 구분이며 청동기·철기 연대는 서아시아·지중해 기준이다. 지역마다 크게 다르다(예: 중국 청동기는 약 BC 2000년부터).</p>
+
+<h2 id="ch2">§2 자원의 운명 — 지속, 변형, 소멸</h2>
+<p>앞 시대의 자원은 세 가지 길을 갔다. 문명의 바닥에서 계속 쓰이거나, 쓰임을 바꿔서 살아남거나, 다른 자원에 밀려 사라졌다.</p>
+<div class="strata" role="img" aria-label="자원별 사용 시기와 운명을 시대별로 나타낸 지층 도표">
+<div class="sgrid" id="strata"></div>
+<div class="legend">
+<span><i style="background:#5E9186"></i>지속(같은 쓰임)</span>
+<span><i style="background:#B8850E"></i>변형(쓰임이 바뀜)</span>
+<span><i style="background:#A8ABA6"></i>소멸·쇠퇴</span>
+<span><i style="background:repeating-linear-gradient(135deg,#B8850E 0 6px,#2A3D35 6px 9px)"></i>석유(연료 + 소재)</span>
+</div></div>
+<p class="note">도표는 각 자원이 문명의 핵심 자원으로 쓰인 대략적 시기를 나타낸 개념도다. 정확한 연대가 아니다.</p>
+
+<h3>쓰임을 바꿔 살아남은 자원</h3>
+<div class="tw"><table>
+<thead><tr><th>자원</th><th>과거</th><th>현재</th></tr></thead>
+<tbody>
+<tr><td>구리</td><td>청동 무기·도구</td><td>전선, 모터, 전력망, 전기차 등 전기 전도 용도가 주 용도(용도별 수치는 USGS 원표로 확인 필요)</td></tr>
+<tr><td>주석</td><td>청동의 희소 원료</td><td>땜납이 세계 정련 주석 사용의 약 51%로 최대(2023, 국제주석협회 ITA — 주석 업계 단체)<span class="tag v">확인</span></td></tr>
+<tr><td>소금</td><td>식품 보존, 세금원</td><td>미국 기준 도로 제설 약 41%, 화학공업(주로 염소·가성소다) 약 39%, 식품 가공 4%(USGS MCS 2025). 세계 전체의 용도별 공식 통계는 없다<span class="tag v">확인</span></td></tr>
+<tr><td>은</td><td>화폐</td><td>2024년 산업 수요 6억 8,050만 온스로 사상 최대, 총수요 약 11.6억 온스의 약 58%(태양광, 전자부품)(World Silver Survey 2025, 실버 인스티튜트 — 은 업계 단체, Metals Focus 집계)<span class="tag v">확인</span></td></tr>
+<tr><td>목재</td><td>연료</td><td>건축재, 종이. 2023년 세계 원목 벌채량 약 39억 m³ 중 약 50%가 여전히 연료용(FAO)<span class="tag v">확인</span></td></tr>
+</tbody></table></div>
+
+<h3>사라진 자원과 그 자리를 채운 것</h3>
+<div class="tw"><table>
+<thead><tr><th>사라진 자원</th><th>대체한 자원</th><th>공통 범주</th></tr></thead>
+<tbody>
+<tr><td>고래기름(조명)</td><td>석유 등유(19세기 후반)</td><td>액체 탄화수소</td></tr>
+<tr><td>천연 염료</td><td>석탄 타르 염료(1856년 퍼킨의 모브)</td><td>탄소 화합물</td></tr>
+<tr><td>구아노·칠레 초석</td><td>하버-보슈 암모니아(1913~, 천연가스·석탄 기반)</td><td>질소 화합물</td></tr>
+<tr><td>비단·천연고무 일부</td><td>나일론(1935년 합성, 1938~39년 상용화)·합성고무(2차대전기 대량생산)</td><td>탄소 고분자</td></tr>
+<tr><td>석탄 화학</td><td>석유화학(20세기 중반)</td><td>탄소 원료</td></tr>
+</tbody></table></div>
+<div class="obs"><b>두 가지 관찰.</b> 첫째, 완전히 사라진 자원은 드물다. 비중이 줄어도 총량은 늘어나는 경우가 많다. 역사학자 프레소즈(CNRS)는 『More and More and More』(2024)에서 에너지는 '전환'되지 않고 누적되어 왔다고 주장한다. 실제로 2024년 세계 석탄 수요는 87.7억 t으로 사상 최대였고(IEA Coal 2024), 세계 원목 벌채량도 역대 최고 수준이다(FAO)<span class="tag v">확인</span>. 둘째, 사라진 자원의 자리는 대부분 화석연료가 채웠다. 염료·섬유·고무는 석탄화학을 거쳐 석유화학이, 질소 비료는 천연가스(과거 석탄) 기반의 하버-보슈 공정이 대신했다. 석유화학은 옛 자원 여럿을 한꺼번에 대신한 대체재였다<span class="tag i">해석</span>.</div>
+
+<h2 id="ch3">§3 석유의 이중성 — 에너지이자 소재</h2>
+<p>석유를 1차 에너지 비중으로만 재면 문명에서 차지하는 무게를 과소평가할 수 있다. 석유는 태우는 연료이면서 탄소와 수소 원자를 공급하는 원료다.</p>
+
+<h3>에너지로서의 비중</h3>
+<ul>
+<li>1차 에너지에서 단일 에너지원 중 최대다. IEA <i>Global Energy Review 2025</i>는 2024년 석유 비중이 처음으로 30% 아래로 떨어졌다고 계산하고(정점 46%), Energy Institute <i>Statistical Review</i> 2025는 2024년 <b>33.6%</b>, 2026판은 2025년 33.5%로 계산한다<span class="tag v">확인</span>. 차이는 계산 방식에서 온다. IEA는 전통 바이오매스를 포함하고 물리적 에너지 함량 방식을 쓰며, EI는 비화석 전력을 화석연료 투입량으로 환산하는 대체법을 쓴다.</li>
+<li>석유 소비의 <b>절반 이상(약 60%)</b>이 수송(도로·항공·해운)에 쓰인다<span class="tag e">추정</span>. IEA 계열 자료에서 이 비중은 분모를 총 석유 수요로 잡느냐 최종 소비로 잡느냐에 따라 대략 50~65%로 인용된다. 본 보고서의 '약 60%'는 최근 연도(2020년대) 최종 소비 기준의 근사값이며, 연도별 정확한 값은 IEA <i>World Energy Balances</i> 원표로 확인해야 한다. 초안의 '57%'는 원 출처를 찾지 못해 삭제했다.</li>
+<li>세계 발전량에서 석유 비중은 2024년 <b>2.8%</b>, 2025년 2.6%다(Ember·EI 자료, Our World in Data 처리; Ember는 탈탄소 옹호 싱크탱크)<span class="tag v">확인</span>.</li>
+</ul>
+
+<h3>소재로서의 비중</h3>
+<div class="tw"><table>
+<thead><tr><th>분야</th><th>석유의 역할</th></tr></thead>
+<tbody>
+<tr><td>플라스틱</td><td>플라스틱 사용량 2019년 4.6억 t. 정책 변화가 없는 기준 시나리오에서 2060년 12.31억 t 전망(OECD <i>Global Plastics Outlook</i>, 2022)<span class="tag v">확인</span></td></tr>
+<tr><td>섬유</td><td>2024년 세계 섬유 생산 1.32억 t 중 69%가 합성섬유. 폴리에스터가 59%이고 그중 88%가 화석 기반, 12%가 재생 폴리에스터(Textile Exchange <i>Materials Market Report 2025</i> — 지속가능 섬유 촉진 업계 이니셔티브)<span class="tag v">확인</span></td></tr>
+<tr><td>고무</td><td>합성고무가 세계 고무 소비의 절반 안팎이라는 것이 통설이다. 정확한 비중은 국제고무연구그룹(IRSG) 원자료로 확인하지 못했다<span class="tag u">미확인</span></td></tr>
+<tr><td>도로</td><td>아스팔트</td></tr>
+<tr><td>기계</td><td>윤활유. 엔진과 전기모터 모두에 필요하나, 전기모터의 사용량은 내연기관보다 훨씬 적다</td></tr>
+<tr><td>의료</td><td>주사기, 수액백, 장갑, 의약품 원료</td></tr>
+<tr><td>생활화학</td><td>세제, 페인트, 접착제, 화장품, 농약</td></tr>
+</tbody></table></div>
+<ul>
+<li>IEA <i>The Future of Petrochemicals</i>(2018년 10월)는 석유화학이 2030년까지 석유 수요 증가분의 1/3 이상, 2050년까지 거의 절반(하루 약 700만 배럴 증가)을 차지한다고 전망했다<span class="tag v">확인</span>. 8년 전 전망이며, IEA <i>Oil 2025</i>도 석유화학 원료를 수요 증가의 주요 동인으로 본다.</li>
+<li>IEA <i>Global Energy Review 2025</i>에 따르면 2024년 석유 수요 증가분은 에너지 기준으로 화학 원료와 항공이 각각 약 절반을 차지했고, 부피 기준으로는 증가분의 약 70%가 화학 원료였다<span class="tag v">확인</span>.</li>
+</ul>
+<p>스밀은 『How the World Really Works』(2022) 3장에서 현대 문명의 4대 기둥으로 시멘트, 철강, 플라스틱, 암모니아를 꼽는다<span class="tag v">확인</span>. 넷 모두 대량생산이 화석연료에 의존한다. 플라스틱은 화석연료 분자 자체가 제품의 재료가 되고, 암모니아는 수소를 천연가스(메탄)에서 얻는다. 다만 암모니아에는 탄소가 남지 않는다.</p>
+
+<h2 id="ch4">§4 석유에 순 이동이 일어나기 어려운 이유</h2>
+<p>역사 속 순 이동에는 공통 조건이 있었다. 같은 범주이면서 더 나은 자원이 나타났을 때 대체가 일어났다(§2 표). 석유의 소재 역할도 원래 석탄의 것이었고, 석유가 더 다루기 쉽고 싼 탄소원이었기에 옮겨 왔다. 따라서 소재 역할의 순 이동은 다른 탄소원으로만 가능하다.</p>
+
+<h3>기능별로 본 대체 가능성</h3>
+<div class="tw"><table>
+<thead><tr><th>석유의 기능</th><th>태양광·풍력·조력·원자력으로 대체</th></tr></thead>
+<tbody>
+<tr><td>전력 생산</td><td>가능. 다만 석유는 세계 발전량의 약 2~3%로 원래 비중이 작다(EIA IEO 2023 기준 2022년 약 2.6%). 실제로 밀려나는 것은 석탄·가스 발전<span class="tag v">확인</span></td></tr>
+<tr><td>승용차</td><td>부분 가능. 배터리를 거친 간접 대체</td></tr>
+<tr><td>항공·해운·대형 화물·군사</td><td>어려움. 휘발유는 약 12.9 kWh/kg(약 46 MJ/kg)으로 리튬이온 셀(0.25~0.3 kWh/kg)의 약 43~52배, 팩(0.15~0.2 kWh/kg) 기준 약 65~85배의 무게당 에너지를 갖는다. 전기 구동계의 효율(약 3배)을 반영한 실효 격차는 약 15~20배다(미 에너지부 연료 물성 자료)<span class="tag v">확인</span></td></tr>
+<tr><td>플라스틱·섬유·고무·아스팔트·윤활유·의약</td><td>직접 대체 불가. 전기는 탄소 원자를 공급하지 못한다. 전력을 쓰는 간접 경로(CO₂+수소 합성)는 아래 표 참조</td></tr>
+</tbody></table></div>
+
+<h3>소재 역할을 이어받을 후보</h3>
+<div class="tw"><table>
+<thead><tr><th>후보</th><th>상태</th><th>한계</th></tr></thead>
+<tbody>
+<tr><td>천연가스</td><td>일부 대체 중(에탄 크래킹 등)</td><td>같은 화석 탄화수소 계열 안의 이동</td></tr>
+<tr><td>석탄</td><td>중국이 석탄 기반 메탄올·올레핀(CTO/MTO)을 세계 최대 규모로 운영(IEA 2018)<span class="tag v">확인</span></td><td>탄소 집약도가 높고 효율이 낮다</td></tr>
+<tr><td>바이오매스</td><td>소규모. 바이오플라스틱은 세계 플라스틱 생산의 약 0.5%(부록 6)</td><td>농지·식량과 경쟁</td></tr>
+<tr><td>재활용</td><td>2019년 플라스틱 폐기물 재활용률 9%(OECD, §10)</td><td>물리적 재활용의 품질 저하, 화학적 재활용 설비 규모의 한계</td></tr>
+<tr><td>CO₂ + 수소 합성</td><td>실증 단계</td><td>전력→액체연료 효율이 대략 40~50%로, 투입 전력의 절반 이상이 손실된다. Ueckerdt 외(2021, <i>Nature Climate Change</i>)는 e-연료 차량이 배터리차보다 약 5배 많은 전력을 쓴다고 제시한다<span class="tag v">확인</span></td></tr>
+</tbody></table></div>
+<p>마지막 경로는 전력이 소재로 넘어가는 직접적 길이다. 원리상 불가능하지는 않으나, 지질학적 시간이 합성해 둔 탄화수소를 현재의 에너지로 다시 만드는 일이어서 비용이 크다. 따라서 정확한 표현은 "대체 불가능"이 아니라 <b>"현재 기술과 가격에서 대체 경로가 비싸고 규모가 작다"</b>이다.</p>
+<blockquote>지금 관찰되는 것은 순 이동보다 기능 분리에 가깝다. 석유는 연료 역할 일부를 내주고 있고, 소재 역할은 수요 증가의 주된 동인이 되고 있다.</blockquote>
+<p>가까운 선례는 목재다. 산업국가에서 목재는 연료 역할을 석탄에 넘겼지만 건축재와 종이로 남았고, 세계 원목 생산은 2022년 약 40억 m³로 사상 최고 수준이다(FAO). 다만 세계 전체로는 약 49%가 여전히 땔감이므로 '연료 역할의 이양'은 산업국가에 한정된다<span class="tag v">확인</span>. 소금이 식품 보존 자원에서 염소-알칼리 화학공업의 원료로 바뀐 것과 같은 유형으로 볼 수 있다<span class="tag i">해석</span>.</p>
+<div class="obs"><b>관찰자 판독:</b> 증거가 지지하는 것은 (1) 비화석 전력원이 석유를 대체하는 범위가 주로 전력과 일부 수송에 한정된다는 점, (2) 소재 용도의 대체 경로가 현재 작고 비싸다는 점이다. 논쟁이 남는 것은 장기 전망이다. 재활용, 바이오 원료, CO₂ 기반 원료의 비용이 낮아지면 소재 대체가 확대될 수 있으며, 그 속도에 대한 전망은 기관마다 다르다.</div>
+
+<h2 id="ch5">§5 기초 자원과 패권 — 점령이 아닌 통제</h2>
+<p>대체가 어려운 기초 자원의 흐름을 쥐면 상대의 경제 기반에 영향력을 갖게 된다는 논지가 국제정치경제 문헌에 있다. 이 논지에서 통제는 영토를 빼앗는 방식이 아니라, 상대국을 형식상 독립국으로 두고 흐름의 조건을 쥐는 방식으로 작동한다. 이 장은 그 계보와 반론을 함께 검토한다.</p>
+
+<h3>학문적 계보</h3>
+<ul>
+<li><b>갤러거·로빈슨, 「자유무역 제국주의」(<i>Economic History Review</i> 6(1), 1953)</b><span class="tag v">확인</span>: 공식 제국과 비공식 제국은 연속선 위에 있다. "가능하면 비공식 통제, 필요하면 직접 지배"였으며, 직접 지배한 식민지는 빙산의 일각이므로 비공식 제국을 함께 봐야 한다.</li>
+<li><b>하비, 『신제국주의』(OUP 2003)</b><span class="tag v">확인</span>: 중동을 통제하면 세계의 석유 꼭지를, 그것으로 경쟁국과 세계 경제를 통제할 수 있다는 논지. 하비는 마르크스주의 지리학자다.</li>
+<li><b>패럴·뉴먼, 「무기화된 상호의존」(<i>International Security</i> 44(1):42–79, 2019)</b><span class="tag v">확인</span>: 결제망·통신망 같은 네트워크의 허브를 쥔 국가가 정보 수집('파놉티콘 효과')과 차단('초크포인트 효과')을 행사한다.</li>
+</ul>
+
+<h3>현대의 통제 수단</h3>
+<div class="tw"><table>
+<thead><tr><th>수단</th><th>작동 방식</th></tr></thead>
+<tbody>
+<tr><td>해군·요충지</td><td>호르무즈, 말라카, 수에즈 등 해상 운송의 길목을 지킨다</td></tr>
+<tr><td>달러 결제망</td><td>석유 거래 대부분이 달러로 결제된다. EU 역외 석유 수입의 약 85%가 달러 표시다(ECB 2019)<span class="tag v">확인</span>. 결제망에서 배제되면 거래가 막힌다</td></tr>
+<tr><td>금융 제재</td><td>이란, 베네수엘라. 유전을 건드리지 않고 판로를 막는다</td></tr>
+<tr><td>보험·해운</td><td>G7·EU의 러시아산 원유 가격상한제(2022년 12월 5일 시행, 배럴당 60달러). 상한을 넘는 거래에 해상보험·운송 서비스 제공을 금지<span class="tag v">확인</span></td></tr>
+<tr><td>안보 보장</td><td>걸프 국가에 대한 군사적 보호</td></tr>
+</tbody></table></div>
+<p>미국 정책 언어의 변화는 순서를 구분해야 한다. '에너지 지배(Energy Dominance)'는 2017년 트럼프 행정부가 먼저 내세운 구호다. 미국이 석유(원유+제품) 기준 월간 순수출국이 된 것은 2019년 9월, 연간 순수출국이 된 것은 2020년(1949년 이후 처음)이며, 원유만 보면 여전히 순수입국이다(EIA). 이 구호는 2025년 '국가에너지지배위원회'(행정명령 14213)로 다시 등장했다<span class="tag v">확인</span>.</p>
+
+<h3>공급 차단의 결과</h3>
+<div class="tw"><table>
+<thead><tr><th>사례</th><th>결과와 해석의 쟁점</th></tr></thead>
+<tbody>
+<tr><td>1941 대일 석유 금수</td><td>1941년 7월 26일 미국의 일본 자산 동결, 8월 1일 사실상 석유 금수, 약 4개월 뒤 12월 7일 진주만 공격과 동남아 침공. 일본은 석유 수입의 약 80%를 미국에 의존했다(미 국무부 역사실)<span class="tag v">확인</span>. 다만 마이어딩은 이 사례를 석유가 주된 동기인 '고전적 석유 전쟁'으로 보지 않는다(아래 반론)</td></tr>
+<tr><td>2차대전 독일</td><td>석탄 합성 연료와 루마니아 유전에 의존했다. 1944년 연합군의 석유 시설 공습 이후 항공유와 연료 생산이 급감했다(미 전략폭격조사단 1945, 승전국 자료). "기계화 부대가 멈췄다"는 단순화이며, 공군의 훈련·작전 마비가 더 직접적 결과였다<span class="tag v">확인</span></td></tr>
+<tr><td>1973 석유파동</td><td>1973년 10월 OAPEC의 감산·금수 뒤 1973~75년 선진국 경기침체가 이어졌다. 그러나 원인 비중은 논쟁 중이다. 금수 자체의 물량 효과는 제한적이었고 가격 급등, 각국 통화정책, 가격통제가 겹쳤다. Barsky &amp; Kilian(2004, <i>JEP</i>)은 통화 요인을 강조한다<span class="tag i">논쟁</span></td></tr>
+</tbody></table></div>
+<p>석유가 소재이기도 하므로 공급 차단의 영향은 연료에 그치지 않고 의료용품, 비료와 농약, 포장재, 섬유, 타이어, 윤활유의 공급망으로 번질 수 있다<span class="tag i">해석</span>. 한국은 원유를 사실상 전량 수입하며, 중동 비중은 2023년 71.9%, 2024년 71.5%, 2025년 약 70.7%였다(한국석유공사 페트로넷)<span class="tag v">확인</span>. 2026년 호르무즈 위기 이후에는 도입선 다변화로 7월 약 59.7%로 떨어졌다는 보도가 있다(서울신문 2026-07-13)<span class="tag e">추정</span>. 한국은 원유 수송로 안보를 주로 동맹과 국제 해군 활동에 의존한다.</p>
+
+<h3>반론과 저자의 입장</h3>
+<div class="tw"><table>
+<thead><tr><th>반론(공정한 요약)</th><th>저자의 입장(저자의 견해임)</th></tr></thead>
+<tbody>
+<tr><td>마이어딩, 『석유 전쟁이라는 신화』(Cornell UP 2020, 오픈액세스)<br><span style="font-weight:400">강대국도 유전을 빼앗으려는 '고전적 석유 전쟁'을 거의 하지 않는다. 침공 비용, 점령 비용, 국제적 보복, 석유 기업과의 관계 손상이라는 네 가지 비용 때문이다. 마이어딩은 1941년 일본, 1990년 이라크의 쿠웨이트 침공 등 석유 전쟁의 대표 사례로 꼽히는 경우들을 직접 재검토해, 석유가 동기였더라도 부차적이었다고 본다.</span></td><td>마이어딩의 대상은 영토 점령을 통한 석유 획득이다. 저자는 점령 비용이 크기 때문에 점령 없는 흐름 통제가 선호된다고 보며, 이 점에서 마이어딩의 비용 분석은 통제 논지와 양립할 수 있다고 본다. 다만 1941년 일본 사례에서 석유 동기의 비중에 대해서는 마이어딩의 재검토와 저자의 해석이 갈리며, 이 문제는 사료 해석의 쟁점으로 남는다.</td></tr>
+<tr><td>비탈리스, 『오일크래프트』(Stanford UP 2020)<br><span style="font-weight:400">석유 안보 논리는 과장된 통념이다. 1973년 금수는 시장이 공급을 재배분하면서 사실상 실효가 없었던 '정치극'이었고, 사우디와 미국의 '석유-안보 교환' 관계도 최근 만들어진 신화다. 1973~75년 침체의 원인도 금수만으로 설명되지 않는다(Barsky &amp; Kilian 2004 등과 부합).</span></td><td>비탈리스가 이미 반박한 1973년 사례를 근거로 다시 쓸 수는 없다. 저자가 드는 근거는 다른 종류다. 시장 재배분은 물리적 경로가 열려 있을 때 작동하는데, 2026년 호르무즈처럼 경로 자체가 막히면 재배분의 여지가 작아진다는 점(§9), 그리고 석유가 연료뿐 아니라 소재이기도 하다는 점이다. 저자는 이를 근거로 석유 안보 논리를 완전한 통념으로 보기 어렵다고 본다. 이 근거는 비탈리스가 분석한 사례 밖의 것이며, 2026년 사례의 장기적 평가는 아직 이르다.</td></tr>
+</tbody></table></div>
+<p>통제는 완전하지 않다. 2022년 10월 5일 OPEC+는 미국의 증산 요청에도 하루 200만 배럴 감산을 결정했고, 중국은 위안화 결제, 러시아·이란산 원유 도입, 육상 파이프라인으로 우회로를 넓혀 왔다(EIA)<span class="tag v">확인</span>. 콜건(<i>Partial Hegemony</i>, OUP 2021)의 '부분적 패권'은 1973년 이후 OPEC의 부상으로 미국의 석유 질서 지배가 '거의 완전'에서 '부분적'으로 바뀐 역사적 구조를 가리키는 개념이다. 이 개념을 빌리면, 2022년 이후의 현상도 통제가 부분적으로 작동하는 질서 안의 일로 읽을 수 있다<span class="tag i">해석</span>.</p>
+<div class="obs"><b>관찰자 판독:</b> 비공식 통제와 네트워크 통제의 작동 원리는 문헌상 잘 정립되어 있다. 쟁점은 그 효과의 크기다. 마이어딩과 비탈리스는 석유 동기의 전쟁과 금수의 실효를 낮게 평가하고, 1973년 침체의 원인도 다원적이다. 따라서 "공급을 쥐면 상대를 통제한다"는 명제는 경로가 물리적으로 막히는 조건에서 더 강하게, 시장 재배분이 가능한 조건에서 더 약하게 성립한다고 보는 것이 증거에 부합한다.</div>
+
+<h2 id="ch6">§6 연합의 두 축 — 문명과 공급망</h2>
+<p>헌팅턴(「The Clash of Civilizations?」, <i>Foreign Affairs</i> 1993; 단행본 1996)은 냉전 이후 국가들이 이념이 아니라 문명을 따라 뭉친다고 보았다<span class="tag v">확인</span>. 이 논지에는 문명 경계가 자의적이라는 비판과, 문명 경계가 분쟁을 더 많이 낳지 않았다는 실증 반박(Russett·Oneal·Cox 2000 등)이 있다. 브로델은 지리와 문명이 사람의 수명보다 훨씬 느린 시간('장기지속')으로 움직인다고 보았다. 동시에 자본과 생산망이 만드는 또 하나의 연합이 있다.</p>
+
+<h3>연합을 결정하는 세 층</h3>
+<div class="tw"><table>
+<thead><tr><th>층</th><th>시간</th><th>역할</th></tr></thead>
+<tbody>
+<tr><td>문명</td><td>수백 년</td><td>장기적 친화력. 신뢰와 가치관의 바탕</td></tr>
+<tr><td>지리·자원·공급망</td><td>수십 년</td><td>실제 이해관계. 누가 갖고, 누가 필요로 하고, 어느 길로 흐르는가</td></tr>
+<tr><td>공동의 압력</td><td>수 년</td><td>결집의 촉매. 제재, 봉쇄, 공동의 적</td></tr>
+</tbody></table></div>
+<p class="note">세 층 모델은 저자의 분석 틀이다<span class="tag i">해석</span>.</p>
+
+<h3>관찰되는 현상</h3>
+<ul>
+<li><b>비서방 연합의 확장:</b> BRICS에 2024년 1월 1일 이집트·에티오피아·이란·UAE가 가입했다(사우디는 초청되었으나 공식 확정하지 않음). 인도네시아는 2025년 1월 6일 가입이 발표되었다(의장국 브라질 외교부). SCO에는 이란(2023년 7월), 벨라루스(2024년 7월)가 정회원으로 가입했다<span class="tag v">확인</span>.</li>
+<li><b>생산국 연합:</b> OPEC+(2016년 12월 10일 협력선언)<span class="tag v">확인</span>.</li>
+<li><b>대륙 세력의 결속:</b> 중·러 '무제한 협력' 공동성명(2022년 2월 4일), 중국-이란 25년 협정(2021년 3월 27일 서명, 전문 비공개), 중국이 중재한 사우디-이란 정상화(2023년 3월 10일 베이징 공동성명)<span class="tag v">확인</span>.</li>
+<li><b>해양 동맹의 강화:</b> AUKUS(2021년 9월 15일), 쿼드, 핀란드(2023년 4월 4일)·스웨덴(2024년 3월 7일) NATO 가입<span class="tag v">확인</span>.</li>
+<li><b>문명권 결집:</b> 튀르크국가기구(2009년 '튀르크평의회'로 창설, 2021년 11월 개칭)<span class="tag v">확인</span>.</li>
+<li><b>공동의 압력에 따른 결집:</b> 사헬국가연합(2023년 9월 16일 리프타코-구르마 헌장, 2024년 7월 6일 국가연합 조약). 쿠데타로 들어선 말리·니제르·부르키나파소 군사정부들의 안보 동맹으로, ECOWAS 탈퇴와 반프랑스 노선이 결집의 계기였다<span class="tag v">확인</span>.</li>
+</ul>
+
+<h3>공급망 블록의 실증</h3>
+<ul>
+<li><b>보로스·긴터(2026)</b><span class="tag v">확인</span>: 「A Three-Bloc Structure of the World Economy」, <i>Financial and Economic Review</i> 25(2):65–91. 무역·금융·군사 데이터의 계층적 군집 분석 결과 세계는 미국, EU, 중·러의 세 블록으로 나뉜다. 저자들은 헝가리 중앙은행(MNB)·국채관리청 소속이고 학술지도 MNB가 발간한다.</li>
+<li><b>보나디오 외, 「블록 놀이: 디커플링의 계량」(IMF WP 2025/263; NBER w34302)</b><span class="tag v">확인</span>: 187개국 중 약 1/4은 미국 쪽, 1/4은 중국 쪽, 절반은 비동맹으로 분류된다. 한국·일본·인도·싱가포르는 미국 쪽, 러시아·사우디·이스라엘·홍콩은 중국 쪽이다. 단, 분류 기준은 2015~2023년 무역비용 변화의 방향(미·중 중 어느 쪽과 상대적으로 가까워졌는가)이며, 무역 규모상의 블록 소속이 아니다.</li>
+</ul>
+<p>사우디와 이스라엘이 무역비용 변화의 방향에서 같은 쪽으로, BRICS 회원국 인도가 미국 쪽으로 분류된다는 결과는 문명 축과 공급망 축이 서로 다른 지도를 그릴 수 있음을 시사한다<span class="tag i">해석</span>.</p>
+
+<h3>두 축이 엇갈리는 나라</h3>
+<div class="tw"><table>
+<thead><tr><th>국가</th><th>문명 축(헌팅턴 분류)</th><th>공급망 축</th><th>상태</th></tr></thead>
+<tbody>
+<tr><td>한국</td><td>중화 문명권(동아시아·유교권)</td><td>미국 쪽(반도체·동맹)</td><td>엇갈림. 구조적 긴장</td></tr>
+<tr><td>사우디</td><td>이슬람권</td><td>최대 원유 고객은 중국(사우디 원유 수출의 약 1/4, EIA)</td><td>안보는 미국, 시장은 중국</td></tr>
+<tr><td>러시아</td><td>정교 문명의 핵심국</td><td>중국 쪽(제재 이후)</td><td>공급망 압력이 연합을 재편한 사례</td></tr>
+<tr><td>독일</td><td>서구</td><td>미국 동맹, 중국 시장 의존</td><td>두 축 사이의 긴장</td></tr>
+</tbody></table></div>
+<p>교역망 연합에는 선례가 있다(청동기 주석 교역망, 한자동맹, 베네치아·제노바). 저자는 지금의 차이를 규모(지구 전체), 대상(사치품이 아닌 기초 재료 전반), 그리고 어느 공급망에 속하느냐가 국가의 경제 안보 조건을 정한다는 점에서 찾는다<span class="tag i">해석</span>.</p>
+<div class="obs"><b>관찰자 판독:</b> 블록화의 실증은 측정 방식에 따라 결과가 다르다. 보로스·긴터는 세 블록을, IMF 연구는 '미국 쪽·중국 쪽·비동맹'의 방향성을 보인다. 두 연구 모두 문명 경계와 일치하지 않는 배치를 포함한다. 문명 축의 설명력 자체는 학계에서 논쟁 중이다.</div>
+
+<h2 id="ch7">§7 사회동역학으로 본 국가 군집</h2>
+<p>사회동역학은 개인이 서로의 행동에 영향을 받는다는 가정에서 출발해, 균형 상태보다 변화의 과정 자체를 연구한다(Castellano, Fortunato &amp; Loreto, <i>Rev. Mod. Phys.</i> 81:591, 2009; Weidlich, <i>Sociodynamics</i>, 2000). 이 분야의 군집 모델은 앞 장의 현상과 구조적으로 대응한다. 아래 대응은 유추이며, 모델을 국가 단위 자료로 검증한 결과가 아니다<span class="tag i">해석</span>.</p>
+<div class="tw"><table>
+<thead><tr><th>모델</th><th>원리</th><th>대응 현상</th></tr></thead>
+<tbody>
+<tr><td>액설로드 문화 확산(<i>J. Conflict Resolution</i> 41(2):203–226, 1997)<span class="tag v">확인</span></td><td>비슷한 이웃끼리 교류할수록 더 비슷해진다. 지역 안에서는 같아지고 전체로는 여러 문화권으로 나뉜다</td><td>문명 축의 연합</td></tr>
+<tr><td>셸링 분리(<i>J. Mathematical Sociology</i> 1(2):143–186, 1971)<span class="tag v">확인</span></td><td>작은 선호만으로도 극단적 분리가 생긴다</td><td>프렌드쇼어링과 블록화</td></tr>
+<tr><td>제한된 신뢰(Deffuant et al. 2000; Hegselmann &amp; Krause, <i>JASSS</i> 5(3), 2002)<span class="tag v">확인</span></td><td>차이가 한계를 넘으면 서로 영향을 주고받지 않게 된다</td><td>지경학적 분절</td></tr>
+<tr><td>선호적 연결(Barabási &amp; Albert, <i>Science</i> 286:509–512, 1999)<span class="tag v">확인</span></td><td>연결이 많은 마디에 새 연결이 더 붙어 소수의 거대한 중심이 생긴다</td><td>달러·SWIFT·요충지의 네트워크 중심성</td></tr>
+<tr><td>임계 전이(Scheffer et al., <i>Nature</i> 461, 2009)<span class="tag v">확인</span></td><td>느리게 쌓이던 변화가 어느 순간 상태를 급격히 바꾸며, 그 전에 조기 경보 신호가 나타날 수 있다</td><td>느린 연합 형성과 급격한 표면화</td></tr>
+</tbody></table></div>
+<p>이달고·클링거·바라바시·하우스만의 「제품 공간」(<i>Science</i> 317:482–487, 2007)<span class="tag v">확인</span>은 국가의 생산 역량 구조를 보여주는 연구다. 네트워크의 마디는 국가가 아니라 제품이며, 제품 간 연관성(동시 수출 확률)의 지도 위에서 국가가 인접한 제품으로 옮겨 가며 발전한다는 내용이다. 공급망(투입-산출 연결)이나 국가 군집을 직접 다룬 연구는 아니다. 공급망에 따른 국가 군집의 실증은 §6의 보로스·긴터와 IMF 블록 연구가 더 가깝다.</p>
+
+<h2 id="ch8">§8 자원 확보의 네 가지 방식 — 정복, 경쟁, 통제, 협력</h2>
+<p>인류는 자원을 네 가지 방식으로 확보해 왔다. 방식마다 상대의 주권을 다루는 법과 드는 비용이 다르다. 아래 분류와 "같은 목표를 더 낮은 비용으로 이루는 방식 쪽으로 이동했다"는 해석은 저자의 종합이다<span class="tag i">저자 종합</span>.</p>
+<div class="tw"><table>
+<thead><tr><th>방식</th><th>정의</th><th>상대의 주권</th><th>비용</th></tr></thead>
+<tbody>
+<tr><td>정복</td><td>자원이 있는 땅을 직접 차지하고 흡수</td><td>없앰</td><td>가장 큼(침공, 점령, 통치)</td></tr>
+<tr><td>경쟁</td><td>같은 자원을 두고 다른 세력과 겨룸(시장, 전쟁, 선점)</td><td>상관없음</td><td>큼, 결과 불확실</td></tr>
+<tr><td>통제</td><td>주권은 남겨 두고 흐름(길목, 결제, 가격)을 쥠</td><td>형식상 유지</td><td>상대적으로 작음</td></tr>
+<tr><td>협력</td><td>규칙을 함께 정해 공동으로 확보하거나 관리</td><td>유지</td><td>협상 비용</td></tr>
+</tbody></table></div>
+
+<h3>시대별 사례</h3>
+<div class="tw"><table style="min-width:860px">
+<thead><tr><th>시대</th><th>정복</th><th>경쟁</th><th>통제</th><th>협력</th></tr></thead>
+<tbody>
+<tr><td>고대 오리엔트</td><td>이집트의 누비아 금광 점령, 아시리아의 공납 체제</td><td>청동기 열강의 교역로 다툼</td><td>주석 교역로를 쥔 중개 도시</td><td>아마르나 서신(BC 1360~1332년경): 왕들 사이의 금과 선물 교환</td></tr>
+<tr><td>고전 고대</td><td>로마의 스페인 은광 장악, 트라야누스의 다키아 정복(106)</td><td>포에니 전쟁(BC 264~146): 시칠리아 곡물과 스페인 은</td><td>한 무제의 소금·철 전매(BC 119)</td><td>실크로드 오아시스 도시의 중계 교역</td></tr>
+<tr><td>중세</td><td>동지중해 교역로 쟁탈</td><td>베네치아 대 제노바의 교역 전쟁</td><td>비잔티움의 비단 독점(6세기)</td><td>한자동맹</td></tr>
+<tr><td>대항해</td><td>스페인의 아메리카 정복과 포토시 은광</td><td>영국·네덜란드 전쟁(17세기)</td><td>VOC의 반다 제도 정복(1621, 주민 학살·추방)과 육두구 독점</td><td>토르데시야스 조약(1494년 6월 7일)</td></tr>
+<tr><td>제국주의</td><td>레오폴드 2세의 콩고 고무 착취</td><td>그레이트 게임, 아프리카 쟁탈</td><td>영국의 석탄 보급항과 해저 전신망</td><td>베를린 회의(1884년 11월~1885년 2월)</td></tr>
+<tr><td>석유의 세기</td><td>일본의 동인도 유전 침공(1941~42: 1941년 12월 보르네오 상륙, 1942년 1~3월 팔렘방·자바 점령), 이라크의 쿠웨이트 침공(1990)</td><td>메이저 석유회사 경쟁, 양차대전의 연료 확보</td><td>레드라인 협정(1928.7.31)·아크나캐리 협정(1928.9.17), 세븐 시스터스</td><td>유럽석탄철강공동체(1951년 서명, 1952년 발효), OPEC(1960), IEA(1974), 남극조약(1959)</td></tr>
+<tr><td>현대</td><td>영토 전체 정복은 드물어짐</td><td>미·중의 핵심 광물·반도체 경쟁</td><td>달러 결제망, 해상로, 제재, 중국의 희토류·갈륨·게르마늄 수출통제</td><td>OPEC+, 핵심광물안보파트너십(2022년 6월), BRICS</td></tr>
+</tbody></table></div>
+
+<h3>정복: 왜 줄어들었나</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>연결점</th></tr></thead>
+<tbody>
+<tr><td>파잘, 『국가의 죽음』(Princeton UP 2007)<span class="tag v">확인</span></td><td>1945년 이후 국가가 통째로 사라지는 일이 극히 드물어졌다. 원인은 완충국의 정치지리와 1945년 이후 정복 금지 규범</td><td>정복 규범의 변화</td></tr>
+<tr><td>재커, 「영토 보전 규범」(<i>IO</i> 55(2):215–250, 2001)<span class="tag v">확인</span></td><td>1945년 이후 무력으로 국경을 바꾸는 일이 뚜렷이 줄었고, 이를 금지하는 규범이 수용되었다</td><td>정복의 정당성 비용 증가</td></tr>
+<tr><td>올트먼(Dan Altman), 「1945년 이후 영토 정복의 진화와 영토 보전 규범의 한계」(<i>IO</i> 74(3):490–522, 2020)<span class="tag v">확인</span></td><td>일부 영토를 기정사실로 빼앗는 정복은 생각보다 잦다. 과거에는 전쟁으로 넓은 땅을 점령했다면, 지금은 작은 지역을 빼앗고 전쟁은 피하려 한다. 후속 단행본 『Taking Territory』(Cornell UP 2026)</td><td>정복은 사라지지 않고 작고 은밀해졌다</td></tr>
+<tr><td>브룩스, 『안보의 생산』(Princeton UP 2005)<span class="tag v">확인</span></td><td>다국적 생산의 분산이 선진국 사이 정복의 경제적 이익을 줄였다</td><td>정복의 경제적 이익 감소</td></tr>
+<tr><td>마이어딩, 『석유 전쟁이라는 신화』(2020)<span class="tag v">확인</span></td><td>침공, 점령, 국제적 보복, 기업 관계 손상의 비용 때문에 석유를 노린 전쟁은 수지가 맞지 않는다</td><td>점령의 비용 측면</td></tr>
+</tbody></table></div>
+
+<h3>경쟁: 패권의 교체</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>연결점</th></tr></thead>
+<tbody>
+<tr><td>길핀, 『세계정치의 전쟁과 변화』(Cambridge UP 1981)<span class="tag v">확인</span></td><td>기존 패권과 신흥 세력의 힘이 엇갈릴 때 체제를 다시 정하는 패권 전쟁이 일어난다(현실주의)</td><td>포에니 전쟁, 영국·네덜란드 전쟁, 미·중 경쟁</td></tr>
+<tr><td>케네디, 『강대국의 흥망』(Random House 1987)<span class="tag v">확인</span></td><td>경제·자원 기반과 군사적 부담이 어긋나면('제국의 과잉팽창') 강대국이 쇠퇴한다</td><td>자원 기반과 경쟁의 승패</td></tr>
+<tr><td>르 비용, 『약탈의 전쟁』(Hurst/Columbia UP 2012)<span class="tag v">확인</span></td><td>석유, 다이아몬드, 목재 같은 자원은 전쟁을 더 일어나기 쉽고, 더 잔혹하고, 더 길게 만든다</td><td>국가 내부의 자원 경쟁까지 포괄</td></tr>
+</tbody></table></div>
+
+<h3>통제: 비대칭이 곧 힘</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>연결점</th></tr></thead>
+<tbody>
+<tr><td>허시먼, 『국력과 대외무역의 구조』(UC Press 1945)<span class="tag v">확인</span></td><td>교역은 서로 이익이어도 대칭적이지 않으며, 그 비대칭이 권력이 된다. 나치 독일이 동남유럽의 교역 의존을 설계한 사례를 분석</td><td>통제 방식의 고전. 지경학의 출발점</td></tr>
+<tr><td>갤러거·로빈슨(1953)<span class="tag v">확인</span></td><td>공식·비공식 제국의 연속선</td><td>주권을 남긴 채 영향력 행사(§5)</td></tr>
+<tr><td>패럴·뉴먼(2019; 『Underground Empire』, 2023)<span class="tag v">확인</span></td><td>네트워크 허브의 무기화</td><td>현대 통제의 작동 원리(§5)</td></tr>
+</tbody></table></div>
+
+<h3>협력: 경쟁 끝의 제도</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>연결점</th></tr></thead>
+<tbody>
+<tr><td>하스, 『유럽의 통합』(Stanford UP 1958)<span class="tag v">확인</span></td><td>한 분야의 협력이 다른 분야로 파급되어 통합을 만든다(신기능주의)</td><td>석탄·철강을 공동 관리로 돌린 유럽석탄철강공동체</td></tr>
+<tr><td>코헤인, 『패권 이후』(Princeton UP 1984)<span class="tag v">확인</span></td><td>패권이 약해져도 국제제도가 협력을 유지시킨다(신자유제도주의)</td><td>IEA, OPEC의 지속성</td></tr>
+<tr><td>오스트롬, 『Governing the Commons』(Cambridge UP 1990; 한국어판 『공유의 비극을 넘어』)<span class="tag v">확인</span></td><td>공유 자원은 국가 통제나 사유화 없이도 공동체 규칙으로 관리할 수 있다. 다만 오스트롬의 사례는 소규모 지역 공동체다</td><td>남극조약, 해양법으로의 연결은 저자의 해석<span class="tag i">해석</span></td></tr>
+</tbody></table></div>
+
+<h3>이동 경로(저자 종합)</h3>
+<blockquote>정복에서 경쟁으로, 경쟁에서 통제로. 그리고 통제받는 쪽은 협력으로 대응했다.</blockquote>
+<ol>
+<li><b>정복의 비용이 올랐다.</b> 점령 비용은 처음부터 컸고(마이어딩), 1945년 이후 정당성 비용이 붙었고(재커, 파잘), 생산이 흩어지며 이익은 줄었다(브룩스). 다만 작은 영토의 기정사실화 정복은 계속된다(올트먼).</li>
+<li><b>같은 목표를 더 싸게 이루는 통제가 늘었다.</b> 그 원리는 허시먼이 1945년에 정리했다.</li>
+<li><b>통제받는 쪽은 협력으로 대응했다.</b> OPEC(1960년 9월 14일 바그다드)은 메이저 석유회사의 통제에 맞선 생산국의 협력이었고, 1973년 금수·공시가격 일방 인상과 이후 국유화로 통제권 일부를 가져왔다<span class="tag v">확인</span>. BRICS와 OPEC+를 같은 구조로 읽는 것은 저자의 해석이다.</li>
+</ol>
+
+<h3>방식은 겹쳐서 작동한다</h3>
+<div class="tw"><table>
+<thead><tr><th>결합</th><th>사례</th><th>의미</th></tr></thead>
+<tbody>
+<tr><td>정복 다음 통제</td><td>반다 제도 정복 후 육두구 독점, 스페인의 정복 후 은 독점</td><td>정복은 통제를 세우는 수단이었다</td></tr>
+<tr><td>경쟁자끼리의 협력</td><td>베를린 회의, 토르데시야스 조약, 1928년 메이저 카르텔</td><td>경쟁자들이 제3자를 나누기 위해 협력했다</td></tr>
+<tr><td>경쟁 다음 협력</td><td>양차대전 뒤 유럽석탄철강공동체</td><td>파국적 경쟁 끝에 협력 제도가 생겼다</td></tr>
+<tr><td>협력이 통제의 도구로</td><td>미국 주도 국제기구와 동맹 체제</td><td>협력의 형식 안에 비대칭이 들어 있을 수 있다(허시먼). 패권 안정론은 같은 구조를 공공재 제공으로 본다</td></tr>
+</tbody></table></div>
+
+<h3>현재의 구도</h3>
+<div class="tw"><table>
+<thead><tr><th>방식</th><th>주체</th><th>형태</th></tr></thead>
+<tbody>
+<tr><td>통제</td><td>미국</td><td>결제망, 해상로, 제재, 수출통제</td></tr>
+<tr><td>통제(새 축)</td><td>중국</td><td>희토류와 핵심 광물 가공을 쥔 수출통제</td></tr>
+<tr><td>경쟁</td><td>미·중</td><td>반도체, 배터리 광물, 공급망 블록</td></tr>
+<tr><td>협력</td><td>생산국과 비서방국</td><td>OPEC+, BRICS, 장기 공급 계약</td></tr>
+<tr><td>정복</td><td>드물고 작게</td><td>일부 영토 점거(올트먼 2020의 형태)</td></tr>
+</tbody></table></div>
+<div class="obs"><b>관찰자 판독:</b> 1945년 이후 대규모 영토 정복이 줄었다는 점은 여러 독립 연구가 지지한다. 반면 작은 영토의 기정사실화 정복은 줄지 않았다. 중국의 핵심 광물 수출통제는 통제 수단을 쓰는 주체가 늘고 있음을 보여주지만, 그것이 체제 전환으로 이어질지는 아직 판단할 수 없다. 이 판단은 §6의 '두 축이 엇갈리는 나라'의 선택에 달려 있다.</div>
+
+<h2 id="ch9">§9 2026년 이란 전쟁 — 길목 차단의 사례</h2>
+<p>이 장은 2026년 이란 전쟁과 호르무즈 봉쇄를 세 가지 질문으로 검토한다. 유통 차질은 세계 경제에 얼마나 큰 충격을 주는가. 대체 에너지 기술은 석유 소재에서 얼마나 독립적인가. 길목을 막는 힘과 차단을 견디는 힘은 어떻게 나뉘는가. 수치는 2026-10-08 기준이며 상황은 계속 변하고 있다.</p>
+
+<h3>1. 유통 차질과 세계 경제</h3>
+<p>해밀턴(1983, <i>JPE</i> 91(2))은 2차대전 이후 미국 경기침체가 한 번을 제외하고 모두 약 3/4년의 시차를 두고 유가 급등 뒤에 왔음을 보였다. 해밀턴은 이를 인과의 증명이 아니라 기여 요인으로 한정했다<span class="tag v">확인</span>. 해밀턴(2009, <i>Brookings Papers on Economic Activity</i>)은 2007~08년 충격도 이 목록에 넣어야 한다고 결론지었고, 그 원인을 정체된 생산과 강한 수요의 충돌로 보았다<span class="tag v">확인</span>.</p>
+<div class="tw"><table>
+<thead><tr><th>항목</th><th>2026년의 경과(2026-10-08 기준)</th></tr></thead>
+<tbody>
+<tr><td>발단</td><td>2026년 2월 28일 미국·이스라엘이 이란을 공습하며 전쟁이 시작되었고 호르무즈 해협이 봉쇄되었다(첫 거래일 3월 2일). 호르무즈는 하루 약 2,000만 배럴, 세계 석유 소비의 약 20%, 해상 석유 교역의 약 1/4이 지나는 길목이다(IEA)<span class="tag v">확인</span></td></tr>
+<tr><td>IEA 평가</td><td>"세계 석유시장 역사상 최대의 공급 차질". 3월 세계 공급이 하루 1,010만 배럴 줄어 9,700만 배럴이 되었다(IEA <i>Oil Market Report</i> 2026년 3·4월)<span class="tag v">확인</span></td></tr>
+<tr><td>유가(브렌트)</td><td>3월 30일 5월물 종가 약 <b>118</b>달러(118.35달러). 다음 날 근월물이 6월물로 바뀌며 103.97달러. 3월 월간 상승률은 1988년 이후 최대였다. 7월 초 약 <b>72</b>달러(7월 3일로 끝난 주 종가 약 71.9달러). 9월 초 약 <b>91~98</b>달러(9월 2일 약 93달러, 9월 7일 약 97달러)였다가 9월 10일 하루 6% 급등해 107.6달러, 9월 14일 107~108달러. 10월 5일 약 101.5달러<span class="tag v">확인</span></td></tr>
+<tr><td>비상 대응</td><td>3월 11일 IEA <b>32개 회원국이 만장일치로</b> 비축유 4억 배럴 공동 방출에 <b>합의</b>했다. 역대 최대 규모이며 IEA 사상 여섯 번째 공동행동이다. IEA는 방출을 지시하는 기관이 아니다<span class="tag v">확인</span></td></tr>
+<tr><td>세계 성장</td><td>IMF는 2026년 세계 성장률 전망을 1월 3.3%에서 4월 WEO 3.1%로, 7월 WEO 업데이트에서 <b>3.0%</b>로 낮췄다(10월 WEO는 이 보고서 작성 이후 발표 예정)<span class="tag v">확인</span>. 댈러스 연준 소속 이코노미스트 킬리언·플랜티·리히터의 시나리오 분석(2026년 3월 20일)은 봉쇄가 3분기 이어지면 2025년 4분기~2026년 4분기 세계 실질 GDP 성장률이 1.3%p 낮아진다고 추정했다(1분기 봉쇄 시 -0.2%p, 2분기 봉쇄 시 -0.3%p). 연준의 공식 전망이 아니다<span class="tag v">확인</span></td></tr>
+<tr><td>아시아</td><td>일본은 원유 수입의 약 94%가 중동산이다(경제산업성 2025년 통계)<span class="tag v">확인</span>. 한국 산업통상부는 3월 27일부터 5개월간 나프타 수출을 원칙적으로 금지했고(장관 승인 예외), 휴전 이후 완화 검토가 보도되었다<span class="tag v">확인</span>. 한국은 3월 16일 석탄발전의 80% 출력 상한을 해제했고, 9월에는 2040년 이후 수명이 남는 석탄발전 21기 중 최대 10기를 '안보전원'으로 유지하는 방안을 검토한다고 발표했다<span class="tag v">확인</span></td></tr>
+<tr><td>휴전 이후</td><td>4월 8일 파키스탄 중재로 2주 휴전이 발표되었다. 그러나 해협 통항은 회복되지 않았고, IMF PortWatch는 9월 27일 통항 1척(위기 전 하루 약 85척)을 기록했다. 사실상 재봉쇄 상태다<span class="tag v">확인</span></td></tr>
+</tbody></table></div>
+<p>한국의 나프타 수출 제한은 이번 위기가 연료 위기이면서 소재 위기이기도 했음을 보여준다. 나프타는 석유화학의 기초 원료다<span class="tag i">해석</span>.</p>
+
+<h3>2. 대체 에너지 기술의 석유 소재 의존</h3>
+<p>석유의 대체 기술로 꼽히는 설비에도 석유 유래 소재가 들어간다. 이 표의 착상은 AFPM(미국 정유·석유화학 업계 단체)의 자료에서 나왔으며, 수치는 업계 기술지와 정부 연구소 자료로 다시 확인했다.</p>
+<div class="tw"><table>
+<thead><tr><th>대체 에너지</th><th>들어가는 석유 유래 소재</th></tr></thead>
+<tbody>
+<tr><td>전기차 배터리</td><td>음극재인 인조흑연을 니들코크스 등 코크스로 만든다. 코크스(석유계·석탄계 포함)가 음극재 생산 원가의 약 33%를 차지한다(Fastmarkets, 상업 가격평가사)<span class="tag v">확인</span>. 배터리 수요 증가가 음극용 코크스 수요를 늘린다는 전망이 있다(Argus)</td></tr>
+<tr><td>풍력 터빈</td><td>날개는 에폭시·폴리에스터·비닐에스터 수지 복합재다. 약 40m급 날개 한 장의 두 쪽을 붙이는 데 폴리우레탄 접착제가 <b>최대 약 400kg(400kg 이하)</b> 쓰인다(<i>Reinforced Plastics</i>, 복합재 업계 기술지)<span class="tag v">확인</span>. 70~100m급 대형 날개는 더 많이 쓰지만 이를 정량화한 1차 출처는 찾지 못했다</td></tr>
+<tr><td>태양광 패널</td><td>실리콘 셀을 감싸는 EVA 봉지재(에틸렌 원료)와 PET 계열 백시트(미 국립재생에너지연구소 NREL 모듈 구조 자료)<span class="tag v">확인</span></td></tr>
+</tbody></table></div>
+<p>정밀 가공은 석유에서 더 높은 부가가치의 물질을 만든다. 2024년 10월 중국 시세 기준으로 유계 니들코크스(생코크스)는 톤당 약 4,972위안, 저유황 석유코크스는 약 2,452위안으로 약 2배였다(SMM, 상업 가격정보). 고유황 연료급 코크스나 소성 니들코크스의 고점기와 비교하면 격차가 수 배에서 10배 이상까지 벌어지지만, 시기와 등급에 크게 좌우된다<span class="tag e">추정</span>. 초안의 "10~20배" 일반화는 근거가 부족해 이렇게 고쳤다.</p>
+
+<h3>3. 길목을 막는 힘과 견디는 힘</h3>
+<p>이란은 OPEC 회원국이자 주요 산유국이다(전쟁 전 하루 약 330만 배럴 생산, IEA)<span class="tag v">확인</span>. 그러나 이번 충격의 크기는 이란 자국 산출이 시장에서 빠진 데서 나온 것이 아니라, 사우디·이라크·쿠웨이트·UAE·카타르 등 <b>다른 나라들의 수출 경로인 호르무즈를 막은 데서</b> 나왔다. 이란의 지렛대는 생산량이 아니라 길목의 위치였다<span class="tag i">해석</span>. 8월에는 이란 의회 국가안보·외교위원회가 호르무즈 통항 제한 법안 초안을 검토했다고 파르스 통신이 보도했다. 초안은 미국·이스라엘 및 '적대국' 선박의 통항 금지, 화물가의 최대 20% 벌금, 배상 전 통행 불허 등을 담았다(Al-Monitor 보도). 정부의 공식 규칙이 아니라 의회 위원회의 법안 초안이다<span class="tag v">확인</span>. 길목에 대한 영향력을 제도로 굳히려는 시도로 읽힐 수 있다<span class="tag i">해석</span>.</p>
+<div class="tw"><table>
+<thead><tr><th>국가</th><th>완충력</th></tr></thead>
+<tbody>
+<tr><td>중국</td><td>정부 전략비축과 국영 석유사 상업 재고를 합쳐 약 14억 배럴(미 EIA 추정, 2025년 12월)<span class="tag v">확인</span>. 충격을 상당 부분 흡수할 여력</td></tr>
+<tr><td>일본·한국</td><td>중동 의존이 높고 해상로 안보를 동맹에 의존해 크게 노출</td></tr>
+</tbody></table></div>
+<p>이 사례에서 영향력은 두 요소로 나뉘어 관찰된다. <b>길목을 막거나 여는 힘</b>, 그리고 <b>차단을 견디는 완충력</b>이다<span class="tag i">해석</span>.</p>
+<div class="obs"><b>관찰자 판독:</b> 증거가 지지하는 것은 (1) 물리적 경로 차단이 단일 산유국의 생산 중단보다 훨씬 큰 공급 충격을 낳았다는 점, (2) 비축 규모가 국가별 노출도를 갈랐다는 점, (3) 위기가 나프타 수출 제한처럼 소재 공급망으로 번졌다는 점이다. 아직 판단할 수 없는 것은 장기 효과다. 전쟁과 봉쇄가 진행 중이고, 성장률·유가 수치는 계속 수정되고 있으며, 시장 재배분과 대체 경로 투자가 충격을 얼마나 줄일지는 열려 있다. 석유 유통을 통제하는 쪽이 더 큰 힘을 갖게 된다는 저자의 일반 명제는 규범적 논의 절에 둔다.</div>
+<p class="note">이 장의 2026년 수치는 IEA 보고서·보도자료, IMF WEO와 PortWatch, 댈러스 연준 원문, 통신·금융 언론, 국내 언론의 정부 발표 보도를 출처로 한다. IEA 웹페이지 일부는 이번 검증에서 직접 열람하지 못해, 해당 수치는 IEA 발표를 인용한 2차 보도로 교차 확인했다. 수치는 2026-10-08 기준이며 이후 바뀔 수 있다.</p>
+
+<h2 id="ch10">§10 석유 자원의 한계와 과제</h2>
+<p>석유의 한계는 하나가 아니다. 매장량, 생산 유지 비용, 에너지 수지, 유통, 사용 방식의 다섯 겹으로 나눌 수 있으며, 가까운 미래에 먼저 닿는 한계는 양보다 비용과 흐름일 가능성이 있다.</p>
+
+<h3>1. 다섯 겹의 한계</h3>
+<div class="tw"><table>
+<thead><tr><th>한계</th><th>근거</th><th>언제 닿나</th></tr></thead>
+<tbody>
+<tr><td>매장량</td><td>확인매장량 기준 가채연수(R/P)는 1980년 29.7년에서 2020년 53.4년으로 늘었다(BP, 현 Energy Institute <i>Statistical Review</i>). 증가 원인에는 셰일·오일샌드 편입 외에 1980년대 OPEC 매장량 상향과 베네수엘라 초중질유 편입이 있다<span class="tag v">확인</span>. Rystad Energy(상업 컨설팅사, 2025년 8월)는 미발견분을 포함한 회수 가능 자원을 약 1.5조 배럴로 본다. 2024년 약 300억 배럴을 생산했지만 기존 유전 재평가와 셰일 등으로 회수 가능 자원은 50억 배럴 늘었다. 반면 미발견 자원 추정치는 프런티어 탐사 위축, 미주 밖 셰일 실패, 해상 개발 비용 2배 상승으로 10년간 4,560억 배럴 줄었다<span class="tag v">확인</span></td><td>멀다. 다만 새로 찾는 속도가 소비를 따라가지 못한다</td></tr>
+<tr><td>생산 유지 비용</td><td>투자를 멈추면 생산은 매년 평균 8%, 하루 약 550만 배럴씩 준다(2010년에는 하루 400만 배럴 미만). 셰일과 심해 의존으로 감소 속도가 빨라졌고, 2019년 이후 연평균 상류 투자의 약 90%가 기존 유전의 감소분을 메우는 데 쓰인다(IEA, <i>The Implications of Oil and Gas Field Decline Rates</i>, 2025년 9월)<span class="tag v">확인</span></td><td>이미 진행 중</td></tr>
+<tr><td>에너지 수지(EROI)</td><td>Hall, Lambert &amp; Balogh(2014, <i>Energy Policy</i> 64:141–152)에 따르면 석유·가스의 투입 대비 회수 에너지(EROI)는 최근 수십 년간 하락했고, 미국 석탄은 추세가 불분명하며 중국 석탄은 하락했다. 미국 석유 발견 EROI의 장기(약 100년) 하락 추정은 Guilford 외(2011)의 별도 연구다<span class="tag v">확인</span></td><td>진행 중, 장기적으로 중요</td></tr>
+<tr><td>유통</td><td>2026년 호르무즈 봉쇄. 석유는 땅속에 있었지만 세계는 역사상 최대의 공급 차질을 겪었다(§9)</td><td>언제든</td></tr>
+<tr><td>사용 방식</td><td>회수 가능 자원 1.5조 배럴을 연 300억 배럴씩 쓰면 약 50년, 석유화학 원료 비중(수요의 약 12~14%, IEA)만큼만 쓰면 약 350년<span class="tag e">추정</span></td><td>선택에 따라</td></tr>
+</tbody></table></div>
+<p class="note">사용 방식 항목은 수요가 고정되고 회수 가능량이 소진될 때까지 생산이 일정하다는 비현실적 가정 아래의 산술이며, 연구 결과가 아니다.</p>
+<p>셰일 혁명은 공급 부족분을 메웠지만, 셰일 유정은 감소가 빨라 생산을 유지하려면 계속 시추해야 한다. 2015년 이후 셰일의 손익분기 비용은 크게 떨어졌다는 자료도 많다(댈러스 연준 에너지 설문)<span class="tag v">확인</span>.</p>
+
+<h3>2. 세 가지 대응</h3>
+<p>아래 대응은 탄소 문제와 상관없이 성립하는 자원 보존론으로 제시한다.</p>
+<div class="tw"><table>
+<thead><tr><th>대응</th><th>현황</th><th>핵심</th></tr></thead>
+<tbody>
+<tr><td>정밀 재활용</td><td>2019년 플라스틱 폐기물 중 재활용 9%, 소각 19%, 매립 약 50%, 부적절 관리(무단 투기·노천 소각·유출) 22%(OECD <i>Global Plastics Outlook</i> 2022)<span class="tag v">확인</span>. 물리적 재활용은 PP·PVC에서 품질이 떨어지고 첨가물을 거르지 못한다(ICIS, 상업 화학정보사)<span class="tag v">확인</span>. 플라스틱을 나프타 같은 원료로 되돌리는 화학적 재활용 설비는 2030년 약 1천만 t으로 물리적 재활용(약 8천만 t)의 8분의 1 수준으로 전망된다(AMI, 상업 시장조사사)<span class="tag v">확인</span></td><td>버려지는 91%를 석유화학의 원료로 되돌린다</td></tr>
+<tr><td>생산 극대화</td><td>세계 평균 회수율은 매장량의 약 22%까지 낮게 추정되기도 한다(Sandrea &amp; Sandrea 2007, <i>Oil &amp; Gas Journal</i>의 하한 추정). 학술 문헌은 성숙 유전 평균을 20~40%로 보며(Muggeridge et al. 2014, <i>Phil. Trans. R. Soc. A</i>), 세계 평균을 약 35%로 보는 문헌도 있다. 같은 2007년 자료는 북해 45~46%, 미국 39%, 사우디 23%를 제시한다<span class="tag e">추정</span>. 회수율 1%p 상승은 약 880억 배럴로, 당시 세계 생산 약 3년 치에 해당한다는 것은 Shell(석유 메이저, 이해당사자)의 추정이다. 현재 연 약 300억 배럴로 환산하면 약 2.9년 치다<span class="tag e">추정</span></td><td>땅속에 남는 절반 이상을 더 회수한다</td></tr>
+<tr><td>절약과 배분</td><td>제번스, 『석탄 문제』(1865) 7장: 와트의 증기기관이 석탄 효율을 높이자 석탄으로 하는 일의 비용이 내려가 석탄 소비가 오히려 늘었다<span class="tag v">확인</span></td><td>효율만이 아니라 배분. 대체할 수 있는 용도(태우기)에서 대체하기 어려운 용도(소재)로 옮기는 방안</td></tr>
+</tbody></table></div>
+<p>제번스의 경고가 석탄에서 그대로 실현되지 않은 데에는 석유라는 대체재의 등장이 한 요인이었다. 저자는 소재 용도의 대체 경로가 현재 비싸다는 점(§4)에서, 이 경고가 석유의 소재 용도에 시사하는 바가 있다고 본다<span class="tag i">해석</span>.</p>
+
+<h3>3. 시장 구조의 역설</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th></tr></thead>
+<tbody>
+<tr><td>듀란톤·터너, 「도로 혼잡의 기본 법칙」(<i>AER</i> 101(6):2616–52, 2011)<span class="tag v">확인</span></td><td>미국 도시의 1983·1993·2003년 자료에서 고속도로 차로를 늘리면 차량 주행거리가 거의 같은 비율로 늘었다(탄력성 약 1). 늘어난 교통은 기존 주민의 운전, 화물, 인구 유입에서 나왔다</td></tr>
+<tr><td>진, 『녹색 역설』(MIT Press 2012; 독어판 2008)<span class="tag v">확인</span></td><td>소비국이 사용을 줄이겠다고 예고하면 산유국은 미래 가치 하락을 예상해 지금 더 빨리 생산한다. 가격이 내려가고 절약하지 않는 나라가 더 산다. 그래서 공급 쪽을 봐야 한다. 저자 진은 ifo 연구소 전 소장으로 시장주의 성향이며, 효과의 실증적 크기에는 논쟁이 있다</td></tr>
+<tr><td>리바운드 효과에 대한 체계적 검토(UKERC, Sorrell 2007)<span class="tag v">확인</span></td><td>가계 에너지 서비스의 직접 리바운드는 대체로 30% 미만이다. 경제 전체 효과는 더 클 수 있으나, 효율 향상이 소비를 오히려 늘리는 백파이어(100% 초과)는 드문 경우로 평가된다</td></tr>
+</tbody></table></div>
+<p>세 연구를 함께 읽으면, 수요 측 절약은 의미가 있지만 그 효과의 일부가 가격과 행동 변화로 상쇄될 수 있다. 저자는 석유 사용량을 실제로 묶어 온 힘이 소비자의 절약보다 OPEC+의 감산이었다고 보지만, 이는 수요 측 요인(효율, 경기, 전기차)과 분리한 실증 근거가 없는 저자의 해석이다<span class="tag u">미확인</span>.</p>
+
+<h3>4. 정리: 양의 결정과 용도의 선택</h3>
+<p>공급과 유통의 조건이 총사용량에 큰 영향을 미친다는 점은 §9와 위 연구들이 시사한다. 저자는 여기서 정책 변수로 '한 배럴의 용도'를 제시한다<span class="tag i">저자 제안</span>.</p>
+<div class="tw"><table>
+<thead><tr><th>방향</th><th>내용</th><th>예</th></tr></thead>
+<tbody>
+<tr><td>고부가 소재화</td><td>태우는 대신 값비싼 소재로</td><td>니들코크스, 배터리 음극재, 탄소섬유</td></tr>
+<tr><td>연료를 줄이는 소재</td><td>석유 소재로 다른 곳의 석유 소비를 줄임</td><td>차량·항공기 경량화 플라스틱과 복합재</td></tr>
+<tr><td>되돌릴 수 있는 설계</td><td>처음부터 재활용을 전제로 설계</td><td>화학적 재활용으로 나프타까지 되돌릴 수 있는 단일 소재 제품</td></tr>
+<tr><td>오래 쓰는 제품</td><td>한 번 쓰고 버리는 대신 수명을 늘림</td><td>일회용 포장 대신 내구 소재</td></tr>
+</tbody></table></div>
+<div class="obs"><b>관찰자 판독:</b> 생산 유지 비용 상승과 유통 위험은 IEA 자료와 2026년 사례가 지지한다. 매장량의 물리적 고갈은 가까운 한계가 아니라는 데 대체로 합의가 있다. 회수율과 EROI 수치는 출처와 기준에 따라 차이가 커서 단일 값으로 쓰기 어렵다. 수요 절약의 효과 크기는 녹색 역설·리바운드 연구 사이에서 논쟁 중이다.</div>
+
+<h2 id="ch11">§11 자본의 이동 경로 — 자원에 대한 투자와 회수</h2>
+<p>자원을 얻으려면 먼 길을 가야 했고, 먼 길에는 위험이 따랐다. 자본은 그 위험을 나누는 장치로 진화했다. 투자의 대상이 바뀔 때마다 새로운 금융 형식이 생겼다. 교역 여정에서 채굴권으로, 채굴권에서 기업 지분으로, 마지막에는 자원의 가격 자체로 옮겨 갔다.</p>
+
+<h3>시대별 투자와 회수</h3>
+<div class="tw"><table style="min-width:860px">
+<thead><tr><th>시대</th><th>투자 대상</th><th>금융 형식</th><th>회수 방식</th><th>연구</th></tr></thead>
+<tbody>
+<tr><td>고대 아시리아<br><span style="font-weight:400">BC 19세기</span></td><td>아수르와 아나톨리아 카네시를 오가는 주석·직물·은 교역</td><td>나루쿰: 여러 투자자가 상인에게 자금을 맡기는 10~12년의 장기 공동투자. 지참인 조항이 붙은 채무증서도 썼다</td><td>교역 이익 배분</td><td>라르센, 『Ancient Kanesh』(Cambridge UP 2015)<span class="tag v">확인</span></td></tr>
+<tr><td>로마 공화정</td><td>광산 운영, 조세 징수, 군수 조달</td><td>소키에타스 푸블리카노룸: 말멘디어는 이를 근대 기업의 가장 이른 선조로 보며, 키케로의 '매우 비싼 지분(partes carissimae)' 언급을 근거로 지분 거래를 추론한다. 유한책임과 거래 규모는 사료가 빈약해 학계 논쟁이 있다</td><td>공공 계약 수익</td><td>말멘디어, 「Law and Finance at the Origin」(<i>JEL</i> 47(4), 2009)<span class="tag i">논쟁</span></td></tr>
+<tr><td>중세 베네치아<br><span style="font-weight:400">800~1350</span></td><td>지중해 장거리 항해</td><td>해상 대부(채무 계약)에서 콜레간차·코멘다(지분 계약)로 진화. 항해의 성패에 따라 위험과 이익을 나눔</td><td>항해 이익 배분</td><td>곤살레스 데 라라(2008, <i>JEH</i>); 푸가·트레플러(2014, <i>QJE</i> 129(2))<span class="tag v">확인</span></td></tr>
+<tr><td>16세기 푸거 가문</td><td>합스부르크 왕실</td><td>왕실 대출. 1487년 지기스문트 대공에게 한 대출은 슈바츠 은 산출물에 대한 권리를 담보로 했다. 1519년 카를 5세의 황제 선거 자금 851,585굴덴 중 543,585굴덴(약 2/3)을 냈다</td><td><b>광산 산출물에 대한 권리</b></td><td>Habsburger.net; 브리태니커<span class="tag v">확인</span></td></tr>
+<tr><td>대항해<br><span style="font-weight:400">1602~</span></td><td>아시아 향신료 항로와 선단</td><td>네덜란드 동인도회사(VOC): 누구나 살 수 있는 양도 가능한 주식으로 대규모 장기 자본을 모은 최초의 조직. 1602년 청약 직후 주식의 유통시장이 형성되었고, 거래소 건물(Beurs)은 1611년에 개장했다</td><td>배당. 200년간 납입자본(액면) 대비 연평균 약 18%라는 추정은 한 역사가의 추정치이며, 명목 배당률이지 실질 수익률이 아니다<span class="tag e">추정</span></td><td>Gelderblom, de Jong &amp; Jonker(2013, <i>JEH</i> 73(4)); Petram(2014)<span class="tag v">확인</span></td></tr>
+<tr><td>선물의 탄생<br><span style="font-weight:400">1730, 1848</span></td><td>쌀, 곡물</td><td>오사카 도지마 쌀 거래소: 1697년경 시작, 1730년 막부 공인. 회원제와 청산 기능을 갖춘 최초의 조직적 선물시장. 시카고상품거래소(1848): 곡물 포대에서 영수증으로, 다시 미래의 약속으로 거래 대상이 바뀜(크로넌의 분석)</td><td>가격 차익, 현금 정산</td><td>일본거래소그룹(JPX); Cronon, 『Nature's Metropolis』(1991)<span class="tag v">확인</span></td></tr>
+<tr><td>석유 금융<br><span style="font-weight:400">1983, 1988</span></td><td>원유 가격</td><td>NYMEX WTI 원유선물(1983년 3월 29일 CFTC 승인, 3월 30일 첫 거래). 브렌트 선물은 1988년 6월 23일 IPE(International Petroleum Exchange)가 상장했고, ICE가 2001년 IPE를 인수했다</td><td>가격 차익, 위험 회피</td><td>CME; ICE<span class="tag v">확인</span></td></tr>
+<tr><td>금융화<br><span style="font-weight:400">2000년대~</span></td><td>원자재 지수</td><td>원자재 지수 투자. 지수 관련 투자 <b>잔액</b>이 2003년 약 150억 달러에서 2008년 중반 최소 2,000억 달러로 늘었다(CFTC 2008 보고서)</td><td>자산 수익</td><td>탕·슝(<i>FAJ</i> 68(6), 2012)<span class="tag v">확인</span></td></tr>
+<tr><td>도전<br><span style="font-weight:400">2018~</span></td><td>위안화 원유 가격</td><td>상하이 INE 위안화 원유선물(2018년 3월 26일 상장). 거래량 기준 WTI·브렌트에 이어 세계 3위</td><td>가격 결정권</td><td>FIA(선물업계 협회); 학술 문헌<span class="tag v">확인</span></td></tr>
+</tbody></table></div>
+
+<h3>이동 경로</h3>
+<div class="tw"><table>
+<thead><tr><th>단계</th><th>투자 대상</th><th>회수</th></tr></thead>
+<tbody>
+<tr><td>여정</td><td>교역로를 오가는 한 번의 여행(아시리아, 베네치아)</td><td>여행의 이익 배분</td></tr>
+<tr><td>채굴권</td><td>자원이 나오는 땅과 산출물의 권리(로마, 푸거)</td><td>자원 현물</td></tr>
+<tr><td>기업 지분</td><td>선단과 항로를 가진 상시 조직(VOC)</td><td>배당</td></tr>
+<tr><td>가격</td><td>자원의 미래 가격 그 자체(도지마, NYMEX, IPE/ICE)</td><td>가격 차익</td></tr>
+</tbody></table></div>
+<p>자본은 점점 자원 자체에서 멀어졌다. 처음에는 물건을 실은 배에 투자했고, 오늘날에는 대부분 인수되지 않는 원유의 가격에 투자한다. 크로넌이 분석한 시카고 곡물 거래의 변화(포대 → 영수증 → 추상적 약속)가 이를 압축해 보여준다<span class="tag i">해석</span>.</p>
+
+<h3>자본과 통제(§8과의 연결)</h3>
+<div class="tw"><table>
+<thead><tr><th>사례</th><th>방식</th><th>의미</th></tr></thead>
+<tbody>
+<tr><td>푸거의 왕실 대출</td><td>통제</td><td>돈을 빌려주고 광산 산출물에 대한 권리를 받았다. 영토를 점령하지 않고 자원을 쥐었고, 황제 선거 자금의 약 2/3를 댔다</td></tr>
+<tr><td>VOC</td><td>정복 + 통제</td><td>주주 자본으로 선단과 무력을 갖추어 반다 제도를 정복하고 육두구를 독점했다</td></tr>
+<tr><td>베네치아 상인</td><td>자본에서 제도로</td><td>교역으로 부를 쌓은 상인들이 세습 통치자를 견제하고 의회 제도를 세웠다. 푸가·트레플러는 800~1600년을 분석하며, 1297년 대평의회 폐쇄(세라타) 이후의 과두화까지 다룬다</td></tr>
+<tr><td>페트로달러 환류</td><td>통제</td><td>오일머니가 미국 금융시장으로 돌아오도록 한 구조(스파이로, 『The Hidden Hand of American Hegemony』, Cornell UP 1999)<span class="tag v">확인</span></td></tr>
+<tr><td>선물 벤치마크</td><td>통제</td><td>세계 원유 가격의 기준이 뉴욕(WTI)과 런던(브렌트)에서 정해진다. 가격이 정해지는 장소의 규칙을 쥔 쪽이 흐름의 조건에 영향을 미친다<span class="tag i">해석</span></td></tr>
+</tbody></table></div>
+<p>상하이 INE는 이 가격 결정권에 대한 도전이다. 다만 국제 참여자가 부족해 아직 브렌트나 WTI 같은 기준 가격이 되지는 못했다. 이 도전은 결론의 관찰 지표인 '결제 통화'와 같은 흐름에 있다.</p>
+
+<h3>선물시장과 실물의 관계: 쟁점</h3>
+<ul>
+<li><b>탕·슝(2012):</b> 2000년대 지수 투자가 늘면서 비에너지 원자재 선물 가격이 석유 가격과 점점 같이 움직였고, 지수에 편입된 원자재에서 동조화가 더 뚜렷했다. 원자재 시장의 금융화 증거로 해석된다<span class="tag v">확인</span>.</li>
+<li><b>킬리언·머피(2014, <i>J. Applied Econometrics</i> 29(3):454–478):</b> 2003~08년 유가 급등은 투기가 아니라 세계 경기에 따른 실제 소비 증가가 원인이었다. 1979년, 1986년, 1990년의 유가 충격에서는 '투기적 수요'가 중요한 역할을 했다. 여기서 투기적 수요는 미래 기대에 따른 재고 수요를 뜻하며 금융 투기와 같지 않다<span class="tag v">확인</span>.</li>
+</ul>
+<p>두 연구를 함께 읽으면, 선물시장은 가격을 증폭하고 시장 사이를 연결하지만 가격의 방향을 정하는 데에는 실물의 수급이 크게 작용한다고 볼 수 있다<span class="tag i">해석</span>. 2026년 이란 전쟁 첫 주 WTI는 35.6% 올라 1983년 선물 거래 시작 이후 최대의 주간 상승을 기록했다<span class="tag v">확인</span>. 그 충격의 출발점은 호르무즈라는 물리적 길목이었다.</p>
+
+<h3>반복되는 패턴에 대한 주의</h3>
+<p>카네시 문서고가 기록한 약 30년 동안 아시리아 교역 경제가 실물 거래에서 금융 투기 중심으로 바뀌고 거품이 생겼다가 꺼졌다는 서술이 대중적으로 알려져 있다. 그러나 이는 라르센의 원저가 아니라 언론인 애덤 데이비드슨(<i>New York Times Magazine</i>, 2015)의 해석을 Long Now 재단 블로그가 재인용한 것이며, 라르센 원저에서 '거품'으로 규정한 대목은 확인하지 못했다<span class="tag u">미확인</span>. 따라서 자원 거래의 금융화가 4천 년 전에도 있었다는 명제는 가설로만 남긴다.</p>
+
+<h2 id="ch12">§12 자원과 자본의 서사 — 역사에 기록된 아홉 장면</h2>
+<p>앞 장들의 논지를 역사 속 구체적인 장면으로 점검한다. 은과 튤립에서 석유와 니켈까지 아홉 개의 서사를 시대순으로 정리하고, 각 장면의 해석 논쟁을 함께 적는다. 각 장면 끝의 '판독'은 저자의 해석이다.</p>
+
+<h3>1. 라우리온의 은맥과 살라미스(BC 483~480)</h3>
+<p>헤로도토스(7.144)에 따르면 테미스토클레스는 라우리온 은광의 수입을 시민에게 나누는 대신 삼단노선 <b>200척</b>을 만들자고 민회를 설득했고, 그 명분은 아이기나와의 전쟁이었다. 아리스토텔레스 『아테네 정체』 22.7은 은맥이 발견된 곳을 마로네이아로, 연대를 BC 483/2년으로 전하며, 100탈란톤으로 <b>100척</b>을 만들었다고 쓴다<span class="tag v">확인</span>. 두 전승은 척수가 다르다. 기원전 480년 이 함대가 살라미스 해전에서 페르시아 해군을 격파했다<span class="tag v">확인</span>.</p>
+<p class="obs"><b>판독:</b> 자원에서 나온 수익을 소비가 아니라 해군력에 투자한 사례다. 은이 함대가 되었고, 함대가 아테네 해상 패권의 출발점이 되었다.</p>
+
+<h3>2. 푸거 가문의 담보(1487~1519)</h3>
+<p>1487년 아우크스부르크의 푸거 가문은 티롤의 지기스문트 대공에게 돈을 빌려주며 슈바츠 은광 산출물에 대한 권리를 담보로 잡았다. 1494년에는 투르조 가문과 합작해 헝가리(노이졸, 지금의 반스카비스트리차) 구리 광산에 진출했다. 1519년 야코프 푸거는 카를 5세가 프랑스의 프랑수아 1세를 누르고 신성로마제국 황제로 선출되도록 선거 자금 약 851,585굴덴 중 약 543,585굴덴을 댔다. 이 돈의 일부는 선제후들을 매수하는 데 쓰였다<span class="tag v">확인</span>.</p>
+<p class="obs"><b>판독:</b> 영토 없이 자본으로 광산 산출물을 쥐었고, 그 부로 황제 선거를 좌우했다. §8의 '통제'가 자본의 형태로 나타난 사례로 읽힌다.</p>
+
+<h3>3. 포토시: 은의 산과 스페인 재정(1545~)</h3>
+<p>지금의 볼리비아에 있는 세로 리코('부유한 산')는 16~17세기 세계 은 공급의 중심이었다. 1560년 무렵 노동자 3,200명이 매년 은 500만 트로이온스를 실어 냈다는 서술이 세계사 교과서(Strayer)에 있으나, 이는 아말감법 도입(1570년대) 이전의 학술 생산 추정치(TePaske 등)보다 높을 수 있다<span class="tag u">미확인</span>. 은은 미타라는 강제노동으로 캐냈다. 페루 부왕 프란시스코 데 톨레도(재임 1569~1581)가 1573년경 포토시 미타를 조직했으며, 16개 주의 원주민 공동체에서 매년 약 1만 3,500명(4,500명씩 3교대)의 남성을 징발했다. 베이크웰(<i>Miners of the Red Mountain</i>, 1984)은 톨레도가 기존 관행을 체계화했다고 본다<span class="tag v">확인</span>.</p>
+<p>은의 유입은 유럽 물가 상승(가격혁명)의 한 요인으로 거론된다. 펠리페 2세는 1557·1560·1575·1596년 네 차례 지급을 정지했다<span class="tag v">확인</span>. 그러나 드렐리치먼·보스(<i>Lending to the Borrower from Hell</i>, Princeton UP 2014)는 이 디폴트가 채무 재조정 성격이었고 재정은 지속 가능했으며 대출자도 이익을 봤다고 주장한다.</p>
+<p class="obs"><b>판독:</b> 자원을 가진 것과 부유해지는 것은 다르다는 '자원의 저주' 논의에서 포토시는 자주 인용되는 사례다. 다만 '은의 홍수 → 산업 붕괴 → 파산'이라는 단선적 인과는 드렐리치먼·보스의 연구와 충돌하므로, 라우리온과의 대비는 해석으로만 제시한다.</p>
+
+<h3>4. 네덜란드 튤립 파동(1634~1637)</h3>
+<p>VOC로 부가 쌓이던 황금시대 네덜란드에서 희귀 튤립 구근의 값이 치솟았다. 가버(Garber 1989, <i>JPE</i>)에 따르면 가장 귀한 품종인 셈페르 아우구스투스는 1623~25년 구근 하나에 1,000~2,000길더였고, 최고가는 <b>5,500길더</b>였다. 1만 길더 가까이 되었다는 이야기는 근거가 약한 일화다. 가버도 셈페르 아우구스투스의 가격 시계열이 문서 근거가 약한 동시대 기록(바세나르)에 기댄다고 경고한다<span class="tag v">확인</span>.</p>
+<p>거래의 형태가 핵심이다. 튤립 구근은 한 해의 대부분을 땅속에서 보낸다. 사람들은 겨울 동안 아직 캐지도 않은 구근을 선술집에서 사고팔았고, 대금은 여름에 구근을 캐낸 뒤 치르기로 했다. 이를 '빈트한델(바람 거래)'이라 불렀다. 사실상의 선물시장이었다(Goldgar 2007)<span class="tag v">확인</span>.</p>
+<p>1637년 2월 첫 주 하를럼의 경매에서 사려는 사람이 나타나지 않으면서 가격이 무너졌다<span class="tag v">확인</span>. 톰프슨(Thompson 2007, <i>Public Choice</i> 130(1):99–114)은 2월 24일 화훼업자 회의가 1636년 11월 30일 이후의 선물 계약을 옵션 계약으로 바꾸는 결정을 내렸고 당국이 이를 승인했다고 해석하며, 당시 가격을 이 전환을 예상한 합리적 반응으로 본다. 그러나 이는 톰프슨의 해석이며 논쟁 중이다. 골드가 등은 암스테르담 화훼업자 회의안이 당국에 의해 그대로 시행되지 않았고, 홀란트 법원(Hof van Holland)은 4월에 문제를 각 도시로 넘겼다고 서술한다<span class="tag i">논쟁</span>. 실제로 대부분의 구매자는 구근 인수를 거부했고, 하를럼 시의회는 1638년 5월 계약가의 <b>3.5%</b>를 물고 계약을 해지하도록 허용했다(Garber, Posthumus 인용)<span class="tag v">확인</span>.</p>
+<p><b>서사 자체에 대한 반론도 있다.</b> 튤립 파동이 경제를 무너뜨린 광기로 알려진 것은 1841년 스코틀랜드 언론인 찰스 매카이의 『대중의 미망과 광기』 덕분이다. 매카이는 구근 하나에 "12에이커의 건축 부지"(약 4.9헥타르)가 제시되었다고 썼다<span class="tag v">확인</span>. 반면 역사학자 앤 골드가는 『Tulipmania』(2007)에서 튤립 파동에 귀속되는 파산을 거의 찾지 못했다고 보고했다. 거래에 참여한 사람은 상인, 양조업자, 장인 같은 소수의 애호가였다. 다만 1635~37년 암스테르담의 파산 증가를 근거로 한 반론도 있다<span class="tag i">논쟁</span>. 공공선택학파(시장 친화적 관점)인 톰프슨은 위와 같이 합리적 반응으로 해석했다.</p>
+<p class="obs"><b>판독:</b> 땅속의 실물을 두고 미래의 약속을 사고판 거래는 실물을 인수할 시점에 무너졌다. 결과를 정한 주체가 시장인지 규칙 제정자인지는 톰프슨과 골드가 사이에서 해석이 갈린다. 유명한 서사일수록 과장되기 쉽다는 점은 분명하다. 매카이의 이야기와 골드가의 사료는 다르다.</p>
+
+<h3>5. 차, 은, 그리고 아편(18세기~1842)</h3>
+<p>18세기 영국은 중국의 차, 비단, 도자기를 원했지만 중국은 영국 물건을 많이 원하지 않았다. 대금은 은으로 치러졌고, 은은 광저우로 한정된 교역 창구를 통해 중국으로 흘러들었다. 영국 동인도회사는 이 흐름을 뒤집기 위해 인도 벵골에서 아편을 재배해 중국 밀수업자에게 팔았다. 1830년대에는 약 3,400만 멕시코 달러에 해당하는 은이 중국에서 순유출되었다<span class="tag v">확인</span>. 1839년 도광제는 임칙서를 광저우에 보내 아편 무역을 막게 했고, 임칙서는 영국 상인들에게서 아편 <b>2만 상자 이상(약 1,400톤, 추정은 1,000~1,400톤으로 갈림)</b>을 몰수해 폐기했다(브리태니커)<span class="tag v">확인</span>. 1839년 9월 구룡에서 충돌이 일어났고, 1840년 영국의 원정으로 제1차 아편전쟁이 본격화했다<span class="tag v">확인</span>.</p>
+<p class="obs"><b>판독:</b> 은의 흐름이라는 유통을 뒤집기 위한 상품 통제가 결국 전쟁으로 이어졌다. §8의 '방식은 겹쳐서 작동한다'와 부합한다.</p>
+
+<h3>6. 록펠러와 운송·정제의 장악(1872)</h3>
+<p>1871년 말 펜실베이니아 주 인가를 받은 사우스 임프루브먼트 컴퍼니(SIC)는 펜실베이니아 철도의 토머스 스콧이 구상을 주도한 계획이었다(회장은 피터 왓슨)<span class="tag v">확인</span>. 대형 정유업자, 특히 록펠러 측에 비밀 리베이트를 주는 구조였다. 타벨의 기록에 따르면 유전지대에서 뉴욕까지 원유의 공시 운임은 배럴당 2.56달러였고, SIC는 그중 1.06달러를 돌려받기로 했다. 더 나아가 <b>경쟁자가 실어 보내는 석유 1배럴마다 1.06달러</b>(드로백)를 받고, 경쟁자들의 운송 목적지, 비용, 날짜 정보까지 받기로 했다(Tarbell 원문, 반스탠더드 폭로 저널리즘)<span class="tag v">확인</span>.</p>
+<p>계획이 알려지자 펜실베이니아 의회는 1872년 4월 2일 회사의 인가를 정지·폐지했고, 실제로 이 계약으로 운송된 석유는 없었다. 그러나 록펠러는 1872년 2월 17일부터 3월 28일까지 약 6주 사이 클리블랜드의 경쟁 정유소 26곳 중 22곳을 인수했다('클리블랜드 대학살', PBS·Chernow 『Titan』)<span class="tag v">확인</span>.</p>
+<p class="obs"><b>판독:</b> 록펠러가 석유 산업을 지배한 수단은 유전이 아니라 운송 조건과 정제, 곧 유통이었다. §9에서 관찰한 길목의 영향력과 같은 구조로 읽힌다.</p>
+
+<h3>7. 헌트 형제의 은 매점(1979~1980)</h3>
+<p>텍사스 석유 재벌 가문의 넬슨 벙커 헌트와 윌리엄 허버트 헌트는 관련 회사(IMIC 등)와 함께 1979년 말까지 은 약 1억 9,500만 트로이온스를 통제했다(브리태니커)<span class="tag v">확인</span>. 1979년 온스당 약 6달러였던 은값이 오르자, 뉴욕상품거래소(COMEX)는 1980년 1월 7일 '실버 룰 7'을 도입해 증거금 매수를 강하게 제한했다. 그럼에도 은값은 1980년 1월 17~18일 약 50달러(장중 50.35달러, 종가 기록 49.45달러)로 정점을 찍었다. 1월 21일 거래소가 '청산 주문만 허용'으로 규칙을 바꾸면서 결정타가 되었다<span class="tag v">확인</span>. 3월 27일 '은의 목요일'에 은값은 하루 만에 21.62달러에서 10.80달러로 반토막 났다고 전해진다<span class="tag e">추정</span>. 3월 27일 뉴욕상품거래소는 헌트 측 중개사 바체(Bache)에 약 1억 3,400만 달러의 증거금을 요구했고, 헌트 측은 이를 맞추지 못했다. 이후 13개 은행 컨소시엄이 헌트 가문 회사 플레이시드 오일(Placid Oil)에 석유·가스 자산을 담보로 11억 달러를 대출해 중개사와 채권자에 대한 채무를 정리했다(ThinkAdvisor, 「The Silver Crisis」, 2009 — 금융업계 전문지)<span class="tag v">확인</span>. 초안의 "70억 달러 자산이 17억 달러 빚으로" 서술은 1차 근거를 찾지 못해 삭제했다.</p>
+<p class="obs"><b>판독:</b> 규칙 변경(1월 7일, 1월 21일)이 정점보다 먼저 또는 정점 직후에 이루어졌고, 매점은 증거금 부담 속에 무너졌다. 자원을 사재기한 자본보다 가격이 정해지는 장소의 규칙이 결과에 크게 작용한 사례로 읽힌다.</p>
+
+<h3>8. 마이너스 유가(2020년 4월 20일)</h3>
+<p>코로나19로 이동이 멈추자 미국 정유소 가동량은 하루 1,280만 배럴로 1년 전보다 410만 배럴(24%) 줄었다. WTI 선물은 만기까지 들고 있으면 오클라호마주 쿠싱에서 실제 원유를 받아야 한다. 4월 17일 기준 쿠싱의 저장고는 7,600만 배럴 중 6,000만 배럴, 곧 76%가 차 있었고 남은 공간도 상당 부분 이미 임대된 상태였다(EIA)<span class="tag v">확인</span>. 원유를 받아 둘 곳이 없는 보유자들은 돈을 얹어 주고서라도 계약을 넘겨야 했다. 이날 WTI 5월물은 1983년 거래 시작 이후 처음으로 마이너스가 되어 장중 배럴당 -40.32달러, 정산가 <b>-37.63달러</b>를 기록했다<span class="tag v">확인</span>.</p>
+<p class="obs"><b>판독:</b> 실물에서 가장 멀어진 금융 계약도 만기에는 저장고라는 물리적 병목 앞에 섰다. 실물 수급이 가격 방향에 크게 작용한다는 킬리언·머피의 결론과 부합한다.</p>
+
+<h3>9. 니켈 쇼트 스퀴즈와 취소된 거래(2022년 3월 8일)</h3>
+<p>중국 칭산그룹의 샹광다 회장은 니켈 가격 하락에 대비해 런던금속거래소(LME)에서 대규모 매도 포지션을 잡았다. 러시아-우크라이나 전쟁 직후 니켈 가격이 오르자 손실을 막으려는 되사기가 가격을 더 밀어 올렸다. 니켈은 이틀간 최대 약 250% 올라 3월 8일 장중 톤당 10만 달러를 넘었다(Reuters)<span class="tag v">확인</span>. 칭산의 장부상 손실은 약 80억 달러로 보도되었다(확정 손실이 아닌 보도치)<span class="tag e">추정</span>. 3월 8일 LME는 니켈 거래를 중단하고 그날 체결된 거래를 취소했다. 취소된 거래 총액은 약 120억 달러로 요약되며(계산 기준에 따라 약 39억 달러로 보도되기도 함), LME는 그대로 두면 약 197.5억 달러의 증거금 요구로 여러 청산회원이 연쇄 부도를 낼 수 있었다고 주장했다(LME 측 자료)<span class="tag v">확인</span>. 헤지펀드 엘리엇과 마켓메이커 제인스트리트는 거래 취소가 위법이라며 소송을 냈으나, 2023년 11월 29일 고등법원이 기각했고 항소법원도 LME의 손을 들어주었다<span class="tag v">확인</span>. LME는 2012년 12월부터 홍콩거래소(HKEX)의 소유다<span class="tag v">확인</span>.</p>
+<p class="obs"><b>판독:</b> 헌트 형제 사건과 대칭을 이룬다. 1980년에는 거래소가 규칙을 바꿔 사재기한 쪽이 무너졌고, 2022년에는 거래를 취소해 매도한 쪽의 손실이 확정되지 않았다. 법원은 LME의 결정을 적법하다고 보았다. 두 사례 모두 가격이 정해지는 장소를 운영하는 쪽의 결정이 결과에 직접 작용했다.</p>
+
+<h3>아홉 서사에서 읽히는 패턴(저자 종합)</h3>
+<div class="tw"><table>
+<thead><tr><th>패턴</th><th>서사</th><th>연결되는 장</th><th>단서</th></tr></thead>
+<tbody>
+<tr><td>자원 수익을 어디에 쓰느냐가 결과를 가른다</td><td>라우리온(함대에 투자) 대 포토시(재정 위기)</td><td>§1, §12-3</td><td>포토시-파산 인과에는 드렐리치먼·보스의 반론</td></tr>
+<tr><td>영향력은 생산보다 유통에서 나올 수 있다</td><td>록펠러(운송과 정제), 아편(은의 흐름), 2026년 호르무즈</td><td>§5, §9</td><td>시장 재배분 가능성(비탈리스)</td></tr>
+<tr><td>가격이 정해지는 장소의 규칙이 결과에 작용한다</td><td>튤립(계약 처리), 헌트 형제(규칙 변경), 니켈(거래 취소)</td><td>§8, §11</td><td>튤립은 톰프슨·골드가 해석 대립</td></tr>
+<tr><td>금융 계약도 실물 병목 앞에 선다</td><td>튤립(인수 시점), 마이너스 유가(저장고), 2026년 호르무즈(길목)</td><td>§9, §11</td><td>탕·슝의 금융화 증거와 병존</td></tr>
+<tr><td>유명한 서사일수록 과장되기 쉽다</td><td>튤립(매카이 대 골드가), 카네시 '거품'(언론 해석)</td><td>방법: 확인과 추정의 구분</td><td>—</td></tr>
+</tbody></table></div>
+
+<h2 id="ch13">§13 자본은 어디든 스며든다 — 자본 대 자본, 노예와 설탕, 합법이 된 착취</h2>
+<p>자원을 둘러싼 역사에서 자본은 다른 자본의 자원 흐름을 빼앗는 데 투자되었고, 사람을 자원으로 계산했으며, 필요할 때는 규칙을 자신에게 맞게 바꾸었다. 이 장은 그 사례들을 네 갈래로 정리한다.</p>
+
+<h3>가. 자본이 자본을 누르다: 스페인 은 체제에 대한 공격</h3>
+<div class="tw"><table>
+<thead><tr><th>사례</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td>엘리자베스의 '바다의 개들'<br><span style="font-weight:400">16세기 후반</span></td><td>왕실이 민간 선장들에게 <b>사략 면허</b>(적국 선박 공격 허가)를 내주었다. 면허는 약탈에 합법성을 부여했다. 약탈 원정은 공동출자 조합(syndicate) 형태로 조직되었고, 궁정 귀족과 여왕 자신도 투자했다(Andrews, <i>Elizabethan Privateering</i>, 1964)<span class="tag v">확인</span></td></tr>
+<tr><td>드레이크의 세계 일주<br><span style="font-weight:400">1577~1580</span></td><td>여왕, 월싱엄, 호킨스 등이 공동 출자한 원정. 골든 하인드호가 금, 은, 진주를 싣고 돌아와 투자자들이 1파운드당 47파운드(4,700%)를 벌었다고 추정된다<span class="tag e">추정</span>. 여왕의 몫(최소 16만 파운드라는 설)은 학계 추정이 갈린다<span class="tag u">미확인</span>. 케인스는 「우리 손자 세대의 경제적 가능성」(1930)에서 여왕이 자기 몫으로 <b>잉글랜드의 해외 부채 전부</b>를 갚고 예산을 맞춘 뒤 <b>약 4만 파운드</b>가 남아 레반트 회사에 투자했다고 쓰고, 이를 3.25% 복리로 영국 해외투자 총액과 연결했다<span class="tag v">확인</span>. 4,700%와 16만 파운드는 케인스가 말한 수치가 아니다</td></tr>
+<tr><td>스페인 무적함대의 패배<br><span style="font-weight:400">1588</span></td><td>무적함대 계획은 산타크루스 후작의 원안 기준 400만 두카트, 곧 스페인의 아메리카 광산이 3년 반 동안 생산하는 보물에 해당하는 비용이 드는 사업이었다는 서술이 있다(2차 서술, 학술 원출처 미확정)<span class="tag e">추정</span>. 함대는 약 130척, 병사 약 1만 8천, 선원 약 8천으로 5월 28일 리스본 출항을 시작해 30일에 마쳤다. 영국 함대의 총사령관은 <b>하워드 경(Lord Howard of Effingham)</b>이었고, 사략선장 출신 드레이크가 부제독, 호킨스가 후위 지휘관을 맡았다. 호킨스는 1568년 스페인의 노예무역 독점을 침범했다가 산후안 데 울루아에서 공격받은 인물이다. 함대는 전투와 악천후로 무너졌다<span class="tag v">확인</span></td></tr>
+<tr><td>피트 헤인의 마탄사스 나포<br><span style="font-weight:400">1628</span></td><td>네덜란드 서인도회사(WIC)의 제독 피트 헤인이 쿠바 마탄사스만에서 주로 멕시코 은을 싣고 가던 스페인의 누에바에스파냐 선단을 나포했다. 노획물은 금, 은, 인디고, 코치닐 등 11,509,524길더였다(Atlas of Mutual Heritage)<span class="tag v">확인</span>. 주식회사의 함대가 국가의 보물선을 빼앗아 독립전쟁 자금에 보탰다</td></tr>
+<tr><td>크롬웰의 '서방 계획'<br><span style="font-weight:400">1655</span></td><td>스페인령 서인도를 노린 원정. 원래 목표인 히스파니올라 공략에 실패한 뒤 자메이카를 점령했다. 자메이카는 당시 다른 영국령 섬을 모두 합친 것보다 컸고, 이후 영국 설탕 경제의 중심이 되었다<span class="tag v">확인</span></td></tr>
+</tbody></table></div>
+<p class="obs"><b>판독:</b> 스페인은 자원(아메리카의 은)을 가졌고, 영국과 네덜란드는 그 흐름을 노리는 자본(공동출자 원정, 주식회사, 사략 면허)을 가졌다. 1588년의 결과는 왕실 해군과 사략선장 출신 지휘관들의 결합, 그리고 날씨가 함께 만든 것이다. 흐름을 노린 쪽이 우위를 점한 사례로 읽히지만, 단일 원인으로 환원할 수는 없다.</p>
+
+<h3>나. 노예와 설탕: 사람을 자원으로 계산한 자본</h3>
+<div class="tw"><table>
+<thead><tr><th>사례</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td>바베이도스 설탕 혁명<br><span style="font-weight:400">1640년대~</span></td><td>1640년대 중반부터 사탕수수가 섬의 경작지 대부분을 차지했다. 1650년대에는 백인 계약노동자가 서아프리카에서 끌려온 노예로 대체되었고, 대규모 통합 플랜테이션이 섬을 지배했다. 네덜란드 상인 자본이 이 전환을 이끌었다는 전통적 설이 있으나, 메너드(<i>Sweet Negotiations</i>, 2006)는 이를 반박한다<span class="tag i">논쟁</span></td></tr>
+<tr><td>항해법<br><span style="font-weight:400">1651</span></td><td>바베이도스에서 네덜란드 상인의 비중이 크다는 점이 영국이 첫 항해법을 만든 이유 중 하나였다. 법으로 경쟁 자본을 교역에서 배제한 사례이며, 영국·네덜란드 전쟁(§8)으로 이어졌다<span class="tag v">확인</span></td></tr>
+<tr><td>아시엔토<br><span style="font-weight:400">1713</span></td><td>위트레흐트 조약으로 영국이 스페인령 아메리카에 노예를 공급할 독점권을 30년간 얻었다. 매년 4,800 '피에사스 데 인디아스'와 500톤급 일반 교역선 1척. 영국 왕실은 이 권리를 남해회사에 양도했다<span class="tag v">확인</span>. 남해회사가 직접 운송한 아프리카인은 약 3.4만~6.4만 명으로 추정된다(킹스칼리지 런던 자료, SlaveVoyages 데이터베이스)<span class="tag e">추정</span>. 국제 조약이 노예 공급을 계약으로 만든 사례다</td></tr>
+<tr><td>종(Zong)호 사건<br><span style="font-weight:400">1781~1783</span></td><td>442명을 싣고 아프리카를 떠난 노예선 종호는 항해 오류로 항해가 길어졌고, 선장은 <b>식수 부족</b>을 명분으로 사람들을 바다에 던지기로 했다. 약 130~132명이 던져졌고 10명은 스스로 뛰어들었다. 선주는 보험금을 청구했고, 1783년 3월 런던 길드홀의 배심은 선주의 손을 들어주었다. 같은 해 항소심(그레그슨 대 길버트)에서 맨스필드 경은 <b>재심을 명령</b>했으나, 재심 기록은 남아 있지 않다(선주 측이 포기한 것으로 추정). 법정은 사람을 보험 대상 화물로 다투었다. 폐지론자 그랜빌 샤프가 이 사건을 널리 알렸다(Royal Museums Greenwich)<span class="tag v">확인</span></td></tr>
+<tr><td>노예제 폐지 보상<br><span style="font-weight:400">1833</span></td><td>영국 의회는 노예제를 폐지하면서 노예가 아니라 <b>노예 소유주에게</b> 2천만 파운드를 보상했다. 재무부 연간 지출의 약 40%였다. 정부는 1835년 1,500만 파운드를 차입했고, 이 차입은 국채로 차환되어 2015년 2월 1일에야 상환되었다(영국 재무부 정보공개 FOI2018-00186). 보상금의 약 절반은 영국에 거주하는 부재지주와 채권자에게 돌아갔고, 보상 기록에는 4만여 명의 소유주가 남아 있다(UCL 영국 노예제 유산 센터)<span class="tag v">확인</span></td></tr>
+</tbody></table></div>
+<p class="obs"><b>판독:</b> 자본은 사람까지 자원으로 계산했고, 노예제의 폐지마저 소유주의 손실을 보전하는 방식으로 설계되었다. 그 차입을 승계한 국채는 약 180년 뒤에야 상환되었다. 다만 팩트체크 기관 Full Fact는 '납세자가 보상금을 계속 갚았다'는 표현이 차환 국채의 원금 상환을 단순화한 것이라고 지적한다.</p>
+
+<h3>다. 자본과 국가 권력의 결합</h3>
+<div class="tw"><table>
+<thead><tr><th>사례</th><th>내용</th></tr></thead>
+<tbody>
+<tr><td>동인도회사의 벵골<br><span style="font-weight:400">1757~1765</span></td><td>1757년 로버트 클라이브가 이끈 영국 동인도회사 군대가 플라시 전투에서 이겼다. 1765년 알라하바드 조약으로 회사는 무굴 황제 샤 알람 2세에게서 벵골·비하르·오리사의 <b>조세 징수권(디와니)</b>을 받았다. 회사가 군대와 세금을 가진 통치자가 되었다<span class="tag v">확인</span></td></tr>
+<tr><td>콩고 자유국<br><span style="font-weight:400">1885~1908</span></td><td>베를린 회의를 거쳐 레오폴드 2세는 콩고를 자신의 <b>개인 소유 식민지</b>로 국제적 인정을 받았다. 경제 착취와 잔학 행위가 국제적 비난을 불렀고, 1908년 벨기에가 병합해 벨기에령 콩고가 되었다<span class="tag v">확인</span></td></tr>
+<tr><td>'질산염 왕' 존 토머스 노스<br><span style="font-weight:400">1879~1880년대</span></td><td>리즈 출생으로 기계공(보일러 제작) 견습 출신인 노스는 페루 이키케에서 사업 기반을 잡았다. 태평양전쟁(1879~1883) 중이던 1881년 리마에서 전쟁의 혼란 속에 최저 액면가의 11%까지 떨어진 페루 질산염 채권을 사들였다. 칠레가 타라파카주를 병합한 뒤 <b>칠레 정부는 질산염 광산의 소유권을 채권 보유자에게 넘겼다.</b> 노스는 1882년 영국으로 돌아가 여러 질산염 회사를 세웠고, 타라파카의 질산염, 철도, 물 사업을 크게 장악했다. 칠레대 연구는 '노스 신화'의 일부가 과장되었다고 지적한다<span class="tag v">확인</span></td></tr>
+<tr><td>세실 로즈와 드비어스<br><span style="font-weight:400">1887~1888</span></td><td>로즈는 17년 동안 킴벌리의 경쟁 채굴업자들을 사들였다. 결정적 수단은 1887년 런던 로스차일드 은행에서 빌린 <b>100만 파운드</b>였다. 1888년 드비어스 통합광산회사가 세워졌고, 이듬해 이 회사가 세계 다이아몬드 원석 생산의 약 <b>90%</b>를 쥐었다. 1890년 런던 다이아몬드 신디케이트로 원석 판매까지 묶었고, 이것이 20세기 다이아몬드 거래를 지배한 중앙판매기구의 전신이다<span class="tag v">확인</span>. 약혼반지와 가격을 결합한 마케팅은 1938·1947년 이후의 일이고, 드비어스의 공급 지배는 2000년대에 약화되었다</td></tr>
+<tr><td>다아시 이권에서 1953년 쿠데타까지<br><span style="font-weight:400">1901~1953</span></td><td>1901년 영국 사업가 다아시가 페르시아 국왕에게서 석유 독점 탐사권을 얻었다. 1908년 5월 26일 마스제드솔레이만에서 석유가 발견되었고, 1909년 앵글로페르시안 석유회사(지금의 BP)가 설립되었다. 1951년 3월 15일과 20일 이란 의회(마즐리스)와 상원이 석유 국유화법을 통과시켰다. 이 운동을 이끈 모사데크(당시 의회 석유위원회 위원장)는 4월 말 총리에 취임했다. 1953년 8월 19일 쿠데타로 모사데크가 축출되었는데, 이는 <b>CIA가 주도하고(TPAJAX) 영국 MI6가 함께 한</b> 작전이었다. CIA는 2013년 공개 문서에서 쿠데타가 "CIA의 지휘 아래" 수행되었다고 인정했다(조지워싱턴대 국가안보문서보관소)<span class="tag v">확인</span></td></tr>
+<tr><td>유나이티드 프루트와 과테말라<br><span style="font-weight:400">1954</span></td><td>미국 유나이티드 프루트(UFC)는 과테말라 경작 가능지의 약 42%를 가졌고, 실제로 경작한 땅은 그 일부(약 15% 이하)였다. 국제중미철도(IRCA), 푸에르토바리오스 항, 트로피컬 라디오 등 철도·항만·통신의 지배 지분도 쥐었다(Gleijeses 1991; Schlesinger &amp; Kinzer 1982). 1950년 11월 선출되어 1951년 3월 취임한 아르벤스 대통령이 1952년 법령 900호로 미경작지를 보상과 함께 수용해 농민에게 나누자, 1954년 6월 27일 CIA가 지원한 쿠데타(PBSUCCESS)로 축출되었다. 국무장관 존 포스터 덜레스와 CIA 국장 앨런 덜레스는 모두 UFC를 대리한 로펌 설리번 앤드 크롬웰의 파트너 출신이었다<span class="tag v">확인</span>. '바나나 공화국'이라는 말은 이 사건이 아니라 O. 헨리의 『양배추와 왕』(1904)에서 나왔으며, 온두라스를 모델로 했다(브리태니커)<span class="tag v">확인</span></td></tr>
+<tr><td>해체 이후의 재집중: 세븐 시스터스<br><span style="font-weight:400">1911~1970년대</span></td><td>1911년 스탠더드 오일은 대법원 판결로 34개 회사로 해체되었다(맺음말). 그러나 그 후계 회사들은 다른 메이저와 함께 '세븐 시스터스'(엑슨, 셸, BP, 모빌, 텍사코, 걸프, 셰브런)를 이루었다. 1960년부터 1966년 사이 북미와 공산권을 뺀 세계 석유 생산에서 이들의 몫은 72%에서 76%로 늘었고 나머지 회사들의 몫은 24%였다(샘프슨, 『The Seven Sisters』 1975, 펜로즈 1968 인용)<span class="tag v">확인</span>. 이후에도 셰브런이 1984년 걸프를 인수하는 등 통합은 계속되었다. 이 집중에 맞선 생산국의 협력이 OPEC(1960)이다(§8)</td></tr>
+</tbody></table></div>
+<p class="obs"><b>판독:</b> 위 사례들에서 자원을 쥔 자본과 국가 권력(군대, 조세, 정보기관)의 결합이 반복 관찰된다. 다만 인과의 방향은 사례마다 다르다. 동인도회사와 콩고는 자본(또는 사적 소유)이 통치 권력이 된 경우이고, 1953년과 1954년은 국가가 냉전 전략과 기업 이익이 겹친 상황에서 개입한 경우로, 어느 쪽이 주된 동기였는지는 역사학계에서 논쟁 중이다. 노스는 전쟁의 혼란을, 로즈는 은행 자본을 지렛대로 썼고, 세븐 시스터스는 법으로 해체된 자본도 다시 집중될 수 있음을 보여준다.</p>
+
+<h3>라. 합법화의 유형</h3>
+<p>자본은 규제를 피하기만 한 것이 아니라 규칙 자체를 만들거나 바꾸는 과정에 참여했다. 보고서 전체에 나온 사례를 유형별로 모은다<span class="tag i">저자 유형화</span>.</p>
+<div class="tw"><table>
+<thead><tr><th>유형</th><th>사례</th><th>효과</th></tr></thead>
+<tbody>
+<tr><td>면허·칙허</td><td>엘리자베스의 사략 면허, VOC·동인도회사 설립</td><td>약탈과 무력을 사업으로 만듦</td></tr>
+<tr><td>국제 조약</td><td>토르데시야스(1494), 아시엔토(1713), 베를린 회의(1884~85)</td><td>세계 분할과 노예 공급을 계약으로 만듦</td></tr>
+<tr><td>국내 법률</td><td>포토시 미타 강제노동(1573년경~), 항해법(1651), 노예제 폐지 보상(1833)</td><td>강제노동, 경쟁 배제, 손실 보전을 제도화</td></tr>
+<tr><td>판결</td><td>종호 사건(1783)</td><td>사람을 보험 화물로 다툼</td></tr>
+<tr><td>이권 계약·소유권 이전</td><td>칠레 정부의 질산염 광산 소유권 이전(1880년대), 다아시 이권(1901), 유나이티드 프루트의 토지 취득</td><td>자원과 땅의 독점을 계약과 국가의 결정으로 확보</td></tr>
+<tr><td>공급 독점</td><td>드비어스(1888~), 세븐 시스터스(1960년대)</td><td>공급을 묶어 가격에 영향</td></tr>
+<tr><td>시장 규칙 변경</td><td>튤립 계약의 처리(1637~38, 해석 논쟁), 실버 룰 7(1980), LME 거래 취소(2022)</td><td>규칙을 쥔 쪽이 결과에 작용(§12)</td></tr>
+<tr><td>반대 방향의 법</td><td>사우스 임프루브먼트 컴퍼니 인가 취소(1872), 종호 사건이 촉발한 폐지 운동, 주간통상법(1887), 스탠더드 오일 해체(1911)</td><td>법이 자본을 제약한 경우도 있다</td></tr>
+</tbody></table></div>
+
+<h3>자본의 세 가지 행동(저자 유형화)</h3>
+<ol>
+<li><b>스며든다:</b> 은 선단, 사탕수수 밭, 노예선, 유전, 바나나 농장까지 이익이 있는 곳이면 들어간다.</li>
+<li><b>합법화한다:</b> 면허, 조약, 법률, 판결, 계약으로 자신의 행동을 규칙 안에 넣는다.</li>
+<li><b>국가와 결합한다:</b> 군대, 조세권, 정보기관과 결합해 자원의 흐름을 지킨다.</li>
+</ol>
+<p>저자는 이 세 행동이 §8의 네 방식(정복, 경쟁, 통제, 협력) 모두에 자본이 들어가 있었음을 보여준다고 해석한다<span class="tag i">해석</span>. 반대 방향의 사례(인가 취소, 독점 해체, 폐지 운동)도 같은 시기에 존재했다는 점을 함께 적는다.</p>
+
+<h2 id="conclusion">결론과 관찰 지표</h2>
+<div class="crit" style="border-left-color:#2A3D35;background:#F3F0EA"><p>본 보고서가 검토한 증거는 다음을 지지한다. 석유는 에너지이자 탄소 소재이며, 소재 용도의 대체 경로는 현재 작고 비싸다. 기초 자원의 흐름을 해상로·결제망·제재로 쥐는 통제는 문헌상 잘 정립된 작동 원리이고, 2026년 호르무즈 봉쇄는 물리적 경로 차단이 단일 산유국의 생산 중단보다 큰 충격을 낳는다는 점을 보여주었다. 반면 그 통제의 효과 크기, 석유 동기의 전쟁과 금수의 실효, 문명 축의 설명력은 학계에서 논쟁 중이다. 국가 군집은 측정 방식에 따라 다른 지도를 그리며, 사회동역학 모델은 느린 누적 뒤 급격한 전이의 가능성을 보여주는 유추의 틀일 뿐 예측 도구가 아니다. 따라서 관찰자는 사건보다 누적되는 지표를 추적하되, 그 지표가 어느 방향으로 임계에 다가가는지에 대해서는 판단을 유보한다.</p></div>
+<ol>
+<li><b>결제 통화:</b> 석유 거래에서 달러 외 통화의 비중</li>
+<li><b>우회 기반시설:</b> 해상 요충지를 피하는 파이프라인과 육상 운송로의 용량</li>
+<li><b>장기 계약:</b> 자원 생산국과 비서방 소비국 사이의 20~30년 공급 계약</li>
+<li><b>군사 협력:</b> 합동 훈련과 무기 거래의 방향</li>
+<li><b>기구 가입과 행동 일치도:</b> BRICS·SCO 가입 신청국 수와 유엔 투표 등 실제 행동의 일치도</li>
+<li><b>소재 의존도:</b> 석유화학 원료 수요의 증가 속도와 대체 소재(재활용·바이오·CO₂ 기반)의 실제 비중</li>
+</ol>
+<p class="note">각 지표의 측정 방법과 선행연구는 부록에 정리했다. 최근 국제 정세(가입국, 정책명, 전쟁 관련 수치)는 2026-10-08 기준이며 이후 변동이 있을 수 있다.</p>
+
+<h2 id="epilogue">맺음말 — 자본의 남용과 규범의 형성</h2>
+<p>§13의 사례들은 자본이 법과 국가 권력과 결합해 사람과 땅을 자원으로 다룬 경우를 보여준다. 이 맺음말은 그 반대편, 곧 그런 관행에 맞서 새 규범이 만들어진 경로를 사례로 정리한다. 여기서 정리하는 것은 관찰된 경로이며, 그에 대한 저자의 규범적 해석은 다음 절에 분리해 둔다.</p>
+
+<h3>책임이 희석되는 구조: 문헌이 지적하는 것</h3>
+<div class="tw"><table>
+<thead><tr><th>구조</th><th>내용</th><th>사례</th></tr></thead>
+<tbody>
+<tr><td>거리</td><td>투자자와 현장 사이가 멀어질수록 사람은 장부의 숫자가 된다. §11의 '자본이 실물에서 멀어지는 경로'와 같은 방향이다<span class="tag i">해석</span></td><td>종호의 보험 청구. 1833년 보상금의 약 절반이 영국 거주 부재지주와 채권자에게 돌아갔다</td></tr>
+<tr><td>책임의 분산</td><td>위험을 나누는 공동출자와 주식회사는 책임도 나눈다<span class="tag i">해석</span></td><td>약탈 원정의 공동 출자, 동인도회사</td></tr>
+<tr><td>규칙의 재작성</td><td>규칙을 어기는 데 그치지 않고 면허·조약·판결로 규칙 자체를 옮긴다</td><td>§13 '합법화의 유형'</td></tr>
+</tbody></table></div>
+<p>같은 문제를 다룬 사상가들이 있다. 애덤 스미스는 『국부론』(1776) 1편 10장 2부에서 같은 업종 사람들이 모이면 대화가 대중에 대한 음모나 가격 인상 책략으로 끝난다고 경고했다<span class="tag v">확인</span>. 그보다 앞선 『도덕감정론』(1759)은 시장 질서가 공감과 도덕 감정 위에 서 있다는 논의로 읽힌다<span class="tag i">해석</span>. 칼 폴라니는 『거대한 전환』(1944) 6장에서 땅, 노동, 화폐는 상품이 아닌데 상품처럼 다뤄진다며 이를 '허구 상품'이라 불렀다<span class="tag v">확인</span>. 액턴 경은 1887년 4월 5일 크레이턴 주교에게 보낸 편지에서 "권력은 부패하는 경향이 있고, 절대 권력은 절대적으로 부패한다"고 썼다<span class="tag v">확인</span>.</p>
+
+<h3>대중 운동이 만든 규범</h3>
+<div class="tw"><table>
+<thead><tr><th>사례</th><th>행동</th><th>만들어진 규범</th></tr></thead>
+<tbody>
+<tr><td>영국 노예무역 폐지 운동<br><span style="font-weight:400">1787~</span></td><td>클라크슨은 노예무역에 쓰인 족쇄, 채찍, 손가락 죔쇠를 들고 전국을 돌았다. 웨지우드는 1787년 사슬에 묶인 아프리카인을 새긴 메달을 만들었다<span class="tag v">확인</span>. 1791년 4월 윌버포스의 폐지 동의안이 하원에서 163대 88로 부결되자 운동은 경제적 압력으로 방향을 바꿨고, 클라크슨의 추정으로 최소 30만 명이 서인도산 설탕을 끊었다<span class="tag v">확인</span>. 그해 말 40만 명에 이르렀다는 수치는 일부 2차 문헌의 추정이며<span class="tag u">미확인</span>, 설탕 판매가 3분의 1 넘게 줄었다는 대중 매체의 서술은 학술 근거를 찾지 못해 삭제했다. 1792년 몇 주 사이 519건의 청원에 약 39만 명이 서명했다(Drescher 1986; 영국 의회)<span class="tag v">확인</span></td><td>노예무역과 노예제의 폐지(1833년 노예제 폐지법). 다만 1833년 보상은 소유주에게 돌아갔다</td></tr>
+<tr><td>미국 농민의 그레인저 운동<br><span style="font-weight:400">1867~1887</span></td><td>1867년 창립된 농민 조직 그레인지는 1873년 공황 뒤 크게 성장해, 운임을 부풀리는 철도에 맞서 1870년대 주 단위 그레인저 법을 이끌었다. 철도는 단거리에 장거리보다 비싼 요금을 받았고, 대형 화주에게 비밀 리베이트를 주었다<span class="tag v">확인</span></td><td>주간통상법(1887): 운임은 "합리적이고 정당"해야 하며, 리베이트와 이익 공동분배(풀링)를 금지하고 운임 공개를 의무화했다. 주간통상위원회 설립<span class="tag v">확인</span></td></tr>
+<tr><td>아이다 타벨의 스탠더드 오일 보도<br><span style="font-weight:400">1902~1911</span></td><td>타벨은 1902년 11월~1904년 10월 『매클루어스』에 「스탠더드 오일의 역사」를 연재해 철도 리베이트, 가격 담합, 경쟁자 제거 수법을 전국 독자에게 알렸다<span class="tag v">확인</span></td><td>1911년 대법원이 셔먼 독점금지법 위반으로 스탠더드 오일을 34개 회사로 해체(221 U.S. 1)<span class="tag v">확인</span></td></tr>
+<tr><td>콩고 개혁 운동<br><span style="font-weight:400">1904~1908</span></td><td>1904년 2월 케이스먼트 보고서가 콩고 자유국의 잔학 행위를 확인했고, 같은 해 3월 모렐이 콩고개혁협회를 세웠다. 선교사 앨리스 실리 해리스의 사진이 팸플릿과 책으로 퍼졌고, 해리스 부부는 1906년 초 미국 순회에서 49개 도시, 200회의 집회에서 환등기로 사진을 보여주었다고 존 해리스 본인이 진술했다<span class="tag v">확인</span></td><td>1908년 11월 15일 벨기에의 병합으로 레오폴드 2세의 개인 소유 종식</td></tr>
+</tbody></table></div>
+
+<h3>규범이 형성된 경로</h3>
+<ol>
+<li><b>보이게 한다:</b> 족쇄를 들고 다닌 클라크슨, 해리스의 사진, 타벨의 기사. 장부의 숫자를 사람의 일로 되돌린다.</li>
+<li><b>지갑으로 움직인다:</b> 설탕 불매. 매출로 압력을 건다.</li>
+<li><b>조직한다:</b> 청원, 협회, 농민 조직. 흩어진 요구를 하나로 모은다.</li>
+<li><b>규칙으로 만든다:</b> 법률, 판결, 위원회. 요구가 다음 세대의 규범이 된다.</li>
+</ol>
+<p class="note">네 경로의 구분은 위 사례에서 저자가 도출한 유형이다<span class="tag i">저자 유형화</span>.</p>
+
+<h3>경로가 뒤집힌 사례</h3>
+<p>1951년 3월 이란 의회의 석유 국유화와, 1950년 선거로 선출되어 1951년 취임한 과테말라 아르벤스 정부의 토지개혁은 모두 각국의 제도적 절차를 거친 선택이었다. 그러나 1953년과 1954년, 외국 정보기관이 주도하거나 지원한 쿠데타가 그 선택을 뒤집었다(§13). 노예제 폐지도 보상금은 노예가 아닌 소유주에게 돌아갔다. 규범이 형성되기까지는 긴 지체가 있었고, 그 기간의 대가는 피해 당사자들이 치렀다.</p>
+<div class="obs"><b>관찰자 판독:</b> 위 사례들은 폭로·불매·조직·입법이 규범 형성에 기여한 경로를 보여준다. 그러나 이 사례들은 결과가 알려진 성공 사례 위주로 선택되었다는 한계가 있다. 같은 시기 실패한 운동, 경제적 이해(예: 노예제 폐지에 대한 경제사적 해석 논쟁)나 국가 간 경쟁이 규범 변화를 이끈 측면은 여기서 체계적으로 다루지 않았다.</div>
+
+<h2 id="normative">§ 저자의 규범적 논의 <span style="font-size:0.62em;color:#C0392B">(담론육층사유법 제6층 · 실증과 분리된 저자 규범 판단 · 편향 명시)</span></h2>
+<p style="color:#888;font-size:0.92em;font-style:italic">이하는 측정과 검증의 결과가 아니라 저자의 규범적 판단이며, §0~§13과 맺음말의 실증적 정리와 명시적으로 분리된다. 앞 절들이 관찰자 중립을 유지한 반면, 본 절은 담론육층사유법의 제6층 — 분석의 존재 이유를 묻는 층위 — 에 속하는 저자 고유의 논의다.</p>
+<div class="crit" style="border-left-width:6px">
+<p><b>명제 1 — 석유는 에너지이자 소재인 기초 자원이다.</b> 태양광·풍력·조력·원자력은 에너지, 그중에서도 전력의 일부만 대체할 뿐이며, 석유가 맡은 에너지와 소재의 역할 전체를 대체할 자원은 지구상에 없다.</p>
+<p><b>명제 2 — 탄소 저감 중심의 환경 담론은 석유의 소재 의존을 간과한다.</b> 의료용품, 비료, 섬유, 타이어, 그리고 대체 에너지 설비 자체까지 석유 소재 위에 서 있다. 이 의존을 걷어내는 일은 문명을 과거로 되돌리지 않는 한 성립하기 어렵다.</p>
+<p><b>명제 3 — 석유 유통을 통제하는 국가나 연합이 앞으로 더 큰 힘을 갖는다.</b> 석유 유통에 차질이 생기면 세계가 경제적 고통을 겪고, 석유를 대체할 자원이 없으므로 그 유통의 길목과 결제·가격의 장소를 쥔 쪽에 힘이 모인다. 그런데도 미국의 자원 통제 패권에 대해 학계는 충분히 문제를 제기하지 않는다.</p>
+<p><b>명제 4 — 자본은 사람의 욕심에 물들면 추악해지고, 그 추악함이 선을 넘을 때 새 규범이 생긴다.</b> 자본이 선한 모습으로 다가가도 사람의 욕심에 물들면 그 힘이 증폭되어, 인류가 쌓아 온 철학과 규범을 넘어서는 추악함을 드러낸다. 그 추악함이 인류애의 선을 넘을 때 새로운 규범이 생기며, 그 힘은 민중에게서 나온다. 역사에서 자본은 언제나 먼저 달렸고 규범은 뒤에서 따라왔으며, 그 규범을 끝내 세운 것은 민중이었다.</p>
+</div>
+<div class="honest" style="border-left-color:#888"><b>본 절의 지위 및 반론 병기:</b> 위 네 명제는 저자의 규범적 판단이며 편향을 명시한다(본문의 실증과 분리). 각 명제에 대한 반론을 병기한다.
+<ul>
+<li><b>명제 1·2에 대한 반론:</b> 탄소 저감 진영의 주류(IEA 넷제로 시나리오, IPCC 등)는 석유 사용을 모두 없애자는 것이 아니라 대체·효율·순환을 함께 말하며, 석유화학 원료 수요가 남는 경로도 인정한다. 장기적으로는 바이오 기반 원료, CO₂ 기반 합성, 화학적 재활용이 소재 대체 경로가 될 수 있다. 본문(§4, §10, 부록 6)이 보여주듯 이 경로들은 현재 작고 비싸지만, 비용 하락의 속도는 열린 문제다. '대체 자원이 없다'는 명제는 '현재 기술과 가격에서 대체가 비싸다'는 본문의 실증보다 강한 주장이다.</li>
+<li><b>명제 3에 대한 반론:</b> 패권 안정론(킨들버거, 코헤인의 논의 등)은 미국의 해상로 보호와 달러 결제망을 다른 나라도 쓰는 국제 공공재의 제공으로 본다. 마이어딩은 석유를 노린 전쟁이 드물고 수지가 맞지 않는다고, 비탈리스는 석유 안보 논리와 1973년 금수의 효과가 과장되었다고 반박한다(§5). 또 학계에는 이미 하비(『신제국주의』), 미첼(『탄소 민주주의』), 클레어(『피와 석유』), 헬렌 톰프슨(『무질서』), 콜건(『부분적 패권』) 등 석유와 패권의 관계를 비판적으로 다룬 연구가 적지 않다. '학계가 충분히 문제 제기하지 않는다'는 판단은 이 문헌들에 비추어 정도의 문제로 읽어야 한다.</li>
+<li><b>명제 4에 대한 반론:</b> 대중의 힘이 규범을 세우지 못하거나 뒤집힌 사례가 있다. 1951년 이란의 석유 국유화는 1953년 쿠데타로, 과테말라 아르벤스 정부의 토지개혁은 1954년 쿠데타로 뒤집혔다. 노예제 폐지 보상은 소유주에게 돌아갔다. 또 규범 변화에는 대중 운동 외에 경제 구조의 변화, 국가 간 경쟁, 엘리트 내부의 분열도 작용했다는 해석이 있다. 맺음말의 사례는 성공 사례 위주로 선택되었다는 한계가 있다.</li>
+</ul>
+실증은 구조와 방향을 진술할 뿐, 위 명제들의 규범적 타당성을 확정하지 않는다. 최종 판단은 독자의 몫이다.</div>
+
+<h2 id="evidence">부록 — 지표별 선행연구</h2>
+<p>결론의 관찰 지표 여섯 가지 각각에 대해 측정 방법이나 근거를 제시한 연구를 연결했다. 각 연구의 서지와 요지는 2026-10-08 재검증 결과에 맞추어 고쳤으며, 원문과 차이가 있던 항목은 그 내용을 함께 적었다.</p>
+
+<h3>1. 결제 통화</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>논지와의 연결</th></tr></thead>
+<tbody>
+<tr><td>고피나스 외, 「지배 통화 패러다임」<br><span style="font-weight:400"><i>AER</i> 110(3):677–719, 2020 (NBER WP 22943)</span></td><td>2,500여 국가 쌍, 세계 무역의 91%를 분석. 무역은 소수 통화로 결제되며, 달러가 1% 오르면 미국 밖 국가들끼리의 교역량이 1년 안에 0.6% 줄어든다<span class="tag v">확인</span></td><td>달러가 제3국 간 거래에도 영향을 미친다. 결제망이 영향력의 통로라는 근거</td></tr>
+<tr><td>ECB, 『The international role of the euro』(2019년 6월) 박스</td><td>EU 역외 석유 수입의 약 85%가 달러 표시다(설문 기준 "80% 이상")<span class="tag v">확인</span>. ECB는 유로 국제화에 이해관계가 있는 기관이다</td><td>석유가 달러 체제의 핵심 고리임을 수치로 확인</td></tr>
+</tbody></table></div>
+<p class="note">쟁점: 달러의 지위는 석유 거래보다 금융시장의 깊이와 법·제도적 신뢰에서 나온다는 반론이 있다(Eichengreen, 『Exorbitant Privilege』, OUP 2011; Gopinath &amp; Stein 2021, <i>QJE</i>). 초안은 이 반론의 출처로 Habtoor Research(걸프 기업집단 계열 민간 싱크탱크)를 썼으나 학술 출처로 교체했다. 스파이로(1999)는 미국이 사우디와의 비공개 합의로 오일머니를 미 국채 등으로 환류시켰다고 본다. 이 논지를 확장하면 석유 수입의 환류가 미국 금융시장의 깊이를 키웠다고 볼 수 있으며, 그렇다면 두 요인은 대립하기보다 서로를 강화한다<span class="tag i">저자의 확장 해석</span>.</p>
+
+<h3>2. 우회 기반시설</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>논지와의 연결</th></tr></thead>
+<tbody>
+<tr><td>미 에너지정보청(EIA), 『World Oil Transit Chokepoints』(2026년 3월 갱신)</td><td>세계 석유 공급의 약 76%가 해상으로 운송된다. 말라카 해협은 2025년 상반기 하루 2,320만 배럴로 해상 석유 흐름의 약 29%, 호르무즈는 하루 2,090만 배럴로 세계 석유 소비의 약 20%, 해상 교역의 약 1/4이다. 호르무즈 우회로인 사우디 동서 파이프라인과 UAE 파이프라인은 명목 용량 약 470만 b/d, 실제 가용 여유분 약 260만 b/d로, 2024년 흐름(약 2,000만 b/d)에 비해 크게 부족하다<span class="tag v">확인</span></td><td>통제 수단 중 해상로의 비중을 측정하는 기준선</td></tr>
+<tr><td>'말라카 딜레마' 연구<br><span style="font-weight:400">Lanteigne 2008, <i>Asian Security</i> 4(2)</span></td><td>중국 원유 수입의 최대 80%가 말라카를 지난다는 수치가 널리 인용된다(후진타오의 2003년 발언이 계기). 중국은 2000년대부터 육상 우회로를 추진했다. 카자흐스탄-중국 송유관(2006)과 러시아 ESPO 송유관의 중국 지선(2011)은 일대일로(2013) 이전 사업이고, 미얀마-중국 송유관(2017 가동)은 이후 일대일로에 편입되었다. 파키스탄 과다르-신장 송유관은 구상 단계로 건설되지 않았다<span class="tag v">확인</span></td><td>통제받는 쪽의 우회 행동이 실제 기반시설 투자로 나타나는 사례</td></tr>
+</tbody></table></div>
+
+<h3>3. 장기 공급 계약</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>논지와의 연결</th></tr></thead>
+<tbody>
+<tr><td>카네기국제평화재단(미국 싱크탱크, 중도·자유주의 국제주의), 중국-카타르 LNG 계약 분석(2022)</td><td>2022년 11월 21일 QatarEnergy와 Sinopec이 연 400만 톤, 27년의 LNG 계약을 맺었다. LNG 업계 사상 최장 계약이다(QatarEnergy 발표)<span class="tag v">확인</span>. 계약 규모 600억 달러는 공식 발표가 아니라 언론(블룸버그)의 추정치다<span class="tag e">추정</span>. 중국이 걸프에서 경제·지정학적 입지를 체계적으로 넓히고 있다는 것은 카네기의 해석이다</td><td>공급망 축의 연합이 수십 년짜리 계약으로 고정되는 과정. 걸프의 '안보는 미국, 시장은 중국' 구도의 한 근거</td></tr>
+</tbody></table></div>
+
+<h3>4. 군사 협력</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>논지와의 연결</th></tr></thead>
+<tbody>
+<tr><td>저우·텅·퉁, 「동맹은 어떻게 무기를 거래하는가」<br><span style="font-weight:400"><i>PLoS ONE</i> 18(2), 2023</span></td><td>1951~2003년 자료의 사회연결망 분석. 정치적 동맹망에서 연결된 국가는 무기 거래망에서도 연결되며, 같은 동맹 공동체에 속하면 무기 거래가 늘어난다<span class="tag v">확인</span></td><td>무기 거래 흐름으로 블록 소속을 측정할 수 있다는 방법론적 근거</td></tr>
+<tr><td>르바허·투르너·카우어만, 세계 무기 이전 동적 네트워크 모델<br><span style="font-weight:400"><i>J. Royal Statistical Society Series A</i> 184(1), 2021 (뮌헨대, SIPRI 1950~2016 자료)</span></td><td>시간에 따라 변하는 네트워크 모델(STERGM)로 새 거래 관계의 형성과 기존 관계의 지속을 따로 분석<span class="tag v">확인</span></td><td>연합이 생기는 힘과 유지되는 힘을 구분해 측정. §7의 동역학 관점과 맞닿음</td></tr>
+<tr><td>헤이그전략연구소(HCSS), GINA Military</td><td>UCDP·SIPRI 데이터로 분쟁·군사협력·무기 이전의 전 지구적 연결 구조를 시각화. HCSS는 네덜란드 싱크탱크로 네덜란드 국방부 등 정부 용역 비중이 크다(서방·NATO 시각)<span class="tag v">확인</span></td><td>국가분석에 바로 쓸 수 있는 데이터 도구</td></tr>
+</tbody></table></div>
+
+<h3>5. 기구 가입과 행동 일치도</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>논지와의 연결</th></tr></thead>
+<tbody>
+<tr><td>베일리·스트레즈네프·뵈텐, 「유엔 투표로 본 국가 선호의 동적 추정」<br><span style="font-weight:400"><i>J. Conflict Resolution</i> 61(2):430–456, 2017</span></td><td>1946~2012년 유엔총회 투표로 각국의 '이상점'을 추정. 축은 미국 주도 자유주의 질서에 대한 태도<span class="tag v">확인</span></td><td>'실제 행동의 일치도'를 재는 대표적 표준 지표</td></tr>
+<tr><td>일린·빌류가·말코프, 「유엔총회 투표 결과의 실증 분석」<br><span style="font-weight:400">『Globalistics and Globalization Studies』 5권, 2015 (러시아 학술 연감, Uchitel 출판)</span></td><td>베일리 외의 이상점 방법이 아니라, 뵈텐의 투표 원자료에 레이파트식 일치지수를 적용했다. 결론은 BRICS 국가들이 1970년대 중반부터 미국에 맞서는 방향으로 투표를 동조해 왔고, 러시아만 1991~95년 일시적으로 친미 쪽으로 이동했다가 BRICS 쪽으로 돌아왔다는 것이다<span class="tag v">확인</span>. 러시아 학계의 연감으로 동료심사 수준과 러시아의 관점을 고려해야 한다</td><td>가입이라는 형식이 아니라 투표 행동의 동조를 보여주는 사례. §6 세 층 모델과의 연결은 저자의 해석</td></tr>
+</tbody></table></div>
+
+<h3>6. 소재 의존도</h3>
+<div class="tw"><table>
+<thead><tr><th>연구</th><th>핵심 내용</th><th>논지와의 연결</th></tr></thead>
+<tbody>
+<tr><td>European Bioplastics(바이오플라스틱 업계 협회)·nova-Institute(민간 연구사), 시장 보고서(2024년 12월)</td><td>바이오플라스틱 생산능력은 연간 약 4.14억 t 플라스틱 생산(PlasticsEurope — 플라스틱 업계 단체 — 의 2023년 수치)의 약 0.5%. 생산능력은 2024년 247만 t에서 2029년 573만 t으로 늘 전망이다<span class="tag v">확인</span>. 가동률 58%(실생산 144만 t)를 고려하면 실제 비중은 더 낮다. 업계 협회의 전망치이므로 낙관 편향 가능성이 있다</td><td>석유의 소재 역할을 대체할 후보가 현재 매우 작다는 근거. 2배 넘게 늘어도 1% 남짓</td></tr>
+<tr><td>IEA(2018)·OECD(2022)(§3)</td><td>석유화학이 2030년까지 석유 수요 증가의 1/3 이상, 2050년까지 거의 절반을 차지한다는 전망(IEA). 플라스틱 사용은 2019년 4.6억 t에서 2060년 12.31억 t으로 늘 전망(OECD 기준 시나리오)<span class="tag v">확인</span></td><td>소재 의존도가 줄지 않고 커진다는 근거</td></tr>
+</tbody></table></div>
+
+<div class="honest" id="verify"><b>검증 및 한계 표기</b>
+<ul>
+<li><b>[재검증]</b> 2026-10-08 초안 전체를 네 갈래로 나누어 다시 검증했다(A: 서장~§3, B: §4~§7과 부록, C: §8~§11, D: §12·§13과 맺음말). 각 주장을 확인·수정·확인불가로 판정했고, 수정 판정은 올바른 값으로 고쳤다. 확인불가 판정은 삭제하거나 <span class="tag u">미확인</span>으로 표시했다. 위키백과·나무위키·블로그·투자 매체·귀금속 딜러 출처는 1차·학술 출처로 교체했다. 초안 부록의 "모두 이번 조사에서 검색해 확인한 자료"라는 문장은 사실이 아니어서 삭제했다.</li>
+<li><b>[논쟁 중인 해석]</b> 네안데르탈인 소멸의 '경쟁→흡수→붕괴' 결합 모델(저자 종합), 비트포겔의 수력 사회 가설, 청동기 붕괴의 원인, 네프의 목재 위기, 1571년 세계화 기점, 마제드베베 연대(6.5만 대 5만 년), 1973~75년 침체의 원인, 1941년 일본 사례에서 석유 동기의 비중(마이어딩), 1973년 금수의 실효(비탈리스), 헌팅턴 문명 축의 설명력, 말멘디어의 유한책임 해석, 튤립 계약의 옵션 전환과 당국 승인(톰프슨 대 골드가), 펠리페 2세 파산의 성격(드렐리치먼·보스), 바베이도스 설탕 혁명의 네덜란드 주도설(메너드), 1953·1954년 쿠데타의 주된 동기.</li>
+<li><b>[확인하지 못한 주장]</b> 석유 소비 중 수송 비중의 정확한 값(약 60%로 근사), 합성고무의 정확한 비중, 1560년경 포토시의 연 500만 온스 산출, 카네시 문서고의 '거품' 서술, VOC 연평균 18% 배당(한 역사가의 추정), 드레이크 원정의 여왕 몫 16만 파운드, 무적함대 비용 400만 두카트의 학술 원출처, 1791년 불매 40만 명, OPEC+ 감산이 석유 사용량을 묶어 왔다는 저자의 해석. 은의 목요일 하루 가격(21.62→10.80달러)은 브리태니커·CFTC 원자료로 다시 확인하지 못했다.</li>
+<li><b>[2026년 수치의 시점]</b> 2026년 이란 전쟁 관련 수치(유가, IMF 전망, 통항 척수, 한국·일본 조치, 한국의 중동 원유 비중)는 2026-10-08 기준이며 계속 바뀌고 있다. IMF 10월 WEO는 이 보고서 작성 이후 발표된다.</li>
+<li><b>[IEA 자료 접근의 한계]</b> 이번 검증에서 IEA 웹페이지 일부를 직접 열람하지 못했다. 따라서 일부 IEA 수치(석유 소비 중 수송 비중, 2026년 IEA 석유시장 보고서의 일부 수치 등)는 IEA 발표를 인용한 통신사·언론·업계 매체의 2차 보도로 교차 확인했다.</li>
+<li><b>[출처의 성향]</b> 업계 단체(AFPM, European Bioplastics, 국제주석협회, 실버 인스티튜트, Textile Exchange), 상업 컨설팅·가격평가사(Rystad, Shell, Fastmarkets, Argus, SMM, AMI), 거래소(CME, ICE, LME, HKEX, JPX), 싱크탱크(Ember, 카네기, HCSS), 당사국 정부 자료는 이해관계가 있을 수 있어 참고문헌에 성향을 표기했다.</li>
+<li><b>[분석 틀의 지위]</b> 세 층 모델, 네 방식 분류, 자본의 세 행동, 규범 형성의 네 경로, 아홉 서사의 패턴은 저자의 분석 틀이며 단일 실증 결과가 아니다. 사회동역학 모델과 국가 현상의 대응은 유추다.</li>
+</ul></div>
+
+<h2 id="refs">참고문헌</h2>
+<p class="src">공공·학술 출처 우선, 이해관계가 있는 출처는 유형과 성향을 괄호에 표기한다.</p>
+
+<h3>국제기구·정부</h3>
+<ul class="refs">
+<li><a href="https://www.iea.org/reports/global-energy-review-2025/oil">IEA, Global Energy Review 2025 – Oil</a> (국제기구, 소비국 관점)</li>
+<li><a href="https://www.iea.org/reports/the-future-of-petrochemicals">IEA, The Future of Petrochemicals (2018)</a></li>
+<li><a href="https://www.iea.org/reports/oil-market-report-april-2026">IEA, Oil Market Report – April 2026</a></li>
+<li><a href="https://www.iea.org/news/iea-confirms-member-country-contributions-to-collective-action-to-release-oil-stocks-in-response-to-middle-east-disruptions">IEA, Member country contributions to collective action to release oil stocks (2026-03)</a></li>
+<li><a href="https://www.iea.org/about/oil-security-and-emergency-response/strait-of-hormuz">IEA, Strait of Hormuz</a></li>
+<li><a href="https://www.iea.org/reports/the-implications-of-oil-and-gas-field-decline-rates/executive-summary">IEA, The Implications of Oil and Gas Field Decline Rates (2025)</a></li>
+<li><a href="https://www.iea.org/reports/coal-2024/executive-summary">IEA, Coal 2024</a></li>
+<li><a href="https://www.iea.org/data-and-statistics/data-product/world-energy-balances">IEA, World Energy Balances</a></li>
+<li><a href="https://www.imf.org/en/Publications/WEO/Issues/2026/07/08/world-economic-outlook-update-july-2026">IMF, World Economic Outlook Update, July 2026</a></li>
+<li><a href="https://portwatch.imf.org/">IMF PortWatch</a></li>
+<li><a href="https://www.dallasfed.org/research/economics/2026/0320">Kilian, Plante &amp; Richter, What the closure of the Strait of Hormuz means for the global economy (Dallas Fed, 2026-03-20)</a> (중앙은행 소속 연구자 분석, 연준 공식 견해 아님)</li>
+<li><a href="https://www.dallasfed.org/research/surveys/des">Federal Reserve Bank of Dallas, Energy Survey</a></li>
+<li><a href="https://www.oecd.org/en/publications/global-plastics-outlook_de747aef-en.html">OECD, Global Plastics Outlook (2022)</a></li>
+<li><a href="https://www.fao.org/forestry/statistics/data/en">FAO, Forestry statistics</a>; <a href="https://openknowledge.fao.org/handle/20.500.14283/cd1211en">FAO, State of the World's Forests 2024</a></li>
+<li><a href="https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-salt_ver.1.0.pdf">USGS, Mineral Commodity Summaries 2025 – Salt</a>; <a href="https://pubs.usgs.gov/periodicals/mcs2025/mcs2025-copper.pdf">Copper</a></li>
+<li><a href="https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/">EIA, World Oil Transit Chokepoints (2026년 3월 갱신)</a>; <a href="https://www.eia.gov/todayinenergy/detail.php?id=65504">EIA, Today in Energy 65504</a></li>
+<li><a href="https://www.eia.gov/todayinenergy/detail.php?id=67164">EIA, China crude oil inventories (2025-12)</a></li>
+<li><a href="https://www.eia.gov/todayinenergy/detail.php?id=43495">EIA, Low liquidity and limited storage pushed WTI below zero (2020)</a></li>
+<li><a href="https://www.eia.gov/energyexplained/oil-and-petroleum-products/imports-and-exports.php">EIA, Oil imports and exports</a>; <a href="https://www.eia.gov/todayinenergy/detail.php?id=42340">EIA, Today in Energy 42340</a></li>
+<li><a href="https://www.eia.gov/international/analysis/country/CHN">EIA, China Country Analysis</a>; <a href="https://www.eia.gov/international/analysis/country/SAU">EIA, Saudi Arabia Country Analysis</a>; <a href="https://www.eia.gov/outlooks/ieo/">EIA, International Energy Outlook 2023</a></li>
+<li><a href="https://afdc.energy.gov/fuels/properties">U.S. DOE, Alternative Fuels Data Center – Fuel properties</a></li>
+<li><a href="https://www.nrel.gov/pv/module-reliability.html">NREL, PV module reliability</a> (미 국립연구소)</li>
+<li><a href="https://www.ecb.europa.eu/pub/pdf/ire/focus/ecb.irebox201906_03~3e5a7878dd.en.pdf">ECB, The international role of the euro (2019), Box</a> (중앙은행, 유로 국제화에 이해관계)</li>
+<li><a href="https://history.state.gov/milestones/1937-1945/pearl-harbor">U.S. Office of the Historian, Pearl Harbor</a>; <a href="https://history.state.gov/milestones/1921-1936/red-line">Red Line Agreement</a>; <a href="https://history.state.gov/milestones/1969-1976/oil-embargo">Oil Embargo 1973–74</a>; <a href="https://history.state.gov/historicaldocuments/frus1952-54Guat">FRUS 1952–54, Guatemala</a> (미국 정부, 미국 관점)</li>
+<li><a href="https://home.treasury.gov/policy-issues/financial-sanctions/price-cap-coalition">U.S. Treasury, Price Cap Coalition</a></li>
+<li><a href="https://www.ibiblio.org/hyperwar/AAF/USSBS/">U.S. Strategic Bombing Survey, Oil Division Final Report (1945)</a> (승전국 1차 사료)</li>
+<li><a href="https://www.cia.gov/readingroom">CIA Reading Room (PBSUCCESS)</a></li>
+<li><a href="https://www.state.gov/minerals-security-partnership/">U.S. State Dept, Minerals Security Partnership</a></li>
+<li><a href="https://www.nato.int/cps/en/natohq/topics_52044.htm">NATO, Member countries</a>; <a href="https://www.pm.gov.au/media/joint-leaders-statement-aukus">Joint Leaders Statement on AUKUS (2021)</a></li>
+<li><a href="https://www.gov.br/mre/en">브라질 외교부(BRICS 의장국) 발표</a>; <a href="https://eng.sectsco.org">SCO</a>; <a href="https://www.turkicstates.org/en/turk-konseyi-hakkinda">튀르크국가기구</a> (회원국 주도 국제기구)</li>
+<li><a href="http://www.en.kremlin.ru/supplement/5770">러·중 공동성명(2022-02-04)</a>; <a href="https://www.fmprc.gov.cn/mfa_eng/wjdt_665385/2649_665393/202303/t20230311_11039241.html">중국 외교부, 사우디-이란 3자 공동성명(2023)</a> (당사국 정부)</li>
+<li><a href="https://www.opec.org/opec_web/en/about_us/24.htm">OPEC, 연혁</a>; <a href="https://www.opec.org/opec_web/en/press_room/7021.htm">OPEC 33차 장관회의 보도문(2022)</a> (산유국 카르텔, 사실 연혁에 한해 사용)</li>
+<li><a href="https://www.europarl.europa.eu/factsheets/en/sheet/1/the-first-treaties">European Parliament, The first treaties</a>; <a href="https://www.ats.aq/e/antarctictreaty.html">Antarctic Treaty Secretariat</a></li>
+<li><a href="https://www.petronet.co.kr">한국석유공사 페트로넷</a> (정부 산하기관); <a href="https://www.meti.go.jp/statistics/tyo/seidou/">일본 경제산업성 資源・エネルギー統計</a></li>
+<li><a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/680456/FOI2018-00186_-_Slavery_Abolition_Act_1833_-_pdf_for_disclosure_log__003_.pdf">HM Treasury, FOI2018-00186 (Slavery Abolition Act 1833 loan)</a></li>
+<li><a href="https://www.archives.gov/milestone-documents/interstate-commerce-act">U.S. National Archives, Interstate Commerce Act (1887)</a>; <a href="https://supreme.justia.com/cases/federal/us/221/1/">Standard Oil Co. of New Jersey v. United States, 221 U.S. 1 (1911)</a></li>
+<li><a href="https://www.parliament.uk/about/living-heritage/transformingsociety/tradeindustry/slavetrade/">UK Parliament, Living Heritage – The slave trade</a></li>
+</ul>
+
+<h3>학술</h3>
+<ul class="refs">
+<li>Marean et al. 2007, <a href="https://www.nature.com/articles/nature06204">Nature 449:905–908</a>; Pitulko et al. 2016, <a href="https://www.science.org/doi/10.1126/science.aad0554">Science 351:260</a>; Kelly, <i>The Lifeways of Hunter-Gatherers</i> (Cambridge UP 2013)</li>
+<li>Macaulay et al. 2005, <a href="https://www.science.org/doi/10.1126/science.1109792">Science 308:1034</a>; Groucutt et al. 2015, <a href="https://onlinelibrary.wiley.com/doi/10.1002/evan.21455">Evol. Anthropol.</a></li>
+<li>Erlandson et al. 2007, <a href="https://pubs.usgs.gov/publication/70029934">The kelp highway hypothesis</a> (USGS 공저); Erlandson et al. 2019, <a href="https://www.cambridge.org/core/journals/antiquity/article/late-pleistocene-estuaries-palaeoecology-and-humans-on-north-americas-pacific-coast/67C97F6B39AECAFD16DA145D763C2DE7">Antiquity</a></li>
+<li>Clarkson et al. 2017, <a href="https://www.nature.com/articles/nature22968">Nature 547:306–310</a>; O'Connell et al. 2018, <a href="https://www.pnas.org/doi/10.1073/pnas.1808385115">PNAS</a></li>
+<li>Breeze et al. 2016, <a href="https://researchonline.ljmu.ac.uk/id/eprint/6563/">Quaternary Science Reviews 144:155–185</a>; Groucutt et al. 2021, <a href="https://www.nature.com/articles/s41586-021-03863-y">Nature 597:376–380</a></li>
+<li>Banks et al. 2008, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0003972">PLoS ONE 3(12):e3972</a>; Higham et al. 2014, <a href="https://www.nature.com/articles/nature13621">Nature 512:306–309</a></li>
+<li>Green et al. 2010, <a href="https://www.science.org/doi/10.1126/science.1188021">Science</a>; Iasi et al. 2024, <a href="https://www.science.org/doi/10.1126/science.adq3010">Science</a>; Sümer et al. 2025, Nature; Jacobs et al. 2019, <a href="https://www.cell.com/cell/fulltext/S0092-8674(19)30175-X">Cell</a></li>
+<li>Olalde et al. 2019, <a href="https://www.science.org/doi/10.1126/science.aav1002">Science 363:1230–1234</a>; Zerjal et al. 2003, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1180246/">AJHG 72(3):717–721</a></li>
+<li>Wang et al. 2008, <a href="https://journals.plos.org/plosgenetics/article?id=10.1371/journal.pgen.1000037">PLoS Genet 4:e1000037</a>; Bryc et al. 2010, <a href="https://www.pnas.org/doi/10.1073/pnas.0914618107">PNAS</a></li>
+<li>Petr et al. 2020, <a href="https://www.science.org/doi/10.1126/science.abb6460">Science 369:1653–1656</a>; Sankararaman et al. 2014, <a href="https://www.nature.com/articles/nature12961">Nature 507:354–357</a>; Vaesen et al. 2019, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0225117">PLoS ONE 14(11):e0225117</a></li>
+<li>Sutikna et al. 2016, <a href="https://www.nature.com/articles/nature17179">Nature 532:366–369</a>; Sutikna et al. 2018, <a href="https://doi.org/10.1016/j.jhevol.2018.07.001">J. Hum. Evol. 124:52–74</a></li>
+<li>Mayshar, Moav &amp; Pascali 2022, <a href="https://www.journals.uchicago.edu/doi/10.1086/718372">JPE</a>; Bentzen et al. 2017, <a href="https://academic.oup.com/jeea/article/15/1/1/2939675">JEEA</a>; Knapp &amp; Manning 2016, <a href="https://ajaonline.org/wp-content/uploads/2015/12/1201_Knapp.pdf">AJA</a></li>
+<li>Powell et al. 2022, <a href="https://www.science.org/doi/10.1126/sciadv.abq3766">Science Advances</a>; Berger et al. 2023, <a href="https://www.frontiersin.org/journals/earth-science/articles/10.3389/feart.2023.1211478/full">Frontiers in Earth Science</a></li>
+<li>Flynn &amp; Giráldez 1995, <a href="https://uhpress.hawaii.edu/journal-of-world-history-vol-6-no-2-1995">J. World History 6(2)</a>; O'Rourke &amp; Williamson 2002, <a href="https://doi.org/10.1017/S1361491602000126">Eur. Rev. Econ. Hist.</a>; Allen, <a href="https://www.cambridge.org/core/books/british-industrial-revolution-in-global-perspective/">The British Industrial Revolution in Global Perspective</a> (2009)</li>
+<li>Fressoz, <a href="https://www.penguin.co.uk/books/464145/more-and-more-and-more-by-fressoz-jean-baptiste/9780241718896">More and More and More</a> (Allen Lane 2024; 저자는 에너지 전환 담론에 비판적); Smil, <a href="https://www.penguinrandomhouse.com/books/690149/how-the-world-really-works-by-vaclav-smil/">How the World Really Works</a> (Viking 2022)</li>
+<li>Ueckerdt et al. 2021, <a href="https://www.nature.com/articles/s41558-021-01032-7">Nature Climate Change 11</a></li>
+<li>Gallagher &amp; Robinson 1953, <a href="https://doi.org/10.2307/2591017">Economic History Review 6(1)</a>; Harvey, <a href="https://global.oup.com/academic/product/the-new-imperialism-9780199264315">The New Imperialism</a> (OUP 2003; 마르크스주의 지리학); Farrell &amp; Newman 2019, <a href="https://doi.org/10.1162/isec_a_00351">International Security 44(1):42–79</a></li>
+<li>Barsky &amp; Kilian 2004, <a href="https://www.aeaweb.org/articles?id=10.1257/0895330042632708">JEP 18(4)</a>; Hamilton 1983, <a href="https://doi.org/10.1086/261140">JPE 91(2)</a>; Hamilton 2009, <a href="https://www.brookings.edu/bpea-articles/causes-and-consequences-of-the-oil-shock-of-2007-08/">BPEA</a></li>
+<li>Meierding, <a href="https://library.oapen.org/handle/20.500.12657/51030">The Oil Wars Myth</a> (Cornell UP 2020, 오픈액세스); Vitalis, <a href="https://www.sup.org/books/politics/oilcraft">Oilcraft</a> (Stanford UP 2020); Colgan, <a href="https://academic.oup.com/book/39203">Partial Hegemony</a> (OUP 2021)</li>
+<li>Huntington, <a href="https://www.foreignaffairs.com/articles/united-states/1993-06-01/clash-civilizations">The Clash of Civilizations?</a> (1993; 보수적 현실주의); Braudel, <i>La Méditerranée</i> (1949)</li>
+<li>Boros &amp; Ginter 2026, <a href="https://doi.org/10.33893/FER.25.2.65">Financial and Economic Review 25(2):65–91</a> (헝가리 중앙은행 발간 학술지); Bonadio et al., <a href="https://www.nber.org/papers/w34302">Playing with Blocs (NBER w34302)</a> / <a href="https://ideas.repec.org/p/imf/imfwpa/2025-263.html">IMF WP 2025/263</a></li>
+<li>Castellano, Fortunato &amp; Loreto 2009, <a href="https://doi.org/10.1103/RevModPhys.81.591">Rev. Mod. Phys. 81:591</a>; Axelrod 1997, <a href="https://doi.org/10.1177/0022002797041002001">JCR 41(2)</a>; Schelling 1971, <a href="https://doi.org/10.1080/0022250X.1971.9989794">J. Math. Sociology 1(2)</a>; Hegselmann &amp; Krause 2002, <a href="https://www.jasss.org/5/3/2.html">JASSS 5(3)</a>; Barabási &amp; Albert 1999, <a href="https://doi.org/10.1126/science.286.5439.509">Science 286</a>; Scheffer et al. 2009, <a href="https://doi.org/10.1038/nature08227">Nature 461</a></li>
+<li>Hidalgo, Klinger, Barabási &amp; Hausmann 2007, <a href="https://doi.org/10.1126/science.1144581">Science 317:482–487</a></li>
+<li>Fazal, <a href="https://press.princeton.edu/books/paperback/9780691134604/state-death">State Death</a> (2007); Zacher 2001, <a href="https://doi.org/10.1162/00208180151140568">IO 55(2)</a>; Altman 2020, <a href="https://www.cambridge.org/core/journals/international-organization/article/abs/evolution-of-territorial-conquest-after-1945-and-the-limits-of-the-territorial-integrity-norm/E81D1E3F2C34CB00D8501BFDB363A1AD">IO 74(3):490–522</a>; Brooks, <a href="https://press.princeton.edu/books/paperback/9780691130316/producing-security">Producing Security</a> (2005)</li>
+<li>Gilpin, <a href="https://www.cambridge.org/core/books/war-and-change-in-world-politics/">War and Change in World Politics</a> (1981); Kennedy, <a href="https://www.penguinrandomhouse.com/books/3577/the-rise-and-fall-of-the-great-powers-by-paul-kennedy/">The Rise and Fall of the Great Powers</a> (1987); Le Billon, <a href="https://www.hurstpublishers.com/book/wars-of-plunder/">Wars of Plunder</a> (2012)</li>
+<li>Hirschman, <a href="https://www.ucpress.edu/book/9780520301801/national-power-and-the-structure-of-foreign-trade">National Power and the Structure of Foreign Trade</a> (1945); Haas, <a href="https://www.sup.org/books/title/?id=7826">The Uniting of Europe</a> (1958); Keohane, <a href="https://press.princeton.edu/books/paperback/9780691122489/after-hegemony">After Hegemony</a> (1984); Ostrom, <a href="https://www.cambridge.org/core/books/governing-the-commons/">Governing the Commons</a> (1990)</li>
+<li>Hall, Lambert &amp; Balogh 2014, <a href="https://doi.org/10.1016/j.enpol.2013.05.049">Energy Policy 64:141–152</a>; Muggeridge et al. 2014, <a href="https://doi.org/10.1098/rsta.2012.0320">Phil. Trans. R. Soc. A</a></li>
+<li>Jevons, <a href="https://www.econlib.org/library/YPDBooks/Jevons/jvnCQ.html">The Coal Question</a> (1865; Liberty Fund 전자판); Duranton &amp; Turner 2011, <a href="https://doi.org/10.1257/aer.101.6.2616">AER 101(6)</a>; Sinn, <a href="https://mitpress.mit.edu/9780262016681/the-green-paradox/">The Green Paradox</a> (MIT Press 2012; 저자 시장주의 성향)</li>
+<li>Larsen, <a href="https://www.cambridge.org/core/books/ancient-kanesh/">Ancient Kanesh</a> (Cambridge UP 2015); Malmendier 2009, <a href="https://doi.org/10.1257/jel.47.4.1076">JEL 47(4)</a>; González de Lara 2008, JEH; Puga &amp; Trefler 2014, <a href="https://doi.org/10.1093/qje/qju006">QJE 129(2)</a></li>
+<li>Gelderblom, de Jong &amp; Jonker 2013, <a href="https://doi.org/10.1017/S0022050713000879">JEH 73(4)</a>; Petram, <i>The World's First Stock Exchange</i> (Columbia UP 2014); de Vries &amp; van der Woude, <a href="https://www.cambridge.org/core/books/first-modern-economy/">The First Modern Economy</a> (1997); Cronon, <a href="https://wwnorton.com/books/Natures-Metropolis/">Nature's Metropolis</a> (1991)</li>
+<li>Tang &amp; Xiong 2012, <a href="https://doi.org/10.2469/faj.v68.n6.5">FAJ 68(6)</a> (<a href="https://www.nber.org/system/files/working_papers/w16385/w16385.pdf">NBER w16385</a>); Kilian &amp; Murphy 2014, <a href="https://doi.org/10.1002/jae.2322">J. Applied Econometrics 29(3)</a>; Spiro, <a href="https://www.cornellpress.cornell.edu/book/9780801436147/the-hidden-hand-of-american-hegemony/">The Hidden Hand of American Hegemony</a> (Cornell UP 1999)</li>
+<li>Garber 1989, <a href="https://www.journals.uchicago.edu/doi/10.1086/261615">JPE</a>; Goldgar, <i>Tulipmania</i> (U Chicago Press 2007), <a href="https://reviews.history.ac.uk/review/666">IHR Reviews in History 서평</a>; Thompson 2007, <a href="https://doi.org/10.1007/s11127-006-9074-4">Public Choice 130(1):99–114</a> (공공선택학파, 시장 친화)</li>
+<li>Drelichman &amp; Voth, <a href="https://press.princeton.edu/books/hardcover/9780691151496/lending-to-the-borrower-from-hell">Lending to the Borrower from Hell</a> (Princeton UP 2014); Bakewell, <i>Miners of the Red Mountain</i> (1984); TePaske, <i>A New World of Gold and Silver</i> (Brill 2010); Lin Man-houng, <i>China Upside Down</i> (Harvard 2006)</li>
+<li>Andrews, <i>Elizabethan Privateering</i> (Cambridge 1964); Parker &amp; Martin, <i>The Spanish Armada</i> (1999); Menard, <i>Sweet Negotiations</i> (U Virginia Press 2006); Drescher, <i>Capitalism and Antislavery</i> (1986); Midgley, <i>Women Against Slavery</i> (1992)</li>
+<li>Gleijeses, <i>Shattered Hope</i> (Princeton 1991); Penrose, <i>The International Petroleum Industry</i> (1968); Chernow, <i>Titan</i> (1998); Lanteigne 2008, <a href="https://doi.org/10.1080/14799850802006555">Asian Security 4(2)</a></li>
+<li>Gopinath et al. 2020, <a href="https://www.aeaweb.org/articles?id=10.1257/aer.20171201">AER 110(3):677–719</a>; Gopinath &amp; Stein 2021, <a href="https://academic.oup.com/qje/article/136/2/783/5985929">QJE</a>; Eichengreen, <i>Exorbitant Privilege</i> (OUP 2011)</li>
+<li>Chou, Teng &amp; Tung 2023, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9977018/">PLoS ONE 18(2)</a>; Lebacher, Thurner &amp; Kauermann 2021, <a href="https://doi.org/10.1111/rssa.12620">JRSS A 184(1)</a>; Bailey, Strezhnev &amp; Voeten 2017, <a href="https://doi.org/10.1177/0022002715595700">JCR 61(2)</a>, <a href="https://dataverse.harvard.edu/dataverse/Voeten">Voeten Dataverse</a></li>
+<li>Ilyin, Bilyuga &amp; Malkov 2015, <a href="https://www.sociostudies.org/almanac/articles/the_empirical_analysis_of_the_voting_results_in_the_un_general_assembly/">The Empirical Analysis of the Voting Results in the UN General Assembly</a>, Globalistics and Globalization Studies 5 (러시아 학술 연감, 러시아 관점)</li>
+<li><a href="https://cuadernosdehistoria.uchile.cl/index.php/CDH/article/view/52233">Cuadernos de Historia (칠레대), J. T. North 연구</a>; Sliwinski 2006, "The Childhood of Human Rights", J. Visual Culture</li>
+<li>Keynes, <a href="https://www.hetwebsite.net/het/texts/keynes/keynes1930grandchildren.htm">Economic Possibilities for our Grandchildren</a> (1930, 원문); Smith, <a href="https://www.econlib.org/library/Smith/smWN.html">Wealth of Nations</a>, <a href="https://www.econlib.org/library/Smith/smMS.html">Theory of Moral Sentiments</a> (Liberty Fund 전자판, 고전자유주의 재단); <a href="https://oll.libertyfund.org/quotes/214">Acton, letter to Creighton (1887)</a>; Polanyi, <i>The Great Transformation</i> (Beacon Press); <a href="https://www.gutenberg.org/ebooks/24518">Mackay, Extraordinary Popular Delusions (1841)</a></li>
+<li>Herodotus 7.144, <a href="http://www.perseus.tufts.edu/hopper/text?doc=Hdt.+7.144">Perseus</a>; Aristotle, Ath. Pol. 22, <a href="http://www.perseus.tufts.edu/hopper/text?doc=Aristot.+Ath.+Pol.+22">Perseus</a> (터프츠대 고전 원전)</li>
+<li>Tarbell, <i>The History of the Standard Oil Company</i>, <a href="https://pagetutor.com/standard/chapter02_part4.html">원문 전재</a> (진보 시대 폭로 저널리즘, 반스탠더드 시각); Sampson, <a href="https://journeytoforever.org/biofuel_library/sevensisters/7sisters9.html">The Seven Sisters (1975) 본문 전재</a> (언론인 저술); Schlesinger &amp; Kinzer, <i>Bitter Fruit</i> (1982); Kinzer, <i>The Brothers</i> (2013) (언론인 저술, 비판적 시각)</li>
+<li>Hochschild, <i>Bury the Chains</i> (2005); Steinmetz, <i>The Richest Man Who Ever Lived</i> (2015) (대중 학술서)</li>
+</ul>
+
+<h3>기관·박물관·대학</h3>
+<ul class="refs">
+<li><a href="https://sites.utexas.edu/dsb/tokens/from-accounting-to-writing/">Schmandt-Besserat, From accounting to writing (UT Austin)</a></li>
+<li><a href="https://www.sciencehistory.org/education/scientific-biographies/fritz-haber/">Science History Institute, Fritz Haber</a>; <a href="https://www.sciencehistory.org/education/scientific-biographies/william-henry-perkin/">William Henry Perkin</a>; <a href="https://www.acs.org/education/whatischemistry/landmarks/carotherspolymers.html">American Chemical Society, Carothers polymers</a></li>
+<li><a href="https://ourworldindata.org/grapher/oil-share-energy">Our World in Data, Oil share of energy</a>; <a href="https://ourworldindata.org/grapher/share-elec-by-source">Share of electricity by source</a> (학술 데이터 가공)</li>
+<li><a href="https://ukerc.ac.uk/publications/the-rebound-effect-an-assessment-of-the-evidence-for-economy-wide-energy-savings-from-improved-energy-efficiency/">UKERC, The Rebound Effect (Sorrell 2007)</a> (영국 공공 연구센터)</li>
+<li><a href="https://www.habsburger.net/en/chapter/sponsored-fugger-trading-houses-financial-backers">Habsburger.net, Sponsored by Fugger</a> (오스트리아 학술 포털)</li>
+<li><a href="https://dia.upenn.edu/en/content/TL005Mita">University of Pennsylvania, Mita</a>; <a href="https://digfir-published.macmillanusa.com/strayer3e/strayer3e_ch14_11.html">Strayer, Zooming In: Potosí</a> (대학 교재)</li>
+<li><a href="https://atlasofmutualheritage.nl/en/id/8740">Atlas of Mutual Heritage, Matanzas 1628</a> (네덜란드 문화유산 기관 계열)</li>
+<li><a href="https://www.rmg.co.uk/stories/topics/zong-massacre">Royal Museums Greenwich, The Zong massacre</a>; <a href="https://www.rmg.co.uk/collections/research-guides/research-guide-p3-charts-spanish-armada-robert-adams-museum">RMG, Spanish Armada research guide</a></li>
+<li><a href="https://www.ucl.ac.uk/lbs/">UCL Centre for the Study of the Legacies of British Slavery</a></li>
+<li><a href="https://kingspast.kcl.ac.uk/database/organisations/south-sea-company-174">King's College London, South Sea Company</a>; <a href="https://www.slavevoyages.org">SlaveVoyages (Emory)</a></li>
+<li><a href="https://nsarchive.gwu.edu/briefing-book/iran/2013-08-19/cia-confirms-role-1953-iran-coup">National Security Archive (GWU), CIA confirms role in 1953 Iran coup</a> (정보공개 NGO)</li>
+<li><a href="https://www.pbs.org/wgbh/americanexperience/features/rockefellers-south/">PBS American Experience, The Rockefellers</a></li>
+<li><a href="https://www.antislavery.ac.uk/items/show/2052">Antislavery Usable Past (University of Nottingham)</a>; <a href="https://www.revolutionaryplayers.org.uk/?p=2006">Revolutionary Players, Commerce, Slavery and Anti-slavery</a> (교육 아카이브)</li>
+<li><a href="https://victorianweb.org/history/empire/opiumwars/opiumwars1.html">The Victorian Web, Opium Wars</a> (학술 아카이브)</li>
+<li><a href="https://www.rothschildarchive.org">The Rothschild Archive</a> (관련 당사자 기록관)</li>
+<li>Encyclopaedia Britannica: <a href="https://www.britannica.com/topic/Opium-Wars">Opium Wars</a>, <a href="https://www.britannica.com/money/Silver-Thursday">Silver Thursday</a>, <a href="https://www.britannica.com/topic/Fugger-family">Fugger family</a>, <a href="https://www.britannica.com/event/Spanish-Armada-Spanish-naval-fleet">Spanish Armada</a>, <a href="https://www.britannica.com/topic/asiento-de-negros">Asiento</a>, <a href="https://www.britannica.com/topic/banana-republic">Banana republic</a>, <a href="https://www.britannica.com/topic/BP-plc">BP</a>, <a href="https://www.britannica.com/topic/De-Beers-SA">De Beers</a>, <a href="https://www.britannica.com/event/Battle-of-Plassey">Plassey</a>, <a href="https://www.britannica.com/place/Congo-Free-State">Congo Free State</a>, <a href="https://www.britannica.com/event/Navigation-Acts">Navigation Acts</a>, <a href="https://www.britannica.com/place/Jamaica/History">Jamaica</a>, <a href="https://www.britannica.com/event/Granger-movement">Granger movement</a>, <a href="https://www.britannica.com/biography/E-D-Morel">E. D. Morel</a>, <a href="https://www.britannica.com/topic/Amarna-Letters">Amarna Letters</a>, <a href="https://www.britannica.com/place/Banda-Islands">Banda Islands</a> (학술 편집 백과사전)</li>
+</ul>
+
+<h3>언론(통신사·일간지)</h3>
+<ul class="refs">
+<li>Reuters/LSEG, Bloomberg: <a href="https://www.bloomberg.com/news/articles/2026-03-30/latest-oil-market-news-and-analysis-for-march-31">브렌트 3월 30일 시세 보도</a>; Reuters 2022-03-08(LME 니켈); Reuters 2022-10-05(OPEC+); Reuters 2021-03-27(중국-이란 협정); Bloomberg 2022-03(칭산 손실 보도) (통신·금융 언론)</li>
+<li><a href="https://www.aljazeera.com/economy/2026/9/7/oil-prices-surge-as-us-iran-strikes-intensify-in-strait-of-hormuz">Al Jazeera, Oil prices surge as US-Iran strikes intensify (2026-09-07)</a> (카타르 국영 자본 매체)</li>
+<li><a href="https://al-monitor.com/originals/2026/08/iranian-parliamentary-committee-reviews-draft-bill-bar-us-israeli-ships-hormuz">Al-Monitor, Iranian parliamentary committee reviews draft bill (2026-08)</a> (중동 전문 매체)</li>
+<li><a href="https://www.nationthailand.com/news/40070894">Nation Thailand, 9월 유가 보도</a>; <a href="https://www.farms.com/markets/commodity/brent-crude-oil-commodity-update-for-the-week-ending-jul-10-2026">Farms.com, Brent weekly update (2026-07)</a> (시장 데이터 2차 집계)</li>
+<li><a href="https://news.bgov.com/international-trade/why-us-iran-ceasefire-hasnt-led-to-hormuz-reopening-explainer">Bloomberg Government, Why US-Iran ceasefire hasn't led to Hormuz reopening</a></li>
+<li><a href="https://shipandbunker.com/news/world/433745-oil-shatters-weekly-record-as-35-surge-comes-amid-widening-iranus-war">Ship &amp; Bunker, Oil shatters weekly record</a> (해운업계 매체, 통신 인용)</li>
+<li><a href="https://www.heraldk.com/article/2026032607000039469">헤럴드경제, 나프타 수출 제한(2026-03-26)</a>; <a href="https://mobile.newsis.com/view/NISX20260316_0003549496">뉴시스, 석탄발전 출력 상한 해제(2026-03-16)</a>; <a href="https://news.mtn.co.kr/news-detail/2026091810200022912">머니투데이방송, 석탄발전 안보전원 검토(2026-09-18)</a>; 서울신문 2026-07-13(원유 도입선 다변화) (국내 언론, 정부 발표 인용)</li>
+<li><a href="https://www.smithsonianmag.com/history/the-woman-who-took-on-a-tycoon-651396/">Smithsonian Magazine, The woman who took on a tycoon</a></li>
+<li><a href="https://fullfact.org/economy/slavery-abolition-act-loan/">Full Fact, Slavery Abolition Act loan</a> (팩트체크 기관)</li>
+<li><a href="https://www.democracynow.org/books/harvest_of_empire/excerpt">Democracy Now, Juan González, Harvest of Empire 발췌</a> (진보 성향 매체, 보조 자료)</li>
+<li><a href="https://www.stonepages.com/news/archives/003314.html">Stone Pages, 얼랜드슨 인터뷰 재인용(Vancouver Sun 2009-05-28)</a> (언론 보도 2차)</li>
+<li><a href="https://longnow.org/ideas/ancient-venture-capitalism-and-its-lessons-for-the-modern-economy/">Long Now Foundation, Ancient venture capitalism</a> (비영리 재단 블로그, NYT Magazine 해석 재인용 — 카네시 '거품' 서술의 출처로만 표기)</li>
+</ul>
+
+<h3>업계·이익단체·싱크탱크(성향 표기)</h3>
+<ul class="refs">
+<li><a href="https://afpm.org/newsroom/blog/wait-theres-oil-and-gas-renewable-energy">AFPM, Wait, there's oil and gas in renewable energy?</a> (AFPM: 미국 정유·석유화학 업계 단체 — §9 표의 착상 출처, 수치는 중립 출처로 대체)</li>
+<li><a href="https://www.habtoorresearch.com/programmes/petrodollar-architecture-ambition/">Habtoor Research, Petrodollar: Architecture &amp; Ambition</a> (걸프 기업집단 계열 민간 싱크탱크 — 초안 출처, 본문에서는 학술 출처로 교체)</li>
+<li><a href="https://www.european-bioplastics.org/eubp-reveals-the-results-of-the-2024-market-data-report">European Bioplastics, Market Data Report 2024</a> (업계 협회, 낙관 편향 가능); nova-Institute (민간 연구사); PlasticsEurope (플라스틱 업계 단체)</li>
+<li><a href="https://ember-energy.org/data/">Ember, Electricity data</a> (탈탄소 옹호 싱크탱크)</li>
+<li><a href="https://www.energyinst.org/statistical-review">Energy Institute, Statistical Review of World Energy</a> (영국 에너지 전문가 단체, BP 통계 승계, 업계 후원)</li>
+<li><a href="https://textileexchange.org/knowledge-center/reports/materials-market-report-2025/">Textile Exchange, Materials Market Report 2025</a> (지속가능 섬유 업계 이니셔티브)</li>
+<li><a href="https://www.internationaltin.org/ita-study-tin-use-in-recovery-cycle/">International Tin Association</a> (주석 업계 단체); <a href="https://silverinstitute.org/world-silver-survey-2025/">The Silver Institute, World Silver Survey 2025</a> (은 업계 단체)</li>
+<li><a href="https://www.rubberstudy.org/">International Rubber Study Group</a> (생산·소비국 정부간 기구)</li>
+<li><a href="https://worldoil.com/news/2025/8/15/global-recoverable-oil-has-risen-by-5-billion-bbls-despite-higher-2024-production/">Rystad Energy 발표(World Oil 보도, 2025-08)</a> (상업 컨설팅사, 탐사 투자 확대 주장 경향)</li>
+<li><a href="https://www.ogj.com/drilling-production/production-operations/ior-eor/article/17228455/global-oil-reserves2-recovery-factors-leave-eor-plenty-of-room-for-growth">Oil &amp; Gas Journal, Sandrea &amp; Sandrea (2007)</a> (업계 전문지; 880억 배럴은 Shell 추정 — 석유 메이저, 이해당사자)</li>
+<li><a href="https://fastmarkets.com/insights/chinas-anode-market-tilts-toward-synthetic-graphite">Fastmarkets</a>; <a href="https://www.argusmedia.com/pt/news-and-insights/latest-market-news/2290678-needle-coke-demand-growth-to-tighten-anode-coke">Argus, Needle coke demand</a>; <a href="https://www.argusmedia.com/en/news-and-insights/latest-market-news/2829724-japan-must-lower-dependence-on-middle-east-crude-paj">Argus, Japan Middle East crude (PAJ)</a>; <a href="https://www.metal.com/en/newscontent/103047297">SMM 니들코크스 시세</a> (상업 가격평가사)</li>
+<li><a href="https://www.reinforcedplastics.com/content/features/adhesives-for-bonding-wind-turbine-blades">Reinforced Plastics, Adhesives for bonding wind turbine blades</a>; <a href="https://digitalrefining.com/article/1002837/considerations-for-repurposing-a-fuel-grade-coker-into-a-needle-coker">Digital Refining</a> (업계 기술지)</li>
+<li><a href="https://recycling-magazine.com/?p=40905">ICIS(Recycling Magazine 보도)</a> (상업 화학정보사); <a href="https://amiplastics.com/insights/key-findings-on-global-mechanical-plastics-recycling-market">AMI</a> (상업 시장조사사)</li>
+<li><a href="https://carnegieendowment.org/posts/2022/12/whats-at-stake-in-the-massive-china-qatar-gas-deal">Carnegie Endowment, What's at Stake in the Massive China-Qatar Gas Deal</a> (미국 싱크탱크, 중도·자유주의 국제주의); <a href="https://www.qatarenergy.qa/en/MediaCenter/Pages/newsdetails.aspx?ItemId=3784">QatarEnergy 보도자료</a> (국영 기업); <a href="https://giignl.org/?p=10990">GIIGNL</a> (LNG 업계 단체)</li>
+<li><a href="https://hcss.nl/news/hcss-datalab-presents-gina-military">HCSS, GINA Military</a> (네덜란드 싱크탱크, 정부 용역 의존, 서방·NATO 시각); <a href="https://issafrica.org">ISS Africa</a> (아프리카 연구소)</li>
+<li>거래소(이해당사자, 연혁 자료로 사용): <a href="https://www.cmegroup.com/news/2023/the-40-year-story-of-a-crude-oil-benchmark.html">CME Group</a>; <a href="https://ir.theice.com/press/news-details/2018/ICE-Brent-Crude-Marks-30th-Year-as-Leading-Global-Oil-Benchmark-TAIFEX-to-Launch-Taiwanese-Dollar-Brent-Futures/default.aspx">ICE</a>; <a href="https://www.lme.com/en/LME-Nickel-litigation">LME, Nickel litigation</a>; <a href="https://www.hkexgroup.com">HKEX (2012-12-06 공시)</a>; <a href="https://www.jpx.co.jp/dojima/en/">JPX</a>; <a href="https://www.odex.co.jp/en/about/derivative">오사카도지마거래소</a></li>
+<li><a href="https://www.fia.org/marketvoice/articles/oil-futures-contracts-abu-dhabi-and-shanghai-offer-new-ways-hedge-flows-asia">FIA</a> (선물업계 협회)</li>
+<li><a href="https://www.stephensonharwood.com/insights/london-metal-exchange-wins-high-court-ruling-over-cancelled-nickel-trades/">Stephenson Harwood, LME wins High Court ruling</a> (로펌, LME 측 대리인 브리핑)</li>
+</ul>
+
+<div class="foot">늘푸른바다 사회동역학연구소 (Everblue Sea Institute for Social Dynamics) · everbluesea.org · 저자 청해(淸海) 단독 · AI 도구는 구현 수단(ICMJE/COPE 저자성 기준) · 편향 병기 · 최종 판단은 독자의 몫</div>
+<p class="slogan">인류의 경험과 수 많은 훌륭한 데이터들이 모여 은하수와 같은 현명한 빛으로 거듭 나 길 염원하는 마음으로!</p>
+
+<script>
+(function(){
+  var eras=["농업혁명","청동기","철기","고전 제국","대항해","산업혁명","석유의 세기","현대"];
+  // [이름, 시작 시대(1~8), 끝 시대(1~8), 운명]
+  var rows=[
+    ["물",1,8,"keep"],["곡물",1,8,"keep"],["흙·점토·모래",1,8,"keep"],["목재",1,8,"shift"],
+    ["소금",1,8,"shift"],["흑요석",1,2,"lost"],["구리",2,8,"shift"],["주석",2,8,"shift"],
+    ["철",3,8,"keep"],["은",4,8,"shift"],["비단",4,6,"lost"],["향신료",4,5,"lost"],
+    ["고래기름",5,6,"lost"],["구아노·초석",6,6,"lost"],["석탄",6,8,"keep"],
+    ["석유",6,8,"oil"],["반도체·배터리 광물",8,8,"keep"]
+  ];
+  var g=document.getElementById("strata"); if(!g) return;
+  var h='<div></div>';
+  eras.forEach(function(e){h+='<div class="era">'+e+'</div>';});
+  rows.forEach(function(r,i){
+    var row=i+2;
+    h+='<div class="name" style="grid-row:'+row+';grid-column:1">'+r[0]+'</div>';
+    h+='<div class="bar '+r[3]+'" style="grid-row:'+row+';grid-column:'+(r[1]+1)+' / '+(r[2]+2)+'"></div>';
+  });
+  g.innerHTML=h;
+})();
+</script>
+</body></html>

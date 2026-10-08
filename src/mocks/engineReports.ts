@@ -347,5 +347,27 @@ export const engineReports: Record<string, NationReport[]> = {
     },
   ],
 
+  // 오피니언 — 청해 칼럼과 그 원문 보고서 (2026-10-08 '준비중' 카드를 전환)
+  "cat-opinion": [
+    {
+      id: "opinion-oil-not-replaced-20261008",
+      title: "[칼럼] 인류의 자원 이동의 역사와 석유 — 석유는 대체되지 않는다", titleEn: "[Column] Humanity's History of Resource Shifts and Oil — Why Oil Is Not Being Replaced",
+      region: "청해 칼럼", regionEn: "Cheonghae Column",
+      scope: "단독",
+      engine: "오피니언",
+      date: "2026-10-08",
+      htmlPath: "/engines/opinion/청해칼럼_인류의자원이동의역사와석유_20261008.html",
+    },
+    {
+      id: "opinion-resource-paths-report-20261008",
+      title: "[원문 보고서] 인류의 자원 이동 경로 분석 — 서장부터 제13장, 지표별 선행연구", titleEn: "[Source Report] An Analysis of Humanity's Resource Paths — Prologue to Chapter 13, with Indicator-Level Literature",
+      region: "원문 보고서", regionEn: "Source Report",
+      scope: "단독",
+      engine: "오피니언",
+      date: "2026-10-08",
+      htmlPath: "/engines/opinion/인류의자원이동경로분석_원문보고서_20261008.html",
+    },
+  ],
+
   // ※ cat-feedback(피드백)은 목록형이 아니므로 이 맵에 넣지 않음
 };
