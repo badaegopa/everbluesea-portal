@@ -391,7 +391,7 @@ export const mainCategories = [
     topics: [],
     topicsEn: [],
     isCore: false,
-    image: "/images/cards/r-014.svg",
+    image: "/images/cards/cat-opinion.svg",
   },
 ];
 

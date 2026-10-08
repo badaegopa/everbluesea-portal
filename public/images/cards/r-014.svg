@@ -1,16 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
 <rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
-<text x="48" y="70" font-family="'Courier New',monospace" font-size="13" fill="#C8E0DC" letter-spacing="2">늘푸른바다 · 오피니언 · 청해 칼럼</text>
-<text x="48" y="116" font-family="Georgia,serif" font-size="36" font-weight="bold" fill="#EFC97A">인류의 자원 이동의 역사와 석유</text>
-<text x="48" y="150" font-family="Georgia,serif" font-size="19" fill="#F5F3EE">석유는 대체되지 않는다 — 문명, 유통, 그리고 권력</text>
-<text x="48" y="176" font-family="'Courier New',monospace" font-size="12" fill="#8fae9f">Opinion · Cheonghae Column · 2026-10-08</text>
-<g font-family="'Courier New',monospace" font-size="12">
-<line x1="48" y1="470" x2="752" y2="470" stroke="#5E9186" stroke-width="1"/>
-<rect x="48" y="300" width="150" height="14" fill="#5E9186"/><text x="48" y="292" fill="#C8E0DC">물 · 곡물 · 목재</text>
-<rect x="148" y="350" width="220" height="14" fill="#8fae9f"/><text x="148" y="342" fill="#C8E0DC">구리 · 주석 · 철 · 은</text>
-<rect x="398" y="400" width="140" height="14" fill="#6B7076"/><text x="398" y="392" fill="#C8E0DC">고래기름 · 구아노</text>
-<rect x="508" y="250" width="244" height="14" fill="#B8850E"/><text x="508" y="242" fill="#EFC97A">석유 — 연료이자 소재</text>
-<text x="48" y="494" fill="#8fae9f">고대</text><text x="380" y="494" fill="#8fae9f">대항해</text><text x="700" y="494" fill="#8fae9f">현대</text>
+<g opacity="0.55">
+<rect x="0" y="430" width="300" height="12" fill="#5E9186"/>
+<rect x="160" y="462" width="360" height="12" fill="#8fae9f"/>
+<rect x="420" y="494" width="200" height="12" fill="#6B7076"/>
+<rect x="520" y="398" width="280" height="12" fill="#B8850E"/>
 </g>
-<text x="48" y="552" font-family="Georgia,serif" font-size="15" fill="#EFE9D8">힘은 생산만큼이나 유통의 길목과 가격이 정해지는 장소에서 나온다</text>
+<text x="400" y="150" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">오피니언 · 청해 칼럼</text>
+<text x="400" y="232" text-anchor="middle" font-family="Georgia,serif" font-size="50" font-weight="bold" fill="#EFC97A">인류의 자원</text>
+<text x="400" y="296" text-anchor="middle" font-family="Georgia,serif" font-size="50" font-weight="bold" fill="#EFC97A">이동의 역사와 석유</text>
+<text x="400" y="346" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#F5F3EE">석유는 대체되지 않는다</text>
+<text x="400" y="560" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Opinion · 2026-10-08</text>
 </svg>
