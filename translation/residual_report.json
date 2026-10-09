@@ -15,6 +15,11 @@
   "hanja": 68
  },
  {
+  "file": "/engines/opinion/세계결식식비불안_각국정부대응점검_원문보고서_20261009_EN.html",
+  "ko": 619,
+  "hanja": 6
+ },
+ {
   "file": "/nations/book/Lambda12_CountryBook_Vol6_Europe_20261007_EN.html",
   "ko": 537,
   "hanja": 66
@@ -45,11 +50,6 @@
   "hanja": 18
  },
  {
-  "file": "/engines/opinion/인류의자원이동경로분석_원문보고서_20261008_EN.html",
-  "ko": 194,
-  "hanja": 10
- },
- {
   "file": "/nations/southeast-asia/v1.0_southeast-asia-1_20260428_EN.html",
   "ko": 153,
   "hanja": 2
@@ -58,6 +58,16 @@
   "file": "/nations/southeast-asia/v1.0_southeast-asia-2_20260428_EN.html",
   "ko": 129,
   "hanja": 2
+ },
+ {
+  "file": "/engines/opinion/인류의자원이동경로분석_원문보고서_20261008_EN.html",
+  "ko": 120,
+  "hanja": 10
+ },
+ {
+  "file": "/engines/opinion/청해칼럼_세계의굶주림에대한서사_20261009_EN.html",
+  "ko": 114,
+  "hanja": 12
  },
  {
   "file": "/engines/opinion/청해칼럼_인류의자원이동의역사와석유_20261008_EN.html",
