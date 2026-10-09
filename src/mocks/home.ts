@@ -80,6 +80,20 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-015",
+    category: "오피니언 · 청해 칼럼",
+    categoryEn: "Opinion · Cheonghae Column",
+    date: "2026-10-09",
+    author: "청해",
+    title: "세계의 굶주림에 대한 서사 — 끼니는 국력이 아니라 성실함의 문제다",
+    titleEn: "A Narrative of the World's Hunger — Meals Are a Matter of Diligence, Not National Power",
+    excerpt: "미국 대학생과 영국 아이의 끼니에서 출발해 21개국과 EU 정부의 결식·식비 대응을 점검했다. 세계 최상위 경제에서 끼니가 위태로운 것은 돈이 없어서가 아니라 제도의 선을 어디에 긋고 그 바깥을 얼마나 성실하게 돌보느냐의 문제다. 조건부 지원, 정치 주기, 자선 의존, 시장 구조, 측정 공백이라는 다섯 원인을 짚고, 보편·자동 안정·가격 구조·자급 기반을 하나로 묶은 '끼니 최저선 보장 체계'와 한국형 단계안을 제안한다. 게시 전 주요 주장 57건을 원 출처와 재검증한 원문 보고서를 함께 공개한다.",
+    excerptEn: "Starting from the meals of American college students and British children, this column reviews how the governments of 21 countries and the EU respond to hunger and food costs. In the world's richest economies, meals are at risk not because money is lacking but because of where governments draw the lines of their programs and how faithfully they care for those outside them. It identifies five causes — conditional support, political cycles, reliance on charity, market structure and a measurement gap — and proposes a single 'minimum meal guarantee' framework combining universality, automatic stabilisers, price structure and domestic supply, with a phased plan for Korea. The source report, with 57 key claims re-verified against original sources before publication, is published alongside.",
+    image: "/images/cards/r-015.svg",
+    tone: "dark" as const,
+    opinion: true, // ★ 오피니언 전용 칸 — 분석 5칸과 별도 (최신 1편 노출 → r-014는 오피니언 목록에 유지)
+  },
+  {
     id: "r-014",
     category: "오피니언 · 청해 칼럼",
     categoryEn: "Opinion · Cheonghae Column",

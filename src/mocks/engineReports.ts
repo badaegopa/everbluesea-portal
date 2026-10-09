@@ -350,6 +350,24 @@ export const engineReports: Record<string, NationReport[]> = {
   // 오피니언 — 청해 칼럼과 그 원문 보고서 (2026-10-08 '준비중' 카드를 전환)
   "cat-opinion": [
     {
+      id: "opinion-world-hunger-narrative-20261009",
+      title: "[칼럼] 세계의 굶주림에 대한 서사 — 끼니는 국력이 아니라 성실함의 문제다", titleEn: "[Column] A Narrative of the World's Hunger — Meals Are a Matter of Diligence, Not National Power",
+      region: "청해 칼럼", regionEn: "Cheonghae Column",
+      scope: "단독",
+      engine: "오피니언",
+      date: "2026-10-09",
+      htmlPath: "/engines/opinion/청해칼럼_세계의굶주림에대한서사_20261009.html",
+    },
+    {
+      id: "opinion-hunger-response-report-20261009",
+      title: "[원문 보고서] 세계 결식·식비 불안 — 각국 정부의 대응 점검 보고서", titleEn: "[Source Report] Hunger and Food-Cost Insecurity Worldwide — A Review of Government Responses",
+      region: "원문 보고서", regionEn: "Source Report",
+      scope: "단독",
+      engine: "오피니언",
+      date: "2026-10-09",
+      htmlPath: "/engines/opinion/세계결식식비불안_각국정부대응점검_원문보고서_20261009.html",
+    },
+    {
       id: "opinion-oil-not-replaced-20261008",
       title: "[칼럼] 인류의 자원 이동의 역사와 석유 — 석유는 대체되지 않는다", titleEn: "[Column] Humanity's History of Resource Shifts and Oil — Why Oil Is Not Being Replaced",
       region: "청해 칼럼", regionEn: "Cheonghae Column",

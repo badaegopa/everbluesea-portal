@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<g opacity="0.55">
+<circle cx="140" cy="470" r="46" fill="none" stroke="#5E9186" stroke-width="10"/>
+<circle cx="300" cy="470" r="46" fill="none" stroke="#8fae9f" stroke-width="10"/>
+<circle cx="460" cy="470" r="46" fill="none" stroke="#B8850E" stroke-width="10"/>
+<circle cx="620" cy="470" r="46" fill="none" stroke="#6B7076" stroke-width="10" stroke-dasharray="18 12"/>
+</g>
+<text x="400" y="150" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">오피니언 · 청해 칼럼</text>
+<text x="400" y="232" text-anchor="middle" font-family="Georgia,serif" font-size="50" font-weight="bold" fill="#EFC97A">세계의 굶주림에</text>
+<text x="400" y="296" text-anchor="middle" font-family="Georgia,serif" font-size="50" font-weight="bold" fill="#EFC97A">대한 서사</text>
+<text x="400" y="346" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#F5F3EE">끼니는 국력이 아니라 성실함의 문제다</text>
+<text x="400" y="560" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Opinion · 2026-10-09</text>
+</svg>
