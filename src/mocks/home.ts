@@ -80,6 +80,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-016",
+    category: "§37 PPI · 권력기생지수",
+    categoryEn: "§37 PPI · Power Parasite Index",
+    date: "2026-10-12",
+    author: "김기섭",
+    title: "권력기생지수(PPI) — 공리·역사 기준선·인과루프 포획틀",
+    titleEn: "Power Parasite Index (PPI) — Axioms, Historical Baselines and the Capture Loop Framework",
+    excerpt: "통치자 4명 중 1명은 내부 세력에 의해 끝났다 — 유럽 군주 재위 741건 중 25%, 중국 통치자 249명 중 25.3%. 권력기생지수를 공리 P0~P7로 다시 세우고, Wikidata 통치자 전수조사 16,661건과 외부 검증 데이터(Archigos·Kokkonen·Wang), 현대 사례 226건으로 보강했다. 기생은 사라지지 않고 형태를 바꿨다 — 중세의 섭정·혈족·폐위에서 현대의 합법화·사면·국경을 넘는 지대로. 강화 루프 8개와 균형 루프 4개의 인과루프 포획틀을 제시하고, 통치자 356명의 서사를 기생 유형 9개로 묶은 별첨을 함께 싣는다.",
+    excerptEn: "One ruler in four was ended by forces from within — 25% of 741 European royal reigns and 25.3% of 249 Chinese rulers. This report rebuilds the Power Parasite Index on axioms P0–P7 and reinforces it with a Wikidata census of 16,661 ruler terms, external validation data (Archigos, Kokkonen et al., Wang) and 226 contemporary cases. Parasitism did not disappear; it changed form — from regency, kinship and deposition in the Middle Ages to legalisation, pardons and cross-border rents today. It sets out a causal-loop capture framework of eight reinforcing and four balancing loops, with an appendix of narratives for 356 rulers grouped into nine types of parasitic relationship.",
+    image: "/images/cards/r-016.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-015",
     category: "오피니언 · 청해 칼럼",
     categoryEn: "Opinion · Cheonghae Column",

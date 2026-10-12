@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<g fill="none" stroke-width="3" opacity="0.5">
+<path d="M290 480 C290 440 345 420 400 420 C455 420 510 440 510 480 C510 520 455 540 400 540 C345 540 290 520 290 480" stroke="#B8850E"/>
+<path d="M400 420 C422 450 422 510 400 540" stroke="#5E9186" stroke-dasharray="10 8"/>
+<circle cx="290" cy="480" r="8" fill="#2A3D35" stroke="#B8850E"/><circle cx="400" cy="420" r="8" fill="#2A3D35" stroke="#B8850E"/>
+<circle cx="510" cy="480" r="8" fill="#2A3D35" stroke="#B8850E"/><circle cx="400" cy="540" r="8" fill="#2A3D35" stroke="#5E9186"/>
+</g>
+<text x="400" y="200" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">§37 PPI · 권력기생지수</text>
+<text x="400" y="282" text-anchor="middle" font-family="Georgia,serif" font-size="54" font-weight="bold" fill="#EFC97A">권력기생지수</text>
+<text x="400" y="330" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#F5F3EE">공리 · 역사 기준선 · 인과루프 포획틀</text>
+<text x="400" y="370" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#C8E0DC">통치자 4명 중 1명은 내부 세력에 의해 끝났다</text>
+<text x="400" y="585" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Research Draft v1 · 2026-10-12</text>
+</svg>

@@ -246,6 +246,24 @@ export const engineReports: Record<string, NationReport[]> = {
   // §37 권력기생지수
   "cat-ppi": [
     {
+      id: "ppi-report-v1-20261012",
+      title: "권력기생지수(PPI) — 공리·역사 기준선·인과루프 포획틀 (연구 초안 v1)", titleEn: "Power Parasite Index (PPI) — Axioms, Historical Baselines and the Capture Loop Framework (Research Draft v1)",
+      region: "글로벌 · 연구보고서", regionEn: "Global · Research Report",
+      scope: "권역별",
+      engine: "§37 PPI",
+      date: "2026-10-12",
+      htmlPath: "/engines/ppi/권력기생지수_종합보고서_v1_20261012.html",
+    },
+    {
+      id: "ppi-appendix-rulers-20261012",
+      title: "별첨 — 군주·지도자 서사: 통치자 356명, 기생 유형별 9분류", titleEn: "Appendix — Narratives of Monarchs and Leaders: 356 Rulers in Nine Types of Parasitic Relationship",
+      region: "글로벌 · 별첨", regionEn: "Global · Appendix",
+      scope: "권역별",
+      engine: "§37 PPI",
+      date: "2026-10-12",
+      htmlPath: "/engines/ppi/권력기생지수_별첨_통치자서사_v1_20261012.html",
+    },
+    {
       id: "ppi-methodology",
       title: "권력기생지수 §37 — 공식과 방법론 해설 (PPI + LRI-P*)", titleEn: "Power Parasite Index §37 — Formulas and Methodology (PPI + LRI-P*)",
       region: "방법론", regionEn: "Methodology",
