@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { featuredReportsVisible, featuredStamp } from "@/mocks/home";
+import { nationReports } from "@/mocks/nationReports";
 
 export default function FeaturedReports() {
   const { t, i18n } = useTranslation();
@@ -92,7 +93,7 @@ export default function FeaturedReports() {
             to="/reports"
             className="inline-flex items-center gap-2 text-sm font-mono tracking-wide text-foreground-600 hover:text-foreground-950 transition cursor-pointer"
           >
-            {isKo ? "국가 분석 보고서 37편 전체 보기" : "View All 37 Country Analysis Reports"}
+            {isKo ? `국가 분석 보고서 ${nationReports.length}편 전체 보기` : `View All ${nationReports.length} Country Analysis Reports`}
             <i className="ri-arrow-right-line" />
           </Link>
           <a
