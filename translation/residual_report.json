@@ -135,6 +135,16 @@
   "hanja": 4
  },
  {
+  "file": "/nations/northeast-asia/홍콩_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 60,
+  "hanja": 6
+ },
+ {
+  "file": "/nations/northeast-asia/몽골_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 60,
+  "hanja": 5
+ },
+ {
   "file": "/engines/ppi/권력기생지수_종합보고서_v1_20261012_EN.html",
   "ko": 43,
   "hanja": 16
@@ -156,6 +166,11 @@
  },
  {
   "file": "/nations/americas/LatAm_Regional_Lambda12v912_20260504_EN.html",
+  "ko": 30,
+  "hanja": 4
+ },
+ {
+  "file": "/engines/ppi/권력기생지수_별첨_통치자서사_v1_20261012_EN.html",
   "ko": 30,
   "hanja": 4
  },
@@ -183,11 +198,6 @@
   "file": "/nations/europe/v1.0_west-europe-1_20260429_EN.html",
   "ko": 22,
   "hanja": 2
- },
- {
-  "file": "/engines/ppi/권력기생지수_별첨_통치자서사_v1_20261012_EN.html",
-  "ko": 15,
-  "hanja": 4
  },
  {
   "file": "/nations/europe/v1.0_east-europe-1_20260429_EN.html",
