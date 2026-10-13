@@ -1,2 +1,12 @@
 node_modules/
 out/
+
+# --- security-shield L1: 비밀정보 커밋 차단 ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+token*.json
+client_secret*.json

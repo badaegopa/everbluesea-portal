@@ -1,0 +1,42 @@
+name: security-shield
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 21 * * 0"   # 매주 월 06:17 KST 정기 점검
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  secrets:
+    name: L1 비밀정보 스캔 (gitleaks)
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2.3.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_CONFIG: .gitleaks.toml
+
+  headers:
+    name: L4 everbluesea.org 보안 헤더 점검
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 헤더 점검
+        run: |
+          H=$(curl -sSIL --max-time 20 https://everbluesea.org | tr -d '\r' | tr '[:upper:]' '[:lower:]')
+          miss=0
+          for h in strict-transport-security x-content-type-options x-frame-options referrer-policy permissions-policy; do
+            if grep -q "^$h:" <<<"$H"; then echo "[OK]   $h"; else echo "[MISS] $h"; miss=$((miss+1)); fi
+          done
+          grep -qE "^content-security-policy(-report-only)?:" <<<"$H" && echo "[OK]   csp" || { echo "[MISS] csp"; miss=$((miss+1)); }
+          exit $(( miss > 0 ))

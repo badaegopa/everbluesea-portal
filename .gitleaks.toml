@@ -1,0 +1,30 @@
+# gitleaks 설정 — 기본 규칙 + 늘푸른바다 전용 API 키 규칙
+title = "everbluesea security shield"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "kosis-api-key"
+description = "KOSIS OpenAPI 인증키"
+regex = '''(?i)kosis[\w\s"':=_-]{0,30}?([A-Za-z0-9+/^]{30,}={0,2})'''
+secretGroup = 1
+keywords = ["kosis"]
+
+[[rules]]
+id = "sgis-consumer-key"
+description = "SGIS Consumer Key / Secret"
+regex = '''(?i)(?:sgis|consumer)[\w\s"':=_-]{0,30}?\b([0-9a-f]{20,40})\b'''
+secretGroup = 1
+keywords = ["sgis", "consumer"]
+
+[[rules]]
+id = "gemini-api-key"
+description = "Google Gemini / Google API key"
+regex = '''\b(AIza[0-9A-Za-z_-]{35})\b'''
+secretGroup = 1
+keywords = ["aiza"]
+
+[allowlist]
+description = "예시·문서용 자리표시자"
+regexes = ['''(?i)(example|placeholder|your[_-]?key|xxxx+)''']
