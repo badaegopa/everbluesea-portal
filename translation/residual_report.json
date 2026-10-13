@@ -105,14 +105,19 @@
   "hanja": 14
  },
  {
-  "file": "/nations/middle-east/이집트_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 76,
+  "file": "/nations/africa/부르키나파소_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 77,
   "hanja": 6
  },
  {
   "file": "/nations/europe/v1.0_south-europe-1_20260429_EN.html",
   "ko": 80,
   "hanja": 2
+ },
+ {
+  "file": "/nations/africa/라이베리아_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 75,
+  "hanja": 6
  },
  {
   "file": "/engines/lambda12/Lambda12_Validation_Report_v2_20260711_EN.html",
@@ -128,11 +133,6 @@
   "file": "/engines/axioms/늘푸른바다_엔진총서_제1권_기초정본_v1.0_20260720_EN.html",
   "ko": 74,
   "hanja": 3
- },
- {
-  "file": "/nations/middle-east/리비아_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 71,
-  "hanja": 4
  },
  {
   "file": "/engines/reverbant/REVERBANT_KOR_USA_2026_EN.html",
@@ -210,6 +210,11 @@
   "hanja": 4
  },
  {
+  "file": "/nations/middle-east/이집트_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 11,
+  "hanja": 6
+ },
+ {
   "file": "/nations/middle-east/아랍에미리트_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 9,
   "hanja": 8
@@ -276,6 +281,11 @@
  },
  {
   "file": "/nations/central-asia/투르크메니스탄_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/middle-east/리비아_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 6,
   "hanja": 4
  },
