@@ -135,13 +135,13 @@
   "hanja": 4
  },
  {
-  "file": "/nations/southeast-asia/싱가포르_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 63,
-  "hanja": 4
+  "file": "/nations/south-asia/아프가니스탄_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 64,
+  "hanja": 5
  },
  {
-  "file": "/nations/southeast-asia/미얀마_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 62,
+  "file": "/nations/south-asia/부탄_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 60,
   "hanja": 5
  },
  {
@@ -340,6 +340,11 @@
   "hanja": 2
  },
  {
+  "file": "/nations/southeast-asia/미얀마_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 0,
+  "hanja": 5
+ },
+ {
   "file": "/engines/ui/국가보고서_구독판_ETH_v2.0_20260927_EN.html",
   "ko": 0,
   "hanja": 5
@@ -356,6 +361,11 @@
  },
  {
   "file": "/nations/americas/Brazil_Lambda12v912_20260504_EN.html",
+  "ko": 0,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/southeast-asia/싱가포르_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 0,
   "hanja": 4
  },
