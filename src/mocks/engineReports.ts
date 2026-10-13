@@ -14,6 +14,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // BSLI 기초사회생활지수
   "cat-bsli": [
+    { id: "mng-bsli-20261014", title: "몽골 기초사회생활지수 단독편 — 동아시아 BSLI 4위, 기본생활선 바로 아래의 E등급, 국가빈곤율 27.1%와 하루 $3.65 빈곤율 1.2%, 석탄 난로의 게르 지구", titleEn: "Mongolia BSLI Standalone Edition — East Asia's 4th BSLI, Grade E Just Below the Basic-Living Line, a 27.1% National Poverty Rate vs 1.2% at $3.65 a Day, and Coal-Heated Ger Districts", region: "동북아시아", regionEn: "Northeast Asia", scope: "단독", engine: "BSLI v7.0 · 총서 2026-10-07", date: "2026-10-14", htmlPath: "/engines/bsli/northeast-asia/몽골_BSLI_기초생활분석보고서_20261014.html" },
     { id: "jpn-bsli-20261014", title: "일본 기초사회생활지수 단독편 — 동아시아 BSLI 1위, 기본생활선 위의 B등급, 상대빈곤율 15.4%와 하루 $3.65 빈곤율 1.4%, 쌀값 두 배와 비축미 방출", titleEn: "Japan BSLI Standalone Edition — East Asia's Top BSLI, Grade B Above the Basic-Living Line, a 15.4% Relative Poverty Rate vs 1.4% at $3.65 a Day, and Doubled Rice Prices with Stockpile Releases", region: "동북아시아", regionEn: "Northeast Asia", scope: "단독", engine: "BSLI v7.0 · 총서 2026-10-07", date: "2026-10-14", htmlPath: "/engines/bsli/northeast-asia/일본_BSLI_기초생활분석보고서_20261014.html" },
     {
       id: "bsli-housing-financialization-2026",
