@@ -105,7 +105,7 @@
   "hanja": 14
  },
  {
-  "file": "/nations/africa/부르키나파소_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/africa/세이셸_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 77,
   "hanja": 6
  },
@@ -115,9 +115,9 @@
   "hanja": 2
  },
  {
-  "file": "/nations/africa/라이베리아_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 75,
-  "hanja": 6
+  "file": "/nations/africa/에리트레아_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 76,
+  "hanja": 4
  },
  {
   "file": "/engines/lambda12/Lambda12_Validation_Report_v2_20260711_EN.html",
@@ -258,6 +258,16 @@
   "file": "/nations/middle-east/MiddleEast_West_Lambda12v914_20260506_EN.html",
   "ko": 8,
   "hanja": 4
+ },
+ {
+  "file": "/nations/africa/라이베리아_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 6
+ },
+ {
+  "file": "/nations/africa/부르키나파소_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 6
  },
  {
   "file": "/engines/ui/국가보고서_구독판_LKA_v2.0_20260725_1_EN.html",
