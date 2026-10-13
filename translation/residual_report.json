@@ -105,6 +105,16 @@
   "hanja": 14
  },
  {
+  "file": "/nations/central-asia/카자흐스탄_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 78,
+  "hanja": 6
+ },
+ {
+  "file": "/nations/central-asia/투르크메니스탄_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 79,
+  "hanja": 4
+ },
+ {
   "file": "/nations/europe/v1.0_south-europe-1_20260429_EN.html",
   "ko": 80,
   "hanja": 2
@@ -133,16 +143,6 @@
   "file": "/engines/ui/국가보고서_구독판_시리즈허브_v1.0_20260726_1_EN.html",
   "ko": 67,
   "hanja": 4
- },
- {
-  "file": "/nations/south-asia/아프가니스탄_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 64,
-  "hanja": 5
- },
- {
-  "file": "/nations/south-asia/부탄_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 60,
-  "hanja": 5
  },
  {
   "file": "/engines/ppi/권력기생지수_종합보고서_v1_20261012_EN.html",
@@ -338,6 +338,16 @@
   "file": "/nations/climate/ClimateExtinction_4Nations_Lambda12v913_20260504_EN.html",
   "ko": 3,
   "hanja": 2
+ },
+ {
+  "file": "/nations/south-asia/부탄_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 0,
+  "hanja": 5
+ },
+ {
+  "file": "/nations/south-asia/아프가니스탄_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 0,
+  "hanja": 5
  },
  {
   "file": "/nations/southeast-asia/미얀마_Λ12_비교분석보고서_20261013_EN.html",
