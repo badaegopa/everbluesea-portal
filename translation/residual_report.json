@@ -135,13 +135,13 @@
   "hanja": 4
  },
  {
-  "file": "/nations/northeast-asia/홍콩_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 60,
-  "hanja": 6
+  "file": "/nations/southeast-asia/싱가포르_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 63,
+  "hanja": 4
  },
  {
-  "file": "/nations/northeast-asia/몽골_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 60,
+  "file": "/nations/southeast-asia/미얀마_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 62,
   "hanja": 5
  },
  {
@@ -310,6 +310,11 @@
   "hanja": 7
  },
  {
+  "file": "/nations/northeast-asia/홍콩_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 0,
+  "hanja": 6
+ },
+ {
   "file": "/engines/afro/lambda_s40_AFRO_v02_EN.html",
   "ko": 0,
   "hanja": 6
@@ -323,6 +328,11 @@
   "file": "/engines/axioms/인계루프_인과루프도_v3.1_KOR_20260720_EN.html",
   "ko": 0,
   "hanja": 6
+ },
+ {
+  "file": "/nations/northeast-asia/몽골_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 0,
+  "hanja": 5
  },
  {
   "file": "/nations/climate/ClimateExtinction_4Nations_Lambda12v913_20260504_EN.html",
