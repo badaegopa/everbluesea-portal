@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>코소보 BSLI 기초사회생활지수 보고서 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #F5F3EE;
+  --header: #2A3D35;
+  --green: #5E9186;
+  --gold: #B8850E;
+  --red: #C0392B;
+  --border: #DDD8CE;
+  --ink: #1A1A1A;
+  --muted: #6B6560;
+  --card: #FAFAF7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+/* ── HEADER ── */
+.report-header {
+  background: var(--header);
+  color: #E8E4DC;
+  padding: 48px 0 36px;
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.report-flag {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 12px;
+}
+.report-title {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #F0ECE4;
+}
+.report-subtitle {
+  font-size: 18px;
+  color: #A8C4BE;
+  margin-bottom: 24px;
+}
+.report-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #8BA89F;
+}
+.meta-value {
+  color: #C8D8D4;
+  font-weight: bold;
+}
+/* ── VERDICT STRIP ── */
+.verdict-strip {
+  background: #1C2C26;
+  padding: 16px 0;
+  border-bottom: 3px solid var(--gold);
+}
+.verdict-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.verdict-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #7A9A94;
+}
+.verdict-badge {
+  background: #B8850E22;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  padding: 4px 14px;
+  border-radius: 2px;
+}
+.verdict-eta {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #E8A060;
+  font-weight: bold;
+}
+.verdict-bsli {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #88BBAA;
+  font-weight: bold;
+}
+/* ── MAIN LAYOUT ── */
+.main { max-width: 960px; margin: 0 auto; padding: 48px 40px; }
+/* ── SECTION ── */
+.section { margin-bottom: 56px; }
+.section-title {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.section-heading {
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--header);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+/* ── PROSE ── */
+p { margin-bottom: 1em; color: var(--ink); }
+.lead { font-size: 17px; color: #2A3D35; margin-bottom: 1.2em; }
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 24px; margin: 24px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 20px; }
+.tl-dot {
+  position: absolute;
+  left: -20px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--bg);
+}
+.tl-dot.crisis { background: var(--red); }
+.tl-dot.gold { background: var(--gold); }
+.tl-year {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.tl-content { font-size: 14px; color: var(--muted); }
+.tl-content strong { color: var(--ink); }
+/* ── DIMENSION TABLE ── */
+.dim-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+.dim-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 10px 14px;
+  text-align: left;
+}
+.dim-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.dim-table tr:nth-child(even) td { background: #F0EDE8; }
+.dim-code {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: var(--header);
+}
+.dim-score {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-align: center;
+}
+.score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.score-bar {
+  height: 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+/* ── CARDS GRID ── */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  padding: 20px 22px;
+}
+.card.gold { border-left-color: var(--gold); }
+.card.red { border-left-color: var(--red); }
+.card-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.card-value {
+  font-size: 28px;
+  font-family: 'Courier New', monospace;
+  color: var(--header);
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.card-desc { font-size: 13px; color: var(--muted); }
+/* ── FORMULA BOX ── */
+.formula-box {
+  background: #2A3D3508;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 18px 22px;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--header);
+}
+.formula-box .f-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.formula-box .f-eq { font-size: 16px; margin-bottom: 8px; }
+.formula-box .f-vars { font-size: 12px; color: var(--muted); line-height: 1.8; }
+/* ── SCENARIO BOX ── */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.scenario {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.scenario.wd { border-top: 3px solid #7AA0C8; }
+.scenario.sn { border-top: 3px solid var(--gold); }
+.scenario.bh { border-top: 3px solid var(--red); }
+.scenario-icon { font-size: 24px; margin-bottom: 8px; }
+.scenario-name {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.scenario-name.wd { color: #5580A8; }
+.scenario-name.sn { color: #9A7008; }
+.scenario-name.bh { color: var(--red); }
+.scenario-prob {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.scenario-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+/* ── SYNTHESIS BOX ── */
+.synthesis {
+  background: var(--header);
+  color: #D8E4E0;
+  padding: 36px 40px;
+  margin: 40px 0;
+}
+.synthesis-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 16px;
+}
+.synthesis-stages { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.stage { border-top: 1px solid #3D5850; padding-top: 14px; }
+.stage-num {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.stage-title { font-size: 14px; color: #E8E4DC; margin-bottom: 6px; font-weight: bold; }
+.stage-desc { font-size: 13px; color: #8BA89F; line-height: 1.6; }
+/* ── TRIGGER TABLE ── */
+.trigger-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+.trigger-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 9px 14px;
+  text-align: left;
+}
+.trigger-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.risk-high {
+  color: var(--red);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-med {
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-low {
+  color: var(--green);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* ── CHART CONTAINERS ── */
+.chart-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin: 24px 0;
+}
+.chart-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+/* ── FOOTER ── */
+.report-footer {
+  background: var(--header);
+  padding: 40px 0 32px;
+  margin-top: 60px;
+}
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+.footer-slogan {
+  font-style: italic;
+  color: #C9A24B;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #3D5850;
+}
+.footer-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #6A8880;
+  line-height: 2;
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .header-inner, .verdict-inner, .main, .footer-inner { padding: 0 20px; }
+  .report-title { font-size: 26px; }
+  .cards { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .synthesis-stages { grid-template-columns: 1fr; }
+}
+
+.pcs-wrap { background:#FAFAF7; border:1px solid var(--border); padding:16px; margin:20px 0; }
+.pcs-wrap svg { display:block; max-width:100%; height:auto; margin:0 auto; }
+.note { font-size:12.5px; color:var(--muted); line-height:1.7; }
+.table-scroll { overflow-x:auto; }
+@media (max-width:640px) { .main, .header-inner, .verdict-inner, .footer-inner { padding-left:16px; padding-right:16px; } .dim-table { font-size:12px; } }
+</style>
+</head>
+<body>
+<div class="report-header"><div class="header-inner">
+  <div class="report-flag">EVERBLUESEA SOCIAL DYNAMICS LAB · BSLI STANDALONE · 2026-10-14</div>
+  <h1 class="report-title">코소보 기초사회생활지수 단독편</h1>
+  <div class="report-subtitle">남유럽·도서 BSLI 4위(139개국 중 55위) — 기본생활선 바로 위의 E등급, 보조 시계열 미수록, 하루 $3.00 빈곤율 11.3%→25.0%→10.0%(2019~2022), 물가 2022년 11.58%, 2026년 '임금이 생활비를 못 따라간다'</div>
+  <div class="report-meta">
+    <div class="meta-item">저자 <span class="meta-value">청해(淸海)</span></div>
+    <div class="meta-item">엔진 <span class="meta-value">BSLI v7.0 (국가분석 총서 2026-10-07 값) · BSLI 시계열 v1.2 · Λ¹² v2.0 연계</span></div>
+    <div class="meta-item">권역 위치 <span class="meta-value">남유럽·도서 BSLI 하 (총서 산출 4개국 중 4위)</span></div>
+    <div class="meta-item">작성일 <span class="meta-value">2026-10-14</span></div>
+  </div>
+</div></div>
+<div class="verdict-strip"><div class="verdict-inner">
+  <span class="verdict-label">관측 요약</span>
+  <span class="verdict-badge">권역 BSLI 4위 · E등급(+0.0036, 55위) · 보조 시계열 미수록 · η 0.5817(32위)</span>
+  <span class="verdict-bsli">BSLI = +0.0036 (E등급 · 139개국 중 55위)</span>
+  <span class="verdict-eta">η = 0.5817 (197개국 중 32위)</span>
+</div></div>
+
+<div class="main">
+
+<div class="section">
+  <div class="section-title">§ 00</div>
+  <h2 class="section-heading">권역 내 위치 — 왜 코소보인가</h2>
+  <p>이 보고서는 BSLI 권역순환 파이프라인의 남유럽·도서 순환에서 국가분석 총서 BSLI 기준 최하위국으로 선정되었다. 총서에서 코소보의 BSLI는 <strong>+0.0036</strong>(E등급 · 139개국 중 55위)이고, 남유럽·도서 산출국 4개국 중 4위다. 같은 회차의 상위국은 몰타(+0.5923)이고, 바로 위는 그리스(+0.2425)다.</p>
+<p>BSLI는 Λ¹²와 독립된 측정 채널이다. 코소보의 η는 0.5817(197개국 중 32위)로 총서에 따로 실려 있다.</p>
+  <div class="table-scroll"><table class="dim-table"><thead><tr><th>남유럽·도서 권역 (총서)</th><th>BSLI</th><th>등급 · 순위</th><th>η</th><th>η 순위</th></tr></thead><tbody>
+  <tr><td>몰타 (MLT)</td><td class="dim-score">+0.5923</td><td>B등급 · 139개국 중 17위</td><td class="dim-score">0.4787</td><td>197개국 중 122위</td></tr>
+<tr><td>키프로스 (CYP)</td><td class="dim-score">+0.5501</td><td>B등급 · 139개국 중 20위</td><td class="dim-score">0.4893</td><td>197개국 중 107위</td></tr>
+<tr><td>그리스 (GRC)</td><td class="dim-score">+0.2425</td><td>D등급 · 139개국 중 36위</td><td class="dim-score">0.5239</td><td>197개국 중 68위</td></tr>
+<tr style="background:#B8850E18;font-weight:bold"><td>코소보 (XKX)</td><td class="dim-score">+0.0036</td><td>E등급 · 139개국 중 55위</td><td class="dim-score">0.5817</td><td>197개국 중 32위</td></tr>
+  </tbody></table></div>
+  <p class="note">값은 전부 국가분석 총서(2026-10-07) 기초 지표 그대로다. BSLI 범위는 [−2.0, +1.0]이고 0이 기본생활선이며, 음수는 그 아래로 가라앉은 깊이다(음수는 정상 범위). 등급 경계는 v4.2 설계 시점 고정값이다. '산출 불가'는 PIP 소득분포 원자료가 없는 나라로, 값을 채우지 않았다.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 01</div>
+  <h2 class="section-heading">Executive Summary</h2>
+  <p>코소보는 총서 BSLI +0.0036(E등급 · 139개국 중 55위)로 기본생활선(0)에 거의 붙어 있다. BSLI 시계열 v1.2에는 이 나라가 수록되지 않아 4항 성분 연도표는 '데이터 부재'다. 기준값은 총서 단면값이다.</p>
+<p>헤르메스 수집(2026-10-14) 기준 World Bank API에는 2019~2022년 해마다 빈곤 값이 있다: 2021 PPP 하루 $3.00 빈곤율 11.3%(2019) → 16.8%(2020) → 25.0%(2021) → 10.0%(2022), 지니 40.2 → 57.4 → 49.4 → 38.3. 소비자물가는 2022년 11.58%, 2025년 3.86%다. 2026년에는 물가 재상승과 '임금이 생활비를 못 따라간다'는 보도가 이어졌다.</p>
+  <div class="cards">
+    <div class="card red"><div class="card-label">BSLI 기초사회생활지수 (총서)</div><div class="card-value">+0.0036</div><div class="card-desc">E등급 · 139개국 중 55위 · 남유럽·도서 산출국 4개국 중 4위</div></div>
+    <div class="card gold"><div class="card-label">보조 시계열 최신 칸</div><div class="card-value">—</div><div class="card-desc">시계열 v1.2 데이터 부재</div></div>
+    <div class="card"><div class="card-label">η 사회안정 종합지수 (총서, 참조)</div><div class="card-value">0.5817</div><div class="card-desc">197개국 중 32위 · 단면 최대 압박 A2 · P=0.405 (실측: CPI·부패통제)</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 02</div>
+  <h2 class="section-heading">BSLI 4항식 — 무엇을 재는가</h2>
+  <div class="formula-box">
+    <div class="f-label">BSLI v7.0 정본 (4항 감산식)</div>
+    <div class="f-eq">BSLI = 0.40·F_ML + 0.60·H − D − H_s</div>
+    <div class="f-vars">F_ML(食, 가중 0.40): 소득 30~50분위(ML층) 평균 실질소득 지수(World Bank PIP) — 식량 위기는 비축·원조로 단기 회복 여지가 있어 가중이 낮다.<br>
+    H(住, 가중 0.60): 기본생활 충족도(중위소득 정규화) — 주거 압박은 전세→월세→고시원→노숙의 비가역 연쇄라 가중이 높다.<br>
+    D(감산): 박탈지수 = 하루 $3.65(2017 PPP) 빈곤율 · H_s(감산): 주거스트레스 = Palma 비율^1.5.<br>
+    衣(의류)는 세계적 과잉공급으로 상수 처리해 변수에서 뺐다. 범위 [−2.0, +1.0], 0 = 기본생활선. 이 나라 총서 값: <strong>+0.0036</strong> (E등급 · 139개국 중 55위).</div>
+  </div>
+  <p>총서 값이 기본생활선에 거의 붙어 있다는 것은 가산 항과 감산 항이 거의 같다는 뜻이다. 보조 시계열이 없어 네 항 각각의 크기는 이 보고서 범위 밖이다.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 03</div>
+  <h2 class="section-heading">衣·食·住 성분 분해 (2016–2024)</h2>
+  <p class="note">아래 표와 막대는 보조 자료인 BSLI 시계열 v1.2(일관기준 재산출물, 고정 풀 정규화)다. 총서 BSLI(139국 단면)와 특정 연도 값이 다른 것은 정상이며, 보고서의 BSLI 기준값은 총서 값이다. 'fallback'은 가장 가까운 실측연도 값을 이월한 칸으로, 그 구간의 정지는 데이터 동결이지 실제 사회 정체가 아니다.</p>
+  <div class="table-scroll"><table class="dim-table"><thead><tr><th>연도</th><th>F_ML 食 (×0.40)</th><th>H 住 (×0.60)</th><th>D 박탈 (−)</th><th>H_s 주거스트레스 (−)</th><th>BSLI</th><th>등급</th><th>빈곤율 $3.65/일 (D 원값)</th><th>Palma (H_s 원값)</th><th>실측연도·신뢰도</th></tr></thead><tbody><tr><td>2016</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2017</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2018</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2019</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2020</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2021</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2022</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2023</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2024</td><td colspan="9" style="color:var(--muted)">데이터 부재</td></tr></tbody></table></div>
+  <h3 style="margin-top:20px">기여도 분해 — 최신 칸</h3>
+  <div class="chart-wrap"><div class="formula-box"><div class="f-label">보조 시계열 데이터 부재</div><div class="f-vars">BSLI 시계열 v1.2에 이 나라 값이 없어 성분 분해를 그리지 않는다. 기준값은 총서 BSLI다.</div></div></div>
+  <p><strong>食·住 성분.</strong> 보조 시계열 미수록으로 F_ML·H·D·H_s 연도값을 제시하지 않는다. 대신 World Bank API의 빈곤·분배 연도값으로 기록한다 — 2020~2021년 값이 크게 출렁였다.</p>
+<p><strong>합본 조각(선행연구 접목).</strong> ① 빈곤의 경제학 → 『빈곤의 경제학』(Ravallion, 2016, <em>The Economics of Poverty</em>, Oxford University Press): 측정 표본과 해마다의 출렁임 — 2019~2022년 빈곤율·지니의 큰 변동이 관찰 대상이다. ② 송금과 개발 → 『이주와 송금: 개발의 관점』(World Bank, 2011, <em>Migration and Remittances Factbook 2011</em>, World Bank): 해외 송금 의존 가계 — 디아스포라 소득이 가계 소득에 미치는 영향이 해당한다. 연결점: ②의 송금 흐름 변화가 ①의 측정 출렁임으로 나타나는 구조로 관측된다(해석).</p>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 04</div>
+  <h2 class="section-heading">시계열 — 남유럽·도서 권역 안에서의 흐름</h2>
+  <div class="chart-wrap">
+    <div class="chart-title">BSLI 2016–2024 — 코소보 vs 남유럽·도서 산출국 (시계열 v1.2)</div>
+    <canvas id="bsliChart" height="300"></canvas>
+  </div>
+  <p class="note">굵은 붉은 선 = 코소보, 가는 선 = 같은 권역 산출국. 빈칸은 데이터 부재다. 점선 0 = 기본생활선.</p>
+  <p>남유럽·도서 산출국의 보조 시계열 선은 차트에 있으나 코소보의 선은 없다. 총서 단면값으로는 권역 최하단이지만 기본생활선 바로 위다.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 05</div>
+  <h2 class="section-heading">민생 정세와 연표</h2>
+  <div class="timeline">
+  <div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2019~2022</div><div class="tl-content"><strong>빈곤과 분배</strong> — World Bank API: 하루 $3.00(2021 PPP) 11.3% → 16.8% → 25.0% → 10.0%, $8.30 38.3% → 38.9% → 47.0% → 38.2%, 지니 40.2 → 57.4 → 49.4 → 38.3. 국가 빈곤선 마지막 값 17.6%(2015)(헤르메스 수집).</div></div>
+<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2022~2025</div><div class="tl-content"><strong>물가</strong> — World Bank API 소비자물가 2022년 11.58%, 2023년 4.94%, 2024년 1.62%, 2025년 3.86%(헤르메스 수집).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2025-11~2026-10</div><div class="tl-content"><strong>최근 헤드라인</strong> — '계란이 사치품이 되어'(Euronews Albania, 2025-11-23), '물가 상승, 경제학자들 추가 상승 경고'(KoSSev, 2026-03-11), '또 한 번의 조기 총선 대비'(Prishtina Insight, 2026-06-06), '6월 물가 전년 대비 6% 상승'(KoSSev, 2026-07-10), '물가가 가계를 짓눌러, 임금이 생활비를 못 따라간다'(Kosovo Online, 2026-09-21), '9월 물가 상승률 가속'(TradingView, 2026-10-12) — 헤르메스 수집 헤드라인.</div></div>
+  </div>
+  <p><strong>헤르메스 수집 자료의 성격.</strong> 2025~2026년 항목은 기사 제목 수준의 수집물이며 본문 대조 전이다. 국내·지역 매체는 매체 분류표에 '미분류'다. 정치 상황은 평가하지 않는다.</p>
+<p><strong>측정 공백.</strong> World Bank API에는 2019~2022년 빈곤 값이 있으나 BSLI 시계열 v1.2에는 이 나라가 없다.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 05-B</div>
+  <h2 class="section-heading">공표 수치 vs 독립 출처 — 틈을 본다</h2>
+  <p>코소보의 틈은 같은 2021년 빈곤을 2021 PPP 하루 $3.00이 25.0%로, 바로 다음 해에 10.0%로 적어 한 해 사이 변동이 크다는 점, 국가 빈곤선은 2015년 값(17.6%)이 마지막이라는 점, 그리고 2026년 물가 재상승 보도와 연평균 물가 3%대가 함께 있다는 점에 있다. 공표 수치는 원문 그대로 두고(DECISIONS 17·19) 나란히 놓았다.</p>
+  <div class="table-scroll"><table class="trigger-table">
+    <thead><tr><th>항목</th><th>공표 수치 (발표기관·연도)</th><th>독립 출처 (기관·연도)</th><th>틈의 해석 (정본 공리)</th></tr></thead>
+    <tbody><tr><td><strong>빈곤율</strong></td><td>국가 빈곤선(World Bank API 수록): 마지막 값 2015년 17.6%</td><td>World Bank API: 하루 $3.00(2021 PPP) 2021년 25.0%, 2022년 10.0%</td><td>국가 통계 갱신이 멈췄고 국제선 값은 해마다 크게 출렁인다.</td></tr><tr><td><strong>물가와 임금</strong></td><td>World Bank API 소비자물가: 2025년 3.86%</td><td>헤드라인: 6월 6% 상승(KoSSev, 2026-07) · 임금이 생활비를 못 따라간다(Kosovo Online, 2026-09)</td><td>연평균과 2026년 월간 보도는 다른 시점이다. 제목 기준이다.</td></tr><tr><td><strong>BSLI 값</strong></td><td>총서 BSLI +0.0036(E등급 · 139개국 중 55위)</td><td>BSLI 시계열 v1.2: 미수록(데이터 부재)</td><td>기준값은 총서다.</td></tr></tbody>
+  </table></div>
+  <p class="note">공표 수치는 원문 그대로 인용했고 보정하지 않았다(DECISIONS 17·19). 틈은 어느 쪽이 '맞다'는 판정이 아니라, 같은 생활을 서로 다른 창으로 볼 때 생기는 차이를 드러내는 장치다.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 06</div>
+  <h2 class="section-heading">Λ¹² 연계 — BSLI가 태양인 압박 좌표계 (총서 원본)</h2>
+  <p>압박 좌표계에서 BSLI는 중심(태양)이고 A1~A12가 행성이다. 궤도가 안쪽일수록 그 차원이 서민 기층을 세게 누른다. BSLI와 Λ¹²는 서로 독립된 측정 채널이다(공리 A0) — Λ¹²는 국가 총량을, BSLI는 서민층(30~50분위) 衣食住 기층을 본다. 아래 도식은 국가분석 총서 원본 그대로다(엔진 동결).</p>
+  <figure class="pcs-wrap" style="overflow-x:auto"><svg viewBox="0 0 1010 1150" xmlns="http://www.w3.org/2000/svg" style="max-width:1010px;background:#fff;border:1px solid #DDD8CE;border-radius:8px"><defs>
+<marker id="mP" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C0392B"/></marker>
+<marker id="mB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1a4f8a"/></marker>
+<marker id="mG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#B8850E"/></marker>
+<radialGradient id="sun3" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F7EDD2"/><stop offset="100%" stop-color="#E8D5A0"/></radialGradient>
+</defs><text x="505" y="32" text-anchor="middle" font-size="16.5" font-weight="700" fill="#2A3D35">실측 인과루프도 v3.1 — 압박 좌표계 (코소보 · 138개국 실측 결합 × 자국 결핍)</text><text x="505" y="51" text-anchor="middle" font-size="10" fill="#777">거리·화살표 = 압박지수 P (가까울수록·굵을수록 BSLI를 세게 누름) · P = 결합세기 |r| × 자국 결핍 — 결핍 없으면 결합이 세도 압박 없음(바깥 궤도)</text><circle cx="505" cy="485" r="376.3" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="175.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="283.7" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="194.7" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="430.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="430.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="250.9" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="198.8" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="383.8" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="430.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="430.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="430.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><path d="M505.0,660.0 Q442.1,704.7 405.6,657.2" fill="none" stroke="#5E9186" stroke-width="3.0"  opacity="0.45"/><circle cx="448.7" cy="681.7" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="448.7" y="685.3" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M128.7,485.0 Q161.2,557.6 287.7,610.4" fill="none" stroke="#C0392B" stroke-width="1.9" stroke-dasharray="5 4" opacity="0.45"/><circle cx="184.7" cy="552.7" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="184.7" y="556.3" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><path d="M128.7,485.0 Q84.5,364.3 132.6,270.0" fill="none" stroke="#C0392B" stroke-width="1.7" stroke-dasharray="5 4" opacity="0.45"/><circle cx="107.6" cy="370.9" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="107.6" y="374.5" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><path d="M505.0,660.0 Q630.0,803.4 720.0,857.4" fill="none" stroke="#5E9186" stroke-width="1.6"  opacity="0.45"/><circle cx="621.3" cy="781.0" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="621.3" y="784.6" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M287.7,610.4 Q311.7,666.7 405.6,657.2" fill="none" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.45"/><circle cx="329.2" cy="650.3" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="329.2" y="653.9" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><path d="M720.0,857.4 Q572.8,804.3 405.6,657.2" fill="none" stroke="#5E9186" stroke-width="1.5"  opacity="0.45"/><circle cx="567.8" cy="780.8" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="567.8" y="784.4" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M128.7,485.0 Q222.0,587.4 405.6,657.2" fill="none" stroke="#5E9186" stroke-width="1.3"  opacity="0.45"/><circle cx="244.6" cy="579.3" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="244.6" y="582.9" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M405.6,657.2 Q669.3,471.1 837.4,293.1" fill="none" stroke="#5E9186" stroke-width="1.2"  opacity="0.45"/><circle cx="645.4" cy="473.1" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="645.4" y="476.7" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M505.0,660.0 Q368.2,674.1 287.7,610.4" fill="none" stroke="#C0392B" stroke-width="1.1" stroke-dasharray="5 4" opacity="0.45"/><circle cx="382.3" cy="654.7" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="382.3" y="658.3" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><line x1="128.7" y1="485.0" x2="425.0" y2="485.0" stroke="#C0392B" stroke-width="1.5" opacity="0.55" marker-end="url(#mP)"/><text x="276.8" y="479.0" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.090</text><line x1="505.0" y1="660.0" x2="505.0" y2="565.0" stroke="#C0392B" stroke-width="1.5" opacity="0.90" marker-end="url(#mP)"/><text x="505.0" y="606.5" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.405</text><line x1="363.2" y1="239.3" x2="465.0" y2="415.7" stroke="#C0392B" stroke-width="1.5" opacity="0.71" marker-end="url(#mP)"/><text x="414.1" y="321.5" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.235</text><line x1="673.6" y1="582.3" x2="574.3" y2="525.0" stroke="#C0392B" stroke-width="1.5" opacity="0.87" marker-end="url(#mP)"/><text x="623.9" y="547.7" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.374</text><line x1="287.7" y1="610.4" x2="435.7" y2="525.0" stroke="#C0392B" stroke-width="1.5" opacity="0.77" marker-end="url(#mP)"/><text x="361.7" y="561.7" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.286</text><line x1="405.6" y1="657.2" x2="465.0" y2="554.3" stroke="#C0392B" stroke-width="1.5" opacity="0.86" marker-end="url(#mP)"/><text x="435.3" y="599.7" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.368</text><line x1="837.4" y1="293.1" x2="574.3" y2="445.0" stroke="#C0392B" stroke-width="1.5" opacity="0.54" marker-end="url(#mP)"/><text x="705.9" y="363.0" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.078</text><path d="M287.7,610.4 Q406.6,604.5 479.7,654.2" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="395.1" cy="618.4" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="395.1" y="622.0" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M287.7,610.4 Q362.1,605.8 381.4,647.6" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="348.3" cy="617.4" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="348.3" y="621.0" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M837.4,293.1 Q644.1,470.6 522.5,640.7" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="662.0" cy="468.8" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="662.0" y="472.4" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M837.4,293.1 Q595.8,471.9 425.5,640.4" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="613.6" cy="469.3" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="613.6" y="472.9" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M720.0,112.6 Q591.6,399.5 514.5,635.8" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="604.4" cy="386.8" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="604.4" y="390.4" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M720.0,112.6 Q551.3,404.8 418.6,634.7" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="560.3" cy="389.2" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="560.3" y="392.8" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M405.6,657.2 Q411.7,742.9 479.0,659.3" fill="none" stroke="#C0392B" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#mP)" opacity="0.8"/><circle cx="427.0" cy="698.5" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="427.0" y="702.1" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><text x="427.0" y="686.5" text-anchor="middle" font-size="8.5" fill="#C0392B" stroke="#fff" stroke-width="2.5" paint-order="stroke">공리 A3 내부충돌(조건부)</text><path d="M505.0,565.0 Q505.0,689.5 505.0,634.0" fill="none" stroke="#B8850E" stroke-width="1.8" stroke-dasharray="3 3" marker-end="url(#mG)" opacity="0.9"/><circle cx="505.0" cy="644.5" r="7.5" fill="#fff" stroke="#B8850E" stroke-width="1.4"/><text x="505.0" y="648.1" text-anchor="middle" font-size="11" font-weight="800" fill="#B8850E">−</text><text x="511.0" y="659.5" text-anchor="middle" font-size="8.5" fill="#B8850E" stroke="#fff" stroke-width="2.5" paint-order="stroke">기층 악화→방어 결집(공리 A8)</text><circle cx="501" cy="691" r="15" fill="#fff" stroke="#C0392B" stroke-width="2"/><text x="501" y="695" text-anchor="middle" font-size="13" font-weight="800" fill="#C0392B">R</text><text x="501" y="721" text-anchor="middle" font-size="8.5" fill="#C0392B" stroke="#fff" stroke-width="2.5" paint-order="stroke">R1 쌍성 강화</text><circle cx="439" cy="520" r="15" fill="#fff" stroke="#1a4f8a" stroke-width="2"/><text x="439" y="525" text-anchor="middle" font-size="13" font-weight="800" fill="#1a4f8a">B</text><text x="439" y="550" text-anchor="middle" font-size="8.5" fill="#1a4f8a" stroke="#fff" stroke-width="2.5" paint-order="stroke">B1 흡수-방어 균형</text><circle cx="228" cy="646" r="15" fill="#fff" stroke="#1a4f8a" stroke-width="2"/><text x="228" y="651" text-anchor="middle" font-size="13" font-weight="800" fill="#1a4f8a">B</text><text x="228" y="676" text-anchor="middle" font-size="8.5" fill="#1a4f8a" stroke="#fff" stroke-width="2.5" paint-order="stroke">B2 압력-침식</text><circle cx="505" cy="485" r="72" fill="url(#sun3)" stroke="#B8850E" stroke-width="2.4"/><text x="505" y="455" text-anchor="middle" font-size="14" font-weight="800" fill="#7a5a08">BSLI</text><text x="505" y="467" text-anchor="middle" font-size="8.5" fill="#8a6a18">기초사회생활지수 · 독립채널(공리 A0)</text><text x="505" y="490" text-anchor="middle" font-size="19" font-weight="800" fill="#2A3D35">+0.0036</text><text x="505" y="507" text-anchor="middle" font-size="9.5" fill="#555">E등급 · 55위/139 · 상위 39.6%</text><text x="505" y="524" text-anchor="middle" font-size="8" fill="#777">0.40·F_ML+0.60·H−D−Hs</text><circle cx="128.7" cy="485.0" r="8.1" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="128.7" cy="485.0" r="4.0" fill="#8a8a80" fill-opacity="0.22"/><text x="128.7" y="458.0" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A1 사회기반시설</text><text x="128.7" y="470.0" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 전력·인터넷</text><text x="128.7" y="506.1" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.887 · 압박 P=0.090</text><circle cx="505.0" cy="660.0" r="16.1" fill="#fff" stroke="#1a5c8a" stroke-width="2.6"/><circle cx="505.0" cy="660.0" r="8.1" fill="#1a5c8a" fill-opacity="0.22"/><text x="505.0" y="624.9" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5c8a" stroke="#fff" stroke-width="3.5" paint-order="stroke">A2 제도신뢰</text><text x="505.0" y="636.9" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: CPI·부패통제</text><text x="505.0" y="689.1" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.416 · 압박 P=0.405</text><circle cx="363.2" cy="239.3" r="9.2" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="363.2" cy="239.3" r="4.6" fill="#8a8a80" fill-opacity="0.22"/><text x="363.2" y="211.1" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A3 시민자유</text><text x="363.2" y="223.1" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 지니계수</text><text x="363.2" y="261.5" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.589 · 압박 P=0.235</text><circle cx="673.6" cy="582.3" r="10.3" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="673.6" cy="582.3" r="5.2" fill="#8a8a80" fill-opacity="0.22"/><text x="673.6" y="553.0" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A4 경제안정</text><text x="673.6" y="565.0" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: GDP·제조업</text><text x="673.6" y="605.7" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.191 · 압박 P=0.374</text><circle cx="720.0" cy="857.4" r="8.1" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="720.0" cy="857.4" r="4.0" fill="#8a8a80" fill-opacity="0.22"/><text x="720.0" y="830.3" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A5 교육접근</text><text x="720.0" y="842.3" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: R&D/GDP</text><text x="720.0" y="878.4" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 결측 · 압박 P=—</text><circle cx="132.6" cy="270.0" r="8.1" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/><circle cx="132.6" cy="270.0" r="4.0" fill="#2e7d32" fill-opacity="0.22"/><text x="132.6" y="242.9" text-anchor="middle" font-size="11" font-weight="700" fill="#2e7d32" stroke="#fff" stroke-width="3.5" paint-order="stroke">A6 보건수준</text><text x="132.6" y="254.9" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: CO₂·재생에너지</text><text x="132.6" y="291.0" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 결측 · 압박 P=—</text><circle cx="287.7" cy="610.4" r="10.3" fill="#fff" stroke="#C0392B" stroke-width="2.6"/><circle cx="287.7" cy="610.4" r="5.2" fill="#C0392B" fill-opacity="0.22"/><text x="287.7" y="581.1" text-anchor="middle" font-size="11" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3.5" paint-order="stroke">A7 사회자본</text><text x="287.7" y="593.1" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 고령화·인구증가</text><text x="287.7" y="633.8" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.378 · 압박 P=0.286</text><circle cx="405.6" cy="657.2" r="16.1" fill="#fff" stroke="#1a5c8a" stroke-width="2.6"/><circle cx="405.6" cy="657.2" r="8.1" fill="#1a5c8a" fill-opacity="0.22"/><text x="405.6" y="622.1" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5c8a" stroke="#fff" stroke-width="3.5" paint-order="stroke">A8 거버넌스</text><text x="405.6" y="634.1" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: WGI 6종</text><text x="405.6" y="686.3" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.500 · 압박 P=0.368</text><circle cx="837.4" cy="293.1" r="9.2" fill="#fff" stroke="#C0392B" stroke-width="2.6"/><circle cx="837.4" cy="293.1" r="4.6" fill="#C0392B" fill-opacity="0.22"/><text x="837.4" y="264.9" text-anchor="middle" font-size="11" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3.5" paint-order="stroke">A9 환경압박</text><text x="837.4" y="276.9" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: GPI·군사비</text><text x="837.4" y="315.3" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.803 · 압박 P=0.078</text><circle cx="935.0" cy="485.0" r="10.3" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="935.0" cy="485.0" r="5.2" fill="#8a8a80" fill-opacity="0.22"/><text x="935.0" y="455.6" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A10 불평등</text><text x="935.0" y="467.6" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 관광객수</text><text x="935.0" y="508.4" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 결측 · 압박 P=—</text><circle cx="505.0" cy="55.0" r="9.2" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="505.0" cy="55.0" r="4.6" fill="#8a8a80" fill-opacity="0.22"/><text x="505.0" y="26.8" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A11 외부충격</text><text x="505.0" y="38.8" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 에너지수입의존</text><text x="505.0" y="77.2" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 결측 · 압박 P=—</text><circle cx="720.0" cy="112.6" r="11.5" fill="#fff" stroke="#C0392B" stroke-width="2.6"/><circle cx="720.0" cy="112.6" r="5.8" fill="#C0392B" fill-opacity="0.22"/><text x="720.0" y="82.1" text-anchor="middle" font-size="11" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3.5" paint-order="stroke">A12 이동성</text><text x="720.0" y="94.1" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: FDI</text><text x="720.0" y="137.1" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.889 · 압박 P=0.005</text><rect x="26" y="999" width="958" height="128" rx="8" fill="#fbfaf7" stroke="#DDD8CE"/><text x="42" y="1019" font-size="10.5" fill="#C0392B"><tspan font-weight="700">적색 선화살표 = 압박</tspan> (크기는 거리와 P값이 표현 — 텍스트 가림 방지 위해 선으로 통일). P = |r|(138국 실측 결합) × 자국 결핍(+결합은 1−점수, −결합은 점수)</text><text x="42" y="1037" font-size="10.5" fill="#444"><tspan font-weight="700">거리</tspan> = P 역순 — 가까울수록 세게 누른다. 결합이 강해도 결핍이 없으면(예: 만점 축) 압박 0 → 바깥 궤도로 밀려남. <tspan font-weight="700">이 좌표계는 국가마다 다르다</tspan></text><text x="42" y="1055" font-size="10.5" fill="#1a4f8a">청색 화살표(−) = 공리 A1 조준 불변성(압력원→흡수체 침식) · 적 점선 = 공리 A3 내부충돌(조건부) · <tspan fill="#B8850E">골드 점선 = 공리 A8 기층악화→방어결집 → B1 균형루프</tspan></text><text x="42" y="1073" font-size="10.5" fill="#444">무촉 곡선 = 지표간 실측 결합(|r|≥0.55, 인과방향 미지정): 청록 실선(+)/적 점선(−) · 최강 A2~A8 +0.955 → R1 쌍성 강화루프 · Ⓡ강화/Ⓑ균형 = 극성 곱 판정</text><text x="42" y="1091" font-size="10.5" fill="#997">노드 소자막 "실측: …" = 현행 v2 파이프라인이 그 축에 실제로 넣는 데이터 — 정본 명칭과 내용이 다른 축(A3·A5·A6·A7·A9·A10·A11)의 오독 방지用 병기(정합화 전까지 유지)</text><text x="42" y="1111" font-size="10" fill="#777">자료: Λ¹² v2 × BSLI 공통 138개국 실측(2026-07-20 재계산) · 공리: 합본논문 §3.2 · 압박지수 정의: 2026-07-20 청해 지시(거리·화살표=압박) 반영 · 임의 수치 없음</text></svg><figcaption class="note"><b>[그림 6-30-1]</b> 코소보 BSLI 압박 좌표계 인과루프도 v3.1. 정본 생성기 handover_cld_v3.py 무수정 출력(ISO=XKX). 도식 제목의 국가 표기만 공식 국호로 바꿨다.<br>출처: 국가분석 총서 제6권 (Lambda12_CountryBook_Vol6_Europe_20261007.html) · XKX 절 「2. 압박 좌표계 인과루프도」 — 총서 수록 SVG 원본을 한 글자도 바꾸지 않고 넣었다.</figcaption></figure>
+  <p>12차원 전체(압박 순위표·2016~2024 궤적·WD/SN/BH 경로)는 이 나라의 Λ¹² 단독편에 있다: <a href="/nations/europe/코소보_Λ12_비교분석보고서_20261013.html">코소보 Λ¹² 단독편</a>.</p>
+  <p>총서 압박 좌표계에서 코소보는 2024년 임계 밴드 안 차원이 0개이고 단면 최대 압박은 A2 · P=0.405다(해석 없이 기록).</p>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 07</div>
+  <h2 class="section-heading">BSLI 가속도와 UI 연결</h2>
+  <div class="formula-box">
+    <div class="f-label">UI 마스터방정식의 BSLI 항</div>
+    <div class="f-eq">F(t) = m·a(t), m = A2·A8 (정책충격 질량), a(t) = d²BSLI/dt² (중심차분)</div>
+    <div class="f-vars">F(t) &gt; SE(t) 일 때 봉기 발화 조건(UI 정본). 여기서는 BSLI 쪽 항(a)만 보조 시계열로 계산해 보여 준다. 정본 SE·T_trigger 값은 이 나라에 대해 산출되어 있지 않다.</div>
+  </div>
+  <div class="table-scroll"><table class="dim-table"><thead><tr><th>연도</th><th>m = A2·A8 (총서 단면)</th><th>a = Δ²BSLI</th><th>F = m·a</th><th>t+1 실측 신뢰도</th></tr></thead><tbody><tr><td>2017</td><td class="dim-score">0.2079</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2018</td><td class="dim-score">0.2079</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2019</td><td class="dim-score">0.2079</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2020</td><td class="dim-score">0.2079</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2021</td><td class="dim-score">0.2079</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2022</td><td class="dim-score">0.2079</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2023</td><td class="dim-score">0.2079</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr></tbody></table></div>
+  <p class="note">이월(fallback) 구간의 a=0은 데이터 동결의 산물이다. 판정이 아니라 기층 흐름의 가속·감속 기록이다.</p>
+  <p>보조 시계열이 없어 a(t)는 산출되지 않는다(표는 빈칸).</p>
+</div>
+
+<div class="synthesis">
+  <div class="synthesis-title">SYNTHESIS-BSLI — 코소보 4단계 요약</div>
+  <div class="synthesis-stages">
+  <div class="stage"><div class="stage-num">STAGE 01 / 위치</div><div class="stage-title">남유럽·도서 BSLI 4위</div><div class="stage-desc">총서 +0.0036(E등급 · 139개국 중 55위), 기본생활선 바로 위.</div></div>
+<div class="stage"><div class="stage-num">STAGE 02 / 성분</div><div class="stage-title">보조 시계열 미수록</div><div class="stage-desc">4항 연도값 데이터 부재.</div></div>
+<div class="stage"><div class="stage-num">STAGE 03 / 틈</div><div class="stage-title">25.0%에서 10.0%로</div><div class="stage-desc">국가 빈곤선은 2015년에 멈춤.</div></div>
+<div class="stage"><div class="stage-num">STAGE 04 / 흐름</div><div class="stage-title">2026 물가 재상승</div><div class="stage-desc">헤르메스 수집 최신 헤드라인.</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 08</div>
+  <h2 class="section-heading">담론육층사유법 — 이 보고서가 머무는 층위</h2>
+  <p>이 보고서의 해석은 청해(淸海)의 담론육층사유법(합본논문 Ch.7) 1~5층 안에서만 이루어진다. 6층은 청해 전용이다.</p>
+  <div class="table-scroll"><table class="dim-table">
+    <thead><tr><th>층</th><th>물음</th><th>이 보고서에서</th></tr></thead>
+    <tbody>
+      <tr><td class="dim-code">1층</td><td>데이터 — 나는 무엇을 보았는가</td><td>총서 BSLI와 4항 성분·빈곤율·Palma를 판단 없이 기록한다 (§00~§04)</td></tr>
+      <tr><td class="dim-code">2층</td><td>이해관계 — 누가 진화를 막는가</td><td>공표 수치와 독립 출처의 틈, 생활 정책을 둘러싼 관계를 기록한다 (§05·§05-B)</td></tr>
+      <tr><td class="dim-code">3층</td><td>역사 패턴 — 이미 일어난 일이 다시 일어난다</td><td>연도별 흐름과 권역 안 위치의 반복을 본다 (§04·§05)</td></tr>
+      <tr><td class="dim-code">4층</td><td>관점 전환 — 붕괴가 아니라 진화다</td><td>기층 압박의 가속·감속을 사회 진화의 조건으로 읽는다 (§07)</td></tr>
+      <tr><td class="dim-code">5층</td><td>지식 프레임 — 인류의 유산으로 해석한다</td><td>衣食住·빈곤·주거 선행연구를 합본 조각으로 접목한다 (§03)</td></tr>
+      <tr><td class="dim-code">6층</td><td>—</td><td><strong>청해(淸海) 전용.</strong> 이 보고서는 다루지 않는다.</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 09</div>
+  <h2 class="section-heading">데이터 출처 및 재현성 선언</h2>
+  <p style="font-family:'Courier New',monospace;font-size:12.5px;color:var(--muted);line-height:1.9;">[정본] 국가분석 총서 제6권 유럽·유라시아(2026-10-07) XKX 절 — BSLI·등급·순위·η·인과루프도. /nations/book/Lambda12_CountryBook_Vol6_Europe_20261007.html<br>[보조] BSLI 시계열 v1.2 bsli_timeseries_v12_20260726.json — 이 나라 미수록<br>[헤르메스 수집 2026-10-14] vault hermes-raw/bsli/2026-10-14/XKX.md — World Bank API 8개 지표 + Google News 84건(매체 분류 기계 대조, 원문 미대조)<br>[독립 출처·헤드라인] KoSSev · Kosovo Online · Prishtina Insight · Euronews Albania · TradingView — 국내·지역 매체, 분류표 미분류<br>[학술] Ravallion (2016) The Economics of Poverty, Oxford University Press · World Bank (2011) Migration and Remittances Factbook 2011<br>조회일: 이 보고서 2026-10-14. 상세 목록은 run 폴더 data/sources.md.</p>
+  <p><strong>한계.</strong> ① 총서 BSLI 값은 동결 원칙에 따라 그대로 썼다. ② 보조 시계열 미수록으로 성분·가속도를 제시하지 않았다. ③ 헤드라인은 본문 대조 전이다. ④ 2020~2021년 빈곤·지니 변동의 원인은 확인하지 못했다. ⑤ 정치·인물 평가는 하지 않는다.</p>
+<p>측정값과 기록만 적었다. 판정과 예측은 하지 않는다. 다음 판단은 그 나라의 지도자와 국민의 몫이다.</p>
+</div>
+
+</div><!-- /main -->
+
+<div class="report-footer"><div class="footer-inner">
+  <div class="footer-slogan">"인류의 경험과 수 많은 훌륭한 데이터들이 모여 은하수와 같은 현명한 빛으로 거듭 나 길 염원하는 마음으로!"</div>
+  <div class="footer-meta">늘푸른바다 사회동역학연구소 · 저자 청해(淸海)<br>BSLI v7.0 · 국가분석 총서(2026-10-07) · BSLI 시계열 v1.2 · Λ¹² v2.0 연계<br>코소보 기초사회생활지수 단독편 · 2026-10-14 · BSLI 권역순환 분석</div>
+</div></div>
+
+<script>
+(function() {
+  var el = document.getElementById('bsliChart');
+  if (!el || typeof Chart === 'undefined') return;
+  var D = {"labels": ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"], "series": [{"iso": "MLT", "me": false, "data": [0.481, 0.4836, 0.5039, 0.5068, 0.5293, 0.5545, 0.5163, 0.5728, 0.5728]}, {"iso": "CYP", "me": false, "data": [0.4026, 0.4422, 0.4519, 0.489, 0.489, 0.5164, 0.4991, 0.531, 0.531]}, {"iso": "GRC", "me": false, "data": [0.1505, 0.1663, 0.2037, 0.2122, 0.2085, 0.2389, 0.2293, 0.2407, 0.2407]}]};
+  var pal = ['#6A7A9A', '#8E5EA2', '#2A6F97', '#5E9186', '#B8850E', '#9A8F80'];
+  var ds = D.series.map(function(s, i) {
+    return { label: s.iso, data: s.data, borderColor: s.me ? '#C0392B' : pal[i % pal.length], backgroundColor: 'transparent',
+             borderWidth: s.me ? 3 : 1.2, pointRadius: s.me ? 3 : 1.5, spanGaps: false };
+  });
+  ds.push({ label: '기본생활선 0', data: D.labels.map(function() { return 0; }), borderColor: '#2A3D35', borderDash: [5,4], borderWidth: 1, pointRadius: 0 });
+  new Chart(el, {
+    type: 'line',
+    data: { labels: D.labels, datasets: ds },
+    options: {
+      responsive: true,
+      scales: { y: { ticks: { font: { size: 10 } } } },
+      plugins: { legend: { position: 'bottom', labels: { font: { family: 'Courier New', size: 11 } } } }
+    }
+  });
+})();
+</script>
+</body>
+</html>
