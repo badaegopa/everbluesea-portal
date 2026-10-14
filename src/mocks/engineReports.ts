@@ -243,6 +243,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // UI 봉기지수
   "cat-ui": [
+    { id: "uibook-vol1-20261014", title: "봉기 총서 제1권 방법과 데이터 — 1760년 기준 서사·데이터 기록법, 7개 데이터셋의 정의와 한계, 국가분석 총서 공리·판정식 원문", titleEn: "Uprising Compendium Vol. 1: Method and Data — Narrative and Data Recording Around 1760, Definitions and Limits of Seven Datasets, and the Axioms and Ignition Condition from the Country Analysis Compendium", region: "방법론", regionEn: "Methodology", scope: "권역별", engine: "봉기 총서 · COW·UCDP·P&T·Archigos·NAVCO·MM·ACLED", date: "2026-10-14", htmlPath: "/engines/ui/book/UprisingBook_Vol1_Method_20261014.html" },
     {
       id: "ui-ethiopia-2026",
       title: "에티오피아 봉기 벡터 재분석 — 인과좌표계 실측 · 밴드 6축과 생존동맹", titleEn: "Ethiopia Uprising-Vector Reanalysis — Measured Causal Coordinate, Six-Axis Band and the Alliance for Survival",
