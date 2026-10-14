@@ -12,6 +12,7 @@ v18 변경 (2026-07-13, 소장 지시):
     (translation/residual_report.json + 로그 말미 목록)
   - 태그 급변(>40) 차단만 유지 — 구조 훼손 방지용
   - 효과: 실패 파일이 pending()에 반복 잡히는 도돌이표 구조 제거 (v4 한편씩 루프 안전)
+v20 변경 (2026-10-14): Gemini 429 할당량 초과 시 실패 대신 정상 종료(만든 것만 커밋), MAX_FILES 로 실행당 편수 제한, 예약 실행으로 분할 번역.
 옵션:
   --all  : 남은 것 전부 (한 편씩 순차, 각 편 후 로그 flush)
   --dry  : API 호출 없이 구조 검증만
@@ -30,6 +31,10 @@ SKIP      = {"script","style","code","pre"}
 API_KEY   = os.environ.get("GEMINI_API_KEY","")
 DRY       = "--dry" in sys.argv
 ALL       = "--all" in sys.argv
+MAX_FILES = int(os.environ.get("MAX_FILES", "0") or 0)   # v20: 실행당 최대 편수(0=제한 없음) — 할당량 분할
+
+class QuotaExceeded(Exception):
+    """v20: Gemini HTTP 429 — 이번 실행은 여기서 멈추고 만든 것만 커밋, 다음 실행에서 이어감."""
 
 CANDIDATES = [
     ("gemini-flash-latest",   "v1beta"),
@@ -44,6 +49,7 @@ def find_model():
     log(f"[init] API_KEY 길이: {len(API_KEY)}, 앞4자: {API_KEY[:4] if API_KEY else '없음'}")
     if not API_KEY:
         raise RuntimeError("GEMINI_API_KEY 비어 있음")
+    quota_hits = 0
     for model, ver in CANDIDATES:
         url = (f"https://generativelanguage.googleapis.com/{ver}/models/"
                f"{model}:generateContent?key={API_KEY}")
@@ -60,8 +66,11 @@ def find_model():
             try: detail = e.read().decode()[:200].replace("\n"," ")
             except Exception: pass
             log(f"  {model}/{ver} → HTTP {e.code}: {detail}")
+            if e.code == 429: quota_hits += 1
         except Exception as e:
             log(f"  {model}/{ver} → {e}")
+    if quota_hits == len(CANDIDATES):
+        raise QuotaExceeded("모든 후보 모델 HTTP 429")
     raise RuntimeError("사용 가능한 모델 없음")
 
 EN_MARKERS = ("_EN", "_en", "_FINAL", "_english", "_ENG")
@@ -106,8 +115,13 @@ def call_api(model, ver, texts, gb):
                        }).encode()
     req  = urllib.request.Request(url, data=body,
            headers={"Content-Type":"application/json"}, method="POST")
-    with urllib.request.urlopen(req, timeout=180) as r:
-        data = json.loads(r.read())
+    try:
+        with urllib.request.urlopen(req, timeout=180) as r:
+            data = json.loads(r.read())
+    except urllib.error.HTTPError as e:
+        if e.code == 429:
+            raise QuotaExceeded(f"HTTP 429 ({model})")
+        raise
     raw  = data["candidates"][0]["content"]["parts"][0]["text"].strip()
     if raw.startswith("```"):
         raw = re.sub(r"^```[a-zA-Z]*\n?", "", raw)
@@ -122,6 +136,8 @@ def translate_batch(model, ver, texts, gb):
     for attempt in range(3):
         try:
             return call_api(model, ver, texts, gb)
+        except QuotaExceeded:
+            raise
         except Exception as e:
             log(f"     retry {attempt+1}: {e}")
             time.sleep(8*(attempt+1))
@@ -216,8 +232,14 @@ def main():
         model, ver = "(dry)", "(dry)"
         log("[init] DRY 모드 — API 생략")
     else:
-        model, ver = find_model()
+        try:
+            model, ver = find_model()
+        except QuotaExceeded as e:
+            log(f"[quota] {e} — 할당량 초과, 이번 실행은 건너뜀(다음 예약 실행에서 이어감). 남은 {len(todo)}편")
+            return
     targets = todo if ALL else todo[:1]
+    if MAX_FILES > 0:
+        targets = targets[:MAX_FILES]
     log(f"이번 실행 처리: {len(targets)}편")
     made=0; failed=0
     for f in targets:
@@ -227,6 +249,9 @@ def main():
                 rebuild_manifest()
             else:
                 failed+=1
+        except QuotaExceeded as e:
+            log(f"   [quota] {e} — {f.name} 에서 중단, 만든 {made}편만 커밋하고 다음 실행에서 이어감")
+            break
         except Exception as e:
             failed+=1
             log(f"   [SKIP] {f.name} 예외로 건너뜀: {e}")
