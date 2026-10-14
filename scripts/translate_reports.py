@@ -69,8 +69,9 @@ def find_model():
             if e.code == 429: quota_hits += 1
         except Exception as e:
             log(f"  {model}/{ver} → {e}")
-    if quota_hits == len(CANDIDATES):
-        raise QuotaExceeded("모든 후보 모델 HTTP 429")
+    # v20.1: 후보 중 하나라도 429 면 할당량 문제로 본다(나머지는 404 모델 없음 등일 수 있음)
+    if quota_hits > 0:
+        raise QuotaExceeded(f"후보 모델 HTTP 429 ({quota_hits}/{len(CANDIDATES)})")
     raise RuntimeError("사용 가능한 모델 없음")
 
 EN_MARKERS = ("_EN", "_en", "_FINAL", "_english", "_ENG")
