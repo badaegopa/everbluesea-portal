@@ -377,28 +377,39 @@ p { margin-bottom: 1em; color: var(--ink); }
 }
 
 .pcs-wrap { background:#FAFAF7; border:1px solid var(--border); padding:16px; margin:20px 0; }
+.pcs-wrap svg { display:block; max-width:100%; height:auto; margin:0 auto; }
 .note { font-size:12.5px; color:var(--muted); line-height:1.7; }
+.table-scroll, .book-frag .tw { overflow-x:auto; }
+.book-frag table { border-collapse:collapse; width:100%; font-size:13px; font-variant-numeric:tabular-nums; }
+.book-frag th, .book-frag td { border-bottom:1px solid var(--border); padding:6px 8px; text-align:left; vertical-align:top; }
+.book-frag th { border-bottom:2px solid #2A3D35; white-space:nowrap; }
+.book-frag td.n, .book-frag th.n { text-align:right; font-family:'Courier New',monospace; white-space:nowrap; }
+.book-frag tr.hi td { background:#F6E7C4; }
+.book-frag .inband { background:#F6E7C4; font-weight:700; }
+.book-frag .warnmark { color:#9A700C; font-weight:700; }
+.book-frag .up { color:#B0392A; } .book-frag .dn { color:#3F7A6E; }
+.book-frag .tag { font-size:11px; color:var(--muted); }
+.book-frag h4 { font-size:14px; margin:14px 0 6px; }
 @media (max-width:640px) { .main, .header-inner, .verdict-inner, .footer-inner { padding-left:16px; padding-right:16px; } .dim-table { font-size:12px; } }
-.table-scroll { overflow-x:auto; }
 </style>
 </head>
 <body>
 <div class="report-header"><div class="header-inner">
   <div class="report-flag">EVERBLUESEA SOCIAL DYNAMICS LAB · Λ¹² STANDALONE · 2026-10-13</div>
   <h1 class="report-title">미얀마 단독편</h1>
-  <div class="report-subtitle">흡수체 두 축이 함께 무너진 내전 국가, 밴드 안 5개 차원과 군 주도 '민정 이양'</div>
+  <div class="report-subtitle">동남아시아 η 최하위(178위) — 흡수체 두 축이 함께 무너진 내전 국가, 밴드 안 다섯 차원과 군 주도 '민정 이양'</div>
   <div class="report-meta">
     <div class="meta-item">저자 <span class="meta-value">청해(淸海)</span></div>
-    <div class="meta-item">엔진 <span class="meta-value">Λ¹² 정본 v2.2 · BSLI v7.0 · UI · 압박 좌표계</span></div>
-    <div class="meta-item">권역 위치 <span class="meta-value">동남아시아 잔여국 중 η 최하위(하)</span></div>
+    <div class="meta-item">엔진 <span class="meta-value">Λ¹² v2.0 (국가분석 총서 2026-10-07) · BSLI v7.0 · UI · 압박 좌표계</span></div>
+    <div class="meta-item">권역 위치 <span class="meta-value">동남아시아 η 하 (총서 11개국 중 11위)</span></div>
     <div class="meta-item">작성일 <span class="meta-value">2026-10-13</span></div>
   </div>
 </div></div>
 <div class="verdict-strip"><div class="verdict-inner">
   <span class="verdict-label">관측 요약</span>
-  <span class="verdict-badge">경로 확정 유보 · E_A2 상한 < 0.2(BH 조건 일부 충족) · 공리 A3 장면 관측</span>
-  <span class="verdict-eta">η = 0.4333 (전체 178위/197)</span>
-  <span class="verdict-bsli">BSLI = −0.2231</span>
+  <span class="verdict-badge">권역 최하위 · 밴드 안 A2·A5·A6·A7·A8 · A7·A8 동시 포함 · 경로 확정 유보</span>
+  <span class="verdict-eta">η = 0.4322 (197개국 중 178위)</span>
+  <span class="verdict-bsli">BSLI = -0.2231</span>
 </div></div>
 
 <div class="main">
@@ -406,33 +417,34 @@ p { margin-bottom: 1em; color: var(--ink); }
 <div class="section">
   <div class="section-title">§ 00</div>
   <h2 class="section-heading">권역 내 위치 — 왜 미얀마인가</h2>
-  <p>이 보고서는 늘푸른바다 사회동역학연구소의 일일 권역순환 분석으로 작성되었다. 매 실행마다 권역 하나를 골라, 아직 단독편이 없는 국가 가운데 Λ¹² 정본 v2.2 η 기준 최상위와 최하위 두 곳을 분석한다. 오늘 권역은 동남아시아다. 정본 랭킹의 동남아시아 단위 11개 가운데 인도네시아·캄보디아는 단독편이 이미 있다. 미얀마는 남은 9개 단위, 그리고 권역 11개 단위 전체에서 η가 가장 낮은 <strong>하(下)</strong> 위치다.</p>
-<p>미얀마의 η = 0.4333는 전체 197개 단위 중 178위다. 권역 안에서 바로 위는 캄보디아(0.4694)·필리핀(0.4741)이고, 같은 날 분석하는 싱가포르(0.5900)가 권역 최상위(상)다. 두 보고서는 같은 엔진·같은 스케일로 작성되어 수치를 서로 바로 비교할 수 있다. η는 좋은 나라와 나쁜 나라를 가리는 점수가 아니라, 정본 투입 지표로 잰 기초 역량의 평균이다(총서 제1권 서장).</p>
-  <div class="table-scroll"><table class="dim-table"><thead><tr><th>동남아시아 권역</th><th>전체 순위</th><th>η (정본 v2.2)</th><th>η 2024 (시계열판)</th><th>가용 차원</th></tr></thead><tbody>
-  <tr><td>싱가포르 (SGP)</td><td class="dim-score">29</td><td class="dim-score">0.5900</td><td class="dim-score">0.5555</td><td class="dim-score">11/12</td></tr>
-<tr><td>말레이시아 (MYS)</td><td class="dim-score">50</td><td class="dim-score">0.5502</td><td class="dim-score">0.5169</td><td class="dim-score">12/12</td></tr>
-<tr><td>브루나이 (BRN)</td><td class="dim-score">53</td><td class="dim-score">0.5441</td><td class="dim-score">0.5581</td><td class="dim-score">10/12</td></tr>
-<tr><td>라오스 (LAO)</td><td class="dim-score">61</td><td class="dim-score">0.5291</td><td class="dim-score">0.4977</td><td class="dim-score">11/12</td></tr>
-<tr><td>동티모르 (TLS)</td><td class="dim-score">65</td><td class="dim-score">0.5252</td><td class="dim-score">0.5097</td><td class="dim-score">10/12</td></tr>
-<tr><td>태국 (THA)</td><td class="dim-score">75</td><td class="dim-score">0.5166</td><td class="dim-score">0.5064</td><td class="dim-score">12/12</td></tr>
-<tr><td>인도네시아 (IDN)</td><td class="dim-score">83</td><td class="dim-score">0.5100</td><td class="dim-score">0.4816</td><td class="dim-score">12/12</td></tr>
-<tr><td>베트남 (VNM)</td><td class="dim-score">89</td><td class="dim-score">0.5057</td><td class="dim-score">0.4670</td><td class="dim-score">12/12</td></tr>
-<tr><td>필리핀 (PHL)</td><td class="dim-score">126</td><td class="dim-score">0.4741</td><td class="dim-score">0.4487</td><td class="dim-score">12/12</td></tr>
-<tr><td>캄보디아 (KHM)</td><td class="dim-score">133</td><td class="dim-score">0.4694</td><td class="dim-score">0.4416</td><td class="dim-score">11/12</td></tr>
-<tr style="background:#B8850E18;font-weight:bold"><td>미얀마 (MMR)</td><td class="dim-score">178</td><td class="dim-score">0.4333</td><td class="dim-score">0.4051</td><td class="dim-score">12/12</td></tr>
+  <p>이 보고서는 일일 권역순환 파이프라인의 동남아시아 회차에서 단독편이 없는 국가 가운데 η 최하위국으로 선정되었다. 국가분석 총서(2026-10-07) 기준으로 다시 계산해도 미얀마의 위치는 바뀌지 않는다 — 총서 η는 <strong>0.4322</strong>(197개국 중 178위)이고, 총서 동남아시아 11개국 가운데 11위, 즉 권역 최하위(<strong>하</strong>)다. 바로 위는 캄보디아(0.4677, 197개국 중 135위)와 필리핀(0.4720, 197개국 중 129위)이고, 권역 최상위는 싱가포르(0.5841, 197개국 중 30위)다.</p>
+<p>2024년 임계 밴드 안 차원은 A2, A5, A6, A7, A8 다섯 개로 권역에서 가장 많고, A7·A8 동시 포함(KSDS v10.0 봉기 관측 4국 공통 구성, n=4 탐색적)에 해당한다. BSLI는 -0.2231(E등급 · 139개국 중 79위)로 기본생활선 아래다. 결측 차원은 없음다. η는 좋은 나라와 나쁜 나라를 가리는 점수가 아니라, 총서 투입 지표로 잰 사회안정 종합지수(높을수록 안정)다.</p>
+  <div class="table-scroll"><table class="dim-table"><thead><tr><th>동남아시아 권역 (총서)</th><th>η</th><th>순위</th><th>BSLI</th><th>2024 임계 밴드 안</th><th>결측 차원</th></tr></thead><tbody>
+  <tr><td>싱가포르 (SGP)</td><td class="dim-score">0.5841</td><td>197개국 중 30위</td><td class="dim-score">산출 불가</td><td>A5, A7</td><td>A3</td></tr>
+<tr><td>말레이시아 (MYS)</td><td class="dim-score">0.5433</td><td>197개국 중 52위</td><td class="dim-score">+0.0948</td><td>A5, A7</td><td>없음</td></tr>
+<tr><td>브루나이 (BRN)</td><td class="dim-score">0.5429</td><td>197개국 중 53위</td><td class="dim-score">산출 불가</td><td>A5, A7</td><td>A3, A9</td></tr>
+<tr><td>태국 (THA)</td><td class="dim-score">0.5297</td><td>197개국 중 59위</td><td class="dim-score">+0.0550</td><td>A5</td><td>없음</td></tr>
+<tr><td>라오스 (LAO)</td><td class="dim-score">0.5278</td><td>197개국 중 64위</td><td class="dim-score">-0.4694</td><td>A2, A7, A8</td><td>A5</td></tr>
+<tr><td>동티모르 (TLS)</td><td class="dim-score">0.5252</td><td>197개국 중 66위</td><td class="dim-score">-0.4883</td><td>A4, A7</td><td>A11, A5</td></tr>
+<tr><td>인도네시아 (IDN)</td><td class="dim-score">0.5067</td><td>197개국 중 84위</td><td class="dim-score">-0.3315</td><td>A5, A7</td><td>없음</td></tr>
+<tr><td>베트남 (VNM)</td><td class="dim-score">0.5015</td><td>197개국 중 93위</td><td class="dim-score">-0.0346</td><td>A5, A7, A8</td><td>없음</td></tr>
+<tr><td>필리핀 (PHL)</td><td class="dim-score">0.4720</td><td>197개국 중 129위</td><td class="dim-score">-0.3407</td><td>A2, A5, A7</td><td>없음</td></tr>
+<tr><td>캄보디아 (KHM)</td><td class="dim-score">0.4677</td><td>197개국 중 135위</td><td class="dim-score">산출 불가</td><td>A2, A5, A7, A8</td><td>A3</td></tr>
+<tr style="background:#B8850E18;font-weight:bold"><td>미얀마 (MMR)</td><td class="dim-score">0.4322</td><td>197개국 중 178위</td><td class="dim-score">-0.2231</td><td>A2, A5, A6, A7, A8</td><td>없음</td></tr>
   </tbody></table></div>
-  <p class="note">η는 Λ¹² 정본 v2.2(2026-10-13) 12차원 값의 단순 평균(값이 있는 차원만, 유효 차원 ≥ 5, 가중치 없음)이다(국가분석 총서 제1권 §1.5). η는 사회안정 종합지수이며 값이 클수록 안정 쪽이다. 수식 3.1-C의 폭발근접지수(EPI)로 읽지 않는다. 정본 v2.2는 v2.0과 원자료가 같고 A10(국제관광객 수)만 2019년 이하 최종 실측으로 교정한 판본이다. 시계열판(v2.1, 2016–2024)은 입력 연도가 달라 값이 일부 다르다. 인도네시아·캄보디아는 이미 단독편이 있어 오늘 대상에서 빠졌고, 남은 9개 단위 중 미얀마가 η 최하위다.</p>
+  <p class="note">값은 전부 국가분석 총서(2026-10-07) 기초 지표 그대로다(총서 = Λ¹² v2.0, 197개국 η·순위 일치). η는 유효 차원(≥5) 값의 단순 평균으로 사회안정 종합지수이며 높을수록 안정이다(총서 제1권 §1.5). 폭발근접지수(EPI)로 읽지 않는다. 결측 차원은 채우지 않았다.</p>
 </div>
 
 <div class="section">
   <div class="section-title">§ 01</div>
   <h2 class="section-heading">Executive Summary</h2>
-  <p>미얀마의 12차원 상태벡터에서 가장 눈에 띄는 것은 흡수체 핵심 두 축이 함께 바닥에 있다는 점이다. 제도신뢰(A2 0.1313)와 거버넌스(A8 0.1262)는 138개국 비교군 백분위가 각각 0.7·1.4이다. 교육접근(A5 0.0027, 실측 입력 R&D/GDP)도 최하위권이다. 반대로 시민자유(A3 0.8045)·보건수준(A6 0.8229)·이동성(A12 0.8853)은 높게 나오는데, 이는 실측 입력이 각각 지니계수(2017)·CO₂·재생에너지·FDI이기 때문이며 정본 명칭의 뜻(표현·집회 자유, 기대수명 등)과 다르다.</p>
-<p>압박 좌표계에서 탐색적 임계 밴드(P ≥ 0.446) 안에 든 차원은 정태 v2.2·시계열 2024 모두 A2·A5·A6·A7·A8 다섯 개다. 봉기 4개국 선행연구에서 발화 시점에 늘 함께 나타난 A7·A8 조합이 모두 들어 있다. 서민 기층 BSLI는 139개국 정본에서 −0.2231(E등급)이지만 최종 실측이 2017년이라 쿠데타 이후 상태를 반영하지 못한다. 정치 쪽에서는 2021년 2월 군부가 선출 정부를 무너뜨렸고, 이후 내전이 이어지는 가운데 2025년 12월~2026년 1월 군 주도 총선을 거쳐 2026년 4월 쿠데타 지도자 민아웅흘라잉이 의회에서 대통령으로 선출되었다. 관측자 입장에서 정리하면, 미얀마는 공리 A3이 말하는 'A8이 A2를 공격하는' 장면이 실제로 일어난 사례이며, E_A2 상한이 0.2 아래에 있다. 다만 C_internal 정본값이 없어 경로는 확정하지 않는다.</p>
+  <p>미얀마는 총서 η 0.4322(197개국 중 178위)다. 단면 최대 압박은 A8 · P=0.643이고, 2위 A5 교육접근(0.6242, 실측: R&D/GDP), 3위 A2 제도신뢰(0.6029), 4위 A7 사회구조(0.4973), 5위 A6 보건수준(0.4518)까지 단면에서도 밴드 안이다. 흡수체 핵심 두 축인 A2(0.1313)와 A8(0.1262)이 함께 바닥에 있는 것이 가장 큰 특징이다.</p>
+<p>궤적: A2는 2021년 +0.0335, 2022년 +0.0339, 2023년 +0.0484, 2024년 +0.0125로 쿠데타 이후 4년 연속 낙하(압박 증가)했고, A8은 2021년 +0.0570·2022년 +0.0430로 함께 낙하했다. A7은 2021년 +0.1407로 12개 차원 가운데 가장 큰 단일 연도 낙하를 보였다. ACLED 집계로 정치폭력 사건은 2020년 1,199건에서 2024년 13,112건으로 열 배가 넘게 늘었다.</p>
+<p>정세 축에서 2021년 2월 군이 선출 정부를 무너뜨린 뒤 내전이 이어졌고, 2025년 3월 규모 7.7 지진, 2025년 12월~2026년 1월 군 주도 3단계 총선을 거쳐 2026년 4월 쿠데타 지도자 민아웅흘라잉이 의회에서 대통령으로 선출되었다(총서 브리핑). 공표 수치의 틈은 총선 투표율에서 가장 분명하다 — 군정 발표 52%는 전체 330개 타운십 중 102곳에서 치른 1단계 수치다.</p>
   <div class="cards">
-    <div class="card"><div class="card-label">η (정본 v2.2)</div><div class="card-value">0.4333</div><div class="card-desc">동남아시아 11개 단위 중 11위 · 전체 178위</div></div>
-    <div class="card gold"><div class="card-label">압박 밴드 진입 (P ≥ 0.446)</div><div class="card-value">A2·A5·A6·A7·A8</div><div class="card-desc">v2.2 정태 기준 · 시계열 2024: A2·A5·A6·A7·A8</div></div>
-    <div class="card red"><div class="card-label">BSLI (139국 정본)</div><div class="card-value">−0.2231</div><div class="card-desc">139개국 79위 · E등급 · 실측 2017(10년 이내 대체)</div></div>
+    <div class="card"><div class="card-label">η 사회안정 종합지수 (총서)</div><div class="card-value">0.4322</div><div class="card-desc">197개국 중 178위 · 동남아시아 11개국 중 11위</div></div>
+    <div class="card gold"><div class="card-label">2024 임계 밴드 안 차원 (총서)</div><div class="card-value">A2, A5, A6, A7, A8</div><div class="card-desc">P ≥ 0.4458 · 단면 최대 압박 A8 · P=0.643 (실측: WGI 6종)</div></div>
+    <div class="card red"><div class="card-label">BSLI (총서)</div><div class="card-value">-0.2231</div><div class="card-desc">E등급 · 139개국 중 79위 · 결측 차원 없음</div></div>
   </div>
 </div>
 
@@ -440,333 +452,250 @@ p { margin-bottom: 1em; color: var(--ink); }
   <div class="section-title">§ 02</div>
   <h2 class="section-heading">역사 시계열 — 구조를 만든 사건들</h2>
   <div class="timeline">
-  <div class="tl-item"><div class="tl-dot gold"></div><div class="tl-year">1948</div><div class="tl-content"><strong>독립</strong> — 영국에서 독립. 직후 공산당·카렌족 등 무장 반란으로 내전 시작.</div></div>
-<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">1962</div><div class="tl-content"><strong>네윈 쿠데타</strong> — 군사정부 수립, '버마식 사회주의' 일당체제. 이후 반세기 군 통치.</div></div>
-<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">1988</div><div class="tl-content"><strong>8888 민주화 항쟁</strong> — 전국 시위와 군의 유혈 진압, 신군부(SLORC) 집권.</div></div>
-<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">1990</div><div class="tl-content"><strong>총선 결과 무효화</strong> — 아웅산수찌의 민족민주동맹(NLD)이 압승했으나 군부가 정권 이양 거부.</div></div>
-<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2007</div><div class="tl-content"><strong>사프란 혁명</strong> — 연료가 인상에 반발한 승려 주도 시위, 진압.</div></div>
-<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2008</div><div class="tl-content"><strong>신헌법</strong> — 의회 의석 25%를 군 지명 몫으로, 국방·내무·국경 장관을 군 총사령관 지명으로 규정.</div></div>
-<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2011</div><div class="tl-content"><strong>준민간 정부 출범</strong> — 2010 총선 후 테인세인 정부, 개방·개혁.</div></div>
-<div class="tl-item"><div class="tl-dot gold"></div><div class="tl-year">2015</div><div class="tl-content"><strong>NLD 압승</strong> — 2016년 NLD 정부 출범. 군은 헌법상 지분 유지.</div></div>
-<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2017</div><div class="tl-content"><strong>라카인주 군사작전</strong>(8월) — 로힝야 대규모 탈출. ACLED 민간인 사망 1090건(전년 대비 3.6배), 폭력 정점 8월.</div></div>
-<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2021.2</div><div class="tl-content"><strong>쿠데타</strong> — 2020 총선 부정 주장 끝에 군이 선출 정부 지도부 구금, 국가행정평의회 수립. 시민불복종운동. ACLED 시위 7780건.</div></div>
-<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2022–24</div><div class="tl-content"><strong>내전 확대</strong> — 저항 세력·소수민족 무장조직과 군의 교전. ACLED 정치폭력 사건 2022 11792건 → 2024 13112건.</div></div>
-<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2025.1</div><div class="tl-content"><strong>북부 샨주 휴전</strong> — 중국 중재로 MNDAA와 군 사이 휴전.</div></div>
-<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2025.3</div><div class="tl-content"><strong>규모 7.7 지진</strong>(3월 28일) — 만달레이·사가잉·네피도 등 피해, 영향 인구 1,700만 명 이상(World Bank).</div></div>
-<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2025.12–26.1</div><div class="tl-content"><strong>3단계 총선</strong> — 분쟁으로 3회(12.28·1.11·1.25) 분할 실시, NLD 등 불참. 군부 계열 USDP 다수 의석.</div></div>
-<div class="tl-item"><div class="tl-dot gold"></div><div class="tl-year">2026.4</div><div class="tl-content"><strong>민아웅흘라잉 대통령 선출</strong>(4월 3일) — 의회 584표 중 429표. 총사령관직은 측근에게 이양, 4월 10일 취임.</div></div>
+  <div class="tl-item"><div class="tl-dot gold"></div><div class="tl-year">1948</div><div class="tl-content"><strong>독립</strong> — 영국에서 독립. 직후 공산당·카렌족 등 무장 반란으로 내전 시작(일반 사실).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">1962</div><div class="tl-content"><strong>네윈 쿠데타</strong> — 군사정부 수립, '버마식 사회주의' 일당체제. 이후 반세기 군 통치(일반 사실).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">1988</div><div class="tl-content"><strong>8888 민주화 항쟁</strong> — 전국 시위와 군의 유혈 진압, 신군부(SLORC) 집권(일반 사실).</div></div>
+<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">1990</div><div class="tl-content"><strong>총선 결과 무효화</strong> — 아웅산수찌의 민족민주동맹(NLD)이 압승했으나 군부가 정권 이양을 거부했다(일반 사실).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2007</div><div class="tl-content"><strong>사프란 혁명</strong> — 연료가 인상에 반발한 승려 주도 시위, 진압(일반 사실).</div></div>
+<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2008</div><div class="tl-content"><strong>신헌법</strong> — 의회 의석 25%를 군 지명 몫으로, 국방·내무·국경 장관을 군 총사령관 지명으로 규정(일반 사실).</div></div>
+<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2011</div><div class="tl-content"><strong>준민간 정부 출범</strong> — 2010 총선 후 테인세인 정부, 개방·개혁(일반 사실).</div></div>
+<div class="tl-item"><div class="tl-dot gold"></div><div class="tl-year">2015</div><div class="tl-content"><strong>NLD 압승</strong> — 2016년 NLD 정부 출범. 군은 헌법상 지분을 유지했다(일반 사실).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2017</div><div class="tl-content"><strong>라카인주 군사작전</strong>(8월) — 로힝야 대규모 탈출. ACLED 민간인 사망 1,090명(전년 대비 3.6배), 폭력 정점 8월.</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2021.2</div><div class="tl-content"><strong>쿠데타</strong> — 2020 총선 부정 주장 끝에 군이 선출 정부 지도부를 구금하고 국가행정평의회를 세웠다. 시민불복종운동. ACLED 시위 7,780건.</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2022–24</div><div class="tl-content"><strong>내전 확대</strong> — 저항 세력·소수민족 무장조직과 군의 교전. ACLED 정치폭력 사건 2022년 11,792건 → 2024년 13,112건.</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2025.3</div><div class="tl-content"><strong>규모 7.7 지진</strong>(3월 28일) — 만달레이·사가잉·네피도 등 피해. 군정 발표 기준 4월 7일까지 사망 3,600명·부상 5,017명·실종 160명(총서 브리핑). 영향 인구 1,700만 명 이상(World Bank).</div></div>
+<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2025.4</div><div class="tl-content"><strong>라시오 반환</strong>(4월 22일) — 중국 감시 하 휴전에 따라 MNDAA가 북부 샨주 라시오를 군정에 반환하기로 했다(총서 브리핑).</div></div>
+<div class="tl-item"><div class="tl-dot "></div><div class="tl-year">2025.12–26.1</div><div class="tl-content"><strong>3단계 총선</strong> — 분쟁으로 3회(12.28·1.11·1.25) 분할 실시, NLD 등 불참. 1단계는 330개 타운십 중 102곳에서 치러졌고 USDP가 공표된 하원 96석 중 88석을 얻었다(총서 브리핑).</div></div>
+<div class="tl-item"><div class="tl-dot gold"></div><div class="tl-year">2026.3–4</div><div class="tl-content"><strong>민아웅흘라잉 대통령 선출</strong> — 3월 30일 총사령관직을 예윈우에게 넘기고 대통령 후보로 지명, 4월 3일 의회가 584표 중 429표로 선출했다.</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2026.6</div><div class="tl-content"><strong>유엔 인권사무소 보고</strong>(6월 24일) — 2025년 8월~2026년 1월 군에 의한 민간인 사망을 최소 702명(여성 224, 아동 153)으로 기록, 주원인은 공습(총서 브리핑).</div></div>
   </div>
 </div>
 
 <div class="section">
   <div class="section-title">§ 03</div>
   <h2 class="section-heading">최근 정세 (2025–2026)</h2>
-  <p><strong>정치.</strong> 군정은 2025년 12월 28일, 2026년 1월 11일, 1월 25일 세 차례로 나눠 총선을 치렀다. 분쟁 지역 때문에 전국 동시 투표를 할 수 없었기 때문이다. NLD를 비롯한 주요 야당은 참여하지 않았고, 유엔 전문가와 인권단체는 선거의 공정성을 비판했다. 보도에 따르면 군부 계열 연방단결발전당(USDP)이 선출 의석의 대다수를 얻었으며, 헌법상 군 지명 몫이 전체 의석의 4분의 1이다. 2026년 4월 3일 의회는 민아웅흘라잉을 584표 중 429표로 대통령에 선출했다. 헌법이 대통령의 총사령관 겸직을 막기 때문에 그는 총사령관직을 측근인 전 정보총책 예윈우에게 넘겼다. 형식은 민정 이양이지만 군의 권력 구조는 그대로라는 평가가 서방 정부와 분석가들 사이에서 나왔다.</p>
-<p><strong>분쟁.</strong> 2023년 10월 소수민족 무장조직 연합의 공세(작전 1027) 이후 군은 북부 국경 지역을 크게 잃었다. 2025년 1월 중국 중재로 북부 샨주 휴전이 성립했고, 이후 일부 점령 도시의 관할이 군으로 되돌아갔다는 보도가 있다. 군의 실효 지배 면적에 대해서는 여러 추정이 엇갈리며(국토의 2~3할대라는 추정 등) 이 보고서는 특정 수치를 채택하지 않는다. 2026년 이후 전선 상황은 출처 간 서술이 일치하지 않아 확인된 범위만 적었다.</p>
-<p><strong>경제·재난.</strong> World Bank 미얀마 경제 모니터(2025년 6월)는 2025년 3월 지진의 직접 자산 피해를 110억 달러(GDP의 14%)로 추정하고, 2025/26 회계연도 GDP가 2.5% 줄어들 것으로 전망했다. 같은 보고서는 지진 이전 2024년 빈곤율을 31.0%로 추정했다. 이는 공식 통계의 마지막 추정치인 2017년 24.8%보다 높다. 2026년 6월 판은 일부 회복에도 기업 활동이 2021년 이전·지진 이전 수준을 크게 밑돈다고 적었고, 2026/27 성장률을 2%로 전망했다.</p>
-<p><strong>엔진과의 연결.</strong> 이 국면은 Λ¹²의 흡수체 두 축에 직접 닿는다. 쿠데타는 A8(집행)이 A2(선출 제도)를 공격한 사건이고, WGI 기반 A8은 2016년 압박 0.551에서 2024년 0.647로 올랐다. 반면 BSLI는 최종 실측이 2017년이라 2024년 빈곤율 상승(31.0%)이 아직 엔진에 들어가지 않았다.</p>
+  <p><strong>정치.</strong> 군정은 2025년 12월 28일, 2026년 1월 11일, 1월 25일 세 차례로 나눠 총선을 치렀다. 분쟁 지역 때문에 전국 동시 투표를 할 수 없었기 때문이다. NLD를 비롯한 주요 야당은 참여하지 않았고, 반대 세력과 독립 관측자들은 선거가 자유·공정하지 않다고 평가했다(총서 브리핑). 헌법상 군 지명 몫이 전체 의석의 4분의 1이다. 2026년 4월 3일 의회는 민아웅흘라잉을 대통령에 선출했고, 헌법이 대통령의 총사령관 겸직을 막기 때문에 총사령관직은 측근 예윈우에게 넘어갔다. 총서 브리핑은 이를 군 최고지도자가 민간 대통령직으로 이동하는 형식의 '민정 이양' 구조로 기록했다.</p>
+<p><strong>분쟁.</strong> 2023년 10월 소수민족 무장조직 연합의 공세(작전 1027) 이후 군은 북부 국경 지역을 크게 잃었다. 2025년 중국 중재 휴전으로 라시오 등 일부 도시의 관할이 군정으로 되돌아갔다. 군의 실효 지배 면적은 추정이 엇갈려 이 보고서는 특정 수치를 채택하지 않는다. 쿠데타 이후 집단행동은 도시 내 공개 시위보다 무력 충돌 형태가 중심이며(ACLED 시위 2021년 7,780건 → 2024년 1,207건, 같은 기간 정치폭력 7,672건 → 13,112건), 유엔은 국제 원조 감소가 분쟁 피해 주민의 상황을 악화시키고 있다고 경고했다.</p>
+<p><strong>경제·재난.</strong> World Bank 미얀마 경제 모니터(2025년 6월)는 2025년 3월 지진의 직접 자산 피해를 110억 달러(GDP의 14%)로 추정하고, 2025/26 회계연도 GDP가 2.5% 줄어들 것으로 전망했다. 같은 보고서는 지진 이전 2024년 빈곤율을 31.0%로 추정했는데, 이는 공식 통계의 마지막 추정치인 2017년 24.8%보다 높다. 2026년 6월 판은 일부 회복에도 기업 활동이 2021년 이전·지진 이전 수준을 크게 밑돈다고 적었다.</p>
+<p><strong>엔진과의 연결.</strong> 이 국면은 Λ¹²의 흡수체 두 축에 직접 닿는다. 쿠데타는 A8(집행)이 A2(선출 제도)를 공격한 사건이고(공리 A3 장면), 총서 궤적에서 A2·A8은 2021년에 함께 낙하했다. 반면 BSLI의 최종 실측은 2017년이라 2024년 빈곤율 상승은 아직 엔진에 들어가지 않았다.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 03-B</div>
+  <h2 class="section-heading">공표 수치 vs 독립 출처 — 틈을 본다</h2>
+  <p>미얀마의 틈은 군정이 내놓는 선거·재난 수치와, 군정 통제 밖의 넓은 지역을 포함해 보려는 독립 집계 사이에서 생긴다. 공표 수치는 원문 그대로 두고(DECISIONS 17·19) 독립 출처를 나란히 놓았다. 총서 브리핑의 '데이터 주의'대로, 군정 통제 밖 지역이 넓어 인구·경제·피해 통계의 포괄성 자체가 제한된다.</p>
+  <div class="table-scroll"><table class="trigger-table">
+    <thead><tr><th>항목</th><th>공표 수치 (발표기관·연도)</th><th>독립 출처 (기관·연도)</th><th>틈의 해석 (정본 공리)</th></tr></thead>
+    <tbody><tr><td><strong>2025~2026 총선 투표율(1단계, 2025-12-28)</strong></td><td>군정 대변인 조민툰(2025-12-30 발표): 1단계 유권자 1,160만여 명 중 '52 per cent'(600만 명 이상) 투표 — 연방선거관리위원회(UEC)는 전국 합산치를 따로 공표하지 않음</td><td>Progressive Voice Myanmar(2026-01-14): 보고 투표율 52.13%, 단 330개 타운십 중 102곳(약 31%)만 해당 · IFES: 2015·2020년 총선 투표율 약 70% · Borderlens(2026-01-05)·현지 언론: 도시·분쟁지역 실제 참여는 크게 낮다고 지적(대안 수치 확인 불가)</td><td>52%는 투표가 실시된 3분의 1 지역의 분모 위에서만 성립하는 수치다. 투표가 열리지 않은 지역의 유권자는 분모에 없다. 판정하지 않고 분모의 차이를 기록한다(1층). A2 제도신뢰(0.1313, 밴드 안)가 담는 선출 제도의 상태와 같은 방향의 기록이다.</td></tr><tr><td><strong>2025-03-28 지진 사망자</strong></td><td>군정 발표(신화통신 경유, 2025-04-07): 사망 3,600명·부상 5,017명·실종 160명</td><td>독립 전수 집계는 확인 불가(총서 브리핑) · World Bank(2025-06): 영향 인구 1,700만 명 이상, 직접 자산 피해 110억 달러(GDP 14%)</td><td>피해 지역 일부가 군정 통제 밖이라 사망자 집계의 포괄성을 독립적으로 검증할 길이 좁다. 공표치를 그대로 두고 검증 공백을 기록한다.</td></tr><tr><td><strong>빈곤율</strong></td><td>공식 통계 마지막 추정(2017): 24.8%</td><td>World Bank 미얀마 경제 모니터(2025-06): 2024년 31.0%(지진 이전)</td><td>공식 통계가 2017년에 멈춘 사이 독립 추정은 6%p 이상 높아졌다. 총서 BSLI(-0.2231)도 2017년 실측에 기대고 있어, 엔진의 서민 기층 값 역시 같은 공백을 공유한다.</td></tr></tbody>
+  </table></div>
+  <p class="note">공표 수치는 원문 그대로 인용했고 보정하지 않았다(DECISIONS 17·19). 총서 엔진 값도 공표·국제기구 수록치를 그대로 쓴 결과이며 체제 특성을 이유로 걸러내지 않았다. 틈은 어느 쪽이 '맞다'는 판정이 아니라, 같은 사회를 서로 다른 창으로 볼 때 생기는 차이를 드러내는 장치다.</p>
 </div>
 
 <div class="section">
   <div class="section-title">§ 04</div>
   <h2 class="section-heading">Λ¹² 12차원 국가 상태벡터</h2>
-  <p>각 차원 값은 0~1 정규화값이다. P는 해당 차원이 서민 기층(BSLI)에 가하는 압박지수 P = |r|×gap이며, ▲는 탐색적 임계 밴드(P ≥ 0.446) 안에 든 차원이다. 오른쪽 열은 시계열 추적 원칙에 따라 위치(2016→2024), 방향(최근 1년 ΔP 부호), 활동성(연평균 |ΔP|)을 함께 적었다.</p>
+  <p>값은 국가분석 총서 엔진(Λ¹² v2.0)의 0~1 정규화값이다. 차원 이름은 총서 제1권 §1.4 명칭이고, 그 아래 '실측:'은 총서처럼 실제로 투입된 지표를 병기한 것이다(MEASURED — 표기와 실측 투입이 다른 차원이 있으므로 해석은 실측 쪽을 따른다). 결합 r은 138개국 공통 상수, 오른쪽 열은 총서 궤적 표의 2024년 압박 P이며 ▲는 총서 기준 2024 임계 밴드(P ≥ 0.4458) 안 차원이다.</p>
   <div class="table-scroll"><table class="dim-table">
-    <thead><tr><th>차원</th><th>정본 명칭 / MEASURED</th><th>값</th><th>막대</th><th>P (정태)</th><th>P 궤적 · 방향 · 활동성</th></tr></thead>
+    <thead><tr><th>차원</th><th>명칭 / 실측 투입</th><th>값</th><th>막대</th><th>결합 r</th><th>P 2024 (총서 궤적)</th></tr></thead>
     <tbody>
-<tr><td class="dim-code">A1</td><td>사회기반시설<br><span style="font-size:11px;color:var(--muted)">MEASURED: 전력·인터넷 · 실측 2020·2024 <span style='color:#B8850E'>(이월)</span></span></td><td class="dim-score">0.5851</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:58.5%;background:#B8850E"></div></div></td><td class="dim-score" style="">0.329</td><td style="font-family:Courier New,monospace;font-size:12px">0.521 → 0.329<br>정체 · |ΔP| 0.024 <span style='color:#B8850E'>(이월 동결)</span></td></tr>
-<tr><td class="dim-code">A2</td><td>제도신뢰<br><span style="font-size:11px;color:var(--muted)">MEASURED: CPI·부패통제 · 실측 2024</span></td><td class="dim-score">0.1313</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:13.1%;background:#C0392B"></div></div></td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.603 ▲</td><td style="font-family:Courier New,monospace;font-size:12px">0.514 → 0.628<br>강화(+) · |ΔP| 0.025</td></tr>
-<tr><td class="dim-code">A3</td><td>시민자유<br><span style="font-size:11px;color:var(--muted)">MEASURED: 지니계수 · 실측 2017 <span style='color:#B8850E'>(이월)</span></span></td><td class="dim-score">0.8045</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:80.5%;background:#5E9186"></div></div></td><td class="dim-score" style="">0.112</td><td style="font-family:Courier New,monospace;font-size:12px">0.219 → 0.112<br>정체 · |ΔP| 0.019 <span style='color:#B8850E'>(이월 동결)</span></td></tr>
-<tr><td class="dim-code">A4</td><td>경제안정<br><span style="font-size:11px;color:var(--muted)">MEASURED: GDP·제조업 · 실측 2024</span></td><td class="dim-score">0.3288</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:32.9%;background:#B8850E"></div></div></td><td class="dim-score" style="">0.311</td><td style="font-family:Courier New,monospace;font-size:12px">0.354 → 0.345<br>강화(+) · |ΔP| 0.006</td></tr>
-<tr><td class="dim-code">A5</td><td>교육접근<br><span style="font-size:11px;color:var(--muted)">MEASURED: R&D/GDP · 실측 2023 <span style='color:#B8850E'>(이월)</span></span></td><td class="dim-score">0.0027</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:0.3%;background:#C0392B"></div></div></td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.624 ▲</td><td style="font-family:Courier New,monospace;font-size:12px">— → 0.624<br>정체 · |ΔP| 0.004 <span style='color:#B8850E'>(이월 동결)</span></td></tr>
-<tr><td class="dim-code">A6</td><td>보건수준<br><span style="font-size:11px;color:var(--muted)">MEASURED: CO₂·재생E · 실측 2021·2024 <span style='color:#B8850E'>(이월)</span></span></td><td class="dim-score">0.8229</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:82.3%;background:#5E9186"></div></div></td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.452 ▲</td><td style="font-family:Courier New,monospace;font-size:12px">0.467 → 0.452<br>정체 · |ΔP| 0.005</td></tr>
-<tr><td class="dim-code">A7</td><td>사회구조<br><span style="font-size:11px;color:var(--muted)">MEASURED: 고령화·인구증가 · 실측 2024</span></td><td class="dim-score">0.6569</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:65.7%;background:#5E9186"></div></div></td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.497 ▲</td><td style="font-family:Courier New,monospace;font-size:12px">0.483 → 0.497<br>완화(−) · |ΔP| 0.049</td></tr>
-<tr><td class="dim-code">A8</td><td>거버넌스<br><span style="font-size:11px;color:var(--muted)">MEASURED: WGI 6종 · 실측 2024</span></td><td class="dim-score">0.1262</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:12.6%;background:#C0392B"></div></div></td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.643 ▲</td><td style="font-family:Courier New,monospace;font-size:12px">0.551 → 0.647<br>강화(+) · |ΔP| 0.016</td></tr>
-<tr><td class="dim-code">A9</td><td>환경압박<br><span style="font-size:11px;color:var(--muted)">MEASURED: PV·군사비</span></td><td class="dim-score">0.5009</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:50.1%;background:#B8850E"></div></div></td><td class="dim-score" style="">0.197</td><td style="font-family:Courier New,monospace;font-size:12px">0.196 → 0.206<br>강화(+) · |ΔP| 0.032</td></tr>
-<tr><td class="dim-code">A10</td><td>불평등<br><span style="font-size:11px;color:var(--muted)">MEASURED: 관광객수 · 실측 2019 <span style='color:#B8850E'>(이월)</span></span></td><td class="dim-score">0.0200</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:2.0%;background:#C0392B"></div></div></td><td class="dim-score" style="">0.312</td><td style="font-family:Courier New,monospace;font-size:12px">0.314 → 0.316<br>정체 · |ΔP| 0.001 <span style='color:#B8850E'>(이월 동결)</span></td></tr>
-<tr><td class="dim-code">A11</td><td>외부충격<br><span style="font-size:11px;color:var(--muted)">MEASURED: 에너지수입 · 실측 2022 <span style='color:#B8850E'>(이월)</span></span></td><td class="dim-score">0.3346</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:33.5%;background:#B8850E"></div></div></td><td class="dim-score" style="">0.036</td><td style="font-family:Courier New,monospace;font-size:12px">0.040 → 0.036<br>정체 · |ΔP| 0.002 <span style='color:#B8850E'>(이월 동결)</span></td></tr>
-<tr><td class="dim-code">A12</td><td>이동성<br><span style="font-size:11px;color:var(--muted)">MEASURED: FDI · 실측 2024</span></td><td class="dim-score">0.8853</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:88.5%;background:#5E9186"></div></div></td><td class="dim-score" style="">0.006</td><td style="font-family:Courier New,monospace;font-size:12px">0.035 → 0.015<br>강화(+) · |ΔP| 0.006</td></tr>
+<tr><td class="dim-code">A1</td><td>사회기반시설<br><span style="font-size:11px;color:var(--muted)">실측: 전력·인터넷</span></td><td class="dim-score">0.5851</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:58.5%;background:#B8850E"></div></div></td><td class="dim-score">+0.792</td><td class="dim-score" style="">0.3288</td></tr>
+<tr><td class="dim-code">A2</td><td>제도신뢰<br><span style="font-size:11px;color:var(--muted)">실측: CPI·부패통제</span></td><td class="dim-score">0.1313</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:13.1%;background:#C0392B"></div></div></td><td class="dim-score">+0.694</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.6279 ▲</td></tr>
+<tr><td class="dim-code">A3</td><td>시민자유<br><span style="font-size:11px;color:var(--muted)">실측: 지니계수</span></td><td class="dim-score">0.8045</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:80.5%;background:#5E9186"></div></div></td><td class="dim-score">+0.572</td><td class="dim-score" style="">0.1118</td></tr>
+<tr><td class="dim-code">A4</td><td>경제안정<br><span style="font-size:11px;color:var(--muted)">실측: GDP·제조업</span></td><td class="dim-score">0.3288</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:32.9%;background:#B8850E"></div></div></td><td class="dim-score">+0.463</td><td class="dim-score" style="">0.3448</td></tr>
+<tr><td class="dim-code">A5</td><td>교육접근<br><span style="font-size:11px;color:var(--muted)">실측: R&amp;D/GDP</span></td><td class="dim-score">0.0027</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:0.3%;background:#C0392B"></div></div></td><td class="dim-score">+0.626</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.6242 ▲</td></tr>
+<tr><td class="dim-code">A6</td><td>보건수준<br><span style="font-size:11px;color:var(--muted)">실측: CO₂·재생에너지</span></td><td class="dim-score">0.8229</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:82.3%;background:#5E9186"></div></div></td><td class="dim-score">-0.549</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.4518 ▲</td></tr>
+<tr><td class="dim-code">A7</td><td>사회구조 <span style='font-size:11px;color:var(--muted)'>(총서 표·도식 라벨 '사회자본')</span><br><span style="font-size:11px;color:var(--muted)">실측: 고령화·인구증가</span></td><td class="dim-score">0.6569</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:65.7%;background:#5E9186"></div></div></td><td class="dim-score">-0.757</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.4973 ▲</td></tr>
+<tr><td class="dim-code">A8</td><td>거버넌스<br><span style="font-size:11px;color:var(--muted)">실측: WGI 6종</span></td><td class="dim-score">0.1262</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:12.6%;background:#C0392B"></div></div></td><td class="dim-score">+0.736</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.6468 ▲</td></tr>
+<tr><td class="dim-code">A9</td><td>환경압박<br><span style="font-size:11px;color:var(--muted)">실측: GPI·군사비</span></td><td class="dim-score">0.5009</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:50.1%;background:#B8850E"></div></div></td><td class="dim-score">+0.396</td><td class="dim-score" style="">0.2061</td></tr>
+<tr><td class="dim-code">A10</td><td>불평등<br><span style="font-size:11px;color:var(--muted)">실측: 관광객수</span></td><td class="dim-score">0.0077</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:0.8%;background:#C0392B"></div></div></td><td class="dim-score">+0.318</td><td class="dim-score" style="">0.3157</td></tr>
+<tr><td class="dim-code">A11</td><td>외부충격<br><span style="font-size:11px;color:var(--muted)">실측: 에너지수입의존</span></td><td class="dim-score">0.3346</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:33.5%;background:#B8850E"></div></div></td><td class="dim-score">-0.107</td><td class="dim-score" style="">0.0358</td></tr>
+<tr><td class="dim-code">A12</td><td>이동성<br><span style="font-size:11px;color:var(--muted)">실측: FDI</span></td><td class="dim-score">0.8853</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:88.5%;background:#5E9186"></div></div></td><td class="dim-score">+0.049</td><td class="dim-score" style="">0.0149</td></tr>
     </tbody>
   </table></div>
-  <p class="note">MEASURED: 정본 v2.2 파이프라인의 실제 투입 지표는 정본 명칭과 일부 다르다(engine-history lambda12 '표기실측_격차', 총서 제1권 §1.4). 예를 들어 A3 시민자유의 실제 입력은 지니계수, A7 사회구조(구 명칭 '사회자본', 2026-10-02 정정)는 고령화·인구증가율, A10 불평등은 국제관광객 수다. 표의 차원 이름을 측정 내용 그대로 읽으면 안 된다. <strong>정본 v2.3 안내(2026-10-13):</strong> 같은 날 정본이 v2.3으로 확정되어 차원 투입이 §3.4-D 정본 측정 지표로 정합화됐다(예: A3 = Freedom House·RSF·V-Dem 표현의 자유 — 미얀마 A3 는 0.8045 에서 0.1215 로). 모든 지표는 각국이 공표하고 국제기구가 수록한 실측 그대로다. v2.3 기준 미얀마 η 0.4154, 196개국 중 171위, 동남아시아 11개국 중 11위(하 유지). 이 보고서의 차원 표·η 는 게시 시점 판본(v2.2) 값이며, 판본 간 η 는 척도가 달라 순위로만 비교한다. "실측 연도"는 v2.2 inputs.obs_year이며 2024년보다 이른 실측은 "(이월)"로 표시했다. A10은 v2.2에서 국제관광객 절대수(197개국 선형 Min-Max)의 2019년 이하 최종 실측을 쓴다 — 2020년은 코로나 저점이고 2021~2025년 값은 2020 값의 이월이어서 제외했다. CPI·GPI·SIPRI는 원자료에 실측 연도 표기가 없어 연도를 적지 않았다. 오른쪽 열의 "이월 동결"은 시계열판에서 원자료 최신연도를 뒤 연도로 이월해 값이 멈춘 것이며, 실제 사회 정체와 구분해야 한다. 압박 좌표계 도식 안의 A7 라벨은 생성기 원 라벨('사회자본')을 그대로 둔 것이다.</p>
-  <p><strong>흡수체 두 축이 함께 밴드 안에 있다.</strong> A2(제도신뢰, 실측 입력 CPI·부패통제)는 압박 0.603, A8(거버넌스, 실측 입력 WGI 6종)은 0.643로 미얀마 12개 축 중 가장 강한 압박이다. 시계열판으로 보면 A2는 2016년 0.514에서 2024년 0.628로, A8은 0.551에서 0.647로 올랐다. 둘 다 2021년(쿠데타)과 2022년에 함께 낙하했고, 2023년에는 A2가 다시 낙하했다(orbit_all 변곡점). A2·A8은 동시이동 동방향 비율 0.851의 '흡수체 쌍성'(engine-history 패턴_실측)이며, 미얀마는 그 쌍성이 함께 떨어진 경우다.</p>
-<p><strong>A7(사회구조)과 A6(보건수준)도 밴드 안이다.</strong> A7의 실측 입력은 고령화·인구증가율이며 값 0.6569, 압박 0.497이다. 2021년 A7은 크게 낙하했는데(ΔP +0.141), 이는 쿠데타·내전기 인구증가율 변동과 시점이 겹친다. A6의 실측 입력은 1인당 CO₂ 배출(0.58톤)과 재생에너지 비중(62.9%, 2021 실측 이월)이다. 결합계수가 음(−0.5490)이어서 탄소 배출이 적은 저개발 구조가 높은 값과 높은 압박(0.452)으로 함께 나타난다. 보건 서비스 수준을 잰 값이 아니다.</p>
-<p><strong>A5(교육접근)는 측정 하한에 있다.</strong> 실측 입력 R&D/GDP가 0.02%(2023)로 값이 0.0027, 압박 0.624다. 이 축은 취학률·문해율을 재지 않는다. <strong>높게 나온 A3(시민자유 0.8045)은 표기-실측 격차의 대표 사례다.</strong> 실제 입력은 지니계수 30.7(2017 실측 이월)이고, 소득 분포가 상대적으로 고르다는 뜻일 뿐 표현·집회의 자유를 잰 값이 아니다. 같은 기간 쿠데타·집회 진압 기록과 정반대로 읽히므로 해석에 특히 주의해야 한다.</p>
+  <p class="note">A7 사회구조(구 명칭 '사회자본', 2026-10-02 정정)는 총서 엔진에서 고령화·인구증가로 측정되며, 총서 표·도식 안의 원 라벨('사회자본')은 엔진 동결 원칙에 따라 그대로 둔다. 결측 차원은 채우지 않았다.</p>
+  <p><strong>읽는 법.</strong> A6·A7·A11은 r 음수라 값이 클수록 압박이다. A6(0.8229)·A7(0.6569)이 높은 값이면서 밴드 안인 이유다. A6의 실측 입력은 CO₂·재생에너지로, 탄소 배출이 적은 저개발 구조가 높은 값과 높은 압박으로 함께 나타난다. 보건 서비스 수준을 잰 값이 아니다.</p>
+<p><strong>바닥 차원.</strong> A5(R&D/GDP 0.0027)·A10(실측: 관광객수 0.0077)이 측정 하한에 있고, A8 거버넌스(0.1262)·A2 제도신뢰(0.1313)·A4(0.3288)가 낮다. 반대로 A12(실측: FDI 0.8853)·A3(실측: 지니계수 0.8045)·A1(0.5851)은 높은 편이다. A3이 높게 나온 것은 표기-실측 격차의 대표 사례다 — 소득 분포가 상대적으로 고르다는 뜻일 뿐 표현·집회의 자유를 잰 값이 아니며, 같은 기간 쿠데타·집회 진압 기록과 정반대로 읽히므로 실측 쪽을 따라 읽는다.</p>
+<p><strong>합본 조각(차원별 선행연구 접목).</strong> ① A2·A8 + 군 → 군부 후견 체제(Svolik, 2012, <em>The Politics of Authoritarian Rule</em>): 군이 체제의 최종 보증자일 때 선출 제도와 군 사이의 권력 분담이 깨지면 쿠데타가 일어난다는 분석 — 2008년 헌법의 군 지분과 2021년 쿠데타가 이 구조로 읽힌다. ② 국가 형성의 장기 구조(Callahan, 2003, <em>Making Enemies</em>; Slater, 2010, <em>Ordering Power</em>): 독립 직후부터 이어진 내전이 군을 국가 기구의 중심으로 만들었다는 분석. ③ 내전 지속 조건(Fearon·Laitin, 2003): 낮은 국가 역량·험한 지형이 반란을 지속시킨다는 국가-연도 패널 분석 — 한 나라의 연 단위 ΔP와 분석 단위가 다르다는 점을 밝혀 둔다. 연결점: ②의 내전이 ①의 군 중심 체제를 만들고, 그 체제의 2021년 행동이 다시 ③의 내전 조건을 키웠다(해석).</p>
   <div class="chart-wrap">
-    <div class="chart-title">레이더 비교 — 미얀마 vs 한국(기준) vs 동남아시아 평균</div>
+    <div class="chart-title">레이더 비교 — 미얀마 vs 한국(기준) vs 동남아시아 평균 (총서 값)</div>
     <canvas id="radarChart" height="320"></canvas>
   </div>
 </div>
 
 <div class="section">
   <div class="section-title">§ 05</div>
-  <h2 class="section-heading">압박 좌표계 — Λ¹² 표준 출력</h2>
-  <p>태양(중심)은 BSLI, 행성은 A1~A12다. 궤도가 안쪽일수록 그 차원이 서민 기층을 세게 누른다. 점은 2016→2024 연도별 위치(진할수록 최근)이고, 빨간 점선은 탐색적 임계 밴드 P* = 0.446이다. 궤도 반경은 139개국·9개 연도 전체에서 공유하는 스케일(P_min 0.0000, P_max 0.7847)로 그려 다른 나라 도식과 바로 비교할 수 있다.</p>
-  <div class="pcs-wrap"><svg style="width:100%;height:auto;max-width:720px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg" width="720" height="720" viewBox="0 0 720 720" font-family="sans-serif">
-<rect width="720" height="720" fill="#fbfbf9"/>
-<circle cx="360.0" cy="360.0" r="66" fill="none" stroke="#e5e3dd"/>
-<circle cx="360.0" cy="360.0" r="132" fill="none" stroke="#e5e3dd"/>
-<circle cx="360.0" cy="360.0" r="198" fill="none" stroke="#e5e3dd"/>
-<circle cx="360.0" cy="360.0" r="264" fill="none" stroke="#e5e3dd"/>
-<circle cx="360.0" cy="360.0" r="157.2" fill="none" stroke="#c0392b" stroke-dasharray="4 4"/>
-<circle cx="360.0" cy="360.0" r="26" fill="#f4d03f" stroke="#b9960a"/><text x="360.0" y="358.0" text-anchor="middle" font-size="12" font-weight="bold">BSLI</text><text x="360.0" y="371.0" text-anchor="middle" font-size="9">MMR -0.223</text>
-<circle cx="360.0" cy="223.2" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="360.0" cy="199.3" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="360.0" cy="198.0" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="360.0" cy="188.5" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="360.0" cy="179.0" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="360.0" cy="176.9" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="360.0" cy="175.9" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="360.0" cy="171.3" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="360.0" cy="171.3" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="360.0" y2="171.3" stroke="#95a5a6"/>
-<text x="360.0" y="59.7" text-anchor="middle" font-size="11" font-weight="bold">A1</text><text x="360.0" y="70.7" text-anchor="middle" font-size="8" fill="#666">전력·인터넷</text>
-<circle cx="429.4" cy="239.8" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="432.9" cy="233.8" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="429.2" cy="240.1" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="431.7" cy="235.8" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="431.4" cy="236.4" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="426.9" cy="244.2" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="422.3" cy="252.1" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="415.8" cy="263.4" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="414.1" cy="266.3" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="414.1" y2="266.3" stroke="#95a5a6"/>
-<text x="510.2" y="99.9" text-anchor="middle" font-size="11" font-weight="bold">A2</text><text x="510.2" y="110.9" text-anchor="middle" font-size="8" fill="#666">CPI·부패통제</text>
-<circle cx="549.1" cy="250.8" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="572.6" cy="237.3" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="576.8" cy="234.8" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="572.6" cy="237.3" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="575.0" cy="235.9" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="575.3" cy="235.7" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="574.9" cy="235.9" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="574.0" cy="236.4" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="574.0" cy="236.4" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="574.0" y2="236.4" stroke="#95a5a6"/>
-<text x="620.1" y="209.9" text-anchor="middle" font-size="11" font-weight="bold">A3</text><text x="620.1" y="220.9" text-anchor="middle" font-size="8" fill="#666">지니계수</text>
-<circle cx="542.0" cy="360.0" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="544.4" cy="360.0" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="545.4" cy="360.0" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="545.8" cy="360.0" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="546.0" cy="360.0" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="546.3" cy="360.0" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="548.2" cy="360.0" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="549.6" cy="360.0" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="544.4" cy="360.0" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="544.4" y2="360.0" stroke="#95a5a6"/>
-<text x="660.3" y="360.0" text-anchor="middle" font-size="11" font-weight="bold">A4</text><text x="660.3" y="371.0" text-anchor="middle" font-size="8" fill="#666">GDP·제조업</text>
-<circle cx="454.8" cy="414.7" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="455.6" cy="415.2" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="456.0" cy="415.4" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="457.8" cy="416.5" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="457.0" cy="416.0" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="454.9" cy="414.8" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="454.6" cy="414.6" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="454.6" cy="414.6" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="454.6" y2="414.6" stroke="#95a5a6"/>
-<text x="620.1" y="510.1" text-anchor="middle" font-size="11" font-weight="bold">A5</text><text x="620.1" y="521.1" text-anchor="middle" font-size="8" fill="#666">R&D/GDP</text>
-<circle cx="435.7" cy="491.2" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="439.3" cy="497.4" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="439.3" cy="497.3" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="439.6" cy="497.8" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="439.3" cy="497.3" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="437.8" cy="494.8" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="437.8" cy="494.8" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="437.8" cy="494.8" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="437.8" cy="494.8" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="437.8" y2="494.8" stroke="#95a5a6"/>
-<text x="510.2" y="620.1" text-anchor="middle" font-size="11" font-weight="bold">A6</text><text x="510.2" y="631.1" text-anchor="middle" font-size="8" fill="#666">CO₂·재생E</text>
-<circle cx="360.0" cy="507.3" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="360.0" cy="490.7" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="360.0" cy="491.8" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="360.0" cy="495.3" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="360.0" cy="507.2" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="360.0" cy="469.3" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="360.0" cy="488.4" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="360.0" cy="489.3" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="360.0" cy="503.3" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="360.0" y2="503.3" stroke="#95a5a6"/>
-<text x="360.0" y="660.3" text-anchor="middle" font-size="11" font-weight="bold">A7</text><text x="360.0" y="671.3" text-anchor="middle" font-size="8" fill="#666">고령화·인구증가</text>
-<circle cx="295.6" cy="471.6" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="296.3" cy="470.4" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="297.1" cy="469.0" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="296.2" cy="470.5" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="294.7" cy="473.1" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="302.4" cy="459.8" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="308.2" cy="449.8" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="308.2" cy="449.7" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="308.4" cy="449.3" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="308.4" y2="449.3" stroke="#95a5a6"/>
-<text x="209.9" y="620.1" text-anchor="middle" font-size="11" font-weight="bold">A8</text><text x="209.9" y="631.1" text-anchor="middle" font-size="8" fill="#666">WGI 6종</text>
-<circle cx="165.7" cy="472.2" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="167.1" cy="471.4" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="163.3" cy="473.5" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="165.5" cy="472.3" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="172.3" cy="468.4" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="190.8" cy="457.7" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="168.8" cy="470.4" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="166.2" cy="471.9" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="168.0" cy="470.9" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="168.0" y2="470.9" stroke="#95a5a6"/>
-<text x="99.9" y="510.1" text-anchor="middle" font-size="11" font-weight="bold">A9</text><text x="99.9" y="521.1" text-anchor="middle" font-size="8" fill="#666">PV·군사비</text>
-<circle cx="167.2" cy="360.0" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="167.0" cy="360.0" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="167.0" cy="360.0" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="166.7" cy="360.0" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="167.8" cy="360.0" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="167.8" cy="360.0" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="167.8" cy="360.0" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="167.8" cy="360.0" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="167.8" cy="360.0" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="167.8" y2="360.0" stroke="#95a5a6"/>
-<text x="59.7" y="360.0" text-anchor="middle" font-size="11" font-weight="bold">A10</text><text x="59.7" y="371.0" text-anchor="middle" font-size="8" fill="#666">관광객수</text>
-<circle cx="129.2" cy="226.8" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="128.4" cy="226.3" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="128.8" cy="226.5" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="127.6" cy="225.8" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="127.6" cy="225.8" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="127.8" cy="225.9" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="128.1" cy="226.1" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="128.3" cy="226.2" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="128.3" cy="226.2" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="128.3" y2="226.2" stroke="#95a5a6"/>
-<text x="99.9" y="209.8" text-anchor="middle" font-size="11" font-weight="bold">A11</text><text x="99.9" y="220.8" text-anchor="middle" font-size="8" fill="#666">에너지수입</text>
-<circle cx="226.1" cy="128.1" r="3" fill="#2c3e50" opacity="0.25"/>
-<circle cx="226.3" cy="128.5" r="3" fill="#2c3e50" opacity="0.34"/>
-<circle cx="224.2" cy="124.8" r="3" fill="#2c3e50" opacity="0.44"/>
-<circle cx="224.3" cy="125.0" r="3" fill="#2c3e50" opacity="0.53"/>
-<circle cx="222.9" cy="122.5" r="3" fill="#2c3e50" opacity="0.62"/>
-<circle cx="223.6" cy="123.8" r="3" fill="#2c3e50" opacity="0.72"/>
-<circle cx="222.3" cy="121.5" r="3" fill="#2c3e50" opacity="0.81"/>
-<circle cx="223.3" cy="123.2" r="3" fill="#2c3e50" opacity="0.91"/>
-<circle cx="223.4" cy="123.4" r="3" fill="#2c3e50" opacity="1.00"/>
-<line x1="360.0" y1="360.0" x2="223.4" y2="123.4" stroke="#95a5a6"/>
-<text x="209.8" y="99.9" text-anchor="middle" font-size="11" font-weight="bold">A12</text><text x="209.8" y="110.9" text-anchor="middle" font-size="8" fill="#666">FDI</text>
-<text x="14" y="26" font-size="14" font-weight="bold">MMR 압박좌표계 시계열 (2016→2024)</text>
-<text x="14" y="706" font-size="9" fill="#888">P=|r|×gap · 안쪽=강압박 · 점=연도(진할수록 최근) · 빨강점선 P*=0.446(탐색) · r=정본138국</text></svg></div>
-  <div class="pcs-wrap"><svg style="width:100%;height:auto;max-width:720px;display:block;margin:0 auto" xmlns="http://www.w3.org/2000/svg" width="780" height="460" viewBox="0 0 780 460" font-family="sans-serif">
-<rect width="780" height="460" fill="#fbfbf9"/>
-<line x1="56" y1="40" x2="56" y2="414" stroke="#333"/><line x1="56" y1="414" x2="760" y2="414" stroke="#333"/>
-<text x="56" y="430" text-anchor="middle" font-size="10">2016</text>
-<text x="144" y="430" text-anchor="middle" font-size="10">2017</text>
-<text x="232" y="430" text-anchor="middle" font-size="10">2018</text>
-<text x="320" y="430" text-anchor="middle" font-size="10">2019</text>
-<text x="408" y="430" text-anchor="middle" font-size="10">2020</text>
-<text x="496" y="430" text-anchor="middle" font-size="10">2021</text>
-<text x="584" y="430" text-anchor="middle" font-size="10">2022</text>
-<text x="672" y="430" text-anchor="middle" font-size="10">2023</text>
-<text x="760" y="430" text-anchor="middle" font-size="10">2024</text>
-<line x1="56" y1="414.0" x2="760" y2="414.0" stroke="#eee"/><text x="50" y="417.0" text-anchor="end" font-size="9">0.00</text>
-<line x1="56" y1="339.2" x2="760" y2="339.2" stroke="#eee"/><text x="50" y="342.2" text-anchor="end" font-size="9">0.14</text>
-<line x1="56" y1="264.4" x2="760" y2="264.4" stroke="#eee"/><text x="50" y="267.4" text-anchor="end" font-size="9">0.28</text>
-<line x1="56" y1="189.6" x2="760" y2="189.6" stroke="#eee"/><text x="50" y="192.6" text-anchor="end" font-size="9">0.42</text>
-<line x1="56" y1="114.8" x2="760" y2="114.8" stroke="#eee"/><text x="50" y="117.8" text-anchor="end" font-size="9">0.56</text>
-<line x1="56" y1="40.0" x2="760" y2="40.0" stroke="#eee"/><text x="50" y="43.0" text-anchor="end" font-size="9">0.70</text>
-<line x1="56" y1="175.2" x2="760" y2="175.2" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="5 4"/><text x="756" y="171.2" text-anchor="end" font-size="9" fill="#c0392b">P*=0.446 탐색</text>
-<polyline points="56.0,134.8 144.0,182.2 232.0,184.8 320.0,203.7 408.0,222.6 496.0,226.8 584.0,228.9 672.0,238.0 760.0,238.0" fill="none" stroke="#e74c3c" stroke-width="1.8"/>
-<text x="763" y="241" font-size="9" fill="#e74c3c">A1</text>
-<polyline points="56.0,138.6 144.0,152.4 232.0,138.0 320.0,147.8 408.0,146.5 496.0,128.6 584.0,110.5 672.0,84.5 760.0,77.8" fill="none" stroke="#e67e22" stroke-width="1.8"/>
-<text x="763" y="81" font-size="9" fill="#e67e22">A2</text>
-<polyline points="56.0,297.0 144.0,350.9 232.0,360.6 320.0,350.9 408.0,356.4 496.0,357.1 584.0,356.3 672.0,354.1 760.0,354.1" fill="none" stroke="#f1c40f" stroke-width="1.8"/>
-<text x="763" y="357" font-size="9" fill="#f1c40f">A3</text>
-<polyline points="56.0,224.6 144.0,229.5 232.0,231.5 320.0,232.3 408.0,232.6 496.0,233.2 584.0,236.9 672.0,239.8 760.0,229.4" fill="none" stroke="#2ecc71" stroke-width="1.8"/>
-<text x="763" y="232" font-size="9" fill="#2ecc71">A4</text>
-<polyline points="144.0,80.3 232.0,82.2 320.0,83.1 408.0,87.2 496.0,85.4 584.0,80.5 672.0,79.8 760.0,79.8" fill="none" stroke="#1abc9c" stroke-width="1.8"/>
-<text x="763" y="83" font-size="9" fill="#1abc9c">A5</text>
-<polyline points="56.0,163.9 144.0,178.1 232.0,177.9 320.0,179.1 408.0,178.0 496.0,172.3 584.0,172.2 672.0,172.1 760.0,172.1" fill="none" stroke="#3498db" stroke-width="1.8"/>
-<text x="763" y="175" font-size="9" fill="#3498db">A6</text>
-<polyline points="56.0,155.5 144.0,122.6 232.0,124.7 320.0,131.7 408.0,155.4 496.0,80.1 584.0,118.0 672.0,119.8 760.0,147.7" fill="none" stroke="#9b59b6" stroke-width="1.8"/>
-<text x="763" y="151" font-size="9" fill="#9b59b6">A7</text>
-<polyline points="56.0,119.0 144.0,116.2 232.0,112.9 320.0,116.4 408.0,122.4 496.0,91.8 584.0,68.8 672.0,68.6 760.0,67.7" fill="none" stroke="#34495e" stroke-width="1.8"/>
-<text x="763" y="71" font-size="9" fill="#34495e">A8</text>
-<polyline points="56.0,309.0 144.0,305.8 232.0,314.3 320.0,309.3 408.0,293.8 496.0,251.3 584.0,301.7 672.0,307.6 760.0,303.6" fill="none" stroke="#16a085" stroke-width="1.8"/>
-<text x="763" y="307" font-size="9" fill="#16a085">A9</text>
-<polyline points="56.0,246.1 144.0,246.5 232.0,246.5 320.0,247.1 408.0,245.0 496.0,245.0 584.0,245.0 672.0,245.0 760.0,245.0" fill="none" stroke="#d35400" stroke-width="1.8"/>
-<text x="763" y="248" font-size="9" fill="#d35400">A10</text>
-<polyline points="56.0,392.6 144.0,394.7 232.0,393.7 320.0,396.3 408.0,396.4 496.0,395.9 584.0,395.3 672.0,394.8 760.0,394.8" fill="none" stroke="#7f8c8d" stroke-width="1.8"/>
-<text x="763" y="398" font-size="9" fill="#7f8c8d">A11</text>
-<polyline points="56.0,395.2 144.0,394.4 232.0,402.7 320.0,402.4 408.0,408.2 496.0,405.2 584.0,410.4 672.0,406.5 760.0,406.0" fill="none" stroke="#c0392b" stroke-width="1.8"/>
-<text x="763" y="409" font-size="9" fill="#c0392b">A12</text>
-<text x="14" y="26" font-size="14" font-weight="bold">MMR 차원별 압박 P 시계열</text>
-<text x="56" y="448" font-size="9" fill="#888">Y=P(|r|×gap) · 위로=압박강화 · 빨강점선 P*=0.446 · 결측연도 선끊김(0채움 안함)</text></svg></div>
+  <h2 class="section-heading">압박 좌표계 인과루프도 — Λ¹² 표준 출력 (총서 원본)</h2>
+  <p>태양(중심)은 BSLI, 행성은 A1~A12다. 궤도가 안쪽일수록 그 차원이 서민 기층을 세게 누른다. 아래 도식과 표는 국가분석 총서에 실린 원본을 그대로 옮긴 것이다(엔진 동결, DECISIONS 18·20).</p>
+  <figure class="pcs-wrap" style="overflow-x:auto"><svg viewBox="0 0 1010 1150" xmlns="http://www.w3.org/2000/svg" style="max-width:1010px;background:#fff;border:1px solid #DDD8CE;border-radius:8px"><defs>
+<marker id="mP" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#C0392B"/></marker>
+<marker id="mB" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#1a4f8a"/></marker>
+<marker id="mG" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#B8850E"/></marker>
+<radialGradient id="sun3" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F7EDD2"/><stop offset="100%" stop-color="#E8D5A0"/></radialGradient>
+</defs><text x="505" y="32" text-anchor="middle" font-size="16.5" font-weight="700" fill="#2A3D35">실측 인과루프도 v3.1 — 압박 좌표계 (미얀마 연방 공화국 · 138개국 실측 결합 × 자국 결핍)</text><text x="505" y="51" text-anchor="middle" font-size="10" fill="#777">거리·화살표 = 압박지수 P (가까울수록·굵을수록 BSLI를 세게 누름) · P = 결합세기 |r| × 자국 결핍 — 결핍 없으면 결합이 세도 압박 없음(바깥 궤도)</text><circle cx="505" cy="485" r="300.7" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="191.1" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="387.5" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="308.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="182.6" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="251.5" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="233.3" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="175.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="353.3" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="306.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="417.9" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><circle cx="505" cy="485" r="430.0" fill="none" stroke="#e7e3d8" stroke-width="0.7" stroke-dasharray="2 5"/><path d="M505.0,676.1 Q449.4,702.8 417.5,636.6" fill="none" stroke="#5E9186" stroke-width="3.0"  opacity="0.45"/><circle cx="455.3" cy="679.6" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="455.3" y="683.2" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M204.3,485.0 Q206.9,554.2 302.9,601.7" fill="none" stroke="#C0392B" stroke-width="1.9" stroke-dasharray="5 4" opacity="0.45"/><circle cx="230.2" cy="548.8" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="230.2" y="552.4" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><path d="M204.3,485.0 Q199.1,410.8 287.2,359.2" fill="none" stroke="#C0392B" stroke-width="1.7" stroke-dasharray="5 4" opacity="0.45"/><circle cx="222.4" cy="416.5" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="222.4" y="420.1" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><path d="M505.0,676.1 Q562.8,706.0 596.3,643.1" fill="none" stroke="#5E9186" stroke-width="1.6"  opacity="0.45"/><circle cx="556.7" cy="682.8" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="556.7" y="686.4" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M302.9,601.7 Q325.0,651.7 417.5,636.6" fill="none" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.45"/><circle cx="342.6" cy="635.4" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="342.6" y="639.0" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><path d="M596.3,643.1 Q507.5,687.8 417.5,636.6" fill="none" stroke="#5E9186" stroke-width="1.5"  opacity="0.45"/><circle cx="507.2" cy="663.8" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="507.2" y="667.4" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M204.3,485.0 Q266.2,578.2 417.5,636.6" fill="none" stroke="#5E9186" stroke-width="1.3"  opacity="0.45"/><circle cx="288.5" cy="569.5" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="288.5" y="573.1" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M417.5,636.6 Q661.9,467.0 810.9,308.4" fill="none" stroke="#5E9186" stroke-width="1.2"  opacity="0.45"/><circle cx="638.1" cy="469.7" r="7.5" fill="#fff" stroke="#5E9186" stroke-width="1.4"/><text x="638.1" y="473.3" text-anchor="middle" font-size="11" font-weight="800" fill="#5E9186">+</text><path d="M505.0,676.1 Q377.6,679.0 302.9,601.7" fill="none" stroke="#C0392B" stroke-width="1.1" stroke-dasharray="5 4" opacity="0.45"/><circle cx="390.8" cy="658.9" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="390.8" y="662.5" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><line x1="204.3" y1="485.0" x2="425.0" y2="485.0" stroke="#C0392B" stroke-width="1.5" opacity="0.68" marker-end="url(#mP)"/><text x="314.6" y="479.0" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.329</text><line x1="505.0" y1="676.1" x2="505.0" y2="565.0" stroke="#C0392B" stroke-width="1.5" opacity="0.87" marker-end="url(#mP)"/><text x="505.0" y="614.5" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.603</text><line x1="311.2" y1="149.4" x2="465.0" y2="415.7" stroke="#C0392B" stroke-width="1.5" opacity="0.53" marker-end="url(#mP)"/><text x="388.1" y="276.6" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.112</text><line x1="771.7" y1="639.0" x2="574.3" y2="525.0" stroke="#C0392B" stroke-width="1.5" opacity="0.67" marker-end="url(#mP)"/><text x="673.0" y="576.0" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.311</text><line x1="596.3" y1="643.1" x2="545.0" y2="554.3" stroke="#C0392B" stroke-width="1.5" opacity="0.89" marker-end="url(#mP)"/><text x="570.6" y="592.7" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.624</text><line x1="287.2" y1="359.2" x2="435.7" y2="445.0" stroke="#C0392B" stroke-width="1.5" opacity="0.77" marker-end="url(#mP)"/><text x="361.4" y="396.1" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.452</text><line x1="302.9" y1="601.7" x2="435.7" y2="525.0" stroke="#C0392B" stroke-width="1.5" opacity="0.80" marker-end="url(#mP)"/><text x="369.3" y="557.3" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.497</text><line x1="417.5" y1="636.6" x2="465.0" y2="554.3" stroke="#C0392B" stroke-width="1.5" opacity="0.90" marker-end="url(#mP)"/><text x="441.2" y="589.4" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.643</text><line x1="810.9" y1="308.4" x2="574.3" y2="445.0" stroke="#C0392B" stroke-width="1.5" opacity="0.59" marker-end="url(#mP)"/><text x="692.6" y="370.7" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.197</text><line x1="811.0" y1="485.0" x2="585.0" y2="485.0" stroke="#C0392B" stroke-width="1.5" opacity="0.67" marker-end="url(#mP)"/><text x="698.0" y="479.0" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.316</text><line x1="505.0" y1="67.1" x2="505.0" y2="405.0" stroke="#C0392B" stroke-width="1.5" opacity="0.48" marker-end="url(#mP)"/><text x="505.0" y="230.0" text-anchor="middle" font-size="9" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3" paint-order="stroke">P=0.036</text><path d="M302.9,601.7 Q413.5,605.7 480.6,667.1" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="402.6" cy="620.0" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="402.6" y="623.6" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M302.9,601.7 Q375.5,592.3 392.6,629.0" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="361.6" cy="603.8" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="361.6" y="607.4" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M810.9,308.4 Q630.3,482.8 521.6,656.1" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="648.3" cy="482.5" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="648.3" y="486.1" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M810.9,308.4 Q588.7,470.3 437.5,619.9" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="606.5" cy="467.2" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="606.5" y="470.8" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M720.0,112.6 Q590.6,406.5 514.3,651.8" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="603.9" cy="394.4" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="603.9" y="398.0" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M720.0,112.6 Q557.2,394.5 430.5,614.0" fill="none" stroke="#1a4f8a" stroke-width="1.5"  marker-end="url(#mB)" opacity="0.55"/><circle cx="566.2" cy="378.9" r="7.5" fill="#fff" stroke="#1a4f8a" stroke-width="1.4"/><text x="566.2" y="382.5" text-anchor="middle" font-size="11" font-weight="800" fill="#1a4f8a">−</text><path d="M417.5,636.6 Q420.8,736.3 481.3,665.4" fill="none" stroke="#C0392B" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#mP)" opacity="0.8"/><circle cx="435.1" cy="691.6" r="7.5" fill="#fff" stroke="#C0392B" stroke-width="1.4"/><text x="435.1" y="695.2" text-anchor="middle" font-size="11" font-weight="800" fill="#C0392B">−</text><text x="435.1" y="679.6" text-anchor="middle" font-size="8.5" fill="#C0392B" stroke="#fff" stroke-width="2.5" paint-order="stroke">공리 A3 내부충돌(조건부)</text><path d="M505.0,565.0 Q505.0,697.5 505.0,650.1" fill="none" stroke="#B8850E" stroke-width="1.8" stroke-dasharray="3 3" marker-end="url(#mG)" opacity="0.9"/><circle cx="505.0" cy="652.5" r="7.5" fill="#fff" stroke="#B8850E" stroke-width="1.4"/><text x="505.0" y="656.1" text-anchor="middle" font-size="11" font-weight="800" fill="#B8850E">−</text><text x="511.0" y="667.5" text-anchor="middle" font-size="8.5" fill="#B8850E" stroke="#fff" stroke-width="2.5" paint-order="stroke">기층 악화→방어 결집(공리 A8)</text><circle cx="507" cy="688" r="15" fill="#fff" stroke="#C0392B" stroke-width="2"/><text x="507" y="693" text-anchor="middle" font-size="13" font-weight="800" fill="#C0392B">R</text><text x="507" y="718" text-anchor="middle" font-size="8.5" fill="#C0392B" stroke="#fff" stroke-width="2.5" paint-order="stroke">R1 쌍성 강화</text><circle cx="439" cy="529" r="15" fill="#fff" stroke="#1a4f8a" stroke-width="2"/><text x="439" y="533" text-anchor="middle" font-size="13" font-weight="800" fill="#1a4f8a">B</text><text x="439" y="559" text-anchor="middle" font-size="8.5" fill="#1a4f8a" stroke="#fff" stroke-width="2.5" paint-order="stroke">B1 흡수-방어 균형</text><circle cx="243" cy="638" r="15" fill="#fff" stroke="#1a4f8a" stroke-width="2"/><text x="243" y="642" text-anchor="middle" font-size="13" font-weight="800" fill="#1a4f8a">B</text><text x="243" y="668" text-anchor="middle" font-size="8.5" fill="#1a4f8a" stroke="#fff" stroke-width="2.5" paint-order="stroke">B2 압력-침식</text><circle cx="505" cy="485" r="72" fill="url(#sun3)" stroke="#B8850E" stroke-width="2.4"/><text x="505" y="455" text-anchor="middle" font-size="14" font-weight="800" fill="#7a5a08">BSLI</text><text x="505" y="467" text-anchor="middle" font-size="8.5" fill="#8a6a18">기초사회생활지수 · 독립채널(공리 A0)</text><text x="505" y="490" text-anchor="middle" font-size="19" font-weight="800" fill="#2A3D35">-0.2231</text><text x="505" y="507" text-anchor="middle" font-size="9.5" fill="#555">E등급 · 79위/139 · 상위 56.8%</text><text x="505" y="524" text-anchor="middle" font-size="8" fill="#777">0.40·F_ML+0.60·H−D−Hs</text><circle cx="204.3" cy="485.0" r="8.1" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="204.3" cy="485.0" r="4.0" fill="#8a8a80" fill-opacity="0.22"/><text x="204.3" y="458.0" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A1 사회기반시설</text><text x="204.3" y="470.0" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 전력·인터넷</text><text x="204.3" y="506.1" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.585 · 압박 P=0.329</text><circle cx="505.0" cy="676.1" r="16.1" fill="#fff" stroke="#1a5c8a" stroke-width="2.6"/><circle cx="505.0" cy="676.1" r="8.1" fill="#1a5c8a" fill-opacity="0.22"/><text x="505.0" y="641.0" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5c8a" stroke="#fff" stroke-width="3.5" paint-order="stroke">A2 제도신뢰</text><text x="505.0" y="653.0" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: CPI·부패통제</text><text x="505.0" y="705.2" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.131 · 압박 P=0.603</text><circle cx="311.2" cy="149.4" r="9.2" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="311.2" cy="149.4" r="4.6" fill="#8a8a80" fill-opacity="0.22"/><text x="311.2" y="121.2" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A3 시민자유</text><text x="311.2" y="133.2" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 지니계수</text><text x="311.2" y="171.6" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.804 · 압박 P=0.112</text><circle cx="771.7" cy="639.0" r="10.3" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="771.7" cy="639.0" r="5.2" fill="#8a8a80" fill-opacity="0.22"/><text x="771.7" y="609.6" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A4 경제안정</text><text x="771.7" y="621.6" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: GDP·제조업</text><text x="771.7" y="662.4" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.329 · 압박 P=0.311</text><circle cx="596.3" cy="643.1" r="8.1" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="596.3" cy="643.1" r="4.0" fill="#8a8a80" fill-opacity="0.22"/><text x="596.3" y="616.1" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A5 교육접근</text><text x="596.3" y="628.1" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: R&D/GDP</text><text x="596.3" y="664.2" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.003 · 압박 P=0.624</text><circle cx="287.2" cy="359.2" r="8.1" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/><circle cx="287.2" cy="359.2" r="4.0" fill="#2e7d32" fill-opacity="0.22"/><text x="287.2" y="332.2" text-anchor="middle" font-size="11" font-weight="700" fill="#2e7d32" stroke="#fff" stroke-width="3.5" paint-order="stroke">A6 보건수준</text><text x="287.2" y="344.2" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: CO₂·재생에너지</text><text x="287.2" y="380.3" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.823 · 압박 P=0.452</text><circle cx="302.9" cy="601.7" r="10.3" fill="#fff" stroke="#C0392B" stroke-width="2.6"/><circle cx="302.9" cy="601.7" r="5.2" fill="#C0392B" fill-opacity="0.22"/><text x="302.9" y="572.3" text-anchor="middle" font-size="11" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3.5" paint-order="stroke">A7 사회자본</text><text x="302.9" y="584.3" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 고령화·인구증가</text><text x="302.9" y="625.0" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.657 · 압박 P=0.497</text><circle cx="417.5" cy="636.6" r="16.1" fill="#fff" stroke="#1a5c8a" stroke-width="2.6"/><circle cx="417.5" cy="636.6" r="8.1" fill="#1a5c8a" fill-opacity="0.22"/><text x="417.5" y="601.5" text-anchor="middle" font-size="11" font-weight="700" fill="#1a5c8a" stroke="#fff" stroke-width="3.5" paint-order="stroke">A8 거버넌스</text><text x="417.5" y="613.5" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: WGI 6종</text><text x="417.5" y="665.7" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.126 · 압박 P=0.643</text><circle cx="810.9" cy="308.4" r="9.2" fill="#fff" stroke="#C0392B" stroke-width="2.6"/><circle cx="810.9" cy="308.4" r="4.6" fill="#C0392B" fill-opacity="0.22"/><text x="810.9" y="280.2" text-anchor="middle" font-size="11" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3.5" paint-order="stroke">A9 환경압박</text><text x="810.9" y="292.2" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: GPI·군사비</text><text x="810.9" y="330.6" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.501 · 압박 P=0.197</text><circle cx="811.0" cy="485.0" r="10.3" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="811.0" cy="485.0" r="5.2" fill="#8a8a80" fill-opacity="0.22"/><text x="811.0" y="455.6" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A10 불평등</text><text x="811.0" y="467.6" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 관광객수</text><text x="811.0" y="508.4" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.008 · 압박 P=0.316</text><circle cx="505.0" cy="67.1" r="9.2" fill="#fff" stroke="#8a8a80" stroke-width="2.6"/><circle cx="505.0" cy="67.1" r="4.6" fill="#8a8a80" fill-opacity="0.22"/><text x="505.0" y="38.9" text-anchor="middle" font-size="11" font-weight="700" fill="#8a8a80" stroke="#fff" stroke-width="3.5" paint-order="stroke">A11 외부충격</text><text x="505.0" y="50.9" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: 에너지수입의존</text><text x="505.0" y="89.3" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.335 · 압박 P=0.036</text><circle cx="720.0" cy="112.6" r="11.5" fill="#fff" stroke="#C0392B" stroke-width="2.6"/><circle cx="720.0" cy="112.6" r="5.8" fill="#C0392B" fill-opacity="0.22"/><text x="720.0" y="82.1" text-anchor="middle" font-size="11" font-weight="700" fill="#C0392B" stroke="#fff" stroke-width="3.5" paint-order="stroke">A12 이동성</text><text x="720.0" y="94.1" text-anchor="middle" font-size="8" fill="#997" stroke="#fff" stroke-width="2.5" paint-order="stroke">실측: FDI</text><text x="720.0" y="137.1" text-anchor="middle" font-size="8.5" fill="#555" stroke="#fff" stroke-width="3" paint-order="stroke">점수 0.885 · 압박 P=0.006</text><rect x="26" y="999" width="958" height="128" rx="8" fill="#fbfaf7" stroke="#DDD8CE"/><text x="42" y="1019" font-size="10.5" fill="#C0392B"><tspan font-weight="700">적색 선화살표 = 압박</tspan> (크기는 거리와 P값이 표현 — 텍스트 가림 방지 위해 선으로 통일). P = |r|(138국 실측 결합) × 자국 결핍(+결합은 1−점수, −결합은 점수)</text><text x="42" y="1037" font-size="10.5" fill="#444"><tspan font-weight="700">거리</tspan> = P 역순 — 가까울수록 세게 누른다. 결합이 강해도 결핍이 없으면(예: 만점 축) 압박 0 → 바깥 궤도로 밀려남. <tspan font-weight="700">이 좌표계는 국가마다 다르다</tspan></text><text x="42" y="1055" font-size="10.5" fill="#1a4f8a">청색 화살표(−) = 공리 A1 조준 불변성(압력원→흡수체 침식) · 적 점선 = 공리 A3 내부충돌(조건부) · <tspan fill="#B8850E">골드 점선 = 공리 A8 기층악화→방어결집 → B1 균형루프</tspan></text><text x="42" y="1073" font-size="10.5" fill="#444">무촉 곡선 = 지표간 실측 결합(|r|≥0.55, 인과방향 미지정): 청록 실선(+)/적 점선(−) · 최강 A2~A8 +0.955 → R1 쌍성 강화루프 · Ⓡ강화/Ⓑ균형 = 극성 곱 판정</text><text x="42" y="1091" font-size="10.5" fill="#997">노드 소자막 "실측: …" = 현행 v2 파이프라인이 그 축에 실제로 넣는 데이터 — 정본 명칭과 내용이 다른 축(A3·A5·A6·A7·A9·A10·A11)의 오독 방지用 병기(정합화 전까지 유지)</text><text x="42" y="1111" font-size="10" fill="#777">자료: Λ¹² v2 × BSLI 공통 138개국 실측(2026-07-20 재계산) · 공리: 합본논문 §3.2 · 압박지수 정의: 2026-07-20 청해 지시(거리·화살표=압박) 반영 · 임의 수치 없음</text></svg><figcaption class="note"><b>[그림 2-7-1]</b> 미얀마 연방 공화국 BSLI 압박 좌표계 인과루프도 v3.1. 정본 생성기 handover_cld_v3.py 무수정 출력(ISO=MMR). 도식 제목의 국가 표기만 공식 국호로 바꿨다.<br>출처: 국가분석 총서 제2권 (Lambda12_CountryBook_Vol2_AsiaPacific_20261007.html) · MMR 절 「2. 압박 좌표계 인과루프도」 — 총서 수록 SVG 원본을 한 글자도 바꾸지 않고 넣었다.</figcaption></figure>
+  <h3 style="margin-top:20px">압박 순위표 (총서 그대로)</h3><div class="book-frag"><div class="tw"><table class=""><thead><tr><th class="n">순위</th><th class="">차원</th><th class="n">결합 r</th><th class="n">자국 점수</th><th class="n">결핍</th><th class="n">압박 P</th></tr></thead><tbody><tr class="hi"><td class="n">1</td><td class=""><b>A8</b> 거버넌스 <span class="tag">실측: WGI 6종</span></td><td class="n">+0.736</td><td class="n">0.126</td><td class="n">0.874</td><td class="n"><b>0.6431</b></td></tr><tr class="hi"><td class="n">2</td><td class=""><b>A5</b> 교육접근 <span class="tag">실측: R&amp;D/GDP</span></td><td class="n">+0.626</td><td class="n">0.003</td><td class="n">0.997</td><td class="n"><b>0.6242</b></td></tr><tr class="hi"><td class="n">3</td><td class=""><b>A2</b> 제도신뢰 <span class="tag">실측: CPI·부패통제</span></td><td class="n">+0.694</td><td class="n">0.131</td><td class="n">0.869</td><td class="n"><b>0.6029</b></td></tr><tr class="hi"><td class="n">4</td><td class=""><b>A7</b> 사회자본 <span class="tag">실측: 고령화·인구증가</span></td><td class="n">-0.757</td><td class="n">0.657</td><td class="n">0.657</td><td class="n"><b>0.4973</b></td></tr><tr class="hi"><td class="n">5</td><td class=""><b>A6</b> 보건수준 <span class="tag">실측: CO₂·재생에너지</span></td><td class="n">-0.549</td><td class="n">0.823</td><td class="n">0.823</td><td class="n"><b>0.4518</b></td></tr><tr class=""><td class="n">6</td><td class=""><b>A1</b> 사회기반시설 <span class="tag">실측: 전력·인터넷</span></td><td class="n">+0.792</td><td class="n">0.585</td><td class="n">0.415</td><td class="n"><b>0.3288</b></td></tr><tr class=""><td class="n">7</td><td class=""><b>A10</b> 불평등 <span class="tag">실측: 관광객수</span></td><td class="n">+0.318</td><td class="n">0.008</td><td class="n">0.992</td><td class="n"><b>0.3156</b></td></tr><tr class=""><td class="n">8</td><td class=""><b>A4</b> 경제안정 <span class="tag">실측: GDP·제조업</span></td><td class="n">+0.463</td><td class="n">0.329</td><td class="n">0.671</td><td class="n"><b>0.3106</b></td></tr><tr class=""><td class="n">9</td><td class=""><b>A9</b> 환경압박 <span class="tag">실측: GPI·군사비</span></td><td class="n">+0.396</td><td class="n">0.501</td><td class="n">0.499</td><td class="n"><b>0.1974</b></td></tr><tr class=""><td class="n">10</td><td class=""><b>A3</b> 시민자유 <span class="tag">실측: 지니계수</span></td><td class="n">+0.572</td><td class="n">0.804</td><td class="n">0.196</td><td class="n"><b>0.1118</b></td></tr><tr class=""><td class="n">11</td><td class=""><b>A11</b> 외부충격 <span class="tag">실측: 에너지수입의존</span></td><td class="n">-0.107</td><td class="n">0.335</td><td class="n">0.335</td><td class="n"><b>0.0358</b></td></tr><tr class=""><td class="n">12</td><td class=""><b>A12</b> 이동성 <span class="tag">실측: FDI</span></td><td class="n">+0.049</td><td class="n">0.885</td><td class="n">0.115</td><td class="n"><b>0.0056</b></td></tr></tbody></table></div></div><p class="note">음영 행 = 탐색적 임계 밴드(P ≥ 0.4458) 안. P = |r| × 결핍. 결합 r은 138개국 공통 상수. 차원 라벨과 '실측:' 태그는 총서 원문 그대로다(A7 라벨 '사회자본' = 본문의 '사회구조').</p>
   <div class="formula-box">
     <div class="f-label">압박 좌표계 수식 (pressure-coordinate-system 정본)</div>
     <div class="f-eq">r_d = Pearson(A_d, BSLI) · gap_d = 1−A_d (r&gt;0) / A_d (r&lt;0) · P_d = |r_d| × gap_d</div>
-    <div class="f-vars">r_d: 138개국 공통표본 결합계수(정본값 사용) · gap_d: 결핍 · P_d: 압박지수<br>R_d = R_IN + (P_max − P_d)/(P_max − P_min) × (R_OUT − R_IN): 궤도 반경(공유 스케일)<br>방향 = sign(ΔP_d), 활동성 = |ΔP_d/Δt|<br>P* = 0.446: 봉기 4개국(BOL·LKA·BGD·NPL) 발화 시점 상위 3개 압박값의 최솟값 — <strong>탐색적 후보(n=4)</strong>, 33개국 ROC 검증 전에는 확정 임계로 쓰지 않는다.<br>생성기: vault cld_batch_ts.py v1.1 (무수정 호출)</div>
+    <div class="f-vars">r_d: 138개국 공통표본 결합계수 · gap_d: 결핍 · P_d: 압박지수 · 방향 = sign(ΔP_d), 활동성 = |ΔP_d/Δt|<br>P* = 0.4458: 봉기 4개국 발화 시점 상위 압박값에서 얻은 <strong>탐색적 임계 밴드(n=4)</strong> — 확정 임계로 쓰지 않는다.</div>
   </div>
-  <p>미얀마 도식에서는 안쪽 궤도에 A8·A5·A2·A7·A6 다섯 행성이 몰려 있고, A12·A11·A3는 바깥 궤도에 있다. 연도 점의 이동을 보면 A2·A8은 2021년을 기점으로 함께 안쪽으로 들어왔고, A1(기반시설)은 2016년 0.521에서 2024년 0.329로 바깥쪽으로 빠져나갔다. 다만 A1의 인터넷 이용률 입력은 2020년 실측에서 멈춰 이후가 이월 동결이다. 2021년 이후 인터넷 차단 등의 변화는 이 축에 들어 있지 않다.</p>
-<p>봉기 선행연구(BOL·LKA·BGD·NPL)는 발화 시점에 밴드 안 차원이 3~4개였고 A7·A8이 항상 포함되었다. 미얀마는 2024년 기준 밴드 안 차원이 5개이고 A7·A8이 모두 들어 있다. 이 구성은 engine-history 패턴_실측이 기록한 '밴드 내 조합 A2·A5·A7·A8 공유 19개국'에 해당한다. 다만 미얀마에서 2021년에 일어난 것은 아래로부터의 봉기가 아니라 위로부터의 쿠데타였고, 그 뒤 대중 저항과 무장 투쟁이 이어졌다. 탐색적 임계(n=4)와의 대조일 뿐 판정이 아니다.</p>
+  <p>총서 인과루프도와 압박 순위표에서 1위 A8(P = 0.6431), 2위 A5(0.6242), 3위 A2(0.6029), 4위 A7(0.4973), 5위 A6(0.4518) 다섯 차원이 밴드 안이다. 6위 A1(0.3288) 아래로는 밴드 밖이고, A12(0.0056)·A11(0.0358)·A3(0.1118)은 바깥 궤도에 있다.</p>
+<p>흡수체 쌍성(A2·A8)과 A7이 함께 밴드 안이라는 구성은 라오스·캄보디아와 공유하지만, 미얀마는 여기에 A5·A6이 더해져 권역에서 밴드 안 차원이 가장 많다. 봉기 선행연구(BOL·LKA·BGD·NPL)는 발화 시점에 밴드 안 차원이 3~4개였고 A7·A8이 항상 포함되었다. 다만 미얀마에서 2021년에 일어난 것은 아래로부터의 봉기가 아니라 위로부터의 쿠데타였고, 그 뒤 대중 저항과 무장 투쟁이 이어졌다. 탐색적 임계(n=4)와의 대조일 뿐 판정이 아니다.</p>
 </div>
 
 <div class="section">
   <div class="section-title">§ 06</div>
-  <h2 class="section-heading">위상공간 궤적 (2016–2024)</h2>
+  <h2 class="section-heading">2016–2024 궤적 — 압박좌표계 시계열 (총서 원본)</h2>
+  <figure class="pcs-wrap"><img src="/nations/book/img/orbit_MMR.png" alt="미얀마 연방 공화국 2016~2024 12차원 압박 궤적" style="width:100%;height:auto;display:block" loading="lazy"><figcaption class="note"><b>[그림 2-7-2]</b> 미얀마 연방 공화국 12차원 전수 궤적. 정본 궤적 생성기 orbit_decay_gen_v34 산출물 원본(2026-08-11). 안쪽 음영 = 임계 밴드.<br>출처: 국가분석 총서 제2권 (Lambda12_CountryBook_Vol2_AsiaPacific_20261007.html) · MMR 절 「3. 2016~2024 궤적」 이미지 그대로.</figcaption></figure>
+  <div class="book-frag"><h4>연간 변화량 ΔP (적색 = 낙하·압박 증가, 청록 = 이탈, 굵게 = 차원별 최대 |ΔP| 연도)</h4><div class="tw"><table class=""><thead><tr><th class="">차원</th><th class="n">P 2024</th><th class="n">Δ17</th><th class="n">Δ18</th><th class="n">Δ19</th><th class="n">Δ20</th><th class="n">Δ21</th><th class="n">Δ22</th><th class="n">Δ23</th><th class="n">Δ24</th></tr></thead><tbody><tr class=""><td class=""><b>A1</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.3288</span></td><td class="n"><span class="dn"><b>-0.0886</b></span></td><td class="n"><span class="dn">-0.0048</span></td><td class="n"><span class="dn">-0.0353</span></td><td class="n"><span class="dn">-0.0353</span></td><td class="n"><span class="dn">-0.0079</span></td><td class="n"><span class="dn">-0.0038</span></td><td class="n"><span class="dn">-0.0170</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A2</b> <span class="warnmark">⚠</span></td><td class="n"><span class="inband">0.6279</span></td><td class="n"><span class="dn">-0.0258</span></td><td class="n"><span class="up">+0.0269</span></td><td class="n"><span class="dn">-0.0183</span></td><td class="n"><span class="up">+0.0023</span></td><td class="n"><span class="up">+0.0335</span></td><td class="n"><span class="up">+0.0339</span></td><td class="n"><span class="up"><b>+0.0484</b></span></td><td class="n"><span class="up">+0.0125</span></td></tr><tr class=""><td class=""><b>A3</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.1118</span></td><td class="n"><span class="dn"><b>-0.1008</b></span></td><td class="n"><span class="dn">-0.0181</span></td><td class="n"><span class="up">+0.0181</span></td><td class="n"><span class="dn">-0.0102</span></td><td class="n"><span class="dn">-0.0013</span></td><td class="n"><span class="up">+0.0015</span></td><td class="n"><span class="up">+0.0039</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A4</b></td><td class="n"><span class="">0.3448</span></td><td class="n"><span class="dn">-0.0090</span></td><td class="n"><span class="dn">-0.0037</span></td><td class="n"><span class="dn">-0.0015</span></td><td class="n"><span class="dn">-0.0006</span></td><td class="n"><span class="dn">-0.0011</span></td><td class="n"><span class="dn">-0.0070</span></td><td class="n"><span class="dn">-0.0054</span></td><td class="n"><span class="up"><b>+0.0195</b></span></td></tr><tr class=""><td class=""><b>A5</b> <span class="warnmark">⚠</span></td><td class="n"><span class="inband">0.6242</span></td><td class="n">—</td><td class="n"><span class="dn">-0.0036</span></td><td class="n"><span class="dn">-0.0016</span></td><td class="n"><span class="dn">-0.0077</span></td><td class="n"><span class="up">+0.0034</span></td><td class="n"><span class="up"><b>+0.0091</b></span></td><td class="n"><span class="up">+0.0013</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A6</b></td><td class="n"><span class="inband">0.4518</span></td><td class="n"><span class="dn"><b>-0.0266</b></span></td><td class="n"><span class="up">+0.0004</span></td><td class="n"><span class="dn">-0.0024</span></td><td class="n"><span class="up">+0.0021</span></td><td class="n"><span class="up">+0.0107</span></td><td class="n"><span class="up">+0.0002</span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="up">+0.0001</span></td></tr><tr class=""><td class=""><b>A7</b></td><td class="n"><span class="inband">0.4973</span></td><td class="n"><span class="up">+0.0616</span></td><td class="n"><span class="dn">-0.0039</span></td><td class="n"><span class="dn">-0.0132</span></td><td class="n"><span class="dn">-0.0442</span></td><td class="n"><span class="up"><b>+0.1407</b></span></td><td class="n"><span class="dn">-0.0708</span></td><td class="n"><span class="dn">-0.0034</span></td><td class="n"><span class="dn">-0.0522</span></td></tr><tr class=""><td class=""><b>A8</b> <span class="warnmark">⚠</span></td><td class="n"><span class="inband">0.6468</span></td><td class="n"><span class="up">+0.0052</span></td><td class="n"><span class="up">+0.0062</span></td><td class="n"><span class="dn">-0.0067</span></td><td class="n"><span class="dn">-0.0110</span></td><td class="n"><span class="up"><b>+0.0570</b></span></td><td class="n"><span class="up">+0.0430</span></td><td class="n"><span class="up">+0.0004</span></td><td class="n"><span class="up">+0.0016</span></td></tr><tr class=""><td class=""><b>A9</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.2061</span></td><td class="n"><span class="up">+0.0060</span></td><td class="n"><span class="dn">-0.0160</span></td><td class="n"><span class="up">+0.0094</span></td><td class="n"><span class="up">+0.0290</span></td><td class="n"><span class="up">+0.0792</span></td><td class="n"><span class="dn"><b>-0.0940</b></span></td><td class="n"><span class="dn">-0.0111</span></td><td class="n"><span class="up">+0.0075</span></td></tr><tr class=""><td class=""><b>A10</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.3157</span></td><td class="n"><span class="dn">-0.0007</span></td><td class="n"><span class="">-0.0000</span></td><td class="n"><span class="dn">-0.0010</span></td><td class="n"><span class="up"><b>+0.0039</b></span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A11</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.0358</span></td><td class="n"><span class="dn">-0.0038</span></td><td class="n"><span class="up">+0.0017</span></td><td class="n"><span class="dn"><b>-0.0048</b></span></td><td class="n"><span class="dn">-0.0002</span></td><td class="n"><span class="up">+0.0009</span></td><td class="n"><span class="up">+0.0012</span></td><td class="n"><span class="up">+0.0008</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A12</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.0149</span></td><td class="n"><span class="up">+0.0016</span></td><td class="n"><span class="dn"><b>-0.0156</b></span></td><td class="n"><span class="up">+0.0006</span></td><td class="n"><span class="dn">-0.0107</span></td><td class="n"><span class="up">+0.0056</span></td><td class="n"><span class="dn">-0.0098</span></td><td class="n"><span class="up">+0.0074</span></td><td class="n"><span class="up">+0.0008</span></td></tr></tbody></table></div><p class="note"><span class="warnmark">⚠</span> 데이터 주의 — <b>A1</b> 최종실측 2023 (+1년 이월) · <b>A2</b> 비교군 극단 0.7% · <b>A3</b> 최종실측 2023 (+1년 이월) · <b>A5</b> 최종실측 2023 (+1년 이월) · 결측 1년 · 비교군 극단 1.8% · <b>A8</b> 비교군 극단 1.4% · <b>A9</b> 비교군 극단 2.6% · <b>A10</b> 최종실측 2020 (+4년 이월) · <b>A11</b> 최종실측 2023 (+1년 이월) · <b>A12</b> 비교군 극단 0.0%. 이월 구간의 정지는 데이터 동결일 수 있다.</p></div>
+  <p class="note">위 ΔP 표와 데이터 주의는 총서 원문 그대로다. 이월 구간의 정지는 데이터 동결일 수 있어 실제 사회 정체와 구분해 읽는다(시계열 추적 원칙: 위치 P·방향 sign(ΔP)·활동성 |ΔP|).</p>
+  <p><strong>위치.</strong> 총서 궤적의 2024년 P 기준 A8 0.6468, A2 0.6279, A5 0.6242, A7 0.4973, A6 0.4518가 밴드 안이다. 궤적 표의 2024년 P(시계열)와 압박 순위표의 P(단면)는 기준 구간이 달라 조금 다르며, 두 값 모두 총서 원문 그대로다.</p>
+<p><strong>방향·활동성.</strong> 2016~2020년에는 A2가 -0.0258(2017)·-0.0183(2019)로 이탈하는 해가 있었으나, 쿠데타가 일어난 2021년부터 +0.0335 → +0.0339 → +0.0484 → +0.0125로 4년 연속 낙하했고 2023년이 최대였다. A8도 2020년 -0.0110 이탈 뒤 2021년 +0.0570, 2022년 +0.0430로 낙하했다 — 흡수체 쌍성이 같은 해에 함께 떨어졌다. A7은 2021년 +0.1407로 크게 낙하한 뒤 2022년 -0.0708, 2024년 -0.0522로 되돌아왔고, A9도 2021년 +0.0792 낙하 뒤 2022년 -0.0940 이탈로 같은 모양이다. 2021년 한 해에 A2·A7·A8·A9가 동시에 낙하한 것이 이 궤적의 가장 큰 변곡이다(3층 — 사건과 궤적의 시점 일치).</p>
+<p><strong>2024년.</strong> 총서는 2024년 낙하(ΔP&gt;0) 6개 차원(A2·A4·A6·A8·A9·A12), 이탈 1개 차원을 기록했다. 다만 A1·A3·A5·A10·A11의 2024년 ΔP 0은 이월 구간이라 데이터 동결일 수 있고, 실제 사회 정체와 구분해 읽는다.</p>
+<p><strong>데이터 주의.</strong> 총서는 A1·A3·A5·A11(+1년 이월), A10(+4년 이월), A5(결측 1년), A2·A8·A9·A12(비교군 극단)를 표시했다. 2021년 이후 인터넷 차단 등의 변화는 A1에 들어 있지 않다.</p>
+  <h3 style="margin-top:24px">위상공간 궤적 (2016–2024) — 동남아시아 권역</h3>
   <div class="chart-wrap"><svg viewBox="0 0 760 380" style="width:100%;height:auto;background:#FAFAF7;border:1px solid var(--border)">
-<line x1="60.0" y1="24" x2="60.0" y2="336" stroke="#EEE"/><text x="60.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.350</text>
-<line x1="60" y1="336.0" x2="740" y2="336.0" stroke="#EEE"/><text x="54" y="339.0" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.154</text>
-<line x1="196.0" y1="24" x2="196.0" y2="336" stroke="#EEE"/><text x="196.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.407</text>
-<line x1="60" y1="273.6" x2="740" y2="273.6" stroke="#EEE"/><text x="54" y="276.6" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.203</text>
-<line x1="332.0" y1="24" x2="332.0" y2="336" stroke="#EEE"/><text x="332.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.464</text>
-<line x1="60" y1="211.2" x2="740" y2="211.2" stroke="#EEE"/><text x="54" y="214.2" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.252</text>
-<line x1="468.0" y1="24" x2="468.0" y2="336" stroke="#EEE"/><text x="468.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.521</text>
-<line x1="60" y1="148.8" x2="740" y2="148.8" stroke="#EEE"/><text x="54" y="151.8" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.302</text>
-<line x1="604.0" y1="24" x2="604.0" y2="336" stroke="#EEE"/><text x="604.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.578</text>
-<line x1="60" y1="86.4" x2="740" y2="86.4" stroke="#EEE"/><text x="54" y="89.4" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.351</text>
-<line x1="740.0" y1="24" x2="740.0" y2="336" stroke="#EEE"/><text x="740.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.635</text>
-<line x1="60" y1="24.0" x2="740" y2="24.0" stroke="#EEE"/><text x="54" y="27.0" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.401</text>
-<text x="380.0" y="372" font-family="Courier New" font-size="11" text-anchor="middle" fill="#2A3D35">η(t) — v2.1-timeseries 사회안정 종합지수 (오른쪽 = 안정)</text>
-<text x="14" y="190.0" font-family="Courier New" font-size="11" fill="#2A3D35" transform="rotate(-90 14 190.0)" text-anchor="middle">평균 압박 P̄(t) (위 = 압박 강화)</text>
-<polyline points="171.9,105.9 151.1,94.7 226.2,97.9 217.1,103.9 250.1,112.6 206.6,78.8 256.8,89.0 223.8,86.3 190.5,87.4" fill="none" stroke="#C0392B" stroke-width="2.4" opacity="1"/>
-<circle cx="171.9" cy="105.9" r="4" fill="#C0392B" opacity="0.35"/>
-<text x="177.9" y="99.9" font-family="Courier New" font-size="10" fill="#C0392B">2016</text>
-<circle cx="151.1" cy="94.7" r="4" fill="#C0392B" opacity="0.43"/>
-<circle cx="226.2" cy="97.9" r="4" fill="#C0392B" opacity="0.51"/>
-<circle cx="217.1" cy="103.9" r="4" fill="#C0392B" opacity="0.59"/>
-<text x="223.1" y="97.9" font-family="Courier New" font-size="10" fill="#C0392B">2019</text>
-<circle cx="250.1" cy="112.6" r="4" fill="#C0392B" opacity="0.68"/>
-<circle cx="206.6" cy="78.8" r="4" fill="#C0392B" opacity="0.76"/>
-<text x="212.6" y="72.8" font-family="Courier New" font-size="10" fill="#C0392B">2021</text>
-<circle cx="256.8" cy="89.0" r="4" fill="#C0392B" opacity="0.84"/>
-<circle cx="223.8" cy="86.3" r="4" fill="#C0392B" opacity="0.92"/>
-<circle cx="190.5" cy="87.4" r="4" fill="#C0392B" opacity="1.00"/>
-<text x="196.5" y="81.4" font-family="Courier New" font-size="10" fill="#C0392B">2024</text>
-<text x="196.5" y="99.4" font-family="Courier New" font-size="11" font-weight="bold" fill="#C0392B">MMR</text>
-<polyline points="517.6,304.3 538.9,302.7 633.6,313.1 592.5,307.7 636.5,318.8 636.2,303.9 692.2,319.6 664.0,318.0 639.6,323.4" fill="none" stroke="#5E9186" stroke-width="1.4" opacity="0.7"/>
-<circle cx="517.6" cy="304.3" r="3" fill="#5E9186" opacity="0.35"/>
-<circle cx="538.9" cy="302.7" r="3" fill="#5E9186" opacity="0.43"/>
-<circle cx="633.6" cy="313.1" r="3" fill="#5E9186" opacity="0.51"/>
-<circle cx="592.5" cy="307.7" r="3" fill="#5E9186" opacity="0.59"/>
-<circle cx="636.5" cy="318.8" r="3" fill="#5E9186" opacity="0.68"/>
-<circle cx="636.2" cy="303.9" r="3" fill="#5E9186" opacity="0.76"/>
-<circle cx="692.2" cy="319.6" r="3" fill="#5E9186" opacity="0.84"/>
-<circle cx="664.0" cy="318.0" r="3" fill="#5E9186" opacity="0.92"/>
-<circle cx="639.6" cy="323.4" r="3" fill="#5E9186" opacity="1.00"/>
-<text x="645.6" y="335.4" font-family="Courier New" font-size="11" font-weight="bold" fill="#5E9186">KOR</text>
-<polyline points="107.8,36.6 149.9,45.2 237.9,51.1 222.1,53.0 244.1,103.3 241.7,88.8 316.8,112.5 288.1,112.9 277.8,121.0" fill="none" stroke="#B8850E" stroke-width="1.4" opacity="0.7"/>
-<circle cx="107.8" cy="36.6" r="3" fill="#B8850E" opacity="0.35"/>
-<circle cx="149.9" cy="45.2" r="3" fill="#B8850E" opacity="0.43"/>
-<circle cx="237.9" cy="51.1" r="3" fill="#B8850E" opacity="0.51"/>
-<circle cx="222.1" cy="53.0" r="3" fill="#B8850E" opacity="0.59"/>
-<circle cx="244.1" cy="103.3" r="3" fill="#B8850E" opacity="0.68"/>
-<circle cx="241.7" cy="88.8" r="3" fill="#B8850E" opacity="0.76"/>
-<circle cx="316.8" cy="112.5" r="3" fill="#B8850E" opacity="0.84"/>
-<circle cx="288.1" cy="112.9" r="3" fill="#B8850E" opacity="0.92"/>
-<circle cx="277.8" cy="121.0" r="3" fill="#B8850E" opacity="1.00"/>
-<text x="283.8" y="133.0" font-family="Courier New" font-size="11" font-weight="bold" fill="#B8850E">KHM</text>
-<polyline points="150.1,126.8 155.2,121.6 250.6,130.5 233.6,130.1 271.8,140.1 287.1,131.9 335.9,146.8 319.4,150.4 294.8,152.5" fill="none" stroke="#6A7A9A" stroke-width="1.4" opacity="0.7"/>
-<circle cx="150.1" cy="126.8" r="3" fill="#6A7A9A" opacity="0.35"/>
-<circle cx="155.2" cy="121.6" r="3" fill="#6A7A9A" opacity="0.43"/>
-<circle cx="250.6" cy="130.5" r="3" fill="#6A7A9A" opacity="0.51"/>
-<circle cx="233.6" cy="130.1" r="3" fill="#6A7A9A" opacity="0.59"/>
-<circle cx="271.8" cy="140.1" r="3" fill="#6A7A9A" opacity="0.68"/>
-<circle cx="287.1" cy="131.9" r="3" fill="#6A7A9A" opacity="0.76"/>
-<circle cx="335.9" cy="146.8" r="3" fill="#6A7A9A" opacity="0.84"/>
-<circle cx="319.4" cy="150.4" r="3" fill="#6A7A9A" opacity="0.92"/>
-<circle cx="294.8" cy="152.5" r="3" fill="#6A7A9A" opacity="1.00"/>
-<text x="300.8" y="164.5" font-family="Courier New" font-size="11" font-weight="bold" fill="#6A7A9A">PHL</text>
+<line x1="60.0" y1="24" x2="60.0" y2="336" stroke="#EEE"/><text x="60.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.167</text>
+<line x1="60" y1="336.0" x2="740" y2="336.0" stroke="#EEE"/><text x="54" y="339.0" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.386</text>
+<line x1="196.0" y1="24" x2="196.0" y2="336" stroke="#EEE"/><text x="196.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.213</text>
+<line x1="60" y1="273.6" x2="740" y2="273.6" stroke="#EEE"/><text x="54" y="276.6" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.445</text>
+<line x1="332.0" y1="24" x2="332.0" y2="336" stroke="#EEE"/><text x="332.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.260</text>
+<line x1="60" y1="211.2" x2="740" y2="211.2" stroke="#EEE"/><text x="54" y="214.2" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.503</text>
+<line x1="468.0" y1="24" x2="468.0" y2="336" stroke="#EEE"/><text x="468.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.307</text>
+<line x1="60" y1="148.8" x2="740" y2="148.8" stroke="#EEE"/><text x="54" y="151.8" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.561</text>
+<line x1="604.0" y1="24" x2="604.0" y2="336" stroke="#EEE"/><text x="604.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.354</text>
+<line x1="60" y1="86.4" x2="740" y2="86.4" stroke="#EEE"/><text x="54" y="89.4" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.620</text>
+<line x1="740.0" y1="24" x2="740.0" y2="336" stroke="#EEE"/><text x="740.0" y="352" font-family="Courier New" font-size="10" text-anchor="middle" fill="#6B6560">0.401</text>
+<line x1="60" y1="24.0" x2="740" y2="24.0" stroke="#EEE"/><text x="54" y="27.0" font-family="Courier New" font-size="10" text-anchor="end" fill="#6B6560">0.678</text>
+<line x1="60" y1="272.3" x2="740" y2="272.3" stroke="#C0392B" stroke-dasharray="5,4"/><text x="736" y="268.3" font-family="Courier New" font-size="10" text-anchor="end" fill="#C0392B">P* 0.4458 (탐색적 밴드)</text>
+<text x="380.0" y="372" font-family="Courier New" font-size="11" text-anchor="middle" fill="#2A3D35">평균 압박 P̄(t) — 가용 차원 평균 (오른쪽 = 압박 강화)</text>
+<text x="14" y="190.0" font-family="Courier New" font-size="11" fill="#2A3D35" transform="rotate(-90 14 190.0)" text-anchor="middle">최대 압박 P_max(t)</text>
+<polyline points="103.1,251.0 113.3,240.0 109.5,235.0 128.0,214.2 89.1,325.3 107.6,279.8 135.9,145.3 155.2,118.6 122.2,249.7" fill="none" stroke="#B8850E" stroke-width="1.2" opacity="0.6"/>
+<circle cx="103.1" cy="251.0" r="2.5" fill="#B8850E" opacity="0.35"/>
+<circle cx="113.3" cy="240.0" r="2.5" fill="#B8850E" opacity="0.43"/>
+<circle cx="109.5" cy="235.0" r="2.5" fill="#B8850E" opacity="0.51"/>
+<circle cx="128.0" cy="214.2" r="2.5" fill="#B8850E" opacity="0.59"/>
+<circle cx="89.1" cy="325.3" r="2.5" fill="#B8850E" opacity="0.68"/>
+<circle cx="107.6" cy="279.8" r="2.5" fill="#B8850E" opacity="0.76"/>
+<circle cx="135.9" cy="145.3" r="2.5" fill="#B8850E" opacity="0.84"/>
+<circle cx="155.2" cy="118.6" r="2.5" fill="#B8850E" opacity="0.92"/>
+<circle cx="122.2" cy="249.7" r="2.5" fill="#B8850E" opacity="1.00"/>
+<text x="128.2" y="261.7" font-family="Courier New" font-size="11" font-weight="bold" fill="#B8850E">SGP</text>
+<polyline points="314.0,184.8 328.1,130.9 324.2,120.4 315.5,137.3 303.4,187.2 333.1,72.5 305.7,146.1 308.8,151.1 286.9,185.9" fill="none" stroke="#6A7A9A" stroke-width="1.2" opacity="0.6"/>
+<circle cx="314.0" cy="184.8" r="2.5" fill="#6A7A9A" opacity="0.35"/>
+<circle cx="328.1" cy="130.9" r="2.5" fill="#6A7A9A" opacity="0.43"/>
+<circle cx="324.2" cy="120.4" r="2.5" fill="#6A7A9A" opacity="0.51"/>
+<circle cx="315.5" cy="137.3" r="2.5" fill="#6A7A9A" opacity="0.59"/>
+<circle cx="303.4" cy="187.2" r="2.5" fill="#6A7A9A" opacity="0.68"/>
+<circle cx="333.1" cy="72.5" r="2.5" fill="#6A7A9A" opacity="0.76"/>
+<circle cx="305.7" cy="146.1" r="2.5" fill="#6A7A9A" opacity="0.84"/>
+<circle cx="308.8" cy="151.1" r="2.5" fill="#6A7A9A" opacity="0.92"/>
+<circle cx="286.9" cy="185.9" r="2.5" fill="#6A7A9A" opacity="1.00"/>
+<text x="292.9" y="197.9" font-family="Courier New" font-size="11" font-weight="bold" fill="#6A7A9A">MYS</text>
+<polyline points="339.4,192.6 347.1,135.4 430.0,116.1 430.7,110.2 388.2,110.2 423.2,66.0 396.5,109.2 331.9,108.3 330.5,108.3" fill="none" stroke="#8E5EA2" stroke-width="1.2" opacity="0.6"/>
+<circle cx="339.4" cy="192.6" r="2.5" fill="#8E5EA2" opacity="0.35"/>
+<circle cx="347.1" cy="135.4" r="2.5" fill="#8E5EA2" opacity="0.43"/>
+<circle cx="430.0" cy="116.1" r="2.5" fill="#8E5EA2" opacity="0.51"/>
+<circle cx="430.7" cy="110.2" r="2.5" fill="#8E5EA2" opacity="0.59"/>
+<circle cx="388.2" cy="110.2" r="2.5" fill="#8E5EA2" opacity="0.68"/>
+<circle cx="423.2" cy="66.0" r="2.5" fill="#8E5EA2" opacity="0.76"/>
+<circle cx="396.5" cy="109.2" r="2.5" fill="#8E5EA2" opacity="0.84"/>
+<circle cx="331.9" cy="108.3" r="2.5" fill="#8E5EA2" opacity="0.92"/>
+<circle cx="330.5" cy="108.3" r="2.5" fill="#8E5EA2" opacity="1.00"/>
+<text x="336.5" y="120.3" font-family="Courier New" font-size="11" font-weight="bold" fill="#8E5EA2">BRN</text>
+<polyline points="385.9,191.7 382.3,219.7 372.6,230.2 351.1,209.1 309.3,230.3 339.5,174.5 304.0,204.8 307.8,177.9 292.0,177.9" fill="none" stroke="#2A6F97" stroke-width="1.2" opacity="0.6"/>
+<circle cx="385.9" cy="191.7" r="2.5" fill="#2A6F97" opacity="0.35"/>
+<circle cx="382.3" cy="219.7" r="2.5" fill="#2A6F97" opacity="0.43"/>
+<circle cx="372.6" cy="230.2" r="2.5" fill="#2A6F97" opacity="0.51"/>
+<circle cx="351.1" cy="209.1" r="2.5" fill="#2A6F97" opacity="0.59"/>
+<circle cx="309.3" cy="230.3" r="2.5" fill="#2A6F97" opacity="0.68"/>
+<circle cx="339.5" cy="174.5" r="2.5" fill="#2A6F97" opacity="0.76"/>
+<circle cx="304.0" cy="204.8" r="2.5" fill="#2A6F97" opacity="0.84"/>
+<circle cx="307.8" cy="177.9" r="2.5" fill="#2A6F97" opacity="0.92"/>
+<circle cx="292.0" cy="177.9" r="2.5" fill="#2A6F97" opacity="1.00"/>
+<text x="298.0" y="189.9" font-family="Courier New" font-size="11" font-weight="bold" fill="#2A6F97">THA</text>
+<polyline points="483.7,173.9 492.5,115.2 503.2,103.6 483.3,114.6 453.8,136.0 471.8,34.7 441.8,108.3 456.0,112.8 413.6,164.4" fill="none" stroke="#B8850E" stroke-width="1.2" opacity="0.6"/>
+<circle cx="483.7" cy="173.9" r="2.5" fill="#B8850E" opacity="0.35"/>
+<circle cx="492.5" cy="115.2" r="2.5" fill="#B8850E" opacity="0.43"/>
+<circle cx="503.2" cy="103.6" r="2.5" fill="#B8850E" opacity="0.51"/>
+<circle cx="483.3" cy="114.6" r="2.5" fill="#B8850E" opacity="0.59"/>
+<circle cx="453.8" cy="136.0" r="2.5" fill="#B8850E" opacity="0.68"/>
+<circle cx="471.8" cy="34.7" r="2.5" fill="#B8850E" opacity="0.76"/>
+<circle cx="441.8" cy="108.3" r="2.5" fill="#B8850E" opacity="0.84"/>
+<circle cx="456.0" cy="112.8" r="2.5" fill="#B8850E" opacity="0.92"/>
+<circle cx="413.6" cy="164.4" r="2.5" fill="#B8850E" opacity="1.00"/>
+<text x="419.6" y="176.4" font-family="Courier New" font-size="11" font-weight="bold" fill="#B8850E">LAO</text>
+<polyline points="523.2,172.1 521.5,119.5 503.4,100.5 479.0,107.7 445.3,165.7 467.7,37.9 437.8,119.5 443.2,130.5 420.4,177.4" fill="none" stroke="#6A7A9A" stroke-width="1.2" opacity="0.6"/>
+<circle cx="523.2" cy="172.1" r="2.5" fill="#6A7A9A" opacity="0.35"/>
+<circle cx="521.5" cy="119.5" r="2.5" fill="#6A7A9A" opacity="0.43"/>
+<circle cx="503.4" cy="100.5" r="2.5" fill="#6A7A9A" opacity="0.51"/>
+<circle cx="479.0" cy="107.7" r="2.5" fill="#6A7A9A" opacity="0.59"/>
+<circle cx="445.3" cy="165.7" r="2.5" fill="#6A7A9A" opacity="0.68"/>
+<circle cx="467.7" cy="37.9" r="2.5" fill="#6A7A9A" opacity="0.76"/>
+<circle cx="437.8" cy="119.5" r="2.5" fill="#6A7A9A" opacity="0.84"/>
+<circle cx="443.2" cy="130.5" r="2.5" fill="#6A7A9A" opacity="0.92"/>
+<circle cx="420.4" cy="177.4" r="2.5" fill="#6A7A9A" opacity="1.00"/>
+<text x="426.4" y="189.4" font-family="Courier New" font-size="11" font-weight="bold" fill="#6A7A9A">TLS</text>
+<polyline points="448.8,113.6 451.1,111.5 431.8,109.1 414.2,109.5 401.5,110.6 428.4,81.9 404.0,109.5 409.8,108.6 388.1,108.6" fill="none" stroke="#8E5EA2" stroke-width="1.2" opacity="0.6"/>
+<circle cx="448.8" cy="113.6" r="2.5" fill="#8E5EA2" opacity="0.35"/>
+<circle cx="451.1" cy="111.5" r="2.5" fill="#8E5EA2" opacity="0.43"/>
+<circle cx="431.8" cy="109.1" r="2.5" fill="#8E5EA2" opacity="0.51"/>
+<circle cx="414.2" cy="109.5" r="2.5" fill="#8E5EA2" opacity="0.59"/>
+<circle cx="401.5" cy="110.6" r="2.5" fill="#8E5EA2" opacity="0.68"/>
+<circle cx="428.4" cy="81.9" r="2.5" fill="#8E5EA2" opacity="0.76"/>
+<circle cx="404.0" cy="109.5" r="2.5" fill="#8E5EA2" opacity="0.84"/>
+<circle cx="409.8" cy="108.6" r="2.5" fill="#8E5EA2" opacity="0.92"/>
+<circle cx="388.1" cy="108.6" r="2.5" fill="#8E5EA2" opacity="1.00"/>
+<text x="394.1" y="120.6" font-family="Courier New" font-size="11" font-weight="bold" fill="#8E5EA2">IDN</text>
+<polyline points="431.0,129.9 436.7,137.2 424.9,135.5 410.8,126.2 399.9,126.2 429.2,90.8 399.2,125.2 409.7,122.8 385.1,122.8" fill="none" stroke="#2A6F97" stroke-width="1.2" opacity="0.6"/>
+<circle cx="431.0" cy="129.9" r="2.5" fill="#2A6F97" opacity="0.35"/>
+<circle cx="436.7" cy="137.2" r="2.5" fill="#2A6F97" opacity="0.43"/>
+<circle cx="424.9" cy="135.5" r="2.5" fill="#2A6F97" opacity="0.51"/>
+<circle cx="410.8" cy="126.2" r="2.5" fill="#2A6F97" opacity="0.59"/>
+<circle cx="399.9" cy="126.2" r="2.5" fill="#2A6F97" opacity="0.68"/>
+<circle cx="429.2" cy="90.8" r="2.5" fill="#2A6F97" opacity="0.76"/>
+<circle cx="399.2" cy="125.2" r="2.5" fill="#2A6F97" opacity="0.84"/>
+<circle cx="409.7" cy="122.8" r="2.5" fill="#2A6F97" opacity="0.92"/>
+<circle cx="385.1" cy="122.8" r="2.5" fill="#2A6F97" opacity="1.00"/>
+<text x="391.1" y="134.8" font-family="Courier New" font-size="11" font-weight="bold" fill="#2A6F97">VNM</text>
+<polyline points="503.4,100.7 515.5,100.1 494.9,122.2 495.8,108.1 472.9,110.0 491.7,56.0 457.3,109.1 449.1,108.2 444.4,108.2" fill="none" stroke="#B8850E" stroke-width="1.2" opacity="0.6"/>
+<circle cx="503.4" cy="100.7" r="2.5" fill="#B8850E" opacity="0.35"/>
+<circle cx="515.5" cy="100.1" r="2.5" fill="#B8850E" opacity="0.43"/>
+<circle cx="494.9" cy="122.2" r="2.5" fill="#B8850E" opacity="0.51"/>
+<circle cx="495.8" cy="108.1" r="2.5" fill="#B8850E" opacity="0.59"/>
+<circle cx="472.9" cy="110.0" r="2.5" fill="#B8850E" opacity="0.68"/>
+<circle cx="491.7" cy="56.0" r="2.5" fill="#B8850E" opacity="0.76"/>
+<circle cx="457.3" cy="109.1" r="2.5" fill="#B8850E" opacity="0.84"/>
+<circle cx="449.1" cy="108.2" r="2.5" fill="#B8850E" opacity="0.92"/>
+<circle cx="444.4" cy="108.2" r="2.5" fill="#B8850E" opacity="1.00"/>
+<text x="450.4" y="120.2" font-family="Courier New" font-size="11" font-weight="bold" fill="#B8850E">PHL</text>
+<polyline points="710.9,90.7 691.1,90.3 677.5,90.2 673.4,88.5 557.7,88.5 590.9,48.1 536.4,88.6 535.4,88.3 516.9,88.3" fill="none" stroke="#6A7A9A" stroke-width="1.2" opacity="0.6"/>
+<circle cx="710.9" cy="90.7" r="2.5" fill="#6A7A9A" opacity="0.35"/>
+<circle cx="691.1" cy="90.3" r="2.5" fill="#6A7A9A" opacity="0.43"/>
+<circle cx="677.5" cy="90.2" r="2.5" fill="#6A7A9A" opacity="0.51"/>
+<circle cx="673.4" cy="88.5" r="2.5" fill="#6A7A9A" opacity="0.59"/>
+<circle cx="557.7" cy="88.5" r="2.5" fill="#6A7A9A" opacity="0.68"/>
+<circle cx="590.9" cy="48.1" r="2.5" fill="#6A7A9A" opacity="0.76"/>
+<circle cx="536.4" cy="88.6" r="2.5" fill="#6A7A9A" opacity="0.84"/>
+<circle cx="535.4" cy="88.3" r="2.5" fill="#6A7A9A" opacity="0.92"/>
+<circle cx="516.9" cy="88.3" r="2.5" fill="#6A7A9A" opacity="1.00"/>
+<text x="522.9" y="100.3" font-family="Courier New" font-size="11" font-weight="bold" fill="#6A7A9A">KHM</text>
+<polyline points="551.5,159.7 577.4,82.4 570.0,86.3 556.2,88.0 536.2,96.2 613.9,82.0 590.5,59.4 596.7,59.0 594.2,57.3" fill="none" stroke="#C0392B" stroke-width="2.4" opacity="1"/>
+<circle cx="551.5" cy="159.7" r="4" fill="#C0392B" opacity="0.35"/>
+<text x="557.5" y="153.7" font-family="Courier New" font-size="10" fill="#C0392B">2016</text>
+<circle cx="577.4" cy="82.4" r="4" fill="#C0392B" opacity="0.43"/>
+<circle cx="570.0" cy="86.3" r="4" fill="#C0392B" opacity="0.51"/>
+<circle cx="556.2" cy="88.0" r="4" fill="#C0392B" opacity="0.59"/>
+<text x="562.2" y="82.0" font-family="Courier New" font-size="10" fill="#C0392B">2019</text>
+<circle cx="536.2" cy="96.2" r="4" fill="#C0392B" opacity="0.68"/>
+<circle cx="613.9" cy="82.0" r="4" fill="#C0392B" opacity="0.76"/>
+<text x="619.9" y="76.0" font-family="Courier New" font-size="10" fill="#C0392B">2021</text>
+<circle cx="590.5" cy="59.4" r="4" fill="#C0392B" opacity="0.84"/>
+<circle cx="596.7" cy="59.0" r="4" fill="#C0392B" opacity="0.92"/>
+<circle cx="594.2" cy="57.3" r="4" fill="#C0392B" opacity="1.00"/>
+<text x="600.2" y="51.3" font-family="Courier New" font-size="10" fill="#C0392B">2024</text>
+<text x="600.2" y="69.3" font-family="Courier New" font-size="11" font-weight="bold" fill="#C0392B">MMR</text>
 </svg></div>
-  <p class="note">x축은 시계열판 η(t), y축은 가용 차원 압박 P의 평균 P̄(t)이다. 오른쪽 아래로 갈수록 안정·저압박이다. 비교선: KOR, KHM, PHL.</p>
-  <p>위상공간에서 미얀마는 2016년 η 0.3973에서 2020년 0.4300까지 오른쪽으로 이동했다가, 2021년 0.4118로 왼쪽(불안정 쪽)으로 꺾였다. 2022년 일시 반등은 비교국에서도 같은 해에 나타나는 공통 움직임이고, 2024년에는 0.4051로 9년 중 2016·2017년 다음으로 낮은 위치에 있다.</p>
-<p>비교선의 캄보디아·필리핀은 9년 동안 오른쪽으로 꾸준히 이동해 2016년에는 미얀마와 비슷하거나 낮던 위치에서 2024년에는 미얀마를 앞질렀다. 같은 권역 안에서 미얀마만 2021년 이후 반대 방향으로 움직였다.</p>
+  <p class="note">각 나라의 연도별 압박 P를 총서 ΔP 표에서 역산(P_t−1 = P_t − ΔP_t, 2024년 P 기준)해, x축에 가용 차원 평균 P̄(t), y축에 최대 압박 P_max(t)를 놓았다. 새 엔진 값이 아니라 총서 압박좌표계 시계열의 다른 표현이다. 결측 차원은 평균에서 빠지므로 결측이 많은 나라의 P̄는 그만큼 덜 대표적이다. 굵은 선 = 미얀마, 가는 선 = 같은 권역 국가(총서 제2권). MEASURED: 각 차원의 실측 투입은 §04 '실측:' 태그와 같다.</p>
 </div>
 
 <div class="section">
@@ -775,11 +704,12 @@ p { margin-bottom: 1em; color: var(--ink); }
   <div class="formula-box">
     <div class="f-label">BSLI v7.0 정본 (4항 감산식)</div>
     <div class="f-eq">BSLI = 0.40·F_ML + 0.60·H − D − H_s</div>
-    <div class="f-vars">F_ML: 소득 30~50분위(ML층) 식량·민생 지수(World Bank PIP) · H: 기본생활 충족도(住, 중위소득 정규화) · D: 박탈지수($3.65/일 2017PPP 빈곤율, 감산) · H_s: 주거스트레스(Palma 비율^1.5, 감산)<br>범위 [−2.0, +1.0], 0 = 기본생활선, 음수는 기본생활선 아래 깊이(음수가 비정상이라는 뜻이 아님)</div>
+    <div class="f-vars">F_ML: 소득 30~50분위(ML층) 식량·민생 지수(World Bank PIP) · H: 기본생활 충족도 · D: 박탈지수(감산) · H_s: 주거스트레스(Palma^1.5, 감산)<br>범위 [−2.0, +1.0], 0 = 기본생활선. 총서 값: <strong>-0.2231</strong> (E등급 · 139개국 중 79위)</div>
   </div>
-  <div class="table-scroll"><table class="dim-table"><thead><tr><th>연도</th><th>F_ML (×0.40)</th><th>H (×0.60)</th><th>D (−)</th><th>H_s (−)</th><th>BSLI</th><th>실측연도·신뢰도</th></tr></thead><tbody><tr><td>2016</td><td class="dim-score">0.0500</td><td class="dim-score">0.0454</td><td class="dim-score">0.2325</td><td class="dim-score">0.0488</td><td class="dim-score"><strong>−0.2340</strong></td><td style="font-size:12px">2017 · fallback_1yr</td></tr><tr><td>2017</td><td class="dim-score">0.0500</td><td class="dim-score">0.0454</td><td class="dim-score">0.2325</td><td class="dim-score">0.0488</td><td class="dim-score"><strong>−0.2340</strong></td><td style="font-size:12px">2017 · national</td></tr><tr><td>2018</td><td class="dim-score">0.0500</td><td class="dim-score">0.0454</td><td class="dim-score">0.2325</td><td class="dim-score">0.0488</td><td class="dim-score"><strong>−0.2340</strong></td><td style="font-size:12px">2017 · fallback_1yr</td></tr><tr><td>2019</td><td class="dim-score">0.0500</td><td class="dim-score">0.0454</td><td class="dim-score">0.2325</td><td class="dim-score">0.0488</td><td class="dim-score"><strong>−0.2340</strong></td><td style="font-size:12px">2017 · fallback_2yr</td></tr></tbody></table></div>
-  <p>미얀마의 BSLI는 139개국 정본에서 −0.2231(79위, E등급, 실측 2017, 10년 이내 대체 기준)이고, 시계열판에서는 2017년 단일 실측을 2016~2019년에 이어 붙인 −0.2340이다. 시계열판 성분은 F_ML 0.0500, H 0.0454, D 0.2325, H_s 0.0488로, 박탈지수 D(빈곤율)가 감산항의 대부분을 차지한다. 2020년 이후 시계열판 값은 없다.</p>
-<p>따라서 BSLI는 쿠데타·내전·지진 이후의 서민 기층을 반영하지 못한다. World Bank 추정 빈곤율이 2017년 24.8%에서 2024년 31.0%로 올랐다는 점을 보면, 현재 서민 기층은 정본값보다 더 깊이 기본생활선 아래에 있을 가능성이 높다. 이는 정본 데이터의 공백에 대한 관측이며 정본값을 바꾸지 않는다.</p>
+  <p class="note">아래 연도표는 보조 자료(bsli_timeseries_v12, 일관기준 재산출물)다. 총서 BSLI(139국 단면)와 특정 연도 값이 다른 것은 정상이며, 보고서의 BSLI 기준값은 총서 값이다.</p>
+  <div class="table-scroll"><table class="dim-table"><thead><tr><th>연도</th><th>F_ML (×0.40)</th><th>H (×0.60)</th><th>D (−)</th><th>H_s (−)</th><th>BSLI</th><th>실측연도·신뢰도</th></tr></thead><tbody><tr><td>2016</td><td class="dim-score">0.0500</td><td class="dim-score">0.0454</td><td class="dim-score">0.2325</td><td class="dim-score">0.0488</td><td class="dim-score"><strong>-0.2340</strong></td><td style="font-size:12px">2017 · fallback_1yr</td></tr><tr><td>2017</td><td class="dim-score">0.0500</td><td class="dim-score">0.0454</td><td class="dim-score">0.2325</td><td class="dim-score">0.0488</td><td class="dim-score"><strong>-0.2340</strong></td><td style="font-size:12px">2017 · national</td></tr><tr><td>2018</td><td class="dim-score">0.0500</td><td class="dim-score">0.0454</td><td class="dim-score">0.2325</td><td class="dim-score">0.0488</td><td class="dim-score"><strong>-0.2340</strong></td><td style="font-size:12px">2017 · fallback_1yr</td></tr><tr><td>2019</td><td class="dim-score">0.0500</td><td class="dim-score">0.0454</td><td class="dim-score">0.2325</td><td class="dim-score">0.0488</td><td class="dim-score"><strong>-0.2340</strong></td><td style="font-size:12px">2017 · fallback_2yr</td></tr><tr><td>2020</td><td colspan="6" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2021</td><td colspan="6" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2022</td><td colspan="6" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2023</td><td colspan="6" style="color:var(--muted)">데이터 부재</td></tr><tr><td>2024</td><td colspan="6" style="color:var(--muted)">데이터 부재</td></tr></tbody></table></div>
+  <p>총서 BSLI -0.2231(E등급 · 139개국 중 79위)는 기본생활선 아래다. 보조 연도표는 2017년 단일 실측(-0.2340)을 2016~2019년에 이어 붙인 것이며, 2020년 이후 값은 없다. 총서 BSLI와 보조 연도표 값의 차이는 산출 기준이 다른 데서 오는 정상 범위다.</p>
+<p>따라서 BSLI는 쿠데타·내전·지진 이후의 서민 기층을 반영하지 못한다. World Bank 추정 빈곤율이 2017년 24.8%에서 2024년 31.0%로 올랐다는 기록은 실측 공백의 방향을 보여 줄 뿐이며, 총서 값을 바꾸지 않는다(엔진 동결).</p>
 </div>
 
 <div class="section">
@@ -788,21 +718,22 @@ p { margin-bottom: 1em; color: var(--ink); }
   <div class="formula-box">
     <div class="f-label">UI 마스터방정식 · T_trigger</div>
     <div class="f-eq">F(t) &gt; SE(t) → 봉기 발화 &nbsp;|&nbsp; T_trigger = δ_(L−1) · Γ · (1 − E_A2) · H(F − SE)</div>
-    <div class="f-vars">F(t) = m·a(t), m = A2(t)·A8(t)(정책충격 질량), a(t) = d²BSLI/dt²(중심차분)<br>SE(t) = E_A2(t) + E_A8(t), E_A2 = A2·[1 − κ_L0·(1 − A8_check)] (κ_L0: 문화·역사 계수, A8_check: 견제균형 작동 강도)<br>δ_(L−1): 군중 전염 강도 · Γ: 문화-제도 임피던스 반사율 · H: Heaviside 계단함수(F &gt; SE일 때만 1)</div>
+    <div class="f-vars">F(t) = m·a(t), m = A2·A8(정책충격 질량), a(t) = d²BSLI/dt²(중심차분)<br>SE(t) = E_A2(t) + E_A8(t), E_A2 = A2·[1 − κ_L0·(1 − A8_check)]<br>δ_(L−1): 군중 전염 강도 · Γ: 문화-제도 임피던스 반사율 · H: Heaviside 계단함수</div>
   </div>
-  <div class="table-scroll"><table class="dim-table"><thead><tr><th>연도</th><th>m = A2·A8</th><th>a = Δ²BSLI</th><th>F = m·a</th></tr></thead><tbody><tr><td>2016</td><td class="dim-score">0.0651</td><td class="dim-score">—</td><td class="dim-score">—</td></tr><tr><td>2017</td><td class="dim-score">0.0723</td><td class="dim-score">0.0000</td><td class="dim-score">0.00000</td></tr><tr><td>2018</td><td class="dim-score">0.0607</td><td class="dim-score">0.0000</td><td class="dim-score">0.00000</td></tr><tr><td>2019</td><td class="dim-score">0.0695</td><td class="dim-score">—</td><td class="dim-score">—</td></tr><tr><td>2020</td><td class="dim-score">0.0728</td><td class="dim-score">—</td><td class="dim-score">—</td></tr><tr><td>2021</td><td class="dim-score">0.0423</td><td class="dim-score">—</td><td class="dim-score">—</td></tr><tr><td>2022</td><td class="dim-score">0.0227</td><td class="dim-score">—</td><td class="dim-score">—</td></tr><tr><td>2023</td><td class="dim-score">0.0140</td><td class="dim-score">—</td><td class="dim-score">—</td></tr><tr><td>2024</td><td class="dim-score">0.0116</td><td class="dim-score">—</td><td class="dim-score">—</td></tr></tbody></table></div>
-  <p>정책충격 질량 m = A2·A8은 2020년 0.0728에서 2021년 0.0423, 2024년 0.0116로 6분의 1 수준으로 줄었다. 동남아시아에서 가장 낮다. 가속도 a(t) = d²BSLI/dt²는 2017·2018년에 0으로 나오지만, 이는 2017년 단일 실측을 이어 붙인 계단에서 생긴 인공값이라 해석하지 않는다. 2020년 이후에는 BSLI가 없어 a(t)·F(t)를 계산할 수 없다.</p>
-<p>SE(t)·κ_L0·A8_check 정본값은 UI 89개국 표본 밖이라 없다. E_A2 = A2·[1−κ_L0(1−A8_check)]는 괄호항이 1 이하이므로 E_A2 ≤ A2 = 0.1313다. 이 상한은 공리 A9(취성 한계치)가 말하는 E_A2 < 0.2보다 낮다. 즉 제도 탄성의 상한 자체가 취성 파괴 영역 안에 있다. 이것은 상한에서 나온 결론이며 E_A2의 실제 값은 이보다 낮거나 같다.</p>
+  <div class="table-scroll"><table class="dim-table"><thead><tr><th>연도</th><th>m = A2·A8 (총서 단면)</th><th>a = Δ²BSLI</th><th>F = m·a</th><th>t+1 실측 신뢰도</th></tr></thead><tbody><tr><td>2017</td><td class="dim-score">0.0166</td><td class="dim-score">+0.0000</td><td class="dim-score">+0.00000</td><td style="font-size:12px">fallback_1yr</td></tr><tr><td>2018</td><td class="dim-score">0.0166</td><td class="dim-score">+0.0000</td><td class="dim-score">+0.00000</td><td style="font-size:12px">fallback_2yr</td></tr><tr><td>2019</td><td class="dim-score">0.0166</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2020</td><td class="dim-score">0.0166</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2021</td><td class="dim-score">0.0166</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2022</td><td class="dim-score">0.0166</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2023</td><td class="dim-score">0.0166</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr></tbody></table></div>
+  <p class="note">m은 총서 단면값(A2·A8)을 상수로 썼고, a(t)는 보조 BSLI 시계열의 2차 중심차분이다. 이월(fallback) 구간의 a=0은 데이터 동결의 산물이다. 정본 SE·T_trigger 값은 이 나라에 대해 산출되어 있지 않다.</p>
+  <p>m = A2·A8 = 0.1313 × 0.1262은 정책충격 질량으로 매우 작다. 보조 BSLI가 2017년 단일 실측의 이어 붙임이라 2017~2018년 a(t)=0은 계단에서 생긴 인공값이며 해석하지 않는다. 2020년 이후에는 BSLI가 없어 a(t)·F(t)를 계산할 수 없다. 정본 SE·T_trigger는 산출되지 않았다.</p>
+<p>E_A2 = A2·[1−κ_L0(1−A8_check)]는 괄호항이 1 이하이므로 E_A2 ≤ A2 = 0.1313다. 이 상한은 공리 A9(취성 한계치)가 말하는 0.2보다 낮다. 상한에서 나온 관측이며 E_A2의 실제 값은 이보다 낮거나 같다. 압박은 도시 대중 시위보다 무장 분쟁과 군 주도 제도 재편으로 나타나고 있다(해석).</p>
   <div class="table-scroll"><table class="trigger-table">
     <thead><tr><th>트리거 시나리오</th><th>메커니즘</th><th>관측 수준</th><th>관측 지점</th></tr></thead>
     <tbody>
-<tr><td><strong>군의 선출 제도 공격</strong></td><td>A8(집행)이 A2(선출 정부)를 공격 → 공리 A3 내부 충돌</td><td class="level-high">실제 작동(2021.2 쿠데타)</td><td>A2·A8 2021 동시 낙하</td></tr>
-<tr><td><strong>무장 저항·내전</strong></td><td>대중 저항 진압 → 무장 투쟁 전환 → 영토 분절</td><td class="level-high">지속(2021~)</td><td>ACLED 정치폭력 연 1만 건 이상(2022–2024)</td></tr>
+<tr><td><strong>군의 선출 제도 공격</strong></td><td>A8(집행)이 A2(선출 정부)를 공격 → 공리 A3 내부 충돌</td><td class="level-high">실제 작동(2021.2 쿠데타)</td><td>총서 궤적 A2·A8 2021 동시 낙하</td></tr>
+<tr><td><strong>무장 저항·내전</strong></td><td>대중 저항 진압 → 무장 투쟁 전환 → 영토 분절</td><td class="level-high">지속(2021~)</td><td>ACLED 정치폭력 2022~2024 연 1만 건 이상</td></tr>
 <tr><td><strong>재난 충격</strong></td><td>지진 → 생산·주거 파괴 → 빈곤 확대</td><td class="level-high">2025.3 실제 발생</td><td>World Bank 피해 추정 GDP 14%</td></tr>
-<tr><td><strong>형식적 민정 이양</strong></td><td>군 주도 총선·대통령 선출 → 정당성 시험</td><td class="level-med">2025.12~2026.4 진행</td><td>USDP 다수, 주요 야당 불참</td></tr>
+<tr><td><strong>형식적 민정 이양</strong></td><td>군 주도 총선·대통령 선출 → 정당성 시험</td><td class="level-med">2025.12~2026.4 진행</td><td>USDP 다수, 주요 야당 불참, 1단계 102개 타운십</td></tr>
     </tbody>
   </table></div>
-  <p class="note">위 표의 "관측 수준"은 확률이 아니다. 정본 SE·T_trigger 값이 없는 상태에서 확률을 매기면 근거 없는 수치가 되므로, 최근 사건 기록에서 해당 경로가 실제로 작동한 정도만 적었다.</p>
+  <p class="note">"관측 수준"은 확률이 아니다. 최근 사건 기록에서 해당 경로가 실제로 작동한 정도만 적었다.</p>
 </div>
 
 <div class="section">
@@ -811,10 +742,10 @@ p { margin-bottom: 1em; color: var(--ink); }
   <div class="formula-box">
     <div class="f-label">경로 분류 기준 (UI 정본, 항성진화 은유)</div>
     <div class="f-eq">WD: E_A2 &lt; 0.3, C_internal &lt; 0.4 · SN: E_A2 0.3~0.5, C_internal &gt; 0.5 · BH: E_A2 &lt; 0.2, C_internal &gt; 0.7</div>
-    <div class="f-vars">백색왜성(WD) = 억압·잠복 · 초신성(SN) = 붕괴 후 재생 · 블랙홀(BH) = 내파·복원 불가<br>SN과 BH를 가르는 결정 변수는 C_internal(엘리트 내부 충돌 에너지). 천체물리학적 대응을 주장하는 것이 아니라 은유다.</div>
+    <div class="f-vars">백색왜성(WD) = 억압·잠복 · 초신성(SN) = 붕괴 후 재생 · 블랙홀(BH) = 내파·복원 불가<br>SN과 BH를 가르는 결정 변수는 C_internal(엘리트 내부 충돌 에너지). 은유이며 천체물리학적 대응을 주장하지 않는다.</div>
   </div>
-  <p>UI 정본의 경로 분류는 E_A2와 C_internal(엘리트 내부 충돌 에너지)로 정한다. 미얀마는 E_A2 상한이 0.1313로 WD(E_A2 < 0.3)와 BH(E_A2 < 0.2)의 E_A2 조건을 모두 충족한다. 두 경로를 가르는 것은 C_internal이다. WD는 C_internal < 0.4, BH는 C_internal > 0.7이다. 공리 A3은 C_internal = max(0, A8_exec − A2_trust)·δ_conflict로 정의하는데, A8_exec·δ_conflict 정본값이 없어 C_internal을 계산할 수 없다. 그래서 경로를 확정하지 않는다.</p>
-<p>사건 기록이 가리키는 방향은 적어 둔다. 2021년 쿠데타는 집행 권력이 선출 제도를 직접 공격한 사건으로, 공리 A3의 정의와 형태가 같다. 그 뒤 국가 권력은 단일한 억압 체제(WD의 잠복)로 수렴하지 않고 무장 세력 간 영토 분절로 이어졌다. 2026년의 군 주도 민정 이양은 분절된 상태 위에 형식적 제도를 다시 세우는 시도다. 이 흐름이 BH(내파·복원 불가)인지, 분절 속 장기 교착인지는 C_internal과 영토 통제에 대한 측정 없이 이 엔진으로 말할 수 없다. 판단은 그 사회 구성원의 몫이며, 이 보고서는 현재 진행 방향까지만 적는다.</p>
+  <p>UI 정본의 경로 분류는 E_A2와 C_internal(엘리트 내부 충돌 에너지)로 정한다. 미얀마는 E_A2 상한이 0.1313로 WD(E_A2 &lt; 0.3)와 BH(E_A2 &lt; 0.2)의 E_A2 조건을 모두 충족한다. 두 경로를 가르는 C_internal은 정본값이 없어 계산할 수 없으므로 경로를 확정하지 않는다.</p>
+<p>사건 기록이 가리키는 방향만 적어 둔다. 2021년 쿠데타는 집행 권력이 선출 제도를 직접 공격한 사건으로 공리 A3의 정의와 형태가 같다. 그 뒤 국가 권력은 단일한 억압 체제로 수렴하지 않고 무장 세력 간 영토 분절로 이어졌고, 2026년의 군 주도 민정 이양은 분절된 상태 위에 형식적 제도를 다시 세우는 시도다. 4층의 관점에서 이 국면은 붕괴가 아니라 사회 구조가 다른 상태로 옮겨 가는 전환의 한가운데로 읽힌다. 판정이 아니라 관측의 나열이다.</p>
   <div class="scenario-grid">
   <div class="scenario wd"><div class="scenario-icon">◐</div><div class="scenario-name wd">WD — 억압·잠복</div><div class="scenario-prob">E_A2 &lt; 0.3, C_internal &lt; 0.4</div><div class="scenario-desc">E_A2 조건 충족. 군 주도 민정 이양이 저항을 흡수하고 휴전이 확대되면 억압 속 잠복 상태로 갈 수 있다. 현재는 무장 교전이 이어져 C_internal이 낮다고 보기 어렵다.</div></div>
 <div class="scenario sn"><div class="scenario-icon">✦</div><div class="scenario-name sn">SN — 붕괴 후 재생</div><div class="scenario-prob">E_A2 0.3~0.5, C_internal &gt; 0.5</div><div class="scenario-desc">E_A2 상한이 0.3 아래라 정본 조건과 맞지 않는다. 과거 2011~2020년 준민간 이행기가 부분적 재생에 가까웠다는 점만 기록한다.</div></div>
@@ -825,37 +756,51 @@ p { margin-bottom: 1em; color: var(--ink); }
 <div class="synthesis">
   <div class="synthesis-title">SYNTHESIS-η — 미얀마 4단계 요약</div>
   <div class="synthesis-stages">
-  <div class="stage"><div class="stage-num">STAGE 01 / STATE</div><div class="stage-title">흡수체 쌍성의 동반 하락</div><div class="stage-desc">η 0.4333, 동남아시아 최하위·전체 178위. A2·A8 비교군 하위 1%대.</div></div>
-<div class="stage"><div class="stage-num">STAGE 02 / PRESSURE</div><div class="stage-title">밴드 안 5개 차원</div><div class="stage-desc">A2·A5·A6·A7·A8. 봉기 선행연구의 A7·A8 조합 포함.</div></div>
-<div class="stage"><div class="stage-num">STAGE 03 / BASE</div><div class="stage-title">서민 기층은 2017년에 멈춘 값</div><div class="stage-desc">BSLI −0.2231(실측 2017). 이후 빈곤율 상승은 미반영.</div></div>
-<div class="stage"><div class="stage-num">STAGE 04 / PATH</div><div class="stage-title">경로 확정 유보</div><div class="stage-desc">E_A2 상한 < 0.2(취성 영역), 공리 A3 장면 관측. C_internal 부재로 WD·BH 판정 불가.</div></div>
+  <div class="stage"><div class="stage-num">STAGE 01 / 위치</div><div class="stage-title">동남아시아 최하위·178위</div><div class="stage-desc">총서 η 0.4322(197개국 중 178위), BSLI -0.2231, 밴드 다섯 개(A7·A8 동시).</div></div>
+<div class="stage"><div class="stage-num">STAGE 02 / 압박</div><div class="stage-title">흡수체 쌍성의 동반 낙하</div><div class="stage-desc">A2 2021~2024 연속 낙하, A8 2021·2022 낙하. 단면 최대 압박 A8 · P=0.643.</div></div>
+<div class="stage"><div class="stage-num">STAGE 03 / 틈</div><div class="stage-title">분모가 다른 투표율</div><div class="stage-desc">군정 52%는 330개 타운십 중 102곳의 수치. 빈곤율 공식 24.8%(2017) vs World Bank 31.0%(2024).</div></div>
+<div class="stage"><div class="stage-num">STAGE 04 / 경로</div><div class="stage-title">경로 확정 유보</div><div class="stage-desc">E_A2 상한 0.1313(취성 영역), 공리 A3 장면 관측. C_internal 부재로 WD·BH 판정 불가.</div></div>
   </div>
+</div>
+
+<div class="section">
+  <div class="section-title">§ 09-B</div>
+  <h2 class="section-heading">담론육층사유법 — 이 보고서가 머무는 층위</h2>
+  <p>이 보고서의 해석은 청해(淸海)의 담론육층사유법(합본논문 Ch.7) 1~5층 안에서만 이루어진다. 6층은 청해 전용이다.</p>
+  <div class="table-scroll"><table class="dim-table">
+    <thead><tr><th>층</th><th>물음</th><th>이 보고서에서</th></tr></thead>
+    <tbody>
+      <tr><td class="dim-code">1층</td><td>데이터 — 나는 무엇을 보았는가</td><td>총서 값(η·BSLI·압박·궤적)과 공표 수치·ACLED를 판단 없이 기록한다 (§00·§01·§04~§08)</td></tr>
+      <tr><td class="dim-code">2층</td><td>이해관계 — 누가 진화를 막는가</td><td>행위자와 제도 사이의 관계(A8 거버넌스와 A2 제도신뢰)를 사건 기록으로 본다 (§02·§03·§03-B)</td></tr>
+      <tr><td class="dim-code">3층</td><td>역사 패턴 — 이미 일어난 일이 다시 일어난다</td><td>연표와 궤적의 자기유사·공명을 본다 (§02·§06)</td></tr>
+      <tr><td class="dim-code">4층</td><td>관점 전환 — 붕괴가 아니라 진화다</td><td>WD/SN/BH는 항성진화 은유이며, 봉기·붕괴를 사회 진화의 전환점으로 읽는다 (§09)</td></tr>
+      <tr><td class="dim-code">5층</td><td>지식 프레임 — 인류의 유산으로 해석한다</td><td>차원별 선행연구를 합본 조각으로 접목한다 (§04)</td></tr>
+      <tr><td class="dim-code">6층</td><td>—</td><td><strong>청해(淸海) 전용.</strong> 이 보고서는 다루지 않는다.</td></tr>
+    </tbody>
+  </table></div>
 </div>
 
 <div class="section">
   <div class="section-title">§ 10</div>
   <h2 class="section-heading">데이터 출처 및 재현성 선언</h2>
-  <p style="font-family:'Courier New',monospace;font-size:12.5px;color:var(--muted);line-height:1.9;">[정본·직접수집] Λ¹² 정본 v2.2 — vault data/output/lambda12_v2_2_scores.json (2026-10-13, η·A1~A12·inputs.obs_year)<br>[정본·직접수집] 시계열판 v2.1 — lambda12_timeseries.json · orbit_all/orbit_v34_MMR_2016_2024.json · acled_link/MMR.json<br>[정본·직접수집] BSLI 139국 bsli_v6/bsli_139_final.csv · bsli_timeseries_v12_20260726.json (BSLI v7.0 4항식)<br>[정본] 압박 좌표계 생성기 vault cld_batch_ts.py v1.1 (무수정 호출, vault 정본 SVG와 바이트 일치) · 결합계수 engine-history pressure_coordinate_system<br>[학술 데이터] ACLED 국가-연도 집계본 (2010년부터 수록) · V-Dem Regimes of the World (regime_layer)<br>[국제기구] World Bank, Myanmar Economic Monitor June 2025: Economic Aftershocks (2025-06-12 보도자료) — https://www.worldbank.org/en/news/press-release/2025/06/12/earthquake-compounds-myanmar-s-economic-challenges (조회 2026-10-13)<br>[국제기구] World Bank, Myanmar Economic Monitor June 2026 — https://www.worldbank.org/en/where-we-work/myanmar (조회 2026-10-13)<br>[언론·카타르 국영계] Al Jazeera, Myanmar's coup leader elected president by pro-military parliament (2026-04-03) — https://www.aljazeera.com/news/2026/4/3/myanmars-coup-leader-elected-president-by-pro-military-parliament (조회 2026-10-13)<br>[공영언론] ABC News(Australia), Min Aung Hlaing elected president (2026-04-03) — https://www.abc.net.au/news/2026-04-03/min-aung-hlaing-elected-new-myanmar-president/106530476 (조회 2026-10-13)<br>[통신사] AP, Military-backed party leads in early election results in Myanmar (2026-01-03, WTOP 전재) — 총선 일정·초기 결과 (조회 2026-10-13)<br>[망명언론·반군부 성향] The Irrawaddy, 2025~2026 북부 샨주 휴전·관할 반환 보도 — 교차 확인용, 단독 근거로 쓰지 않음<br>[학술] Slater, D. (2010). Ordering Power. Cambridge University Press. · Callahan, M. P. (2003). Making Enemies: War and State Building in Burma. Cornell University Press.<br>[학술] Svolik, M. W. (2012). The Politics of Authoritarian Rule. Cambridge University Press. · Fearon, J. D. &amp; Laitin, D. D. (2003). Ethnicity, Insurgency, and Civil War. American Political Science Review 97(1).</p>
-  <div class="formula-box">
-    <div class="f-label">기계 대조 결과 (정본 재계산)</div>
-    <div class="f-vars" style="font-family:'Courier New',monospace;font-size:12px">✔ η 재계산 0.4333 = mean(12개 차원) vs 정본 0.4333<br>✔ 시계열 P 재계산 vs orbit_all 정본 궤적: 107셀 중 불일치 0<br>✔ 2024 밴드 진입 차원 재계산 [&#x27;A2&#x27;, &#x27;A5&#x27;, &#x27;A6&#x27;, &#x27;A7&#x27;, &#x27;A8&#x27;] vs 정본 [&#x27;A2&#x27;, &#x27;A5&#x27;, &#x27;A6&#x27;, &#x27;A7&#x27;, &#x27;A8&#x27;]<br>✔ BSLI 2016 재계산 -0.2341 vs 정본 -0.234<br>✔ BSLI 2017 재계산 -0.2341 vs 정본 -0.234<br>✔ BSLI 2018 재계산 -0.2341 vs 정본 -0.234<br>✔ BSLI 2019 재계산 -0.2341 vs 정본 -0.234<br>✔ 압박좌표계 pressure SVG 재생성 = vault 정본 SVG (바이트 일치)<br>✔ 압박좌표계 xy SVG 재생성 = vault 정본 SVG (바이트 일치)</div>
-  </div>
-  <p><strong>이론 접목(합본 원칙).</strong> A2·A8(흡수체)의 동반 하락에는 Svolik(2012)의 군부 후견 체제 논의를 접목했다. 군이 체제의 최종 보증자일 때 선출 제도와 군 사이의 권력 분담이 깨지면 쿠데타가 일어난다는 설명으로, 2008년 헌법의 군 지분과 2021년 쿠데타를 함께 설명한다. 적용 조건은 군이 단일 행위자로 결속해 있을 때이며, 이는 공리 A3의 A8_exec가 군 집행력에 귀속된 상태(공리 A4)와 연결된다. 국가 형성의 장기 구조에는 Callahan(2003)과 Slater(2010)를 참고했다. 두 연구는 독립 직후부터 이어진 내전이 군을 국가 기구의 중심으로 만들었다고 본다. 내전의 지속 조건에는 Fearon·Laitin(2003)의 국가 역량·지형 논의를 접목했으며, 이것은 A1(기반시설)·A8의 낮은 국가 역량과 연결된다. Fearon·Laitin은 국가-연도 패널의 평균 효과를 다루므로, 한 나라의 연 단위 ΔP와 시간 척도·분석 단위가 다르다는 점을 밝혀 둔다.</p>
-<p><strong>한계.</strong> A1 인터넷(2020)·A3 지니(2017)·A5(2023)·A6 재생에너지(2021)·A10(2019)·A11(2022)은 이월 실측이다. BSLI는 2017년 실측 하나뿐이다. SE(t)·C_internal이 없어 UI 판정과 경로 확정을 하지 않았다. 분쟁 지역의 영토 통제와 2026년 이후 전선 상황은 출처 간 서술이 엇갈려 특정 수치를 채택하지 않았다. 총선 의석 수는 보도마다 집계 시점이 달라 '다수 의석'으로만 적었다. 역사 연표는 일반 사실을 정리한 것이며 연도·사건명 외 세부 수치는 정본 데이터와 국제기구 출처에서만 가져왔다.</p>
+  <p style="font-family:'Courier New',monospace;font-size:12.5px;color:var(--muted);line-height:1.9;">[정본] 국가분석 총서 제2권 동아시아·동남아시아·오세아니아(2026-10-07) MMR 절 — 기초 지표·인과루프도 [그림 2-7-1]·압박 순위표·궤적 [그림 2-7-2]·ΔP 표·현황 브리핑(출처: Adnkronos/신화 2025-04-07, Radio Free Asia 2025-04-22, Borderlens 2026-01-05, The Wire 2026-01-11, UCA News/AFP 2026-03-30, The Register-Herald/AP 2026-04-03, Khaosod English/AFP·OHCHR 2026-06-24). /nations/book/Lambda12_CountryBook_Vol2_AsiaPacific_20261007.html<br>[정본 엔진 값] Λ¹² v2.0 lambda12_v2_scores.json · [보조] bsli_timeseries_v12_20260726.json · acled_link/MMR.json(ACLED 집계본)<br>[공표 수치] 군정 대변인 조민툰 1단계 투표율 발표(2025-12-30) — EWN(AFP 전재) https://www.ewn.co.za/2025/12/31/myanmar-junta-says-first-phase-voter-turnout-topped-50 (조회 2026-10-14)<br>[시민사회·반군부 성향] Progressive Voice Myanmar, Myanmar 2025 General Election: Phase 1 Election Overview (2026-01-14) — https://progressivevoicemyanmar.org/2026/01/14/myanmar-2025-general-election-phase-1-election-overview (조회 2026-10-14)<br>[통신사] AP, Military-backed party leads in early election results in Myanmar (2026-01-03) — https://ktla.com/news/nationworld/ap-international/ap-military-backed-party-leads-in-early-election-results-in-myanmar/amp/ (조회 2026-10-14)<br>[국제기구] World Bank, Myanmar Economic Monitor June 2025: Economic Aftershocks (2025-06-12 보도자료) — https://www.worldbank.org/en/news/press-release/2025/06/12/earthquake-compounds-myanmar-s-economic-challenges (조회 2026-10-13)<br>[국제기구] World Bank, Myanmar Economic Monitor June 2026 — https://www.worldbank.org/en/where-we-work/myanmar (조회 2026-10-13)<br>[언론·카타르 국영계] Al Jazeera, Myanmar's coup leader elected president by pro-military parliament (2026-04-03) — https://www.aljazeera.com/news/2026/4/3/myanmars-coup-leader-elected-president-by-pro-military-parliament (조회 2026-10-13)<br>[공영언론] ABC News(Australia), Min Aung Hlaing elected president (2026-04-03) — https://www.abc.net.au/news/2026-04-03/min-aung-hlaing-elected-new-myanmar-president/106530476 (조회 2026-10-13)<br>[학술] Svolik, M. W. (2012). The Politics of Authoritarian Rule. Cambridge University Press. · Callahan, M. P. (2003). Making Enemies: War and State Building in Burma. Cornell University Press. · Slater, D. (2010). Ordering Power. Cambridge University Press. · Fearon, J. D. &amp; Laitin, D. D. (2003). Ethnicity, Insurgency, and Civil War. American Political Science Review 97(1).<br>조회일: 총서 브리핑 출처 2026-10-07 수집, 이 보고서 2026-10-13(정정 2026-10-14). 상세 목록은 run 폴더 data/sources.md.</p>
+  <p><strong>한계.</strong> ① 총서 엔진 값은 동결 원칙에 따라 그대로 썼다. ② A1·A3·A5·A11은 +1년, A10은 +4년 이월 실측이고, BSLI는 2017년 실측 하나뿐이다. ③ SE(t)·C_internal·T_trigger가 없어 UI 판정과 경로 확정을 하지 않았다. ④ 분쟁 지역의 영토 통제와 2026년 이후 전선 상황은 출처 간 서술이 엇갈려 특정 수치를 채택하지 않았다. ⑤ 총선 투표율의 독립 대안 수치는 확인하지 못했고, 지진 사망자의 독립 전수 집계도 확인 불가다. ⑥ 1948~2015 연표는 일반 사실이다.</p>
+<p><strong>정정.</strong> 이 판은 2026-10-14에 국가분석 총서(2026-10-07) 값으로 다시 썼다(정정) — 이전 판의 비정본 엔진 값을 총서 η·순위·압박·궤적·BSLI로 바꾸고 총서 인과루프도·궤적을 넣었다. 작성일은 원 게시일 그대로 둔다.</p>
+<p>측정값과 기록만 적었다. 판정과 예측은 하지 않는다. 다음 판단은 그 나라의 지도자와 국민의 몫이다.</p>
 </div>
 
 </div><!-- /main -->
 
 <div class="report-footer"><div class="footer-inner">
   <div class="footer-slogan">"인류의 경험과 수 많은 훌륭한 데이터들이 모여 은하수와 같은 현명한 빛으로 거듭 나 길 염원하는 마음으로!"</div>
-  <div class="footer-meta">늘푸른바다 사회동역학연구소 · 저자 청해(淸海)<br>Λ¹² (SSRN 6632858) · BSLI v7.0 · UI · 압박 좌표계<br>미얀마 단독편 · 2026-10-13 · 일일 권역순환 분석</div>
+  <div class="footer-meta">늘푸른바다 사회동역학연구소 · 저자 청해(淸海)<br>Λ¹² (SSRN 6632858) · 국가분석 총서(2026-10-07) · BSLI v7.0 · UI · 압박 좌표계<br>미얀마 단독편 · 2026-10-13 · 일일 권역순환 분석</div>
 </div></div>
 
 <script>
 (function() {
   var el = document.getElementById('radarChart');
   if (!el || typeof Chart === 'undefined') return;
-  var D = {"labels": ["A1 사회기반시설", "A2 제도신뢰", "A3 시민자유", "A4 경제안정", "A5 교육접근", "A6 보건수준", "A7 사회구조", "A8 거버넌스", "A9 환경압박", "A10 불평등", "A11 외부충격", "A12 이동성"], "me": [0.5851, 0.1313, 0.8045, 0.3288, 0.0027, 0.8229, 0.6569, 0.1262, 0.5009, 0.02, 0.3346, 0.8853], "kor": [0.9887, 0.6703, 0.7422, 0.4623, 0.7788, 0.4496, 0.4598, 0.7543, 0.7268, 0.0803, 0.2525, 0.8847], "reg": [0.8462, 0.4118, 0.6902, 0.279, 0.0887, 0.6333, 0.6574, 0.4824, 0.7789, 0.0616, 0.3073, 0.8885]};
+  var D = {"labels": ["A1 사회기반시설", "A2 제도신뢰", "A3 시민자유", "A4 경제안정", "A5 교육접근", "A6 보건수준", "A7 사회구조", "A8 거버넌스", "A9 환경압박", "A10 불평등", "A11 외부충격", "A12 이동성"], "me": [0.5851, 0.1313, 0.8045, 0.3288, 0.0027, 0.8229, 0.6569, 0.1262, 0.5009, 0.0077, 0.3346, 0.8853], "kor": [0.9887, 0.6703, 0.7422, 0.4623, 0.7788, 0.4496, 0.4598, 0.7543, 0.7268, 0.0215, 0.2525, 0.8847], "reg": [0.8462, 0.4118, 0.6902, 0.279, 0.0887, 0.6333, 0.6574, 0.4824, 0.7789, 0.047, 0.3073, 0.8885]};
   new Chart(el, {
     type: 'radar',
     data: {
