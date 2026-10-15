@@ -85,6 +85,11 @@
   "hanja": 7
  },
  {
+  "file": "/engines/bsli/southeast-asia/필리핀_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 78,
+  "hanja": 15
+ },
+ {
   "file": "/nations/northeast-asia/v9.12_northeast-asia_20260502_EN.html",
   "ko": 89,
   "hanja": 2
@@ -108,6 +113,11 @@
   "file": "/nations/northeast-asia/v9.12_china_20260502_EN.html",
   "ko": 70,
   "hanja": 14
+ },
+ {
+  "file": "/nations/africa/기니비사우_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 75,
+  "hanja": 8
  },
  {
   "file": "/nations/europe/v1.0_south-europe-1_20260429_EN.html",
@@ -190,9 +200,9 @@
   "hanja": 6
  },
  {
-  "file": "/engines/bsli/southeast-asia/베트남_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 15,
-  "hanja": 21
+  "file": "/engines/bsli/southeast-asia/인도네시아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
+  "hanja": 18
  },
  {
   "file": "/engines/bsli/middle-east/팔레스타인_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -225,6 +235,11 @@
   "hanja": 23
  },
  {
+  "file": "/engines/bsli/south-asia/방글라데시_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
+  "hanja": 17
+ },
+ {
   "file": "/engines/bsli/middle-east/아르메니아_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 12,
   "hanja": 22
@@ -250,17 +265,17 @@
   "hanja": 23
  },
  {
-  "file": "/engines/bsli/south-asia/방글라데시_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 17,
+  "file": "/engines/bsli/south-asia/파키스탄_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/south-asia/스리랑카_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
   "hanja": 15
  },
  {
   "file": "/engines/bsli/southeast-asia/말레이시아_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 17,
-  "hanja": 15
- },
- {
-  "file": "/engines/bsli/southeast-asia/인도네시아_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 17,
   "hanja": 14
  },
@@ -300,14 +315,9 @@
   "hanja": 19
  },
  {
-  "file": "/engines/bsli/south-asia/파키스탄_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 16,
-  "hanja": 14
- },
- {
-  "file": "/engines/bsli/south-asia/스리랑카_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 16,
-  "hanja": 14
+  "file": "/engines/bsli/southeast-asia/베트남_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 15,
+  "hanja": 15
  },
  {
   "file": "/engines/bsli/southeast-asia/미얀마_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -335,14 +345,14 @@
   "hanja": 4
  },
  {
-  "file": "/engines/bsli/south-asia/부탄_BSLI_기초생활분석보고서_20261014_EN.html",
+  "file": "/engines/bsli/south-asia/인도_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 14,
   "hanja": 15
  },
  {
-  "file": "/engines/bsli/south-asia/인도_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 15
+  "file": "/engines/bsli/southeast-asia/라오스_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 15,
+  "hanja": 14
  },
  {
   "file": "/engines/bsli/southeast-asia/태국_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -351,6 +361,11 @@
  },
  {
   "file": "/engines/bsli/oceania/피지_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 14,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/oceania/호주_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 14,
   "hanja": 15
  },
@@ -400,14 +415,14 @@
   "hanja": 14
  },
  {
+  "file": "/engines/bsli/south-asia/부탄_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 14,
+  "hanja": 14
+ },
+ {
   "file": "/engines/bsli/middle-east/이스라엘_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 11,
   "hanja": 17
- },
- {
-  "file": "/engines/bsli/oceania/호주_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 14
  },
  {
   "file": "/engines/bsli/europe/북마케도니아_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -493,6 +508,11 @@
   "file": "/engines/bsli/middle-east/튀르키예_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 11,
   "hanja": 16
+ },
+ {
+  "file": "/engines/bsli/oceania/통가_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 14,
+  "hanja": 13
  },
  {
   "file": "/engines/bsli/europe/크로아티아_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -753,11 +773,6 @@
   "file": "/engines/bsli/middle-east/이란_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 5,
   "hanja": 19
- },
- {
-  "file": "/engines/bsli/oceania/통가_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 10
  },
  {
   "file": "/engines/bsli/europe/핀란드_BSLI_기초생활분석보고서_20261014_EN.html",
