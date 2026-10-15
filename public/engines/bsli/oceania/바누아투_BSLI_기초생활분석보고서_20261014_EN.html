@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vanuatu BSLI Basic Social Life Index Report 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #F5F3EE;
+  --header: #2A3D35;
+  --green: #5E9186;
+  --gold: #B8850E;
+  --red: #C0392B;
+  --border: #DDD8CE;
+  --ink: #1A1A1A;
+  --muted: #6B6560;
+  --card: #FAFAF7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+/* ── HEADER ── */
+.report-header {
+  background: var(--header);
+  color: #E8E4DC;
+  padding: 48px 0 36px;
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.report-flag {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 12px;
+}
+.report-title {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #F0ECE4;
+}
+.report-subtitle {
+  font-size: 18px;
+  color: #A8C4BE;
+  margin-bottom: 24px;
+}
+.report-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #8BA89F;
+}
+.meta-value {
+  color: #C8D8D4;
+  font-weight: bold;
+}
+/* ── VERDICT STRIP ── */
+.verdict-strip {
+  background: #1C2C26;
+  padding: 16px 0;
+  border-bottom: 3px solid var(--gold);
+}
+.verdict-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.verdict-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #7A9A94;
+}
+.verdict-badge {
+  background: #B8850E22;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  padding: 4px 14px;
+  border-radius: 2px;
+}
+.verdict-eta {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #E8A060;
+  font-weight: bold;
+}
+.verdict-bsli {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #88BBAA;
+  font-weight: bold;
+}
+/* ── MAIN LAYOUT ── */
+.main { max-width: 960px; margin: 0 auto; padding: 48px 40px; }
+/* ── SECTION ── */
+.section { margin-bottom: 56px; }
+.section-title {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.section-heading {
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--header);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+/* ── PROSE ── */
+p { margin-bottom: 1em; color: var(--ink); }
+.lead { font-size: 17px; color: #2A3D35; margin-bottom: 1.2em; }
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 24px; margin: 24px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 20px; }
+.tl-dot {
+  position: absolute;
+  left: -20px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--bg);
+}
+.tl-dot.crisis { background: var(--red); }
+.tl-dot.gold { background: var(--gold); }
+.tl-year {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.tl-content { font-size: 14px; color: var(--muted); }
+.tl-content strong { color: var(--ink); }
+/* ── DIMENSION TABLE ── */
+.dim-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+.dim-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 10px 14px;
+  text-align: left;
+}
+.dim-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.dim-table tr:nth-child(even) td { background: #F0EDE8; }
+.dim-code {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: var(--header);
+}
+.dim-score {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-align: center;
+}
+.score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.score-bar {
+  height: 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+/* ── CARDS GRID ── */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  padding: 20px 22px;
+}
+.card.gold { border-left-color: var(--gold); }
+.card.red { border-left-color: var(--red); }
+.card-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.card-value {
+  font-size: 28px;
+  font-family: 'Courier New', monospace;
+  color: var(--header);
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.card-desc { font-size: 13px; color: var(--muted); }
+/* ── FORMULA BOX ── */
+.formula-box {
+  background: #2A3D3508;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 18px 22px;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--header);
+}
+.formula-box .f-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.formula-box .f-eq { font-size: 16px; margin-bottom: 8px; }
+.formula-box .f-vars { font-size: 12px; color: var(--muted); line-height: 1.8; }
+/* ── SCENARIO BOX ── */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.scenario {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.scenario.wd { border-top: 3px solid #7AA0C8; }
+.scenario.sn { border-top: 3px solid var(--gold); }
+.scenario.bh { border-top: 3px solid var(--red); }
+.scenario-icon { font-size: 24px; margin-bottom: 8px; }
+.scenario-name {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.scenario-name.wd { color: #5580A8; }
+.scenario-name.sn { color: #9A7008; }
+.scenario-name.bh { color: var(--red); }
+.scenario-prob {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.scenario-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+/* ── SYNTHESIS BOX ── */
+.synthesis {
+  background: var(--header);
+  color: #D8E4E0;
+  padding: 36px 40px;
+  margin: 40px 0;
+}
+.synthesis-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 16px;
+}
+.synthesis-stages { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.stage { border-top: 1px solid #3D5850; padding-top: 14px; }
+.stage-num {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.stage-title { font-size: 14px; color: #E8E4DC; margin-bottom: 6px; font-weight: bold; }
+.stage-desc { font-size: 13px; color: #8BA89F; line-height: 1.6; }
+/* ── TRIGGER TABLE ── */
+.trigger-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+.trigger-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 9px 14px;
+  text-align: left;
+}
+.trigger-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.risk-high {
+  color: var(--red);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-med {
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-low {
+  color: var(--green);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* ── CHART CONTAINERS ── */
+.chart-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin: 24px 0;
+}
+.chart-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+/* ── FOOTER ── */
+.report-footer {
+  background: var(--header);
+  padding: 40px 0 32px;
+  margin-top: 60px;
+}
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+.footer-slogan {
+  font-style: italic;
+  color: #C9A24B;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #3D5850;
+}
+.footer-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #6A8880;
+  line-height: 2;
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .header-inner, .verdict-inner, .main, .footer-inner { padding: 0 20px; }
+  .report-title { font-size: 26px; }
+  .cards { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .synthesis-stages { grid-template-columns: 1fr; }
+}
+
+.pcs-wrap { background:#FAFAF7; border:1px solid var(--border); padding:16px; margin:20px 0; }
+.pcs-wrap svg { display:block; max-width:100%; height:auto; margin:0 auto; }
+.note { font-size:12.5px; color:var(--muted); line-height:1.7; }
+.table-scroll { overflow-x:auto; }
+@media (max-width:640px) { .main, .header-inner, .verdict-inner, .footer-inner { padding-left:16px; padding-right:16px; } .dim-table { font-size:12px; } }
+</style>
+</head>
+<body>
+<div class="report-header"><div class="header-inner">
+<div class="report-flag">EVERBLUESEA SOCIAL DYNAMICS LAB · BSLI STANDALONE · 2026-10-14</div>
+<h1 class="report-title">Vanuatu Basic Social Life Index Standalone Edition</h1>
+<div class="report-subtitle">Oceania BSLI 7th (95th among 139 countries) — Grade E below the basic living line, supplementary time series unrecorded, poverty statistics last recorded in 2019 ($3.00/day 19.5%, $8.30/day 81.3%, national poverty line 15.9%), 2023 inflation 11.18%, 2026 cost-of-living protests and minimum wage review</div>
+<div class="report-meta">
+<div class="meta-item">Author <span class="meta-value">Cheonghae (淸海)</span></div>
+<div class="meta-item">Engine <span class="meta-value">BSLI v7.0 (Country Analysis Compendium 2026-10-07 value) · BSLI Time Series v1.2 · Linked with Λ¹² v2.0</span></div>
+<div class="meta-item">Regional Position <span class="meta-value">Oceania BSLI Low (7th among 8 calculated countries in the compendium)</span></div>
+<div class="meta-item">Date of Writing <span class="meta-value">2026-10-14</span></div>
+</div>
+</div></div>
+<div class="verdict-strip"><div class="verdict-inner">
+<span class="verdict-label">Observation Summary</span>
+<span class="verdict-badge">Regional BSLI 7th · Grade E (−0.4177, 95th) · Supplementary time series unrecorded · η 0.4928 (100th)</span>
+<span class="verdict-bsli">BSLI = -0.4177 (Grade E · 95th among 139 countries)</span>
+<span class="verdict-eta">η = 0.4928 (100th among 197 countries)</span>
+</div></div>
+<div class="main">
+<div class="section">
+<div class="section-title">§ 00</div>
+<h2 class="section-heading">Position within the Region — Why Vanuatu</h2>
+<p>This report was selected as the lowest-ranked country based on BSLI in the Country Analysis Compendium among countries without a standalone edition in the second cycle of the Oceania BSLI regional rotation pipeline. In the compendium, Vanuatu's BSLI is <strong>-0.4177</strong>(Grade E · 95th among 139 countries), ranking 7th among the 8 calculated countries in Oceania. The higher-ranked country in the same cycle is the Marshall Islands (-0.0646), directly above is Kiribati (-0.1944), and directly below, 8th-ranked Micronesia (-0.5818), was covered in the first cycle.</p>
+<p>BSLI is a measurement channel independent of Λ¹². Vanuatu's η is separately published in the compendium as 0.4928 (100th among 197 countries).</p>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Oceania Region (Compendium)</th><th>BSLI</th><th>Grade · Rank</th><th>η</th><th>η Rank</th></tr></thead><tbody>
+<tr><td>Australia (AUS)</td><td class="dim-score">+0.6538</td><td>Grade B · 15th among 139 countries</td><td class="dim-score">0.6040</td><td>22nd among 197 countries</td></tr>
+<tr><td>Marshall Islands (MHL)</td><td class="dim-score">-0.0646</td><td>Grade E · 64th among 139 countries</td><td class="dim-score">0.5232</td><td>70th among 197 countries</td></tr>
+<tr><td>Fiji (FJI)</td><td class="dim-score">-0.1200</td><td>Grade E · 68th among 139 countries</td><td class="dim-score">0.5836</td><td>31st among 197 countries</td></tr>
+<tr><td>Tonga (TON)</td><td class="dim-score">-0.1347</td><td>Grade E · 71st among 139 countries</td><td class="dim-score">0.5343</td><td>55th among 197 countries</td></tr>
+<tr><td>Samoa (WSM)</td><td class="dim-score">-0.1833</td><td>Grade E · 75th among 139 countries</td><td class="dim-score">0.5324</td><td>57th among 197 countries</td></tr>
+<tr><td>Kiribati (KIR)</td><td class="dim-score">-0.1944</td><td>Grade E · 77th among 139 countries</td><td class="dim-score">0.6085</td><td>17th among 197 countries</td></tr>
+<tr style="background:#B8850E18;font-weight:bold"><td>Vanuatu (VUT)</td><td class="dim-score">-0.4177</td><td>Grade E · 95th among 139 countries</td><td class="dim-score">0.4928</td><td>100th among 197 countries</td></tr>
+<tr><td>Micronesia (FSM)</td><td class="dim-score">-0.5818</td><td>Grade E · 105th among 139 countries</td><td class="dim-score">0.5001</td><td>96th among 197 countries</td></tr>
+<tr><td>Nauru (NRU)</td><td class="dim-score">Not Calculable</td><td>PIP income distribution raw data absent</td><td class="dim-score">0.5636</td><td>37th among 197 countries</td></tr>
+<tr><td>New Zealand (NZL)</td><td class="dim-score">Not Calculable</td><td>PIP income distribution raw data absent</td><td class="dim-score">0.5950</td><td>24th among 197 countries</td></tr>
+<tr><td>Palau (PLW)</td><td class="dim-score">Not Calculable</td><td>PIP income distribution raw data absent</td><td class="dim-score">0.4639</td><td>139th among 197 countries</td></tr>
+<tr><td>Papua New Guinea (PNG)</td><td class="dim-score">Not Calculable</td><td>PIP income distribution raw data absent</td><td class="dim-score">0.4091</td><td>188th among 197 countries</td></tr>
+<tr><td>Solomon Islands (SLB)</td><td class="dim-score">Not Calculable</td><td>PIP income distribution raw data absent</td><td class="dim-score">0.5168</td><td>75th among 197 countries</td></tr>
+<tr><td>Tuvalu (TUV)</td><td class="dim-score">Not Calculable</td><td>PIP income distribution raw data absent</td><td class="dim-score">0.4454</td><td>164th among 197 countries</td></tr>
+</tbody></table></div>
+<p class="note">All values are intact from the basic indicators of the Country Analysis Compendium (2026-10-07). The BSLI range is [−2.0, +1.0], where 0 is the basic living line, and negative values represent the depth submerged below it (negative values are within the normal range). Grade boundaries are fixed values from the v4.2 design stage. 'Not Calculable' indicates countries lacking raw PIP income distribution data, left unfilled.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 01</div>
+<h2 class="section-heading">Executive Summary</h2>
+<p>Vanuatu has a compendium BSLI of -0.4177 (Grade E · 95th among 139 countries), placing it below the basic living line (0). In BSLI Time Series v1.2, all cells from 2016 to 2024 are marked as data absent, so the four-term component annual table is not presented. The baseline value is the compendium cross-sectional value.</p>
+<p>Based on the Hermes collection (2026-10-14), poverty statistics from the World Bank API are available for two years, 2010 and 2019: 2021 PPP $3.00/day 25.7% → 19.5%, $8.30/day 82% → 81.3%, Gini 37.4 → 32.3, national poverty line 15.9% (2019). Consumer price inflation dropped from 6.68% in 2022 and 11.18% in 2023 to 0.66% in 2025.</p>
+<p>In 2026, reports were collected regarding cost-of-living protests in front of parliament, government review of a minimum wage increase, and sectoral minimum wage proposals.</p>
+<div class="cards">
+<div class="card red"><div class="card-label">BSLI Basic Social Life Index (Compendium)</div><div class="card-value">-0.4177</div><div class="card-desc">Grade E · 95th among 139 countries · 7th among 8 Oceania calculated countries</div></div>
+<div class="card gold"><div class="card-label">Supplementary Time Series Latest Cell</div><div class="card-value">—</div><div class="card-desc">Time Series v1.2 Data Absent</div></div>
+<div class="card"><div class="card-label">η Composite Social Stability Index (Compendium, Reference)</div><div class="card-value">0.4928</div><div class="card-desc">100th among 197 countries · Cross-sectional maximum pressure A7 · P=0.578 (Actual: aging and population growth)</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 02</div>
+<h2 class="section-heading">BSLI Four-Term Formula — What Does It Measure?</h2>
+<div class="formula-box">
+<div class="f-label">BSLI v7.0 Canonical Version (Four-Term Subtraction Formula)</div>
+<div class="f-eq">BSLI = 0.40·F_ML + 0.60·H − D − H_s</div>
+<div class="f-vars">F_ML (Food, weight 0.40): Average real income index of the 30th–50th income percentiles (ML stratum) (World Bank PIP) — Food crises have room for short-term recovery through stockpiles and aid, hence a lower weight.<br/>
+    H (Housing, weight 0.60): Basic living adequacy (normalized by median income) — Housing pressure forms an irreversible chain of jeonse → monthly rent → gosiwon → homelessness, hence a higher weight.<br/>
+    D (subtracted): Deprivation index = $3.65/day (2017 PPP) poverty rate · H_s (subtracted): Housing stress = Palma ratio^1.5.<br/>
+    Clothing is treated as a constant and excluded from variables due to global oversupply. Range [−2.0, +1.0], 0 = basic living line. Compendium value for this country: <strong>-0.4177</strong> (Grade E · 95th among 139 countries).</div>
+</div>
+<p>The compendium value being below the basic living line indicates that the subtracted terms (D, H_s) are larger than the additive terms. In the absence of a supplementary time series, the individual magnitudes of the four terms remain outside the scope of this report. The 2019 $8.30 poverty rate of 81.3% is the last international figure showing that the additive terms would be small.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 03</div>
+<h2 class="section-heading">Decomposition of Clothing, Food, and Housing Components (2016–2024)</h2>
+<p class="note">The table and bars below are supplementary data from BSLI Time Series v1.2 (recalculated on consistent criteria, fixed-pool normalization). It is normal for values in specific years to differ from the compendium BSLI (139-country cross section); the report's reference BSLI value is the compendium value. 'fallback' denotes cells carried over from the nearest measured year; stagnation in that interval reflects data freezing, not actual social stagnation.</p>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Year</th><th>F_ML 食 (×0.40)</th><th>H 住 (×0.60)</th><th>D Deprivation (−)</th><th>H_s Housing Stress (−)</th><th>BSLI</th><th>Grade</th><th>Poverty rate $3.65/day (Raw D value)</th><th>Palma (Raw H_s value)</th><th>Measured Year · Reliability</th></tr></thead><tbody><tr><td>2016</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2017</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2018</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2019</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2020</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2021</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2022</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2023</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2024</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr></tbody></table></div>
+<h3 style="margin-top:20px">Contribution Decomposition — Latest Cell</h3>
+<div class="chart-wrap"><div class="formula-box"><div class="f-label">Supplementary Time Series Data Absent</div><div class="f-vars">Since values for this country are absent in BSLI Time Series v1.2, component decomposition is not plotted. The baseline value is the compendium BSLI.</div></div></div>
+<p><strong>Food and Housing Components.</strong> Due to the supplementary time series being unrecorded, annual values for F_ML, H, D, and H_s are not presented. Instead, they are recorded using World Bank API values and 2025–2026 reports.</p>
+<p><strong>Combined Fragment (Integration with Prior Research).</strong> ① The Economics of Poverty → The Economics of Poverty (Ravallion, 2016, <em>The Economics of Poverty</em>, Oxford University Press): Measurement gaps — The situation where international distribution statistics stalled in 2019 is the object of observation. ② Inequality: What Can Be Done? → Inequality: What Can Be Done? (Atkinson, 2015, <em>Inequality: What Can Be Done?</em>, Harvard University Press): Minimum wage and income security — The demand to 'raise wages, not prices' and the minimum wage review correspond to this. Connecting point: It is observed that wage policy shifts in ② are delayed in reflecting in the index due to the measurement gap in ① (interpretation).</p>
+</div>
+<div class="section">
+<div class="section-title">§ 04</div>
+<h2 class="section-heading">Time Series — Trends within the Oceania Region</h2>
+<div class="chart-wrap">
+<div class="chart-title">BSLI 2016–2024 — Vanuatu vs. Calculated Oceania Countries (Time Series v1.2)</div>
+<canvas height="300" id="bsliChart"></canvas>
+</div>
+<p class="note">Bold red line = Vanuatu, thin lines = calculated countries in the same region. Blank spaces indicate data absence. Dotted line 0 = basic living line.</p>
+<p>Supplementary time series lines for calculated Oceania countries are present in the chart, but Vanuatu's line is absent. In terms of compendium cross-sectional value, it stands directly above Micronesia.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 05</div>
+<h2 class="section-heading">Livelihood Situation and Chronology</h2>
+<div class="timeline">
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2010·2019</div><div class="tl-content"><strong>Poverty and Distribution</strong> — World Bank API: $3.00/day (2021 PPP) 25.7% (2010) → 19.5% (2019), $4.20 44.4% → 36.9%, $8.30 82% → 81.3%, Gini 37.4 → 32.3, national poverty line 15.9% (2019) (Hermes collection).</div></div>
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2022~2025</div><div class="tl-content"><strong>Inflation, Unemployment, and Income</strong> — World Bank API consumer price inflation 6.68% in 2022, 11.18% in 2023, 1.14% in 2024, 0.66% in 2025. Unemployment rate (ILO modeled) around 5%. GNI per capita (Atlas) $4,340 (2022) → $4,410 (2025) (Hermes collection).</div></div>
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025-11~2026-10</div><div class="tl-content"><strong>Recent Headlines</strong> — 'Ten-year National Housing Policy Launched' (Vanuatu Daily Post, 2025-11-18), 'Earthquake Response Operation Update' (ReliefWeb/IFRC, 2025-12-10), 'Public Housing Rent Increase' (Vanuatu Daily Post, 2026-04-16), 'Government Considers Minimum Wage Rise' (Vanuatu Daily Post, 2026-05-02), 'Raise Wages Not Prices — Women's Rights Activist' (Vanuatu Daily Post, 2026-05-05), 'Cost of Living Protest Staged Outside Parliament' (Vanuatu Daily Post, 2026-05-16), 'Sectoral Wages Proposed in Minimum Wage Review' (Vanuatu Daily Post, 2026-10-09) — Hermes-collected headlines.</div></div>
+</div>
+<p><strong>Government and Civil Society.</strong> The government rolled out housing policies and minimum wage reviews, while civil society staged cost-of-living protests and demanded wage increases. This report passes judgment on neither side.</p>
+<p><strong>Nature of Hermes-Collected Data.</strong> Currency (vatu) exchange rate pages were mixed in and excluded. The 2025–2026 items are at headline level and prior to full-text verification.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 05-B</div>
+<h2 class="section-heading">Official Figures vs. Independent Sources — Observing the Gaps</h2>
+<p>The gap for Vanuatu lies in the fact that poverty for the same year of 2019 is measured at 15.9% by the national poverty line, 19.5% at 2021 PPP $3.00/day, and 81.3% at $8.30/day, and that while annual average inflation fell to 0.66% in 2025, cost-of-living protests were reported in 2026. Official figures are retained as originally stated (DECISIONS 17·19) and placed side by side.</p>
+<div class="table-scroll"><table class="trigger-table">
+<thead><tr><th>Item</th><th>Official Figures (Publishing Institution · Year)</th><th>Independent Sources (Institution · Year)</th><th>Interpretation of the Gap (Canonical Axioms)</th></tr></thead>
+<tbody><tr><td><strong>Poverty Rate (2019)</strong></td><td>National poverty line (recorded in World Bank API): 15.9%</td><td>World Bank API: $3.00/day (2021 PPP) 19.5% · $8.30 81.3%</td><td>Different poverty lines measure different things. The national line is lower than the extreme poverty line.</td></tr><tr><td><strong>Inflation and Wages</strong></td><td>World Bank API consumer price inflation: 0.66% in 2025 · Government: minimum wage review (2026-05)</td><td>Vanuatu Daily Post (2026-05): Cost of living protest outside parliament · Demands for wage increases</td><td>Annual average inflation and perceived cost of living are recorded differently. Based on headlines.</td></tr><tr><td><strong>BSLI Value</strong></td><td>Compendium BSLI -0.4177 (Grade E · 95th among 139 countries)</td><td>BSLI Time Series v1.2: All years data absent</td><td>The baseline value is from the compendium.</td></tr></tbody>
+</table></div>
+<p class="note">Official figures are quoted verbatim and unadjusted (DECISIONS 17·19). The gap is not a judgment on which side is 'correct', but a device revealing the divergence that arises when viewing the same livelihood through different windows.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 06</div>
+<h2 class="section-heading">Λ¹² Linkage — Pressure Coordinate System where BSLI is the Sun (Compendium Original)</h2>
+<p>In the pressure coordinate system, BSLI is the center (Sun) and A1–A12 are planets. The more interior an orbit is, the more heavily that dimension presses upon the grassroots base. BSLI and Λ¹² are mutually independent measurement channels (Axiom A0) — Λ¹² examines the national aggregate, while BSLI examines the clothing, food, and housing grassroots base of the grassroots stratum (30th–50th percentiles). The diagram below is reproduced intact from the Country Analysis Compendium (engine frozen).</p>
+<figure class="pcs-wrap" style="overflow-x:auto"><svg style="max-width:1010px;background:#fff;border:1px solid #DDD8CE;border-radius:8px" viewbox="0 0 1010 1150" xmlns="http://www.w3.org/2000/svg"><defs>
+<marker id="mP" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#C0392B"></path></marker>
+<marker id="mB" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#1a4f8a"></path></marker>
+<marker id="mG" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#B8850E"></path></marker>
+<radialgradient cx="50%" cy="50%" id="sun3" r="50%"><stop offset="0%" stop-color="#F7EDD2"></stop><stop offset="100%" stop-color="#E8D5A0"></stop></radialgradient>
+</defs><text fill="#2A3D35" font-size="16.5" font-weight="700" text-anchor="middle" x="505" y="32">Empirical Causal Loop Diagram v3.1 — Pressure Coordinate System (Vanuatu · 138-Country Empirical Coupling × Domestic Deficit)</text><text fill="#777" font-size="10" text-anchor="middle" x="505" y="51">Distance/Arrow = Pressure Index P (closer/thicker exerts heavier pressure on BSLI) · P = coupling strength |r| × domestic deficit — without deficit, no pressure even with strong coupling (outer orbit)</text><circle cx="505" cy="485" fill="none" r="214.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="259.3" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="371.2" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="233.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="430.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="279.8" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="175.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="284.5" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="430.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="290.9" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="430.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="430.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><path d="M505.0,744.3 Q420.9,784.0 362.8,731.3" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="3.0"></path><circle cx="427.4" cy="760.9" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="427.4" y="764.5">+</text><path d="M291.0,485.0 Q275.6,539.9 353.4,572.5" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.9"></path><circle cx="298.9" cy="534.3" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="298.9" y="537.9">−</text><path d="M291.0,485.0 Q231.0,401.0 262.7,345.1" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.7"></path><circle cx="253.9" cy="408.0" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="253.9" y="411.6">−</text><path d="M505.0,744.3 Q628.0,846.3 720.0,857.4" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.6"></path><circle cx="620.2" cy="823.6" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="620.2" y="827.2">+</text><path d="M353.4,572.5 Q326.4,688.0 362.8,731.3" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.5"></path><circle cx="342.3" cy="669.9" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="342.3" y="673.5">−</text><path d="M720.0,857.4 Q547.0,842.0 362.8,731.3" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.5"></path><circle cx="544.2" cy="818.2" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="544.2" y="821.8">+</text><path d="M291.0,485.0 Q287.4,635.5 362.8,731.3" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.3"></path><circle cx="307.2" cy="621.8" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="307.2" y="625.4">+</text><path d="M362.8,731.3 Q667.6,507.2 877.4,270.0" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.2"></path><circle cx="643.9" cy="503.9" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="643.9" y="507.5">+</text><path d="M505.0,744.3 Q410.0,702.4 353.4,572.5" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.1"></path><circle cx="419.6" cy="680.4" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="419.6" y="684.0">−</text><line marker-end="url(#mP)" opacity="0.83" stroke="#C0392B" stroke-width="1.5" x1="291.0" x2="425.0" y1="485.0" y2="485.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="358.0" y="479.0">P=0.490</text><line marker-end="url(#mP)" opacity="0.75" stroke="#C0392B" stroke-width="1.5" x1="505.0" x2="505.0" y1="744.3" y2="565.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="648.6">P=0.389</text><line marker-end="url(#mP)" opacity="0.56" stroke="#C0392B" stroke-width="1.5" x1="319.4" x2="465.0" y1="163.6" y2="415.7"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="392.2" y="283.6">P=0.138</text><line marker-end="url(#mP)" opacity="0.80" stroke="#C0392B" stroke-width="1.5" x1="706.8" x2="574.3" y1="601.5" y2="525.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="640.5" y="557.3">P=0.448</text><line marker-end="url(#mP)" opacity="0.72" stroke="#C0392B" stroke-width="1.5" x1="262.7" x2="435.7" y1="345.1" y2="445.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="349.2" y="389.0">P=0.343</text><line marker-end="url(#mP)" opacity="0.90" stroke="#C0392B" stroke-width="1.5" x1="353.4" x2="435.7" y1="572.5" y2="525.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="394.6" y="542.8">P=0.578</text><line marker-end="url(#mP)" opacity="0.71" stroke="#C0392B" stroke-width="1.5" x1="362.8" x2="465.0" y1="731.3" y2="554.3"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="413.9" y="636.8">P=0.332</text><line marker-end="url(#mP)" opacity="0.70" stroke="#C0392B" stroke-width="1.5" x1="795.9" x2="585.0" y1="485.0" y2="485.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="690.5" y="479.0">P=0.318</text><path d="M353.4,572.5 Q437.1,616.6 487.8,724.8" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="428.9" cy="632.6" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="428.9" y="636.2">−</text><path d="M353.4,572.5 Q382.3,613.0 361.2,705.4" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="369.8" cy="626.0" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="369.8" y="629.6">−</text><path d="M877.4,270.0 Q663.3,494.7 521.1,723.8" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="681.3" cy="495.8" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="681.3" y="499.4">−</text><path d="M877.4,270.0 Q593.8,490.0 382.1,714.0" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="611.8" cy="491.0" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="611.8" y="494.6">−</text><path d="M720.0,112.6 Q586.0,435.0 513.4,719.7" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="601.4" cy="425.6" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="601.4" y="429.2">−</text><path d="M720.0,112.6 Q529.9,441.9 375.8,708.8" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="538.9" cy="426.3" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="538.9" y="429.9">−</text><path d="M362.8,731.3 Q392.4,822.0 479.1,741.9" fill="none" marker-end="url(#mP)" opacity="0.8" stroke="#C0392B" stroke-dasharray="6 4" stroke-width="1.8"></path><circle cx="406.7" cy="777.3" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="406.7" y="780.9">−</text><text fill="#C0392B" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="406.7" y="765.3">Axiom A3 Internal Conflict (Conditional)</text><path d="M505.0,565.0 Q505.0,731.6 505.0,718.3" fill="none" marker-end="url(#mG)" opacity="0.9" stroke="#B8850E" stroke-dasharray="3 3" stroke-width="1.8"></path><circle cx="505.0" cy="686.6" fill="#fff" r="7.5" stroke="#B8850E" stroke-width="1.4"></circle><text fill="#B8850E" font-size="11" font-weight="800" text-anchor="middle" x="505.0" y="690.2">−</text><text fill="#B8850E" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="511.0" y="701.6">Base Deterioration → Defensive Rallying (Axiom A8)</text><circle cx="480" cy="770" fill="#fff" r="15" stroke="#C0392B" stroke-width="2"></circle><text fill="#C0392B" font-size="13" font-weight="800" text-anchor="middle" x="480" y="774">R</text><text fill="#C0392B" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="480" y="800">R1 Binary Star Reinforcing</text><circle cx="439" cy="563" fill="#fff" r="15" stroke="#1a4f8a" stroke-width="2"></circle><text fill="#1a4f8a" font-size="13" font-weight="800" text-anchor="middle" x="439" y="567">B</text><text fill="#1a4f8a" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="439" y="593">B1 Absorption-Defense Balancing</text><circle cx="293" cy="608" fill="#fff" r="15" stroke="#1a4f8a" stroke-width="2"></circle><text fill="#1a4f8a" font-size="13" font-weight="800" text-anchor="middle" x="293" y="613">B</text><text fill="#1a4f8a" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="293" y="638">B2 Pressure-Erosion</text><circle cx="505" cy="485" fill="url(#sun3)" r="72" stroke="#B8850E" stroke-width="2.4"></circle><text fill="#7a5a08" font-size="14" font-weight="800" text-anchor="middle" x="505" y="455">BSLI</text><text fill="#8a6a18" font-size="8.5" text-anchor="middle" x="505" y="467">Basic Social Life Index · Independent Channel (Axiom A0)</text><text fill="#2A3D35" font-size="19" font-weight="800" text-anchor="middle" x="505" y="490">-0.4177</text><text fill="#555" font-size="9.5" text-anchor="middle" x="505" y="507">Grade E · 95th/139 · Top 68.3%</text><text fill="#777" font-size="8" text-anchor="middle" x="505" y="524">0.40·F_ML+0.60·H−D−Hs</text><circle cx="291.0" cy="485.0" fill="#fff" r="8.1" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="291.0" cy="485.0" fill="#8a8a80" fill-opacity="0.22" r="4.0"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="291.0" y="457.9">A1 Social Infrastructure</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="291.0" y="469.9">Actual: electricity/internet</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="291.0" y="506.1">Score 0.381 · Pressure P=0.490</text><circle cx="505.0" cy="744.3" fill="#fff" r="16.1" stroke="#1a5c8a" stroke-width="2.6"></circle><circle cx="505.0" cy="744.3" fill="#1a5c8a" fill-opacity="0.22" r="8.1"></circle><text fill="#1a5c8a" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="505.0" y="709.2">A2 Institutional Trust</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="505.0" y="721.2">Actual: CPI/control of corruption</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="773.4">Score 0.440 · Pressure P=0.389</text><circle cx="319.4" cy="163.6" fill="#fff" r="9.2" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="319.4" cy="163.6" fill="#8a8a80" fill-opacity="0.22" r="4.6"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="319.4" y="135.4">A3 Civil Liberties</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="319.4" y="147.4">Actual: Gini coefficient</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="319.4" y="185.8">Score 0.759 · Pressure P=0.138</text><circle cx="706.8" cy="601.5" fill="#fff" r="10.3" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="706.8" cy="601.5" fill="#8a8a80" fill-opacity="0.22" r="5.2"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="706.8" y="572.2">A4 Economic Stability</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="706.8" y="584.2">Actual: GDP/manufacturing</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="706.8" y="624.9">Score 0.032 · Pressure P=0.448</text><circle cx="720.0" cy="857.4" fill="#fff" r="8.1" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="720.0" cy="857.4" fill="#8a8a80" fill-opacity="0.22" r="4.0"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="720.0" y="830.3">A5 Educational Access</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="720.0" y="842.3">Actual: R&amp;D/GDP</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="720.0" y="878.4">Score missing · Pressure P=—</text><circle cx="262.7" cy="345.1" fill="#fff" r="8.1" stroke="#2e7d32" stroke-width="2.6"></circle><circle cx="262.7" cy="345.1" fill="#2e7d32" fill-opacity="0.22" r="4.0"></circle><text fill="#2e7d32" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="262.7" y="318.0">A6 Health Level</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="262.7" y="330.0">Actual: CO₂/renewable energy</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="262.7" y="366.1">Score 0.624 · Pressure P=0.343</text><circle cx="353.4" cy="572.5" fill="#fff" r="10.3" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="353.4" cy="572.5" fill="#C0392B" fill-opacity="0.22" r="5.2"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="353.4" y="543.1">A7 Social Capital</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="353.4" y="555.1">Actual: aging/population growth</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="353.4" y="595.9">Score 0.763 · Pressure P=0.578</text><circle cx="362.8" cy="731.3" fill="#fff" r="16.1" stroke="#1a5c8a" stroke-width="2.6"></circle><circle cx="362.8" cy="731.3" fill="#1a5c8a" fill-opacity="0.22" r="8.1"></circle><text fill="#1a5c8a" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="362.8" y="696.2">A8 Governance</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="362.8" y="708.2">Actual: 6 WGI indicators</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="362.8" y="760.4">Score 0.548 · Pressure P=0.332</text><circle cx="877.4" cy="270.0" fill="#fff" r="9.2" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="877.4" cy="270.0" fill="#C0392B" fill-opacity="0.22" r="4.6"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="877.4" y="241.8">A9 Environmental Pressure</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="877.4" y="253.8">Actual: GPI/military spending</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="877.4" y="292.2">Score missing · Pressure P=—</text><circle cx="795.9" cy="485.0" fill="#fff" r="10.3" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="795.9" cy="485.0" fill="#8a8a80" fill-opacity="0.22" r="5.2"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="795.9" y="455.6">A10 Inequality</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="795.9" y="467.6">Actual: tourist arrivals</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="795.9" y="508.4">Score 0.001 · Pressure P=0.318</text><circle cx="505.0" cy="55.0" fill="#fff" r="9.2" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="505.0" cy="55.0" fill="#8a8a80" fill-opacity="0.22" r="4.6"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="505.0" y="26.8">A11 External Shocks</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="505.0" y="38.8">Actual: energy import dependency</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="77.2">Score missing · Pressure P=—</text><circle cx="720.0" cy="112.6" fill="#fff" r="11.5" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="720.0" cy="112.6" fill="#C0392B" fill-opacity="0.22" r="5.8"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="720.0" y="82.1">A12 Mobility</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="720.0" y="94.1">Actual: FDI</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="720.0" y="137.1">Score 0.886 · Pressure P=0.006</text><rect fill="#fbfaf7" height="128" rx="8" stroke="#DDD8CE" width="958" x="26" y="999"></rect><text fill="#C0392B" font-size="10.5" x="42" y="1019"><tspan font-weight="700">Red line arrow = Pressure</tspan> (Magnitude is expressed by distance and P-value — unified as lines to prevent text obstruction). P = |r| (138-country empirical coupling) × domestic deficit (+ coupling is 1 − score, − coupling is score)</text><text fill="#444" font-size="10.5" x="42" y="1037"><tspan font-weight="700">Distance</tspan> = reverse order of P — closer exerts heavier pressure. Even with strong coupling, if there is no deficit (e.g., perfect-score axis), pressure = 0 → pushed to the outer orbit. <tspan font-weight="700">This coordinate system varies by country</tspan></text><text fill="#1a4f8a" font-size="10.5" x="42" y="1055">Blue arrow (−) = Axiom A1 Invariance of Aim (pressure source → absorber erosion) · Red dotted line = Axiom A3 Internal Conflict (conditional) · <tspan fill="#B8850E">Gold dotted line = Axiom A8 Base Deterioration → Defensive Rallying → B1 Balancing Loop</tspan></text><text fill="#444" font-size="10.5" x="42" y="1073">Headless curve = empirical coupling between indicators (|r| ≥ 0.55, causal direction unspecified): cyan solid line (+) / red dotted line (−) · strongest A2~A8 +0.955 → R1 binary star reinforcing loop · Ⓡ reinforcing / Ⓑ balancing = determined by product of polarities</text><text fill="#997" font-size="10.5" x="42" y="1091">Node sub-caption "Actual: …" = data actually input to that axis by the current v2 pipeline — parallel notation to prevent misreading for axes where canonical names differ from content (A3, A5, A6, A7, A9, A10, A11) (maintained until harmonization)</text><text fill="#777" font-size="10" x="42" y="1111">Source: Empirical measurement across 138 countries common to Λ¹² v2 × BSLI (recalculated 2026-07-20) · Axiom: Joint paper §3.2 · Pressure index definition: reflecting Cheonghae instruction on 2026-07-20 (distance/arrow = pressure) · No arbitrary figures</text></svg><figcaption class="note"><b>[Figure 2-28-1]</b> Vanuatu BSLI Pressure Coordinate System Causal Loop Diagram v3.1. Unmodified output from canonical generator handover_cld_v3.py (ISO=VUT). Only the country notation in the diagram title has been changed to the official country name.<br/>Source: Country Analysis Compendium Vol. 2 (Lambda12_CountryBook_Vol2_AsiaPacific_20261007.html) · VUT Section "2. Pressure Coordinate System Causal Loop Diagram" — The original SVG published in the compendium was inserted without altering a single character.</figcaption></figure>
+<p>All 12 dimensions (pressure ranking table, 2016–2024 trajectory, WD/SN/BH paths) are in this country's Λ¹² standalone edition: <a href="/nations/oceania/바누아투_Λ12_비교분석보고서_20261013.html">Vanuatu Λ¹² Standalone Edition</a>.</p>
+<p>In the Monograph pressure coordinate system, Vanuatu's dimensions within the threshold band in 2024 are A1, A4, and A7, with the cross-sectional maximum pressure being A7 · P=0.578 (recorded without interpretation).</p>
+</div>
+<div class="section">
+<div class="section-title">§ 07</div>
+<h2 class="section-heading">Connecting BSLI Acceleration to UI</h2>
+<div class="formula-box">
+<div class="f-label">BSLI Term in the UI Master Equation</div>
+<div class="f-eq">F(t) = m·a(t), m = A2·A8 (policy impact mass), a(t) = d²BSLI/dt² (central difference)</div>
+<div class="f-vars">Ignition condition for uprising when F(t) &gt; SE(t) (UI canonical edition). Here, only the BSLI-side term (a) is calculated and presented as an auxiliary time series. Canonical SE·T_trigger values have not been generated for this country.</div>
+</div>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Year</th><th>m = A2·A8 (Monograph cross-section)</th><th>a = Δ²BSLI</th><th>F = m·a</th><th>t+1 Measured Reliability</th></tr></thead><tbody><tr><td>2017</td><td class="dim-score">0.2412</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2018</td><td class="dim-score">0.2412</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2019</td><td class="dim-score">0.2412</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2020</td><td class="dim-score">0.2412</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2021</td><td class="dim-score">0.2412</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2022</td><td class="dim-score">0.2412</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2023</td><td class="dim-score">0.2412</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr></tbody></table></div>
+<p class="note">a=0 in the fallback interval is an artifact of data freezing. It is not an assessment, but a record of the acceleration and deceleration of the grassroots base flow.</p>
+<p>Because there is no auxiliary time series, a(t) is not generated (table left blank).</p>
+</div>
+<div class="synthesis">
+<div class="synthesis-title">SYNTHESIS-BSLI — Vanuatu 4-Stage Summary</div>
+<div class="synthesis-stages">
+<div class="stage"><div class="stage-num">STAGE 01 / Position</div><div class="stage-title">Oceania BSLI 7th</div><div class="stage-desc">Monograph -0.4177 (Grade E · 95th out of 139 countries), below the basic livelihood line.</div></div>
+<div class="stage"><div class="stage-num">STAGE 02 / Components</div><div class="stage-title">Auxiliary time series not included</div><div class="stage-desc">Absence of 4-term yearly value data.</div></div>
+<div class="stage"><div class="stage-num">STAGE 03 / Gap</div><div class="stage-title">15.9%·19.5%·81.3%</div><div class="stage-desc">2019 is the latest statistic.</div></div>
+<div class="stage"><div class="stage-num">STAGE 04 / Flow</div><div class="stage-title">Cost-of-living protests and minimum wage</div><div class="stage-desc">Latest headlines collected by Hermes.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 08</div>
+<h2 class="section-heading">Six-Layer Discourse Reasoning Method — The Layer Where This Report Resides</h2>
+<p>The interpretation of this report is conducted strictly within Layers 1 to 5 of Cheonghae (淸海)'s Six-Layer Discourse Reasoning Method (Combined Papers Ch. 7). Layer 6 is exclusive to Cheonghae.</p>
+<div class="table-scroll"><table class="dim-table">
+<thead><tr><th>Layer</th><th>Inquiry</th><th>In This Report</th></tr></thead>
+<tbody>
+<tr><td class="dim-code">Layer 1</td><td>Data — What have I seen?</td><td>Records the Monograph BSLI, 4-term components, poverty rate, and Palma without judgment (§00–§04)</td></tr>
+<tr><td class="dim-code">Layer 2</td><td>Interests — Who prevents evolution?</td><td>Records the gap between published figures and independent sources, and relations surrounding livelihood policies (§05·§05-B)</td></tr>
+<tr><td class="dim-code">Layer 3</td><td>Historical Patterns — What has already happened happens again</td><td>Observes year-by-year flows and the repetition of positions within the regional bloc (§04·§05)</td></tr>
+<tr><td class="dim-code">Layer 4</td><td>Perspective Shift — It is evolution, not collapse</td><td>Reads the acceleration and deceleration of grassroots base pressure as conditions for social evolution (§07)</td></tr>
+<tr><td class="dim-code">Layer 5</td><td>Knowledge Framework — Interpreted through humanity's heritage</td><td>Integrates prior research on clothing, food, and housing, poverty, and housing as combined fragments (§03)</td></tr>
+<tr><td class="dim-code">Layer 6</td><td>—</td><td><strong>Exclusive to Cheonghae (淸海).</strong> Not addressed in this report.</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="section">
+<div class="section-title">§ 09</div>
+<h2 class="section-heading">Data Sources and Reproducibility Declaration</h2>
+<p style="font-family:'Courier New',monospace;font-size:12.5px;color:var(--muted);line-height:1.9;">[Canonical Edition] National Analysis Monograph Vol. 2 Asia-Pacific (2026-10-07) VUT Section — BSLI, grade, ranking, η, causal loop diagram. /nations/book/Lambda12_CountryBook_Vol2_AsiaPacific_20261007.html<br/>[Auxiliary] BSLI Time Series v1.2 bsli_timeseries_v12_20260726.json — Absence of data for all years for this country<br/>[Hermes Collection 2026-10-14] vault hermes-raw/bsli/2026-10-14/VUT.md — 8 World Bank API indicators + Vanuatu-related titles among 70 Google News items (currency conversion pages excluded, unverified against original text)<br/>[Independent Sources &amp; Headlines] Vanuatu Daily Post — Private daily newspaper · ReliefWeb/IFRC — International organizations<br/>[Academic] Ravallion (2016) The Economics of Poverty, Oxford University Press · Atkinson (2015) Inequality: What Can Be Done?, Harvard University Press<br/>Access Date: This report 2026-10-14. Detailed list in run folder data/sources.md.</p>
+<p><strong>Limitations.</strong> ① Monograph BSLI values were used as-is in accordance with the freezing principle. ② Components and acceleration were not presented due to the omission of the auxiliary time series. ③ International poverty distribution statistics are 2019 values. ④ Headlines are prior to verification against the full text. ⑤ Assessments of politics, figures, or policies are not made.</p>
+<p>Only measured values and records were documented. No assessments or forecasts are made. The subsequent judgment rests with the leaders and people of that nation.</p>
+</div>
+</div><!-- /main -->
+<div class="report-footer"><div class="footer-inner">
+<div class="footer-slogan">"With the hope that humanity's experience and countless brilliant data may come together and be reborn as a wise light like the Milky Way!"</div>
+<div class="footer-meta">Everblue Sea Institute for Social Dynamics · Author Cheonghae (淸海)<br/>BSLI v7.0 · National Analysis Monograph (2026-10-07) · BSLI Time Series v1.2 · Linked with Λ¹² v2.0<br/>Vanuatu Basic Social Life Index Standalone Edition · 2026-10-14 · BSLI Regional Circulation Analysis</div>
+</div></div>
+<script>
+(function() {
+  var el = document.getElementById('bsliChart');
+  if (!el || typeof Chart === 'undefined') return;
+  var D = {"labels": ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"], "series": [{"iso": "AUS", "me": false, "data": [0.56, 0.5622, 0.5622, 0.5909, 0.5909, 0.5909, 0.5909, null, null]}, {"iso": "FJI", "me": false, "data": [null, -0.0958, -0.0958, -0.0958, -0.0958, -0.0958, null, null, null]}]};
+  var pal = ['#6A7A9A', '#8E5EA2', '#2A6F97', '#5E9186', '#B8850E', '#9A8F80'];
+  var ds = D.series.map(function(s, i) {
+    return { label: s.iso, data: s.data, borderColor: s.me ? '#C0392B' : pal[i % pal.length], backgroundColor: 'transparent',
+             borderWidth: s.me ? 3 : 1.2, pointRadius: s.me ? 3 : 1.5, spanGaps: false };
+  });
+  ds.push({ label: 'Basic Living Line 0', data: D.labels.map(function() { return 0; }), borderColor: '#2A3D35', borderDash: [5,4], borderWidth: 1, pointRadius: 0 });
+  new Chart(el, {
+    type: 'line',
+    data: { labels: D.labels, datasets: ds },
+    options: {
+      responsive: true,
+      scales: { y: { ticks: { font: { size: 10 } } } },
+      plugins: { legend: { position: 'bottom', labels: { font: { family: 'Courier New', size: 11 } } } }
+    }
+  });
+})();
+</script>
+</body>
+</html>
