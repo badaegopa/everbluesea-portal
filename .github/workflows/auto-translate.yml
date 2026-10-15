@@ -33,6 +33,7 @@ jobs:
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI }}
       MAX_FILES: "25"
+      TIME_BUDGET_MIN: "110"
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:

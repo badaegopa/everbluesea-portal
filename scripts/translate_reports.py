@@ -31,7 +31,9 @@ SKIP      = {"script","style","code","pre"}
 API_KEY   = os.environ.get("GEMINI_API_KEY","")
 DRY       = "--dry" in sys.argv
 ALL       = "--all" in sys.argv
-MAX_FILES = int(os.environ.get("MAX_FILES", "0") or 0)   # v20: 실행당 최대 편수(0=제한 없음) — 할당량 분할
+MAX_FILES = int(os.environ.get("MAX_FILES", "0") or 0)
+TIME_BUDGET_MIN = float(os.environ.get("TIME_BUDGET_MIN", "0") or 0)  # v20.5: 이 시간이 지나면 새 편을 시작하지 않고 커밋으로 넘어감(잡 timeout 으로 번역분 유실 방지)
+START = time.time()   # v20: 실행당 최대 편수(0=제한 없음) — 할당량 분할
 
 class QuotaExceeded(Exception):
     """v20: Gemini HTTP 429 — 이번 실행은 여기서 멈추고 만든 것만 커밋, 다음 실행에서 이어감."""
@@ -246,6 +248,9 @@ def main():
     log(f"이번 실행 처리: {len(targets)}편")
     made=0; failed=0
     for f in targets:
+        if TIME_BUDGET_MIN and (time.time() - START) / 60 > TIME_BUDGET_MIN:
+            log(f"[budget] {TIME_BUDGET_MIN:.0f}분 경과 — 새 편 시작하지 않고 만든 {made}편만 커밋")
+            break
         try:
             if process(f, model, ver, gb):
                 made+=1
