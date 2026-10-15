@@ -770,15 +770,15 @@ p { margin-bottom: 1em; color: var(--ink); }
 (function() {
   var el = document.getElementById('radarChart');
   if (!el || typeof Chart === 'undefined') return;
-  var D = {"labels": ["A1 사회기반시설", "A2 제도신뢰", "A3 시민자유", "A4 경제안정", "A5 교육접근", "A6 보건수준", "A7 사회구조", "A8 거버넌스", "A9 환경압박", "A10 불평등", "A11 외부충격", "A12 이동성"], "me": [0.7972, 0.2493, 0.6912, 0.1319, null, 0.735, 0.7221, 0.3743, 0.851, 0.0075, 0.3583, 0.8883], "kor": [0.9887, 0.6703, 0.7422, 0.4623, 0.7788, 0.4496, 0.4598, 0.7543, 0.7268, 0.0215, 0.2525, 0.8847], "reg": [0.8462, 0.4118, 0.6902, 0.279, 0.0887, 0.6333, 0.6574, 0.4824, 0.7789, 0.047, 0.3073, 0.8885]};
+  var D = {"labels": ["A1 Infrastructure", "A2 Institutional Trust", "A3 Civil Liberties", "A4 Economic Stability", "A5 Educational Access", "A6 Healthcare Level", "A7 Social Structure", "A8 Governance", "A9 Environmental Pressure", "A10 Inequality", "A11 External Shocks", "A12 Mobility"], "me": [0.7972, 0.2493, 0.6912, 0.1319, null, 0.735, 0.7221, 0.3743, 0.851, 0.0075, 0.3583, 0.8883], "kor": [0.9887, 0.6703, 0.7422, 0.4623, 0.7788, 0.4496, 0.4598, 0.7543, 0.7268, 0.0215, 0.2525, 0.8847], "reg": [0.8462, 0.4118, 0.6902, 0.279, 0.0887, 0.6333, 0.6574, 0.4824, 0.7789, 0.047, 0.3073, 0.8885]};
   new Chart(el, {
     type: 'radar',
     data: {
       labels: D.labels,
       datasets: [
-        { label: '라오스', data: D.me, borderColor: '#C0392B', backgroundColor: 'rgba(192,57,43,0.15)', borderWidth: 2, pointRadius: 3, spanGaps: true },
-        { label: '한국 (기준)', data: D.kor, borderColor: '#5E9186', backgroundColor: 'rgba(94,145,134,0.08)', borderWidth: 1.5, pointRadius: 2, spanGaps: true },
-        { label: '동남아시아 평균', data: D.reg, borderColor: '#B8850E', borderDash: [5,4], backgroundColor: 'rgba(184,133,14,0.04)', borderWidth: 1.5, pointRadius: 2, spanGaps: true }
+        { label: 'Laos', data: D.me, borderColor: '#C0392B', backgroundColor: 'rgba(192,57,43,0.15)', borderWidth: 2, pointRadius: 3, spanGaps: true },
+        { label: 'Korea (Baseline)', data: D.kor, borderColor: '#5E9186', backgroundColor: 'rgba(94,145,134,0.08)', borderWidth: 1.5, pointRadius: 2, spanGaps: true },
+        { label: 'Southeast Asia Average', data: D.reg, borderColor: '#B8850E', borderDash: [5,4], backgroundColor: 'rgba(184,133,14,0.04)', borderWidth: 1.5, pointRadius: 2, spanGaps: true }
       ]
     },
     options: {

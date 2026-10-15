@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Commonwealth of Dominica Λ¹² Country Analysis Report 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #F5F3EE;
+  --header: #2A3D35;
+  --green: #5E9186;
+  --gold: #B8850E;
+  --red: #C0392B;
+  --border: #DDD8CE;
+  --ink: #1A1A1A;
+  --muted: #6B6560;
+  --card: #FAFAF7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+/* ── HEADER ── */
+.report-header {
+  background: var(--header);
+  color: #E8E4DC;
+  padding: 48px 0 36px;
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.report-flag {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 12px;
+}
+.report-title {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #F0ECE4;
+}
+.report-subtitle {
+  font-size: 18px;
+  color: #A8C4BE;
+  margin-bottom: 24px;
+}
+.report-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #8BA89F;
+}
+.meta-value {
+  color: #C8D8D4;
+  font-weight: bold;
+}
+/* ── VERDICT STRIP ── */
+.verdict-strip {
+  background: #1C2C26;
+  padding: 16px 0;
+  border-bottom: 3px solid var(--gold);
+}
+.verdict-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.verdict-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #7A9A94;
+}
+.verdict-badge {
+  background: #B8850E22;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  padding: 4px 14px;
+  border-radius: 2px;
+}
+.verdict-eta {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #E8A060;
+  font-weight: bold;
+}
+.verdict-bsli {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #88BBAA;
+  font-weight: bold;
+}
+/* ── MAIN LAYOUT ── */
+.main { max-width: 960px; margin: 0 auto; padding: 48px 40px; }
+/* ── SECTION ── */
+.section { margin-bottom: 56px; }
+.section-title {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.section-heading {
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--header);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+/* ── PROSE ── */
+p { margin-bottom: 1em; color: var(--ink); }
+.lead { font-size: 17px; color: #2A3D35; margin-bottom: 1.2em; }
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 24px; margin: 24px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 20px; }
+.tl-dot {
+  position: absolute;
+  left: -20px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--bg);
+}
+.tl-dot.crisis { background: var(--red); }
+.tl-dot.gold { background: var(--gold); }
+.tl-year {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.tl-content { font-size: 14px; color: var(--muted); }
+.tl-content strong { color: var(--ink); }
+/* ── DIMENSION TABLE ── */
+.dim-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+.dim-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 10px 14px;
+  text-align: left;
+}
+.dim-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.dim-table tr:nth-child(even) td { background: #F0EDE8; }
+.dim-code {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: var(--header);
+}
+.dim-score {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-align: center;
+}
+.score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.score-bar {
+  height: 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+/* ── CARDS GRID ── */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  padding: 20px 22px;
+}
+.card.gold { border-left-color: var(--gold); }
+.card.red { border-left-color: var(--red); }
+.card-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.card-value {
+  font-size: 28px;
+  font-family: 'Courier New', monospace;
+  color: var(--header);
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.card-desc { font-size: 13px; color: var(--muted); }
+/* ── FORMULA BOX ── */
+.formula-box {
+  background: #2A3D3508;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 18px 22px;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--header);
+}
+.formula-box .f-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.formula-box .f-eq { font-size: 16px; margin-bottom: 8px; }
+.formula-box .f-vars { font-size: 12px; color: var(--muted); line-height: 1.8; }
+/* ── SCENARIO BOX ── */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.scenario {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.scenario.wd { border-top: 3px solid #7AA0C8; }
+.scenario.sn { border-top: 3px solid var(--gold); }
+.scenario.bh { border-top: 3px solid var(--red); }
+.scenario-icon { font-size: 24px; margin-bottom: 8px; }
+.scenario-name {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.scenario-name.wd { color: #5580A8; }
+.scenario-name.sn { color: #9A7008; }
+.scenario-name.bh { color: var(--red); }
+.scenario-prob {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.scenario-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+/* ── SYNTHESIS BOX ── */
+.synthesis {
+  background: var(--header);
+  color: #D8E4E0;
+  padding: 36px 40px;
+  margin: 40px 0;
+}
+.synthesis-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 16px;
+}
+.synthesis-stages { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.stage { border-top: 1px solid #3D5850; padding-top: 14px; }
+.stage-num {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.stage-title { font-size: 14px; color: #E8E4DC; margin-bottom: 6px; font-weight: bold; }
+.stage-desc { font-size: 13px; color: #8BA89F; line-height: 1.6; }
+/* ── TRIGGER TABLE ── */
+.trigger-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+.trigger-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 9px 14px;
+  text-align: left;
+}
+.trigger-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.risk-high {
+  color: var(--red);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-med {
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-low {
+  color: var(--green);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* ── CHART CONTAINERS ── */
+.chart-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin: 24px 0;
+}
+.chart-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+/* ── FOOTER ── */
+.report-footer {
+  background: var(--header);
+  padding: 40px 0 32px;
+  margin-top: 60px;
+}
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+.footer-slogan {
+  font-style: italic;
+  color: #C9A24B;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #3D5850;
+}
+.footer-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #6A8880;
+  line-height: 2;
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .header-inner, .verdict-inner, .main, .footer-inner { padding: 0 20px; }
+  .report-title { font-size: 26px; }
+  .cards { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .synthesis-stages { grid-template-columns: 1fr; }
+}
+
+.pcs-wrap { background:#FAFAF7; border:1px solid var(--border); padding:16px; margin:20px 0; }
+.pcs-wrap svg { display:block; max-width:100%; height:auto; margin:0 auto; }
+.note { font-size:12.5px; color:var(--muted); line-height:1.7; }
+.table-scroll, .book-frag .tw { overflow-x:auto; }
+.book-frag table { border-collapse:collapse; width:100%; font-size:13px; font-variant-numeric:tabular-nums; }
+.book-frag th, .book-frag td { border-bottom:1px solid var(--border); padding:6px 8px; text-align:left; vertical-align:top; }
+.book-frag th { border-bottom:2px solid #2A3D35; white-space:nowrap; }
+.book-frag td.n, .book-frag th.n { text-align:right; font-family:'Courier New',monospace; white-space:nowrap; }
+.book-frag tr.hi td { background:#F6E7C4; }
+.book-frag .inband { background:#F6E7C4; font-weight:700; }
+.book-frag .warnmark { color:#9A700C; font-weight:700; }
+.book-frag .up { color:#B0392A; } .book-frag .dn { color:#3F7A6E; }
+.book-frag .tag { font-size:11px; color:var(--muted); }
+.book-frag h4 { font-size:14px; margin:14px 0 6px; }
+@media (max-width:640px) { .main, .header-inner, .verdict-inner, .footer-inner { padding-left:16px; padding-right:16px; } .dim-table { font-size:12px; } }
+</style>
+</head>
+<body>
+<div class="report-header"><div class="header-inner">
+<div class="report-flag">EVERBLUESEA SOCIAL DYNAMICS LAB · Λ¹² STANDALONE · 2026-10-13</div>
+<h1 class="report-title">Commonwealth of Dominica Standalone Edition</h1>
+<div class="report-subtitle">Latin America η 5th (67th) — η calculated across eight dimensions, 0 dimensions in band, Hurricane Maria causing damage of 226% of GDP, citizenship sale revenue 10%·20%·37%, election with 31.6% turnout</div>
+<div class="report-meta">
+<div class="meta-item">Author <span class="meta-value">Cheonghae (淸海)</span></div>
+<div class="meta-item">Engine <span class="meta-value">Λ¹² v2.0 (Country Analysis Series 2026-10-07) · BSLI v7.0 · UI · Pressure Coordinate System</span></div>
+<div class="meta-item">Regional Position <span class="meta-value">Latin America η Upper (5th among 31 countries in the Series)</span></div>
+<div class="meta-item">Date of Preparation <span class="meta-value">2026-10-13</span></div>
+</div>
+</div></div>
+<div class="verdict-strip"><div class="verdict-inner">
+<span class="verdict-label">Observation Summary</span>
+<span class="verdict-badge">Regional 5th · No dimensions in band · Series BSLI incalculable · 4 missing dimensions</span>
+<span class="verdict-eta">η = 0.5239 (67th among 197 countries)</span>
+<span class="verdict-bsli">BSLI = Incalculable</span>
+</div></div>
+<div class="main">
+<div class="section">
+<div class="section-title">§ 00</div>
+<h2 class="section-heading">Position within Region — Why the Commonwealth of Dominica</h2>
+<p>This report was selected as the highest-ranking country in terms of η based on the Country Analysis Series among countries without a standalone edition in the Latin America rotation of the daily regional rotation pipeline. Regional 1st to 4th place Barbados (0.5600), Uruguay (0.5557), Belize (0.5283), and Dominican Republic (0.5280) already have standalone editions. In the Series, the η of the Commonwealth of Dominica is <strong>0.5239</strong>(67th among 197 countries), and the lower-ranking country in the same batch is Panama (0.4368).</p>
+<p>The number of dimensions in band in 2024 is 0. The Series BSLI is incalculable (absence of PIP income distribution raw data), and the missing dimensions are A11, A3, A5, and A9 — η was calculated with eight valid dimensions (requires definitive text verification, T-2 series).</p>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Latin America Region (Series)</th><th>η</th><th>Rank</th><th>BSLI</th><th>In 2024 Threshold Band</th><th>Missing Dimensions</th></tr></thead><tbody>
+<tr><td>Barbados (BRB)</td><td class="dim-score">0.5600</td><td>39th among 197 countries</td><td class="dim-score">Incalculable</td><td>0</td><td>A11, A5, A9</td></tr>
+<tr><td>Uruguay (URY)</td><td class="dim-score">0.5557</td><td>43rd among 197 countries</td><td class="dim-score">+0.0848</td><td>A5</td><td>None</td></tr>
+<tr><td>Belize (BLZ)</td><td class="dim-score">0.5283</td><td>62nd among 197 countries</td><td class="dim-score">Incalculable</td><td>A7</td><td>A11, A5, A9</td></tr>
+<tr><td>Dominican Republic (DOM)</td><td class="dim-score">0.5280</td><td>63rd among 197 countries</td><td class="dim-score">-0.0908</td><td>A7</td><td>A5</td></tr>
+<tr style="background:#B8850E18;font-weight:bold"><td>Commonwealth of Dominica (DMA)</td><td class="dim-score">0.5239</td><td>67th among 197 countries</td><td class="dim-score">Incalculable</td><td>0</td><td>A11, A3, A5, A9</td></tr>
+<tr><td>Saint Vincent and the Grenadines (VCT)</td><td class="dim-score">0.5236</td><td>69th among 197 countries</td><td class="dim-score">Incalculable</td><td>0</td><td>A11, A3, A5, A9</td></tr>
+<tr><td>Republic of Chile (CHL)</td><td class="dim-score">0.5184</td><td>73rd among 197 countries</td><td class="dim-score">-0.0510</td><td>A5</td><td>None</td></tr>
+<tr><td>Saint Kitts and Nevis (KNA)</td><td class="dim-score">0.5180</td><td>74th among 197 countries</td><td class="dim-score">Incalculable</td><td>0</td><td>A11, A3, A5, A9</td></tr>
+<tr><td>Jamaica (JAM)</td><td class="dim-score">0.5150</td><td>76th among 197 countries</td><td class="dim-score">Incalculable</td><td>A7</td><td>A5</td></tr>
+<tr><td>Saint Lucia (LCA)</td><td class="dim-score">0.5119</td><td>79th among 197 countries</td><td class="dim-score">-0.4011</td><td>A7</td><td>A11, A5, A9</td></tr>
+<tr><td>Costa Rica (CRI)</td><td class="dim-score">0.5116</td><td>80th among 197 countries</td><td class="dim-score">-0.2546</td><td>A5</td><td>None</td></tr>
+<tr><td>Antigua and Barbuda (ATG)</td><td class="dim-score">0.5106</td><td>81st among 197 countries</td><td class="dim-score">Incalculable</td><td>0</td><td>A11, A3, A5, A9</td></tr>
+<tr><td>Suriname (SUR)</td><td class="dim-score">0.5038</td><td>89th among 197 countries</td><td class="dim-score">Incalculable</td><td>A7</td><td>A5, A9</td></tr>
+<tr><td>Grenada (GRD)</td><td class="dim-score">0.5027</td><td>91st among 197 countries</td><td class="dim-score">Incalculable</td><td>0</td><td>A11, A5, A9</td></tr>
+<tr><td>Guyana (GUY)</td><td class="dim-score">0.5012</td><td>94th among 197 countries</td><td class="dim-score">Incalculable</td><td>A7</td><td>A11, A3, A5</td></tr>
+<tr><td>Argentine Republic (ARG)</td><td class="dim-score">0.4865</td><td>111th among 197 countries</td><td class="dim-score">Incalculable</td><td>A5</td><td>None</td></tr>
+<tr><td>Paraguay (PRY)</td><td class="dim-score">0.4818</td><td>118th among 197 countries</td><td class="dim-score">-0.1377</td><td>A2, A5, A7, A8</td><td>None</td></tr>
+<tr><td>Republic of Haiti (HTI)</td><td class="dim-score">0.4780</td><td>123rd among 197 countries</td><td class="dim-score">Incalculable</td><td>A2, A6, A7, A8</td><td>A11, A3, A5</td></tr>
+<tr><td>Republic of Peru (PER)</td><td class="dim-score">0.4703</td><td>131st among 197 countries</td><td class="dim-score">-0.3434</td><td>A2, A5, A7</td><td>None</td></tr>
+<tr><td>Federative Republic of Brazil (BRA)</td><td class="dim-score">0.4700</td><td>132nd among 197 countries</td><td class="dim-score">-0.2409</td><td>A5, A7</td><td>None</td></tr>
+<tr><td>Trinidad and Tobago (TTO)</td><td class="dim-score">0.4599</td><td>142nd among 197 countries</td><td class="dim-score">Incalculable</td><td>A5</td><td>A3</td></tr>
+<tr><td>Plurinational State of Bolivia (BOL)</td><td class="dim-score">0.4567</td><td>146th among 197 countries</td><td class="dim-score">-0.1227</td><td>A2, A5, A7, A8</td><td>None</td></tr>
+<tr><td>Guatemala (GTM)</td><td class="dim-score">0.4563</td><td>149th among 197 countries</td><td class="dim-score">-0.5607</td><td>A2, A5, A6, A7, A8</td><td>None</td></tr>
+<tr><td>El Salvador (SLV)</td><td class="dim-score">0.4549</td><td>151st among 197 countries</td><td class="dim-score">-0.1060</td><td>A2, A5, A7, A8</td><td>None</td></tr>
+<tr><td>Republic of Ecuador (ECU)</td><td class="dim-score">0.4487</td><td>161st among 197 countries</td><td class="dim-score">-0.3679</td><td>A2, A5, A7</td><td>None</td></tr>
+<tr><td>Republic of Colombia (COL)</td><td class="dim-score">0.4393</td><td>167th among 197 countries</td><td class="dim-score">-0.6808</td><td>A3, A5, A7</td><td>None</td></tr>
+<tr><td>Panama (PAN)</td><td class="dim-score">0.4368</td><td>171st among 197 countries</td><td class="dim-score">-0.1500</td><td>A5, A7</td><td>None</td></tr>
+<tr><td>Honduras (HND)</td><td class="dim-score">0.4346</td><td>173rd among 197 countries</td><td class="dim-score">-0.5731</td><td>A2, A5, A7, A8</td><td>None</td></tr>
+<tr><td>Nicaragua (NIC)</td><td class="dim-score">0.4218</td><td>182nd among 197 countries</td><td class="dim-score">-0.3583</td><td>A2, A5, A7, A8</td><td>None</td></tr>
+<tr><td>Bolivarian Republic of Venezuela (VEN)</td><td class="dim-score">0.4024</td><td>191st among 197 countries</td><td class="dim-score">Incalculable</td><td>A2, A4, A5, A7, A8</td><td>A3</td></tr>
+<tr><td>Republic of Cuba (CUB)</td><td class="dim-score">0.3986</td><td>194th among 197 countries</td><td class="dim-score">Incalculable</td><td>A5, A8</td><td>A12, A3</td></tr>
+</tbody></table></div>
+<p class="note">All values are intact baseline indicators from the Country Analysis Series (2026-10-07) (Series = Λ¹² v2.0, matching η and rank across 197 countries). η is the simple average of valid dimension (≥5) values, representing the Composite Social Stability Index where higher values denote greater stability (Series Volume 1 §1.5). It is not read as the Explosion Proximity Index (EPI). Missing dimensions were not filled.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 01</div>
+<h2 class="section-heading">Executive Summary</h2>
+<p>The Commonwealth of Dominica has a Series η of 0.5239 (67th among 197 countries). Because BSLI could not be calculated, the Series did not include a cross-sectional pressure ranking table or a causal loop diagram (—), and pressure is read through the 2024 P of the trajectory table: there are no dimensions in band, and A4 0.4312 and A7 0.4016 are the highest.</p>
+<p>Trajectory: In 2017, when Hurricane Maria passed through, A8 Governance (measured: 6 WGI indicators) fell (increased pressure) by +0.0282, and A7 (measured: population aging and population growth) fell by +0.0596; A8 fell further by +0.0156 in 2018. A8 broke away (decreased pressure) by -0.0210 in 2022 and -0.0224 in 2023. A2 Institutional Trust (measured: CPI and control of corruption) fell by +0.0138 in 2023 and broke away by -0.0108 in 2024. ACLED protests range from 3 to 16 per year.</p>
+<p>On the political situation axis, the 2017 Hurricane Maria, Citizenship by Investment (CBI) revenues, the 2022 snap general election boycotted by the opposition, and the 2025 electoral reform bill and protests are recorded. The Series designated this country as a data-edition inclusion, so there is no narrative briefing — the political situation was written from public sources in this investigation.</p>
+<div class="cards">
+<div class="card"><div class="card-label">η Composite Social Stability Index (Series)</div><div class="card-value">0.5239</div><div class="card-desc">67th among 197 countries · 5th among 31 Latin American countries</div></div>
+<div class="card gold"><div class="card-label">Dimensions in 2024 Threshold Band (Series)</div><div class="card-value">0</div><div class="card-desc">P ≥ 0.4458 · Cross-sectional maximum pressure — (Cross-section incalculable due to uncalculated BSLI)</div></div>
+<div class="card red"><div class="card-label">BSLI (Series)</div><div class="card-value">Incalculable</div><div class="card-desc">Absence of PIP income distribution raw data · Missing dimensions A11, A3, A5, A9</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 02</div>
+<h2 class="section-heading">Historical Time Series — Events That Shaped the Structure</h2>
+<div class="timeline">
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2017-09-18</div><div class="tl-content"><strong>Hurricane Maria</strong> — Total damage and loss of approximately 226% of 2016 GDP (damage $930.9 million, loss $380.2 million), approximately 90% of homes damaged, complete shutdown of electricity supply. Government reported 30 dead and 34 missing (as of November 2017); other sources report higher casualties (PDNA · GFDRR).</div></div>
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2017</div><div class="tl-content"><strong>IMF Assessment</strong> — Analyzed that inflows from the Citizenship by Investment program reached approximately 10% of GDP, deepening fiscal dependence (IMF Selected Issues).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2022-12-06</div><div class="tl-content"><strong>Snap General Election</strong> — Opposition parties UWP and DFP boycotted citing inadequate electoral reform. The ruling Labour Party won 19 of 21 seats, with 6 candidates elected unopposed. Turnout fell below a majority for the first time in history at 31.6%. CARICOM observer mission assessed the election as peaceful and orderly while looking forward to electoral reforms (Wikipedia · Freedom House · CARICOM).</div></div>
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2024</div><div class="tl-content"><strong>IMF Consultations (Media Reports)</strong> — 2022/23 fiscal year CBI revenue reached 37% of GDP, primary fiscal balance excluding CBI recorded a deficit, recommended reducing 'excessive reliance' (IMI Daily report).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2025-03</div><div class="tl-content"><strong>Passage of Electoral Reform Bills</strong> — Bills tabled in November 2024 regarding an independent electoral commission and voter registration were passed. Opposition criticized the lack of consultation; 24 people arrested during protests (Wikipedia).</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 03</div>
+<h2 class="section-heading">Recent Political Situation (2025–2026)</h2>
+<p><strong>Fiscal Structure.</strong> The share of Citizenship by Investment revenue in GDP is reported differently depending on the source and year: approximately 10% (IMF 2017), approximately 20% (IMI independent analysis), 31% (Astons), and 37% (IMF 2024 report). The IMF has consistently recommended using these inflows for savings and investment rather than current spending, citing the risk of sudden cessation (IMI Daily).</p>
+<p><strong>Electoral System.</strong> Confrontation over the electoral system continued following the 2022 opposition boycott and the 2025 passage of electoral reform legislation (Freedom House · Wikipedia). Subsequent election schedules and results were not confirmed in this investigation.</p>
+<p><strong>Public Trends.</strong> ACLED protests recorded 11 incidents in 2018, 5 in 2020, 13 in 2021, 16 in 2022, 4 in 2023, and 3 in 2024.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 03-B</div>
+<h2 class="section-heading">Published Figures vs. Independent Sources — Examining the Gaps</h2>
+<p>The gap in the Commonwealth of Dominica lies in the fact that citizenship sale revenues—which constitute a major part of national finances—differ by more than threefold across sources, the gap between seat counts and voter turnout in the same election, and differing casualty figures for the same disaster across sources. Published figures are presented intact from the original texts (DECISIONS 17·19) side by side.</p>
+<div class="table-scroll"><table class="trigger-table">
+<thead><tr><th>Item</th><th>Published Figure (Publishing Institution · Year)</th><th>Independent Source (Institution · Year)</th><th>Interpretation of Gap (Definitive Axiom)</th></tr></thead>
+<tbody><tr><td><strong>CBI Revenue (relative to GDP)</strong></td><td>IMF (2017): approx. 10% · IMF 2024 Consultation (report): 2022/23 fiscal year 37%</td><td>IMI independent analysis: approx. 20% · Astons: 31% · estimated $232 million (IMI, not an IMF figure)</td><td>Years and calculation methodologies differ. The range is recorded as is. This revenue is not directly incorporated into the engine's 12 dimensions (verification against definitive text required: label-measured input).</td></tr><tr><td><strong>2022 General Election</strong></td><td>Ruling Labour Party won 19 of 21 seats</td><td>Voter turnout 31.6% (historical low), opposition boycott, 6 elected unopposed · CARICOM: Peaceful and orderly</td><td>Seats, voter turnout, and observer assessments are recorded together.</td></tr><tr><td><strong>Hurricane Maria Casualties</strong></td><td>Government report: 30 dead, 34 missing (2017-11)</td><td>Other sources: Report higher casualties · PDNA damage and loss at 226% of GDP</td><td>Timing of compilation and scope differ. The government figure is kept intact while recording the divergence.</td></tr></tbody>
+</table></div>
+<p class="note">Published figures were cited directly from original texts without adjustment (DECISIONS 17·19). The Series engine values are also the result of directly utilizing figures from official releases and international organizations, without filtering based on regime characteristics. The gap is not a judgment on which side is 'correct,' but rather an instrument to reveal differences that arise when observing the same society through different windows.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 04</div>
+<h2 class="section-heading">Λ¹² 12-Dimensional State Vector</h2>
+<p>Values are normalized between 0 and 1 by the Country Analysis Series engine (Λ¹² v2.0). Dimension names follow Series Volume 1 §1.4, and 'Measured:' below lists the indicators actually inputted as in the Series (MEASURED — because certain dimensions differ between label and measured input, interpretation follows the measured input side). Coupling r is a common constant across 138 countries, the right column is the 2024 pressure P from the Series trajectory table, and ▲ indicates dimensions within the Series 2024 threshold band (P ≥ 0.4458).</p>
+<div class="table-scroll"><table class="dim-table">
+<thead><tr><th>Dimension</th><th>Name / Measured Input</th><th>Value</th><th>Bar</th><th>Coupling r</th><th>P 2024 (Series Trajectory)</th></tr></thead>
+<tbody>
+<tr><td class="dim-code">A1</td><td>Infrastructure<br/><span style="font-size:11px;color:var(--muted)">Measured: Electricity · Internet</span></td><td class="dim-score">0.9038</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:90.4%;background:#5E9186"></div></div></td><td class="dim-score">+0.792</td><td class="dim-score" style="">0.0762</td></tr>
+<tr><td class="dim-code">A2</td><td>Institutional Trust<br/><span style="font-size:11px;color:var(--muted)">Measured: CPI · Control of Corruption</span></td><td class="dim-score">0.6149</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:61.5%;background:#5E9186"></div></div></td><td class="dim-score">+0.694</td><td class="dim-score" style="">0.2603</td></tr>
+<tr><td class="dim-code">A3</td><td>Civil Liberties<br/><span style="font-size:11px;color:var(--muted)">Measured: Gini Coefficient</span></td><td class="dim-score">—</td><td><span style="color:var(--muted)">Missing — Not filled</span></td><td class="dim-score">+0.572</td><td class="dim-score" style="">Missing</td></tr>
+<tr><td class="dim-code">A4</td><td>Economic Stability<br/><span style="font-size:11px;color:var(--muted)">Measured: GDP · Manufacturing</span></td><td class="dim-score">0.0808</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:8.1%;background:#C0392B"></div></div></td><td class="dim-score">+0.463</td><td class="dim-score" style="">0.4312</td></tr>
+<tr><td class="dim-code">A5</td><td>Educational Access<br/><span style="font-size:11px;color:var(--muted)">Measured: R&amp;D/GDP</span></td><td class="dim-score">—</td><td><span style="color:var(--muted)">Missing — Not filled</span></td><td class="dim-score">+0.626</td><td class="dim-score" style="">Missing</td></tr>
+<tr><td class="dim-code">A6</td><td>Health Standards<br/><span style="font-size:11px;color:var(--muted)">Measured: CO₂ · Renewable Energy</span></td><td class="dim-score">0.5381</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:53.8%;background:#B8850E"></div></div></td><td class="dim-score">-0.549</td><td class="dim-score" style="">0.2954</td></tr>
+<tr><td class="dim-code">A7</td><td>Social Structure <span style="font-size:11px;color:var(--muted)">(Series table/diagram label 'Social Capital')</span><br/><span style="font-size:11px;color:var(--muted)">Measured: Population Aging · Population Growth</span></td><td class="dim-score">0.5304</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:53.0%;background:#B8850E"></div></div></td><td class="dim-score">-0.757</td><td class="dim-score" style="">0.4016</td></tr>
+<tr><td class="dim-code">A8</td><td>Governance<br/><span style="font-size:11px;color:var(--muted)">Measured: 6 WGI Indicators</span></td><td class="dim-score">0.6315</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:63.1%;background:#5E9186"></div></div></td><td class="dim-score">+0.736</td><td class="dim-score" style="">0.3064</td></tr>
+<tr><td class="dim-code">A9</td><td>Environmental Pressure<br/><span style="font-size:11px;color:var(--muted)">Measured: GPI · Military Expenditure</span></td><td class="dim-score">—</td><td><span style="color:var(--muted)">Missing — Not filled</span></td><td class="dim-score">+0.396</td><td class="dim-score" style="">0.0318</td></tr>
+<tr><td class="dim-code">A10</td><td>Inequality<br/><span style="font-size:11px;color:var(--muted)">Measured: Tourist Arrivals</span></td><td class="dim-score">0.0012</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:0.1%;background:#C0392B"></div></div></td><td class="dim-score">+0.318</td><td class="dim-score" style="">0.3177</td></tr>
+<tr><td class="dim-code">A11</td><td>External Shocks<br/><span style="font-size:11px;color:var(--muted)">Measured: Energy Import Dependence</span></td><td class="dim-score">—</td><td><span style="color:var(--muted)">Missing — Not filled</span></td><td class="dim-score">-0.107</td><td class="dim-score" style="">Missing</td></tr>
+<tr><td class="dim-code">A12</td><td>Mobility<br/><span style="font-size:11px;color:var(--muted)">Measured: FDI</span></td><td class="dim-score">0.8902</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:89.0%;background:#5E9186"></div></div></td><td class="dim-score">+0.049</td><td class="dim-score" style="">0.0144</td></tr>
+</tbody>
+</table></div>
+<p class="note">A7 Social Structure (former name 'Social Capital', corrected 2026-10-02) is measured in the Series engine by population aging and population growth, and the original label ('Social Capital') in the Series tables and diagrams is kept intact according to the engine freeze principle. Missing dimensions were not filled.</p>
+<p><strong>Reading Guide.</strong> Because A6, A7, and A11 have negative coupling r, higher dimension values correspond to greater deficit (pressure). A7 (measured: population aging and population growth 0.5304) ranks 2nd in 2024 P, and A6 (0.5381) ranks 5th. A11 is missing.</p>
+<p><strong>High Dimensions.</strong> A1 (measured: electricity and internet 0.9038) and A12 (0.8902) are high, followed by A8 Governance (0.6315) and A2 Institutional Trust (0.6149).</p>
+<p><strong>Bottom Dimensions.</strong> A10 (measured: tourist arrivals 0.0012) and A4 Economic Stability (measured: GDP and manufacturing 0.0808) are at the bottom.</p>
+<p><strong>Missing Values.</strong> Missing dimensions in the Series are A11, A3, A5, and A9. With four dimensions empty, η is the average of eight dimensions. Although A9 is missing in the Series, the trajectory table records a 2024 P of 0.0318 (requires definitive text verification: opposite direction of P-5).</p>
+<p><strong>Synthesis Fragment (Interfacing Prior Research by Dimension).</strong> ① Island history → The Dominica Story (Honychurch, 1995, <em>The Dominica Story: A History of the Island</em>, Macmillan Caribbean): Formation of an island society from colonialism to independence — application condition is a small island state exposed to disasters and external dependence, and the drops in A8 and A7 after the 2017 hurricane are objects of observation. ② Citizenship sales → The Golden Passport (Surak, 2023, <em>The Golden Passport: Global Mobility for Millionaires</em>, Harvard University Press): Economics and politics of the regime where the state sells citizenship — CBI revenue dependence corresponds to this. Nexus: It is observed as a structure in which the disaster recovery demand of ① is met by the citizenship sales revenue of ② (interpretation).</p>
+<div class="chart-wrap">
+<div class="chart-title">Radar Comparison — Commonwealth of Dominica vs. South Korea (Benchmark) vs. Latin America Average (Series Values)</div>
+<canvas height="320" id="radarChart"></canvas>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 05</div>
+<h2 class="section-heading">Pressure Coordinate System Causal Loop Diagram — Λ¹² Standard Output (Series Original)</h2>
+<p>The sun (center) is BSLI, and the planets are A1 to A12. The more inward the orbit, the more intensely that dimension presses upon the grassroots base. The diagram and table below are directly reproduced from the originals published in the Country Analysis Series (engine freeze, DECISIONS 18·20).</p>
+<div class="formula-box"><div class="f-label">Series: No causal loop diagram due to incalculable BSLI</div><div class="f-vars">Country Analysis Series Volume 7 (Lambda12_CountryBook_Vol7_Americas_20261007.html) · DMA Section Original: Because BSLI is not calculated, the center (sun) of the causal loop diagram cannot be drawn. Reason: Not included in World Bank PIP or gap of 10 years or more. Since coupling r is common to all countries, pressure values by dimension are calculated as they are in the trajectory below.</div></div>
+<p class="note">There is no pressure ranking table (cross-section) for this country in the Series — cross-sectional coupling was not calculated due to uncalculated BSLI. The 2024 pressure values by dimension are in the Series ΔP table of the trajectory section below.</p>
+<div class="formula-box">
+<div class="f-label">Pressure Coordinate System Formula (Definitive pressure-coordinate-system)</div>
+<div class="f-eq">r_d = Pearson(A_d, BSLI) · gap_d = 1−A_d (r&gt;0) / A_d (r&lt;0) · P_d = |r_d| × gap_d</div>
+<div class="f-vars">r_d: Coupling coefficient for 138-country common sample · gap_d: Deficit · P_d: Pressure index · Direction = sign(ΔP_d), Activity = |ΔP_d/Δt|<br/>P* = 0.4458: Obtained from the upper pressure values at the ignition point of 4 uprising countries, an <strong>exploratory threshold band (n=4)</strong> — not used as a definitive threshold.</div>
+</div>
+<p>Instead of a causal loop diagram for this country, the Series recorded the reason: because BSLI could not be calculated, the center (sun) cannot be drawn, and since coupling r is common to all countries, the dimension-specific pressure values are calculated as they are in the trajectory. In accordance with the engine freeze principle (DECISIONS 18), this report does not redraw the diagram.</p>
+<p>Therefore, the pressure coordinates of the Commonwealth of Dominica are read through the 2024 P of the trajectory table: there are no dimensions in the band (0.4458), with A4 0.4312 near the threshold, followed below by A7 0.4016, A10 0.3177, and A8 0.3064.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 06</div>
+<h2 class="section-heading">2016–2024 Trajectory — Pressure Coordinate System Time Series (Series Original)</h2>
+<figure class="pcs-wrap"><img alt="Commonwealth of Dominica 2016~2024 12차원 압박 궤적" loading="lazy" src="/nations/book/img/orbit_DMA.png" style="width:100%;height:auto;display:block"/><figcaption class="note"><b>[Figure 7-19-2]</b> Commonwealth of Dominica 12-dimension complete trajectory. Definitive trajectory generator orbit_decay_gen_v34 original output (2026-08-11). Inner shading = threshold band.<br/>Source: Country Analysis Series Volume 7 (Lambda12_CountryBook_Vol7_Americas_20261007.html) · DMA section "3. 2016–2024 Trajectory" image intact.</figcaption></figure>
+<div class="book-frag"><h4>Annual variation ΔP (Red = fall / increased pressure, Cyan = breakaway, Bold = dimension-specific maximum |ΔP| year)</h4><div class="tw"><table class=""><thead><tr><th class="">Dimension</th><th class="n">P 2024</th><th class="n">Δ17</th><th class="n">Δ18</th><th class="n">Δ19</th><th class="n">Δ20</th><th class="n">Δ21</th><th class="n">Δ22</th><th class="n">Δ23</th><th class="n">Δ24</th></tr></thead><tbody><tr class=""><td class=""><b>A1</b></td><td class="n"><span class="">0.0762</span></td><td class="n"><span class="dn">-0.0106</span></td><td class="n"><span class="dn">-0.0026</span></td><td class="n"><span class="dn"><b>-0.0155</b></span></td><td class="n"><span class="dn">-0.0048</span></td><td class="n"><span class="dn">-0.0101</span></td><td class="n"><span class="dn">-0.0106</span></td><td class="n"><span class="dn">-0.0032</span></td><td class="n"><span class="dn">-0.0030</span></td></tr><tr class=""><td class=""><b>A2</b></td><td class="n"><span class="">0.2603</span></td><td class="n"><span class="dn">-0.0008</span></td><td class="n"><span class="up">+0.0117</span></td><td class="n"><span class="dn">-0.0004</span></td><td class="n"><span class="up">+0.0023</span></td><td class="n"><span class="up">+0.0040</span></td><td class="n"><span class="up">+0.0010</span></td><td class="n"><span class="up"><b>+0.0138</b></span></td><td class="n"><span class="dn">-0.0108</span></td></tr><tr class=""><td class=""><b>A3</b></td><td class="n">Missing</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="">—</td></tr><tr class=""><td class=""><b>A4</b></td><td class="n"><span class="">0.4312</span></td><td class="n"><span class="up">+0.0019</span></td><td class="n"><span class="up">+0.0012</span></td><td class="n"><span class="dn">-0.0004</span></td><td class="n"><span class="up">+0.0014</span></td><td class="n"><span class="dn">-0.0014</span></td><td class="n"><span class="dn">-0.0027</span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="dn"><b>-0.0040</b></span></td></tr><tr class=""><td class=""><b>A5</b></td><td class="n">Missing</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="">—</td></tr><tr class=""><td class=""><b>A6</b></td><td class="n"><span class="">0.2954</span></td><td class="n"><span class="dn">-0.0021</span></td><td class="n"><span class="dn"><b>-0.0051</b></span></td><td class="n"><span class="dn">-0.0015</span></td><td class="n"><span class="up">+0.0034</span></td><td class="n"><span class="up">+0.0007</span></td><td class="n"><span class="up">+0.0002</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="up">+0.0001</span></td></tr><tr class=""><td class=""><b>A7</b></td><td class="n"><span class="">0.4016</span></td><td class="n"><span class="up">+0.0596</span></td><td class="n"><span class="up">+0.0221</span></td><td class="n"><span class="dn">-0.0123</span></td><td class="n"><span class="dn">-0.0357</span></td><td class="n"><span class="up"><b>+0.1596</b></span></td><td class="n"><span class="dn">-0.0738</span></td><td class="n"><span class="up">+0.0010</span></td><td class="n"><span class="dn">-0.0567</span></td></tr><tr class=""><td class=""><b>A8</b></td><td class="n"><span class="">0.3064</span></td><td class="n"><span class="up"><b>+0.0282</b></span></td><td class="n"><span class="up">+0.0156</span></td><td class="n"><span class="up">+0.0005</span></td><td class="n"><span class="up">+0.0054</span></td><td class="n"><span class="dn">-0.0015</span></td><td class="n"><span class="dn">-0.0210</span></td><td class="n"><span class="dn">-0.0224</span></td><td class="n"><span class="dn">-0.0046</span></td></tr><tr class=""><td class=""><b>A9</b></td><td class="n"><span class="">0.0318</span></td><td class="n"><span class="dn">-0.0167</span></td><td class="n"><span class="up">+0.0002</span></td><td class="n"><span class="up">+0.0129</span></td><td class="n"><span class="dn"><b>-0.0233</b></span></td><td class="n"><span class="dn">-0.0002</span></td><td class="n"><span class="dn">-0.0136</span></td><td class="n"><span class="dn">-0.0001</span></td><td class="n"><span class="dn">-0.0008</span></td></tr><tr class=""><td class=""><b>A10</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.3177</span></td><td class="n"><span class="up"><b>+0.0002</b></span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="dn">-0.0002</span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A11</b></td><td class="n">Missing</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="">—</td></tr><tr class=""><td class=""><b>A12</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.0144</span></td><td class="n"><span class="up">+0.0015</span></td><td class="n"><span class="dn"><b>-0.0161</b></span></td><td class="n"><span class="up">+0.0007</span></td><td class="n"><span class="dn">-0.0110</span></td><td class="n"><span class="up">+0.0063</span></td><td class="n"><span class="dn">-0.0094</span></td><td class="n"><span class="up">+0.0071</span></td><td class="n"><span class="up">+0.0007</span></td></tr></tbody></table></div><p class="note"><span class="warnmark">⚠</span> Data Caution — <b>A3</b> Missing (entire period) · <b>A5</b> Missing (entire period) · <b>A10</b> Final measured year 2020 (+4 years carried over) · <b>A11</b> Missing (entire period) · <b>A12</b> Comparison group extreme 0.0%. Stoppage during the carry-over period may be a data freeze.</p></div>
+<p class="note">The ΔP table and data cautions above are verbatim from the original Country Series text. A standstill in the carried-over interval may be a data freeze and is read distinctly from actual social stagnation (time-series tracking principles: position P, direction sign(ΔP), activity |ΔP|).</p>
+<p><strong>Position.</strong> Based on 2024 P, there are no in-band dimensions. In descending order: A4 0.4312, A7 0.4016, A10 0.3177, A8 0.3064, A6 0.2954, and A2 0.2603.</p>
+<p><strong>Direction·Activity.</strong> A8 fell by +0.0282 in 2017 and +0.0156 in 2018, and deviated by -0.0210 in 2022 and -0.0224 in 2023. A2 fell by +0.0117 in 2018 and +0.0138 in 2023, and deviated by -0.0108 in 2024. A1 deviated for eight consecutive years from 2017 to 2024. A9 deviated by -0.0233 in 2020. A7 fell by +0.0596 in 2017 and +0.0221 in 2018, deviated by -0.0357 in 2020, experienced a large fall of +0.1596 in 2021, and deviated by -0.0738 in 2022 and -0.0567 in 2024 (requires canonical verification, P-1 common pattern).</p>
+<p><strong>Data cautions.</strong> The Country Series flagged 5 dimensions with caution marks (A3, A5, and A11 missing across all intervals; A10 carried over +4 years; A12 extreme in comparison group).</p>
+<h3 style="margin-top:24px">Phase space trajectory (2016–2024) — Latin America and the Caribbean</h3>
+<div class="chart-wrap"><svg style="width:100%;height:auto;background:#FAFAF7;border:1px solid var(--border)" viewbox="0 0 760 380">
+<line stroke="#EEE" x1="60.0" x2="60.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="60.0" y="352">0.203</text>
+<line stroke="#EEE" x1="60" x2="740" y1="336.0" y2="336.0"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="339.0">0.401</text>
+<line stroke="#EEE" x1="196.0" x2="196.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="196.0" y="352">0.249</text>
+<line stroke="#EEE" x1="60" x2="740" y1="273.6" y2="273.6"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="276.6">0.460</text>
+<line stroke="#EEE" x1="332.0" x2="332.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="332.0" y="352">0.294</text>
+<line stroke="#EEE" x1="60" x2="740" y1="211.2" y2="211.2"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="214.2">0.519</text>
+<line stroke="#EEE" x1="468.0" x2="468.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="468.0" y="352">0.339</text>
+<line stroke="#EEE" x1="60" x2="740" y1="148.8" y2="148.8"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="151.8">0.578</text>
+<line stroke="#EEE" x1="604.0" x2="604.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="604.0" y="352">0.385</text>
+<line stroke="#EEE" x1="60" x2="740" y1="86.4" y2="86.4"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="89.4">0.637</text>
+<line stroke="#EEE" x1="740.0" x2="740.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="740.0" y="352">0.430</text>
+<line stroke="#EEE" x1="60" x2="740" y1="24.0" y2="24.0"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="27.0">0.696</text>
+<line stroke="#C0392B" stroke-dasharray="5,4" x1="60" x2="740" y1="288.1" y2="288.1"></line><text fill="#C0392B" font-family="Courier New" font-size="10" text-anchor="end" x="736" y="284.1">P* 0.4458 (exploratory band)</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="11" text-anchor="middle" x="380.0" y="372">Mean pressure P̄(t) — available dimension mean (right = intensifying pressure)</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="11" text-anchor="middle" transform="rotate(-90 14 190.0)" x="14" y="190.0">Maximum pressure P_max(t)</text>
+<polyline fill="none" opacity="0.6" points="94.9,325.4 115.9,293.1 109.3,304.6 115.4,321.6 98.8,320.0 145.1,210.1 110.6,292.5 108.5,300.6 90.0,317.4" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="94.9" cy="325.4" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="115.9" cy="293.1" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="109.3" cy="304.6" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="115.4" cy="321.6" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="98.8" cy="320.0" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="145.1" cy="210.1" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="110.6" cy="292.5" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="108.5" cy="300.6" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="90.0" cy="317.4" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="96.0" y="329.4">BRB</text>
+<polyline fill="none" opacity="0.6" points="185.0,149.9 204.0,157.6 184.6,164.4 175.9,160.7 156.7,173.0 192.1,166.0 152.7,163.8 160.3,170.3 139.3,170.3" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="185.0" cy="149.9" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="204.0" cy="157.6" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="184.6" cy="164.4" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="175.9" cy="160.7" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="156.7" cy="173.0" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="192.1" cy="166.0" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="152.7" cy="163.8" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="160.3" cy="170.3" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="139.3" cy="170.3" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="145.3" y="182.3">URY</text>
+<polyline fill="none" opacity="0.6" points="428.5,153.2 438.5,106.4 410.9,106.6 390.2,138.1 342.2,199.5 376.2,64.3 339.3,116.2 338.5,116.3 306.2,183.0" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="428.5" cy="153.2" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="438.5" cy="106.4" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="410.9" cy="106.6" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="390.2" cy="138.1" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="342.2" cy="199.5" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="376.2" cy="64.3" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="339.3" cy="116.2" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="338.5" cy="116.3" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="306.2" cy="183.0" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="312.2" y="195.0">BLZ</text>
+<polyline fill="none" opacity="0.6" points="279.8,234.8 279.8,174.3 279.8,172.0 257.1,186.7 222.3,236.9 240.3,94.4 203.6,171.5 204.2,179.0 174.4,234.8" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="279.8" cy="234.8" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="279.8" cy="174.3" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="279.8" cy="172.0" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="257.1" cy="186.7" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="222.3" cy="236.9" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="240.3" cy="94.4" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="203.6" cy="171.5" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="204.2" cy="179.0" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="174.4" cy="234.8" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="180.4" y="246.8">DOM</text>
+<polyline fill="none" opacity="1" points="176.8,299.4 197.2,297.4 206.2,296.1 200.8,296.6 180.1,295.1 232.6,197.9 189.3,275.9 188.0,274.9 161.6,303.5" stroke="#C0392B" stroke-width="2.4"></polyline>
+<circle cx="176.8" cy="299.4" fill="#C0392B" opacity="0.35" r="4"></circle>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="182.8" y="293.4">2016</text>
+<circle cx="197.2" cy="297.4" fill="#C0392B" opacity="0.43" r="4"></circle>
+<circle cx="206.2" cy="296.1" fill="#C0392B" opacity="0.51" r="4"></circle>
+<circle cx="200.8" cy="296.6" fill="#C0392B" opacity="0.59" r="4"></circle>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="206.8" y="290.6">2019</text>
+<circle cx="180.1" cy="295.1" fill="#C0392B" opacity="0.68" r="4"></circle>
+<circle cx="232.6" cy="197.9" fill="#C0392B" opacity="0.76" r="4"></circle>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="238.6" y="191.9">2021</text>
+<circle cx="189.3" cy="275.9" fill="#C0392B" opacity="0.84" r="4"></circle>
+<circle cx="188.0" cy="274.9" fill="#C0392B" opacity="0.92" r="4"></circle>
+<circle cx="161.6" cy="303.5" fill="#C0392B" opacity="1.00" r="4"></circle>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="167.6" y="297.5">2024</text>
+<text fill="#C0392B" font-family="Courier New" font-size="11" font-weight="bold" x="167.6" y="315.5">DMA</text>
+<polyline fill="none" opacity="0.6" points="190.4,303.8 216.5,283.7 202.8,304.1 182.9,299.0 168.9,298.3 218.0,184.9 172.9,267.2 185.1,267.7 160.3,298.4" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="190.4" cy="303.8" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="216.5" cy="283.7" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="202.8" cy="304.1" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="182.9" cy="299.0" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="168.9" cy="298.3" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="218.0" cy="184.9" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="172.9" cy="267.2" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="185.1" cy="267.7" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="160.3" cy="298.4" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="166.3" y="310.4">VCT</text>
+<polyline fill="none" opacity="0.6" points="193.5,149.5 215.2,145.9 212.8,146.1 219.6,135.2 205.4,134.4 234.8,137.2 188.7,139.1 192.2,138.0 177.3,138.0" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="193.5" cy="149.5" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="215.2" cy="145.9" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="212.8" cy="146.1" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="219.6" cy="135.2" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="205.4" cy="134.4" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="234.8" cy="137.2" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="188.7" cy="139.1" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="192.2" cy="138.0" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="177.3" cy="138.0" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="183.3" y="150.0">CHL</text>
+<polyline fill="none" opacity="0.6" points="164.6,314.1 185.5,240.4 185.1,258.4 188.5,277.3 164.6,321.9 221.2,160.8 182.3,236.4 183.3,235.9 163.6,294.7" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="164.6" cy="314.1" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="185.5" cy="240.4" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="185.1" cy="258.4" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="188.5" cy="277.3" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="164.6" cy="321.9" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="221.2" cy="160.8" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="182.3" cy="236.4" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="183.3" cy="235.9" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="163.6" cy="294.7" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="169.6" y="306.7">KNA</text>
+<polyline fill="none" opacity="0.6" points="226.1,283.9 221.0,212.9 183.0,225.5 178.6,241.5 159.3,276.3 214.3,119.3 173.7,201.1 181.0,205.4 160.7,265.9" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="226.1" cy="283.9" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="221.0" cy="212.9" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="183.0" cy="225.5" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="178.6" cy="241.5" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="159.3" cy="276.3" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="214.3" cy="119.3" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="173.7" cy="201.1" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="181.0" cy="205.4" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="160.7" cy="265.9" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="166.7" y="277.9">JAM</text>
+<polyline fill="none" opacity="0.6" points="227.1,294.8 257.6,224.5 254.8,231.6 246.6,245.8 237.6,291.2 283.9,138.8 247.2,214.8 247.2,215.0 223.8,273.5" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="227.1" cy="294.8" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="257.6" cy="224.5" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="254.8" cy="231.6" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="246.6" cy="245.8" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="237.6" cy="291.2" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="283.9" cy="138.8" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="247.2" cy="214.8" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="247.2" cy="215.0" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="223.8" cy="273.5" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="229.8" y="285.5">LCA</text>
+<polyline fill="none" opacity="0.6" points="271.0,159.8 277.6,155.3 276.8,146.2 265.6,138.4 248.6,133.7 278.0,127.4 249.6,133.2 244.2,132.3 222.6,132.3" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="271.0" cy="159.8" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="277.6" cy="155.3" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="276.8" cy="146.2" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="265.6" cy="138.4" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="248.6" cy="133.7" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="278.0" cy="127.4" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="249.6" cy="133.2" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="244.2" cy="132.3" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="222.6" cy="132.3" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="228.6" y="144.3">CRI</text>
+<polyline fill="none" opacity="0.6" points="172.5,289.0 233.3,225.4 218.0,234.0 210.0,250.3 202.4,295.4 252.7,144.2 200.9,222.9 189.8,231.2 171.6,291.4" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="172.5" cy="289.0" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="233.3" cy="225.4" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="218.0" cy="234.0" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="210.0" cy="250.3" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="202.4" cy="295.4" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="252.7" cy="144.2" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="200.9" cy="222.9" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="189.8" cy="231.2" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="171.6" cy="291.4" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="177.6" y="303.4">ATG</text>
+<polyline fill="none" opacity="0.6" points="254.6,241.8 261.1,180.6 258.7,180.2 243.3,188.7 216.3,237.5 264.4,99.6 226.8,175.6 205.7,178.9 193.8,234.1" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="254.6" cy="241.8" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="261.1" cy="180.6" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="258.7" cy="180.2" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="243.3" cy="188.7" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="216.3" cy="237.5" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="264.4" cy="99.6" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="226.8" cy="175.6" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="205.7" cy="178.9" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="193.8" cy="234.1" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="199.8" y="246.1">SUR</text>
+<polyline fill="none" opacity="0.6" points="233.8,297.4 266.0,254.2 273.4,265.2 265.0,277.5 243.9,296.5 292.0,161.4 256.5,241.7 252.3,248.4 224.7,299.3" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="233.8" cy="297.4" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="266.0" cy="254.2" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="273.4" cy="265.2" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="265.0" cy="277.5" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="243.9" cy="296.5" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="292.0" cy="161.4" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="256.5" cy="241.7" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="252.3" cy="248.4" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="224.7" cy="299.3" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="230.7" y="311.3">GRD</text>
+<polyline fill="none" opacity="0.6" points="418.0,253.5 417.6,185.0 438.5,64.8 395.1,123.9 330.7,276.7 383.7,85.4 338.9,165.8 332.6,174.9 303.3,230.3" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="418.0" cy="253.5" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="417.6" cy="185.0" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="438.5" cy="64.8" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="395.1" cy="123.9" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="330.7" cy="276.7" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="383.7" cy="85.4" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="338.9" cy="165.8" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="332.6" cy="174.9" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="303.3" cy="230.3" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="309.3" y="242.3">GUY</text>
+<polyline fill="none" opacity="0.6" points="267.4,176.6 269.9,173.8 264.5,162.2 266.9,150.6 240.7,157.7 281.6,155.7 249.0,156.1 263.3,159.9 249.4,159.9" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="267.4" cy="176.6" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="269.9" cy="173.8" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="264.5" cy="162.2" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="266.9" cy="150.6" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="240.7" cy="157.7" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="281.6" cy="155.7" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="249.0" cy="156.1" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="263.3" cy="159.9" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="249.4" cy="159.9" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="255.4" y="171.9">ARG</text>
+<polyline fill="none" opacity="0.6" points="430.4,112.6 432.7,116.6 418.5,116.0 409.5,112.0 381.5,114.2 410.2,80.5 395.6,109.9 398.0,111.8 383.2,111.8" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="430.4" cy="112.6" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="432.7" cy="116.6" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="418.5" cy="116.0" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="409.5" cy="112.0" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="381.5" cy="114.2" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="410.2" cy="80.5" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="395.6" cy="109.9" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="398.0" cy="111.8" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="383.2" cy="111.8" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="389.2" y="123.8">PRY</text>
+<polyline fill="none" opacity="0.6" points="695.3,99.6 687.1,108.6 682.3,111.9 680.7,102.9 659.7,98.6 710.0,62.9 670.1,72.8 675.2,77.1 655.7,84.7" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="695.3" cy="99.6" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="687.1" cy="108.6" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="682.3" cy="111.9" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="680.7" cy="102.9" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="659.7" cy="98.6" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="710.0" cy="62.9" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="670.1" cy="72.8" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="675.2" cy="77.1" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="655.7" cy="84.7" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="661.7" y="96.7">HTI</text>
+<polyline fill="none" opacity="0.6" points="374.9,113.3 381.1,112.9 380.6,113.6 361.4,114.4 349.4,116.1 369.4,112.1 345.9,114.5 354.8,115.5 336.7,115.5" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="374.9" cy="113.3" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="381.1" cy="112.9" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="380.6" cy="113.6" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="361.4" cy="114.4" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="349.4" cy="116.1" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="369.4" cy="112.1" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="345.9" cy="114.5" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="354.8" cy="115.5" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="336.7" cy="115.5" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="342.7" y="127.5">PER</text>
+<polyline fill="none" opacity="0.6" points="353.3,262.5 371.6,216.3 380.4,222.1 372.7,226.6 323.8,234.3 378.4,143.3 350.6,222.4 353.3,221.6 330.6,221.6" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="353.3" cy="262.5" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="371.6" cy="216.3" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="380.4" cy="222.1" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="372.7" cy="226.6" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="323.8" cy="234.3" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="378.4" cy="143.3" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="350.6" cy="222.4" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="353.3" cy="221.6" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="330.6" cy="221.6" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="336.6" y="233.6">BRA</text>
+<polyline fill="none" opacity="0.6" points="267.5,108.5 271.2,108.1 267.8,107.7 265.7,103.4 249.2,103.9 278.2,102.8 255.8,102.6 272.8,102.3 255.9,102.3" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="267.5" cy="108.5" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="271.2" cy="108.1" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="267.8" cy="107.7" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="265.7" cy="103.4" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="249.2" cy="103.9" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="278.2" cy="102.8" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="255.8" cy="102.6" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="272.8" cy="102.3" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="255.9" cy="102.3" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="261.9" y="114.3">TTO</text>
+<polyline fill="none" opacity="0.6" points="432.6,118.4 440.1,106.5 439.7,106.6 432.2,104.0 404.2,104.0 416.0,78.2 382.4,103.8 394.4,103.6 376.9,103.6" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="432.6" cy="118.4" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="440.1" cy="106.5" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="439.7" cy="106.6" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="432.2" cy="104.0" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="404.2" cy="104.0" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="416.0" cy="78.2" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="382.4" cy="103.8" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="394.4" cy="103.6" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="376.9" cy="103.6" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="382.9" y="115.6">BOL</text>
+<polyline fill="none" opacity="0.6" points="497.0,99.2 502.4,100.0 503.9,100.2 494.9,99.5 477.6,102.0 505.7,57.7 483.3,97.7 473.0,97.7 448.2,97.7" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="497.0" cy="99.2" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="502.4" cy="100.0" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="503.9" cy="100.2" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="494.9" cy="99.5" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="477.6" cy="102.0" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="505.7" cy="57.7" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="483.3" cy="97.7" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="473.0" cy="97.7" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="448.2" cy="97.7" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="454.2" y="109.7">GTM</text>
+<polyline fill="none" opacity="0.6" points="372.0,116.9 383.1,121.3 370.3,118.7 352.1,116.4 334.7,115.0 384.9,114.9 365.0,112.5 368.5,107.7 352.3,107.7" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="372.0" cy="116.9" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="383.1" cy="121.3" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="370.3" cy="118.7" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="352.1" cy="116.4" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="334.7" cy="115.0" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="384.9" cy="114.9" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="365.0" cy="112.5" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="368.5" cy="107.7" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="352.3" cy="107.7" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="358.3" y="119.7">SLV</text>
+<polyline fill="none" opacity="0.6" points="390.2,159.3 397.1,157.3 395.7,147.8 387.2,146.1 361.3,146.1 386.7,108.8 355.9,144.1 369.2,142.8 359.9,142.8" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="390.2" cy="159.3" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="397.1" cy="157.3" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="395.7" cy="147.8" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="387.2" cy="146.1" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="361.3" cy="146.1" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="386.7" cy="108.8" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="355.9" cy="144.1" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="369.2" cy="142.8" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="359.9" cy="142.8" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="365.9" y="154.8">ECU</text>
+<polyline fill="none" opacity="0.6" points="407.1,135.0 420.9,132.5 424.7,138.4 425.1,132.9 406.4,129.3 441.7,111.8 401.7,128.1 403.3,127.3 388.0,127.3" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="407.1" cy="135.0" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="420.9" cy="132.5" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="424.7" cy="138.4" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="425.1" cy="132.9" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="406.4" cy="129.3" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="441.7" cy="111.8" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="401.7" cy="128.1" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="403.3" cy="127.3" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="388.0" cy="127.3" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="394.0" y="139.3">COL</text>
+<polyline fill="none" opacity="0.6" points="369.4,114.4 375.2,114.2 375.0,114.3 363.6,111.9 355.0,122.7 391.4,106.3 373.5,116.7 371.4,113.6 353.4,117.6" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="369.4" cy="114.4" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="375.2" cy="114.2" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="375.0" cy="114.3" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="363.6" cy="111.9" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="355.0" cy="122.7" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="391.4" cy="106.3" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="373.5" cy="116.7" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="371.4" cy="113.6" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="353.4" cy="117.6" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="359.4" y="129.6">PAN</text>
+<polyline fill="none" opacity="0.6" points="511.1,98.0 518.4,101.5 515.1,102.7 508.3,103.3 487.0,103.3 515.4,44.3 476.0,103.5 475.8,103.3 460.1,103.3" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="511.1" cy="98.0" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="518.4" cy="101.5" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="515.1" cy="102.7" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="508.3" cy="103.3" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="487.0" cy="103.3" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="515.4" cy="44.3" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="476.0" cy="103.5" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="475.8" cy="103.3" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="460.1" cy="103.3" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="466.1" y="115.3">HND</text>
+<polyline fill="none" opacity="0.6" points="498.9,111.3 498.0,110.9 527.5,110.8 517.4,108.7 493.4,108.7 525.0,69.3 498.7,108.6 508.3,106.0 500.5,103.3" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="498.9" cy="111.3" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="498.0" cy="110.9" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="527.5" cy="110.8" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="517.4" cy="108.7" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="493.4" cy="108.7" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="525.0" cy="69.3" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="498.7" cy="108.6" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="508.3" cy="106.0" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="500.5" cy="103.3" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="506.5" y="115.3">NIC</text>
+<polyline fill="none" opacity="0.6" points="463.2,61.4 476.4,98.1 490.8,56.1 490.3,58.4 484.4,59.4 538.9,60.4 528.2,61.3 537.4,34.9 535.3,34.6" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="463.2" cy="61.4" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="476.4" cy="98.1" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="490.8" cy="56.1" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="490.3" cy="58.4" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="484.4" cy="59.4" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="538.9" cy="60.4" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="528.2" cy="61.3" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="537.4" cy="34.9" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="535.3" cy="34.6" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="541.3" y="46.6">VEN</text>
+<polyline fill="none" opacity="0.6" points="326.8,145.3 327.9,156.2 323.9,168.6 302.2,159.0 287.5,155.0 346.8,133.0 316.8,135.8 329.1,138.0 317.0,142.8" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="326.8" cy="145.3" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="327.9" cy="156.2" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="323.9" cy="168.6" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="302.2" cy="159.0" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="287.5" cy="155.0" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="346.8" cy="133.0" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="316.8" cy="135.8" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="329.1" cy="138.0" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="317.0" cy="142.8" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="323.0" y="154.8">CUB</text>
+</svg></div>
+<p class="note">By back-calculating each country's annual pressure P from the Country Series ΔP table (P_t−1 = P_t − ΔP_t, based on 2024 P), the mean of available dimensions P̄(t) was placed on the x-axis, and the maximum pressure P_max(t) on the y-axis. This is not a new engine value, but another representation of the Country Series pressure coordinate time series. Since missing dimensions are excluded from the mean, P̄ for countries with many missing dimensions is correspondingly less representative. Bold line = Commonwealth of Dominica, thin line = countries in the same region (Country Series Vol. 7). MEASURED: Measured inputs for each dimension match the §04 'Measured:' tags.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 07</div>
+<h2 class="section-heading">BSLI — Basic Social Life Index (grassroots base pressure)</h2>
+<div class="formula-box">
+<div class="f-label">BSLI v7.0 Canonical Version (4-term subtraction formula)</div>
+<div class="f-eq">BSLI = 0.40·F_ML + 0.60·H − D − H_s</div>
+<div class="f-vars">F_ML: Food and livelihood index for the 30th–50th income percentiles (ML stratum) (World Bank PIP) · H: basic living sufficiency · D: deprivation index (subtracted) · H_s: housing stress (Palma^1.5, subtracted)<br/>Range [−2.0, +1.0], 0 = basic living line. Country Series value: <strong>Computation not possible</strong> (Absence of PIP income distribution source data)</div>
+</div>
+<p class="note">The annual table below is supplementary data (bsli_timeseries_v12, recalculated under consistent standards). It is normal for specific annual values to differ from the Country Series BSLI (cross-section of 139 countries), and the baseline BSLI value in this report is the Country Series value.</p>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Year</th><th>F_ML (×0.40)</th><th>H (×0.60)</th><th>D (−)</th><th>H_s (−)</th><th>BSLI</th><th>Measured year·reliability</th></tr></thead><tbody><tr><td>2016</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr><tr><td>2017</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr><tr><td>2018</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr><tr><td>2019</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr><tr><td>2020</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr><tr><td>2021</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr><tr><td>2022</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr><tr><td>2023</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr><tr><td>2024</td><td colspan="6" style="color:var(--muted)">Data absent</td></tr></tbody></table></div>
+<p>Country Series BSLI: <strong>Computation not possible</strong>(Absence of PIP income distribution source data). The Commonwealth of Dominica value is also absent in the supplementary time series.</p>
+<p>Measurements indicating grassroots base pressure are not within the scope of this report.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 08</div>
+<h2 class="section-heading">UI Uprising Conditions and T_trigger</h2>
+<div class="formula-box">
+<div class="f-label">UI Master Equation · T_trigger</div>
+<div class="f-eq">F(t) &gt; SE(t) → uprising ignition  |  T_trigger = δ_(L−1) · Γ · (1 − E_A2) · H(F − SE)</div>
+<div class="f-vars">F(t) = m·a(t), m = A2·A8 (policy shock mass), a(t) = d²BSLI/dt² (central difference)<br/>SE(t) = E_A2(t) + E_A8(t), E_A2 = A2·[1 − κ_L0·(1 − A8_check)]<br/>δ_(L−1): crowd contagion intensity · Γ: cultural-institutional impedance reflectance · H: Heaviside step function</div>
+</div>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Year</th><th>m = A2·A8 (Country Series cross-section)</th><th>a = Δ²BSLI</th><th>F = m·a</th><th>t+1 measured reliability</th></tr></thead><tbody><tr><td>2017</td><td class="dim-score">0.3883</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2018</td><td class="dim-score">0.3883</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2019</td><td class="dim-score">0.3883</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2020</td><td class="dim-score">0.3883</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2021</td><td class="dim-score">0.3883</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2022</td><td class="dim-score">0.3883</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2023</td><td class="dim-score">0.3883</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr></tbody></table></div>
+<p class="note">m uses the Country Series cross-sectional value (A2·A8) as a constant, and a(t) is the second central difference of the supplementary BSLI time series. a=0 in the fallback interval is an artifact of data freezing. Canonical SE·T_trigger values have not been computed for this country.</p>
+<p>m = A2·A8 = 0.6149 × 0.6315 is an upper-middle policy shock mass. With no BSLI, a(t) is undefined, and canonical SE·T_trigger have not been computed.</p>
+<p>Public events are few, and political confrontation has manifested as election boycotts, electoral law voting, and protests (interpretation).</p>
+<div class="table-scroll"><table class="trigger-table">
+<thead><tr><th>Trigger scenarios</th><th>Mechanism</th><th>Observed level</th><th>Observation point</th></tr></thead>
+<tbody>
+<tr><td><strong>Reliance on citizenship sales</strong></td><td>CBI inflows → fiscal revenue → risk of inflow cessation</td><td class="med">10–37% of GDP (by source)</td><td>Public finance</td></tr>
+<tr><td><strong>Electoral system</strong></td><td>Electoral reform confrontation → boycott and protests</td><td class="med">Turnout 31.6% (2022)</td><td>Central politics</td></tr>
+<tr><td><strong>Climate disasters</strong></td><td>Hurricane → housing/power collapse → A8·A7</td><td class="med">226% of GDP (2017)</td><td>Nationwide</td></tr>
+<tr><td><strong>Economic foundation</strong></td><td>A4 bottom → approaching threshold</td><td class="low">0.4312</td><td>Nationwide</td></tr>
+</tbody>
+</table></div>
+<p class="note">"Observed level" is not probability. It records only the extent to which the corresponding pathway actually operated in recent event records.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 09</div>
+<h2 class="section-heading">Collapse path classification — WD / SN / BH</h2>
+<div class="formula-box">
+<div class="f-label">Path classification criteria (UI canonical version, stellar evolution metaphor)</div>
+<div class="f-eq">WD: E_A2 &lt; 0.3, C_internal &lt; 0.4 · SN: E_A2 0.3~0.5, C_internal &gt; 0.5 · BH: E_A2 &lt; 0.2, C_internal &gt; 0.7</div>
+<div class="f-vars">White Dwarf (WD) = suppression and latency · Supernova (SN) = collapse and regeneration · Black Hole (BH) = implosion and irreversibility<br/>The deciding variable separating SN and BH is C_internal (elite internal conflict energy). This is a metaphor and makes no claim to astrophysical correspondence.</div>
+</div>
+<p>E_A2 (institutional-trust effect) is an above-average condition as A2·A8 are upper-middle. C_internal (elite internal conflict) has manifested publicly through the confrontation between the ruling and opposition parties over the electoral system.</p>
+<p>It is a configuration with no dimensions within the band and A4 close to the threshold. Observations where confrontation manifests through electoral/legislative procedures and protests lean toward SN (reorganization) conditions. This is a list of observations, not an assessment.</p>
+<div class="scenario-grid">
+<div class="scenario wd"><div class="scenario-icon">◐</div><div class="scenario-name wd">WD — Continuation of external revenue reliance</div><div class="scenario-prob">Conditions: continued CBI reliance + continued electoral system confrontation</div><div class="scenario-desc">A pathway where fiscal and political confrontation continues as is.</div></div>
+<div class="scenario sn"><div class="scenario-icon">✸</div><div class="scenario-name sn">SN — Institutional consensus and fiscal diversification</div><div class="scenario-prob">Conditions: electoral system consensus + fiscal restructuring</div><div class="scenario-desc">A pathway coordinated within institutions. It is a transition, not a collapse.</div></div>
+<div class="scenario bh"><div class="scenario-icon">●</div><div class="scenario-name bh">BH — Overlap of disaster and cessation of inflows</div><div class="scenario-prob">Conditions: E_A2 &lt; 0.2 + C_internal &gt; 0.7</div><div class="scenario-desc">These conditions are far from the current engine values. Recorded only as risk variables.</div></div>
+</div>
+</div>
+<div class="synthesis">
+<div class="synthesis-title">SYNTHESIS-η — Commonwealth of Dominica 4-stage summary</div>
+<div class="synthesis-stages">
+<div class="stage"><div class="stage-num">STAGE 01 / Position</div><div class="stage-title">5th in Latin America and the Caribbean · 67th overall</div><div class="stage-desc">Country Series η 0.5239 (67th among 197 countries), 8 effective dimensions, BSLI not computable, 0 bands.</div></div>
+<div class="stage"><div class="stage-num">STAGE 02 / Pressure</div><div class="stage-title">A4 approaching threshold</div><div class="stage-desc">A4 0.4312, drops in A8 and A7 in 2017 (hurricane year).</div></div>
+<div class="stage"><div class="stage-num">STAGE 03 / Gap</div><div class="stage-title">10%·20%·37%</div><div class="stage-desc">Discrepancy in estimated citizenship sales revenue, 19 seats vs. 31.6%, disaster casualties.</div></div>
+<div class="stage"><div class="stage-num">STAGE 04 / Path</div><div class="stage-title">Elections, legislation, protests</div><div class="stage-desc">Leaning toward SN conditions. Not a determination.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 09-B</div>
+<h2 class="section-heading">Six-Layer Discourse Reasoning Method — The layer where this report resides</h2>
+<p>The interpretations in this report are conducted exclusively within Layers 1 through 5 of Cheonghae (淸海)'s Six-Layer Discourse Reasoning Method (Combined Volume Ch. 7). Layer 6 is exclusive to Cheonghae.</p>
+<div class="table-scroll"><table class="dim-table">
+<thead><tr><th>Layer</th><th>Question</th><th>In this report</th></tr></thead>
+<tbody>
+<tr><td class="dim-code">Layer 1</td><td>Data — What did I see?</td><td>Country Series values (η, BSLI, pressure, trajectory), published statistics, and ACLED data are recorded without judgment (§00, §01, §04–§08)</td></tr>
+<tr><td class="dim-code">Layer 2</td><td>Interests — Who prevents evolution?</td><td>Examines the relationship between actors and institutions (A8 governance and A2 institutional trust) through event records (§02, §03, §03-B)</td></tr>
+<tr><td class="dim-code">Layer 3</td><td>Historical patterns — What has already occurred recurs</td><td>Observes self-similarity and resonance across chronologies and trajectories (§02, §06)</td></tr>
+<tr><td class="dim-code">Layer 4</td><td>Perspective shift — It is evolution, not collapse</td><td>WD/SN/BH are stellar evolution metaphors, reading uprisings and collapse as turning points in social evolution (§09)</td></tr>
+<tr><td class="dim-code">Layer 5</td><td>Knowledge frame — Interpreted through the heritage of humanity</td><td>Synthesizes previous literature by dimension as combined fragments (§04)</td></tr>
+<tr><td class="dim-code">Layer 6</td><td>—</td><td><strong>Exclusive to Cheonghae (淸海).</strong> Not addressed in this report.</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="section">
+<div class="section-title">§ 10</div>
+<h2 class="section-heading">Data sources and reproducibility statement</h2>
+<p style="font-family:'Courier New',monospace;font-size:12.5px;color:var(--muted);line-height:1.9;">[Canonical] Country Analysis Series Vol. 7 Americas (2026-10-07) DMA Section — Basic indicators, reasons for absence of causal loop diagram, trajectory [Figure 7-19-2], ΔP table (data-edition country, no narrative briefing). /nations/book/Lambda12_CountryBook_Vol7_Americas_20261007.html<br/>[Canonical Engine Values] Λ¹² v2.0 lambda12_v2_scores.json · acled_link/DMA.json (ACLED aggregate)<br/>[Official / International Organizations] PDNA(GFDRR) https://www.gfdrr.org/en/publication/dominica-post-disaster-needs-assessment-following-hurricane-maria · IMF Selected Issues 2017 https://www.imf.org/en/publications/cr/issues/2017/12/20/dominica-selected-issues-45499 · CARICOM Observer Mission https://caricom.org/?p=31215<br/>[Independent Sources] IMI Daily https://www.imidaily.com/caribbean/dominica-cbi-revenues-at-37-of-gdp-imf-warns-of-over-reliance/ — Investment migration industry media · IMI Daily (Comparative Analysis) https://www.imidaily.com/editors-picks/what-difference-does-a-citizenship-program-make-comparison-of-cips-contribution-to-gdp-and-govt-revenue/ · Wikipedia (2022 General Election) https://en.wikipedia.org/wiki/2022_Dominican_general_election · Wikipedia (Skerrit) https://en.wikipedia.org/wiki/Roosevelt_Skerrit · Freedom House 2023 https://freedomhouse.org/country/dominica/freedom-world/2023 — US NGO<br/>[Academic] Honychurch (1995) The Dominica Story, Macmillan Caribbean · Surak (2023) The Golden Passport, Harvard University Press<br/>Accessed date: this report 2026-10-13. Detailed list in run folder data/sources.md.</p>
+<p><strong>Limitations.</strong> ① Country Series engine values were used as is according to the freezing principle (8 valid dimensions). ② As there was no narrative briefing in the Country Series, political situations were written based on public sources from this survey (multiple search summaries). ③ The 37% figure from the 2024 IMF consultations was confirmed via industry press reports and the primary text was not consulted. ④ Election schedules and outcomes after 2025 could not be confirmed. ⑤ The link between post-hurricane dimension drops and the disaster is an interpretation. ⑥ SE, T_trigger, E_A2, and C_internal were not quantitatively computed.</p>
+<p>Only measurements and records are documented. No determinations or predictions are made. The subsequent judgment rests with the leaders and citizens of that country.</p>
+</div>
+</div><!-- /main -->
+<div class="report-footer"><div class="footer-inner">
+<div class="footer-slogan">"With the hope that humanity's experience and countless brilliant data may come together and be reborn as a wise light like the Milky Way!"</div>
+<div class="footer-meta">Everblue Sea Institute for Social Dynamics · Author Cheonghae (淸海)<br/>Λ¹² (SSRN 6632858) · Country Analysis Series (2026-10-07) · BSLI v7.0 · UI · Pressure Coordinate System<br/>Commonwealth of Dominica Standalone Edition · 2026-10-13 · Daily Regional Rotation Analysis</div>
+</div></div>
+<script>
+(function() {
+  var el = document.getElementById('radarChart');
+  if (!el || typeof Chart === 'undefined') return;
+  var D = {"labels": ["A1 Social Infrastructure", "A2 Institutional Trust", "A3 Civil Liberties", "A4 Economic Stability", "A5 Education Access", "A6 Health Level", "A7 Social Structure", "A8 Governance", "A9 Environmental Pressure", "A10 Inequality", "A11 External Shocks", "A12 Mobility"], "me": [0.9038, 0.6149, null, 0.0808, null, 0.5381, 0.5304, 0.6315, null, 0.0012, null, 0.8902], "kor": [0.9887, 0.6703, 0.7422, 0.4623, 0.7788, 0.4496, 0.4598, 0.7543, 0.7268, 0.0215, 0.2525, 0.8847], "reg": [0.8629, 0.4073, 0.4482, 0.1677, 0.0484, 0.6145, 0.6181, 0.4998, 0.7471, 0.0119, 0.3047, 0.8874]};
+  new Chart(el, {
+    type: 'radar',
+    data: {
+      labels: D.labels,
+      datasets: [
+        { label: 'Commonwealth of Dominica', data: D.me, borderColor: '#C0392B', backgroundColor: 'rgba(192,57,43,0.15)', borderWidth: 2, pointRadius: 3, spanGaps: true },
+        { label: 'Korea (Baseline)', data: D.kor, borderColor: '#5E9186', backgroundColor: 'rgba(94,145,134,0.08)', borderWidth: 1.5, pointRadius: 2, spanGaps: true },
+        { label: 'Latin America Average', data: D.reg, borderColor: '#B8850E', borderDash: [5,4], backgroundColor: 'rgba(184,133,14,0.04)', borderWidth: 1.5, pointRadius: 2, spanGaps: true }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: { r: { min: 0, max: 1, ticks: { stepSize: 0.2, font: { size: 9 } }, pointLabels: { font: { size: 10, family: 'Georgia' } } } },
+      plugins: { legend: { position: 'bottom', labels: { font: { family: 'Courier New', size: 11 } } } }
+    }
+  });
+})();
+</script>
+</body>
+</html>

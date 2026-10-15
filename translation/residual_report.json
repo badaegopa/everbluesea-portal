@@ -85,7 +85,7 @@
   "hanja": 7
  },
  {
-  "file": "/nations/africa/에티오피아_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/africa/중앙아프리카공화국_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 84,
   "hanja": 8
  },
@@ -95,32 +95,12 @@
   "hanja": 2
  },
  {
-  "file": "/nations/africa/남아프리카공화국_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 81,
-  "hanja": 8
- },
- {
   "file": "/nations/south-asia/v1.0_south-asia-1_20260429_EN.html",
   "ko": 86,
   "hanja": 2
  },
  {
-  "file": "/nations/africa/마다가스카르_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 80,
-  "hanja": 8
- },
- {
-  "file": "/nations/africa/나이지리아_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 80,
-  "hanja": 8
- },
- {
-  "file": "/nations/africa/상투메프린시페_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 79,
-  "hanja": 8
- },
- {
-  "file": "/nations/africa/소말리아_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/africa/탄자니아_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 78,
   "hanja": 8
  },
@@ -130,32 +110,42 @@
   "hanja": 6
  },
  {
+  "file": "/nations/americas/도미니카공화국_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 77,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/코트디부아르_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 77,
+  "hanja": 8
+ },
+ {
   "file": "/nations/northeast-asia/v9.12_china_20260502_EN.html",
   "ko": 70,
   "hanja": 14
  },
  {
-  "file": "/nations/africa/말리_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 72,
-  "hanja": 12
+  "file": "/nations/africa/콩고민주공화국_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 80,
+  "hanja": 4
  },
  {
-  "file": "/nations/africa/르완다_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 71,
-  "hanja": 12
- },
- {
-  "file": "/nations/africa/에스와티니_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/americas/도미니카연방_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 75,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/모잠비크_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 73,
-  "hanja": 10
+  "file": "/nations/south-asia/방글라데시_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 79,
+  "hanja": 4
  },
  {
-  "file": "/nations/africa/시에라리온_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/southeast-asia/라오스_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 79,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/africa/카보베르데_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 75,
   "hanja": 8
  },
@@ -165,62 +155,112 @@
   "hanja": 2
  },
  {
-  "file": "/nations/africa/니제르_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/africa/잠비아_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 74,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/부룬디_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/africa/적도기니_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 74,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/americas/과테말라_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 71,
   "hanja": 10
  },
  {
-  "file": "/nations/africa/모리타니_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/americas/바베이도스_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 73,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/모리셔스_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/africa/짐바브웨_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 73,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/앙골라_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/southeast-asia/미얀마_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 76,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/africa/케냐_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 72,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/수단_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 72,
-  "hanja": 8
- },
- {
-  "file": "/nations/africa/말라위_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/americas/그레나다_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 71,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/남수단_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/americas/가이아나_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 71,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/보츠와나_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/americas/니카라과_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 71,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/지부티_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 71,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/카메룬_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 71,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/우간다_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 71,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/코모로_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 71,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/americas/미국_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 68,
+  "hanja": 10
+ },
+ {
+  "file": "/nations/americas/바하마_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 70,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/southeast-asia/싱가포르_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 73,
-  "hanja": 6
+  "hanja": 5
  },
  {
-  "file": "/nations/africa/레소토_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 71,
+  "file": "/nations/southeast-asia/필리핀_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 74,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/africa/차드_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 70,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/세네갈_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 71,
+  "file": "/nations/africa/콩고_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 70,
   "hanja": 8
  },
  {
-  "file": "/nations/africa/베냉_Λ12_비교분석보고서_20261013_EN.html",
+  "file": "/nations/southeast-asia/동티모르_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 73,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/africa/토고_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 69,
   "hanja": 8
  },
@@ -238,6 +278,16 @@
   "file": "/engines/axioms/늘푸른바다_엔진총서_제1권_기초정본_v1.0_20260720_EN.html",
   "ko": 74,
   "hanja": 3
+ },
+ {
+  "file": "/nations/south-asia/인도_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 71,
+  "hanja": 4
+ },
+ {
+  "file": "/nations/southeast-asia/태국_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 71,
+  "hanja": 4
  },
  {
   "file": "/engines/reverbant/REVERBANT_KOR_USA_2026_EN.html",
@@ -305,11 +355,6 @@
   "hanja": 23
  },
  {
-  "file": "/engines/bsli/south-asia/방글라데시_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 17,
-  "hanja": 17
- },
- {
   "file": "/engines/bsli/middle-east/아르메니아_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 12,
   "hanja": 22
@@ -330,19 +375,9 @@
   "hanja": 21
  },
  {
-  "file": "/engines/bsli/southeast-asia/필리핀_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 15,
-  "hanja": 18
- },
- {
   "file": "/engines/bsli/africa/르완다_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 10,
   "hanja": 23
- },
- {
-  "file": "/engines/bsli/southeast-asia/베트남_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 10,
-  "hanja": 21
  },
  {
   "file": "/engines/bsli/africa/부르키나파소_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -375,6 +410,11 @@
   "hanja": 19
  },
  {
+  "file": "/engines/bsli/southeast-asia/인도네시아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 12,
+  "hanja": 18
+ },
+ {
   "file": "/engines/bsli/africa/가나_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 9,
   "hanja": 21
@@ -395,14 +435,9 @@
   "hanja": 4
  },
  {
-  "file": "/engines/bsli/southeast-asia/라오스_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 15,
-  "hanja": 14
- },
- {
-  "file": "/engines/bsli/oceania/호주_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 15
+  "file": "/engines/bsli/south-asia/방글라데시_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 12,
+  "hanja": 17
  },
  {
   "file": "/engines/bsli/europe/리투아니아_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -450,9 +485,9 @@
   "hanja": 14
  },
  {
-  "file": "/engines/bsli/south-asia/부탄_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 14
+  "file": "/engines/bsli/southeast-asia/필리핀_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 10,
+  "hanja": 18
  },
  {
   "file": "/engines/bsli/middle-east/이스라엘_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -525,11 +560,6 @@
   "hanja": 16
  },
  {
-  "file": "/engines/bsli/south-asia/방글라데시_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 12,
-  "hanja": 15
- },
- {
   "file": "/engines/bsli/central-asia/카자흐스탄_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 12,
   "hanja": 15
@@ -540,11 +570,6 @@
   "hanja": 14
  },
  {
-  "file": "/engines/bsli/southeast-asia/말레이시아_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 12,
-  "hanja": 15
- },
- {
   "file": "/engines/bsli/middle-east/아랍에미리트_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 13,
   "hanja": 14
@@ -553,11 +578,6 @@
   "file": "/engines/bsli/middle-east/튀르키예_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 11,
   "hanja": 16
- },
- {
-  "file": "/engines/bsli/oceania/통가_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 13
  },
  {
   "file": "/engines/bsli/europe/크로아티아_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -635,7 +655,17 @@
   "hanja": 16
  },
  {
-  "file": "/engines/bsli/southeast-asia/인도네시아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "file": "/engines/bsli/south-asia/파키스탄_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 11,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/south-asia/스리랑카_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 11,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/southeast-asia/말레이시아_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 12,
   "hanja": 14
  },
@@ -700,14 +730,9 @@
   "hanja": 15
  },
  {
-  "file": "/engines/bsli/south-asia/파키스탄_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 11,
-  "hanja": 14
- },
- {
-  "file": "/engines/bsli/south-asia/스리랑카_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 11,
-  "hanja": 14
+  "file": "/engines/bsli/southeast-asia/베트남_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 10,
+  "hanja": 15
  },
  {
   "file": "/engines/bsli/southeast-asia/미얀마_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -835,14 +860,14 @@
   "hanja": 15
  },
  {
-  "file": "/engines/bsli/south-asia/부탄_BSLI_기초생활분석보고서_20261014_EN.html",
+  "file": "/engines/bsli/south-asia/인도_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 9,
   "hanja": 15
  },
  {
-  "file": "/engines/bsli/south-asia/인도_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 9,
-  "hanja": 15
+  "file": "/engines/bsli/southeast-asia/라오스_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 10,
+  "hanja": 14
  },
  {
   "file": "/engines/bsli/southeast-asia/태국_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -856,6 +881,11 @@
  },
  {
   "file": "/engines/bsli/oceania/피지_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 9,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/oceania/호주_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 9,
   "hanja": 15
  },
@@ -890,6 +920,11 @@
   "hanja": 15
  },
  {
+  "file": "/nations/africa/에티오피아_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 15,
+  "hanja": 8
+ },
+ {
   "file": "/engines/bsli/americas/칠레_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 9,
   "hanja": 14
@@ -900,14 +935,14 @@
   "hanja": 23
  },
  {
+  "file": "/engines/bsli/south-asia/부탄_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 9,
+  "hanja": 14
+ },
+ {
   "file": "/engines/bsli/oceania/사모아_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 10,
   "hanja": 13
- },
- {
-  "file": "/engines/bsli/oceania/호주_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 9,
-  "hanja": 14
  },
  {
   "file": "/engines/bsli/europe/몰타_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -940,9 +975,24 @@
   "hanja": 14
  },
  {
+  "file": "/nations/africa/남아프리카공화국_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 14,
+  "hanja": 8
+ },
+ {
+  "file": "/engines/bsli/oceania/통가_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 9,
+  "hanja": 13
+ },
+ {
   "file": "/engines/bsli/europe/몬테네그로_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 12,
   "hanja": 10
+ },
+ {
+  "file": "/nations/africa/말리_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 9,
+  "hanja": 12
  },
  {
   "file": "/engines/bsli/southeast-asia/동티모르_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -970,9 +1020,14 @@
   "hanja": 10
  },
  {
-  "file": "/engines/bsli/oceania/통가_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 9,
-  "hanja": 10
+  "file": "/nations/africa/나이지리아_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 11,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/소말리아_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 11,
+  "hanja": 8
  },
  {
   "file": "/nations/europe/v1.0_east-europe-1_20260429_EN.html",
@@ -980,14 +1035,14 @@
   "hanja": 2
  },
  {
+  "file": "/nations/africa/르완다_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 12
+ },
+ {
   "file": "/nations/africa/세이셸_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 12,
   "hanja": 6
- },
- {
-  "file": "/nations/africa/기니비사우_Λ12_비교분석보고서_20261013_EN.html",
-  "ko": 10,
-  "hanja": 8
  },
  {
   "file": "/nations/middle-east/MiddleEast_East_Lambda12v914_20260506_EN.html",
@@ -1003,6 +1058,31 @@
   "file": "/nations/middle-east/아랍에미리트_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 9,
   "hanja": 8
+ },
+ {
+  "file": "/nations/africa/니제르_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 9,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/마다가스카르_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 9,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/수단_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 9,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/부룬디_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 10
+ },
+ {
+  "file": "/nations/africa/모잠비크_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 10
  },
  {
   "file": "/engines/bsli/northeast-asia/대한민국_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -1045,7 +1125,52 @@
   "hanja": 15
  },
  {
+  "file": "/nations/africa/말라위_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/모리타니_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/베냉_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/남수단_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
   "file": "/nations/africa/기니_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/에스와티니_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/레소토_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/세네갈_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/상투메프린시페_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/앙골라_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 6,
   "hanja": 8
  },
@@ -1055,7 +1180,22 @@
   "hanja": 8
  },
  {
+  "file": "/nations/africa/기니비사우_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
   "file": "/nations/africa/감비아_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/모리셔스_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 8
+ },
+ {
+  "file": "/nations/africa/시에라리온_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 6,
   "hanja": 8
  },
@@ -1116,6 +1256,11 @@
  },
  {
   "file": "/nations/africa/부르키나파소_Λ12_비교분석보고서_20261013_EN.html",
+  "ko": 6,
+  "hanja": 6
+ },
+ {
+  "file": "/nations/africa/보츠와나_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 6,
   "hanja": 6
  },

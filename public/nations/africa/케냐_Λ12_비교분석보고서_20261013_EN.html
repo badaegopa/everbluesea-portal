@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kenya Λ¹² Country Analysis Report 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #F5F3EE;
+  --header: #2A3D35;
+  --green: #5E9186;
+  --gold: #B8850E;
+  --red: #C0392B;
+  --border: #DDD8CE;
+  --ink: #1A1A1A;
+  --muted: #6B6560;
+  --card: #FAFAF7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+/* ── HEADER ── */
+.report-header {
+  background: var(--header);
+  color: #E8E4DC;
+  padding: 48px 0 36px;
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.report-flag {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 12px;
+}
+.report-title {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #F0ECE4;
+}
+.report-subtitle {
+  font-size: 18px;
+  color: #A8C4BE;
+  margin-bottom: 24px;
+}
+.report-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #8BA89F;
+}
+.meta-value {
+  color: #C8D8D4;
+  font-weight: bold;
+}
+/* ── VERDICT STRIP ── */
+.verdict-strip {
+  background: #1C2C26;
+  padding: 16px 0;
+  border-bottom: 3px solid var(--gold);
+}
+.verdict-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.verdict-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #7A9A94;
+}
+.verdict-badge {
+  background: #B8850E22;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  padding: 4px 14px;
+  border-radius: 2px;
+}
+.verdict-eta {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #E8A060;
+  font-weight: bold;
+}
+.verdict-bsli {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #88BBAA;
+  font-weight: bold;
+}
+/* ── MAIN LAYOUT ── */
+.main { max-width: 960px; margin: 0 auto; padding: 48px 40px; }
+/* ── SECTION ── */
+.section { margin-bottom: 56px; }
+.section-title {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.section-heading {
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--header);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+/* ── PROSE ── */
+p { margin-bottom: 1em; color: var(--ink); }
+.lead { font-size: 17px; color: #2A3D35; margin-bottom: 1.2em; }
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 24px; margin: 24px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 20px; }
+.tl-dot {
+  position: absolute;
+  left: -20px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--bg);
+}
+.tl-dot.crisis { background: var(--red); }
+.tl-dot.gold { background: var(--gold); }
+.tl-year {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.tl-content { font-size: 14px; color: var(--muted); }
+.tl-content strong { color: var(--ink); }
+/* ── DIMENSION TABLE ── */
+.dim-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+.dim-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 10px 14px;
+  text-align: left;
+}
+.dim-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.dim-table tr:nth-child(even) td { background: #F0EDE8; }
+.dim-code {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: var(--header);
+}
+.dim-score {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-align: center;
+}
+.score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.score-bar {
+  height: 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+/* ── CARDS GRID ── */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  padding: 20px 22px;
+}
+.card.gold { border-left-color: var(--gold); }
+.card.red { border-left-color: var(--red); }
+.card-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.card-value {
+  font-size: 28px;
+  font-family: 'Courier New', monospace;
+  color: var(--header);
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.card-desc { font-size: 13px; color: var(--muted); }
+/* ── FORMULA BOX ── */
+.formula-box {
+  background: #2A3D3508;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 18px 22px;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--header);
+}
+.formula-box .f-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.formula-box .f-eq { font-size: 16px; margin-bottom: 8px; }
+.formula-box .f-vars { font-size: 12px; color: var(--muted); line-height: 1.8; }
+/* ── SCENARIO BOX ── */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.scenario {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.scenario.wd { border-top: 3px solid #7AA0C8; }
+.scenario.sn { border-top: 3px solid var(--gold); }
+.scenario.bh { border-top: 3px solid var(--red); }
+.scenario-icon { font-size: 24px; margin-bottom: 8px; }
+.scenario-name {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.scenario-name.wd { color: #5580A8; }
+.scenario-name.sn { color: #9A7008; }
+.scenario-name.bh { color: var(--red); }
+.scenario-prob {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.scenario-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+/* ── SYNTHESIS BOX ── */
+.synthesis {
+  background: var(--header);
+  color: #D8E4E0;
+  padding: 36px 40px;
+  margin: 40px 0;
+}
+.synthesis-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 16px;
+}
+.synthesis-stages { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.stage { border-top: 1px solid #3D5850; padding-top: 14px; }
+.stage-num {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.stage-title { font-size: 14px; color: #E8E4DC; margin-bottom: 6px; font-weight: bold; }
+.stage-desc { font-size: 13px; color: #8BA89F; line-height: 1.6; }
+/* ── TRIGGER TABLE ── */
+.trigger-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+.trigger-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 9px 14px;
+  text-align: left;
+}
+.trigger-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.risk-high {
+  color: var(--red);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-med {
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-low {
+  color: var(--green);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* ── CHART CONTAINERS ── */
+.chart-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin: 24px 0;
+}
+.chart-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+/* ── FOOTER ── */
+.report-footer {
+  background: var(--header);
+  padding: 40px 0 32px;
+  margin-top: 60px;
+}
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+.footer-slogan {
+  font-style: italic;
+  color: #C9A24B;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #3D5850;
+}
+.footer-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #6A8880;
+  line-height: 2;
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .header-inner, .verdict-inner, .main, .footer-inner { padding: 0 20px; }
+  .report-title { font-size: 26px; }
+  .cards { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .synthesis-stages { grid-template-columns: 1fr; }
+}
+
+.pcs-wrap { background:#FAFAF7; border:1px solid var(--border); padding:16px; margin:20px 0; }
+.pcs-wrap svg { display:block; max-width:100%; height:auto; margin:0 auto; }
+.note { font-size:12.5px; color:var(--muted); line-height:1.7; }
+.table-scroll, .book-frag .tw { overflow-x:auto; }
+.book-frag table { border-collapse:collapse; width:100%; font-size:13px; font-variant-numeric:tabular-nums; }
+.book-frag th, .book-frag td { border-bottom:1px solid var(--border); padding:6px 8px; text-align:left; vertical-align:top; }
+.book-frag th { border-bottom:2px solid #2A3D35; white-space:nowrap; }
+.book-frag td.n, .book-frag th.n { text-align:right; font-family:'Courier New',monospace; white-space:nowrap; }
+.book-frag tr.hi td { background:#F6E7C4; }
+.book-frag .inband { background:#F6E7C4; font-weight:700; }
+.book-frag .warnmark { color:#9A700C; font-weight:700; }
+.book-frag .up { color:#B0392A; } .book-frag .dn { color:#3F7A6E; }
+.book-frag .tag { font-size:11px; color:var(--muted); }
+.book-frag h4 { font-size:14px; margin:14px 0 6px; }
+@media (max-width:640px) { .main, .header-inner, .verdict-inner, .footer-inner { padding-left:16px; padding-right:16px; } .dim-table { font-size:12px; } }
+</style>
+</head>
+<body>
+<div class="report-header"><div class="header-inner">
+<div class="report-flag">EVERBLUESEA SOCIAL DYNAMICS LAB · Λ¹² STANDALONE · 2026-10-13</div>
+<h1 class="report-title">Kenya Standalone Edition</h1>
+<div class="report-subtitle">East Africa η 8th (141st) — Five dimensions within the band and simultaneous inclusion of A7·A8, governance pressure departing for six consecutive years, protests from 449 to 2,009, protest deaths of 127 and 115, from storming parliament to broad-based cooperation</div>
+<div class="report-meta">
+<div class="meta-item">Author <span class="meta-value">Cheonghae (淸海)</span></div>
+<div class="meta-item">Engine <span class="meta-value">Λ¹² v2.0 (Country Analysis Series 2026-10-07) · BSLI v7.0 · UI · Pressure Coordinate System</span></div>
+<div class="meta-item">Regional Position <span class="meta-value">East Africa η Upper (8th among 18 countries in the Series)</span></div>
+<div class="meta-item">Date of Preparation <span class="meta-value">2026-10-13</span></div>
+</div>
+</div></div>
+<div class="verdict-strip"><div class="verdict-inner">
+<span class="verdict-label">Observation Summary</span>
+<span class="verdict-badge">Regional 8th · A2·A5·A6·A7·A8 within the band · Simultaneous inclusion of A7·A8 · BSLI Grade E (−0.8220, 123rd) · No missing values</span>
+<span class="verdict-eta">η = 0.4608 (141st among 197 countries)</span>
+<span class="verdict-bsli">BSLI = -0.8220</span>
+</div></div>
+<div class="main">
+<div class="section">
+<div class="section-title">§ 00</div>
+<h2 class="section-heading">Position within the Region — Why Kenya</h2>
+<p>This report was selected as the highest η country based on the Country Analysis Series among countries without a standalone edition in the East Africa rotation of the daily regional rotation pipeline. 1st to 7th in the region, from Seychelles (0.5292) to Tanzania (0.4676), already have standalone editions. Kenya's η in the Series is <strong>0.4608</strong>(141st among 197 countries), and the lower-ranked country in the same round is Madagascar (0.4456).</p>
+<p>In 2024, the five dimensions within the band are A2, A5, A6, A7, and A8, corresponding to the simultaneous inclusion of A7·A8 in both cross-section and time series (common composition of 4 uprising-observed countries in KSDS v10.0, n=4 exploratory). BSLI is -0.8220 (Grade E · 123rd among 139 countries). There are no missing dimensions.</p>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>East Africa Region (Series)</th><th>η</th><th>Rank</th><th>BSLI</th><th>Within 2024 Critical Band</th><th>Missing Dimensions</th></tr></thead><tbody>
+<tr><td>Seychelles (SYC)</td><td class="dim-score">0.5292</td><td>60th among 197 countries</td><td class="dim-score">+0.1781</td><td>A5, A7</td><td>A11, A9</td></tr>
+<tr><td>Rwanda (RWA)</td><td class="dim-score">0.5073</td><td>82nd among 197 countries</td><td class="dim-score">-1.0931</td><td>A5, A6, A7</td><td>None</td></tr>
+<tr><td>Mauritius (MUS)</td><td class="dim-score">0.4845</td><td>116th among 197 countries</td><td class="dim-score">+0.0155</td><td>A5</td><td>A11, A9</td></tr>
+<tr><td>Djibouti (DJI)</td><td class="dim-score">0.4756</td><td>125th among 197 countries</td><td class="dim-score">-0.6517</td><td>A2, A7, A8</td><td>A10, A11, A5</td></tr>
+<tr><td>Federal Republic of Somalia (SOM)</td><td class="dim-score">0.4740</td><td>126th among 197 countries</td><td class="dim-score">Cannot be calculated</td><td>A1, A2, A4, A6, A7, A8</td><td>A10, A11, A3, A5</td></tr>
+<tr><td>Comoros (COM)</td><td class="dim-score">0.4703</td><td>130th among 197 countries</td><td class="dim-score">-0.6706</td><td>A2, A4, A7, A8</td><td>A11, A5, A9</td></tr>
+<tr><td>United Republic of Tanzania (TZA)</td><td class="dim-score">0.4676</td><td>136th among 197 countries</td><td class="dim-score">-0.9945</td><td>A1, A6, A7</td><td>A5</td></tr>
+<tr style="background:#B8850E18;font-weight:bold"><td>Republic of Kenya (KEN)</td><td class="dim-score">0.4608</td><td>141st among 197 countries</td><td class="dim-score">-0.8220</td><td>A2, A5, A6, A7, A8</td><td>None</td></tr>
+<tr><td>Federal Democratic Republic of Ethiopia (ETH)</td><td class="dim-score">0.4591</td><td>143rd among 197 countries</td><td class="dim-score">-0.8096</td><td>A1, A2, A5, A6, A7, A8</td><td>None</td></tr>
+<tr><td>Malawi (MWI)</td><td class="dim-score">0.4497</td><td>159th among 197 countries</td><td class="dim-score">-1.1408</td><td>A1, A5, A6, A7, A8</td><td>A11</td></tr>
+<tr><td>Republic of Madagascar (MDG)</td><td class="dim-score">0.4456</td><td>163rd among 197 countries</td><td class="dim-score">Cannot be calculated</td><td>A1, A2, A5, A6, A7, A8</td><td>None</td></tr>
+<tr><td>Uganda (UGA)</td><td class="dim-score">0.4388</td><td>168th among 197 countries</td><td class="dim-score">-1.0022</td><td>A1, A2, A5, A6, A7, A8</td><td>None</td></tr>
+<tr><td>Republic of Zambia (ZMB)</td><td class="dim-score">0.4360</td><td>172nd among 197 countries</td><td class="dim-score">-1.5316</td><td>A1, A3, A6, A7</td><td>A5</td></tr>
+<tr><td>Republic of the Sudan (SDN)</td><td class="dim-score">0.4179</td><td>183rd among 197 countries</td><td class="dim-score">-0.6201</td><td>A1, A2, A4, A6, A7, A8</td><td>A5</td></tr>
+<tr><td>South Sudan (SSD)</td><td class="dim-score">0.4145</td><td>185th among 197 countries</td><td class="dim-score">Cannot be calculated</td><td>A1, A2, A7, A8</td><td>A10, A5</td></tr>
+<tr><td>Burundi (BDI)</td><td class="dim-score">0.4080</td><td>189th among 197 countries</td><td class="dim-score">-1.1127</td><td>A1, A2, A5, A6, A7, A8</td><td>A11</td></tr>
+<tr><td>Mozambique (MOZ)</td><td class="dim-score">0.4041</td><td>190th among 197 countries</td><td class="dim-score">-1.4078</td><td>A1, A2, A5, A6, A7, A8</td><td>None</td></tr>
+<tr><td>State of Eritrea (ERI)</td><td class="dim-score">0.3992</td><td>193rd among 197 countries</td><td class="dim-score">Cannot be calculated</td><td>A1, A2, A6, A7, A8</td><td>A11, A3, A4, A5</td></tr>
+</tbody></table></div>
+<p class="note">All values are taken directly from the base indicators of the Country Analysis Series (2026-10-07) (Series = Λ¹² v2.0, identical η and ranking across 197 countries). η is a simple average of values across valid dimensions (≥5) representing the Composite Social Stability Index, where higher values indicate greater stability (Series Vol. 1 §1.5). It should not be read as Explosion Proximity Index (EPI). Missing dimensions were not imputed.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 01</div>
+<h2 class="section-heading">Executive Summary</h2>
+<p>Kenya has a Series η of 0.4608 (141st among 197 countries). The maximum cross-sectional pressure is A7 · P=0.583 (Measured: aging/population growth), with 2nd being A5 (0.5464, Measured: R&amp;D/GDP), 3rd A2 Institutional Trust (0.5055, Measured: CPI/control of corruption), 4th A6 (0.4661, Measured: CO₂/renewable energy), and 5th A8 Governance (0.4524, Measured: 6 WGI indicators) all within the band. 6th A4 Economic Stability (0.4149) lies below.</p>
+<p>Trajectory: A8 departed (pressure decreased) for six consecutive years from 2019 to 2024 after falling (pressure increased) in 2017 and 2018. A2 departed by -0.0109 in 2024 after falling +0.0305 in 2023. A1 (Measured: electricity/internet) departed for eight consecutive years. ACLED protests increased from 449 cases in 2017 to 2,009 cases in 2024, with fatalities recorded at 1,014 in 2023 and 783 in 2024.</p>
+<p>Along the situation axis (Series briefing, reference date 2026-10-07), anti-tax hike protests and the storming of parliament in June 2024, ruling-opposition 'broad-based' cooperation in March 2025, protest fatalities in June–July 2025, and the 2nd anniversary march in June 2026 are recorded.</p>
+<div class="cards">
+<div class="card"><div class="card-label">η Composite Social Stability Index (Series)</div><div class="card-value">0.4608</div><div class="card-desc">141st among 197 countries · 8th among 18 East African countries</div></div>
+<div class="card gold"><div class="card-label">Dimensions within the 2024 Critical Band (Series)</div><div class="card-value">A2, A5, A6, A7, A8</div><div class="card-desc">P ≥ 0.4458 · Cross-sectional Maximum Pressure A7 · P=0.583 (Measured: aging/population growth)</div></div>
+<div class="card red"><div class="card-label">BSLI (Series)</div><div class="card-value">-0.8220</div><div class="card-desc">Grade E · 123rd among 139 countries · No missing dimensions</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 02</div>
+<h2 class="section-heading">Historical Time Series — Events That Shaped the Structure</h2>
+<div class="timeline">
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2024-06-25</div><div class="tl-content"><strong>Storming Parliament</strong> — Youth (Gen Z)-led protesters opposing tax hikes stormed parliament, and police opened fire (Series briefing).</div></div>
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025-03-07</div><div class="tl-content"><strong>Broad-Based Cooperation</strong> — President Ruto and Raila Odinga signed the '10-point agenda', launching a framework for ruling-opposition cooperation (Series briefing).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2025-06~07</div><div class="tl-content"><strong>Protest Fatalities</strong> — In June, blogger Albert Ojwang died in police custody. Protests on June 25 resulted in 21 deaths, and the July 7 Saba Saba protests saw 32 deaths (KNCHR, highest single-day toll) (Series briefing).</div></div>
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025-10</div><div class="tl-content"><strong>Alliance and Death</strong> — On October 10, President Ruto and the KANU leader announced an alliance for the 2027 general election. On October 19, former Prime Minister Raila Odinga died at age 80 while receiving treatment, after which Senator Oburu Oginga was elected leader of ODM (Series briefing).</div></div>
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2026-06-25</div><div class="tl-content"><strong>2nd Anniversary March</strong> — Memorial and justice-demanding march amidst police barricades. Protesters demanded justice, compensation, and investigations for victims of police violence (Series briefing).</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 03</div>
+<h2 class="section-heading">Recent Situation (2025–2026)</h2>
+<p><strong>Government Response.</strong> While recognizing the right to protest, the government simultaneously issued stern warnings against property destruction and inciting chaos, deployed massive police forces, and pursued compensation programs for over 1,100 victims of protest violence (Series briefing).</p>
+<p><strong>Public Trends.</strong> Since June 2024, youth-led anti-government protests have been recurring annually around June 25 and July 7. The next general election is scheduled for August 2027 (Series briefing).</p>
+<p><strong>ACLED.</strong> Protests increased to 673 in 2022, 1,166 in 2023, and 2,009 in 2024. Political violence recorded 1,109 events in 2023 and 1,086 events in 2024.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 03-B</div>
+<h2 class="section-heading">Published Figures vs. Independent Sources — Examining the Gaps</h2>
+<p>Kenya's gap lies in the fact that protest deaths from the same demonstrations are tallied over different periods and with different figures by the police oversight body and the national human rights commission, while official government figures remain unconfirmed, and that the aftermath of the same protests is addressed by the government through compensation programs and by protesters through demands for justice and investigations. Published figures are retained as originally written (DECISIONS 17·19) and juxtaposed side by side (Series briefing figure discrepancies section).</p>
+<div class="table-scroll"><table class="trigger-table">
+<thead><tr><th>Item</th><th>Published Figures (Reporting Agency/Year)</th><th>Independent Sources (Agency/Year)</th><th>Interpretation of the Gap (Canonical Axioms)</th></tr></thead>
+<tbody><tr><td><strong>Cumulative Protest Fatalities</strong></td><td>Government (Ministry of Interior/Police) official death toll: Unconfirmed</td><td>Police oversight agency: At least 127 over 2 years (2024–2026) (citing AFP) · KNCHR: 115 from 2024-06 to 2025-07</td><td>The aggregation periods and agencies differ. Both figures are recorded together.</td></tr><tr><td><strong>KNCHR Periodical Aggregation</strong></td><td>Official government figures unconfirmed</td><td>KNCHR: 62 from 2024-06 to 2025-02 · 21 on 2025-06-25 · 32 on 2025-07-07</td><td>In the absence of an official tally, only independent tallies remain. They are recorded as they are.</td></tr><tr><td><strong>Post-Protest Response</strong></td><td>Government: Concurrently recognizing the right to protest and issuing stern warnings, compensation program for ~1,100 victims</td><td>Protesters (2026-06): Demands for justice, compensation, and investigation for victims of police violence</td><td>The same issue is addressed from two directions: compensation and accountability. No judgment is passed.</td></tr></tbody>
+</table></div>
+<p class="note">Published figures were quoted verbatim without adjustments (DECISIONS 17·19). The Series engine values are also the result of directly utilizing published and international organization records without filtering based on regime characteristics. The gap is not a verdict on which side is 'correct', but a device that reveals the disparities arising when viewing the same society through different windows.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 04</div>
+<h2 class="section-heading">Λ¹² 12-Dimensional State Vector</h2>
+<p>Values are 0–1 normalized scores from the Country Analysis Series engine (Λ¹² v2.0). Dimension names follow Vol. 1 §1.4 of the Series, and 'Measured:' below indicates the indicators actually input as in the Series (MEASURED — since some dimensions differ between label and measured input, interpretation follows the measured side). Coupling r is a common constant across 138 countries, the right column is the 2024 pressure P from the Series trajectory table, and ▲ denotes dimensions within the 2024 critical band (P ≥ 0.4458) according to the Series.</p>
+<div class="table-scroll"><table class="dim-table">
+<thead><tr><th>Dimension</th><th>Name / Measured Input</th><th>Value</th><th>Bar</th><th>Coupling r</th><th>P 2024 (Series Trajectory)</th></tr></thead>
+<tbody>
+<tr><td class="dim-code">A1</td><td>Social Infrastructure<br/><span style="font-size:11px;color:var(--muted)">Measured: electricity/internet</span></td><td class="dim-score">0.5258</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:52.6%;background:#B8850E"></div></div></td><td class="dim-score">+0.792</td><td class="dim-score" style="">0.3758</td></tr>
+<tr><td class="dim-code">A2</td><td>Institutional Trust<br/><span style="font-size:11px;color:var(--muted)">Measured: CPI/control of corruption</span></td><td class="dim-score">0.2717</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:27.2%;background:#C0392B"></div></div></td><td class="dim-score">+0.694</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.4496 ▲</td></tr>
+<tr><td class="dim-code">A3</td><td>Civil Liberties<br/><span style="font-size:11px;color:var(--muted)">Measured: Gini coefficient</span></td><td class="dim-score">0.5836</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:58.4%;background:#B8850E"></div></div></td><td class="dim-score">+0.572</td><td class="dim-score" style="">0.2381</td></tr>
+<tr><td class="dim-code">A4</td><td>Economic Stability<br/><span style="font-size:11px;color:var(--muted)">Measured: GDP/manufacturing</span></td><td class="dim-score">0.1034</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:10.3%;background:#C0392B"></div></div></td><td class="dim-score">+0.463</td><td class="dim-score" style="">0.4248</td></tr>
+<tr><td class="dim-code">A5</td><td>Educational Access<br/><span style="font-size:11px;color:var(--muted)">Measured: R&amp;D/GDP</span></td><td class="dim-score">0.1269</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:12.7%;background:#C0392B"></div></div></td><td class="dim-score">+0.626</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.5465 ▲</td></tr>
+<tr><td class="dim-code">A6</td><td>Health Level<br/><span style="font-size:11px;color:var(--muted)">Measured: CO₂/renewable energy</span></td><td class="dim-score">0.8490</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:84.9%;background:#5E9186"></div></div></td><td class="dim-score">-0.549</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.4661 ▲</td></tr>
+<tr><td class="dim-code">A7</td><td>Social Structure <span style="font-size:11px;color:var(--muted)">(Series table/diagram label 'Social Capital')</span><br/><span style="font-size:11px;color:var(--muted)">Measured: aging/population growth</span></td><td class="dim-score">0.7703</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:77.0%;background:#5E9186"></div></div></td><td class="dim-score">-0.757</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.5832 ▲</td></tr>
+<tr><td class="dim-code">A8</td><td>Governance<br/><span style="font-size:11px;color:var(--muted)">Measured: 6 WGI indicators</span></td><td class="dim-score">0.3854</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:38.5%;background:#B8850E"></div></div></td><td class="dim-score">+0.736</td><td class="dim-score" style="color:#C0392B;font-weight:bold">0.4490 ▲</td></tr>
+<tr><td class="dim-code">A9</td><td>Environmental Pressure<br/><span style="font-size:11px;color:var(--muted)">Measured: GPI/military spending</span></td><td class="dim-score">0.7101</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:71.0%;background:#5E9186"></div></div></td><td class="dim-score">+0.396</td><td class="dim-score" style="">0.1402</td></tr>
+<tr><td class="dim-code">A10</td><td>Inequality<br/><span style="font-size:11px;color:var(--muted)">Measured: tourist arrivals</span></td><td class="dim-score">0.0175</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:1.8%;background:#C0392B"></div></div></td><td class="dim-score">+0.318</td><td class="dim-score" style="">0.3125</td></tr>
+<tr><td class="dim-code">A11</td><td>External Shocks<br/><span style="font-size:11px;color:var(--muted)">Measured: energy import dependency</span></td><td class="dim-score">0.3018</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:30.2%;background:#B8850E"></div></div></td><td class="dim-score">-0.107</td><td class="dim-score" style="">0.0323</td></tr>
+<tr><td class="dim-code">A12</td><td>Mobility<br/><span style="font-size:11px;color:var(--muted)">Measured: FDI</span></td><td class="dim-score">0.8845</td><td><div class="score-bar-wrap"><div class="score-bar" style="width:88.4%;background:#5E9186"></div></div></td><td class="dim-score">+0.049</td><td class="dim-score" style="">0.0147</td></tr>
+</tbody>
+</table></div>
+<p class="note">A7 Social Structure (former name 'Social Capital', corrected on 2026-10-02) is measured in the Series engine as aging/population growth, and the original label ('Social Capital') within Series tables and diagrams is retained according to the engine freezing principle. Missing dimensions were not imputed.</p>
+<p><strong>How to Read.</strong> For A6·A7·A11, coupling r is negative, meaning higher dimension values result in greater deficit (pressure). A6 (Measured: CO₂/renewable energy 0.8490) and A7 (Measured: aging/population growth 0.7703) have high values, placing both within the band. A11 (0.3018) has low pressure. All 12 dimensions have values.</p>
+<p><strong>High Dimensions.</strong> A12 (0.8845) and A9 (Measured: GPI/military spending 0.7101) are high, while A3 (Measured: Gini 0.5836) and A1 (Measured: electricity/internet 0.5258) are upper-middle.</p>
+<p><strong>Bottom Dimensions.</strong> A10 (Measured: tourist arrivals 0.0175), A4 Economic Stability (0.1034), and A5 (Measured: R&amp;D/GDP 0.1269) are at the bottom, while A2 Institutional Trust (0.2717) and A8 Governance (0.3854) are low.</p>
+<p><strong>Consolidated Fragments (Integration of Prior Research by Dimension).</strong> ① Post-independence Kenyan History → Kenya: A History Since Independence (Hornsby, 2012, <em>Kenya: A History Since Independence</em>, I.B. Tauris): Repetition of elections and coalition politics — application conditions apply to states where electoral coalitions frequently realign, with the 2025 ruling-opposition cooperation and the 2027 alliance serving as observation targets. ② Between Hope and Despair → Kenya: Between Hope and Despair, 1963–2011 (Branch, 2011, <em>Kenya: Between Hope and Despair, 1963–2011</em>, Yale University Press): Distance between the state and youth/urban masses — anti-government protests by youth since 2024 fall into this. Connection: The realignment of elite coalitions in ① and the street mobilization of youth in ② are simultaneously recorded in the same period (interpretation).</p>
+<div class="chart-wrap">
+<div class="chart-title">Radar Comparison — Kenya vs. South Korea (Benchmark) vs. East Africa Average (Series Values)</div>
+<canvas height="320" id="radarChart"></canvas>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 05</div>
+<h2 class="section-heading">Pressure Coordinate System Causal Loop Diagram — Λ¹² Standard Output (Series Original)</h2>
+<p>The Sun (center) is BSLI, and the planets are A1–A12. An inner orbit indicates that the dimension exerts stronger pressure on the grassroots base. The diagrams and tables below are reproduced directly from the originals published in the Country Analysis Series (engine frozen, DECISIONS 18·20).</p>
+<figure class="pcs-wrap" style="overflow-x:auto"><svg style="max-width:1010px;background:#fff;border:1px solid #DDD8CE;border-radius:8px" viewbox="0 0 1010 1150" xmlns="http://www.w3.org/2000/svg"><defs>
+<marker id="mP" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#C0392B"></path></marker>
+<marker id="mB" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#1a4f8a"></path></marker>
+<marker id="mG" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#B8850E"></path></marker>
+<radialgradient cx="50%" cy="50%" id="sun3" r="50%"><stop offset="0%" stop-color="#F7EDD2"></stop><stop offset="100%" stop-color="#E8D5A0"></stop></radialgradient>
+</defs><text fill="#2A3D35" font-size="16.5" font-weight="700" text-anchor="middle" x="505" y="32">Measured Causal Loop Diagram v3.1 — Pressure Coordinate System (Republic of Kenya · 138-Country Measured Coupling × Domestic Deficit)</text><text fill="#777" font-size="10" text-anchor="middle" x="505" y="51">Distance/Arrow = Pressure Index P (closer/thicker exerts stronger pressure on BSLI) · P = Coupling Strength |r| × Domestic Deficit — without deficit, no pressure even with strong coupling (outer orbit)</text><circle cx="505" cy="485" fill="none" r="266.6" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="209.3" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="327.4" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="249.3" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="191.2" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="226.7" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="175.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="232.8" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="381.9" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="294.5" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="418.3" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="430.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><path d="M505.0,694.3 Q433.7,736.6 388.6,686.6" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="3.0"></path><circle cx="440.3" cy="713.5" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="440.3" y="717.1">+</text><path d="M238.4,485.0 Q249.0,538.6 353.4,572.5" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.9"></path><circle cx="272.4" cy="533.7" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="272.4" y="537.3">−</text><path d="M238.4,485.0 Q226.9,416.9 308.7,371.6" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.7"></path><circle cx="250.2" cy="422.6" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="250.2" y="426.2">−</text><path d="M505.0,694.3 Q564.7,719.0 600.6,650.6" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.6"></path><circle cx="558.7" cy="695.7" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="558.7" y="699.3">+</text><path d="M353.4,572.5 Q338.4,664.7 388.6,686.6" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.5"></path><circle cx="354.7" cy="647.1" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="354.7" y="650.7">−</text><path d="M600.6,650.6 Q491.9,716.5 388.6,686.6" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.5"></path><circle cx="493.3" cy="692.6" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="493.3" y="696.2">+</text><path d="M238.4,485.0 Q271.0,608.1 388.6,686.6" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.3"></path><circle cx="292.3" cy="597.0" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="292.3" y="600.6">+</text><path d="M388.6,686.6 Q660.1,492.7 835.7,294.1" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.2"></path><circle cx="636.1" cy="491.5" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="636.1" y="495.1">+</text><path d="M505.0,694.3 Q407.4,676.2 353.4,572.5" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.1"></path><circle cx="418.3" cy="654.8" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="418.3" y="658.4">−</text><line marker-end="url(#mP)" opacity="0.74" stroke="#C0392B" stroke-width="1.5" x1="238.4" x2="425.0" y1="485.0" y2="485.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="331.7" y="479.0">P=0.376</text><line marker-end="url(#mP)" opacity="0.84" stroke="#C0392B" stroke-width="1.5" x1="505.0" x2="505.0" y1="694.3" y2="565.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="623.7">P=0.505</text><line marker-end="url(#mP)" opacity="0.63" stroke="#C0392B" stroke-width="1.5" x1="341.3" x2="465.0" y1="201.5" y2="415.7"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="403.2" y="302.6">P=0.238</text><line marker-end="url(#mP)" opacity="0.77" stroke="#C0392B" stroke-width="1.5" x1="720.9" x2="574.3" y1="609.7" y2="525.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="647.6" y="561.3">P=0.415</text><line marker-end="url(#mP)" opacity="0.87" stroke="#C0392B" stroke-width="1.5" x1="600.6" x2="545.0" y1="650.6" y2="554.3"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="572.8" y="596.5">P=0.546</text><line marker-end="url(#mP)" opacity="0.81" stroke="#C0392B" stroke-width="1.5" x1="308.7" x2="435.7" y1="371.6" y2="445.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="372.2" y="402.3">P=0.466</text><line marker-end="url(#mP)" opacity="0.90" stroke="#C0392B" stroke-width="1.5" x1="353.4" x2="435.7" y1="572.5" y2="525.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="394.6" y="542.8">P=0.583</text><line marker-end="url(#mP)" opacity="0.80" stroke="#C0392B" stroke-width="1.5" x1="388.6" x2="465.0" y1="686.6" y2="554.3"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="426.8" y="614.4">P=0.452</text><line marker-end="url(#mP)" opacity="0.54" stroke="#C0392B" stroke-width="1.5" x1="835.7" x2="574.3" y1="294.1" y2="445.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="705.0" y="363.5">P=0.115</text><line marker-end="url(#mP)" opacity="0.69" stroke="#C0392B" stroke-width="1.5" x1="799.5" x2="585.0" y1="485.0" y2="485.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="692.3" y="479.0">P=0.312</text><line marker-end="url(#mP)" opacity="0.47" stroke="#C0392B" stroke-width="1.5" x1="505.0" x2="505.0" y1="66.7" y2="405.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="229.9">P=0.032</text><path d="M353.4,572.5 Q437.9,594.6 484.7,678.0" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="428.5" cy="609.9" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="428.5" y="613.5">−</text><path d="M353.4,572.5 Q393.2,592.2 381.0,661.7" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="380.2" cy="604.7" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="380.2" y="608.3">−</text><path d="M835.7,294.1 Q642.6,484.3 521.6,674.3" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="660.6" cy="484.3" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="660.6" y="487.9">−</text><path d="M835.7,294.1 Q585.9,482.7 408.2,669.4" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="603.9" cy="482.2" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="603.9" y="485.8">−</text><path d="M720.0,112.6 Q589.4,414.4 514.0,669.9" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="603.2" cy="402.8" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="603.2" y="406.4">−</text><path d="M720.0,112.6 Q542.8,419.5 401.6,664.1" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="551.8" cy="403.9" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="551.8" y="407.5">−</text><path d="M388.6,686.6 Q404.3,774.6 479.1,692.6" fill="none" marker-end="url(#mP)" opacity="0.8" stroke="#C0392B" stroke-dasharray="6 4" stroke-width="1.8"></path><circle cx="419.1" cy="730.1" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="419.1" y="733.7">−</text><text fill="#C0392B" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="419.1" y="718.1">Axiom A3 Internal Conflict (Conditional)</text><path d="M505.0,565.0 Q505.0,706.7 505.0,668.3" fill="none" marker-end="url(#mG)" opacity="0.9" stroke="#B8850E" stroke-dasharray="3 3" stroke-width="1.8"></path><circle cx="505.0" cy="661.7" fill="#fff" r="7.5" stroke="#B8850E" stroke-width="1.4"></circle><text fill="#B8850E" font-size="11" font-weight="800" text-anchor="middle" x="505.0" y="665.3">−</text><text fill="#B8850E" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="511.0" y="676.7">Grassroots Deterioration → Defensive Rallying (Axiom A8)</text><circle cx="493" cy="722" fill="#fff" r="15" stroke="#C0392B" stroke-width="2"></circle><text fill="#C0392B" font-size="13" font-weight="800" text-anchor="middle" x="493" y="727">R</text><text fill="#C0392B" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="493" y="752">R1 Binary Reinforcement</text><circle cx="439" cy="538" fill="#fff" r="15" stroke="#1a4f8a" stroke-width="2"></circle><text fill="#1a4f8a" font-size="13" font-weight="800" text-anchor="middle" x="439" y="542">B</text><text fill="#1a4f8a" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="439" y="568">B1 Absorption-Defense Balance</text><circle cx="293" cy="608" fill="#fff" r="15" stroke="#1a4f8a" stroke-width="2"></circle><text fill="#1a4f8a" font-size="13" font-weight="800" text-anchor="middle" x="293" y="613">B</text><text fill="#1a4f8a" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="293" y="638">B2 Pressure-Erosion</text><circle cx="505" cy="485" fill="url(#sun3)" r="72" stroke="#B8850E" stroke-width="2.4"></circle><text fill="#7a5a08" font-size="14" font-weight="800" text-anchor="middle" x="505" y="455">BSLI</text><text fill="#8a6a18" font-size="8.5" text-anchor="middle" x="505" y="467">Basic Social Life Index · Independent Channel (Axiom A0)</text><text fill="#2A3D35" font-size="19" font-weight="800" text-anchor="middle" x="505" y="490">-0.8220</text><text fill="#555" font-size="9.5" text-anchor="middle" x="505" y="507">Grade E · 123rd/139 · Upper 88.5%</text><text fill="#777" font-size="8" text-anchor="middle" x="505" y="524">0.40·F_ML+0.60·H−D−Hs</text><circle cx="238.4" cy="485.0" fill="#fff" r="8.1" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="238.4" cy="485.0" fill="#8a8a80" fill-opacity="0.22" r="4.0"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="238.4" y="458.0">A1 Social Infrastructure</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="238.4" y="470.0">Measured: electricity/internet</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="238.4" y="506.1">Score 0.526 · Pressure P=0.376</text><circle cx="505.0" cy="694.3" fill="#fff" r="16.1" stroke="#1a5c8a" stroke-width="2.6"></circle><circle cx="505.0" cy="694.3" fill="#1a5c8a" fill-opacity="0.22" r="8.1"></circle><text fill="#1a5c8a" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="505.0" y="659.2">A2 Institutional Trust</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="505.0" y="671.2">Measured: CPI/control of corruption</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="723.4">Score 0.272 · Pressure P=0.505</text><circle cx="341.3" cy="201.5" fill="#fff" r="9.2" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="341.3" cy="201.5" fill="#8a8a80" fill-opacity="0.22" r="4.6"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="341.3" y="173.3">A3 Civil Liberties</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="341.3" y="185.3">Measured: Gini coefficient</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="341.3" y="223.7">Score 0.584 · Pressure P=0.238</text><circle cx="720.9" cy="609.7" fill="#fff" r="10.3" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="720.9" cy="609.7" fill="#8a8a80" fill-opacity="0.22" r="5.2"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="720.9" y="580.3">A4 Economic Stability</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="720.9" y="592.3">Measured: GDP/manufacturing</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="720.9" y="633.0">Score 0.103 · Pressure P=0.415</text><circle cx="600.6" cy="650.6" fill="#fff" r="8.1" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="600.6" cy="650.6" fill="#8a8a80" fill-opacity="0.22" r="4.0"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="600.6" y="623.6">A5 Educational Access</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="600.6" y="635.6">Measured: R&amp;D/GDP</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="600.6" y="671.7">Score 0.127 · Pressure P=0.546</text><circle cx="308.7" cy="371.6" fill="#fff" r="8.1" stroke="#2e7d32" stroke-width="2.6"></circle><circle cx="308.7" cy="371.6" fill="#2e7d32" fill-opacity="0.22" r="4.0"></circle><text fill="#2e7d32" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="308.7" y="344.6">A6 Health Level</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="308.7" y="356.6">Measured: CO₂/renewable energy</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="308.7" y="392.7">Score 0.849 · Pressure P=0.466</text><circle cx="353.4" cy="572.5" fill="#fff" r="10.3" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="353.4" cy="572.5" fill="#C0392B" fill-opacity="0.22" r="5.2"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="353.4" y="543.1">A7 Social Capital</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="353.4" y="555.1">Measured: aging/population growth</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="353.4" y="595.9">Score 0.770 · Pressure P=0.583</text><circle cx="388.6" cy="686.6" fill="#fff" r="16.1" stroke="#1a5c8a" stroke-width="2.6"></circle><circle cx="388.6" cy="686.6" fill="#1a5c8a" fill-opacity="0.22" r="8.1"></circle><text fill="#1a5c8a" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="388.6" y="651.5">A8 Governance</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="388.6" y="663.5">Measured: 6 WGI indicators</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="388.6" y="715.7">Score 0.385 · Pressure P=0.452</text><circle cx="835.7" cy="294.1" fill="#fff" r="9.2" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="835.7" cy="294.1" fill="#C0392B" fill-opacity="0.22" r="4.6"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="835.7" y="265.9">A9 Environmental Pressure</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="835.7" y="277.9">Measured: GPI/military spending</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="835.7" y="316.3">Score 0.710 · Pressure P=0.115</text><circle cx="799.5" cy="485.0" fill="#fff" r="10.3" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="799.5" cy="485.0" fill="#8a8a80" fill-opacity="0.22" r="5.2"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="799.5" y="455.6">A10 Inequality</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="799.5" y="467.6">Measured: tourist arrivals</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="799.5" y="508.4">Score 0.018 · Pressure P=0.312</text><circle cx="505.0" cy="66.7" fill="#fff" r="9.2" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="505.0" cy="66.7" fill="#8a8a80" fill-opacity="0.22" r="4.6"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="505.0" y="38.5">A11 External Shocks</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="505.0" y="50.5">Measured: energy import dependency</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="88.9">Score 0.302 · Pressure P=0.032</text><circle cx="720.0" cy="112.6" fill="#fff" r="11.5" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="720.0" cy="112.6" fill="#C0392B" fill-opacity="0.22" r="5.8"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="720.0" y="82.1">A12 Mobility</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="720.0" y="94.1">Measured: FDI</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="720.0" y="137.1">Score 0.884 · Pressure P=0.006</text><rect fill="#fbfaf7" height="128" rx="8" stroke="#DDD8CE" width="958" x="26" y="999"></rect><text fill="#C0392B" font-size="10.5" x="42" y="1019"><tspan font-weight="700">Red line arrow = Pressure</tspan> (magnitude expressed by distance and P-value — unified as lines to prevent text obstruction). P = |r| (138-country measured coupling) × domestic deficit (1−score for +coupling, score for −coupling)</text><text fill="#444" font-size="10.5" x="42" y="1037"><tspan font-weight="700">Distance</tspan> = Reverse order of P — closer exerts stronger pressure. Even if coupling is strong, if there is no deficit (e.g., perfect-score axis), pressure = 0 → pushed to outer orbit. <tspan font-weight="700">This coordinate system varies by country</tspan></text><text fill="#1a4f8a" font-size="10.5" x="42" y="1055">Blue arrow (−) = Axiom A1 Invariance of Aim (pressure source → absorber erosion) · Red dashed line = Axiom A3 Internal Conflict (conditional) · <tspan fill="#B8850E">Gold dashed line = Axiom A8 Grassroots Deterioration → Defensive Rallying → B1 Balancing Loop</tspan></text><text fill="#444" font-size="10.5" x="42" y="1073">Headless curve = Measured coupling between indicators (|r|≥0.55, causal direction unspecified): teal solid line (+) / red dashed line (−) · Strongest A2~A8 +0.955 → R1 Binary Reinforcing Loop · ⓇReinforcing / ⒷBalancing = determined by product of polarities</text><text fill="#997" font-size="10.5" x="42" y="1091">Node subtitle "Measured: …" = Data actually input to that axis by the current v2 pipeline — parallel notation to prevent misreading of axes whose canonical names differ from content (A3, A5, A6, A7, A9, A10, A11) (maintained until harmonization)</text><text fill="#777" font-size="10" x="42" y="1111">Data: Λ¹² v2 × BSLI common 138-country measured values (recalculated 2026-07-20) · Axioms: Consolidated Paper §3.2 · Pressure index definition: Reflects Cheonghae instructions of 2026-07-20 (distance/arrow = pressure) · No arbitrary numbers</text></svg><figcaption class="note"><b>[Figure 5-6-1]</b> Republic of Kenya BSLI Pressure Coordinate System Causal Loop Diagram v3.1. Unmodified output from canonical generator handover_cld_v3.py (ISO=KEN). Only the country name in the diagram title was changed to the official country name.<br/>Source: Country Analysis Series Vol. 5 (Lambda12_CountryBook_Vol5_SubSaharanAfrica_20261007.html) · KEN Section 「2. Pressure Coordinate System Causal Loop Diagram」 — Inserted without changing a single character from the original SVG in the Series.</figcaption></figure>
+<h3 style="margin-top:20px">Pressure Ranking Table (Series Original)</h3><div class="book-frag"><div class="tw"><table class=""><thead><tr><th class="n">Rank</th><th class="">Dimension</th><th class="n">Coupling r</th><th class="n">Domestic Score</th><th class="n">Deficit</th><th class="n">Pressure P</th></tr></thead><tbody><tr class="hi"><td class="n">1</td><td class=""><b>A7</b> Social Capital <span class="tag">Measured: aging/population growth</span></td><td class="n">-0.757</td><td class="n">0.770</td><td class="n">0.770</td><td class="n"><b>0.5832</b></td></tr><tr class="hi"><td class="n">2</td><td class=""><b>A5</b> Educational Access <span class="tag">Measured: R&amp;D/GDP</span></td><td class="n">+0.626</td><td class="n">0.127</td><td class="n">0.873</td><td class="n"><b>0.5464</b></td></tr><tr class="hi"><td class="n">3</td><td class=""><b>A2</b> Institutional Trust <span class="tag">Measured: CPI/control of corruption</span></td><td class="n">+0.694</td><td class="n">0.272</td><td class="n">0.728</td><td class="n"><b>0.5055</b></td></tr><tr class="hi"><td class="n">4</td><td class=""><b>A6</b> Health Level <span class="tag">Measured: CO₂/renewable energy</span></td><td class="n">-0.549</td><td class="n">0.849</td><td class="n">0.849</td><td class="n"><b>0.4661</b></td></tr><tr class="hi"><td class="n">5</td><td class=""><b>A8</b> Governance <span class="tag">Measured: 6 WGI indicators</span></td><td class="n">+0.736</td><td class="n">0.385</td><td class="n">0.615</td><td class="n"><b>0.4524</b></td></tr><tr class=""><td class="n">6</td><td class=""><b>A4</b> Economic Stability <span class="tag">Measured: GDP/manufacturing</span></td><td class="n">+0.463</td><td class="n">0.103</td><td class="n">0.897</td><td class="n"><b>0.4149</b></td></tr><tr class=""><td class="n">7</td><td class=""><b>A1</b> Social Infrastructure <span class="tag">Measured: electricity/internet</span></td><td class="n">+0.792</td><td class="n">0.526</td><td class="n">0.474</td><td class="n"><b>0.3758</b></td></tr><tr class=""><td class="n">8</td><td class=""><b>A10</b> Inequality <span class="tag">Measured: tourist arrivals</span></td><td class="n">+0.318</td><td class="n">0.018</td><td class="n">0.983</td><td class="n"><b>0.3125</b></td></tr><tr class=""><td class="n">9</td><td class=""><b>A3</b> Civil Liberties <span class="tag">Measured: Gini coefficient</span></td><td class="n">+0.572</td><td class="n">0.584</td><td class="n">0.416</td><td class="n"><b>0.2381</b></td></tr><tr class=""><td class="n">10</td><td class=""><b>A9</b> Environmental Pressure <span class="tag">Measured: GPI/military spending</span></td><td class="n">+0.396</td><td class="n">0.710</td><td class="n">0.290</td><td class="n"><b>0.1147</b></td></tr><tr class=""><td class="n">11</td><td class=""><b>A11</b> External Shocks <span class="tag">Measured: energy import dependency</span></td><td class="n">-0.107</td><td class="n">0.302</td><td class="n">0.302</td><td class="n"><b>0.0323</b></td></tr><tr class=""><td class="n">12</td><td class=""><b>A12</b> Mobility <span class="tag">Measured: FDI</span></td><td class="n">+0.049</td><td class="n">0.884</td><td class="n">0.116</td><td class="n"><b>0.0057</b></td></tr></tbody></table></div></div><p class="note">Shaded row = inside the exploratory threshold band (P ≥ 0.4458). P = |r| × deficit. Coupling r is a common constant across 138 countries. Dimension labels and 'Measured:' tags are verbatim from the Compendium original text (A7 label 'Social Capital' = 'Social Structure' in the main text).</p>
+<div class="formula-box">
+<div class="f-label">Pressure coordinate system formula (canonical pressure-coordinate-system)</div>
+<div class="f-eq">r_d = Pearson(A_d, BSLI) · gap_d = 1−A_d (r&gt;0) / A_d (r&lt;0) · P_d = |r_d| × gap_d</div>
+<div class="f-vars">r_d: coupling coefficient of the 138-country common sample · gap_d: deficit · P_d: pressure index · direction = sign(ΔP_d), activity = |ΔP_d/Δt|<br/>P* = 0.4458: obtained from the upper pressure values at the ignition point in the 4 uprising countries <strong>exploratory threshold band (n=4)</strong> — not used as a definitive threshold.</div>
+</div>
+<p>In the Compendium causal loop diagram and pressure ranking table, five dimensions from 1st place A7 (P = 0.5832) to 5th place A8 (0.4524) are inside the band. This configuration features two absorber binaries and the pressure source A7 inside the band together. 6th place A4 (0.4149) is below it.</p>
+<p>The Sun (BSLI -0.8220) is below the basic life line. In the trajectory, 2024 A2 (0.4496) and A8 (0.4490) are just above the threshold.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 06</div>
+<h2 class="section-heading">2016–2024 Trajectory — Pressure Coordinate System Time Series (Compendium Original)</h2>
+<figure class="pcs-wrap"><img alt="Kenya 공화국 2016~2024 12차원 압박 궤적" loading="lazy" src="/nations/book/img/orbit_KEN.png" style="width:100%;height:auto;display:block"/><figcaption class="note"><b>[Figure 5-6-2]</b> 12-dimensional complete enumeration trajectory of the Republic of Kenya. Original output of the canonical trajectory generator orbit_decay_gen_v34 (2026-08-11). Inner shading = threshold band.<br/>Source: National Analysis Compendium Vol. 5 (Lambda12_CountryBook_Vol5_SubSaharanAfrica_20261007.html) · KEN section "3. 2016~2024 Trajectory" image as-is.</figcaption></figure>
+<div class="book-frag"><h4>Annual variation ΔP (red = fall/pressure increase, cyan = escape, bold = year of maximum |ΔP| per dimension)</h4><div class="tw"><table class=""><thead><tr><th class="">Dimension</th><th class="n">P 2024</th><th class="n">Δ17</th><th class="n">Δ18</th><th class="n">Δ19</th><th class="n">Δ20</th><th class="n">Δ21</th><th class="n">Δ22</th><th class="n">Δ23</th><th class="n">Δ24</th></tr></thead><tbody><tr class=""><td class=""><b>A1</b></td><td class="n"><span class="">0.3758</span></td><td class="n"><span class="dn">-0.0152</span></td><td class="n"><span class="dn">-0.0254</span></td><td class="n"><span class="dn"><b>-0.0452</b></span></td><td class="n"><span class="dn">-0.0030</span></td><td class="n"><span class="dn">-0.0296</span></td><td class="n"><span class="dn">-0.0074</span></td><td class="n"><span class="dn">-0.0155</span></td><td class="n"><span class="dn">-0.0123</span></td></tr><tr class=""><td class=""><b>A2</b></td><td class="n"><span class="inband">0.4496</span></td><td class="n"><span class="dn"><b>-0.0348</b></span></td><td class="n"><span class="up">+0.0179</span></td><td class="n"><span class="dn">-0.0192</span></td><td class="n"><span class="dn">-0.0105</span></td><td class="n"><span class="dn">-0.0056</span></td><td class="n"><span class="dn">-0.0062</span></td><td class="n"><span class="up">+0.0305</span></td><td class="n"><span class="dn">-0.0109</span></td></tr><tr class=""><td class=""><b>A3</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.2381</span></td><td class="n"><span class="up">+0.0136</span></td><td class="n"><span class="dn">-0.0118</span></td><td class="n"><span class="up">+0.0118</span></td><td class="n"><span class="dn"><b>-0.0805</b></span></td><td class="n"><span class="up">+0.0392</span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="up">+0.0029</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A4</b></td><td class="n"><span class="">0.4248</span></td><td class="n"><span class="up">+0.0019</span></td><td class="n"><span class="up">+0.0018</span></td><td class="n"><span class="up">+0.0027</span></td><td class="n"><span class="up">+0.0008</span></td><td class="n"><span class="up">+0.0012</span></td><td class="n"><span class="dn"><b>-0.0039</b></span></td><td class="n"><span class="up">+0.0002</span></td><td class="n"><span class="up">+0.0018</span></td></tr><tr class=""><td class=""><b>A5</b> <span class="warnmark">⚠</span></td><td class="n"><span class="inband">0.5465</span></td><td class="n"><span class="up">+0.0029</span></td><td class="n"><span class="up">+0.0030</span></td><td class="n"><span class="up">+0.0141</span></td><td class="n"><span class="">+0.0000</span></td><td class="n">—</td><td class="n"><span class="up">+0.0322</span></td><td class="n"><span class="dn"><b>-0.0381</b></span></td><td class="n"><span class="dn">-0.0006</span></td></tr><tr class=""><td class=""><b>A6</b></td><td class="n"><span class="inband">0.4661</span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="up">+0.0024</span></td><td class="n"><span class="dn">-0.0014</span></td><td class="n"><span class="up">+0.0028</span></td><td class="n"><span class="dn"><b>-0.0040</b></span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="up">+0.0001</span></td></tr><tr class=""><td class=""><b>A7</b></td><td class="n"><span class="inband">0.5832</span></td><td class="n"><span class="up">+0.0451</span></td><td class="n"><span class="up">+0.0121</span></td><td class="n"><span class="dn">-0.0120</span></td><td class="n"><span class="dn">-0.0541</span></td><td class="n"><span class="up"><b>+0.1183</b></span></td><td class="n"><span class="dn">-0.0656</span></td><td class="n"><span class="dn">-0.0026</span></td><td class="n"><span class="dn">-0.0442</span></td></tr><tr class=""><td class=""><b>A8</b></td><td class="n"><span class="inband">0.4490</span></td><td class="n"><span class="up">+0.0049</span></td><td class="n"><span class="up">+0.0088</span></td><td class="n"><span class="dn">-0.0091</span></td><td class="n"><span class="dn">-0.0015</span></td><td class="n"><span class="dn">-0.0068</span></td><td class="n"><span class="dn"><b>-0.0111</b></span></td><td class="n"><span class="dn">-0.0006</span></td><td class="n"><span class="dn">-0.0033</span></td></tr><tr class=""><td class=""><b>A9</b></td><td class="n"><span class="">0.1402</span></td><td class="n"><span class="dn">-0.0023</span></td><td class="n"><span class="up">+0.0023</span></td><td class="n"><span class="up">+0.0023</span></td><td class="n"><span class="dn">-0.0058</span></td><td class="n"><span class="up">+0.0084</span></td><td class="n"><span class="dn"><b>-0.0324</b></span></td><td class="n"><span class="dn">-0.0024</span></td><td class="n"><span class="up">+0.0147</span></td></tr><tr class=""><td class=""><b>A10</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.3125</span></td><td class="n"><span class="dn">-0.0001</span></td><td class="n"><span class="dn">-0.0008</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="dn"><b>-0.0026</b></span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A11</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.0323</span></td><td class="n"><span class="dn">-0.0017</span></td><td class="n"><span class="up">+0.0018</span></td><td class="n"><span class="dn"><b>-0.0045</b></span></td><td class="n"><span class="up">+0.0001</span></td><td class="n"><span class="dn">-0.0001</span></td><td class="n"><span class="up">+0.0018</span></td><td class="n"><span class="up">+0.0008</span></td><td class="n"><span class="">+0.0000</span></td></tr><tr class=""><td class=""><b>A12</b> <span class="warnmark">⚠</span></td><td class="n"><span class="">0.0147</span></td><td class="n"><span class="up">+0.0018</span></td><td class="n"><span class="dn"><b>-0.0156</b></span></td><td class="n"><span class="up">+0.0003</span></td><td class="n"><span class="dn">-0.0113</span></td><td class="n"><span class="up">+0.0067</span></td><td class="n"><span class="dn">-0.0102</span></td><td class="n"><span class="up">+0.0073</span></td><td class="n"><span class="up">+0.0009</span></td></tr></tbody></table></div><p class="note"><span class="warnmark">⚠</span> Data caveat — <b>A3</b> Last measured in 2023 (+1-year carryover) · <b>A5</b> 1 year missing · <b>A10</b> Last measured in 2020 (+4-year carryover) · <b>A11</b> Last measured in 2023 (+1-year carryover) · <b>A12</b> Comparison group extreme 0.0%. Stoppage in the carryover period may be data freeze.</p></div>
+<p class="note">The above ΔP table and data caveats are verbatim from the Compendium original text. Stoppage in the carryover period may be data freeze, so it is read distinguishably from actual social stagnation (time-series tracking principles: position P, direction sign(ΔP), activity |ΔP|).</p>
+<p><strong>Position.</strong> Based on 2024 P, A7 0.5832, A5 0.5465, A6 0.4661, A2 0.4496, and A8 0.4490 are inside the band. A4 0.4248, A1 0.3758, and A10 0.3125 are below them.</p>
+<p><strong>Direction and Activity.</strong> A8 fell by +0.0049 in 2017 and +0.0088 in 2018, and escaped for six consecutive years from 2019 to 2024 (-0.0111 in 2022). A2 escaped by -0.0348 in 2017, fell by +0.0179 in 2018, escaped from 2019 to 2022, fell by +0.0305 in 2023, and escaped by -0.0109 in 2024. A1 escaped for eight consecutive years from 2017 to 2024 (-0.0452 in 2019). A5 fell by +0.0322 in 2022 and escaped by -0.0381 in 2023. A3 had a large escape of -0.0805 in 2020 and fell by +0.0392 in 2021. A9 escaped by -0.0324 in 2022 and fell by +0.0147 in 2024. A4 showed small falls in most years. A7 fell by +0.0451 in 2017 and +0.0121 in 2018, had a large escape of -0.0541 in 2020, a large fall of +0.1183 in 2021, and escaped by -0.0656 in 2022 and -0.0442 in 2024 (Needs canonical verification P-1 common type).</p>
+<p><strong>Data Caveat.</strong> The Compendium attached caveat marks to five dimensions (A3·A11 +1-year carryover, A5 1-year missing, A10 +4-year carryover, A12 comparison group extreme).</p>
+<h3 style="margin-top:24px">Phase space trajectory (2016–2024) — East Africa Region</h3>
+<div class="chart-wrap"><svg style="width:100%;height:auto;background:#FAFAF7;border:1px solid var(--border)" viewbox="0 0 760 380">
+<line stroke="#EEE" x1="60.0" x2="60.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="60.0" y="352">0.244</text>
+<line stroke="#EEE" x1="60" x2="740" y1="336.0" y2="336.0"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="339.0">0.436</text>
+<line stroke="#EEE" x1="196.0" x2="196.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="196.0" y="352">0.295</text>
+<line stroke="#EEE" x1="60" x2="740" y1="273.6" y2="273.6"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="276.6">0.509</text>
+<line stroke="#EEE" x1="332.0" x2="332.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="332.0" y="352">0.347</text>
+<line stroke="#EEE" x1="60" x2="740" y1="211.2" y2="211.2"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="214.2">0.582</text>
+<line stroke="#EEE" x1="468.0" x2="468.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="468.0" y="352">0.398</text>
+<line stroke="#EEE" x1="60" x2="740" y1="148.8" y2="148.8"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="151.8">0.656</text>
+<line stroke="#EEE" x1="604.0" x2="604.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="604.0" y="352">0.450</text>
+<line stroke="#EEE" x1="60" x2="740" y1="86.4" y2="86.4"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="89.4">0.729</text>
+<line stroke="#EEE" x1="740.0" x2="740.0" y1="24" y2="336"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="middle" x="740.0" y="352">0.502</text>
+<line stroke="#EEE" x1="60" x2="740" y1="24.0" y2="24.0"></line><text fill="#6B6560" font-family="Courier New" font-size="10" text-anchor="end" x="54" y="27.0">0.802</text>
+<line stroke="#C0392B" stroke-dasharray="5,4" x1="60" x2="740" y1="327.5" y2="327.5"></line><text fill="#C0392B" font-family="Courier New" font-size="10" text-anchor="end" x="736" y="323.5">P* 0.4458 (Exploratory Band)</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="11" text-anchor="middle" x="380.0" y="372">Average Pressure P̄(t) — Available Dimension Average (Right = Intensifying Pressure)</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="11" text-anchor="middle" transform="rotate(-90 14 190.0)" x="14" y="190.0">Maximum Pressure P_max(t)</text>
+<polyline fill="none" opacity="0.6" points="194.7,196.2 205.8,195.5 126.7,195.0 121.9,191.7 96.6,191.7 123.1,184.5 100.8,191.1 96.6,190.6 86.4,190.6" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="194.7" cy="196.2" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="205.8" cy="195.5" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="126.7" cy="195.0" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="121.9" cy="191.7" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="96.6" cy="191.7" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="123.1" cy="184.5" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="100.8" cy="191.1" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="96.6" cy="190.6" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="86.4" cy="190.6" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="92.4" y="202.6">SYC</text>
+<polyline fill="none" opacity="0.6" points="345.8,165.2 343.3,170.0 340.2,152.7 330.8,161.0 311.9,211.5 333.5,115.5 305.7,172.1 274.2,176.7 258.1,214.9" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="345.8" cy="165.2" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="343.3" cy="170.0" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="340.2" cy="152.7" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="330.8" cy="161.0" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="311.9" cy="211.5" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="333.5" cy="115.5" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="305.7" cy="172.1" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="274.2" cy="176.7" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="258.1" cy="214.9" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="264.1" y="226.9">RWA</text>
+<polyline fill="none" opacity="0.6" points="140.0,193.4 149.6,212.7 141.6,209.4 141.0,205.8 120.5,210.0 158.5,206.7 137.2,200.3 135.4,193.7 130.6,195.7" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="140.0" cy="193.4" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="149.6" cy="212.7" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="141.6" cy="209.4" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="141.0" cy="205.8" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="120.5" cy="210.0" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="158.5" cy="206.7" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="137.2" cy="200.3" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="135.4" cy="193.7" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="130.6" cy="195.7" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="136.6" y="207.7">MUS</text>
+<polyline fill="none" opacity="0.6" points="408.7,245.2 380.5,201.8 366.8,193.1 360.8,202.8 346.7,248.0 379.3,140.4 352.5,199.0 358.4,202.6 335.3,243.3" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="408.7" cy="245.2" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="380.5" cy="201.8" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="366.8" cy="193.1" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="360.8" cy="202.8" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="346.7" cy="248.0" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="379.3" cy="140.4" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="352.5" cy="199.0" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="358.4" cy="202.6" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="335.3" cy="243.3" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="341.3" y="255.3">DJI</text>
+<polyline fill="none" opacity="0.6" points="696.9,109.9 693.4,117.6 713.6,94.2 705.1,91.7 665.1,128.2 689.3,73.6 641.1,139.0 648.0,121.0 640.4,119.7" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="696.9" cy="109.9" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="693.4" cy="117.6" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="713.6" cy="94.2" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="705.1" cy="91.7" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="665.1" cy="128.2" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="689.3" cy="73.6" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="641.1" cy="139.0" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="648.0" cy="121.0" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="640.4" cy="119.7" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="646.4" y="131.7">SOM</text>
+<polyline fill="none" opacity="0.6" points="436.8,232.1 436.6,192.6 446.5,179.1 444.9,187.0 378.5,189.6 397.4,127.9 371.7,184.9 372.8,188.7 330.3,222.0" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="436.8" cy="232.1" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="436.6" cy="192.6" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="446.5" cy="179.1" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="444.9" cy="187.0" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="378.5" cy="189.6" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="397.4" cy="127.9" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="371.7" cy="184.9" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="372.8" cy="188.7" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="330.3" cy="222.0" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="336.3" y="234.0">COM</text>
+<polyline fill="none" opacity="0.6" points="329.9,164.3 333.9,138.6 350.6,114.6 340.6,126.8 320.4,179.7 341.0,92.5 310.1,147.8 301.8,154.3 284.7,188.1" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="329.9" cy="164.3" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="333.9" cy="138.6" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="350.6" cy="114.6" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="340.6" cy="126.8" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="320.4" cy="179.7" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="341.0" cy="92.5" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="310.1" cy="147.8" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="301.8" cy="154.3" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="284.7" cy="188.1" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="290.7" y="200.1">TZA</text>
+<polyline fill="none" opacity="1" points="318.4,208.0 321.6,169.6 320.0,159.3 302.2,169.5 262.5,215.6 341.6,114.9 319.1,170.7 315.3,172.9 303.5,210.6" stroke="#C0392B" stroke-width="2.4"></polyline>
+<circle cx="318.4" cy="208.0" fill="#C0392B" opacity="0.35" r="4"></circle>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="324.4" y="202.0">2016</text>
+<circle cx="321.6" cy="169.6" fill="#C0392B" opacity="0.43" r="4"></circle>
+<circle cx="320.0" cy="159.3" fill="#C0392B" opacity="0.51" r="4"></circle>
+<circle cx="302.2" cy="169.5" fill="#C0392B" opacity="0.59" r="4"></circle>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="308.2" y="163.5">2019</text>
+<circle cx="262.5" cy="215.6" fill="#C0392B" opacity="0.68" r="4"></circle>
+<circle cx="341.6" cy="114.9" fill="#C0392B" opacity="0.76" r="4"></circle>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="347.6" y="108.9">2021</text>
+<circle cx="319.1" cy="170.7" fill="#C0392B" opacity="0.84" r="4"></circle>
+<circle cx="315.3" cy="172.9" fill="#C0392B" opacity="0.92" r="4"></circle>
+<circle cx="303.5" cy="210.6" fill="#C0392B" opacity="1.00" r="4"></circle>
+<text fill="#C0392B" font-family="Courier New" font-size="10" x="309.5" y="204.6">2024</text>
+<text fill="#C0392B" font-family="Courier New" font-size="11" font-weight="bold" x="309.5" y="222.6">KEN</text>
+<polyline fill="none" opacity="0.6" points="380.3,192.4 399.1,157.3 397.8,134.4 388.4,140.1 375.0,190.6 390.9,100.4 373.3,156.5 379.5,162.0 364.1,196.8" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="380.3" cy="192.4" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="399.1" cy="157.3" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="397.8" cy="134.4" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="388.4" cy="140.1" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="375.0" cy="190.6" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="390.9" cy="100.4" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="373.3" cy="156.5" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="379.5" cy="162.0" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="364.1" cy="196.8" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="370.1" y="208.8">ETH</text>
+<polyline fill="none" opacity="0.6" points="495.8,70.5 482.8,80.0 483.6,98.4 510.7,77.3 481.4,74.6 497.6,87.4 480.3,89.9 478.1,109.7 468.1,113.3" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="495.8" cy="70.5" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="482.8" cy="80.0" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="483.6" cy="98.4" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="510.7" cy="77.3" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="481.4" cy="74.6" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="497.6" cy="87.4" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="480.3" cy="89.9" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="478.1" cy="109.7" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="468.1" cy="113.3" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="474.1" y="125.3">MWI</text>
+<polyline fill="none" opacity="0.6" points="547.2,107.4 469.0,118.1 467.3,138.4 462.7,143.1 446.9,140.1 443.8,104.8 423.2,161.0 432.8,166.5 408.8,174.8" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="547.2" cy="107.4" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="469.0" cy="118.1" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="467.3" cy="138.4" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="462.7" cy="143.1" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="446.9" cy="140.1" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="443.8" cy="104.8" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="423.2" cy="161.0" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="432.8" cy="166.5" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="408.8" cy="174.8" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="414.8" y="186.8">MDG</text>
+<polyline fill="none" opacity="0.6" points="444.0,125.1 442.3,125.0 444.1,95.4 444.8,99.8 435.4,158.4 455.7,79.3 428.8,138.2 420.5,148.3 408.7,183.1" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="444.0" cy="125.1" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="442.3" cy="125.0" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="444.1" cy="95.4" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="444.8" cy="99.8" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="435.4" cy="158.4" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="455.7" cy="79.3" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="428.8" cy="138.2" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="420.5" cy="148.3" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="408.7" cy="183.1" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="414.7" y="195.1">UGA</text>
+<polyline fill="none" opacity="0.6" points="396.8,165.4 395.4,135.5 413.3,109.9 412.6,116.6 396.0,171.9 416.0,85.9 367.8,141.7 361.9,146.0 345.6,179.4" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="396.8" cy="165.4" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="395.4" cy="135.5" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="413.3" cy="109.9" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="412.6" cy="116.6" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="396.0" cy="171.9" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="416.0" cy="85.9" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="367.8" cy="141.7" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="361.9" cy="146.0" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="345.6" cy="179.4" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="351.6" y="191.4">ZMB</text>
+<polyline fill="none" opacity="0.6" points="392.4,155.4 394.2,133.0 397.8,99.1 382.4,128.0 356.4,166.2 378.1,99.5 402.0,154.6 414.2,144.8 400.1,142.7" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="392.4" cy="155.4" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="394.2" cy="133.0" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="397.8" cy="99.1" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="382.4" cy="128.0" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="356.4" cy="166.2" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="378.1" cy="99.5" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="402.0" cy="154.6" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="414.2" cy="144.8" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="400.1" cy="142.7" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="406.1" y="154.7">SDN</text>
+<polyline fill="none" opacity="0.6" points="431.9,40.6 435.5,40.2 469.0,42.6 518.7,46.2 480.2,33.4 508.3,32.5 470.9,32.5 496.0,32.5 492.6,32.5" stroke="#6A7A9A" stroke-width="1.2"></polyline>
+<circle cx="431.9" cy="40.6" fill="#6A7A9A" opacity="0.35" r="2.5"></circle>
+<circle cx="435.5" cy="40.2" fill="#6A7A9A" opacity="0.43" r="2.5"></circle>
+<circle cx="469.0" cy="42.6" fill="#6A7A9A" opacity="0.51" r="2.5"></circle>
+<circle cx="518.7" cy="46.2" fill="#6A7A9A" opacity="0.59" r="2.5"></circle>
+<circle cx="480.2" cy="33.4" fill="#6A7A9A" opacity="0.68" r="2.5"></circle>
+<circle cx="508.3" cy="32.5" fill="#6A7A9A" opacity="0.76" r="2.5"></circle>
+<circle cx="470.9" cy="32.5" fill="#6A7A9A" opacity="0.84" r="2.5"></circle>
+<circle cx="496.0" cy="32.5" fill="#6A7A9A" opacity="0.92" r="2.5"></circle>
+<circle cx="492.6" cy="32.5" fill="#6A7A9A" opacity="1.00" r="2.5"></circle>
+<text fill="#6A7A9A" font-family="Courier New" font-size="11" font-weight="bold" x="498.6" y="44.5">SSD</text>
+<polyline fill="none" opacity="0.6" points="614.5,47.6 620.6,53.3 628.5,51.5 627.6,55.1 598.3,39.1 619.4,42.1 601.2,41.3 597.1,56.5 587.5,61.6" stroke="#8E5EA2" stroke-width="1.2"></polyline>
+<circle cx="614.5" cy="47.6" fill="#8E5EA2" opacity="0.35" r="2.5"></circle>
+<circle cx="620.6" cy="53.3" fill="#8E5EA2" opacity="0.43" r="2.5"></circle>
+<circle cx="628.5" cy="51.5" fill="#8E5EA2" opacity="0.51" r="2.5"></circle>
+<circle cx="627.6" cy="55.1" fill="#8E5EA2" opacity="0.59" r="2.5"></circle>
+<circle cx="598.3" cy="39.1" fill="#8E5EA2" opacity="0.68" r="2.5"></circle>
+<circle cx="619.4" cy="42.1" fill="#8E5EA2" opacity="0.76" r="2.5"></circle>
+<circle cx="601.2" cy="41.3" fill="#8E5EA2" opacity="0.84" r="2.5"></circle>
+<circle cx="597.1" cy="56.5" fill="#8E5EA2" opacity="0.92" r="2.5"></circle>
+<circle cx="587.5" cy="61.6" fill="#8E5EA2" opacity="1.00" r="2.5"></circle>
+<text fill="#8E5EA2" font-family="Courier New" font-size="11" font-weight="bold" x="593.5" y="73.6">BDI</text>
+<polyline fill="none" opacity="0.6" points="484.0,127.1 490.5,123.7 491.5,120.3 473.7,126.9 468.6,145.5 491.2,91.3 463.0,145.5 466.7,150.6 462.3,184.2" stroke="#2A6F97" stroke-width="1.2"></polyline>
+<circle cx="484.0" cy="127.1" fill="#2A6F97" opacity="0.35" r="2.5"></circle>
+<circle cx="490.5" cy="123.7" fill="#2A6F97" opacity="0.43" r="2.5"></circle>
+<circle cx="491.5" cy="120.3" fill="#2A6F97" opacity="0.51" r="2.5"></circle>
+<circle cx="473.7" cy="126.9" fill="#2A6F97" opacity="0.59" r="2.5"></circle>
+<circle cx="468.6" cy="145.5" fill="#2A6F97" opacity="0.68" r="2.5"></circle>
+<circle cx="491.2" cy="91.3" fill="#2A6F97" opacity="0.76" r="2.5"></circle>
+<circle cx="463.0" cy="145.5" fill="#2A6F97" opacity="0.84" r="2.5"></circle>
+<circle cx="466.7" cy="150.6" fill="#2A6F97" opacity="0.92" r="2.5"></circle>
+<circle cx="462.3" cy="184.2" fill="#2A6F97" opacity="1.00" r="2.5"></circle>
+<text fill="#2A6F97" font-family="Courier New" font-size="11" font-weight="bold" x="468.3" y="196.2">MOZ</text>
+<polyline fill="none" opacity="0.6" points="559.7,141.2 569.8,144.3 578.6,132.3 567.1,134.0 548.6,139.8 590.5,129.1 569.6,146.7 574.4,142.2 566.8,134.8" stroke="#B8850E" stroke-width="1.2"></polyline>
+<circle cx="559.7" cy="141.2" fill="#B8850E" opacity="0.35" r="2.5"></circle>
+<circle cx="569.8" cy="144.3" fill="#B8850E" opacity="0.43" r="2.5"></circle>
+<circle cx="578.6" cy="132.3" fill="#B8850E" opacity="0.51" r="2.5"></circle>
+<circle cx="567.1" cy="134.0" fill="#B8850E" opacity="0.59" r="2.5"></circle>
+<circle cx="548.6" cy="139.8" fill="#B8850E" opacity="0.68" r="2.5"></circle>
+<circle cx="590.5" cy="129.1" fill="#B8850E" opacity="0.76" r="2.5"></circle>
+<circle cx="569.6" cy="146.7" fill="#B8850E" opacity="0.84" r="2.5"></circle>
+<circle cx="574.4" cy="142.2" fill="#B8850E" opacity="0.92" r="2.5"></circle>
+<circle cx="566.8" cy="134.8" fill="#B8850E" opacity="1.00" r="2.5"></circle>
+<text fill="#B8850E" font-family="Courier New" font-size="11" font-weight="bold" x="572.8" y="146.8">ERI</text>
+</svg></div>
+<p class="note">By back-calculating each country's annual pressure P from the Compendium ΔP table (P_t−1 = P_t − ΔP_t, based on 2024 P), the available dimension average P̄(t) was placed on the x-axis, and the maximum pressure P_max(t) on the y-axis. This is not a new engine value, but another representation of the Compendium pressure coordinate system time series. Missing dimensions are excluded from the average, so P̄ for countries with many missing values is correspondingly less representative. Thick line = Kenya, thin lines = countries in the same region (Compendium Vol. 5). MEASURED: Actual measurement inputs for each dimension are identical to the 'Measured:' tags in §04.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 07</div>
+<h2 class="section-heading">BSLI — Basic Social Life Index (Grassroots stratum and grassroots base pressure)</h2>
+<div class="formula-box">
+<div class="f-label">BSLI v7.0 Canonical (4-term subtraction formula)</div>
+<div class="f-eq">BSLI = 0.40·F_ML + 0.60·H − D − H_s</div>
+<div class="f-vars">F_ML: 30–50th income percentile (ML stratum) food and livelihood index (World Bank PIP) · H: basic living sufficiency · D: deprivation index (subtraction) · H_s: housing stress (Palma^1.5, subtraction)<br/>Range [−2.0, +1.0], 0 = basic life line. Compendium value: <strong>-0.8220</strong> (Grade E · 123rd among 139 countries)</div>
+</div>
+<p class="note">The annual table below is supplementary data (bsli_timeseries_v12, recalculation under consistent standards). It is normal that specific year values differ from the Compendium BSLI (cross-section of 139 countries), and the baseline value of BSLI in this report is the Compendium value.</p>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Year</th><th>F_ML (×0.40)</th><th>H (×0.60)</th><th>D (−)</th><th>H_s (−)</th><th>BSLI</th><th>Measurement Year / Reliability</th></tr></thead><tbody><tr><td>2016</td><td class="dim-score">0.0262</td><td class="dim-score">0.0262</td><td class="dim-score">0.5628</td><td class="dim-score">0.1585</td><td class="dim-score"><strong>-0.6951</strong></td><td style="font-size:12px">2015 · fallback_1yr</td></tr><tr><td>2017</td><td class="dim-score">0.0262</td><td class="dim-score">0.0262</td><td class="dim-score">0.5628</td><td class="dim-score">0.1585</td><td class="dim-score"><strong>-0.6951</strong></td><td style="font-size:12px">2015 · fallback_2yr</td></tr><tr><td>2018</td><td class="dim-score">0.0223</td><td class="dim-score">0.0205</td><td class="dim-score">0.6695</td><td class="dim-score">0.0963</td><td class="dim-score"><strong>-0.7446</strong></td><td style="font-size:12px">2020 · fallback_2yr</td></tr><tr><td>2019</td><td class="dim-score">0.0223</td><td class="dim-score">0.0205</td><td class="dim-score">0.6695</td><td class="dim-score">0.0963</td><td class="dim-score"><strong>-0.7446</strong></td><td style="font-size:12px">2020 · fallback_1yr</td></tr><tr><td>2020</td><td class="dim-score">0.0223</td><td class="dim-score">0.0205</td><td class="dim-score">0.6695</td><td class="dim-score">0.0963</td><td class="dim-score"><strong>-0.7446</strong></td><td style="font-size:12px">2020 · national</td></tr><tr><td>2021</td><td class="dim-score">0.0216</td><td class="dim-score">0.0195</td><td class="dim-score">0.6922</td><td class="dim-score">0.1303</td><td class="dim-score"><strong>-0.8021</strong></td><td style="font-size:12px">2021 · national</td></tr><tr><td>2022</td><td class="dim-score">0.0221</td><td class="dim-score">0.0202</td><td class="dim-score">0.6748</td><td class="dim-score">0.1256</td><td class="dim-score"><strong>-0.7795</strong></td><td style="font-size:12px">2022 · national</td></tr><tr><td>2023</td><td class="dim-score">0.0221</td><td class="dim-score">0.0202</td><td class="dim-score">0.6748</td><td class="dim-score">0.1256</td><td class="dim-score"><strong>-0.7795</strong></td><td style="font-size:12px">2022 · fallback_1yr</td></tr><tr><td>2024</td><td class="dim-score">0.0221</td><td class="dim-score">0.0202</td><td class="dim-score">0.6748</td><td class="dim-score">0.1256</td><td class="dim-score"><strong>-0.7795</strong></td><td style="font-size:12px">2022 · fallback_2yr</td></tr></tbody></table></div>
+<p>Compendium BSLI -0.8220 (Grade E · 123rd among 139 countries). Actual measurements in the supplementary annual table are 2015 (-0.6951 in the 2016 cell), 2020 (-0.7446 in the 2018 cell), 2021 (-0.8021), and 2022 (-0.7795) — it declined until 2021 and slightly rebounded in 2022. Figures differ because the Compendium values and supplementary time series use different calculation standards (Needs canonical verification C-1).</p>
+<p>The grassroots base indicator is below the basic life line, and the absorber binary is just above the threshold (interpretation).</p>
+</div>
+<div class="section">
+<div class="section-title">§ 08</div>
+<h2 class="section-heading">UI Uprising Conditions and T_trigger</h2>
+<div class="formula-box">
+<div class="f-label">UI Master Equation · T_trigger</div>
+<div class="f-eq">F(t) &gt; SE(t) → uprising ignition  |  T_trigger = δ_(L−1) · Γ · (1 − E_A2) · H(F − SE)</div>
+<div class="f-vars">F(t) = m·a(t), m = A2·A8 (policy shock mass), a(t) = d²BSLI/dt² (central difference)<br/>SE(t) = E_A2(t) + E_A8(t), E_A2 = A2·[1 − κ_L0·(1 − A8_check)]<br/>δ_(L−1): crowd contagion intensity · Γ: cultural-institutional impedance reflectance · H: Heaviside step function</div>
+</div>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Year</th><th>m = A2·A8 (Compendium cross-section)</th><th>a = Δ²BSLI</th><th>F = m·a</th><th>t+1 Measurement Reliability</th></tr></thead><tbody><tr><td>2017</td><td class="dim-score">0.1047</td><td class="dim-score">-0.0495</td><td class="dim-score">-0.00518</td><td style="font-size:12px">fallback_2yr</td></tr><tr><td>2018</td><td class="dim-score">0.1047</td><td class="dim-score">+0.0495</td><td class="dim-score">+0.00518</td><td style="font-size:12px">fallback_1yr</td></tr><tr><td>2019</td><td class="dim-score">0.1047</td><td class="dim-score">+0.0000</td><td class="dim-score">+0.00000</td><td style="font-size:12px">national</td></tr><tr><td>2020</td><td class="dim-score">0.1047</td><td class="dim-score">-0.0575</td><td class="dim-score">-0.00602</td><td style="font-size:12px">national</td></tr><tr><td>2021</td><td class="dim-score">0.1047</td><td class="dim-score">+0.0801</td><td class="dim-score">+0.00839</td><td style="font-size:12px">national</td></tr><tr><td>2022</td><td class="dim-score">0.1047</td><td class="dim-score">-0.0226</td><td class="dim-score">-0.00237</td><td style="font-size:12px">fallback_1yr</td></tr><tr><td>2023</td><td class="dim-score">0.1047</td><td class="dim-score">+0.0000</td><td class="dim-score">+0.00000</td><td style="font-size:12px">fallback_2yr</td></tr></tbody></table></div>
+<p class="note">m used the Compendium cross-sectional value (A2·A8) as a constant, and a(t) is the 2nd central difference of the supplementary BSLI time series. a=0 in the fallback (carryover) period is an artifact of data freeze. Canonical SE and T_trigger values are not calculated for this country.</p>
+<p>m = A2·A8 = 0.2717 × 0.3854 is small as a policy shock mass. The supplementary BSLI fell until 2021, so a(t) was in a negative direction, but rebounded in 2022. Canonical SE and T_trigger were not calculated.</p>
+<p>Protest records surged after 2022, and policy issues such as tax increases led to street manifestations. Simultaneously, intra-institutional adjustments such as ruling-opposition cooperation were also recorded (interpretation).</p>
+<div class="table-scroll"><table class="trigger-table">
+<thead><tr><th>Trigger Scenario</th><th>Mechanism</th><th>Observation Level</th><th>Observation Point</th></tr></thead>
+<tbody>
+<tr><td><strong>Absorber Binary</strong></td><td>A2·A8 just above threshold + A7 → simultaneous inclusion configuration</td><td class="high">0.4496 · 0.4490</td><td>Central Institution</td></tr>
+<tr><td><strong>Fiscal / Tax Increase</strong></td><td>Tax increase → youth protests → storming of parliament</td><td class="high">2024-06</td><td>Capital</td></tr>
+<tr><td><strong>Protest Response</strong></td><td>Police gunfire / deaths in custody → annual protests</td><td class="high">115–127 persons</td><td>Urban Areas</td></tr>
+<tr><td><strong>Coalition Politics</strong></td><td>Ruling-opposition cooperation → 2027 general election alliance</td><td class="low">2025-03·10</td><td>Central Politics</td></tr>
+</tbody>
+</table></div>
+<p class="note">"Observation level" is not probability. It records only the degree to which the corresponding pathway actually operated in recent event records.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 09</div>
+<h2 class="section-heading">Collapse Path Classification — WD / SN / BH</h2>
+<div class="formula-box">
+<div class="f-label">Path Classification Criteria (UI Canonical, Stellar Evolution Metaphor)</div>
+<div class="f-eq">WD: E_A2 &lt; 0.3, C_internal &lt; 0.4 · SN: E_A2 0.3~0.5, C_internal &gt; 0.5 · BH: E_A2 &lt; 0.2, C_internal &gt; 0.7</div>
+<div class="f-vars">White Dwarf (WD) = suppression and latency · Supernova (SN) = collapse and regeneration · Black Hole (BH) = implosion and irreversibility<br/>The determining variable separating SN and BH is C_internal (intra-elite conflict energy). It is a metaphor and does not claim astrophysical correspondence.</div>
+</div>
+<p>E_A2 (institutional-trust effect) is on the weaker condition side as A2·A8 are just above the threshold. C_internal (intra-elite conflict) shows records of decreasing through ruling-opposition cooperation and coalition.</p>
+<p>The absorber binary and A7 are together inside the band, youth street protests recur, and at the same time, six consecutive years of A8 escape and ruling-opposition cooperation have been recorded. Coexistence of SN and WD observation items — not a judgment.</p>
+<div class="scenario-grid">
+<div class="scenario wd"><div class="scenario-icon">◐</div><div class="scenario-name wd">WD — Recurrence of Annual Protests and Control</div><div class="scenario-prob">Condition: Stagnation in accountability + repeated large-scale police deployment</div><div class="scenario-desc">A path where protests and control recur year after year.</div></div>
+<div class="scenario sn"><div class="scenario-icon">✸</div><div class="scenario-name sn">SN — Intra-Institutional Adjustment</div><div class="scenario-prob">Condition: Progress in compensation/investigation + trust in 2027 general election procedures</div><div class="scenario-desc">A path adjusted within the institutions. It is a transition, not a collapse.</div></div>
+<div class="scenario bh"><div class="scenario-icon">●</div><div class="scenario-name bh">BH — Overlapping Crises</div><div class="scenario-prob">Condition: E_A2 &lt; 0.2 + C_internal &gt; 0.7</div><div class="scenario-desc">The absorber binary is inside the band. Recorded as a risk variable.</div></div>
+</div>
+</div>
+<div class="synthesis">
+<div class="synthesis-title">SYNTHESIS-η — Kenya 4-Stage Summary</div>
+<div class="synthesis-stages">
+<div class="stage"><div class="stage-num">STAGE 01 / Position</div><div class="stage-title">8th in East Africa · 141st</div><div class="stage-desc">Compendium η 0.4608 (141st among 197 countries), BSLI -0.8220 (123rd), 5 bands.</div></div>
+<div class="stage"><div class="stage-num">STAGE 02 / Pressure</div><div class="stage-title">Simultaneous Inclusion of A7·A8</div><div class="stage-desc">A8 escaped for six consecutive years, 2,009 protests.</div></div>
+<div class="stage"><div class="stage-num">STAGE 03 / Gap</div><div class="stage-title">127 and 115 Persons</div><div class="stage-desc">No official government figures, compensation and accountability.</div></div>
+<div class="stage"><div class="stage-num">STAGE 04 / Path</div><div class="stage-title">Coexistence of Observation Items</div><div class="stage-desc">Coexistence of SN and WD observation items — not a judgment.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 09-B</div>
+<h2 class="section-heading">Six-Layer Discourse Reasoning Method — The Layer Where This Report Resides</h2>
+<p>The interpretation of this report is conducted only within Layers 1 to 5 of Cheonghae (淸海)'s Six-Layer Discourse Reasoning Method (Combined Paper Ch. 7). Layer 6 is Cheonghae's exclusive domain.</p>
+<div class="table-scroll"><table class="dim-table">
+<thead><tr><th>Layer</th><th>Question</th><th>In This Report</th></tr></thead>
+<tbody>
+<tr><td class="dim-code">Layer 1</td><td>Data — What did I see?</td><td>Compendium values (η, BSLI, pressure, trajectory) and published figures/ACLED are recorded without judgment (§00, §01, §04–§08)</td></tr>
+<tr><td class="dim-code">Layer 2</td><td>Interests — Who prevents evolution?</td><td>View the relationship between actors and institutions (A8 governance and A2 institutional trust) through event records (§02, §03, §03-B)</td></tr>
+<tr><td class="dim-code">Layer 3</td><td>Historical Patterns — What has already happened recurs</td><td>Observe the self-similarity and resonance between timelines and trajectories (§02, §06)</td></tr>
+<tr><td class="dim-code">Layer 4</td><td>Shift in Perspective — It is evolution, not collapse</td><td>WD/SN/BH are stellar evolution metaphors, reading uprisings and collapses as turning points in social evolution (§09)</td></tr>
+<tr><td class="dim-code">Layer 5</td><td>Knowledge Frame — Interpreting through the heritage of humanity</td><td>Graft previous studies by dimension into combined mosaic pieces (§04)</td></tr>
+<tr><td class="dim-code">Layer 6</td><td>—</td><td><strong>Cheonghae (淸海) exclusive.</strong> Not addressed in this report.</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="section">
+<div class="section-title">§ 10</div>
+<h2 class="section-heading">Data Sources and Reproducibility Declaration</h2>
+<p style="font-family:'Courier New',monospace;font-size:12.5px;color:var(--muted);line-height:1.9;">[Canonical] National Analysis Compendium Vol. 5 Sub-Saharan Africa (2026-10-07) KEN Section — basic indicators, causal loop diagram, pressure ranking table, trajectory [Figure 5-6-2], ΔP table, current status briefing (as of 2026-10-07). /nations/book/Lambda12_CountryBook_Vol5_SubSaharanAfrica_20261007.html<br/>[Canonical Engine Values] Λ¹² v2.0 lambda12_v2_scores.json · [Supplementary] bsli_timeseries_v12_20260726.json · acled_link/KEN.json (ACLED compiled version)<br/>[Compendium Briefing Sources] Africanews https://www.africanews.com/2026/06/25/two-years-after-gen-z-uprising-kenyan-protesters-return-to-nairobi-streets/ — Euronews affiliate · Citizen Digital (AFP) https://citizen.digital/article/kenya-police-in-massive-show-of-force-on-protest-anniversary-n385226 — Kenyan private · People Daily https://peopledaily.digital/insights/key-political-events-that-shaped-2025 — Kenyan private (history of politician ownership) · Citizen Digital (KNCHR) https://citizen.digital/article/saba-saba-demos-declared-the-deadliest-yet-as-kenya-records-115-protest-deaths-in-one-year-n366032 — Original data source: Kenya National Commission on Human Rights<br/>[Academic] Hornsby (2012) Kenya: A History Since Independence, I.B. Tauris · Branch (2011) Kenya: Between Hope and Despair, 1963–2011, Yale University Press<br/>Access date: this report 2026-10-13. For detailed list, see data/sources.md in run folder.</p>
+<p><strong>Limitations.</strong> ① Compendium engine values were used as-is according to the freeze principle. ② The political situation followed the Compendium briefing (as of 2026-10-07). ③ Casualties and arrest counts on the day of June 25, 2026, and trends regarding the 2026 Finance Bill and the IMF could not be confirmed by the Compendium either. ④ Official government death tolls have not been confirmed. ⑤ Evaluations of involved parties are not conducted. ⑥ SE, T_trigger, E_A2, and C_internal were not quantitatively calculated.</p>
+<p>Only measured values and records were stated. Assessments and predictions are not made. The subsequent judgment rests with the leaders and people of that nation.</p>
+</div>
+</div><!-- /main -->
+<div class="report-footer"><div class="footer-inner">
+<div class="footer-slogan">"With the hope that humanity's experience and countless brilliant data may come together and be reborn as a wise light like the Milky Way!"</div>
+<div class="footer-meta">Everblue Sea Institute for Social Dynamics · Author Cheonghae (淸海)<br/>Λ¹² (SSRN 6632858) · National Analysis Compendium (2026-10-07) · BSLI v7.0 · UI · Pressure Coordinate System<br/>Kenya Standalone Edition · 2026-10-13 · Daily Regional Rotation Analysis</div>
+</div></div>
+<script>
+(function() {
+  var el = document.getElementById('radarChart');
+  if (!el || typeof Chart === 'undefined') return;
+  var D = {"labels": ["A1 Infrastructure", "A2 Institutional Trust", "A3 Civil Liberties", "A4 Economic Stability", "A5 Education Access", "A6 Healthcare Level", "A7 Social Structure", "A8 Governance", "A9 Environmental Pressure", "A10 Inequality", "A11 External Shocks", "A12 Mobility"], "me": [0.5258, 0.2717, 0.5836, 0.1034, 0.1269, 0.849, 0.7703, 0.3854, 0.7101, 0.0175, 0.3018, 0.8845], "kor": [0.9887, 0.6703, 0.7422, 0.4623, 0.7788, 0.4496, 0.4598, 0.7543, 0.7268, 0.0215, 0.2525, 0.8847], "reg": [0.384, 0.281, 0.5675, 0.1045, 0.0552, 0.8058, 0.765, 0.3374, 0.6831, 0.0061, 0.3866, 0.8871]};
+  new Chart(el, {
+    type: 'radar',
+    data: {
+      labels: D.labels,
+      datasets: [
+        { label: 'Kenya', data: D.me, borderColor: '#C0392B', backgroundColor: 'rgba(192,57,43,0.15)', borderWidth: 2, pointRadius: 3, spanGaps: true },
+        { label: 'Korea (Baseline)', data: D.kor, borderColor: '#5E9186', backgroundColor: 'rgba(94,145,134,0.08)', borderWidth: 1.5, pointRadius: 2, spanGaps: true },
+        { label: 'East Africa Average', data: D.reg, borderColor: '#B8850E', borderDash: [5,4], backgroundColor: 'rgba(184,133,14,0.04)', borderWidth: 1.5, pointRadius: 2, spanGaps: true }
+      ]
+    },
+    options: {
+      responsive: true,
+      scales: { r: { min: 0, max: 1, ticks: { stepSize: 0.2, font: { size: 9 } }, pointLabels: { font: { size: 10, family: 'Georgia' } } } },
+      plugins: { legend: { position: 'bottom', labels: { font: { family: 'Courier New', size: 11 } } } }
+    }
+  });
+})();
+</script>
+</body>
+</html>
