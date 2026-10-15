@@ -155,24 +155,19 @@
   "hanja": 2
  },
  {
-  "file": "/engines/bsli/americas/과테말라_BSLI_기초생활분석보고서_20261014_EN.html",
+  "file": "/engines/bsli/americas/우루과이_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 16,
   "hanja": 23
  },
  {
-  "file": "/engines/bsli/africa/토고_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 25
- },
- {
-  "file": "/engines/bsli/africa/지부티_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 15,
+  "file": "/engines/bsli/central-asia/타지키스탄_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
   "hanja": 21
  },
  {
-  "file": "/engines/bsli/americas/볼리비아_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 16,
-  "hanja": 19
+  "file": "/engines/bsli/americas/엘살바도르_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
+  "hanja": 18
  },
  {
   "file": "/engines/bsli/africa/기니비사우_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -190,9 +185,44 @@
   "hanja": 4
  },
  {
-  "file": "/engines/bsli/americas/도미니카공화국_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 19,
-  "hanja": 14
+  "file": "/engines/bsli/americas/과테말라_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 11,
+  "hanja": 23
+ },
+ {
+  "file": "/engines/bsli/europe/리투아니아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
+  "hanja": 17
+ },
+ {
+  "file": "/engines/bsli/africa/토고_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 9,
+  "hanja": 25
+ },
+ {
+  "file": "/engines/bsli/americas/코스타리카_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
+  "hanja": 16
+ },
+ {
+  "file": "/engines/bsli/americas/콜롬비아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
+  "hanja": 17
+ },
+ {
+  "file": "/engines/bsli/europe/루마니아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
+  "hanja": 17
+ },
+ {
+  "file": "/engines/bsli/europe/네덜란드_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
+  "hanja": 17
+ },
+ {
+  "file": "/engines/bsli/europe/독일_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 14,
+  "hanja": 19
  },
  {
   "file": "/engines/bsli/africa/르완다_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -200,29 +230,44 @@
   "hanja": 23
  },
  {
-  "file": "/engines/bsli/africa/탄자니아_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 16,
-  "hanja": 17
- },
- {
-  "file": "/engines/bsli/americas/니카라과_BSLI_기초생활분석보고서_20261014_EN.html",
+  "file": "/engines/bsli/americas/온두라스_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 16,
   "hanja": 16
  },
  {
-  "file": "/engines/bsli/africa/코모로_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 15,
-  "hanja": 17
+  "file": "/engines/bsli/americas/에콰도르_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
+  "hanja": 16
  },
  {
-  "file": "/engines/bsli/africa/코트디부아르_BSLI_기초생활분석보고서_20261014_EN.html",
+  "file": "/engines/bsli/central-asia/카자흐스탄_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/central-asia/키르기스스탄_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 18,
   "hanja": 14
  },
  {
-  "file": "/engines/bsli/africa/카메룬_BSLI_기초생활분석보고서_20261014_EN.html",
+  "file": "/engines/bsli/europe/룩셈부르크_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/americas/파라과이_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/americas/파나마_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 15,
-  "hanja": 17
+  "hanja": 16
+ },
+ {
+  "file": "/engines/bsli/europe/러시아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 15,
+  "hanja": 16
  },
  {
   "file": "/engines/bsli/africa/부르키나파소_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -235,19 +280,39 @@
   "hanja": 21
  },
  {
+  "file": "/engines/bsli/africa/지부티_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 10,
+  "hanja": 21
+ },
+ {
   "file": "/nations/middle-east/MiddleEast_Regional_Lambda12v914_20260506_EN.html",
   "ko": 26,
   "hanja": 4
  },
  {
+  "file": "/engines/bsli/americas/볼리비아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 11,
+  "hanja": 19
+ },
+ {
+  "file": "/engines/bsli/europe/노르웨이_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
+  "hanja": 14
+ },
+ {
+  "file": "/engines/bsli/europe/라트비아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 16,
+  "hanja": 14
+ },
+ {
+  "file": "/engines/bsli/europe/덴마크_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 15,
+  "hanja": 15
+ },
+ {
   "file": "/engines/bsli/africa/가나_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 9,
   "hanja": 21
- },
- {
-  "file": "/engines/bsli/africa/케냐_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 16
  },
  {
   "file": "/engines/bsli/africa/남아프리카공화국_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -265,14 +330,14 @@
   "hanja": 4
  },
  {
-  "file": "/engines/bsli/americas/미국_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 15
+  "file": "/engines/bsli/americas/캐나다_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 15,
+  "hanja": 14
  },
  {
-  "file": "/engines/bsli/americas/세인트루시아_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 18,
-  "hanja": 11
+  "file": "/engines/bsli/americas/페루_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 14,
+  "hanja": 15
  },
  {
   "file": "/engines/bsli/africa/라이베리아_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -285,24 +350,24 @@
   "hanja": 17
  },
  {
-  "file": "/engines/bsli/americas/브라질_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 5,
-  "hanja": 23
+  "file": "/engines/bsli/americas/칠레_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 14,
+  "hanja": 14
  },
  {
-  "file": "/engines/bsli/africa/카보베르데_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 17,
-  "hanja": 11
+  "file": "/engines/bsli/americas/도미니카공화국_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 14,
+  "hanja": 14
+ },
+ {
+  "file": "/engines/bsli/africa/탄자니아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 11,
+  "hanja": 17
  },
  {
   "file": "/engines/bsli/africa/베냉_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 9,
   "hanja": 19
- },
- {
-  "file": "/engines/bsli/africa/차드_BSLI_기초생활분석보고서_20261014_EN.html",
-  "ko": 14,
-  "hanja": 14
  },
  {
   "file": "/engines/bsli/africa/모잠비크_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -315,6 +380,21 @@
   "hanja": 16
  },
  {
+  "file": "/engines/bsli/americas/니카라과_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 11,
+  "hanja": 16
+ },
+ {
+  "file": "/engines/bsli/europe/몬테네그로_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 17,
+  "hanja": 10
+ },
+ {
+  "file": "/engines/bsli/africa/코모로_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 10,
+  "hanja": 17
+ },
+ {
   "file": "/engines/bsli/africa/시에라리온_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 12,
   "hanja": 15
@@ -325,9 +405,19 @@
   "hanja": 17
  },
  {
+  "file": "/engines/bsli/africa/코트디부아르_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 13,
+  "hanja": 14
+ },
+ {
   "file": "/engines/bsli/africa/나미비아_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 11,
   "hanja": 16
+ },
+ {
+  "file": "/engines/bsli/africa/카메룬_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 10,
+  "hanja": 17
  },
  {
   "file": "/nations/americas/LatAm_4th_SmallStates_Lambda12v912_20260504_EN.html",
@@ -380,6 +470,11 @@
   "hanja": 15
  },
  {
+  "file": "/engines/bsli/africa/케냐_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 9,
+  "hanja": 16
+ },
+ {
   "file": "/engines/bsli/africa/감비아_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 10,
   "hanja": 15
@@ -388,6 +483,16 @@
   "file": "/nations/europe/v1.0_west-europe-1_20260429_EN.html",
   "ko": 22,
   "hanja": 2
+ },
+ {
+  "file": "/engines/bsli/americas/미국_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 9,
+  "hanja": 15
+ },
+ {
+  "file": "/engines/bsli/americas/세인트루시아_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 13,
+  "hanja": 11
  },
  {
   "file": "/engines/bsli/africa/앙골라_BSLI_기초생활분석보고서_20261014_EN.html",
@@ -405,6 +510,11 @@
   "hanja": 15
  },
  {
+  "file": "/engines/bsli/americas/브라질_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 0,
+  "hanja": 23
+ },
+ {
   "file": "/engines/bsli/africa/가봉_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 9,
   "hanja": 14
@@ -415,12 +525,22 @@
   "hanja": 13
  },
  {
+  "file": "/engines/bsli/africa/카보베르데_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 12,
+  "hanja": 11
+ },
+ {
+  "file": "/engines/bsli/africa/차드_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 9,
+  "hanja": 14
+ },
+ {
   "file": "/engines/bsli/africa/기니_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 9,
   "hanja": 14
  },
  {
-  "file": "/engines/bsli/americas/멕시코_BSLI_기초생활분석보고서_20261014_EN.html",
+  "file": "/engines/bsli/europe/그리스_BSLI_기초생활분석보고서_20261014_EN.html",
   "ko": 5,
   "hanja": 15
  },
@@ -458,6 +578,11 @@
   "file": "/nations/middle-east/시리아_Λ12_비교분석보고서_20261013_EN.html",
   "ko": 11,
   "hanja": 4
+ },
+ {
+  "file": "/engines/bsli/americas/멕시코_BSLI_기초생활분석보고서_20261014_EN.html",
+  "ko": 0,
+  "hanja": 15
  },
  {
   "file": "/engines/ui/KOR_report_EN.html",
