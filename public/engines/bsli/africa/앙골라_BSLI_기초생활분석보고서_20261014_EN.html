@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Angola BSLI Basic Social Life Index Report 2026</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #F5F3EE;
+  --header: #2A3D35;
+  --green: #5E9186;
+  --gold: #B8850E;
+  --red: #C0392B;
+  --border: #DDD8CE;
+  --ink: #1A1A1A;
+  --muted: #6B6560;
+  --card: #FAFAF7;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 15px;
+  line-height: 1.75;
+}
+/* ── HEADER ── */
+.report-header {
+  background: var(--header);
+  color: #E8E4DC;
+  padding: 48px 0 36px;
+}
+.header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.report-flag {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 12px;
+}
+.report-title {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin-bottom: 8px;
+  color: #F0ECE4;
+}
+.report-subtitle {
+  font-size: 18px;
+  color: #A8C4BE;
+  margin-bottom: 24px;
+}
+.report-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #8BA89F;
+}
+.meta-value {
+  color: #C8D8D4;
+  font-weight: bold;
+}
+/* ── VERDICT STRIP ── */
+.verdict-strip {
+  background: #1C2C26;
+  padding: 16px 0;
+  border-bottom: 3px solid var(--gold);
+}
+.verdict-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.verdict-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #7A9A94;
+}
+.verdict-badge {
+  background: #B8850E22;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  padding: 4px 14px;
+  border-radius: 2px;
+}
+.verdict-eta {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #E8A060;
+  font-weight: bold;
+}
+.verdict-bsli {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  color: #88BBAA;
+  font-weight: bold;
+}
+/* ── MAIN LAYOUT ── */
+.main { max-width: 960px; margin: 0 auto; padding: 48px 40px; }
+/* ── SECTION ── */
+.section { margin-bottom: 56px; }
+.section-title {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 6px;
+}
+.section-heading {
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--header);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+}
+/* ── PROSE ── */
+p { margin-bottom: 1em; color: var(--ink); }
+.lead { font-size: 17px; color: #2A3D35; margin-bottom: 1.2em; }
+/* ── TIMELINE ── */
+.timeline { position: relative; padding-left: 24px; margin: 24px 0; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 20px; }
+.tl-dot {
+  position: absolute;
+  left: -20px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  border: 2px solid var(--bg);
+}
+.tl-dot.crisis { background: var(--red); }
+.tl-dot.gold { background: var(--gold); }
+.tl-year {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--gold);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.tl-content { font-size: 14px; color: var(--muted); }
+.tl-content strong { color: var(--ink); }
+/* ── DIMENSION TABLE ── */
+.dim-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 14px; }
+.dim-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 10px 14px;
+  text-align: left;
+}
+.dim-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.dim-table tr:nth-child(even) td { background: #F0EDE8; }
+.dim-code {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  color: var(--header);
+}
+.dim-score {
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-align: center;
+}
+.score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.score-bar {
+  height: 6px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+/* ── CARDS GRID ── */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--green);
+  padding: 20px 22px;
+}
+.card.gold { border-left-color: var(--gold); }
+.card.red { border-left-color: var(--red); }
+.card-label {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.card-value {
+  font-size: 28px;
+  font-family: 'Courier New', monospace;
+  color: var(--header);
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+.card-desc { font-size: 13px; color: var(--muted); }
+/* ── FORMULA BOX ── */
+.formula-box {
+  background: #2A3D3508;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--green);
+  padding: 18px 22px;
+  margin: 20px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: var(--header);
+}
+.formula-box .f-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.formula-box .f-eq { font-size: 16px; margin-bottom: 8px; }
+.formula-box .f-vars { font-size: 12px; color: var(--muted); line-height: 1.8; }
+/* ── SCENARIO BOX ── */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.scenario {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 20px;
+}
+.scenario.wd { border-top: 3px solid #7AA0C8; }
+.scenario.sn { border-top: 3px solid var(--gold); }
+.scenario.bh { border-top: 3px solid var(--red); }
+.scenario-icon { font-size: 24px; margin-bottom: 8px; }
+.scenario-name {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.scenario-name.wd { color: #5580A8; }
+.scenario-name.sn { color: #9A7008; }
+.scenario-name.bh { color: var(--red); }
+.scenario-prob {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.scenario-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+/* ── SYNTHESIS BOX ── */
+.synthesis {
+  background: var(--header);
+  color: #D8E4E0;
+  padding: 36px 40px;
+  margin: 40px 0;
+}
+.synthesis-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #8BA89F;
+  margin-bottom: 16px;
+}
+.synthesis-stages { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.stage { border-top: 1px solid #3D5850; padding-top: 14px; }
+.stage-num {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.stage-title { font-size: 14px; color: #E8E4DC; margin-bottom: 6px; font-weight: bold; }
+.stage-desc { font-size: 13px; color: #8BA89F; line-height: 1.6; }
+/* ── TRIGGER TABLE ── */
+.trigger-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+.trigger-table th {
+  background: var(--header);
+  color: #C8D8D4;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding: 9px 14px;
+  text-align: left;
+}
+.trigger-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.risk-high {
+  color: var(--red);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-med {
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+.risk-low {
+  color: var(--green);
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+}
+/* ── CHART CONTAINERS ── */
+.chart-wrap {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 24px;
+  margin: 24px 0;
+}
+.chart-title {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+/* ── FOOTER ── */
+.report-footer {
+  background: var(--header);
+  padding: 40px 0 32px;
+  margin-top: 60px;
+}
+.footer-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+  text-align: center;
+}
+.footer-slogan {
+  font-style: italic;
+  color: #C9A24B;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #3D5850;
+}
+.footer-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #6A8880;
+  line-height: 2;
+}
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .header-inner, .verdict-inner, .main, .footer-inner { padding: 0 20px; }
+  .report-title { font-size: 26px; }
+  .cards { grid-template-columns: 1fr; }
+  .scenario-grid { grid-template-columns: 1fr; }
+  .synthesis-stages { grid-template-columns: 1fr; }
+}
+
+.pcs-wrap { background:#FAFAF7; border:1px solid var(--border); padding:16px; margin:20px 0; }
+.pcs-wrap svg { display:block; max-width:100%; height:auto; margin:0 auto; }
+.note { font-size:12.5px; color:var(--muted); line-height:1.7; }
+.table-scroll { overflow-x:auto; }
+@media (max-width:640px) { .main, .header-inner, .verdict-inner, .footer-inner { padding-left:16px; padding-right:16px; } .dim-table { font-size:12px; } }
+</style>
+</head>
+<body>
+<div class="report-header"><div class="header-inner">
+<div class="report-flag">EVERBLUESEA SOCIAL DYNAMICS LAB · BSLI STANDALONE · 2026-10-14</div>
+<h1 class="report-title">Angola Basic Social Life Index Standalone Volume</h1>
+<div class="report-subtitle">Central Africa BSLI 3rd (128th out of 139 countries) — Grade E below the basic living line, national poverty rate 32.3% lower than the $3.00/day poverty rate 39.3%, Palma 3.47, inflation from 28.24% in 2024 to single digits in 2026</div>
+<div class="report-meta">
+<div class="meta-item">Author <span class="meta-value">Cheonghae (淸海)</span></div>
+<div class="meta-item">Engine <span class="meta-value">BSLI v7.0 (Country Analysis Compendium 2026-10-07 values) · BSLI Time Series v1.2 · Linked with Λ¹² v2.0</span></div>
+<div class="meta-item">Regional Position <span class="meta-value">Central Africa BSLI Bottom (3rd among 3 countries calculated in the Compendium)</span></div>
+<div class="meta-item">Date of Writing <span class="meta-value">2026-10-14</span></div>
+</div>
+</div></div>
+<div class="verdict-strip"><div class="verdict-inner">
+<span class="verdict-label">Observation Summary</span>
+<span class="verdict-badge">Regional BSLI 3rd · Grade E (−0.9895, 128th) · Only one time-series empirical measurement in 2018 · η 0.4381 (170th)</span>
+<span class="verdict-bsli">BSLI = -0.9895 (Grade E · 128th out of 139 countries)</span>
+<span class="verdict-eta">η = 0.4381 (170th out of 197 countries)</span>
+</div></div>
+<div class="main">
+<div class="section">
+<div class="section-title">§ 00</div>
+<h2 class="section-heading">Position within Region — Why Angola?</h2>
+<p>This report was selected as the lowest-ranked country based on the Country Analysis Compendium BSLI in the Central Africa cycle of the BSLI regional rotation pipeline. Angola's BSLI in the Compendium is <strong>-0.9895</strong>(Grade E · 128th out of 139 countries), ranking 3rd among the 3 Central African countries calculated. The higher-ranked country in the same round is Gabon (-0.1118), and directly above is Chad (-0.8346).</p>
+<p>BSLI is a measurement channel independent of Λ¹². Angola's η is published separately in the Compendium as 0.4381 (170th out of 197 countries).</p>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Central African Region (Compendium)</th><th>BSLI</th><th>Grade · Rank</th><th>η</th><th>η Rank</th></tr></thead><tbody>
+<tr><td>Gabon (GAB)</td><td class="dim-score">-0.1118</td><td>Grade E · 67th out of 139 countries</td><td class="dim-score">0.5628</td><td>38th out of 197 countries</td></tr>
+<tr><td>Chad (TCD)</td><td class="dim-score">-0.8346</td><td>Grade E · 124th out of 139 countries</td><td class="dim-score">0.4104</td><td>187th out of 197 countries</td></tr>
+<tr style="background:#B8850E18;font-weight:bold"><td>Angola (AGO)</td><td class="dim-score">-0.9895</td><td>Grade E · 128th out of 139 countries</td><td class="dim-score">0.4381</td><td>170th out of 197 countries</td></tr>
+<tr><td>Central African Republic (CAF)</td><td class="dim-score">Not Calculable</td><td>Absence of PIP income distribution raw data</td><td class="dim-score">0.4804</td><td>119th out of 197 countries</td></tr>
+<tr><td>Democratic Republic of the Congo (COD)</td><td class="dim-score">Not Calculable</td><td>Absence of PIP income distribution raw data</td><td class="dim-score">0.3688</td><td>196th out of 197 countries</td></tr>
+<tr><td>Congo (COG)</td><td class="dim-score">Not Calculable</td><td>Absence of PIP income distribution raw data</td><td class="dim-score">0.4143</td><td>186th out of 197 countries</td></tr>
+<tr><td>Equatorial Guinea (GNQ)</td><td class="dim-score">Not Calculable</td><td>Absence of PIP income distribution raw data</td><td class="dim-score">0.5570</td><td>42nd out of 197 countries</td></tr>
+</tbody></table></div>
+<p class="note">All values are taken directly from the baseline indicators of the Country Analysis Compendium (2026-10-07). The BSLI range is [−2.0, +1.0], where 0 represents the basic living line, and negative values indicate the depth sunken beneath it (negative values are within the normal range). Grade boundaries are fixed values from the v4.2 design stage. 'Not Calculable' indicates countries lacking raw PIP income distribution data, left blank.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 01</div>
+<h2 class="section-heading">Executive Summary</h2>
+<p>Angola sits deep below the basic living line (0) with a Compendium BSLI of -0.9895 (Grade E · 128th out of 139 countries). The empirical measurement in the auxiliary time series v1.2 covers only the single year 2018 (-0.9748); the cells for 2016, 2017, 2019, and 2020 are carryovers (fallbacks), and 2021–2024 are marked by absence of data.</p>
+<p>As of 2018, both Deprivation (D) 0.5466 ($3.65/day poverty rate 47.2%) and Housing Stress (H_s) 0.4545 (Palma 3.47) are high, while Food (F_ML) 0.0241 and Housing (H) 0.0277 are close to 0.</p>
+<p>According to Hermes collection (2026-10-14), consumer inflation from the World Bank API was 21.36% in 2022, 13.64% in 2023, 28.24% in 2024, and 20.16% in 2025, with reports indicating that inflation dropped to single digits in September 2026, prompting another sharp benchmark interest rate cut.</p>
+<div class="cards">
+<div class="card red"><div class="card-label">BSLI Basic Social Life Index (Compendium)</div><div class="card-value">-0.9895</div><div class="card-desc">Grade E · 128th out of 139 countries · 3rd among 3 calculated Central African countries</div></div>
+<div class="card gold"><div class="card-label">Latest Cell in Auxiliary Time Series</div><div class="card-value">-0.9748</div><div class="card-desc">2020 Cell · Measured 2018 · fallback_2yr</div></div>
+<div class="card"><div class="card-label">η Composite Social Stability Index (Compendium, Reference)</div><div class="card-value">0.4381</div><div class="card-desc">170th out of 197 countries · Cross-sectional Maximum Pressure A5 · P=0.623 (Empirical: R&amp;D/GDP)</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 02</div>
+<h2 class="section-heading">BSLI 4-Term Formula — What Does It Measure?</h2>
+<div class="formula-box">
+<div class="f-label">BSLI v7.0 Canonical Version (4-Term Subtraction Formula)</div>
+<div class="f-eq">BSLI = 0.40·F_ML + 0.60·H − D − H_s</div>
+<div class="f-vars">F_ML(Food, weight 0.40): Mean real income index of the 30th–50th income percentiles (ML stratum) (World Bank PIP) — food crises have room for short-term recovery via stockpiles/aid, so the weight is lower.<br/>
+    H(Housing, weight 0.60): Basic living adequacy (median income normalized) — housing pressure entails an irreversible cascade of key money (jeonse) → monthly rent → gosiwon → homelessness, hence a higher weight.<br/>
+    D(Subtracted): Deprivation index = $3.65/day (2017 PPP) poverty rate · H_s(Subtracted): Housing stress = Palma ratio^1.5.<br/>
+    Clothing is treated as a constant due to global oversupply and excluded from variables. Range [−2.0, +1.0], 0 = basic living line. Compendium value for this country: <strong>-0.9895</strong> (Grade E · 128th out of 139 countries).</div>
+</div>
+<p>Like Zambia, Angola exhibits a structure where both subtracted terms (D and H_s) are large. Due to the Palma^1.5 transformation, H_s rivals D in countries with wide distribution disparities.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 03</div>
+<h2 class="section-heading">Component Decomposition of Clothing, Food, and Housing (2016–2024)</h2>
+<p class="note">The table and bars below represent auxiliary data from BSLI Time Series v1.2 (recalculated on a consistent baseline, fixed-pool normalization). It is normal for specific annual values to differ from the Compendium BSLI (139-country cross-section); the reference BSLI value of this report remains the Compendium value. 'fallback' denotes cells carrying over values from the closest empirical measurement year, where pauses in the interval reflect data freezes rather than actual social stagnation.</p>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Year</th><th>F_ML 食 (×0.40)</th><th>H 住 (×0.60)</th><th>D Deprivation (−)</th><th>H_s Housing Stress (−)</th><th>BSLI</th><th>Grade</th><th>Poverty Rate $3.65/day (D raw value)</th><th>Palma (H_s raw value)</th><th>Measurement Year · Reliability</th></tr></thead><tbody><tr><td>2016</td><td class="dim-score">0.0241</td><td class="dim-score">0.0277</td><td class="dim-score">0.5466</td><td class="dim-score">0.4545</td><td class="dim-score"><strong>-0.9748</strong></td><td>E</td><td class="dim-score">47.2%</td><td class="dim-score">3.47</td><td style="font-size:12px">2018 · fallback_2yr</td></tr><tr><td>2017</td><td class="dim-score">0.0241</td><td class="dim-score">0.0277</td><td class="dim-score">0.5466</td><td class="dim-score">0.4545</td><td class="dim-score"><strong>-0.9748</strong></td><td>E</td><td class="dim-score">47.2%</td><td class="dim-score">3.47</td><td style="font-size:12px">2018 · fallback_1yr</td></tr><tr><td>2018</td><td class="dim-score">0.0241</td><td class="dim-score">0.0277</td><td class="dim-score">0.5466</td><td class="dim-score">0.4545</td><td class="dim-score"><strong>-0.9748</strong></td><td>E</td><td class="dim-score">47.2%</td><td class="dim-score">3.47</td><td style="font-size:12px">2018 · national</td></tr><tr><td>2019</td><td class="dim-score">0.0241</td><td class="dim-score">0.0277</td><td class="dim-score">0.5466</td><td class="dim-score">0.4545</td><td class="dim-score"><strong>-0.9748</strong></td><td>E</td><td class="dim-score">47.2%</td><td class="dim-score">3.47</td><td style="font-size:12px">2018 · fallback_1yr</td></tr><tr><td>2020</td><td class="dim-score">0.0241</td><td class="dim-score">0.0277</td><td class="dim-score">0.5466</td><td class="dim-score">0.4545</td><td class="dim-score"><strong>-0.9748</strong></td><td>E</td><td class="dim-score">47.2%</td><td class="dim-score">3.47</td><td style="font-size:12px">2018 · fallback_2yr</td></tr><tr><td>2021</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2022</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2023</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr><tr><td>2024</td><td colspan="9" style="color:var(--muted)">Data Absent</td></tr></tbody></table></div>
+<h3 style="margin-top:20px">Contribution Decomposition — Latest Cell</h3>
+<div class="chart-wrap"><svg style="width:100%;height:auto;background:#FAFAF7;border:1px solid var(--border)" viewbox="0 0 760 200">
+<line stroke="#2A3D35" x1="470.0" x2="470.0" y1="10" y2="176"></line>
+<text fill="#2A3D35" font-family="Courier New" font-size="12" text-anchor="end" x="192" y="34">0.40·F_ML (食)</text><rect fill="#5E9186" height="24" opacity="0.85" width="3.7" x="470.0" y="18"></rect><text fill="#5E9186" font-family="Courier New" font-size="12" text-anchor="start" x="479.7" y="34">+0.0096</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="12" text-anchor="end" x="192" y="74">0.60·H (住)</text><rect fill="#2A6F97" height="24" opacity="0.85" width="6.4" x="470.0" y="58"></rect><text fill="#2A6F97" font-family="Courier New" font-size="12" text-anchor="start" x="482.4" y="74">+0.0166</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="12" text-anchor="end" x="192" y="114">−D (Deprivation)</text><rect fill="#C0392B" height="24" opacity="0.85" width="210.8" x="259.2" y="98"></rect><text fill="#C0392B" font-family="Courier New" font-size="12" text-anchor="end" x="253.2" y="114">-0.5466</text>
+<text fill="#2A3D35" font-family="Courier New" font-size="12" text-anchor="end" x="192" y="154">−H_s (Housing Stress)</text><rect fill="#B8850E" height="24" opacity="0.85" width="175.3" x="294.7" y="138"></rect><text fill="#B8850E" font-family="Courier New" font-size="12" text-anchor="end" x="288.7" y="154">-0.4545</text>
+<text fill="#6B6560" font-family="Courier New" font-size="11" text-anchor="middle" x="380.0" y="194">2020 Cell Sum of Contributions = BSLI -0.9748 (Measured 2018 · fallback_2yr)</text></svg></div>
+<p><strong>食(F_ML).</strong> 2018: 0.0241, raw value 2.75.</p>
+<p><strong>住(H·H_s).</strong> H 0.0277, H_s 0.4545.</p>
+<p><strong>Deprivation (D).</strong> 0.5466.</p>
+<p><strong>Synthesis Fragment (Integration of Prior Research).</strong> ① The Oil Curse → The Oil Curse (Ross, 2012, <em>The Oil Curse</em>, Princeton University Press): Distribution in oil-exporting countries — Palma 3.47 is the object of observation. ② Poverty and Famines → Poverty and Famines (Sen, 1981, <em>Poverty and Famines</em>, Oxford University Press): Food entitlement during periods of surging inflation — annual inflation of 14–28% in 2022–2025 is the object of observation for the Food term. Linkage: Superimposed upon the distributional concentration of ①, the inflation shock of ② is observed to structure an erosion that cuts first into lower-stratum entitlements (interpretation).</p>
+</div>
+<div class="section">
+<div class="section-title">§ 04</div>
+<h2 class="section-heading">Time Series — Trends within the Central African Region</h2>
+<div class="chart-wrap">
+<div class="chart-title">BSLI 2016–2024 — Angola vs Central African Calculated Countries (Time Series v1.2)</div>
+<canvas height="300" id="bsliChart"></canvas>
+</div>
+<p class="note">Thick red line = Angola, thin lines = calculated countries in the same region. Empty spaces denote data absence. Dotted line 0 = basic living line.</p>
+<p>Among calculated Central African countries, Angola's auxiliary time-series points sit at the lowest position. Because empirical measurement exists for only one year, no trend can be discerned.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 05</div>
+<h2 class="section-heading">Livelihood Situation and Chronology</h2>
+<div class="timeline">
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2018</div><div class="tl-content"><strong>Poverty</strong> — World Bank API: National poverty line 32.3%, $3.00/day (2021 PPP) 39.3%, $8.30 80.0%, Gini 51.3 (Hermes collection).</div></div>
+<div class="tl-item"><div class="tl-dot crisis"></div><div class="tl-year">2022~2025</div><div class="tl-content"><strong>Inflation</strong> — World Bank API consumer prices 21.36% in 2022, 13.64% in 2023, 28.24% in 2024, 20.16% in 2025. Unemployment rate (ILO modeled) around 14% (Hermes collection).</div></div>
+<div class="tl-item"><div class="tl-dot"></div><div class="tl-year">2025-11~2026-09</div><div class="tl-content"><strong>Recent Headlines</strong> — '50 years of independence, social inequality persists' (Africanews, 2025-11-10), 'Biggest rate cut since 2023 as inflation slows' (Bloomberg, 2026-01-14), 'Agriculture overtakes oil' (The Africa Report, 2026-05-18), 'Inflation drops to single digits, another sharp rate cut' (Reuters, 2026-09-15) — Hermes-collected headlines.</div></div>
+</div>
+<p><strong>Nature of Hermes-Collected Data.</strong> Entries for 2025–2026 are headline-level collections prior to full-text verification.</p>
+<p><strong>Time Lag with Engine Values.</strong> Because the auxiliary time series is empirically measured in 2018, high inflation in 2022–2025 and its deceleration in 2026 are not reflected.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 05-B</div>
+<h2 class="section-heading">Published Figures vs. Independent Sources — Observing the Gap</h2>
+<p>Angola's gap lies in the fact that poverty for the same year, 2018, is measured at 32.3% by the national line, 39.3% by the international extreme poverty line ($3.00/day, 2021 PPP), and 47.2% by the BSLI's $3.65/day line — the national line is lower than the international extreme poverty line — as well as the interval between reports of ~28% inflation in 2024 falling to single digits in 2026. Published figures are preserved verbatim (DECISIONS 17·19) and juxtaposed.</p>
+<div class="table-scroll"><table class="trigger-table">
+<thead><tr><th>Item</th><th>Published Figures (Publishing Institution · Year)</th><th>Independent Sources (Institution · Year)</th><th>Interpretation of the Gap (Canonical Axiom)</th></tr></thead>
+<tbody><tr><td><strong>Poverty Rate (2018)</strong></td><td>National poverty line (recorded in World Bank API): 32.3%</td><td>World Bank API: $3.00/day (2021 PPP) 39.3% · $8.30 80.0% · PIP $3.65 (2017 PPP) 47.2%</td><td>The national line is drawn lower than the international extreme poverty line.</td></tr><tr><td><strong>Inflation</strong></td><td>World Bank API: 28.24% in 2024, 20.16% in 2025</td><td>Headline: 2026-09 Single-digit inflation and rate cut (Reuters)</td><td>Annual averages and recent monthly reports cover different points in time. Based on headlines.</td></tr><tr><td><strong>BSLI Value</strong></td><td>Compendium BSLI -0.9895 (Grade E · 128th out of 139 countries)</td><td>Auxiliary Time Series 2018 Empirical Measurement -0.9748</td><td>The difference is small. The reference value is the Compendium.</td></tr></tbody>
+</table></div>
+<p class="note">Published figures are cited verbatim and unadjusted (DECISIONS 17·19). The gap is not a judgment on which side is 'correct,' but an apparatus that illuminates differences arising when viewing the same life through different windows.</p>
+</div>
+<div class="section">
+<div class="section-title">§ 06</div>
+<h2 class="section-heading">Λ¹² Linkage — Pressure Coordinate System with BSLI as the Sun (Compendium Original)</h2>
+<p>In the pressure coordinate system, BSLI is the center (Sun) and A1–A12 are planets. The more inward an orbit is, the more heavily that dimension presses down on the grassroots base of ordinary citizens. BSLI and Λ¹² are mutually independent measurement channels (Axiom A0) — Λ¹² observes national aggregates, while BSLI observes the clothing, food, and housing grassroots base of the grassroots stratum (30th–50th percentiles). The diagram below is reproduced verbatim from the Country Analysis Compendium (frozen engine).</p>
+<figure class="pcs-wrap" style="overflow-x:auto"><svg style="max-width:1010px;background:#fff;border:1px solid #DDD8CE;border-radius:8px" viewbox="0 0 1010 1150" xmlns="http://www.w3.org/2000/svg"><defs>
+<marker id="mP" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#C0392B"></path></marker>
+<marker id="mB" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#1a4f8a"></path></marker>
+<marker id="mG" markerheight="9" markerwidth="9" orient="auto" refx="7" refy="3"><path d="M0,0 L8,3 L0,6 Z" fill="#B8850E"></path></marker>
+<radialgradient cx="50%" cy="50%" id="sun3" r="50%"><stop offset="0%" stop-color="#F7EDD2"></stop><stop offset="100%" stop-color="#E8D5A0"></stop></radialgradient>
+</defs><text fill="#2A3D35" font-size="16.5" font-weight="700" text-anchor="middle" x="505" y="32">Empirical Causal Loop Diagram v3.1 — Pressure Coordinate System (Angola · 138-Country Empirical Coupling × Domestic Deficit)</text><text fill="#777" font-size="10" text-anchor="middle" x="505" y="51">Distance and arrows = Pressure Index P (closer/thicker presses BSLI more heavily) · P = Coupling strength |r| × Domestic Deficit — If there is no deficit, there is no pressure even with strong coupling (outer orbit)</text><circle cx="505" cy="485" fill="none" r="243.9" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="233.2" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="248.4" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="262.5" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="175.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="257.8" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="177.7" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="229.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="398.4" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="301.3" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="405.9" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><circle cx="505" cy="485" fill="none" r="430.0" stroke="#e7e3d8" stroke-dasharray="2 5" stroke-width="0.7"></circle><path d="M505.0,718.2 Q435.4,747.1 390.5,683.3" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="3.0"></path><circle cx="441.6" cy="723.9" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="441.6" y="727.5">+</text><path d="M261.1,485.0 Q259.3,539.9 351.1,573.8" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.9"></path><circle cx="282.7" cy="534.7" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="282.7" y="538.3">−</text><path d="M261.1,485.0 Q225.2,407.8 281.7,356.1" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.7"></path><circle cx="248.3" cy="414.2" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="248.3" y="417.8">−</text><path d="M505.0,718.2 Q559.4,724.2 592.5,636.6" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.6"></path><circle cx="554.1" cy="700.8" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="554.1" y="704.4">+</text><path d="M351.1,573.8 Q338.0,663.7 390.5,683.3" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.5"></path><circle cx="354.4" cy="646.1" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="354.4" y="649.7">−</text><path d="M592.5,636.6 Q487.8,707.8 390.5,683.3" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.5"></path><circle cx="489.7" cy="683.9" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="489.7" y="687.5">+</text><path d="M261.1,485.0 Q283.8,607.4 390.5,683.3" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.3"></path><circle cx="304.8" cy="595.8" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="304.8" y="599.4">+</text><path d="M390.5,683.3 Q668.3,484.4 850.0,285.8" fill="none" opacity="0.45" stroke="#5E9186" stroke-width="1.2"></path><circle cx="644.3" cy="484.5" fill="#fff" r="7.5" stroke="#5E9186" stroke-width="1.4"></circle><text fill="#5E9186" font-size="11" font-weight="800" text-anchor="middle" x="644.3" y="488.1">+</text><path d="M505.0,718.2 Q407.4,689.3 351.1,573.8" fill="none" opacity="0.45" stroke="#C0392B" stroke-dasharray="5 4" stroke-width="1.1"></path><circle cx="417.7" cy="667.7" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="417.7" y="671.3">−</text><line marker-end="url(#mP)" opacity="0.78" stroke="#C0392B" stroke-width="1.5" x1="261.1" x2="425.0" y1="485.0" y2="485.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="343.1" y="479.0">P=0.457</text><line marker-end="url(#mP)" opacity="0.80" stroke="#C0392B" stroke-width="1.5" x1="505.0" x2="505.0" y1="718.2" y2="565.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="635.6">P=0.482</text><line marker-end="url(#mP)" opacity="0.77" stroke="#C0392B" stroke-width="1.5" x1="380.8" x2="465.0" y1="269.9" y2="415.7"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="422.9" y="336.8">P=0.446</text><line marker-end="url(#mP)" opacity="0.75" stroke="#C0392B" stroke-width="1.5" x1="732.3" x2="574.3" y1="616.2" y2="525.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="653.3" y="564.6">P=0.411</text><line marker-end="url(#mP)" opacity="0.90" stroke="#C0392B" stroke-width="1.5" x1="592.5" x2="545.0" y1="636.6" y2="554.3"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="568.8" y="589.4">P=0.623</text><line marker-end="url(#mP)" opacity="0.76" stroke="#C0392B" stroke-width="1.5" x1="281.7" x2="435.7" y1="356.1" y2="445.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="358.7" y="394.5">P=0.423</text><line marker-end="url(#mP)" opacity="0.90" stroke="#C0392B" stroke-width="1.5" x1="351.1" x2="435.7" y1="573.8" y2="525.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="393.4" y="543.4">P=0.617</text><line marker-end="url(#mP)" opacity="0.81" stroke="#C0392B" stroke-width="1.5" x1="390.5" x2="465.0" y1="683.3" y2="554.3"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="427.7" y="612.8">P=0.492</text><line marker-end="url(#mP)" opacity="0.51" stroke="#C0392B" stroke-width="1.5" x1="850.0" x2="574.3" y1="285.8" y2="445.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="712.2" y="359.4">P=0.082</text><line marker-end="url(#mP)" opacity="0.68" stroke="#C0392B" stroke-width="1.5" x1="806.3" x2="585.0" y1="485.0" y2="485.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="695.6" y="479.0">P=0.318</text><line marker-end="url(#mP)" opacity="0.50" stroke="#C0392B" stroke-width="1.5" x1="505.0" x2="505.0" y1="79.1" y2="405.0"></line><text fill="#C0392B" font-size="9" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="236.1">P=0.064</text><path d="M351.1,573.8 Q436.4,605.8 486.0,700.4" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="427.5" cy="621.5" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="427.5" y="625.1">−</text><path d="M351.1,573.8 Q392.5,591.6 381.7,658.9" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="379.5" cy="604.0" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="379.5" y="607.6">−</text><path d="M850.0,285.8 Q649.7,490.5 521.2,697.9" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="667.6" cy="491.1" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="667.6" y="494.7">−</text><path d="M850.0,285.8 Q594.2,478.6 410.2,666.3" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="612.1" cy="477.3" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="612.1" y="480.9">−</text><path d="M720.0,112.6 Q587.8,424.4 513.7,693.7" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="602.3" cy="413.8" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="602.3" y="417.4">−</text><path d="M720.0,112.6 Q543.7,417.9 403.5,660.8" fill="none" marker-end="url(#mB)" opacity="0.55" stroke="#1a4f8a" stroke-width="1.5"></path><circle cx="552.7" cy="402.3" fill="#fff" r="7.5" stroke="#1a4f8a" stroke-width="1.4"></circle><text fill="#1a4f8a" font-size="11" font-weight="800" text-anchor="middle" x="552.7" y="405.9">−</text><path d="M390.5,683.3 Q407.2,782.5 480.1,710.6" fill="none" marker-end="url(#mP)" opacity="0.8" stroke="#C0392B" stroke-dasharray="6 4" stroke-width="1.8"></path><circle cx="421.3" cy="737.7" fill="#fff" r="7.5" stroke="#C0392B" stroke-width="1.4"></circle><text fill="#C0392B" font-size="11" font-weight="800" text-anchor="middle" x="421.3" y="741.3">−</text><text fill="#C0392B" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="421.3" y="725.7">Axiom A3 Internal Conflict (Conditional)</text><path d="M505.0,565.0 Q505.0,718.6 505.0,692.2" fill="none" marker-end="url(#mG)" opacity="0.9" stroke="#B8850E" stroke-dasharray="3 3" stroke-width="1.8"></path><circle cx="505.0" cy="673.6" fill="#fff" r="7.5" stroke="#B8850E" stroke-width="1.4"></circle><text fill="#B8850E" font-size="11" font-weight="800" text-anchor="middle" x="505.0" y="677.2">−</text><text fill="#B8850E" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="511.0" y="688.6">Grassroots Deterioration → Defensive Mobilization (Axiom A8)</text><circle cx="494" cy="733" fill="#fff" r="15" stroke="#C0392B" stroke-width="2"></circle><text fill="#C0392B" font-size="13" font-weight="800" text-anchor="middle" x="494" y="737">R</text><text fill="#C0392B" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="494" y="763">R1 Binary Reinforcement</text><circle cx="439" cy="550" fill="#fff" r="15" stroke="#1a4f8a" stroke-width="2"></circle><text fill="#1a4f8a" font-size="13" font-weight="800" text-anchor="middle" x="439" y="554">B</text><text fill="#1a4f8a" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="439" y="580">B1 Absorption-Defense Balance</text><circle cx="291" cy="610" fill="#fff" r="15" stroke="#1a4f8a" stroke-width="2"></circle><text fill="#1a4f8a" font-size="13" font-weight="800" text-anchor="middle" x="291" y="614">B</text><text fill="#1a4f8a" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="291" y="640">B2 Pressure-Erosion</text><circle cx="505" cy="485" fill="url(#sun3)" r="72" stroke="#B8850E" stroke-width="2.4"></circle><text fill="#7a5a08" font-size="14" font-weight="800" text-anchor="middle" x="505" y="455">BSLI</text><text fill="#8a6a18" font-size="8.5" text-anchor="middle" x="505" y="467">Basic Social Life Index · Independent Channel (Axiom A0)</text><text fill="#2A3D35" font-size="19" font-weight="800" text-anchor="middle" x="505" y="490">-0.9895</text><text fill="#555" font-size="9.5" text-anchor="middle" x="505" y="507">Grade E · 128th/139 · Top 92.1%</text><text fill="#777" font-size="8" text-anchor="middle" x="505" y="524">0.40·F_ML+0.60·H−D−Hs</text><circle cx="261.1" cy="485.0" fill="#fff" r="8.1" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="261.1" cy="485.0" fill="#8a8a80" fill-opacity="0.22" r="4.0"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="261.1" y="458.0">A1 Social Infrastructure</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="261.1" y="470.0">Empirical: Electricity · Internet</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="261.1" y="506.1">Score 0.424 · Pressure P=0.457</text><circle cx="505.0" cy="718.2" fill="#fff" r="16.1" stroke="#1a5c8a" stroke-width="2.6"></circle><circle cx="505.0" cy="718.2" fill="#1a5c8a" fill-opacity="0.22" r="8.1"></circle><text fill="#1a5c8a" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="505.0" y="683.1">A2 Institutional Trust</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="505.0" y="695.1">Empirical: CPI · Corruption Control</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="747.3">Score 0.305 · Pressure P=0.482</text><circle cx="380.8" cy="269.9" fill="#fff" r="9.2" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="380.8" cy="269.9" fill="#8a8a80" fill-opacity="0.22" r="4.6"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="380.8" y="241.7">A3 Civil Liberties</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="380.8" y="253.7">Empirical: Gini Coefficient</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="380.8" y="292.1">Score 0.221 · Pressure P=0.446</text><circle cx="732.3" cy="616.2" fill="#fff" r="10.3" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="732.3" cy="616.2" fill="#8a8a80" fill-opacity="0.22" r="5.2"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="732.3" y="586.9">A4 Economic Stability</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="732.3" y="598.9">Empirical: GDP · Manufacturing</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="732.3" y="639.6">Score 0.111 · Pressure P=0.411</text><circle cx="592.5" cy="636.6" fill="#fff" r="8.1" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="592.5" cy="636.6" fill="#8a8a80" fill-opacity="0.22" r="4.0"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="592.5" y="609.5">A5 Educational Access</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="592.5" y="621.5">Empirical: R&amp;D/GDP</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="592.5" y="657.6">Score 0.004 · Pressure P=0.623</text><circle cx="281.7" cy="356.1" fill="#fff" r="8.1" stroke="#2e7d32" stroke-width="2.6"></circle><circle cx="281.7" cy="356.1" fill="#2e7d32" fill-opacity="0.22" r="4.0"></circle><text fill="#2e7d32" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="281.7" y="329.0">A6 Health Standards</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="281.7" y="341.0">Empirical: CO₂ · Renewable Energy</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="281.7" y="377.1">Score 0.770 · Pressure P=0.423</text><circle cx="351.1" cy="573.8" fill="#fff" r="10.3" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="351.1" cy="573.8" fill="#C0392B" fill-opacity="0.22" r="5.2"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="351.1" y="544.5">A7 Social Capital</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="351.1" y="556.5">Empirical: Aging · Population Growth</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="351.1" y="597.2">Score 0.815 · Pressure P=0.617</text><circle cx="390.5" cy="683.3" fill="#fff" r="16.1" stroke="#1a5c8a" stroke-width="2.6"></circle><circle cx="390.5" cy="683.3" fill="#1a5c8a" fill-opacity="0.22" r="8.1"></circle><text fill="#1a5c8a" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="390.5" y="648.2">A8 Governance</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="390.5" y="660.2">Empirical: WGI 6 Dimensions</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="390.5" y="712.4">Score 0.331 · Pressure P=0.492</text><circle cx="850.0" cy="285.8" fill="#fff" r="9.2" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="850.0" cy="285.8" fill="#C0392B" fill-opacity="0.22" r="4.6"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="850.0" y="257.6">A9 Environmental Pressure</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="850.0" y="269.6">Empirical: GPI · Military Expenditure</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="850.0" y="308.0">Score 0.792 · Pressure P=0.082</text><circle cx="806.3" cy="485.0" fill="#fff" r="10.3" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="806.3" cy="485.0" fill="#8a8a80" fill-opacity="0.22" r="5.2"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="806.3" y="455.6">A10 Inequality</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="806.3" y="467.6">Empirical: Tourist Arrivals</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="806.3" y="508.4">Score 0.002 · Pressure P=0.318</text><circle cx="505.0" cy="79.1" fill="#fff" r="9.2" stroke="#8a8a80" stroke-width="2.6"></circle><circle cx="505.0" cy="79.1" fill="#8a8a80" fill-opacity="0.22" r="4.6"></circle><text fill="#8a8a80" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="505.0" y="50.9">A11 External Shocks</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="505.0" y="62.9">Empirical: Energy Import Dependence</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="505.0" y="101.3">Score 0.600 · Pressure P=0.064</text><circle cx="720.0" cy="112.6" fill="#fff" r="11.5" stroke="#C0392B" stroke-width="2.6"></circle><circle cx="720.0" cy="112.6" fill="#C0392B" fill-opacity="0.22" r="5.8"></circle><text fill="#C0392B" font-size="11" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="3.5" text-anchor="middle" x="720.0" y="82.1">A12 Mobility</text><text fill="#997" font-size="8" paint-order="stroke" stroke="#fff" stroke-width="2.5" text-anchor="middle" x="720.0" y="94.1">Empirical: FDI</text><text fill="#555" font-size="8.5" paint-order="stroke" stroke="#fff" stroke-width="3" text-anchor="middle" x="720.0" y="137.1">Score 0.883 · Pressure P=0.006</text><rect fill="#fbfaf7" height="128" rx="8" stroke="#DDD8CE" width="958" x="26" y="999"></rect><text fill="#C0392B" font-size="10.5" x="42" y="1019"><tspan font-weight="700">Red Line Arrows = Pressure</tspan> (Magnitude is expressed by distance and P-value — unified as lines to prevent obscuring text). P = |r| (138-country empirical coupling) × domestic deficit (for + coupling: 1−score, for − coupling: score)</text><text fill="#444" font-size="10.5" x="42" y="1037"><tspan font-weight="700">Distance</tspan> = Inverse order of P — closer proximity presses down more heavily. Even if coupling is strong, without deficit (e.g., full-score axis), pressure is 0 → pushed to the outer orbit. <tspan font-weight="700">This coordinate system varies by country</tspan></text><text fill="#1a4f8a" font-size="10.5" x="42" y="1055">Blue arrow (−) = Axiom A1 Invariance of Aiming (Pressure source → Absorber erosion) · Red dotted line = Axiom A3 Internal Conflict (conditional) · <tspan fill="#B8850E">Gold dotted line = Axiom A8 Grassroots Deterioration → Defensive Mobilization → B1 Balancing Loop</tspan></text><text fill="#444" font-size="10.5" x="42" y="1073">Headless curves = Empirical coupling between indicators (|r| ≥ 0.55, causal direction unspecified): Cyan solid line (+) / Red dotted line (−) · Strongest A2~A8 +0.955 → R1 Binary Reinforcement Loop · Ⓡ Reinforcing / Ⓑ Balancing = Determined by product of polarities</text><text fill="#997" font-size="10.5" x="42" y="1091">Node sub-captions "Empirical: …" = Data actually fed into that axis by the current v2 pipeline — parallel notation to prevent misinterpretation for axes whose contents differ from canonical names (A3·A5·A6·A7·A9·A10·A11) (maintained until reconciliation)</text><text fill="#777" font-size="10" x="42" y="1111">Data: Λ¹² v2 × BSLI common 138 countries empirical measurement (recalculated 2026-07-20) · Axiom: Integrated Paper §3.2 · Pressure Index definition: Reflecting Cheonghae instruction on 2026-07-20 (distance/arrow = pressure) · No arbitrary figures</text></svg><figcaption class="note"><b>[Figure 5-44-1]</b> Angola BSLI Pressure Coordinate System Causal Loop Diagram v3.1. Unmodified output from canonical generator handover_cld_v3.py (ISO=AGO). Only the country notation in the diagram title was changed to the official country name.<br/>Source: Country Analysis Compendium Vol. 5 (Lambda12_CountryBook_Vol5_SubSaharanAfrica_20261007.html) · AGO Section 「2. Pressure Coordinate System Causal Loop Diagram」 — SVG original from Compendium inserted without changing a single character.</figcaption></figure>
+<p>All 12 dimensions (pressure ranking table, 2016–2024 trajectories, WD/SN/BH paths) are in this country's Λ¹² Standalone Volume: <a href="/nations/africa/앙골라_Λ12_비교분석보고서_20261013.html">Angola Λ¹² Standalone Volume</a>.</p>
+<p>In the Compendium pressure coordinate system, Angola's dimensions within the 2024 threshold band are A1, A2, A5, A7, and A8, and the cross-sectional maximum pressure is A5 · P=0.623 (recorded without interpretation).</p>
+</div>
+<div class="section">
+<div class="section-title">§ 07</div>
+<h2 class="section-heading">BSLI Acceleration and UI Linkage</h2>
+<div class="formula-box">
+<div class="f-label">BSLI Term in the UI Master Equation</div>
+<div class="f-eq">F(t) = m·a(t), m = A2·A8 (policy shock mass), a(t) = d²BSLI/dt² (central difference)</div>
+<div class="f-vars">Uprising ignition condition when F(t) &gt; SE(t) (UI canonical version). Here, only the BSLI term (a) is calculated and shown using the auxiliary time series. Canonical SE·T_trigger values are not calculated for this country.</div>
+</div>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Year</th><th>m = A2·A8 (Compendium cross-section)</th><th>a = Δ²BSLI</th><th>F = m·a</th><th>t+1 Empirical Measurement Reliability</th></tr></thead><tbody><tr><td>2017</td><td class="dim-score">0.1009</td><td class="dim-score">+0.0000</td><td class="dim-score">+0.00000</td><td style="font-size:12px">national</td></tr><tr><td>2018</td><td class="dim-score">0.1009</td><td class="dim-score">+0.0000</td><td class="dim-score">+0.00000</td><td style="font-size:12px">fallback_1yr</td></tr><tr><td>2019</td><td class="dim-score">0.1009</td><td class="dim-score">+0.0000</td><td class="dim-score">+0.00000</td><td style="font-size:12px">fallback_2yr</td></tr><tr><td>2020</td><td class="dim-score">0.1009</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2021</td><td class="dim-score">0.1009</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2022</td><td class="dim-score">0.1009</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr><tr><td>2023</td><td class="dim-score">0.1009</td><td class="dim-score">—</td><td class="dim-score">—</td><td style="font-size:12px">—</td></tr></tbody></table></div>
+<p class="note">In the fallback interval, a=0 is an artifact of the data freeze. It is not a judgment, but a record of acceleration and deceleration in grassroots base trends.</p>
+<p>Because the auxiliary time series is a carryover of a single empirical measurement, the second difference for 2017–2019 is 0, followed by data absence. Acceleration is not interpreted.</p>
+</div>
+<div class="synthesis">
+<div class="synthesis-title">SYNTHESIS-BSLI — Angola 4-Stage Summary</div>
+<div class="synthesis-stages">
+<div class="stage"><div class="stage-num">STAGE 01 / Position</div><div class="stage-title">Central Africa BSLI 3rd</div><div class="stage-desc">Compendium -0.9895 (Grade E · 128th out of 139 countries).</div></div>
+<div class="stage"><div class="stage-num">STAGE 02 / Components</div><div class="stage-title">Both D and H_s are high</div><div class="stage-desc">Palma 3.47.</div></div>
+<div class="stage"><div class="stage-num">STAGE 03 / Gap</div><div class="stage-title">National line 32.3% &lt; Extreme poverty line 39.3%</div><div class="stage-desc">Inflation from 28% to single digits.</div></div>
+<div class="stage"><div class="stage-num">STAGE 04 / Trend</div><div class="stage-title">Blank after 2018</div><div class="stage-desc">Supplemented by Hermes-collected headlines.</div></div>
+</div>
+</div>
+<div class="section">
+<div class="section-title">§ 08</div>
+<h2 class="section-heading">Six-Layer Discourse Reasoning Method — The Layer Where This Report Resides</h2>
+<p>The interpretation of this report is conducted only within Layers 1 to 5 of Cheonghae (淸海)'s Six-Layer Discourse Reasoning Method (Integrated Paper Ch. 7). Layer 6 is reserved exclusively for Cheonghae.</p>
+<div class="table-scroll"><table class="dim-table">
+<thead><tr><th>Layer</th><th>Question</th><th>In This Report</th></tr></thead>
+<tbody>
+<tr><td class="dim-code">Layer 1</td><td>Data — What have I seen?</td><td>Records the compendium BSLI, 4-term components, poverty rate, and Palma without judgment (§00–§04)</td></tr>
+<tr><td class="dim-code">Layer 2</td><td>Interests — Who prevents evolution?</td><td>Records the gap between announced figures and independent sources, and the relations surrounding livelihood policies (§05, §05-B)</td></tr>
+<tr><td class="dim-code">Layer 3</td><td>Historical Patterns — What has already happened occurs again</td><td>Observes year-by-year trajectories and recurring positions within the regional sphere (§04, §05)</td></tr>
+<tr><td class="dim-code">Layer 4</td><td>Perspective Shift — Not collapse, but evolution</td><td>Interprets acceleration and deceleration of pressure on the grassroots base as conditions of social evolution (§07)</td></tr>
+<tr><td class="dim-code">Layer 5</td><td>Knowledge Frame — Interpreting through the heritage of humanity</td><td>Integrates prior research on clothing, food, and housing, poverty, and housing as combined pieces (§03)</td></tr>
+<tr><td class="dim-code">Layer 6</td><td>—</td><td><strong>Cheonghae (淸海) exclusive.</strong> This report does not cover this.</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="section">
+<div class="section-title">§ 09</div>
+<h2 class="section-heading">Data Sources and Reproducibility Declaration</h2>
+<p style="font-family:'Courier New',monospace;font-size:12.5px;color:var(--muted);line-height:1.9;">[Authoritative Text] Country Analysis Compendium Vol. 5 Sub-Saharan Africa (2026-10-07) AGO Section — BSLI, rating, ranking, η, causal loop diagram. /nations/book/Lambda12_CountryBook_Vol5_SubSaharanAfrica_20261007.html<br/>[Supplementary] BSLI Time Series v1.2 bsli_timeseries_v12_20260726.json (Based on World Bank PIP 2017 PPP)<br/>[Hermes Collection 2026-10-14] vault hermes-raw/bsli/2026-10-14/AGO.md — World Bank API 8 indicators + 76 Google News items (Machine cross-referenced by media classification, source texts not cross-referenced)<br/>[Independent Sources / Headlines] Reuters — Center · Bloomberg — Center · Africanews — Center · The Africa Report — Center<br/>[Academic] Ross (2012) The Oil Curse, Princeton University Press · Sen (1981) Poverty and Famines, Oxford University Press<br/>Inquiry Date: For this report 2026-10-14. Detailed list in run folder data/sources.md.</p>
+<p><strong>Limitations.</strong> ① Compendium BSLI values were used as-is under the freeze principle. ② Supplementary time-series actual measurements cover only the single year of 2018. ③ Headlines have not been cross-checked against body texts. ④ The World Bank API poverty line is 2021 PPP, which differs from BSLI's 2017 PPP $3.65 baseline. ⑤ No assessments of politics or personalities are made.</p>
+<p>Only measured values and records are written. No evaluations or predictions are made. The next judgment belongs to the leaders and people of that nation.</p>
+</div>
+</div><!-- /main -->
+<div class="report-footer"><div class="footer-inner">
+<div class="footer-slogan">"With the hope that humanity's experience and countless brilliant data may come together and be reborn as a wise light like the Milky Way!"</div>
+<div class="footer-meta">Everblue Sea Institute for Social Dynamics · Author Cheonghae (淸海)<br/>BSLI v7.0 · Country Analysis Compendium (2026-10-07) · BSLI Time Series v1.2 · Linked to Λ¹² v2.0<br/>Angola Basic Social Life Index Standalone Edition · 2026-10-14 · BSLI Regional Cycle Analysis</div>
+</div></div>
+<script>
+(function() {
+  var el = document.getElementById('bsliChart');
+  if (!el || typeof Chart === 'undefined') return;
+  var D = {"labels": ["2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024"], "series": [{"iso": "GAB", "me": false, "data": [-0.0748, -0.0748, -0.0748, -0.0748, null, null, null, null, null]}, {"iso": "TCD", "me": false, "data": [-0.7259, -0.7259, -0.7259, -0.7259, -0.6655, -0.6655, -0.6655, -0.6655, -0.6655]}, {"iso": "AGO", "me": true, "data": [-0.9748, -0.9748, -0.9748, -0.9748, -0.9748, null, null, null, null]}]};
+  var pal = ['#6A7A9A', '#8E5EA2', '#2A6F97', '#5E9186', '#B8850E', '#9A8F80'];
+  var ds = D.series.map(function(s, i) {
+    return { label: s.iso, data: s.data, borderColor: s.me ? '#C0392B' : pal[i % pal.length], backgroundColor: 'transparent',
+             borderWidth: s.me ? 3 : 1.2, pointRadius: s.me ? 3 : 1.5, spanGaps: false };
+  });
+  ds.push({ label: 'Basic Living Line 0', data: D.labels.map(function() { return 0; }), borderColor: '#2A3D35', borderDash: [5,4], borderWidth: 1, pointRadius: 0 });
+  new Chart(el, {
+    type: 'line',
+    data: { labels: D.labels, datasets: ds },
+    options: {
+      responsive: true,
+      scales: { y: { ticks: { font: { size: 10 } } } },
+      plugins: { legend: { position: 'bottom', labels: { font: { family: 'Courier New', size: 11 } } } }
+    }
+  });
+})();
+</script>
+</body>
+</html>
