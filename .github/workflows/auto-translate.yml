@@ -6,9 +6,9 @@ on:
     paths:
       - "public/nations/**.html"
       - "public/engines/**.html"
-  # v20 (2026-10-14): Gemini 일일 할당량(429) 때문에 2시간마다 최대 MAX_FILES 편씩 나눠 번역
+  # v20 (2026-10-14): Gemini 일일 할당량(429) 때문에 매시 최대 MAX_FILES 편씩(예약 지연·누락 보완, 45편≈90분 < timeout 120) 나눠 번역
   schedule:
-    - cron: "23 */2 * * *"
+    - cron: "23 * * * *"
   workflow_dispatch:
     inputs:
       scope:
@@ -32,7 +32,7 @@ jobs:
       contents: write
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI }}
-      MAX_FILES: "15"
+      MAX_FILES: "45"
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
