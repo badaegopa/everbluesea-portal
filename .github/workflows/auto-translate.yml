@@ -6,7 +6,7 @@ on:
     paths:
       - "public/nations/**.html"
       - "public/engines/**.html"
-  # v20 (2026-10-14): Gemini 일일 할당량(429) 때문에 매시 최대 MAX_FILES 편씩(예약 지연·누락 보완, 45편≈90분 < timeout 120) 나눠 번역
+  # v20 (2026-10-14): Gemini 일일 할당량(429) 때문에 매시 최대 MAX_FILES 편씩(예약 지연·누락 보완, 25편≈60~70분 < timeout 180, 45편은 120분 초과로 취소됨) 나눠 번역
   schedule:
     - cron: "23 * * * *"
   workflow_dispatch:
@@ -27,12 +27,12 @@ jobs:
   translate:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     permissions:
       contents: write
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI }}
-      MAX_FILES: "45"
+      MAX_FILES: "25"
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
