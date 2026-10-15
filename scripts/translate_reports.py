@@ -222,6 +222,8 @@ def residual_report():
     return rows
 
 def main():
+    if "--manifest-only" in sys.argv:   # v20.2: 푸시 충돌 후 rebase 한 뒤 매니페스트만 다시 만든다
+        log(f"매니페스트 재생성: {rebuild_manifest()}편"); return
     g  = json.loads(GLOSSARY.read_text(encoding="utf-8"))
     gb = "\n".join(f"- {k} → {v}" for k,v in g.items())
     todo = pending()
