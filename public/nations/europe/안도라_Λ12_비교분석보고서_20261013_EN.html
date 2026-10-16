@@ -796,15 +796,15 @@ p { margin-bottom: 1em; color: var(--ink); }
 (function() {
   var el = document.getElementById('radarChart');
   if (!el || typeof Chart === 'undefined') return;
-  var D = {"labels": ["A1 사회기반시설", "A2 제도신뢰", "A3 시민자유", "A4 경제안정", "A5 교육접근", "A6 보건수준", "A7 사회구조", "A8 거버넌스", "A9 환경압박", "A10 불평등", "A11 외부충격", "A12 이동성"], "me": [0.97, null, null, 0.1255, 0.024, 0.1933, 0.5574, null, null, 0.0444, null, 0.8888], "kor": [0.9887, 0.6703, 0.7422, 0.4623, 0.7788, 0.4496, 0.4598, 0.7543, 0.7268, 0.0215, 0.2525, 0.8847], "reg": [0.9727, 0.7862, 0.7781, 0.3836, 0.3756, 0.542, 0.4553, 0.8152, 0.8981, 0.1469, 0.2613, 0.8305]};
+  var D = {"labels": ["A1 Infrastructure", "A2 Institutional Trust", "A3 Civil Liberties", "A4 Economic Stability", "A5 Education Access", "A6 Health Level", "A7 Social Structure", "A8 Governance", "A9 Environmental Pressure", "A10 Inequality", "A11 External Shock", "A12 Mobility"], "me": [0.97, null, null, 0.1255, 0.024, 0.1933, 0.5574, null, null, 0.0444, null, 0.8888], "kor": [0.9887, 0.6703, 0.7422, 0.4623, 0.7788, 0.4496, 0.4598, 0.7543, 0.7268, 0.0215, 0.2525, 0.8847], "reg": [0.9727, 0.7862, 0.7781, 0.3836, 0.3756, 0.542, 0.4553, 0.8152, 0.8981, 0.1469, 0.2613, 0.8305]};
   new Chart(el, {
     type: 'radar',
     data: {
       labels: D.labels,
       datasets: [
-        { label: '안도라', data: D.me, borderColor: '#C0392B', backgroundColor: 'rgba(192,57,43,0.15)', borderWidth: 2, pointRadius: 3, spanGaps: true },
-        { label: '한국 (기준)', data: D.kor, borderColor: '#5E9186', backgroundColor: 'rgba(94,145,134,0.08)', borderWidth: 1.5, pointRadius: 2, spanGaps: true },
-        { label: '서유럽 평균', data: D.reg, borderColor: '#B8850E', borderDash: [5,4], backgroundColor: 'rgba(184,133,14,0.04)', borderWidth: 1.5, pointRadius: 2, spanGaps: true }
+        { label: 'Andorra', data: D.me, borderColor: '#C0392B', backgroundColor: 'rgba(192,57,43,0.15)', borderWidth: 2, pointRadius: 3, spanGaps: true },
+        { label: 'Korea (Baseline)', data: D.kor, borderColor: '#5E9186', backgroundColor: 'rgba(94,145,134,0.08)', borderWidth: 1.5, pointRadius: 2, spanGaps: true },
+        { label: 'Western Europe Average', data: D.reg, borderColor: '#B8850E', borderDash: [5,4], backgroundColor: 'rgba(184,133,14,0.04)', borderWidth: 1.5, pointRadius: 2, spanGaps: true }
       ]
     },
     options: {
