@@ -418,7 +418,7 @@ p { margin-bottom: 1em; color: var(--ink); }
 <h2 class="section-heading">Position within the Region — Why Venezuela</h2>
 <p>This report was selected as the lowest η country based on the Country Analysis Series among countries without a standalone edition in the Latin America round of the daily regional rotation pipeline. Cuba (0.3986), the lowest in the region, already has a standalone edition. In the Series, Venezuela's η is <strong>0.4024</strong>(191st out of 197 countries), and the top country in the same round is Uruguay (0.5557).</p>
 <p>In 2024, the dimensions within the band are five: A2, A4, A5, A7, and A8, corresponding to simultaneous inclusion of A7 and A8 (common composition across 4 uprising-observed countries in KSDS v10.0, exploratory n=4). The Series BSLI is incalculable (absence of PIP income distribution raw data), and the missing dimension is A3. The baseline year for this measurement (2024) is prior to the January 2026 regime change.</p>
-<div class="table-scroll"><table class="dim-table"><thead><tr><th>Latin American Region (Series)</th><th>η</th><th>Rank</th><th>BSLI</th><th>Within 2024 Threshold Band</th><th>Missing Dimensions</th></tr></thead><tbody>
+<div class="table-scroll"><table class="dim-table"><thead><tr><th>Latin American Region (Series)</th><th>η</th><th>Rank</th><th>BSLI</th><th>Within 2024 Critical Band</th><th>Missing Dimensions</th></tr></thead><tbody>
 <tr><td>Barbados (BRB)</td><td class="dim-score">0.5600</td><td>39th out of 197 countries</td><td class="dim-score">Incalculable</td><td>0</td><td>A11, A5, A9</td></tr>
 <tr><td>Uruguay (URY)</td><td class="dim-score">0.5557</td><td>43rd out of 197 countries</td><td class="dim-score">+0.0848</td><td>A5</td><td>None</td></tr>
 <tr><td>Belize (BLZ)</td><td class="dim-score">0.5283</td><td>62nd out of 197 countries</td><td class="dim-score">Incalculable</td><td>A7</td><td>A11, A5, A9</td></tr>
@@ -461,7 +461,7 @@ p { margin-bottom: 1em; color: var(--ink); }
 <p>Along the political axis, disputes over the July 2024 presidential election results, U.S. military strikes on vessels from September 2025 onward, the January 3, 2026 U.S. military operation and the arrest and transfer of President Maduro, the opening of the oil sector in January, the Amnesty Law in February, and undated election pledges in September followed in succession (Series Briefing). The gap in officially announced figures is widest in the casualty and release tallies.</p>
 <div class="cards">
 <div class="card"><div class="card-label">η Composite Social Stability Index (Series)</div><div class="card-value">0.4024</div><div class="card-desc">191st out of 197 countries · 30th out of 31 Latin American countries</div></div>
-<div class="card gold"><div class="card-label">Dimensions within 2024 Threshold Band (Series)</div><div class="card-value">A2, A4, A5, A7, A8</div><div class="card-desc">P ≥ 0.4458 · Maximum cross-sectional pressure — (cross-sectional calculation impossible due to incalculable BSLI)</div></div>
+<div class="card gold"><div class="card-label">Dimensions within 2024 Critical Band (Series)</div><div class="card-value">A2, A4, A5, A7, A8</div><div class="card-desc">P ≥ 0.4458 · Maximum cross-sectional pressure — (cross-sectional calculation impossible due to incalculable BSLI)</div></div>
 <div class="card red"><div class="card-label">BSLI (Series)</div><div class="card-value">Incalculable</div><div class="card-desc">Absence of PIP income distribution raw data · Missing dimension A3</div></div>
 </div>
 </div>
@@ -498,7 +498,7 @@ p { margin-bottom: 1em; color: var(--ink); }
 <div class="section">
 <div class="section-title">§ 04</div>
 <h2 class="section-heading">Λ¹² 12-Dimensional State Vector of the Nation</h2>
-<p>Values are 0–1 normalized values from the Country Analysis Series engine (Λ¹² v2.0). Dimension names follow Series Vol. 1 §1.4 nomenclature, and 'measured:' below indicates the actual indicators inputted, as in the Series (MEASURED — because some dimensions have differences between label and empirical input, interpretation follows the measured side). Coupling r is a common constant across 138 countries, the right column shows the 2024 pressure P from the Series trajectory table, and ▲ marks dimensions within the Series-based 2024 threshold band (P ≥ 0.4458).</p>
+<p>Values are 0–1 normalized values from the Country Analysis Series engine (Λ¹² v2.0). Dimension names follow Series Vol. 1 §1.4 nomenclature, and 'measured:' below indicates the actual indicators inputted, as in the Series (MEASURED — because some dimensions have differences between label and empirical input, interpretation follows the measured side). Coupling r is a common constant across 138 countries, the right column shows the 2024 pressure P from the Series trajectory table, and ▲ marks dimensions within the Series-based 2024 critical band (P ≥ 0.4458).</p>
 <div class="table-scroll"><table class="dim-table">
 <thead><tr><th>Dimension</th><th>Name / Empirical Input</th><th>Value</th><th>Bar</th><th>Coupling r</th><th>P 2024 (Series Trajectory)</th></tr></thead>
 <tbody>
@@ -535,7 +535,7 @@ p { margin-bottom: 1em; color: var(--ink); }
 <div class="formula-box">
 <div class="f-label">Pressure Coordinate System Formulae (pressure-coordinate-system Canonical)</div>
 <div class="f-eq">r_d = Pearson(A_d, BSLI) · gap_d = 1−A_d (r&gt;0) / A_d (r&lt;0) · P_d = |r_d| × gap_d</div>
-<div class="f-vars">r_d: Common sample coupling coefficient across 138 countries · gap_d: Deficit · P_d: Pressure index · Direction = sign(ΔP_d), Activity = |ΔP_d/Δt|<br/>P* = 0.4458: Obtained from upper pressure values at the ignition point of 4 uprising countries, an <strong>exploratory threshold band (n=4)</strong> — not used as a definitive threshold.</div>
+<div class="f-vars">r_d: Common sample coupling coefficient across 138 countries · gap_d: Deficit · P_d: Pressure index · Direction = sign(ΔP_d), Activity = |ΔP_d/Δt|<br/>P* = 0.4458: Obtained from upper pressure values at the ignition point of 4 uprising countries, an <strong>exploratory critical band (n=4)</strong> — not used as a definitive threshold.</div>
 </div>
 <p>The Series noted the reason instead of presenting a causal loop diagram for this country: the center (sun) cannot be drawn because BSLI is incalculable, and since coupling r is common across all countries, dimension-specific pressure values are calculated as is in the trajectory. This report does not redraw the diagram, in accordance with the engine freeze principle (DECISIONS 18).</p>
 <p>Therefore, Venezuela's pressure coordinates are read from the 2024 P in the trajectory table: A2 0.6856, A8 0.6427, A5 0.5932, A7 0.4622, A4 0.4605 — five dimensions are above the band (0.4458), with A2 and A8 running deep at above 0.64.</p>
