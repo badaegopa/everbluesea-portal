@@ -243,6 +243,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // UI 봉기지수
   "cat-ui": [
+    { id: "uibook-vol2-20261014", title: "봉기 총서 제2권 아시아·태평양 — 동아시아·동남아시아·오세아니아 32개국의 봉기·시위·정권 전복·내전·쿠데타", titleEn: "Uprising Compendium Vol. 2: Asia-Pacific — Uprisings, Protests, Regime Overthrows, Civil Wars and Coups in 32 Countries of East Asia, Southeast Asia and Oceania", region: "동북아시아·동남아시아·오세아니아", regionEn: "Northeast Asia·Southeast Asia·Oceania", scope: "권역별", engine: "봉기 총서 · COW·UCDP·P&T·Archigos·NAVCO·MM·ACLED", date: "2026-10-17", htmlPath: "/engines/ui/book/UprisingBook_Vol2_AsiaPacific_20261014.html" },
     { id: "uibook-vol1-20261014", title: "봉기 총서 제1권 방법과 데이터 — 1760년 기준 서사·데이터 기록법, 7개 데이터셋의 정의와 한계, 국가분석 총서 공리·판정식 원문", titleEn: "Uprising Compendium Vol. 1: Method and Data — Narrative and Data Recording Around 1760, Definitions and Limits of Seven Datasets, and the Axioms and Ignition Condition from the Country Analysis Compendium", region: "방법론", regionEn: "Methodology", scope: "권역별", engine: "봉기 총서 · COW·UCDP·P&T·Archigos·NAVCO·MM·ACLED", date: "2026-10-14", htmlPath: "/engines/ui/book/UprisingBook_Vol1_Method_20261014.html" },
     {
       id: "ui-ethiopia-2026",
