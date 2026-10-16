@@ -350,6 +350,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // §35 국가역량지수
   "cat-nci": [
+    { id: "nci-v1-20261017", title: "국가역량지수 정밀 보고서 v1 — 정책은 서민에게 닿는가 (186개국, 소득보장·기본서비스·기회·재분배 도달 4축, 정책 공백 사분면)", titleEn: "National Capacity Index Precision Report v1 — Do Policies Reach Ordinary People? (186 Countries, Four Axes of Income-Support, Basic-Service, Opportunity and Redistribution Reach, Policy-Gap Quadrant)", region: "글로벌", regionEn: "Global", scope: "권역별", engine: "§35 NCI v1 · 정책 서민 도달", date: "2026-10-17", htmlPath: "/engines/nci/NCI_정밀보고서_v1_20261017.html" },
     {
       id: "nci-methodology",
       title: "국가역량지수 §35 — 공식과 방법론 해설 (4축 역량)", titleEn: "National Capacity Index §35 — Formulas and Methodology (4-Axis Capacity)",
