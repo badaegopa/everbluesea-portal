@@ -1,14 +1,9 @@
 name: Auto-translate reports
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "public/nations/**.html"
-      - "public/engines/**.html"
-  # v20 (2026-10-14): Gemini 일일 할당량(429) 때문에 매시 최대 MAX_FILES 편씩(예약 지연·누락 보완, 25편≈60~70분 < timeout 180, 45편은 120분 초과로 취소됨) 나눠 번역
-  schedule:
-    - cron: "23 * * * *"
+  # v21 (2026-10-16 청해 "1차 번역 → 2차 검증 후 배포"): 자동 트리거(push·schedule) 해제.
+  # 영문판은 AI PC 로컬 번역기(eb-pipeline/local_translate.py, qwen2.5-eb:14b-v3)가 1차 번역 + 2차 검증 통과분만 배포한다.
+  # 이 워크플로는 Gemini 수동 보조용(Run workflow)으로만 남긴다 — 수동 실행분은 검증을 거치지 않으므로 필요할 때만.
   workflow_dispatch:
     inputs:
       scope:
