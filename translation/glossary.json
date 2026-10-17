@@ -67,7 +67,6 @@
   "헤르메스 수집": "Hermes collection",
   "봉기 총서": "Uprising Compendium",
   "소요 현황": "unrest",
-  "소요": "unrest",
   "공개 집계본": "public aggregated data",
   "집계본": "aggregated data",
   "시위 사건": "demonstration events",
@@ -83,5 +82,6 @@
   "봉기 지수 간격": "uprising index gap",
   "국가역량지수": "National Capacity Index",
   "정밀 보고서": "Precision Report",
-  "정책 도달": "policy reach"
+  "정책 도달": "policy reach",
+  "소요 사태": "unrest"
 }
