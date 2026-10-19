@@ -1,0 +1,93 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>지도층 자녀 특권 요소 — GDELT 원본 보완(이전·이후 비교)</title><style>
+/* 레이아웃: 단일 본문 열(약 46rem) + 도판은 본문보다 넓게, 표·도판은 자체 가로 스크롤 */
+:root{
+ --paper:#F4F3EE; --ink:#1F2B27; --muted:#5A6762; --rule:#D6D2C6; --deep:#23392F;
+ --press:#B0392A; --gold:#9A700C; --teal:#3F7A6E; --plate:#FFFFFF; --soft:#E9EEEA; --hi:#F6E7C4;
+ --f-display:'Noto Serif KR','Nanum Myeongjo',serif; --f-body:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+ --f-data:'IBM Plex Mono',ui-monospace,'Consolas',monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+ --paper:#141A18; --ink:#E4E7E2; --muted:#9BA7A2; --rule:#34423C; --deep:#A9D0C3;
+ --press:#E4826F; --gold:#D8B05A; --teal:#86BDB0; --plate:#FFFFFF; --soft:#1C2522; --hi:#3A3320; color-scheme:dark}}
+:root[data-theme="dark"]{
+ --paper:#141A18; --ink:#E4E7E2; --muted:#9BA7A2; --rule:#34423C; --deep:#A9D0C3;
+ --press:#E4826F; --gold:#D8B05A; --teal:#86BDB0; --plate:#FFFFFF; --soft:#1C2522; --hi:#3A3320; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;padding-inline:16px;padding-block:0 64px}
+.book{max-width:66rem;margin:0 auto}
+.col{max-width:46rem;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--f-display);color:var(--deep);text-wrap:balance;line-height:1.35}
+h1{font-size:2.3rem;font-weight:900;margin:0}
+h2{font-size:1.55rem;font-weight:700;margin:3.2rem 0 .8rem;padding-top:1.2rem;border-top:2px solid var(--deep)}
+h3{font-size:1.18rem;font-weight:700;margin:2.2rem 0 .5rem}
+h4{font-size:1rem;font-weight:700;margin:1.4rem 0 .3rem;font-family:var(--f-body)}
+p{margin:.6rem 0}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.eyebrow{font-family:var(--f-data);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cover{padding-block:4rem 2.4rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
+.cover .vol{font-family:var(--f-display);font-size:1.05rem;color:var(--gold);font-weight:700;letter-spacing:.06em}
+.cover .sub{font-size:1.1rem;color:var(--muted);margin-top:.8rem;max-width:40rem}
+.cover .meta{font-family:var(--f-data);font-size:.8rem;color:var(--muted);margin-top:1.6rem;line-height:1.9}
+.toc{border:1px solid var(--rule);padding:1rem 1.2rem;margin:1.6rem auto;background:var(--soft)}
+.toc ol{margin:.3rem 0;padding-left:1.3rem}.toc li{margin:.15rem 0}
+.toc a{color:var(--ink);text-decoration:none}.toc a:hover{text-decoration:underline}
+.fx{border-left:3px solid var(--teal);background:var(--soft);padding:.8rem 1rem;margin:1rem 0}
+.fx .eq{font-family:var(--f-data);font-size:1.02rem;color:var(--deep);font-weight:500;overflow-x:auto;white-space:nowrap;padding:.2rem 0}
+.fx .t{font-weight:700;font-size:.9rem;color:var(--muted)}
+.fx dl{display:grid;grid-template-columns:max-content 1fr;gap:.15rem .9rem;margin:.5rem 0 0;font-size:.92rem}
+.fx dt{font-family:var(--f-data);color:var(--deep);font-weight:500}.fx dd{margin:0}
+.note{font-size:.88rem;color:var(--muted);border-top:1px dashed var(--rule);padding-top:.5rem;margin-top:.8rem}
+.callout{border:1px solid var(--rule);padding:.8rem 1rem;margin:1rem 0;font-size:.95rem}
+.callout.warn{border-color:var(--gold);background:var(--hi)}
+.tw{overflow-x:auto;margin:1rem 0}
+table{border-collapse:collapse;font-size:.88rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--rule);padding:.42rem .55rem;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--deep);border-bottom:2px solid var(--deep);white-space:nowrap}
+td.n,th.n{text-align:right;font-family:var(--f-data);white-space:nowrap}
+td.c{text-align:center}
+tr.hi td{background:var(--hi)}
+.inband{background:var(--hi);font-weight:700}
+.warnmark{color:var(--gold);font-weight:700}
+.up{color:var(--press)}.dn{color:var(--teal)}
+figure{margin:1.6rem 0}
+.wide{width:min(66rem,calc(100vw - 32px));position:relative;left:50%;transform:translateX(-50%)}
+p,li,dd{overflow-wrap:anywhere}
+.plate{background:var(--plate);border:1px solid var(--rule);padding:.6rem;overflow-x:auto}
+.plate svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.plate img{display:block;margin:0 auto}
+figcaption{font-size:.86rem;color:var(--muted);margin-top:.5rem}
+figcaption b{color:var(--ink)}
+.chart svg{display:block;max-width:100%;height:auto}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.6rem;margin:1rem 0}
+.kv>div{border-top:2px solid var(--deep);padding-top:.4rem;min-width:0}
+.kv .k{font-size:.78rem;color:var(--muted)}.kv .v{font-family:var(--f-data);font-size:1.15rem;color:var(--deep)}
+.kv .s{font-size:.78rem;color:var(--muted)}
+.country{margin-top:4rem;border-top:6px double var(--deep);padding-top:1.4rem}
+.country h2{border:0;padding:0;margin:.2rem 0 .2rem;font-size:1.8rem}
+.country .iso{font-family:var(--f-data);color:var(--muted);font-size:.9rem}
+.tl{list-style:none;padding:0;margin:.5rem 0}
+.tl li{display:grid;grid-template-columns:7.2rem 1fr;gap:.8rem;padding:.3rem 0;border-bottom:1px dotted var(--rule)}
+.tl .d{font-family:var(--f-data);font-size:.85rem;color:var(--muted)}
+.src{font-size:.82rem;color:var(--muted);padding-left:1.4rem}
+.src li{margin:.2rem 0;overflow-wrap:anywhere}.src a{word-break:break-all}
+.tag{display:inline-block;font-family:var(--f-data);font-size:.72rem;border:1px solid var(--rule);padding:0 .35rem;margin-right:.3rem;color:var(--muted)}
+sup.r{font-size:.7rem;color:var(--teal)}
+.pull{font-family:var(--f-display);font-size:1.15rem;color:var(--deep);border-left:3px solid var(--gold);padding:.3rem 0 .3rem 1rem;margin:1.4rem 0}
+.foot{margin-top:4rem;text-align:center;color:var(--gold);font-family:var(--f-display);font-size:.95rem}
+.colophon{font-size:.82rem;color:var(--muted);margin-top:1rem;text-align:center;font-family:var(--f-data)}
+@media (max-width:640px){h1{font-size:1.75rem}.tl li{grid-template-columns:1fr;gap:0}.fx dl{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style></head><body><div class="book">
+<header class="cover col"><div class="vol">늘푸른바다 사회동역학연구소 · UI 봉기지수 · 보조 관찰표 보완판(시범)</div><h1>지도층 자녀 특권 요소 — GDELT 원본 보완</h1><div class="sub">이전(Google News) vs 이후(GDELT 원본) 비교 — 청년 세대 봉기 사례 11개국</div><div class="meta">2026-10-19 · 淸海</div></header>
+<section class="col"><div class="callout warn"><b>담론육층 적용 범위</b> — 1~5층만. 처방·도덕 평가·지도자 평가·예측은 하지 않는다. 6층은 청해(淸海) 전용이다.</div></section><section class="col"><h2>제1층 데이터 — 이전 vs 이후</h2>
+<p><b>이전</b>(보조 관찰표 3-1): Google News RSS 를 반년 단위로 날짜 질의, 게재일이 구간 안인 기사만 센 건수. 과거 구간 질의에 최근 기사가 섞여 와 과소 집계(스리랑카 봉기 전 반년 17건 중 구간 안 1건)되는 한계가 있었다.</p>
+<p><b>이후</b>(이 보완판): GDELT GKG 2.1 원본(영문 수집분)을 2021-09-01부터 하루 8시점(3시간 간격) 표본으로 받아 기사 단위로 집계했다. 나라 = 기사 위치 정보에 등장한 나라. 족벌 = 주제 코드에 부패(CORRUPTION·WB_832_ANTI_CORRUPTION)가 있고 제목·주소에 족벌·고위층 자녀·왕조 표현이 있는 기사, 기사 1만 건당으로 표시(괄호 = 표본 건수). 월 단위라 봉기 직전 1~3개월(도화선 구간)과 4~6개월 전(구조 구간)을 나눌 수 있다.</p>
+<div class="tw"><table><thead><tr><th class="">국가</th><th class="">봉기 시작</th><th class="n">이전: 직전 반년 보도</th><th class="n">이전: 다른 구간 평균</th><th class="n">이전: 배수</th><th class="n">이후: 도화선(1~3개월 전)</th><th class="n">이후: 구조(4~6개월 전)</th><th class="n">이후: 봉기(시작~2개월)</th><th class="n">이후: 평상시</th><th class="n">이후: 족벌 도화선/평상시</th><th class="n">이후: 부패 비중 도화선/평상시</th><th class="n">이후: 도화선 구간 기사 표본</th></tr></thead><tbody><tr><td class="">스리랑카 민주 사회주의 공화국</td><td class="">2022-03</td><td class="n">1건</td><td class="n">6.7</td><td class="n">0.15배</td><td class="n">0.0 (0)</td><td class="n">2.7 (1)</td><td class="n">6.9 (3)</td><td class="n">1.4 (7)</td><td class="n">0.00배</td><td class="n">0.74배</td><td class="n">3.0천</td></tr><tr><td class="">케냐 공화국</td><td class="">2024-06</td><td class="n">0건</td><td class="n">4.2</td><td class="n">0.00배</td><td class="n">0.0 (0)</td><td class="n">1.9 (1)</td><td class="n">0.0 (0)</td><td class="n">2.8 (21)</td><td class="n">0.00배</td><td class="n">0.90배</td><td class="n">5.9천</td></tr><tr><td class="">방글라데시 인민 공화국</td><td class="">2024-07</td><td class="n">8건</td><td class="n">4.0</td><td class="n">2.00배</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">5.2 (3)</td><td class="n">1.8 (14)</td><td class="n">0.00배</td><td class="n">0.91배</td><td class="n">3.9천</td></tr><tr><td class="">세르비아 공화국</td><td class="">2024-11</td><td class="n">3건</td><td class="n">2.9</td><td class="n">1.03배</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">—</td><td class="n">0.82배</td><td class="n">1.3천</td></tr><tr><td class="">인도네시아 공화국</td><td class="">2025-08</td><td class="n">5건</td><td class="n">7.7</td><td class="n">0.65배</td><td class="n">1.7 (1)</td><td class="n">0.0 (0)</td><td class="n">1.5 (1)</td><td class="n">1.3 (16)</td><td class="n">1.29배</td><td class="n">0.97배</td><td class="n">5.9천</td></tr><tr><td class="">네팔 연방 민주 공화국</td><td class="">2025-09</td><td class="n">3건</td><td class="n">9.7</td><td class="n">0.31배</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">65.7 (19)</td><td class="n">1.1 (4)</td><td class="n">0.00배</td><td class="n">0.95배</td><td class="n">1.4천</td></tr><tr><td class="">필리핀 공화국</td><td class="">2025-09</td><td class="n">4건</td><td class="n">4.0</td><td class="n">1.00배</td><td class="n">1.3 (1)</td><td class="n">2.0 (2)</td><td class="n">3.4 (3)</td><td class="n">2.2 (34)</td><td class="n">0.59배</td><td class="n">0.93배</td><td class="n">7.8천</td></tr><tr><td class="">모로코 왕국</td><td class="">2025-09</td><td class="n">4건</td><td class="n">2.8</td><td class="n">1.43배</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">1.1 (5)</td><td class="n">0.00배</td><td class="n">0.83배</td><td class="n">1.5천</td></tr><tr><td class="">마다가스카르 공화국</td><td class="">2025-09</td><td class="n">1건</td><td class="n">3.5</td><td class="n">0.29배</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">—</td><td class="n">0.83배</td><td class="n">0.4천</td></tr><tr><td class="">동티모르</td><td class="">2025-09</td><td class="n">1건</td><td class="n">0.7</td><td class="n">1.43배</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">4.2 (2)</td><td class="n">0.00배</td><td class="n">0.45배</td><td class="n">0.2천</td></tr><tr><td class="">페루 공화국</td><td class="">2025-09</td><td class="n">0건</td><td class="n">2.3</td><td class="n">0.00배</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">4.8 (1)</td><td class="n">0.5 (2)</td><td class="n">0.00배</td><td class="n">0.99배</td><td class="n">1.7천</td></tr></tbody></table></div>
+<p class="note">배수 = 해당 구간 비율 ÷ 평상시(그 나라의 나머지 달) 비율. 표본 건수가 작으면(괄호 안 10 미만) 배수가 크게 흔들린다. 수집 범위 2021-09 ~ 2026-10.</p></section>
+<section class="col"><h2>제3층 패턴 — 이전과 이후가 함께 가리키는 것</h2>
+<p>이전 판(<a href="/engines/ui/top30/UI_GenZ_AuxObservation_20261019.html">보조 관찰표(시범) 3-1</a>)에서는 Google News 의 과소 집계 때문에 "족벌·자녀 보도가 봉기에 앞서는가"를 판정하지 못했다. GDELT 원본으로 다시 재도, <b>봉기 직전 1~3개월에 족벌·자녀 부패 기사가 평상시보다 늘어난 나라는 인도네시아 한 곳(표본 1건)</b>뿐이다. 반대로 <b>봉기가 시작된 구간에 몰린다</b> — 네팔(1만 건당 65.7, 평상시 1.1, 표본 19건), 스리랑카(6.9 vs 1.4), 방글라데시(5.2 vs 1.8), 페루(4.8 vs 0.5). 부패 기사 비중도 도화선 구간이 평상시보다 높은 나라가 없다(0.45~0.99배).</p>
+<p>이전 판과 이후 판의 결론은 같은 방향이다 — 국제 영문 보도에서 지도층 자녀·족벌 문제는 봉기에 앞서는 신호로 나타나지 않고, 봉기가 일어난 뒤 그 봉기를 설명하는 이야기로 등장한다.</p></section>
+<section class="col"><h2>제4층 관점 전환 — 도화선은 어디서 먼저 타오르는가</h2>
+<p>네팔의 'nepo kids' 는 국제 언론보다 먼저 현지 소셜미디어에서 퍼졌다고 보도됐다(보조 관찰표 사례 표의 출처). 국제 영문 보도가 봉기 뒤에야 이 이야기를 실었다면, 이 요소를 앞서 잡으려면 측정하는 매체가 달라야 한다 — 현지어 언론과 소셜미디어. 이 보완판은 그 한계를 확인한 기록이다.</p></section>
+<section class="col"><h2>제5층 한계</h2><ol class="note"><li>GDELT 는 영문 수집분만 사용 — 현지어 보도는 빠진다. 하루 96개 중 8개 시점 표본이다.</li><li>표현 사전(족벌·자녀·왕조)은 영어 정규식이라 놓치는 표현과 잘못 잡는 기사가 있다.</li><li>사례 11개국으로 일반화하지 않는다.</li></ol></section>
+<section class="col"><div class="callout"><b>6층 — 청해(淸海) 전용</b></div></section></div></body></html>
