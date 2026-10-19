@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>절제된 국가, 부탄</title><style>
+/* 레이아웃: 단일 본문 열(약 46rem) + 도판은 본문보다 넓게, 표·도판은 자체 가로 스크롤 */
+:root{
+ --paper:#F4F3EE; --ink:#1F2B27; --muted:#5A6762; --rule:#D6D2C6; --deep:#23392F;
+ --press:#B0392A; --gold:#9A700C; --teal:#3F7A6E; --plate:#FFFFFF; --soft:#E9EEEA; --hi:#F6E7C4;
+ --f-display:'Noto Serif KR','Nanum Myeongjo',serif; --f-body:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+ --f-data:'IBM Plex Mono',ui-monospace,'Consolas',monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+ --paper:#141A18; --ink:#E4E7E2; --muted:#9BA7A2; --rule:#34423C; --deep:#A9D0C3;
+ --press:#E4826F; --gold:#D8B05A; --teal:#86BDB0; --plate:#FFFFFF; --soft:#1C2522; --hi:#3A3320; color-scheme:dark}}
+:root[data-theme="dark"]{
+ --paper:#141A18; --ink:#E4E7E2; --muted:#9BA7A2; --rule:#34423C; --deep:#A9D0C3;
+ --press:#E4826F; --gold:#D8B05A; --teal:#86BDB0; --plate:#FFFFFF; --soft:#1C2522; --hi:#3A3320; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;padding-inline:16px;padding-block:0 64px}
+.book{max-width:66rem;margin:0 auto}
+.col{max-width:46rem;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--f-display);color:var(--deep);text-wrap:balance;line-height:1.35}
+h1{font-size:2.3rem;font-weight:900;margin:0}
+h2{font-size:1.55rem;font-weight:700;margin:3.2rem 0 .8rem;padding-top:1.2rem;border-top:2px solid var(--deep)}
+h3{font-size:1.18rem;font-weight:700;margin:2.2rem 0 .5rem}
+h4{font-size:1rem;font-weight:700;margin:1.4rem 0 .3rem;font-family:var(--f-body)}
+p{margin:.6rem 0}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.eyebrow{font-family:var(--f-data);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cover{padding-block:4rem 2.4rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
+.cover .vol{font-family:var(--f-display);font-size:1.05rem;color:var(--gold);font-weight:700;letter-spacing:.06em}
+.cover .sub{font-size:1.1rem;color:var(--muted);margin-top:.8rem;max-width:40rem}
+.cover .meta{font-family:var(--f-data);font-size:.8rem;color:var(--muted);margin-top:1.6rem;line-height:1.9}
+.toc{border:1px solid var(--rule);padding:1rem 1.2rem;margin:1.6rem auto;background:var(--soft)}
+.toc ol{margin:.3rem 0;padding-left:1.3rem}.toc li{margin:.15rem 0}
+.toc a{color:var(--ink);text-decoration:none}.toc a:hover{text-decoration:underline}
+.fx{border-left:3px solid var(--teal);background:var(--soft);padding:.8rem 1rem;margin:1rem 0}
+.fx .eq{font-family:var(--f-data);font-size:1.02rem;color:var(--deep);font-weight:500;overflow-x:auto;white-space:nowrap;padding:.2rem 0}
+.fx .t{font-weight:700;font-size:.9rem;color:var(--muted)}
+.fx dl{display:grid;grid-template-columns:max-content 1fr;gap:.15rem .9rem;margin:.5rem 0 0;font-size:.92rem}
+.fx dt{font-family:var(--f-data);color:var(--deep);font-weight:500}.fx dd{margin:0}
+.note{font-size:.88rem;color:var(--muted);border-top:1px dashed var(--rule);padding-top:.5rem;margin-top:.8rem}
+.callout{border:1px solid var(--rule);padding:.8rem 1rem;margin:1rem 0;font-size:.95rem}
+.callout.warn{border-color:var(--gold);background:var(--hi)}
+.tw{overflow-x:auto;margin:1rem 0}
+table{border-collapse:collapse;font-size:.88rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--rule);padding:.42rem .55rem;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--deep);border-bottom:2px solid var(--deep);white-space:nowrap}
+td.n,th.n{text-align:right;font-family:var(--f-data);white-space:nowrap}
+td.c{text-align:center}
+tr.hi td{background:var(--hi)}
+.inband{background:var(--hi);font-weight:700}
+.warnmark{color:var(--gold);font-weight:700}
+.up{color:var(--press)}.dn{color:var(--teal)}
+figure{margin:1.6rem 0}
+.wide{width:min(66rem,calc(100vw - 32px));position:relative;left:50%;transform:translateX(-50%)}
+p,li,dd{overflow-wrap:anywhere}
+.plate{background:var(--plate);border:1px solid var(--rule);padding:.6rem;overflow-x:auto}
+.plate svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.plate img{display:block;margin:0 auto}
+figcaption{font-size:.86rem;color:var(--muted);margin-top:.5rem}
+figcaption b{color:var(--ink)}
+.chart svg{display:block;max-width:100%;height:auto}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.6rem;margin:1rem 0}
+.kv>div{border-top:2px solid var(--deep);padding-top:.4rem;min-width:0}
+.kv .k{font-size:.78rem;color:var(--muted)}.kv .v{font-family:var(--f-data);font-size:1.15rem;color:var(--deep)}
+.kv .s{font-size:.78rem;color:var(--muted)}
+.country{margin-top:4rem;border-top:6px double var(--deep);padding-top:1.4rem}
+.country h2{border:0;padding:0;margin:.2rem 0 .2rem;font-size:1.8rem}
+.country .iso{font-family:var(--f-data);color:var(--muted);font-size:.9rem}
+.tl{list-style:none;padding:0;margin:.5rem 0}
+.tl li{display:grid;grid-template-columns:7.2rem 1fr;gap:.8rem;padding:.3rem 0;border-bottom:1px dotted var(--rule)}
+.tl .d{font-family:var(--f-data);font-size:.85rem;color:var(--muted)}
+.src{font-size:.82rem;color:var(--muted);padding-left:1.4rem}
+.src li{margin:.2rem 0;overflow-wrap:anywhere}.src a{word-break:break-all}
+.tag{display:inline-block;font-family:var(--f-data);font-size:.72rem;border:1px solid var(--rule);padding:0 .35rem;margin-right:.3rem;color:var(--muted)}
+sup.r{font-size:.7rem;color:var(--teal)}
+.pull{font-family:var(--f-display);font-size:1.15rem;color:var(--deep);border-left:3px solid var(--gold);padding:.3rem 0 .3rem 1rem;margin:1.4rem 0}
+.foot{margin-top:4rem;text-align:center;color:var(--gold);font-family:var(--f-display);font-size:.95rem}
+.colophon{font-size:.82rem;color:var(--muted);margin-top:1rem;text-align:center;font-family:var(--f-data)}
+@media (max-width:640px){h1{font-size:1.75rem}.tl li{grid-template-columns:1fr;gap:0}.fx dl{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+ h4{margin:1.2rem 0 .4rem}</style></head><body><div class="book">
+<header class="cover col"><div class="vol">늘푸른바다 사회동역학연구소 · 국가분석 단독편 업그레이드 · 남아시아</div><h1>절제된 국가, 부탄</h1>
+<div class="sub">왕정과 불교, 나누는 수력, 절제된 성취 — 그리고 국경 밖으로 나간 청년</div>
+<div class="meta">저자 청해(淸海) 김기섭 · 국가분석 총서(2026-10-07) 정본 값 · 2026-10-19 · everbluesea.org</div></header>
+<section class="col"><div class="callout warn"><b>담론육층 적용 범위</b> — 1~5층만 다룬다. 처방·도덕 평가·지도자 평가·예측은 하지 않는다. 6층은 청해(淸海) 전용이다.</div></section><section class="col"><h2>제1층 데이터 — 절제의 숫자</h2>
+<h3>1-1. 총서 정본 값</h3><div class="tw"><table><thead><tr><th class="">항목</th><th class="n">값</th><th class="">위치</th></tr></thead><tbody><tr><td class="">η 사회안정 종합지수</td><td class="n">0.6130</td><td class="">197개국 중 15위 · 남아시아 1위</td></tr><tr><td class="">제도신뢰 A2 / 거버넌스 A8</td><td class="n">0.8127 / 0.6986</td><td class="">흡수체 두 축 모두 높음</td></tr><tr><td class="">봉기 지수 간격 순위</td><td class="n">172 / 196</td><td class="">1위가 발화 조건에 가장 가까움 — 부탄은 가장 먼 쪽</td></tr><tr><td class="">BSLI(총서)</td><td class="n">-0.1396</td><td class="">E등급 · 139개국 중 73위(중간)</td></tr><tr><td class="">국가역량지수 v1(정책의 서민 도달)</td><td class="n">0.3347</td><td class="">도달 취약 — 원값 연도 경과(R3 2010·2014년 값)</td></tr></tbody></table></div>
+<p>이전 단독편: <a href="/nations/south-asia/부탄_Λ12_비교분석보고서_20261013.html">부탄 Λ¹² 단독편(2026-10-13)</a> · <a href="/engines/bsli/south-asia/부탄_BSLI_기초생활분석보고서_20261014.html">부탄 BSLI 단독편(2026-10-14)</a>. 이 보고서는 두 편의 정본 값과 출처 확인 사실을 이어받고, 거버넌스 분해·공급망·인구·교육·청년 압력을 더한 업그레이드판이다.</p>
+<h3>1-2. 거버넌스 — 무엇이 높고 무엇이 중간인가</h3><div class="tw"><table><thead><tr><th class="">세계은행 거버넌스 지표(WGI)</th><th class="n">원값(−2.5~2.5)</th><th class="">순위</th></tr></thead><tbody><tr><td class="">정치안정·폭력부재</td><td class="n">1.35</td><td class="">202개국 중 6위</td></tr><tr><td class="">부패통제</td><td class="n">1.47</td><td class="">202개국 중 21위</td></tr><tr><td class="">법치</td><td class="n">0.79</td><td class="">202개국 중 44위</td></tr><tr><td class="">정부효과성</td><td class="n">0.58</td><td class="">202개국 중 62위</td></tr><tr><td class="">발언·책임</td><td class="n">0.40</td><td class="">202개국 중 67위</td></tr><tr><td class="">규제품질</td><td class="n">-0.09</td><td class="">202개국 중 100위</td></tr><tr><td class="">부패인식지수</td><td class="n">—</td><td class="">연구소 수집본에 없음</td></tr></tbody></table></div>
+<p>정치안정·폭력부재는 세계 6위권, 부패통제 21위권, 법치 44위권이다. 발언·책임(67위권)과 규제품질(100위권)은 중간이다. V-Dem 행정부 부패 지수는 0.066로 0 에 가깝다(0 = 부패 없음).</p>
+<h3>1-3. 인구와 교육 — 남아시아 이웃과 나란히</h3><div class="tw"><table><thead><tr><th class="">지표(WDI 최근값)</th><th class="n">부탄</th><th class="n">네팔</th><th class="n">방글라데시</th><th class="n">스리랑카</th><th class="n">인도</th></tr></thead><tbody><tr><td class="">고등교육 총취학률(%)</td><td class="n">13.0 (2024)</td><td class="n">21.3 (2024)</td><td class="n">23.7 (2024)</td><td class="n">20.7 (2023)</td><td class="n">34.4 (2025)</td></tr><tr><td class="">고학력 실업률(%)</td><td class="n">5.8 (2024)</td><td class="n">8.3 (2017)</td><td class="n">10.9 (2024)</td><td class="n">6.2 (2023)</td><td class="n">13.5 (2024)</td></tr><tr><td class="">중등 총취학률(%)</td><td class="n">86.2 (2024)</td><td class="n">90.4 (2024)</td><td class="n">64.3 (2024)</td><td class="n">88.0 (2023)</td><td class="n">79.6 (2025)</td></tr><tr><td class="">합계출산율</td><td class="n">1.4 (2024)</td><td class="n">2.0 (2024)</td><td class="n">2.1 (2024)</td><td class="n">2.0 (2024)</td><td class="n">2.0 (2024)</td></tr><tr><td class="">인구증가율(%)</td><td class="n">0.6 (2025)</td><td class="n">-0.1 (2025)</td><td class="n">1.2 (2025)</td><td class="n">-0.7 (2025)</td><td class="n">0.9 (2025)</td></tr><tr><td class="">생산가능인구 비중(%)</td><td class="n">73.0 (2025)</td><td class="n">65.3 (2025)</td><td class="n">65.7 (2025)</td><td class="n">65.8 (2025)</td><td class="n">68.4 (2025)</td></tr></tbody></table></div>
+<p>부탄 추이(WDI): 합계출산율 2.3 → 1.8 → 1.5 → 1.4 · 인구증가율 1.1 → 1.0 → 0.7 → 0.6% · 고등교육 취학률 6.6 → 14.9 → 16.9 → 13.0% · 인구 701,632 → 796,682명.</p>
+<h3>1-4. 세계 공급망 위치</h3><div class="tw"><table><thead><tr><th class="">지표(WDI 최근값)</th><th class="n">부탄</th><th class="n">196개국 중앙값</th><th class="n">부탄 백분위</th></tr></thead><tbody><tr><td class="">무역(수출+수입)/GDP %</td><td class="n">79.4</td><td class="n">81.0</td><td class="n">48</td></tr><tr><td class="">수출/GDP %</td><td class="n">31.5</td><td class="n">35.9</td><td class="n">42</td></tr><tr><td class="">수입/GDP %</td><td class="n">47.9</td><td class="n">43.2</td><td class="n">53</td></tr><tr><td class="">외국인직접투자 유입/GDP %</td><td class="n">0.1</td><td class="n">2.4</td><td class="n">13</td></tr><tr><td class="">고소득국 수입 비중 %</td><td class="n">4.9</td><td class="n">57.3</td><td class="n">1</td></tr></tbody></table></div>
+<p>무역 규모는 세계 중간이지만 외국인직접투자 유입은 GDP 의 0.1%(하위 13%), 고소득국에서 들여오는 수입 비중은 4.9%(최하위권)다. 무역이 이웃 인도 한 나라에 몰려 있다 — 전력을 내보내고 생필품을 들여온다.</p>
+<h3>1-5. 수력발전 — 나누는 지대(rent)</h3>
+<ul><li>국영 전력회사 DGPC 는 로열티·세금·배당으로 <b>정부 자체 수입(원조 제외)의 약 4분의 1</b>을 낸다 — <a href="https://www.icra.in/Rating/GetRationalReportFilePdf?id=120826">ICRA 신용평가 보고서(2023-07)</a>.</li>
+<li>국영 지주회사 DHI 는 2025 회계연도에 정부에 배당·세금·로열티로 <b>247억 8천만 눌트룸</b>을 냈다(설립 이래 최대), 에너지·자원 부문이 최대 수입원이다 — <a href="https://thebhutanese.bt/dhi-posts-record-profit-and-highest-ever-contribution-to-govt/">The Bhutanese(2026-07-18)</a>.</li>
+<li>DGPC 는 국내 전력 수요를 모두 맡고 남는 전력을 인도로 수출한다. 2023·2024년 국내 소비가 늘면서 단가가 더 높은 인도 수출 수입이 줄었다 — <a href="https://www.icra.in/Rating/GetRationalReportFilePdf?Id=135785">ICRA 신용평가 보고서(2025-06)</a>. 국내 수요가 커질수록 '나누는 지대'의 크기가 줄어드는 구조다.</li></ul>
+<p class="note">재정 비중 수치는 신용평가사·언론 기준이며 재무부 공식 분해표는 확인하지 못했다.</p>
+<h3>1-6. 새 산업 — 데이터센터와 전력</h3>
+<ul><li>2023년 5월, 정부 투자기관 DHI 와 싱가포르의 Bitdeer 가 수력발전으로 돌리는 가상자산 채굴 데이터센터에 5억 달러 펀드를 조성한다고 발표했다 — <a href="https://www.taipeitimes.com/News/biz/archives/2023/05/05/2003799162">Taipei Times(AFP, 2023-05-05)</a>.</li>
+<li>첫 시설인 게두(Gedu) 100MW 데이터센터는 2023년 8월 공사를 마치고 전원 시험 중이었다(계획 3만 대 중 1만 1천 대 가동) — <a href="https://baxtel.com/news/bitdeer-completes-100mw-bhutan-cryptomine-data-center">Baxtel(2023-08-10)</a>.</li>
+<li>같은 시기 국내 전력 소비가 늘어 단가가 높은 인도 수출 수입이 줄었다(ICRA 2025, 1-5). 새 산업의 전력 수요는 '나누는 지대'와 같은 수력에서 나온다 — 작은 충돌의 자리(청해 관찰).</li></ul>
+<p class="note">채굴 부하가 국내 공급·겨울철 인도 전력 수입에 미친 영향, 이후 시설의 가동 규모는 이 보고서에서 확인하지 못했다.</p>
+<h3>1-7. 전력의 탄소 집약도 — 같은 데이터센터, 다른 전력망</h3><div class="tw"><table><thead><tr><th class="">전력망</th><th class="n">탄소 집약도(gCO₂/kWh)</th><th class="">연도</th><th class="n">부탄 대비</th></tr></thead><tbody><tr><td class="">부탄</td><td class="n">23.6</td><td class="">2024</td><td class="n">1.0배</td></tr><tr><td class="">네팔</td><td class="n">24.3</td><td class="">2024</td><td class="n">1.0배</td></tr><tr><td class="">아이슬란드</td><td class="n">27.8</td><td class="">2024</td><td class="n">1.2배</td></tr><tr><td class="">노르웨이</td><td class="n">28.1</td><td class="">2025</td><td class="n">1.2배</td></tr><tr><td class="">아일랜드</td><td class="n">256.5</td><td class="">2025</td><td class="n">10.9배</td></tr><tr><td class="">독일</td><td class="n">329.6</td><td class="">2025</td><td class="n">13.9배</td></tr><tr><td class="">미국</td><td class="n">384.4</td><td class="">2025</td><td class="n">16.3배</td></tr><tr><td class="">한국</td><td class="n">417.1</td><td class="">2025</td><td class="n">17.6배</td></tr><tr><td class="">세계 평균</td><td class="n">458.3</td><td class="">2025</td><td class="n">19.4배</td></tr><tr><td class="">일본</td><td class="n">477.3</td><td class="">2025</td><td class="n">20.2배</td></tr><tr><td class="">싱가포르</td><td class="n">497.1</td><td class="">2025</td><td class="n">21.0배</td></tr><tr><td class="">중국</td><td class="n">525.3</td><td class="">2025</td><td class="n">22.2배</td></tr><tr><td class="">인도</td><td class="n">670.1</td><td class="">2025</td><td class="n">28.3배</td></tr></tbody></table></div>
+<p>부탄 전력망의 탄소 집약도는 1kWh 당 23.6g 으로 세계 평균(458g)의 약 19분의 1, 노르웨이·아이슬란드와 같은 수준이다. 계산 예시: 100MW 시설이 1년 내내 전부하로 돌면 876GWh 를 쓴다 — 부탄 전력망에서는 이산화탄소 약 20,709톤, 미국 전력망에서는 약 336,734톤, 세계 평균 전력망에서는 약 401,462톤이다.</p>
+<p class="note">자료: Ember(OWID 배포본, carbon-intensity-electricity). 계산 예시는 전부하 가정으로 실제 가동률과 다르다. 부탄이 겨울철 인도에서 전력을 들여오는 기간에는 그 시간대 전력의 탄소 집약도가 인도 전력망(1kWh 당 670g)의 영향을 받는다 — 연평균 값에는 이 계절 차이가 드러나지 않는다. 화석연료 전력과의 우열 판단은 6층(청해)에 둔다.</p>
+<h3>1-8. 함께 있는 청년 압력</h3><div class="tw"><table><thead><tr><th class="">지표</th><th class="">부탄</th><th class="">비고</th></tr></thead><tbody><tr><td class="">청년 실업률(15~24, WDI)</td><td class="">9.0 → 27.2 → 17.1% (2014→2022→2025)</td><td class="">2022 정점</td></tr><tr><td class="">니트 비율(WDI)</td><td class="">10.4 → 20.5% (2019→2024)</td><td class="">두 배</td></tr><tr><td class="">인터넷 이용률(WDI)</td><td class="">30 → 91%</td><td class="">청년 세대 봉기 사례국 중앙값 55%보다 높음</td></tr><tr><td class="">해외 거주·취업 국민</td><td class="">71,000명 이상, 인구의 약 10%</td><td class="">정부 국정보고(2026) — 이전 단독편 인용, 호주 약 39,000명(AFP)</td></tr><tr><td class="">WDI 순이주(모형 추정)</td><td class="">10년 누적 인구 대비 +0.42%</td><td class="">정부 집계와 크게 어긋남 — 국제 추정이 이주를 놓침</td></tr></tbody></table></div></section><section class="col"><h2>제2층 이해관계 — 나라와 국민이 무엇을 나누는가</h2>
+<p>부탄의 국가 이념은 왕정과 불교가 결합한 것이고(청해 관찰), 2008년 국왕 주도로 입헌군주제로 옮겨 갔다(이전 단독편 연표). 수력발전 지대가 정부 자체 수입의 약 4분의 1을 채우고, 그 재정이 공공 지출로 국민에게 돌아가는 구조다. 이 지대는 인도와의 전력 거래 한 줄기에서 나오므로, 세계 자본·공급망과의 결합은 얇고(1-4) 대외 위험은 인도 의존 하나에 모인다 — 이전 단독편은 총리가 연료 취약성을 2대 위험으로 지목했다고 기록했다.</p>
+<p>국민 쪽에서 보면, 고등교육 진학이 적고(13%) 학위를 가진 사람의 실업도 낮다(5.8%). 청해는 이를 "학사 이상을 애써 받지 않아도 나라 안에서 생활하며, 무리하게 성취하려는 욕망이 절제되어 있다"고 본다. 일자리를 찾지 못한 청년은 국내에서 목소리를 높이기보다 해외로 떠났다(71,000명+).</p></section><section class="col"><h2>제3층 역사 패턴 — 위에서 내려온 이행</h2>
+<ul><li>1907 왕추크 왕조 성립, 왕정 아래 단계적 근대화.</li><li>1985~1992 '하나의 국민' 정책과 시민권법 이후 남부 네팔어 사용 주민(로참파) 약 10만 명 국외 이주 — 측정 모집단 밖의 역사(이전 단독편, Anadolu·Dixit 2025, 수치 출처마다 차이).</li>
+<li>2008 국왕 주도 입헌군주제·첫 총선 — 아래에서 요구해 얻은 민주화가 아니라 위에서 내려준 이행.</li><li>2020~2021 코로나19 국경 봉쇄 — ACLED 시위 연 1건.</li><li>2024 총선 평화 진행(국민민주당 30석). 2022 청년 실업 정점 이후 해외 이주 가속.</li></ul>
+<p>되풀이되는 구조(관찰): 변화가 아래의 압력이 아니라 위의 결정으로 오고, 압력은 안에서 쌓이기보다 밖으로 빠져나간다.</p></section><section class="col"><h2>제4층 관점 전환 — 세 가지 절제</h2>
+<ol><li><b>권력의 절제</b> — 지도층 부패가 매우 낮다(V-Dem 0.066, 부패통제 21위권). 연구소 138개국 검증에서 BSLI 가 중간 이하인 나라는 대체로 지도층 부패가 깊었는데(순위상관 −0.59), 부탄은 그 경향의 뚜렷한 예외다. 제도신뢰가 BSLI 의 부족을 메우는 경로가 있음을 보여 준다.</li>
+<li><b>소비·교역의 절제</b> — 세계 공급망 밖에서 필요한 만큼 들여오고 자체 생산·소비한다(청해 관찰). 외국 자본 0.1%, 고소득국 수입 4.9%.</li>
+<li><b>성취의 절제</b> — 고등교육 13%, 고학력 실업 5.8%. 구조-인구 이론(터친 2013)이 불안정의 축으로 보는 '학위는 있으나 자리를 얻지 못한 엘리트 지망자 과잉'의 압력이 작다.</li></ol>
+<p>그런데도 청년 세대 봉기 사례국과 겹치는 요소 — 높은 인터넷 이용률(91%), 청년 실업·니트 상승 — 가 함께 있다. 부탄에서 이 압력은 시위가 아니라 <b>이탈</b>(인구의 약 10%가 해외)로 나갔다. 출산율 1.4 와 생산가능인구 정점은 그 결과가 인구 구조에 남기 시작했음을 보여 준다. 절제는 안정의 바탕이면서, 떠난 사람이 측정 창 밖으로 사라지게 하는 구조이기도 하다(이전 단독편 '틈').</p></section><section class="col"><h2>제5층 지식 프레임과 한계</h2>
+<ol><li>Hirschman, A. O. (1970). <i>Exit, Voice, and Loyalty</i>. Harvard University Press — 불만의 두 출구(떠남·목소리). 부탄은 '떠남'이 '목소리'를 대신하는 사례로 읽을 수 있다.</li>
+<li>Turchin, P. (2013). Modeling Social Pressures Toward Political Instability. <i>Cliodynamics</i> 4(2), 241–280. <a href="https://doi.org/10.21237/C7clio4221333">doi:10.21237/C7clio4221333</a> — 엘리트 동원 잠재력(EMP)·청년 비중.</li>
+<li>Goldstone, J. A. 외 (2010). A Global Model for Forecasting Political Instability. <i>AJPS</i> 54(1). <a href="https://doi.org/10.1111/j.1540-5907.2009.00426.x">doi:10.1111/j.1540-5907.2009.00426.x</a> — 정치 제도가 불안정의 가장 강한 변수.</li></ol>
+<p class="note">한계: (1) WDI 순이주는 모형 추정이라 실제 이주를 놓친다 — 정부 집계(71,000명+)를 따로 적었다. (2) 연구소 CPI 수집본에 부탄이 빠져 A2 는 부패통제만으로 산출됐다(자료 공백 기록). (3) BSLI 실측은 2017·2022 두 해뿐이다. (4) 수력 재정 비중은 신용평가사·언론 기준. (5) '절제'는 이 보고서의 관찰 틀이며 도덕 평가가 아니다.</p></section><section class="col"><h2>제6층</h2><div class="callout"><b>청해(淸海) 전용</b>
+<p>부탄은 왕정정치와 종교정치에서 가장 좋은 부분을 가지고 운영하는 것 같다. 종교적인 거버넌스가 왕정 속에서 움직이고, 그것을 수용하는 지도층과 국민의 합의가 좋은 지표로 나타난다. 스스로 가진 자원과 환경에 순응하고 경제 규모도 적절히 절제하여 살아가는, 무리한 확장을 하지 않는 작지만 좋은 국가다. 자본주의의 확장이 부탄에 미치지 않은 것은 그 나라의 환경이기도 하지만 축복이기도 하다.</p>
+<p>데이터센터 같은 지금의 산업 자원에서 작은 충돌이 있지만, 그동안 쌓아 온 거버넌스 이념으로 잘 이겨낼 수 있으리라 본다. 특히 환경 문제에 휘둘려 망치는 일은 없어야 한다. 선진국에서는 거대한 데이터센터가 들어서며 충돌도 생기지만 이익도 보고 있다. 소국 부탄에서 데이터센터 몇 개가 자연환경을 훼손한다는 것은 어불성설이며, 오히려 화석연료로 전력을 생산하는 선진국의 데이터 운영이 더 나쁘지 않은가.</p>
+<p class="note">— 청해, 2026-10-19</p></div></section>
+<footer class="colophon col"><p>늘푸른바다 사회동역학연구소 · 저자 청해(淸海) 김기섭</p></footer></div></body></html>
