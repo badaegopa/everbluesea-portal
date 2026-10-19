@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Elitist Child Privilege Element — Supplementing GDELT Original (Comparison Before and After)</title><style>
+/* 레이아웃: 단일 본문 열(약 46rem) + 도판은 본문보다 넓게, 표·도판은 자체 가로 스크롤 */
+:root{
+ --paper:#F4F3EE; --ink:#1F2B27; --muted:#5A6762; --rule:#D6D2C6; --deep:#23392F;
+ --press:#B0392A; --gold:#9A700C; --teal:#3F7A6E; --plate:#FFFFFF; --soft:#E9EEEA; --hi:#F6E7C4;
+ --f-display:'Noto Serif KR','Nanum Myeongjo',serif; --f-body:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+ --f-data:'IBM Plex Mono',ui-monospace,'Consolas',monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+ --paper:#141A18; --ink:#E4E7E2; --muted:#9BA7A2; --rule:#34423C; --deep:#A9D0C3;
+ --press:#E4826F; --gold:#D8B05A; --teal:#86BDB0; --plate:#FFFFFF; --soft:#1C2522; --hi:#3A3320; color-scheme:dark}}
+:root[data-theme="dark"]{
+ --paper:#141A18; --ink:#E4E7E2; --muted:#9BA7A2; --rule:#34423C; --deep:#A9D0C3;
+ --press:#E4826F; --gold:#D8B05A; --teal:#86BDB0; --plate:#FFFFFF; --soft:#1C2522; --hi:#3A3320; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.75;padding-inline:16px;padding-block:0 64px}
+.book{max-width:66rem;margin:0 auto}
+.col{max-width:46rem;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--f-display);color:var(--deep);text-wrap:balance;line-height:1.35}
+h1{font-size:2.3rem;font-weight:900;margin:0}
+h2{font-size:1.55rem;font-weight:700;margin:3.2rem 0 .8rem;padding-top:1.2rem;border-top:2px solid var(--deep)}
+h3{font-size:1.18rem;font-weight:700;margin:2.2rem 0 .5rem}
+h4{font-size:1rem;font-weight:700;margin:1.4rem 0 .3rem;font-family:var(--f-body)}
+p{margin:.6rem 0}
+a{color:var(--teal)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.eyebrow{font-family:var(--f-data);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cover{padding-block:4rem 2.4rem;border-bottom:1px solid var(--rule);margin-bottom:2rem}
+.cover .vol{font-family:var(--f-display);font-size:1.05rem;color:var(--gold);font-weight:700;letter-spacing:.06em}
+.cover .sub{font-size:1.1rem;color:var(--muted);margin-top:.8rem;max-width:40rem}
+.cover .meta{font-family:var(--f-data);font-size:.8rem;color:var(--muted);margin-top:1.6rem;line-height:1.9}
+.toc{border:1px solid var(--rule);padding:1rem 1.2rem;margin:1.6rem auto;background:var(--soft)}
+.toc ol{margin:.3rem 0;padding-left:1.3rem}.toc li{margin:.15rem 0}
+.toc a{color:var(--ink);text-decoration:none}.toc a:hover{text-decoration:underline}
+.fx{border-left:3px solid var(--teal);background:var(--soft);padding:.8rem 1rem;margin:1rem 0}
+.fx .eq{font-family:var(--f-data);font-size:1.02rem;color:var(--deep);font-weight:500;overflow-x:auto;white-space:nowrap;padding:.2rem 0}
+.fx .t{font-weight:700;font-size:.9rem;color:var(--muted)}
+.fx dl{display:grid;grid-template-columns:max-content 1fr;gap:.15rem .9rem;margin:.5rem 0 0;font-size:.92rem}
+.fx dt{font-family:var(--f-data);color:var(--deep);font-weight:500}.fx dd{margin:0}
+.note{font-size:.88rem;color:var(--muted);border-top:1px dashed var(--rule);padding-top:.5rem;margin-top:.8rem}
+.callout{border:1px solid var(--rule);padding:.8rem 1rem;margin:1rem 0;font-size:.95rem}
+.callout.warn{border-color:var(--gold);background:var(--hi)}
+.tw{overflow-x:auto;margin:1rem 0}
+table{border-collapse:collapse;font-size:.88rem;width:100%;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--rule);padding:.42rem .55rem;text-align:left;vertical-align:top}
+th{font-weight:700;color:var(--deep);border-bottom:2px solid var(--deep);white-space:nowrap}
+td.n,th.n{text-align:right;font-family:var(--f-data);white-space:nowrap}
+td.c{text-align:center}
+tr.hi td{background:var(--hi)}
+.inband{background:var(--hi);font-weight:700}
+.warnmark{color:var(--gold);font-weight:700}
+.up{color:var(--press)}.dn{color:var(--teal)}
+figure{margin:1.6rem 0}
+.wide{width:min(66rem,calc(100vw - 32px));position:relative;left:50%;transform:translateX(-50%)}
+p,li,dd{overflow-wrap:anywhere}
+.plate{background:var(--plate);border:1px solid var(--rule);padding:.6rem;overflow-x:auto}
+.plate svg{display:block;max-width:100%;height:auto;margin:0 auto}
+.plate img{display:block;margin:0 auto}
+figcaption{font-size:.86rem;color:var(--muted);margin-top:.5rem}
+figcaption b{color:var(--ink)}
+.chart svg{display:block;max-width:100%;height:auto}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));gap:.6rem;margin:1rem 0}
+.kv>div{border-top:2px solid var(--deep);padding-top:.4rem;min-width:0}
+.kv .k{font-size:.78rem;color:var(--muted)}.kv .v{font-family:var(--f-data);font-size:1.15rem;color:var(--deep)}
+.kv .s{font-size:.78rem;color:var(--muted)}
+.country{margin-top:4rem;border-top:6px double var(--deep);padding-top:1.4rem}
+.country h2{border:0;padding:0;margin:.2rem 0 .2rem;font-size:1.8rem}
+.country .iso{font-family:var(--f-data);color:var(--muted);font-size:.9rem}
+.tl{list-style:none;padding:0;margin:.5rem 0}
+.tl li{display:grid;grid-template-columns:7.2rem 1fr;gap:.8rem;padding:.3rem 0;border-bottom:1px dotted var(--rule)}
+.tl .d{font-family:var(--f-data);font-size:.85rem;color:var(--muted)}
+.src{font-size:.82rem;color:var(--muted);padding-left:1.4rem}
+.src li{margin:.2rem 0;overflow-wrap:anywhere}.src a{word-break:break-all}
+.tag{display:inline-block;font-family:var(--f-data);font-size:.72rem;border:1px solid var(--rule);padding:0 .35rem;margin-right:.3rem;color:var(--muted)}
+sup.r{font-size:.7rem;color:var(--teal)}
+.pull{font-family:var(--f-display);font-size:1.15rem;color:var(--deep);border-left:3px solid var(--gold);padding:.3rem 0 .3rem 1rem;margin:1.4rem 0}
+.foot{margin-top:4rem;text-align:center;color:var(--gold);font-family:var(--f-display);font-size:.95rem}
+.colophon{font-size:.82rem;color:var(--muted);margin-top:1rem;text-align:center;font-family:var(--f-data)}
+@media (max-width:640px){h1{font-size:1.75rem}.tl li{grid-template-columns:1fr;gap:0}.fx dl{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style></head><body><div class="book">
+<header class="cover col"><div class="vol">Everblue Sea Institute for Social Dynamics · UI Uprising Index · Supplementary Observation Table, Revised Edition (Pilot)</div><h1>Elitist Child Privilege Element — Supplementing GDELT Original</h1><div class="sub">Previous (Google News) vs. Post (GDELT Original) Comparison — 11 Countries with Youth Uprisings</div><div class="meta">2026-10-19 · 淸海</div></header>
+<section class="col"><div class="callout warn"><b>Scope of Application of Six-Layer Discourse</b> — Layers 1–5 only. Prescriptions, moral evaluations, leader assessments, and predictions are not made. Layer 6 is reserved exclusively for Cheonghae (淸海).</div></section><section class="col"><h2>Layer 1 Data — Before vs. After</h2>
+<p><b>Before</b>(Supplementary Observation Table 3-1): Google News RSS queried by half-year intervals for publication dates within the interval; only articles with dates within the interval were counted. There was a limitation where recent articles mixed into past interval queries, leading to undercounting (in Sri Lanka's uprising, 1 of 17 articles in the preceding half-year fell within the interval).</p>
+<p><b>After</b>(This revised edition): GDELT GKG 2.1 original (English collection) was received as a daily sample of 8 time points (3-hour intervals) from 2021-09-01, aggregated at the article level. Country = country appearing in article location information. Cronyism = articles with corruption (CORRUPTION·WB_832_ANTI_CORRUPTION) in topic codes and expressions of cronyism, high-ranking officials' children, or dynasties in titles or URLs, displayed per 10,000 articles (parentheses = sample count). Because it is by month, the period immediately preceding the uprising (1–3 months prior, trigger phase) and 4–6 months prior (structure phase) can be distinguished.</p>
+<div class="tw"><table><thead><tr><th class="">Country</th><th class="">Uprising Start</th><th class="n">Before: Reports in the preceding half-year</th><th class="n">Before: Average of other intervals</th><th class="n">Before: Multiple</th><th class="n">After: Trigger (1–3 months prior)</th><th class="n">After: Structure (4–6 months prior)</th><th class="n">After: Uprising (start to 2 months)</th><th class="n">After: Normal times</th><th class="n">After: Cronyism trigger/normal times</th><th class="n">After: Corruption proportion trigger/normal times</th><th class="n">After: Sample articles in the trigger phase</th></tr></thead><tbody><tr><td class="">Democratic Socialist Republic of Sri Lanka</td><td class="">2022-03</td><td class="n">1</td><td class="n">6.7</td><td class="n">0.15x</td><td class="n">0.0 (0)</td><td class="n">2.7 (1)</td><td class="n">6.9 (3)</td><td class="n">1.4 (7)</td><td class="n">0.00x</td><td class="n">0.74x</td><td class="n">3.0k</td></tr><tr><td class="">Republic of Kenya</td><td class="">2024-06</td><td class="n">0</td><td class="n">4.2</td><td class="n">0.00x</td><td class="n">0.0 (0)</td><td class="n">1.9 (1)</td><td class="n">0.0 (0)</td><td class="n">2.8 (21)</td><td class="n">0.00x</td><td class="n">0.90x</td><td class="n">5.9k</td></tr><tr><td class="">People's Republic of Bangladesh</td><td class="">2024-07</td><td class="n">8</td><td class="n">4.0</td><td class="n">2.00x</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">5.2 (3)</td><td class="n">1.8 (14)</td><td class="n">0.00x</td><td class="n">0.91x</td><td class="n">3.9k</td></tr><tr><td class="">Republic of Serbia</td><td class="">2024-11</td><td class="n">3</td><td class="n">2.9</td><td class="n">1.03x</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">—</td><td class="n">0.82x</td><td class="n">1.3k</td></tr><tr><td class="">Republic of Indonesia</td><td class="">2025-08</td><td class="n">5</td><td class="n">7.7</td><td class="n">0.65x</td><td class="n">1.7 (1)</td><td class="n">0.0 (0)</td><td class="n">1.5 (1)</td><td class="n">1.3 (16)</td><td class="n">1.29x</td><td class="n">0.97x</td><td class="n">5.9k</td></tr><tr><td class="">Federal Democratic Republic of Nepal</td><td class="">2025-09</td><td class="n">3</td><td class="n">9.7</td><td class="n">0.31x</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">65.7 (19)</td><td class="n">1.1 (4)</td><td class="n">0.00x</td><td class="n">0.95x</td><td class="n">1.4k</td></tr><tr><td class="">Republic of the Philippines</td><td class="">2025-09</td><td class="n">4</td><td class="n">4.0</td><td class="n">1.00x</td><td class="n">1.3 (1)</td><td class="n">2.0 (2)</td><td class="n">3.4 (3)</td><td class="n">2.2 (34)</td><td class="n">0.59x</td><td class="n">0.93x</td><td class="n">7.8k</td></tr><tr><td class="">Kingdom of Morocco</td><td class="">2025-09</td><td class="n">4</td><td class="n">2.8</td><td class="n">1.43x</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">1.1 (5)</td><td class="n">0.00x</td><td class="n">0.83x</td><td class="n">1.5k</td></tr><tr><td class="">Republic of Madagascar</td><td class="">2025-09</td><td class="n">1</td><td class="n">3.5</td><td class="n">0.29x</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">—</td><td class="n">0.83x</td><td class="n">0.4k</td></tr><tr><td class="">Timor-Leste</td><td class="">2025-09</td><td class="n">1</td><td class="n">0.7</td><td class="n">1.43x</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">4.2 (2)</td><td class="n">0.00x</td><td class="n">0.45x</td><td class="n">0.2k</td></tr><tr><td class="">Republic of Peru</td><td class="">2025-09</td><td class="n">0</td><td class="n">2.3</td><td class="n">0.00x</td><td class="n">0.0 (0)</td><td class="n">0.0 (0)</td><td class="n">4.8 (1)</td><td class="n">0.5 (2)</td><td class="n">0.00x</td><td class="n">0.99x</td><td class="n">1.7k</td></tr></tbody></table></div>
+<p class="note">Multiple = ratio in the relevant interval ÷ ratio in normal times (the remaining months of that country). When the sample count is small (less than 10 in parentheses), multiples fluctuate more significantly. Collection scope: 2021-09 ~ 2026-10.</p></section>
+<section class="col"><h2>Layer 3 Pattern — What Both Before and After Point to</h2>
+<p>In the previous edition (<a href="/engines/ui/top30/UI_GenZ_AuxObservation_20261019.html">Supplementary Observation Table (Pilot) 3-1</a>), due to Google News's undercounting, it was not possible to determine whether reports of cronyism and children preceded uprisings. Recalculated using GDELT original data, <b>only one country, Indonesia (sample: 1 article), saw an increase in reports of cronyism and children's corruption immediately before the uprising</b>. Conversely, <b>these reports concentrate in the period when the uprising began</b> — Nepal (65.7 per 10,000 vs. 1.1 in normal times, sample: 19 articles), Sri Lanka (6.9 vs. 1.4), Bangladesh (5.2 vs. 1.8), and Peru (4.8 vs. 0.5). The proportion of corruption reports is also higher in the trigger phase than in normal times in no country (0.45–0.99x).</p>
+<p>The conclusions of the previous and subsequent editions point in the same direction — in international English-language reporting, issues of leaders' children and cronyism do not appear as signals preceding uprisings but emerge afterward as narratives explaining the uprising.</p></section>
+<section class="col"><h2>Layer 4 Perspective Shift — Where Does the Trigger Ignite First?</h2>
+<p>It was reported that Nepal's 'nepo kids' spread on local social media before international media (source in the case table of supplementary observation). If international English-language reporting only covered this story after the uprising, to capture this element earlier, the measurement medium must change — local-language media and social media. This revised edition is a record confirming that limitation.</p></section>
+<section class="col"><h2>Layer 5 Limitations</h2><ol class="note"><li>GDELT uses only English collections — local-language reports are excluded. It is an 8-time-point sample out of 96 daily points.</li><li>The expression dictionary (cronyism, children, dynasties) uses English regular expressions, so there are missed expressions and misclassified articles.</li><li>Generalization to the 11 case countries is not made.</li></ol></section>
+<section class="col"><div class="callout"><b>Layer 6 — Reserved Exclusively for Cheonghae (淸海)</b></div></section></div></body></html>
