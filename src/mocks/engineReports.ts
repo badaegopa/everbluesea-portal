@@ -469,6 +469,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // A0–A12 사회구조 설계공리 — 원문·철학 문서
   "cat-axioms": [
+    { id: "paper-integrated-v1-20261020", title: "통합 논문 v1 — 민중의 튼튼함과 국가의 흡수력: Λ¹²·BSLI·봉기지수로 본 엘리트 포획, 청년 세대 봉기, 세계 시위의 세 개의 물결 (담론육층사유법)", titleEn: "Integrated Paper v1 — The Robustness of the People and the Absorptive Capacity of the State: Elite Capture, Youth-Led Uprisings and Three Waves of World Protest through Λ¹², BSLI and the Uprising Index", region: "논문", regionEn: "Paper", scope: "단독", engine: "Λ¹² v2.0 · BSLI v7.0 · UI · 담론육층", date: "2026-10-20", htmlPath: "/engines/axioms/통합논문_민중의튼튼함과국가의흡수력_v1_20261020.html" },
     {
       id: "axioms-reverbant-v11",
       title: "사회구조 설계공리 A0~A12 원문 — REVERBANT v1.1 이론 정본", titleEn: "Social Structure Design Axioms A0–A12, Original Text — REVERBANT v1.1 Canonical Theory",
