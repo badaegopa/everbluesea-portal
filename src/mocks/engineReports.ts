@@ -519,6 +519,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // 오피니언 — 청해 칼럼과 그 원문 보고서 (2026-10-08 '준비중' 카드를 전환)
   "cat-opinion": [
+    { id: "opinion-price-of-sweetness-20261020", title: "[칼럼] 달콤함의 대가 — 국민이 권력자를 섬기듯, 권력자도 같은 값을 치러야 한다", titleEn: "[Column] The Price of Sweetness — As the People Serve Those in Power, Those in Power Must Pay the Same Price", region: "청해 칼럼", regionEn: "Cheonghae Column", scope: "단독", engine: "오피니언", date: "2026-10-20", htmlPath: "/engines/opinion/청해칼럼_달콤함의대가_20261020.html" },
     {
       id: "opinion-world-hunger-narrative-20261009",
       title: "[칼럼] 세계의 굶주림에 대한 서사 — 끼니는 국력이 아니라 성실함의 문제다", titleEn: "[Column] A Narrative of the World's Hunger — Meals Are a Matter of Diligence, Not National Power",

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<g opacity="0.6" fill="none" stroke-width="6">
+<line x1="400" y1="430" x2="400" y2="540" stroke="#8fae9f"/><line x1="250" y1="450" x2="550" y2="450" stroke="#8fae9f"/>
+<path d="M250 450 L215 510 L285 510 Z" stroke="#B8850E"/><path d="M550 450 L515 510 L585 510 Z" stroke="#5E9186"/>
+<line x1="360" y1="540" x2="440" y2="540" stroke="#8fae9f"/>
+</g>
+<text x="400" y="150" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">오피니언 · 청해 칼럼</text>
+<text x="400" y="250" text-anchor="middle" font-family="Georgia,serif" font-size="58" font-weight="bold" fill="#EFC97A">달콤함의 대가</text>
+<text x="400" y="310" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#F5F3EE">국민이 권력자를 섬기듯, 권력자도 같은 값을 치러야 한다</text>
+<text x="400" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#C8E0DC">1차 연구의 개념과 공리 · 절제된 나라 부탄의 교훈</text>
+<text x="400" y="590" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Opinion · everbluesea.org · 2026-10-20</text>
+</svg>

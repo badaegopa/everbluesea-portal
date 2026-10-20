@@ -80,6 +80,20 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-018",
+    category: "오피니언 · 청해 칼럼",
+    categoryEn: "Opinion · Cheonghae Column",
+    date: "2026-10-20",
+    author: "청해",
+    title: "달콤함의 대가 — 국민이 권력자를 섬기듯, 권력자도 같은 값을 치러야 한다",
+    titleEn: "The Price of Sweetness — As the People Serve Those in Power, Those in Power Must Pay the Same Price",
+    excerpt: "기득권(정치·제도·자본)의 일탈이 서민의 의식과 멀어질수록 그 달콤함은 반드시 큰 대가를 치르게 하고, 사회의 혼란은 막을 수 없게 된다. 통치자 네 명 중 한 명은 안에서 무너졌고, 2024~25년 청년 세대는 정치인 자녀의 사치 사진 한 장에 정부를 무너뜨렸다. 절제된 나라 부탄은 권력이 제도와 정책을 서민의 생활까지 내려보낼 때 오래간다는 것을 보여 준다. 1차 연구가 세운 개념과 공리 A0~A12·P0~P10을 함께 정리했다.",
+    excerptEn: "The further the deviance of the establishment — political, institutional and financial — drifts from the consciousness of ordinary people, the greater the price its sweetness exacts, until social turmoil can no longer be prevented. One ruler in four fell from within, and in 2024–25 a young generation brought down governments over a single photograph of politicians' children flaunting luxury. Bhutan, the restrained nation, shows that power lasts when it carries institutions and policies down to the lives of ordinary people. The column also sets out the concepts and axioms A0–A12 and P0–P10 established by the first phase of research.",
+    image: "/images/cards/r-018.svg",
+    tone: "dark" as const,
+    opinion: true, // ★ 오피니언 전용 칸 — 최신 칼럼 1편 노출(r-015는 오피니언 목록에 유지)
+  },
+  {
     id: "r-017",
     category: "통합 논문 · 담론육층",
     categoryEn: "Integrated Paper · Six-Layer Discourse",
