@@ -80,6 +80,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-017",
+    category: "통합 논문 · 담론육층",
+    categoryEn: "Integrated Paper · Six-Layer Discourse",
+    date: "2026-10-20",
+    author: "김기섭",
+    title: "민중의 튼튼함과 국가의 흡수력 — 통합 논문 v1",
+    titleEn: "The Robustness of the People and the Absorptive Capacity of the State — Integrated Paper v1",
+    excerpt: "홈페이지 보고서 415편을 담론육층사유법의 순서로 엮은 첫 통합 논문이다. 민중의 튼튼함(BSLI)이 받쳐 주지 않는 나라에서 지도층 부패(ρ −0.59)·해외 이탈·정치폭력이 함께 나타나고, 청년 세대 봉기는 위험 상위가 아니라 중위권·중진국에서 일어났다. 197개국을 위키백과 기준 통치 형태와 발전 단계로 나누어 운영·생활·전망·재건의 지렛대를 비교하고, 2024~2026 세계 반정부 대중운동 45건과 2026년 가을 유럽 소요에서 세 개의 물결과 공통 구조를 찾았다. 모든 유형에 공통인 위험을 낮추는 첫 지렛대는 지도자 곁의 기생을 끊는 것이다.",
+    excerptEn: "The first integrated paper, weaving 415 reports on this site together in the order of the Six-Layer Discourse Method. Where the robustness of ordinary people (BSLI) does not hold, elite corruption (ρ −0.59), emigration and political violence appear together, and youth-led uprisings broke out not among the highest-risk states but in the middle ranks and in upper-middle-income countries. The paper compares 197 countries by form of government (classified per Wikipedia) and stage of development across operation, livelihood, prospects and levers for reconstruction, and finds three waves and a shared structure in 45 anti-government mass movements of 2024–2026 and the autumn 2026 European unrest. The first lever common to every type is cutting the parasites around the leader.",
+    image: "/images/cards/r-017.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-016",
     category: "§37 PPI · 권력기생지수",
     categoryEn: "§37 PPI · Power Parasite Index",
