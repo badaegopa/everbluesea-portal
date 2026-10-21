@@ -80,6 +80,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-019",
+    category: "봉기지수 · 세계 관찰",
+    categoryEn: "Uprising Index · World Watch",
+    date: "2026-10-21",
+    author: "김기섭",
+    title: "유럽의 재정 악화 분석 — 전쟁은 서민을 어떻게 갉아먹는가",
+    titleEn: "Analysis of Europe's Fiscal Deterioration — How War Wears Down Ordinary People",
+    excerpt: "2026년 가을 유럽 시위는 우크라이나 원조 때문이 아니었다. 원조는 연 GDP의 0.04~0.14%였고, 서민을 친 것은 달러로 매겨진 기름값과, 재무장·이자에 자리를 내준 학교·복지 예산이었다. 끊긴 러시아 가스로 난방을 못 하는 사람은 프랑스에서 두 배가 되었고, 전쟁 연관 비용은 누적 적자의 3분의 1(독일 3분의 2)에 이르렀다. 전쟁의 뿌리·멈추지 않는 이유·우크라이나의 부패와 EU 가입·돈바스 자치구 구상까지 지정학으로 거슬러 오르고, 번외편에서 34개국을 비교해 묻는다 — 유럽형 선진국 모델은 실패인가, 자정 중인가.",
+    excerptEn: "The autumn 2026 protests in Europe were not caused by aid to Ukraine, which ran at 0.04–0.14% of GDP a year; ordinary people were hit by dollar-priced fuel and by school and welfare budgets displaced by rearmament and interest. With Russian gas cut off, the share of French people unable to heat their homes doubled, and war-linked costs reached a third of cumulative deficits (two-thirds in Germany). The report traces the geopolitics back to the roots of the war, why it does not stop, Ukraine's corruption and EU accession, and the idea of a Donbas autonomous zone, and in a special section compares 34 countries to ask: is the European advanced-economy model failing, or self-correcting?",
+    image: "/images/cards/r-019.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-018",
     category: "오피니언 · 청해 칼럼",
     categoryEn: "Opinion · Cheonghae Column",
