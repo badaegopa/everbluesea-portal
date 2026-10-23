@@ -80,6 +80,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-020",
+    category: "봉기지수 · 세계 관찰",
+    categoryEn: "Uprising Index · World Watch",
+    date: "2026-10-23",
+    author: "김기섭",
+    title: "동남아시아의 분쟁 — 지정학 전체와 국가별 기록",
+    titleEn: "Conflicts in Southeast Asia — The Regional Geopolitics and Country-by-Country Records",
+    excerpt: "동남아 11개국에서 지금 무력 충돌이 실제로 진행 중인 곳은 미얀마·태국 남부·필리핀·인도네시아 파푸아 네 곳이다. 미얀마 내전은 누적 사망 약 10만 명, 실향 약 380만 명에 이르렀고, 태국과 캄보디아는 2025년 전투기를 띄운 국가 간 교전 뒤 불안정한 휴전에 있다. 분쟁은 세 판 — 대륙부 내전·국경, 도서부 분리·반군, 남중국해 — 위에서 벌어지고, 중국은 그 셋 모두에서 중재자·투자자·당사국으로 서 있다. 뿌리는 국가 형성기에 정리되지 않은 경계와 소속이다. 14개 분쟁을 나라별로 따로 기록하고, 마지막에 묻는다 — 시위의 유럽과 무장 분쟁의 동남아는 무엇이 다른가.",
+    excerptEn: "Of Southeast Asia's 11 countries, armed conflict is actively under way in four: Myanmar, southern Thailand, the Philippines and Indonesia's Papua. Myanmar's civil war has left some 100,000 dead and about 3.8 million displaced, and Thailand and Cambodia sit in an unstable ceasefire after a 2025 interstate clash in which fighter jets flew. The conflicts unfold on three arenas — mainland civil war and borders, insular separatism and insurgency, and the South China Sea — and China stands in all three as mediator, investor and party. The roots are borders and belonging left unsettled when the states were formed. The report records 14 conflicts country by country and ends by asking how Europe's protests differ from Southeast Asia's armed conflicts.",
+    image: "/images/cards/r-020.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-019",
     category: "봉기지수 · 세계 관찰",
     categoryEn: "Uprising Index · World Watch",
