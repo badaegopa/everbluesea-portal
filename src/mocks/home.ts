@@ -80,6 +80,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-021",
+    category: "봉기지수 · 세계 관찰",
+    categoryEn: "Uprising Index · World Watch",
+    date: "2026-10-23",
+    author: "김기섭",
+    title: "유럽 시위의 번짐 — 진원지, 전이, 폭동, 재발",
+    titleEn: "The Spread of Protest in Europe — Epicentre, Contagion, Riots, Recurrence",
+    excerpt: "2026년 가을 유럽 시위는 프랑스(9/30 점화)를 진원지로 벨기에·이탈리아·포르투갈로 번졌다. 번진 곳을 가른 것은 고부채·고이자의 체질(AUC 0.94)과 같은 언어권(0.93)이었고, 연료가 더 많은 그리스와 신뢰가 더 떨어진 독일로는 10월 셋째 주까지 번지지 않았다. 43개 캠페인 가운데 폭동까지 간 5개는 모두 청년·학생 주도였고 모두 탄압과 만났다. 2010~25년 정책을 철회한 경우 2년 안 재발은 0/6, 강행한 경우 7/12. 국가의 결정이 생활비로 내려오고 목소리를 낼 통로가 막힐 때 청년이 먼저 나온다 — 일자별 변화 기록과 함께, 무장 분쟁의 동남아와 무엇이 다른지 묻는다.",
+    excerptEn: "Europe's autumn 2026 protests spread from their epicentre in France (ignited 30 September) to Belgium, Italy and Portugal. What separated the countries they reached was a high-debt, high-interest fiscal profile (AUC 0.94) and a shared language area (0.93); through the third week of October they did not reach Greece, with more fuel, or Germany, with lower trust. Of 43 campaigns, all five that turned into riots were led by young people and students, and all met repression. In 2010–25, campaigns whose policy was withdrawn did not recur within two years (0/6), while those pushed through recurred in 7 of 12. When state decisions land on the cost of living and the channels to object are blocked, the young move first — with a day-by-day change log, the report asks how this differs from Southeast Asia's armed conflicts.",
+    image: "/images/cards/r-021.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-020",
     category: "봉기지수 · 세계 관찰",
     categoryEn: "Uprising Index · World Watch",
