@@ -80,6 +80,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-022",
+    category: "봉기지수 · 세계 관찰",
+    categoryEn: "Uprising Index · World Watch",
+    date: "2026-10-23",
+    author: "김기섭",
+    title: "번외편 — 유럽 시위 현장 일지",
+    titleEn: "Special Edition — European Protest Field Log",
+    excerpt: "「유럽 시위의 번짐」의 번외편이다. 본편을 일곱 줄로 요약한 뒤, 그 아래에 날마다의 현장 기록을 서브 문서로 하나씩 더한다. 14개 나라의 영어·현지어 뉴스와 영문 위키백과를 매일 모아 시위·파업·봉쇄·충돌을 사건 단위로 묶고, 규모는 누가 셌는지(주최 측·경찰·언론)를 붙인다. 해석은 하지 않는다 — 날마다 쌓이는 사건 수·폭동·체포·정부 대응의 누적 표가 그대로 다음 분석의 데이터가 된다. 매일 갱신.",
+    excerptEn: "A special edition of 'The Spread of Protest in Europe'. It summarises the main report in seven points, then adds each day's field record below as a sub-document. Every day it gathers English and local-language news from 14 countries and English Wikipedia, groups protests, strikes, blockades and clashes event by event, and attributes every count to whoever made it (organisers, police, media). No interpretation — the cumulative table of events, riots, arrests and government responses that grows day by day is itself the data for the next analysis. Updated daily.",
+    image: "/images/cards/r-022.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-021",
     category: "봉기지수 · 세계 관찰",
     categoryEn: "Uprising Index · World Watch",
