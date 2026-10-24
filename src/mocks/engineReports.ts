@@ -524,6 +524,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // 오피니언 — 청해 칼럼과 그 원문 보고서 (2026-10-08 '준비중' 카드를 전환)
   "cat-opinion": [
+    { id: "opinion-army-on-the-streets-20261024", title: "[칼럼] 군대가 거리로 나올 때 — 경찰은 치안을 맡고 군대는 무력을 쓴다", titleEn: "[Column] When the Army Comes onto the Streets — The Police Keep Order; the Army Uses Force", region: "청해 칼럼", regionEn: "Cheonghae Column", scope: "단독", engine: "오피니언", date: "2026-10-24", htmlPath: "/engines/opinion/청해칼럼_군대가거리로나올때_20261024.html" },
     { id: "opinion-price-of-sweetness-20261020", title: "[칼럼] 달콤함의 대가 — 국민이 권력자를 섬기듯, 권력자도 같은 값을 치러야 한다", titleEn: "[Column] The Price of Sweetness — As the People Serve Those in Power, Those in Power Must Pay the Same Price", region: "청해 칼럼", regionEn: "Cheonghae Column", scope: "단독", engine: "오피니언", date: "2026-10-20", htmlPath: "/engines/opinion/청해칼럼_달콤함의대가_20261020.html" },
     {
       id: "opinion-world-hunger-narrative-20261009",
