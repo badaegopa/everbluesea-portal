@@ -80,6 +80,20 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-023",
+    category: "오피니언 · 청해 칼럼",
+    categoryEn: "Opinion · Cheonghae Column",
+    date: "2026-10-24",
+    author: "청해",
+    title: "군대가 거리로 나올 때 — 경찰은 치안을 맡고 군대는 무력을 쓴다",
+    titleEn: "When the Army Comes onto the Streets — The Police Keep Order; the Army Uses Force",
+    excerpt: "2026년 가을 이탈리아는 밀라노에 공수부대 500명을, 프랑스는 상티넬 작전 병력을 시설 경비에 돌렸다. 근대 유럽이 거리에서 군대를 빼려고 경찰을 만든 지 200년 만이다. 중세 반란부터 2026년까지 약탈 32건, 체포된 사람의 구성과 이민 시계열, 축구장에 남은 오래된 갈등을 자료로 따라가고 묻는다 — 약탈은 서민이 서민에게 무력을 행사하는 것이 아닌가.",
+    excerptEn: "In autumn 2026 Italy sent 500 paratroopers to Milan and France moved Operation Sentinelle troops to guard key sites — two centuries after modern Europe created police to take the army off the streets. Tracing 32 cases of looting from medieval revolts to 2026, the make-up of those arrested against migration trends, and the old grudges carried into football grounds, the column asks: is looting not ordinary people using force against ordinary people?",
+    image: "/images/cards/r-023.svg",
+    tone: "dark" as const,
+    opinion: true, // ★ 오피니언 전용 칸 — 최신 칼럼 1편 노출(r-018은 오피니언 목록에 유지)
+  },
+  {
     id: "r-022",
     category: "봉기지수 · 세계 관찰",
     categoryEn: "Uprising Index · World Watch",
