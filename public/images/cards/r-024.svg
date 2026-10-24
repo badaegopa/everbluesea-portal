@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<g opacity="0.55" fill="none" stroke-width="5">
+<line x1="120" y1="500" x2="680" y2="500" stroke="#8fae9f"/>
+<rect x="170" y="420" width="120" height="80" stroke="#B8850E"/><line x1="170" y1="445" x2="290" y2="445" stroke="#B8850E"/><line x1="170" y1="470" x2="290" y2="470" stroke="#B8850E"/>
+<rect x="510" y="420" width="120" height="80" stroke="#5E9186"/><line x1="560" y1="420" x2="560" y2="500" stroke="#5E9186"/>
+<line x1="400" y1="400" x2="400" y2="500" stroke="#C8E0DC"/><circle cx="400" cy="388" r="12" stroke="#C8E0DC"/>
+</g>
+<text x="400" y="150" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">오피니언 · 보고서</text>
+<text x="400" y="250" text-anchor="middle" font-family="Georgia,serif" font-size="54" font-weight="bold" fill="#EFC97A">같은 불씨, 다른 불길</text>
+<text x="400" y="310" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#F5F3EE">트리거는 왜 임계점에서 터지나</text>
+<text x="400" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#C8E0DC">유럽 시위·폭동 82건 · 번지지 않은 42건 · 무질서와 선거</text>
+<text x="400" y="590" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Opinion · everbluesea.org · 2026-10-25</text>
+</svg>

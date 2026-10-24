@@ -80,6 +80,20 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-024",
+    category: "오피니언 · 보고서",
+    categoryEn: "Opinion · Report",
+    date: "2026-10-25",
+    author: "청해",
+    title: "같은 불씨, 다른 불길: 트리거는 왜 임계점에서 터지나",
+    titleEn: "Same Spark, Different Fires: Why Triggers Ignite at the Threshold",
+    excerpt: "2023년 낭테르의 나엘 사건은 프랑스 전역을 태웠고, 2020년 배달기사 슈비아의 죽음은 거리를 거의 움직이지 못했다. 같은 불씨가 왜 어떤 때만 큰불이 되는가. 유럽 시위·폭동 82건과 번지지 않은 42건을 나란히 놓으니, 트리거의 크기도 연간 사회 지표도 갈림길을 가르지 못했다. 되풀이해 보인 것은 진행 중인 같은 쟁점의 운동, 당국 대응이 만든 두 번째 불씨, 부패·은폐로 이어진 참사, 노조의 선택이었다. 무질서 뒤에 '질서' 정당이 표를 얻는다는 일반 규칙은 유럽 25개 캠페인에서 확인되지 않았다.",
+    excerptEn: "The 2023 killing of Nahel in Nanterre set France alight, while the 2020 death of delivery rider Cédric Chouviat barely moved the streets. Why does the same spark become a blaze only sometimes? Setting 82 European protests and riots beside 42 triggers that did not spread, neither the size of the trigger nor annual social indicators separated the two. What recurred was an ongoing campaign on the same issue, a second spark created by the authorities' response, disasters tied to corruption or cover-up, and the choice unions made. Across 25 European campaigns, no general rule that disorder hands votes to 'law and order' parties was confirmed.",
+    image: "/images/cards/r-024.svg",
+    tone: "dark" as const,
+    opinion: true, // ★ 오피니언 전용 칸 — 최신 칼럼 1편 노출(r-023은 오피니언 목록에 유지)
+  },
+  {
     id: "r-023",
     category: "오피니언 · 청해 칼럼",
     categoryEn: "Opinion · Cheonghae Column",
