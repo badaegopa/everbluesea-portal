@@ -351,6 +351,7 @@ export const engineReports: Record<string, NationReport[]> = {
   ],
 
   // §34 지니경제불평등지수
+  "cat-gei": [], // 2026-10-25 청해: 불필요하여 삭제 — 방법론 해설(GEI_methodology.html·_EN)도 지움, 카드만 비워 둠
 
   // §35 국가역량지수
   "cat-nci": [

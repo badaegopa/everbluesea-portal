@@ -430,6 +430,21 @@ export const mainCategories = [
     image: "https://images.unsplash.com/photo-1501167786227-4cba60f6d58f?w=800&q=80",
   },
   {
+    // 2026-10-25 청해: 불필요하여 삭제(공식 통계로 언제든 얻을 수 있는 수치) — 섹션 카드만 비워 둔다
+    id: "cat-gei",
+    label: "지니경제불평등지수",
+    labelEn: "Gini Economic Inequality Index",
+    engineKey: "gei",
+    engineLabel: "§34 GEI",
+    count: 0,
+    subFilters: ["전체", "권역별", "단독"],
+    subFiltersEn: ["All", "Regional", "Standalone"],
+    topics: ["2026-10-25 불필요하여 삭제"],
+    topicsEn: ["Removed 2026-10-25 as unnecessary"],
+    isCore: false,
+    image: "https://readdy.ai/api/search-image?query=Atmospheric%20post%20industrial%20landscape%20abandoned%20factory&width=800&height=600&seq=cat-gei-06&orientation=landscape",
+  },
+  {
     id: "cat-nci",
     label: "국가역량지수",
     labelEn: "National Capacity Index",
