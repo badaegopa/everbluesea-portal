@@ -351,17 +351,6 @@ export const engineReports: Record<string, NationReport[]> = {
   ],
 
   // §34 지니경제불평등지수
-  "cat-gei": [
-    {
-      id: "gei-methodology",
-      title: "지니경제불평등지수 §34 — 공식과 방법론 해설 (로렌츠 곡선)", titleEn: "Gini Economic Inequality Index §34 — Formulas and Methodology (Lorenz Curve)",
-      region: "방법론", regionEn: "Methodology",
-      scope: "단독",
-      engine: "§34 GEI",
-      date: "2026-07-07",
-      htmlPath: "/engines/methodology/GEI_methodology.html",
-    },
-  ],
 
   // §35 국가역량지수
   "cat-nci": [

@@ -272,41 +272,6 @@ export const engineDetails: Record<string, EngineDetail> = {
     classificationEn: "Normal / Overheated / Bubble / Burst",
   },
 
-  gei: {
-    key: "gei",
-    label: "§34 GEI",
-    version: "Λ¹² 하위엔진",
-    nameKo: "지니경제불평등지수",
-    nameEn: "Gini Economic Inequality Index",
-    accent: "#8E44AD",
-    whatItMeasures: "소득·자산 불평등의 구조적 심화도를 지니계수 기반으로 측정합니다. 단순 지니계수를 넘어 세대 간·지역 간 불평등 이동성까지 포착합니다.",
-    whatItMeasuresEn: "Measures structural deepening of income and asset inequality beyond simple Gini coefficients, capturing intergenerational and regional inequality mobility.",
-    whyBuilt: "불평등은 봉기지수(UI)의 핵심 구성요소입니다. GEI는 Λ¹² A3(사회) 차원의 정밀 측정을 위해 설계됐습니다.",
-    whyBuiltEn: "Inequality is a core component of the Uprising Index. GEI was designed for precise measurement of the Λ¹² A3 (Society) dimension.",
-    formulas: [
-      {
-        expression: "G = 1 − Σᵢ(Xᵢ − Xᵢ₋₁)(Yᵢ + Yᵢ₋₁)",
-        description: "로렌츠 곡선 기반 지니계수 — 완전평등(0)에서 완전불평등(1)까지", descriptionEn: "Lorenz-curve-based Gini coefficient — from perfect equality (0) to perfect inequality (1)",
-        variables: [
-          { symbol: "Xᵢ", meaning: "누적 인구 비율 (i번째 분위)", meaningEn: "Cumulative population share (i-th quantile)" },
-          { symbol: "Yᵢ", meaning: "누적 소득 비율", meaningEn: "Cumulative income share" },
-          { symbol: "G = 0", meaning: "완전 평등", meaningEn: "Perfect equality" },
-          { symbol: "G = 1", meaning: "완전 불평등", meaningEn: "Perfect inequality" },
-          { symbol: "G > 0.4", meaning: "사회 불안정 임계 구간", meaningEn: "Critical zone of social instability" },
-        ],
-      },
-    ],
-    keyVariables: ["지니계수 G", "로렌츠 곡선", "세대 이동성", "지역 격차"],
-    dataSources: [
-      { name: "World Bank Poverty & Inequality", url: "https://pip.worldbank.org" },
-      { name: "OECD Income Distribution", url: "https://stats.oecd.org" },
-      { name: "LIS Cross-National Data", url: "https://www.lisdatacenter.org" },
-      { name: "통계청 가계금융복지조사", nameEn: "Statistics Korea Household Finance Survey", url: "https://kosis.kr" },
-    ],
-    classification: "평등(G<0.3) / 보통(0.3~0.4) / 불평등(0.4~0.5) / 극단(G>0.5)",
-    classificationEn: "Equal(G<0.3) / Moderate(0.3–0.4) / Unequal(0.4–0.5) / Extreme(G>0.5)",
-  },
-
   nci: {
     key: "nci",
     label: "§35 NCI",
