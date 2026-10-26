@@ -5,6 +5,7 @@ import { lazy, Suspense } from "react";
 
 const ReportPage = lazy(() => import("@/pages/report/page"));
 const ReportsPage = lazy(() => import("@/pages/reports/page"));
+const CountryPage = lazy(() => import("@/pages/country/page"));
 
 const routes: RouteObject[] = [
   {
@@ -24,6 +25,14 @@ const routes: RouteObject[] = [
     element: (
       <Suspense fallback={<div style={{ minHeight: "100vh", backgroundColor: "#F5F3EE" }} />}>
         <ReportPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/country/:iso",
+    element: (
+      <Suspense fallback={<div style={{ minHeight: "100vh", backgroundColor: "#F5F3EE" }} />}>
+        <CountryPage />
       </Suspense>
     ),
   },

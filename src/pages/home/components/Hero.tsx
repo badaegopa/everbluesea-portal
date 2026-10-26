@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import CountrySearch from "@/pages/home/components/CountrySearch";
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -62,6 +63,9 @@ export default function Hero() {
             </span>
           </h1>
         </div>
+
+        {/* 국가 검색 — 나라 이름으로 모든 보고서 찾기 */}
+        <CountrySearch />
 
         {/* Λ¹² 공식 박스 */}
         <div

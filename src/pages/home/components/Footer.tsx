@@ -4,7 +4,7 @@ export default function Footer() {
   const { i18n } = useTranslation();
   const isKo = i18n.language === "ko";
 
-  const cols = [
+  const cols: { title: string; links: (string | { label: string; href: string })[] }[] = [
     {
       title: "Reports",
       links: ["최신 분석", "REVERBANT", "BSLI", "UI · Λ¹²"],
