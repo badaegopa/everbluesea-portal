@@ -231,7 +231,7 @@ const EXTRA_CATEGORY_LABELS: Record<string, { ko: string; en: string }> = {
   "cat-afro": { ko: "AFRO-Λ 아프리카 서브엔진", en: "AFRO-Λ Africa Sub-Engine" },
 };
 
-function categoryLabel(cat: string): { ko: string; en: string } {
+export function categoryLabel(cat: string): { ko: string; en: string } {
   const mc = mainCategories.find((c) => c.id === cat);
   if (mc) return { ko: mc.label, en: mc.labelEn || mc.label };
   return EXTRA_CATEGORY_LABELS[cat] || { ko: cat, en: cat };
