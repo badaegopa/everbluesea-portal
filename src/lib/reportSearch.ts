@@ -112,7 +112,8 @@ export function searchEntries(): SearchEntry[] {
     const fields = [
       ...field(0, r.title, r.titleEn),
       ...field(1, cat.ko, cat.en, cat.engineLabel),
-      ...field(2, r.region, r.regionEn, r.engine),
+      // 엔진 표기의 BSLI 는 찾지 않는다(Λ¹² 국가편 "Λ¹²v2·BSLIv7.0" 이 BSLI 검색에 섞이지 않게) — BSLI 보고서는 분류로 찾는다
+      ...field(2, r.region, r.regionEn, r.engine?.replace(/BSLI\s*v?[\d.]*/gi, "")),
       ...field(3, fileBase(r.htmlPath)),
     ];
     const mentioned = new Set<string>([

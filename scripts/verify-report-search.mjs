@@ -51,8 +51,8 @@ console.log(`정규화 확인: "Λ¹²" → ${normalizeQueryText("Λ¹²")}, "�
 const titleOf = (h) => `${h.ir.report.title} ${h.ir.report.titleEn || ""}`;
 const cases = [
   ["시위", "some"],
-  ["BSLI", "some"],
-  ["bsli", "some"],
+  ["BSLI", "some", (r) => r.hits.filter((h) => h.ir.category === "cat-bsli").length === 144 && r.hits.every((h) => h.ir.category === "cat-bsli" || /BSLI/i.test(titleOf(h)))], // BSLI 분류 144편 + 제목에 BSLI가 든 보고서만(엔진 표기만 걸린 국가편 제외)
+  ["bsli", "some", (r) => r.hits.filter((h) => h.ir.category === "cat-bsli").length === 144 && r.hits.every((h) => h.ir.category === "cat-bsli" || /BSLI/i.test(titleOf(h)))],
   ["재정", "some"],
   ["protest", "some"],
   ["한국", "some", (r) => r.hits.every((h) => !/북한|North Korea/.test(h.ir.report.title + (h.ir.report.titleEn || "")) || /한국|South Korea|대한민국/.test(titleOf(h)))],
