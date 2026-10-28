@@ -7,12 +7,13 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[100dvh] flex flex-col items-center justify-center overflow-hidden"
-      style={{ isolation: "isolate" }}
+      className="relative min-h-[100dvh] flex flex-col items-center justify-center"
+      // 세로 overflow 를 숨기면 검색 목록이 섹션 아래(배너 띠)에서 잘린다 — 가로만 자르고, 아래 띠 위로 올라오게 z-index
+      style={{ isolation: "isolate", overflowX: "clip", zIndex: 10 }}
     >
       {/* 세계지도 배경 */}
       <div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden"
         style={{ zIndex: 0, opacity: 0.35 }}
       >
         <img
