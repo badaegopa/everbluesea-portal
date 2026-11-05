@@ -6,6 +6,8 @@ import type { EngineDetail } from "@/mocks/engineDetails";
 import { mainCategories } from "@/mocks/home";
 import { engineReports } from "@/mocks/engineReports";
 import { localizedHtmlPath, useTranslationManifest } from "@/lib/localizedPath";
+import { isNew } from "@/lib/isNew";
+import { NewBadge } from "@/components/NewBadge";
 
 export default function Categories() {
   const { t, i18n } = useTranslation();
@@ -69,6 +71,8 @@ export default function Categories() {
             // 실제 게재된 게시물 수 — engineReports 배열 길이를 우선 사용하고,
             // cat-feedback처럼 목록형이 아니어서 engineReports에 없는 카테고리만 home.ts의 count로 대체
             const liveCount = cardReports !== undefined ? cardReports.length : cat.count;
+            // 게시일 7일 이내 보고서가 하나라도 있으면 카드에 NEW 표시
+            const hasNew = cardReports?.some((r) => isNew(r.date)) ?? false;
             return (
               <React.Fragment key={cat.id}>
               <div
@@ -89,6 +93,9 @@ export default function Categories() {
                   </div>
                 )}
                 <div className="absolute inset-0 bg-black/45" />
+
+                {/* 카드 상단 왼쪽 NEW 배지 — 최근 7일 게시물이 있을 때 */}
+                {hasNew && <NewBadge className="absolute top-3 left-3 z-20 text-[11px] px-2.5 py-1" />}
 
                 <div className="relative z-10">
                   <div className="flex items-start justify-between mb-3">
@@ -202,6 +209,7 @@ export default function Categories() {
                           style={{ borderColor: "rgba(61,107,98,0.08)" }}
                         >
                           <span className="text-sm leading-snug" style={{ color: "#1E3A2F" }}>
+                            {isNew(r.date) && <NewBadge className="text-[9px] px-1.5 py-0.5 mr-1.5 align-middle" />}
                             {isKo ? r.title : (r.titleEn || r.title)}
                           </span>
                           <span className="flex items-center gap-2 flex-shrink-0 font-mono text-[10px]" style={{ color: "#5E9186" }}>

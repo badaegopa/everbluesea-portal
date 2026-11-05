@@ -2,6 +2,8 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { featuredReportsVisible, featuredStamp } from "@/mocks/home";
 import { nationReports } from "@/mocks/nationReports";
+import { isNew } from "@/lib/isNew";
+import { NewBadge } from "@/components/NewBadge";
 
 export default function FeaturedReports() {
   const { t, i18n } = useTranslation();
@@ -51,6 +53,7 @@ export default function FeaturedReports() {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-black/20" />
+                      {isNew(r.date) && <NewBadge className="absolute top-2 left-2 z-10 text-[11px] px-2.5 py-1" />}
                     </div>
                   </div>
 

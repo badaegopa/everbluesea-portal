@@ -2,6 +2,8 @@ import { useTranslation } from "react-i18next";
 import { useState, useMemo } from "react";
 import { nationReports } from "@/mocks/nationReports";
 import { localizedHtmlPath, useTranslationManifest } from "@/lib/localizedPath";
+import { isNew } from "@/lib/isNew";
+import { NewBadge } from "@/components/NewBadge";
 
 const REGIONS = ["전체", "유럽", "아메리카", "동북아시아", "기후·소멸", "중동", "동남아시아", "남아시아", "중앙아시아", "아프리카", "오세아니아"];
 const SCOPES = ["전체", "단독", "권역별"];
@@ -100,6 +102,7 @@ export default function ReportsPage() {
                     className="font-display text-base md:text-lg leading-snug transition"
                     style={{ color: "#1E3A2F" }}
                   >
+                    {isNew(r.date) && <NewBadge className="text-[9px] px-1.5 py-0.5 mr-1.5 align-middle" />}
                     {r.title}
                   </h3>
                   <div className="flex flex-wrap items-center gap-2 mt-2">
