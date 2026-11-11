@@ -80,6 +80,20 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-025",
+    category: "오피니언 · 청해 칼럼",
+    categoryEn: "Opinion · Cheonghae Column",
+    date: "2026-11-11",
+    author: "청해",
+    title: "노동의 참됨에 대하여 — 유럽의 거리에서 한국을 보다",
+    titleEn: "On the True Worth of Labor — Seeing Korea from the Streets of Europe",
+    excerpt: "2026년 가을, 유럽의 거리를 가장 먼저 채운 것은 15~18세 고교생들이었다. 이 시위들을 한 줄로 꿰는 것은 생활비, 주거, 무너진 학교, 그리고 일해도 나아지지 않는 삶이다. 프랑스의 연금과 노동 비용, 한국의 학업과 일자리, 독일의 직업훈련을 차례로 짚고 묻는다. 노동을 존중하는 사회는 법 하나, 정책 하나로 오지 않는다. 그 한 사람 한 사람의 정지선이 모여야 한다.",
+    excerptEn: "In autumn 2026 the first to fill Europe's streets were high-school students aged 15 to 18. What threads these protests together is the cost of living, housing, crumbling schools, and lives that do not improve however hard people work. Tracing France's pensions and labour costs, Korea's schooling and jobs, and Germany's vocational training, the column asks its question. A society that respects labour does not arrive with one law or one policy; it needs each person's own stop line.",
+    image: "/images/cards/r-025.svg",
+    tone: "dark" as const,
+    opinion: true, // ★ 오피니언 전용 칸 — 최신 칼럼 1편 노출(r-024는 오피니언 목록에 유지)
+  },
+  {
     id: "r-024",
     category: "오피니언 · 보고서",
     categoryEn: "Opinion · Report",

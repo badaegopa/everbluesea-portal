@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<g opacity="0.55" fill="none" stroke-width="5">
+<line x1="120" y1="500" x2="680" y2="500" stroke="#8fae9f"/>
+<line x1="200" y1="500" x2="200" y2="430" stroke="#B8850E"/><line x1="320" y1="500" x2="320" y2="400" stroke="#5E9186"/><line x1="440" y1="500" x2="440" y2="440" stroke="#C8E0DC"/><line x1="560" y1="500" x2="560" y2="410" stroke="#B8850E"/>
+<line x1="150" y1="470" x2="650" y2="470" stroke="#C8E0DC" stroke-dasharray="14 10"/>
+</g>
+<text x="400" y="150" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">오피니언 · 청해 칼럼</text>
+<text x="400" y="250" text-anchor="middle" font-family="Georgia,serif" font-size="52" font-weight="bold" fill="#EFC97A">노동의 참됨에 대하여</text>
+<text x="400" y="310" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#F5F3EE">유럽의 거리에서 한국을 보다</text>
+<text x="400" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#C8E0DC">프랑스의 청구서 · 한국의 학업 · 독일의 현장 · 정지선</text>
+<text x="400" y="590" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Opinion · everbluesea.org · 2026-11-11</text>
+</svg>
