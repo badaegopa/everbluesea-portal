@@ -80,6 +80,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-026",
+    category: "봉기지수 · 세계 관찰",
+    categoryEn: "Uprising Index · World Watch",
+    date: "2026-11-12",
+    author: "김기섭",
+    title: "세계 소요·시위·봉기·쿠데타 관측 보고서",
+    titleEn: "World Observation Report on Unrest, Protests, Uprisings and Coups",
+    excerpt: "GDELT 199개국 일별 보도, ACLED 212개국 원자료, 197개국 헤드라인, 공공 출처로 확인한 사건 20건을 겹쳐 읽었다. 분류는 두 갈래다. 최근 30일 수치로 본 현재 국면(시위 급증·폭력 동반 소요)과, 확인된 쿠데타·정권 퇴진·외국 개입이다. 보도량이 충분한 74개국 가운데 20개국이 급증 또는 소요 기준에 들었고 그중 10개국이 유럽이다. 유럽 전체의 시위 비중은 1.89배가 됐고, 포르투갈·프랑스·이탈리아·벨기에·세르비아 순으로 배율이 컸다. 해석은 하지 않는다 — 판정 기준과 한계를 함께 싣는다.",
+    excerptEn: "This report cross-reads daily GDELT coverage of 199 countries, ACLED raw data for 212 countries, headlines from 197 countries and 20 events confirmed from public sources. The classification has two tracks: the current phase measured over the last 30 days (protest surge, unrest with violence) and confirmed coups, ousters and foreign interventions. Of 74 countries with enough coverage, 20 met the surge or unrest threshold, 10 of them in Europe. Europe's overall protest share rose 1.89-fold, with the largest ratios in Portugal, France, Italy, Belgium and Serbia. No interpretation — the thresholds and limits are printed alongside.",
+    image: "/images/cards/r-026.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-025",
     category: "오피니언 · 청해 칼럼",
     categoryEn: "Opinion · Cheonghae Column",

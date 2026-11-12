@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<g opacity="0.55" fill="none" stroke-width="5">
+<line x1="120" y1="500" x2="680" y2="500" stroke="#8fae9f"/>
+<polyline points="130,470 220,465 300,468 380,460 450,455 520,440 580,400 620,420 660,380" stroke="#C8E0DC"/>
+<polyline points="130,492 300,490 520,488 580,470 660,478" stroke="#B8850E"/>
+</g>
+<text x="400" y="150" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">봉기지수 · 세계 관찰</text>
+<text x="400" y="240" text-anchor="middle" font-family="Georgia,serif" font-size="44" font-weight="bold" fill="#EFC97A">세계 소요·시위·봉기·쿠데타</text>
+<text x="400" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="22" fill="#F5F3EE">관측 보고서</text>
+<text x="400" y="345" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#C8E0DC">GDELT 199개국 · ACLED 212개국 · 확인 사건 20건</text>
+<text x="400" y="590" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Uprising Index · everbluesea.org · 2026-11-12</text>
+</svg>
