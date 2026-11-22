@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<g opacity="0.5" fill="none" stroke-width="4">
+<line x1="120" y1="470" x2="300" y2="470" stroke="#8fae9f"/>
+<line x1="360" y1="470" x2="540" y2="470" stroke="#8fae9f" stroke-dasharray="8 7"/>
+<line x1="600" y1="470" x2="680" y2="470" stroke="#C0392B"/>
+</g>
+<g>
+<circle cx="120" cy="470" r="12" fill="#C8E0DC"/>
+<circle cx="330" cy="470" r="14" fill="#EFC97A"/>
+<circle cx="570" cy="470" r="12" fill="#C8E0DC"/>
+<circle cx="690" cy="470" r="11" fill="none" stroke="#C0392B" stroke-width="3"/>
+<text x="690" y="476" text-anchor="middle" font-family="Georgia,serif" font-size="16" font-weight="bold" fill="#C0392B">✕</text>
+</g>
+<text x="400" y="150" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">언론 브리핑룸 · 국제</text>
+<text x="400" y="235" text-anchor="middle" font-family="Georgia,serif" font-size="40" font-weight="bold" fill="#EFC97A">인사이드 도이체방크</text>
+<text x="400" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#F5F3EE">연결고리를 찾아서!</text>
+<text x="400" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="15" fill="#C8E0DC">뉴스타파·국제 탐사보도 기초 · 담론6층 · 국가분석엔진</text>
+<text x="400" y="590" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Press Briefing · everbluesea.org · 2026-11-22</text>
+</svg>

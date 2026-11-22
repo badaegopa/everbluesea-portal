@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>인사이드 도이체방크 — 연결고리를 찾아서!</title>
+<style>
+  :root{
+    --bg:#F5F3EE; --ink:#23302B; --header:#2A3D35; --green:#5E9186;
+    --gold:#B8850E; --red:#C0392B; --brown:#6B4E2E; --border:#DDD8CE; --muted:#6a746f;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.75;}
+  .wrap{max-width:1040px;margin:0 auto;padding:28px 20px 80px;}
+  header.mast{border-bottom:3px solid var(--header);padding-bottom:16px;margin-bottom:8px;}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-family:Arial,sans-serif;}
+  h1{font-size:30px;margin:6px 0 4px;color:var(--header);letter-spacing:-.01em;}
+  .sub{color:var(--muted);font-size:14px;}
+  h2{font-size:21px;color:var(--header);border-left:5px solid var(--green);padding-left:12px;margin:40px 0 10px;}
+  h3{font-size:16px;color:var(--brown);margin:22px 0 6px;}
+  p{margin:8px 0;}
+  .lede{background:#fff;border:1px solid var(--border);border-left:5px solid var(--gold);padding:16px 18px;border-radius:8px;margin:18px 0;}
+  .disc{background:#FBF6E8;border:1px solid #E8D9A8;border-radius:8px;padding:12px 16px;margin:16px 0;font-size:13px;color:#6b5410;font-family:Arial,sans-serif;}
+  figure{margin:22px 0;background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px;}
+  figure svg{display:block;width:100%;height:auto;}
+  figcaption{font-size:12.5px;color:var(--muted);font-family:Arial,sans-serif;margin-top:8px;text-align:center;}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px;font-family:Arial,sans-serif;}
+  th,td{border:1px solid var(--border);padding:7px 9px;text-align:left;vertical-align:top;}
+  th{background:var(--header);color:#fff;font-weight:600;}
+  tr:nth-child(even) td{background:#faf8f3;}
+  .cut{color:var(--red);font-weight:700;}
+  .conf{color:var(--green);font-weight:700;}
+  .virt{color:var(--muted);font-style:italic;}
+  .layer{background:#fff;border:1px solid var(--border);border-radius:10px;padding:4px 20px 14px;margin:14px 0;}
+  .layer .lh{display:flex;align-items:baseline;gap:12px;border-bottom:1px dashed var(--border);padding:12px 0 8px;margin-bottom:6px;}
+  .layer .ln{font-size:22px;font-weight:700;color:var(--green);font-family:Arial,sans-serif;}
+  .layer .lt{font-size:17px;color:var(--header);font-weight:700;}
+  .l6{border:2px solid var(--gold);background:#FBF6E8;}
+  .l6 .ln{color:var(--gold);}
+  .q{margin:8px 0;padding:10px 14px;background:#fff;border-left:4px solid var(--gold);border-radius:6px;}
+  ul{margin:8px 0 8px 2px;padding-left:20px;} li{margin:5px 0;}
+  .note{font-size:12.5px;color:var(--muted);font-style:italic;}
+  footer{margin-top:50px;border-top:2px solid var(--header);padding-top:16px;font-size:13px;color:var(--muted);}
+  .tag{display:inline-block;font-family:Arial,sans-serif;font-size:11px;padding:2px 8px;border-radius:10px;border:1px solid var(--border);margin-right:6px;margin-bottom:4px;}
+  .src a{color:var(--green);} .src{font-size:12.5px;font-family:Arial,sans-serif;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">언론 브리핑룸 · Press Briefing · 국제</div>
+  <h1>인사이드 도이체방크 — 연결고리를 찾아서!</h1>
+  <div class="sub">2026-11-22 · 淸海(김기섭) · 공개 탐사보도 종합·구조화 · 담론육층사유법 1~5층 관찰, 6층은 비움</div>
+</header>
+
+<div class="disc">
+  이 브리핑은 <strong>뉴스타파와 국제 탐사보도</strong>('Inside Deutsche Bank' 컨소시엄 — 뉴스타파·ICIJ·Follow the Money·Reuters 등 56개 매체·230명+ 기자, 2026년 11월)의 보도를 <strong>기초로</strong>, 그 사실들을 모아 구조와 시계열로 <strong>데이터화</strong>한 것이다.
+  새로운 사실을 주장하지 않으며, <strong>특정인의 유죄를 단정하지 않는다</strong> — 의혹은 의혹으로, 혐의는 혐의로, 미확인은 미확인으로 표기한다.
+  해석은 담론육층 1~5층에 한정하고, 도덕·지도자 평가(6층)는 비워 둔다.
+</div>
+
+<div class="lede">
+  <strong>한 줄.</strong> 유출·보도가 드러낸 것은, <strong>통제가 닿아야 할 표층 아래 안 보이게 설계된 가림막이 세 겹</strong>(면제·연결망·소유)이라는 사실이고, 그 장치들이 <strong>유출 직전 몇 달에 연달아 켜졌다.</strong>
+  돈이 자라는 고리(R)는 다 이어져 있고, 그 돈을 멈추는 고리(B)는 다섯 군데가 다 잘려 있다 — 그래서 터지지 않고 가림막 뒤에 남는다. 오히려 도덕적 행동이 강제되고 선행되어야 할 지도층과 기득권 세력, 그리고 자본가들의 추악한(?) 모습을 들여다본다.
+  <br><span class="note">판정·조율 여부·도덕 평가는 담지 않는다. 울림이 가리킨 자리에 사실의 시계열만 놓는다. 울림≠단정.</span>
+</div>
+
+<!-- ============ FIGURE 1: TIMELINE ============ -->
+<h2>그림 1 — 시차별 사건 타임라인 (전례 → 장치 가동 → 유출 주간)</h2>
+<figure>
+<svg viewBox="0 0 1240 560" xmlns="http://www.w3.org/2000/svg" font-family="Arial,sans-serif">
+  <defs>
+    <marker id="tv" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10" fill="none" stroke="#8a8a8a" stroke-width="1.3"/></marker>
+  </defs>
+  <rect x="0" y="0" width="1240" height="560" fill="#ffffff"/>
+  <rect x="40" y="70" width="440" height="430" fill="#FBF6E8" opacity="0.6"/>
+  <rect x="500" y="70" width="330" height="430" fill="#F3EADF" opacity="0.7"/>
+  <rect x="850" y="70" width="350" height="430" fill="#EAF2EE" opacity="0.7"/>
+  <text x="260" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#B8850E">전례 (2013–2021)</text>
+  <text x="665" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#6B4E2E">가림막 장치 가동 (2025–2026.8)</text>
+  <text x="1025" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#2A3D35">유출 주간 (2026.11)</text>
+  <text x="48" y="150" font-size="11.5" fill="#8a7a3a">① 과거 유출·전례</text>
+  <text x="48" y="285" font-size="11.5" fill="#6B4E2E">② 가림막 장치</text>
+  <text x="48" y="420" font-size="11.5" fill="#2A3D35">③ 2026 유출 전개</text>
+  <line x1="60" y1="170" x2="1200" y2="170" stroke="#e3dcc8" stroke-width="2"/>
+  <line x1="60" y1="305" x2="1200" y2="305" stroke="#e8ddcf" stroke-width="2"/>
+  <line x1="60" y1="440" x2="1200" y2="440" stroke="#d6e4dd" stroke-width="2"/>
+  <g fill="#B8850E">
+    <circle cx="110" cy="170" r="6"/><circle cx="190" cy="170" r="6"/><circle cx="275" cy="170" r="6"/>
+    <circle cx="350" cy="170" r="7" stroke="#8a6300" stroke-width="2"/><circle cx="415" cy="170" r="6"/><circle cx="465" cy="170" r="6"/>
+  </g>
+  <g font-size="10.5" fill="#6b5410" text-anchor="middle">
+    <text x="110" y="135">2013</text><text x="110" y="200">DB싱가포르</text><text x="110" y="213">309 역외법인</text>
+    <text x="190" y="135">2016</text><text x="190" y="200">파나마</text><text x="190" y="213">페이퍼스</text>
+    <text x="275" y="135">2017</text><text x="275" y="200">파라다이스</text><text x="275" y="213">(애플비)</text>
+    <text x="350" y="128" font-weight="bold" fill="#8a6300">2018</text><text x="350" y="200" font-weight="bold" fill="#8a6300">Regula/Trident</text><text x="350" y="213">은행-내부 명목</text>
+    <text x="420" y="135">2019</text><text x="420" y="200">트로이카</text><text x="420" y="213">세탁소</text>
+    <text x="467" y="135">2021</text><text x="467" y="248">판도라</text><text x="467" y="261">14공급자</text>
+  </g>
+  <g fill="#6B4E2E">
+    <circle cx="545" cy="305" r="6"/><circle cx="635" cy="305" r="6"/><circle cx="715" cy="305" r="6"/><circle cx="805" cy="305" r="6"/>
+  </g>
+  <g font-size="10.5" fill="#6B4E2E" text-anchor="middle">
+    <text x="545" y="280">25.02</text><text x="545" y="335" fill="#C0392B" font-weight="bold">FCPA 집행중단</text>
+    <text x="635" y="280">25.03</text><text x="635" y="335" fill="#C0392B" font-weight="bold">CTA 등록 잠정면제</text>
+    <text x="715" y="280">25.06</text><text x="715" y="335">FCPA 좁힘 확정</text>
+    <text x="805" y="280">26.08</text><text x="805" y="335" fill="#C0392B" font-weight="bold">CTA 최종 발효</text>
+  </g>
+  <path d="M540,352 Q675,372 810,352" fill="none" stroke="#8a8a8a" stroke-width="1.4" stroke-dasharray="4 4"/>
+  <text x="675" y="388" text-anchor="middle" font-size="10.5" fill="#8a8a8a" font-style="italic">동시성 ⇢ 조율? (판정은 6층)</text>
+  <g fill="#2A3D35">
+    <circle cx="880" cy="440" r="7" stroke="#B8850E" stroke-width="2"/><circle cx="975" cy="440" r="6"/><circle cx="1065" cy="440" r="6"/><circle cx="1135" cy="440" r="6"/><circle cx="1185" cy="440" r="5"/>
+  </g>
+  <g font-size="10.5" fill="#2A3D35" text-anchor="middle">
+    <text x="880" y="415" font-weight="bold" fill="#B8850E">11-17</text><text x="880" y="470">유출 15M</text><text x="880" y="483">(노출 시작)</text>
+    <text x="975" y="415">11-18</text><text x="975" y="470">헤세주 조사·</text><text x="975" y="483">데리파스카망</text>
+    <text x="1065" y="415">11-19</text><text x="1065" y="470" fill="#C0392B">APEC 면책·</text><text x="1065" y="483">뉴스타파 주간</text>
+    <text x="1135" y="415">11-20</text><text x="1135" y="470">투명성 요구</text>
+    <text x="1185" y="415">11-22</text><text x="1185" y="470">가림막 분석</text>
+  </g>
+  <path d="M350,178 C350,300 820,330 965,432" fill="none" stroke="#8a8a8a" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#tv)"/>
+  <text x="640" y="250" font-size="10.5" fill="#8a8a8a" font-style="italic">전례의 '은행 내부 명목' 구조가 되풀이되는가? — 추측(후속 보도 대기)</text>
+  <path d="M490,70 l0,430" stroke="#cfc6ad" stroke-width="1" stroke-dasharray="3 4"/>
+  <path d="M840,70 l0,430" stroke="#cdb9a0" stroke-width="1" stroke-dasharray="3 4"/>
+</svg>
+<figcaption>전례(①)의 같은 자금 연결망·공급자 구조가, 가림막 장치(②)가 연달아 켜진 뒤, 2026 유출(③)로 다시 드러난다. 점선 = 추측·미확인.</figcaption>
+</figure>
+
+<!-- ============ 담론 6층 ============ -->
+<h2>담론육층사유법으로 읽기</h2>
+<p class="note">1~5층 = 관찰·해석. 6층 = 지도자의 덕목에 대한 철학적 질문으로, 답은 비운다.</p>
+
+<div class="layer">
+  <div class="lh"><span class="ln">1층</span><span class="lt">데이터 — 무엇이 보도되었는가</span></div>
+  <ul>
+    <li>유출 15M(15.6M) 파일, 56개 매체·230명+ 기자, 주관 Barracuda Media. <span class="note">(공개 보도)</span></li>
+    <li>엡스타인 관련 의심거래 <strong>약 $5.82억</strong>(기존 보도의 약 2배)으로 <em>보도</em>. 2017년 트럼프 등 1,586개 계좌 세금문서 오발송 <em>보도</em>.</li>
+    <li>데리파스카 연결망 <strong>최소 €17억</strong>(2017–2020)·유령회사 15개+, 헝가리 MKB 경유로 <em>보도</em>. 은행 내부 리뷰명 'Project Wingman'(2019). <strong>어느 SAR도 데리파스카를 지명하지 않았다고 보도.</strong></li>
+    <li>하나은행 파나마 지점: 도이체방크 내부 실사에서 잠재 유령회사 18개·SAR 연 2건으로 <em>보도</em>, 결제망 퇴출. (뉴스타파)</li>
+    <li>美·러·中 평화선언(11-19): 조항 4개 세 판본 동일, <strong>공직자 면책 포함·은행/우크라이나 조항 부재</strong>(정부 공식 전문).</li>
+    <li>제도: FCPA 집행중단(25-02 행정명령)·CTA 실소유주 등록 무력화(25-03→26-08 발효)·헤세주 데이터보호 조사(범위=보안·통지).</li>
+  </ul>
+  <p class="note">판단 유보. 보도·공개 자료의 현상만 기록.</p>
+</div>
+
+<div class="layer">
+  <div class="lh"><span class="ln">2층</span><span class="lt">이해관계 — 누가 진화를 막는가</span></div>
+  <p>거버넌스·집행(A8)을 신뢰·투명(A2)에 맞서 <strong>비무장화</strong>한 손들. 가림막 세 겹을 세운 행위자(구조적 서술, 유죄 단정 아님):</p>
+  <table>
+    <tr><th>행위자</th><th>구조적 역할</th><th>겹</th></tr>
+    <tr><td>규제를 완화·중단한 정책</td><td>FCPA 집행중단·SEC FCPA부서 해체·CTA 등록 무력화·APEC 면책 조항</td><td>① 면제</td></tr>
+    <tr><td>은행</td><td>보고(SAR 230건)는 쌓였으나 흐름 지속, "오래된 일·통제 강화"로 방어(은행 입장)</td><td>② 연결망</td></tr>
+    <tr><td>중개 산업 (전례상 은행 내부 명목회사 포함)</td><td>껍데기 설립·명목이사 공급. 과거 사례 Regula=도이체방크 자회사(ICIJ)</td><td>③ 소유</td></tr>
+    <tr><td>고객</td><td>보도된 올리가르히·공직자·거래선 — 껍데기 뒤 실소유주(혐의·의혹 단계)</td><td>—</td></tr>
+  </table>
+</div>
+
+<div class="layer">
+  <div class="lh"><span class="ln">3층</span><span class="lt">역사 패턴 — 이미 일어난 일이 다시 일어난다</span></div>
+  <p>같은 자금 연결망·같은 공급자·같은 '옛일' 방어가 반복되어 왔다(프랙탈 자기유사):</p>
+  <p><span class="tag">2013 싱가포르309</span><span class="tag">2016 파나마</span><span class="tag">2017 파라다이스</span><span class="tag">2018 Regula/Trident</span><span class="tag">2019 트로이카</span><span class="tag">2021 판도라</span><span class="tag">2026 인사이드DB</span></p>
+  <p>전례의 핵심: 2018년 <strong>Regula</strong>(도이체방크 자회사)가 다수 역외회사의 서류상 이사로 등재되고 등기대리는 <strong>Trident Trust</strong>였다고 ICIJ가 보도 — 중개자가 바깥이 아니라 <strong>은행 안</strong>이었던 사례. 이 구조가 2026 네트워크(Cliffmark·파버렉스 등)에 되풀이되는지는 <span class="virt">현재 미확인 — 후속 보도를 기다린다.</span></p>
+</div>
+
+<div class="layer">
+  <div class="lh"><span class="ln">4층</span><span class="lt">관점 전환 — 붕괴가 아니라 진화다</span></div>
+  <p>유출을 '스캔들'로만 보면 1층 숫자에 갇힌다. 4층에서 유출은 사회가 가림막을 걷어 <strong>진화하려는 전환점</strong>이다.</p>
+  <p>그러나 그 진화 동력이 <strong>억압(White Dwarf)으로 귀결될 위험</strong>이 보인다 — 조사 범위가 좁고(보안·통지), 집행이 끊기고(FCPA 중단), 공직자 면책 조항이 재확인됐다. <strong>노출은 통제를 부를 수 있었으나, 제도가 그 통제를 끈다.</strong> 균형 고리 B(통제)가 끊긴 자리가 곧 진화가 억압으로 꺾이는 자리다(그림 2).</p>
+</div>
+
+<div class="layer">
+  <div class="lh"><span class="ln">5층</span><span class="lt">지식 프레임 — 인류의 역사 속에서 해석한다</span></div>
+  <ul>
+    <li><strong>임피던스 불일치</strong>: 보고(SAR)는 쌓이나 집행과 임피던스가 안 맞아 에너지가 흐르지 못한다 — 끊어짐 ①(SAR→집행).</li>
+    <li><strong>공명·동기화</strong>: 가림막 장치들(FCPA·CTA·면책)의 시기가 유출 전후로 겹친다. 메트로놈이 같은 판 위에서 동기화되듯.</li>
+    <li><strong>닫힌 순환</strong>: "자본이 자본을 낳는다"는 순환이 유령회사로 압축되고, 그 압축 에너지의 향방을 BSLI·UI 엔진이 읽는다.</li>
+  </ul>
+</div>
+
+<h2>국가분석엔진으로 본 종합 분석 <span style="font-size:14px;color:#6a746f;font-weight:400;">(논평 — 담론6층과 구분)</span></h2>
+<p class="note">아래는 담론6층(철학적 질문)과 다른 <strong>논평</strong>이다. 늘푸른바다 국가분석엔진(Λ¹²·BSLI·UI·§37 PPI)의 <strong>개념·공리</strong>로 이 현상을 종합한다. 이 사안은 단일국 데이터셋이 아니므로 <strong>엔진 수치를 산출하지 않는다</strong> — 개념 렌즈로 방향만 읽고, 빈칸은 빈칸으로 둔다. 처방·도덕·지도자 평가는 여기서도 하지 않는다.</p>
+
+<h3>(가) 압박 좌표계 · Λ¹² — 어느 축이 눌리나</h3>
+<table>
+  <tr><th>축</th><th>역할</th><th>이 현상에서</th></tr>
+  <tr><td>A2 제도신뢰</td><td>흡수체(탄성)</td><td>부패통제·투명성 침식 — 흡수체가 압력을 <strong>흡수</strong>하지 못하고 압력의 <strong>통로</strong>가 됨</td></tr>
+  <tr><td>A8 거버넌스</td><td>흡수체(탄성)</td><td>집행·감독의 무기화·비활성화(FCPA 중단·SEC 해체·면책)</td></tr>
+  <tr><td>A10 불평등 · A12 이동성</td><td>압력원</td><td>자본의 국경 간 이동(A12)이 불평등(A10)을 키우며 압력으로 작동</td></tr>
+</table>
+<p>두 흡수체(A2·A8)가 동시에 약해져 체제 흡수역량 SE(t)가 낮아지고, 압력원은 가림막에 가려진다 — 좌표는 <strong>'만성 하중'</strong> 쪽으로 읽힌다.</p>
+
+<h3>(나) 엘리트 포획 · §37 PPI(권력기생) — 책임의 절단</h3>
+<p>포획된 제도에서 지대(rent)를 뽑고 <strong>책임 사슬을 끊는</strong> 구조는 권력기생(PPI)의 전형적 형태다. 인과 루프도의 <strong>끊어짐 다섯(①~⑤)</strong>이 곧 '책임이 어디서 끊기는가'의 절단점이다. 책임 귀속이 흐려질수록 기생도가 높아지는 방향이되, <strong>수치는 비운다.</strong></p>
+
+<h3>(다) UI 봉기동역학 — 어느 붕괴경로로 기우나</h3>
+<p>A2·A8의 공동화 + <strong>방출 없음</strong>(면제 장치·엘리트 결속 C_internal)이 겹치면, 사회 압력 F(t)가 체제 흡수 SE(t)를 넘지 못하도록 억눌린다. 결과는 <strong>White Dwarf(폭발 잠복)</strong> 또는 <strong>Black Hole(공동화·복원 곤란)</strong> 쪽이다. <strong>Supernova(방출·재편)</strong>로 가려면 균형 고리 B(통제)가 다시 이어져야 한다. 4층의 '억압으로 꺾일 위험'을 엔진 언어로 옮기면 WD/BH 경사다.</p>
+
+<h3>(라) κ_L0 축적 — 임계는 수치가 아니라 누적</h3>
+<p>유출의 연쇄(스위스리크스 → 파나마 → 파라다이스 → 트로이카 → 판도라 → 인사이드 도이체방크)는 '옳지 않다'는 공명이 쌓이는 저수지, 곧 <strong>κ_L0 축적</strong>으로 읽힌다. 작은 불씨가 흩어졌다 중력장에 다시 뭉치듯, 임계는 한 사건의 크기가 아니라 <strong>누적</strong>으로 온다. Γ_execution = 1 − κ_L0 — 축적이 임계를 넘으면 '통제를 끄는 손'도 흐름을 멈춰 세우지 못한다.</p>
+
+<p class="lede" style="border-left-color:var(--green);"><strong>엔진 종합 한 줄.</strong> 엔진은 이 현상을 <strong>'흡수체(제도신뢰·거버넌스)가 압력의 통로로 뒤집히고, 책임이 다섯 군데서 끊겨, 방출 없는 잠복(WD)·공동화(BH)로 기우는'</strong> 상태로 읽는다. 다만 단일국이 아니어서 수치는 비우고 방향만 짚는다.</p>
+
+<div class="layer l6">
+  <div class="lh"><span class="ln">6층</span><span class="lt">철학적 질문 — 지도자의 덕목은 무엇인가</span></div>
+  <p>이 자리의 답은 비운다. 질문만 둔다.</p>
+  <div class="q">① 인류는 왜 이 연결 구조를 <strong>반복</strong>하는가.</div>
+  <div class="q">② 진화를 막는 것의 <strong>본질</strong> — '불법'이 아니라 '합법적 불가시화'가 어떻게 가능해지는가.</div>
+  <div class="q">③ 세금과 공적 신뢰로 사는 자리에 선 <strong>지도자의 덕목</strong>은 무엇인가.</div>
+  <p class="note">이 브리핑은 세 질문에 답하지 않는다. 구조와 시계열을 보일 뿐, 도덕·지도자 평가는 독자와 공적 토론의 몫으로 남긴다.</p>
+</div>
+
+<!-- ============ FIGURE 2: CAUSAL LOOP ============ -->
+<h2>그림 2 — 가림막 인과 루프도</h2>
+<figure>
+<svg viewBox="0 0 1320 920" xmlns="http://www.w3.org/2000/svg" font-family="'Malgun Gothic','Apple SD Gothic Neo',sans-serif">
+  <defs>
+    <marker id="aSolid" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2A3D35"/>
+    </marker>
+    <marker id="aBreak" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#C0392B"/>
+    </marker>
+    <marker id="aVirt" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10" fill="none" stroke="#7D7D7D" stroke-width="1.4"/>
+    </marker>
+    <marker id="aLoop" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B8850E"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1320" height="920" fill="#F7F5F0"/>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#2A3D35">도이체방크 — 가림막 인과 루프도</text>
+  <text x="40" y="72" font-size="14" fill="#55605A">어디서 사슬이 연결되고 · 끊어지고 · 가상으로만 이어지는가  (1~5층 관찰 · 조율 여부와 도덕 판정은 6층)</text>
+
+  <g transform="translate(980,92)">
+    <rect x="0" y="0" width="300" height="118" rx="8" fill="#FFFFFF" stroke="#DDD8CE"/>
+    <text x="14" y="24" font-size="13" font-weight="bold" fill="#2A3D35">선의 종류</text>
+    <line x1="14" y1="44" x2="52" y2="44" stroke="#2A3D35" stroke-width="2.6" marker-end="url(#aSolid)"/>
+    <text x="60" y="48" font-size="12.5" fill="#333">확증 연결 — 문서·보도로 확인</text>
+    <line x1="14" y1="70" x2="52" y2="70" stroke="#C0392B" stroke-width="2.6" marker-end="url(#aBreak)"/>
+    <text x="34" y="66" font-size="15" fill="#C0392B" font-weight="bold">✕</text>
+    <text x="60" y="74" font-size="12.5" fill="#333">끊어짐 — 이어져야 할 고리가 잘림</text>
+    <line x1="14" y1="96" x2="52" y2="96" stroke="#7D7D7D" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#aVirt)"/>
+    <text x="60" y="100" font-size="12.5" fill="#333">가상 연결 — 추정·미확인 (?)</text>
+  </g>
+
+  <text x="40" y="150" font-size="13" font-weight="bold" fill="#B8850E">통제</text>
+  <text x="40" y="330" font-size="13" font-weight="bold" fill="#2A3D35">연결망 (흐름)</text>
+  <text x="40" y="620" font-size="13" font-weight="bold" fill="#6B4E2E">가림막 장치</text>
+
+  <g>
+    <rect x="300" y="120" width="170" height="54" rx="8" fill="#FBF1D6" stroke="#B8850E"/>
+    <text x="385" y="143" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#8a6300">유출 · 15M 파일</text>
+    <text x="385" y="161" font-size="11" text-anchor="middle" fill="#8a6300">2026-11-17</text>
+
+    <rect x="540" y="120" width="180" height="54" rx="8" fill="#FBF1D6" stroke="#B8850E"/>
+    <text x="630" y="143" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#8a6300">보도 (뉴스타파·컨소시엄)</text>
+    <text x="630" y="161" font-size="11" text-anchor="middle" fill="#8a6300">고객을 드러냄</text>
+
+    <rect x="790" y="120" width="180" height="54" rx="8" fill="#FBF1D6" stroke="#B8850E"/>
+    <text x="880" y="143" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#8a6300">독일 조사 (헤세주)</text>
+    <text x="880" y="161" font-size="11" text-anchor="middle" fill="#8a6300">범위=보안·통지만</text>
+  </g>
+
+  <g>
+    <rect x="40" y="250" width="180" height="60" rx="8" fill="#2A3D35"/>
+    <text x="130" y="275" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#fff">원자금</text>
+    <text x="130" y="294" font-size="11" text-anchor="middle" fill="#cfe0da">올리가르히·공직자</text>
+
+    <rect x="370" y="250" width="160" height="60" rx="8" fill="#2A3D35"/>
+    <text x="450" y="277" font-size="14" font-weight="bold" text-anchor="middle" fill="#fff">유령회사</text>
+    <text x="450" y="295" font-size="11" text-anchor="middle" fill="#cfe0da">BVI·파나마·델라웨어</text>
+
+    <rect x="630" y="250" width="170" height="60" rx="8" fill="#2A3D35"/>
+    <text x="715" y="275" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#fff">대리은행 연결망</text>
+    <text x="715" y="294" font-size="11" text-anchor="middle" fill="#cfe0da">다중중개·추적불가</text>
+
+    <rect x="880" y="250" width="150" height="60" rx="8" fill="#2A3D35"/>
+    <text x="955" y="277" font-size="13.5" font-weight="bold" text-anchor="middle" fill="#fff">도이체방크</text>
+    <text x="955" y="295" font-size="11" text-anchor="middle" fill="#cfe0da">처리·결제</text>
+
+    <rect x="1100" y="250" width="180" height="60" rx="8" fill="#2A3D35"/>
+    <text x="1190" y="275" font-size="13" font-weight="bold" text-anchor="middle" fill="#fff">수취</text>
+    <text x="1190" y="294" font-size="10.5" text-anchor="middle" fill="#cfe0da">트럼프·엡스타인·하나파나마</text>
+  </g>
+
+  <rect x="880" y="372" width="150" height="48" rx="8" fill="#EAF2EE" stroke="#5E9186"/>
+  <text x="955" y="392" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#2A3D35">SAR 230건</text>
+  <text x="955" y="409" font-size="10.5" text-anchor="middle" fill="#55605A">은행은 '봤다'</text>
+
+  <g>
+    <rect x="60" y="470" width="190" height="60" rx="8" fill="#EDE6DA" stroke="#9c8a6e"/>
+    <text x="155" y="495" font-size="13" font-weight="bold" text-anchor="middle" fill="#6B4E2E">실소유주 등록</text>
+    <text x="155" y="513" font-size="11" text-anchor="middle" fill="#C0392B">✕ 제도 꺼짐 (CTA 무력화)</text>
+
+    <rect x="355" y="640" width="200" height="60" rx="8" fill="#EDE6DA" stroke="#9c8a6e"/>
+    <text x="455" y="663" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#6B4E2E">중개 산업</text>
+    <text x="455" y="681" font-size="10.5" text-anchor="middle" fill="#6B4E2E">설립대리인·명목이사·등기대리</text>
+
+    <rect x="720" y="470" width="210" height="60" rx="8" fill="#EDE6DA" stroke="#9c8a6e"/>
+    <text x="825" y="495" font-size="13" font-weight="bold" text-anchor="middle" fill="#6B4E2E">규제 집행</text>
+    <text x="825" y="513" font-size="10.5" text-anchor="middle" fill="#C0392B">✕ FCPA 중단·SEC부서 해체</text>
+
+    <rect x="1050" y="470" width="210" height="60" rx="8" fill="#EDE6DA" stroke="#9c8a6e"/>
+    <text x="1155" y="495" font-size="13" font-weight="bold" text-anchor="middle" fill="#6B4E2E">공직자 면책</text>
+    <text x="1155" y="513" font-size="10.5" text-anchor="middle" fill="#6B4E2E">APEC 선언 §3</text>
+  </g>
+
+  <rect x="120" y="640" width="180" height="56" rx="8" fill="#FFFFFF" stroke="#7D7D7D" stroke-dasharray="5 4"/>
+  <text x="210" y="663" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#555">진짜 주인</text>
+  <text x="210" y="681" font-size="10.5" text-anchor="middle" fill="#777">기록에 이름 없음</text>
+
+  <line x1="220" y1="280" x2="366" y2="280" stroke="#2A3D35" stroke-width="2.6" marker-end="url(#aSolid)"/>
+  <text x="293" y="272" font-size="10.5" text-anchor="middle" fill="#55605A">세탁 수요</text>
+
+  <line x1="530" y1="280" x2="626" y2="280" stroke="#2A3D35" stroke-width="2.6" marker-end="url(#aSolid)"/>
+  <text x="578" y="272" font-size="10.5" text-anchor="middle" fill="#55605A">은닉 통로</text>
+
+  <line x1="800" y1="280" x2="876" y2="280" stroke="#2A3D35" stroke-width="2.6" marker-end="url(#aSolid)"/>
+
+  <line x1="1030" y1="280" x2="1096" y2="280" stroke="#2A3D35" stroke-width="2.6" marker-end="url(#aSolid)"/>
+  <text x="1063" y="272" font-size="10.5" text-anchor="middle" fill="#55605A">이체</text>
+
+  <path d="M455,640 L452,314" fill="none" stroke="#2A3D35" stroke-width="2.6" marker-end="url(#aSolid)"/>
+  <text x="470" y="500" font-size="10.5" fill="#6B4E2E">설립·명목 공급</text>
+
+  <line x1="955" y1="310" x2="955" y2="370" stroke="#2A3D35" stroke-width="2.4" marker-end="url(#aSolid)"/>
+  <text x="1002" y="345" font-size="10.5" text-anchor="middle" fill="#55605A">관찰</text>
+
+  <path d="M905,250 C820,200 720,180 660,176" fill="none" stroke="#2A3D35" stroke-width="2.2" marker-end="url(#aSolid)"/>
+  <text x="770" y="205" font-size="10.5" text-anchor="middle" fill="#55605A">내부파일 유출</text>
+
+  <line x1="470" y1="147" x2="536" y2="147" stroke="#2A3D35" stroke-width="2.4" marker-end="url(#aSolid)"/>
+  <line x1="720" y1="147" x2="786" y2="147" stroke="#2A3D35" stroke-width="2.4" marker-end="url(#aSolid)"/>
+
+  <path d="M930,410 L868,468" fill="none" stroke="#C0392B" stroke-width="2.6" stroke-dasharray="0" marker-end="url(#aBreak)"/>
+  <text x="905" y="455" font-size="16" fill="#C0392B" font-weight="bold">✕</text>
+  <text x="775" y="448" font-size="10.5" fill="#C0392B">집행으로 안 이어짐</text>
+
+  <path d="M825,470 L770,312" fill="none" stroke="#C0392B" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#aBreak)"/>
+  <text x="815" y="400" font-size="10.5" fill="#C0392B">억제 작동 안 함</text>
+
+  <path d="M600,174 L520,632" fill="none" stroke="#C0392B" stroke-width="2.2" stroke-dasharray="7 5" marker-end="url(#aBreak)"/>
+  <text x="545" y="430" font-size="16" fill="#C0392B" font-weight="bold">✕</text>
+  <text x="548" y="452" font-size="10.5" fill="#C0392B">중개자 이름 안 나옴</text>
+
+  <path d="M355,668 L255,668" fill="none" stroke="#C0392B" stroke-width="2.4" marker-end="url(#aBreak)"/>
+  <text x="250" y="672" font-size="15" fill="#C0392B" font-weight="bold">✕</text>
+  <text x="270" y="700" font-size="10.5" fill="#C0392B">보고 의무 없음</text>
+
+  <path d="M1190,310 L1175,466" fill="none" stroke="#C0392B" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#aBreak)"/>
+  <text x="1205" y="395" font-size="15" fill="#C0392B" font-weight="bold">✕</text>
+  <text x="1150" y="395" font-size="10.5" fill="#C0392B" text-anchor="end">기소 ✕</text>
+
+  <path d="M260,640 C300,480 360,360 405,314" fill="none" stroke="#7D7D7D" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#aVirt)"/>
+  <text x="300" y="470" font-size="10.5" fill="#777">대리인으로만 ?</text>
+
+  <path d="M175,470 C230,400 330,330 388,308" fill="none" stroke="#7D7D7D" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#aVirt)"/>
+  <text x="200" y="420" font-size="10.5" fill="#777">식별 불가</text>
+
+  <path d="M250,500 C500,600 980,600 1050,505" fill="none" stroke="#7D7D7D" stroke-width="1.8" stroke-dasharray="3 5"/>
+  <text x="640" y="600" font-size="11" text-anchor="middle" fill="#777" font-style="italic">가림막 장치들의 동시성 ⇢ 조율?  (판정은 6층·청해)</text>
+
+  <g transform="translate(455,430)">
+    <circle r="26" fill="none" stroke="#B8850E" stroke-width="2.2" stroke-dasharray="3 3"/>
+    <path d="M18,-18 A26,26 0 0 1 24,6" fill="none" stroke="#B8850E" stroke-width="2.2" marker-end="url(#aLoop)"/>
+    <text x="0" y="6" font-size="20" font-weight="bold" text-anchor="middle" fill="#B8850E">R</text>
+  </g>
+  <text x="455" y="470" font-size="11" text-anchor="middle" fill="#B8850E" font-weight="bold">강화 — 스스로 커짐</text>
+
+  <g transform="translate(875,400)">
+    <circle r="26" fill="none" stroke="#C0392B" stroke-width="2.2" stroke-dasharray="3 3"/>
+    <text x="0" y="6" font-size="20" font-weight="bold" text-anchor="middle" fill="#C0392B">B</text>
+  </g>
+  <text x="875" y="358" font-size="11" text-anchor="middle" fill="#C0392B" font-weight="bold">균형(통제) — 끊겨서 작동 안 함</text>
+
+  <rect x="40" y="740" width="1240" height="150" rx="10" fill="#FFFFFF" stroke="#DDD8CE"/>
+  <text x="60" y="768" font-size="14" font-weight="bold" fill="#2A3D35">읽는 법 — 균형 고리(B·통제)가 다섯 군데에서 끊겨, 강화 고리(R)가 제동 없이 돈다</text>
+  <text x="60" y="794" font-size="12.5" fill="#333">① SAR → 규제 집행 : 은행은 230건 봤지만 집행으로 안 이어짐 (FCPA 중단·SEC 부서 해체)</text>
+  <text x="60" y="814" font-size="12.5" fill="#333">② 중개 산업 → 보고 : 설립대리인·명목이사는 SAR 의무 자체가 없음 (FinCEN 2006)</text>
+  <text x="60" y="834" font-size="12.5" fill="#333">③ 보도 → 중개자 지명 : 유출은 고객을 드러내나 껍데기 공급자 이름은 가림막 뒤에 남음</text>
+  <text x="60" y="854" font-size="12.5" fill="#333">④ 수취(공직자) → 기소 : 공직자 면책(APEC §3)·FCPA 중단으로 통로가 닫힘   ⑤ 실소유주 등록 : 제도 자체가 꺼짐(CTA 무력화)</text>
+  <text x="60" y="878" font-size="12" fill="#777" font-style="italic">가상 연결(점선) = 진짜 주인은 대리인으로만 이어지고, 가림막 장치들의 동시성이 조율인지 우연인지는 비워 둠 — 울림≠단정, 판정은 6층.</text>
+</svg>
+<figcaption>통제(상)·연결망(중)·가림막 장치(하). 자라는 고리 R은 이어지고, 멈추는 고리 B(통제)는 다섯 군데가 잘린다. 점선 = 추측·미확인.</figcaption>
+</figure>
+
+<!-- ============ 요약표 ============ -->
+<h2>가림막 세 겹 — 요약</h2>
+<table>
+  <tr><th>겹</th><th>장치</th><th>작동</th><th>근거(보도·공개자료)</th></tr>
+  <tr><td><b>① 면제</b></td><td>FCPA 집행중단 · 공직자 면책(APEC §3)</td><td>법은 있되 끈다</td><td>행정명령 14209(25-02)·수사 절반 종결 보도·SEC부서 해체</td></tr>
+  <tr><td><b>② 연결망</b></td><td>대리은행 다중중개 · SAR만 남기는 흐름</td><td>지나가되 지운다</td><td>데리파스카망 €1.7B·MKB·SAR 230건(보도)</td></tr>
+  <tr><td><b>③ 소유</b></td><td>CTA 등록 무력화 · 이니셜·더미회사</td><td>주인을 못 찾게 한다</td><td>25-03 잠정→26-08 발효·국내 면제·GAO 경고</td></tr>
+</table>
+
+<h2>끊어짐 다섯 · 가상 연결 셋</h2>
+<table>
+  <tr><th>#</th><th>고리</th><th>상태</th><th>이유</th></tr>
+  <tr><td>①</td><td>SAR → 규제 집행</td><td class="cut">끊어짐</td><td>230건 보고됐으나 FCPA 중단·SEC 해체로 집행 공백</td></tr>
+  <tr><td>②</td><td>중개 산업 → 보고</td><td class="cut">끊어짐</td><td>설립대리인·명목이사 SAR 의무 없음(FinCEN 2006)</td></tr>
+  <tr><td>③</td><td>보도 → 중개자 지명</td><td class="cut">끊어짐(일부 드러남)</td><td>고객은 보도되나 공급자 신원 대체로 미보도 — 한국발 보도서 BVI 역외 서비스 회사·러시아 역외 업체 일부 확인(뉴스타파)</td></tr>
+  <tr><td>④</td><td>수취(공직자) → 기소</td><td class="cut">끊어짐</td><td>면책 조항·FCPA 중단</td></tr>
+  <tr><td>⑤</td><td>실소유주 등록</td><td class="cut">끊어짐</td><td>제도 자체 꺼짐(CTA)</td></tr>
+  <tr><td>v1</td><td>진짜 주인 → 유령회사</td><td class="virt">가상</td><td>데리파스카 공식 기록에 이름 없음·대리인으로 추적(보도)</td></tr>
+  <tr><td>v2</td><td>등록(꺼짐) → 식별</td><td class="virt">가상</td><td>등록이 꺼져 식별 경로가 가상</td></tr>
+  <tr><td>v3</td><td>가림막 동시성 → 조율</td><td class="virt">가상</td><td>시기 겹침은 사실, 조율 여부는 단정하지 않음</td></tr>
+</table>
+
+<h2>현장 사례 — 대북 제재 감시의 '구멍' (뉴스타파)</h2>
+<p class="note">아래는 뉴스타파 「[인사이드 도이체방크] '북한' 적힌 거래도 통과…도이체방크 대북 제재 감시 '구멍'」(2026-11-18, 김지윤·강혜인)의 보도 사실을 옮긴 것이다 — 우리 분석의 <strong>연결망·중개 산업·"봤는데 흘렀다"</strong>가 한 사안에서 겹쳐 보이는 지점.</p>
+<ul>
+  <li><strong>봤는데 흘렀다</strong> : 독일 정보기관(BfV)·재무부가 북한·이란 '위장 기업' 명단을 넘긴 2017·2020년, 은행은 <strong>이미 수년간 이들 거래를 처리한 뒤</strong>였다. 2015.1~2020.3 50곳 중 40곳, 약 5,000건·<strong>7억 유로(약 1조 300억 원)</strong> 처리 후에야 자동 차단 시작.</li>
+  <li><strong>연결망(환거래)</strong> : 2010~2017 의심 20곳 1,301건·약 1.66억 유로 중 <strong>88%가 HSBC·중국초상은행·핑안은행 등과의 환거래</strong>로 처리 — 거래 목적란에 '북한'이 적힌 건도 통과. 대리은행 연결망이 출처를 지우며 흐른 실물.</li>
+  <li><strong>중개 산업이 보인 자리(끊어짐 ③의 일부)</strong> : 한국 주소 2곳 중 <strong>부산 영도구 B업체는 BVI에도 주소</strong>를 두었고, 그 BVI 주소엔 <strong>'페이퍼컴퍼니를 만들어주는 역외 서비스 회사'</strong>, 연락처는 <strong>러시아 역외 서비스 업체</strong>였다(뉴스타파). 껍데기 공급자가 한국발 보도에서 <strong>일부 모습을 드러낸</strong> 지점.</li>
+  <li><strong>판단과 결과의 어긋남</strong> : 의심거래 신고는 쌓였으나(2007~2017 42건) 처리는 지속됐고, 은행이 "제재 가능성 없음"이라던 단둥커화는 <strong>4개월 만에 미국 제재 대상</strong>이 됐다.</li>
+  <li><strong>한국 당국</strong> : 국가정보원은 국내 주소 2곳 인지 여부에 "확인해 드릴 내용이 없다"고 답(뉴스타파).</li>
+</ul>
+<p class="src">출처: 뉴스타파 「[인사이드 도이체방크] '북한' 적힌 거래도 통과…도이체방크 대북 제재 감시 '구멍'」 (2026-11-18, 김지윤·강혜인) — <a href="https://newstapa.org/article/W4Tvy">newstapa.org/article/W4Tvy</a></p>
+
+<h2>출처 (공개 보도·자료)</h2>
+<p class="src">
+Inside Deutsche Bank 컨소시엄(한국 참여 매체 <a href="https://newstapa.org/">뉴스타파</a>·Follow the Money 등 56개 매체) · ICIJ(Offshore Leaks·Panama/Paradise/Pandora Papers·"The Dummy Company at the Heart of Deutsche Bank Money Laundering Probe") · Reuters·Euronews·Private Banker International(보도이후 동향) · US DOJ/SEC·FinCEN(FCPA·CTA 공개 문서) · 백악관·크렘린·중국 외교부(평화선언 공식 전문) · Deutsche Bank Investor Relations(List of Shareholdings).
+</p>
+
+<footer>
+  <p><strong>저자 淸海(김기섭).</strong> 공개 탐사보도와 공개 자료를 종합·구조화했다. 담론육층 1~5층의 관찰·해석에 한정하며, 6층(지도자의 덕목)은 비워 둔다.</p>
+  <p>특정인의 유죄를 단정하지 않는다 — 의혹은 의혹으로, 혐의는 혐의로, 미확인은 미확인으로 표기한다. 울림이 가리킨 자리에 사실의 시계열을 놓는다 — 울림≠단정.</p>
+</footer>
+
+</div>
+</body>
+</html>

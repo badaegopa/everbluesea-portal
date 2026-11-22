@@ -425,6 +425,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // 언론 브리핑룸
   "cat-press": [
+    { id: "press-inside-db-link-20261122", title: "인사이드 도이체방크 — 연결고리를 찾아서! : 뉴스타파·국제 탐사보도 기초 데이터화, 통제 아래 면제·연결망·소유의 가림막 세 겹, 담론육층(6층 비움)과 국가분석엔진 종합, 시차 타임라인·인과 루프도, 대북 제재 '구멍' 사례", titleEn: "Inside Deutsche Bank — Searching for the Links: Built on Newstapa and International Investigative Reporting, Three Screens of Immunity, Network and Ownership, a Six-Layer Discourse (Layer 6 Left Open) with Engine Synthesis, a Time-Lagged Timeline and Causal-Loop Diagram", region: "글로벌", regionEn: "Global", scope: "해외", engine: "공개 탐사보도 종합 · 담론육층·국가분석엔진", date: "2026-11-22", htmlPath: "/engines/press/도이체방크유출_가림막브리핑_20261122.html" },
     { id: "press-world-unrest-weekly-20261117", title: "세계 시위 주간 브리핑 — 2026-11-17: 68개국 분류(강 11·중 18·약 39), 유사 유형·통제 형태·정치권 대응별 묶음, 유럽 주간 배율, 주간 데이터 엑셀", titleEn: "World Protest Weekly Briefing — 17 November 2026: 68 Countries Classified (11 Strong, 18 Medium, 39 Weak), Grouped by Issue Type, Form of Control and Political Response, European Weekly Ratios, and the Weekly Data Workbook", region: "글로벌", regionEn: "Global", scope: "해외", engine: "세계 시위 주간 데이터 · GDELT·Hermes", date: "2026-11-17", htmlPath: "/engines/press/세계시위_주간브리핑_20261117.html" },
   ],
 

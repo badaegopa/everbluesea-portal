@@ -80,6 +80,19 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-027",
+    category: "언론 브리핑룸 · 국제",
+    categoryEn: "Press Briefing · Global",
+    date: "2026-11-22",
+    author: "청해",
+    title: "인사이드 도이체방크 — 연결고리를 찾아서!",
+    titleEn: "Inside Deutsche Bank — Searching for the Links",
+    excerpt: "뉴스타파와 국제 탐사보도('Inside Deutsche Bank', 56개 매체·230명+ 기자)가 드러낸 사실을 모아 구조와 시계열로 데이터화했다. 통제가 닿아야 할 표층 아래 면제·연결망·소유의 가림막이 세 겹이고, 그 장치들이 유출 직전 몇 달에 연달아 켜졌다. 돈이 자라는 고리는 다 이어지고, 그 돈을 멈추는 고리(통제)는 다섯 군데가 잘려 있다. 대북 제재 감시의 '구멍'(뉴스타파)에서 환거래 88%와 BVI·러시아 역외 서비스 회사가 그 구조를 실물로 보여준다. 담론육층으로 읽고 국가분석엔진으로 종합하되, 6층(지도자의 덕목)은 비워 둔다. 특정인의 유죄를 단정하지 않는다 — 의혹은 의혹으로.",
+    excerptEn: "Facts surfaced by Newstapa and the international 'Inside Deutsche Bank' consortium (56 outlets, 230+ journalists) are gathered and turned into structure and a timeline. Beneath the surface that control should reach lie three screens — immunity, network and ownership — switched on one after another in the months before the leak. The loop that grows money is fully connected; the loop that stops it (control) is cut in five places. The gap in North Korea sanctions monitoring (Newstapa) — 88% correspondent-banking flows and a BVI/Russian offshore-service firm — shows the structure in the concrete. Read through the six-layer discourse and synthesized with the national-analysis engine, with layer 6 (the virtue of leaders) left open. No one is pronounced guilty — allegations are marked as allegations.",
+    image: "/images/cards/r-027.svg",
+    tone: "dark" as const,
+  },
+  {
     id: "r-026",
     category: "봉기지수 · 세계 관찰",
     categoryEn: "Uprising Index · World Watch",
