@@ -80,6 +80,20 @@ export type FeaturedReport = {
 
 export const featuredReports: FeaturedReport[] = [
   {
+    id: "r-028",
+    category: "오피니언 · 청해 칼럼",
+    categoryEn: "Opinion · Cheonghae Column",
+    date: "2026-11-25",
+    author: "청해",
+    title: "정체된 산업의 정점! — 자본이 가리키는 것",
+    titleEn: "The Peak of a Stagnant Industry! — What Capital Is Pointing To",
+    excerpt: "올해 1월 장중 온스당 5,589달러를 찍은 금은 국내에서 열 달 사이 42%가 내렸다. 금이 떨어진 자리에서, 자본이 어디를 가리키고 있는지를 본다. 안전자산이라는 이름의 변질, 흐름이 막힌 자본의 포악함, 이리떼와 그물, 그림자 자본, 그리고 사라지지 않고 계보를 잇는 기술을 차례로 짚는다. 순환의 끝에서 자본은 다시 금을 가리킬 것이라고 본다.",
+    excerptEn: "Gold touched an intraday high of $5,589 an ounce in January and has since fallen 42% in Korea over ten months. From the place where gold fell, this column looks at where capital is pointing. It traces in turn the corruption of the name 'safe-haven asset', the ferocity of capital whose flow has been blocked, the wolf pack and the net, shadow capital, and technology that does not vanish but carries on its lineage. At the end of the cycle, it argues, capital will point to gold again.",
+    image: "/images/cards/r-028.svg",
+    tone: "dark" as const,
+    opinion: true, // ★ 오피니언 전용 칸 — 최신 칼럼 1편 노출(r-025는 오피니언 목록에 유지)
+  },
+  {
     id: "r-027",
     category: "언론 브리핑룸 · 국제",
     categoryEn: "Press Briefing · Global",

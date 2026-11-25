@@ -520,6 +520,7 @@ export const engineReports: Record<string, NationReport[]> = {
 
   // 오피니언 — 청해 칼럼과 그 원문 보고서 (2026-10-08 '준비중' 카드를 전환)
   "cat-opinion": [
+    { id: "opinion-peak-of-stagnant-industry-20261125", title: "[칼럼] 정체된 산업의 정점! — 자본이 가리키는 것", titleEn: "[Column] The Peak of a Stagnant Industry! — What Capital Is Pointing To", region: "청해 칼럼", regionEn: "Cheonghae Column", scope: "단독", engine: "오피니언", date: "2026-11-25", htmlPath: "/engines/opinion/청해칼럼_정체된산업의정점_20261125.html" },
     { id: "opinion-true-value-of-labor-20261111", title: "[칼럼] 노동의 참됨에 대하여 — 유럽의 거리에서 한국을 보다", titleEn: "[Column] On the True Worth of Labor — Seeing Korea from the Streets of Europe", region: "청해 칼럼", regionEn: "Cheonghae Column", scope: "단독", engine: "오피니언", date: "2026-11-11", htmlPath: "/engines/opinion/청해칼럼_노동의참됨에대하여_20261111.html" },
     { id: "opinion-trigger-threshold-20261024", title: "[보고서] 같은 불씨, 다른 불길: 트리거는 왜 임계점에서 터지나", titleEn: "[Report] Same Spark, Different Fires: Why Triggers Ignite at the Threshold", region: "유럽", regionEn: "Europe", scope: "권역", engine: "오피니언", date: "2026-10-24", htmlPath: "/engines/opinion/UI_Trigger_Threshold_20261024.html" },
     { id: "opinion-army-on-the-streets-20261024", title: "[칼럼] 군대가 거리로 나올 때 — 경찰은 치안을 맡고 군대는 무력을 쓴다", titleEn: "[Column] When the Army Comes onto the Streets — The Police Keep Order; the Army Uses Force", region: "청해 칼럼", regionEn: "Cheonghae Column", scope: "단독", engine: "오피니언", date: "2026-10-24", htmlPath: "/engines/opinion/청해칼럼_군대가거리로나올때_20261024.html" },

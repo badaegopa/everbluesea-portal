@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+<rect width="800" height="600" fill="#2A3D35"/><rect x="0" y="0" width="800" height="6" fill="#B8850E"/>
+<g opacity="0.6" fill="none" stroke-width="5">
+<line x1="120" y1="520" x2="680" y2="520" stroke="#8fae9f"/>
+<polyline points="130,470 190,410 230,430 290,440 340,455 390,462 440,480 490,472 540,490 600,500 660,512" stroke="#B8850E"/>
+<line x1="190" y1="410" x2="190" y2="520" stroke="#C8E0DC" stroke-dasharray="10 8"/>
+<circle cx="190" cy="410" r="7" fill="#EFC97A" stroke="none"/>
+</g>
+<text x="400" y="150" text-anchor="middle" font-family="'Courier New',monospace" font-size="16" fill="#C8E0DC" letter-spacing="3">오피니언 · 청해 칼럼</text>
+<text x="400" y="245" text-anchor="middle" font-family="Georgia,serif" font-size="54" font-weight="bold" fill="#EFC97A">정체된 산업의 정점!</text>
+<text x="400" y="305" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="#F5F3EE">자본이 가리키는 것</text>
+<text x="400" y="348" text-anchor="middle" font-family="Georgia,serif" font-size="16" fill="#C8E0DC">금이 떨어진 자리에서 본 자본의 흐름</text>
+<text x="400" y="590" text-anchor="middle" font-family="'Courier New',monospace" font-size="13" fill="#8fae9f">Opinion · everbluesea.org · 2026-11-25</text>
+</svg>
